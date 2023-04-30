@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/uzairarif5.github.io/static/css/main.91b7687c.css",
+    "main.js": "/uzairarif5.github.io/static/js/main.56dd9420.js",
+    "static/media/Simonetta.ttf": "/uzairarif5.github.io/static/media/Simonetta.062cd090c70e22824110.ttf",
+    "index.html": "/uzairarif5.github.io/index.html",
+    "main.91b7687c.css.map": "/uzairarif5.github.io/static/css/main.91b7687c.css.map",
+    "main.56dd9420.js.map": "/uzairarif5.github.io/static/js/main.56dd9420.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.91b7687c.css",
+    "static/js/main.56dd9420.js"
+  ]
+}
