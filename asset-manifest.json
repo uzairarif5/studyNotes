@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/uzairarif5.github.io/static/css/main.91b7687c.css",
-    "main.js": "/uzairarif5.github.io/static/js/main.56dd9420.js",
-    "static/media/Simonetta.ttf": "/uzairarif5.github.io/static/media/Simonetta.062cd090c70e22824110.ttf",
-    "index.html": "/uzairarif5.github.io/index.html",
-    "main.91b7687c.css.map": "/uzairarif5.github.io/static/css/main.91b7687c.css.map",
-    "main.56dd9420.js.map": "/uzairarif5.github.io/static/js/main.56dd9420.js.map"
+    "main.css": "/static/css/main.cefc1e4d.css",
+    "main.js": "/static/js/main.56dd9420.js",
+    "static/media/Simonetta.ttf": "/static/media/Simonetta.062cd090c70e22824110.ttf",
+    "index.html": "/index.html",
+    "main.cefc1e4d.css.map": "/static/css/main.cefc1e4d.css.map",
+    "main.56dd9420.js.map": "/static/js/main.56dd9420.js.map"
   },
   "entrypoints": [
-    "static/css/main.91b7687c.css",
+    "static/css/main.cefc1e4d.css",
     "static/js/main.56dd9420.js"
   ]
 }
