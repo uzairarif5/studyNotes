@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../main.css">
+    <title>Introduction to Computer Security notes</title>
+    <script src="../main.js"></script>
+</head>
+
+<body>
+    <h1>Introduction to Computer Security</h1>
+
+    <h4>Sources:</h4>
+    <ul>
+        <li>LE/EECS 3482 course by Prof. N. Vlajic</li>
+    </ul>
+
+    <h2 id="gm">General Remarks</h2>
+        <div class="content">
+            <div style="width: 49%;float: left;margin-left: 0.5%;margin-right: 0.5%;">
+                <ul>
+                    <li><b><u>Security Specialist:</u></b> A major corporation or organization uses a security specialist
+                        to protect their software and network security system. <a href="https://www.cybersecurityeducation.org/careers/how-to-become-a-security-specialist/">Common duties:</a><ul>
+                            <li>Keep up to date with security updates and improvements</li>
+                            <li>Monitor the security administrations</li>
+                            <li>Protect the system against damage, changes or illegal access</li>
+                            <li>Ensure accurate security tools are running properly, including anti-virus software and firewalls</li>
+                            <li>Implement training to colleagues</li>
+                            <li>Develop system specialized security requirements</li>
+                        </ul></li>
+                    <li><b><u>Security consultant:</u></b> Someone who works for different businesses
+                        assessing risks, problems, and solutions for security issues. <a href="https://onlinedegrees.und.edu/blog/cyber-security-consultant-job-description/">Duties:</a><ul>
+                            <li>Identifying vulnerable systems and suggesting changes to fix weaknesses</li>
+                            <li>Testing and evaluating systems, networks and digital assets for potential threats</li>
+                            <li>Interviewing staff and managers about security measures</li>
+                            <li>Developing, implementing and maintaining security policies to minimize vulnerabilities</li>
+                            <li>Presenting test results to company leaders and management</li>
+                            <li>Monitoring the latest news and threats in the security industry</li>
+                            <li>Supervising other staff and overseeing changes to network security</li>
+                            <li>Educating staff on recognizing potential security risks and breaches</li>
+                        </ul></li>
+                    <li>A <b><u>source code auditor</u></b> reviews & tests source code in applications to find
+                        any glitches or bugs that might affect functionality or security. The code
+                        auditor needs to be aware of the latest technologies and methods in use
+                        by hackers and may need to simulate a cyber attack to test the code.</li>
+                    <li><a href="https://onlinedegrees.und.edu/blog/cyber-security-forensics/"><b><u>Cyber security forensics professional:</u></b> Cope with cyber
+                        crime after it has occurred. The work combines data recovery with legal
+                        compliance to investigate an incident and identify who was responsible.</a></li>
+                    <li><a href="https://www.cybersecurityeducation.org/careers/penetration-tester/"><b><u>Penetration testers</u></b> are often called <b>ethical hackers</b> because they attempt
+                        to crack into a computer system for the purposes of testing its relative
+                        security rather than to steal information or create havoc.</a></li>
+                </ul>
+                <h3>Vulnerability Disclosure</h3>
+                <ul>
+                    <li>'Smart' companies are wiling to pay specialized
+                        (trusted) teams
+                        to try to hack them.</li>
+                        <li>Security researchers should keep looking for various
+                            vulnerabilities in various 'components' of the Internet.
+                        </li>
+                        <li>Security researchers should know that poking around
+                            a software or software system could put them in trouble.</li>
+                        <li>'Smart' organization should know that it is impossible
+                            to build a bulletproof software or software-system.</li>
+                        <li>'Smart' organization should incentivize security
+                        researchers to discover and report vulnerabilities
+                        in their software products and systems.</li>
+                    <li>Both pentesting and 'red-team/blue-team' exercises
+                        happen only periodically (over limited period of time)</li>
+                    <li><b>OWASP (Open Web Application Security Project):</b><ul>
+                        <li>Researchers should:<ul>
+                            <li>Ensure that any testing is legal and authorised.</li>
+                            <li>Respect the privacy of others.</li>
+                            <li>Make reasonable efforts to contact the security team of the organisation.</li>
+                            <li>Provide sufficient details to allow the vulnerabilities to be verified and reproduced.</li>
+                            <li>Not demand payment or rewards for reporting vulnerabilities outside of an established bug bounty program.</li>
+                            </ul></li>
+                        <li>Organisations should:<ul>
+                            <li>Provide a clear method for researchers to securely report vulnerabilities.</li>
+                            <li>Clearly establish the scope and terms of any bug bounty programs.</li>
+                            <li>Respond to reports in a reasonable timeline.</li>
+                            <li>Communicate openly with researchers.</li>
+                            <li>Not threaten legal action against researchers.</li>
+                            <li>Request CVEs where appropriate.</li>
+                            <li>Publish clear security advisories and changelogs.</li>
+                            <li>Offer rewards and credit.</li>
+                            </ul></li>
+                        <li>Methods of Disclosure:<ul>
+                            <li><b>Private disclosure model:</b> The vulnerability is reported privately to the organisation. The organisation may choose to publish the details of the vulnerabilities, but this is done at the discretion of the organisation, not the researcher, meaning that many vulnerabilities may never be made public.</li>
+                            <li><b>Full disclosure approach:</b> The full details of the vulnerability are made public as soon as they are identified. The full disclosure approach is primarily used in response or organisations ignoring reported vulnerabilities, in order to put pressure on them to develop and publish a fix.</li>
+                            <li><b>Responsible disclosure</b> attempts to find a reasonable middle ground between these two approaches. With responsible disclosure, the initial report is made privately, but with the full details being published once a patch has been made available. In many cases, the researcher also provides a deadline for the organisation to respond to the report, or to provide a patch.</li>
+                        </ul></li>
+                    </ul></li>
+                </ul>
+            </div>
+            <div style="width: 49%;float: right;margin-left: 0.5%;margin-right: 0.5%;">
+                <h3>Hack v Breach</h3>
+                <ul>
+                    <li><a href='https://www.eurekalert.org/multimedia/655449'>With <b>moving target defense (MTD)</b>, uncertainty is increased to confuse the adversary, who has to expend more resources, such as time
+                    and/or computational power, to discover/attack vulnerabilities of a
+                    target system. Examples:</a><ul><li>Deploy (rotate between) multiple
+                        instances of your Web-servers at
+                        different geo- locations / IP
+                        addresses.</li>
+                        <li>Deploy multiple and instances of
+                        your Web-server each running
+                        different software (Windows IIS,
+                        Apache, Nginx, etc.).</li></ul></li>
+                    <li>While new hacks & breaches may/will have new elements &
+                        characteristics, they often share some commonalities with
+                        earlier hacks & breaches:<ul>
+                            <li>actors (APT groups)</li>
+                            <li>techniques (soc. eng.)</li>
+                            <li>tools</li>
+                        </ul></li>
+                    <li>Why (or why not) should a company report a breach / hack that they are experiencing?<ul>
+                        <li><a href="https://www.wthr.com/article/news/investigations/13-investigates/silent-threat-fbi-warns-against-trend-of-not-reporting-cyberattacks-ransomware/531-6cbee4c4-c23a-4d13-af20-ffb2fe6aa3a4">Silent Threat:</a><ul>
+                        <li>Hesitancy is mostly due to two main concerns - <b>fear of publicity</b> and <b>getting in trouble</b>. Stapleton said the bureau has strict rules to protect victims and keep cases under wraps. Not reporting sometimes still results in publicity, as agents report sometimes learning of a breach in news reports.</li>
+                        <li>Notifying the FBI increases chances a hacker can be tracked down and prosecuted even if they're abroad.</li>
+                        <li>Reporting an attack quickly can also help businesses better protect time and money. For example, in a ransomware attack, sometimes agents can decrypt blocked information, so the business doesn't lose anything. Occasionally, agents can even get ransom money back by communicating with banks, but they have to be notified within 72 hours to utilize the <b>Financial Fraud Kill Chain program</b>.</li>
+                        </ul></li>
+                        <li><a href="https://www.nibusinessinfo.co.uk/content/impact-cyber-attack-your-business">What happens when a company gets attacked?</a><ul>
+                            <li><b>Economic cost of cyber attack (direct financial cost/loss):</b> Cyber attacks often result in a substantial <b>financial loss</b> arising from:<ul>
+                                <li>theft of corporate information</li>
+                                <li>theft of financial information (eg bank details or payment card details)</li>
+                                <li>theft of money</li>
+                                <li>disruption to trading (eg inability to carry out transactions online)
+                                loss of business or contract</li>
+                            </ul></li>
+                            <li><b>Reputational damage (indirect financial cost/loss - type 1):</b>
+                                Trust is an essential element of a customer relationship. Cyber attacks can damage your business' reputation and erode the trust your customers have for you. This, in turn, could potentially lead to:<ul>
+                                    <li>loss of customers</li>
+                                    <li>loss of sales</li>
+                                    <li>reduction in profits</li>
+                                </ul></li>
+                            <li><b>Legal consequences of a cyber breach (indirect financial cost/loss - type 2):</b>
+                                Data protection and privacy laws require you to manage the security of all personal data you hold - whether on your staff or your customers. If this data is accidentally or deliberately compromised, and you have failed to deploy appropriate security measures, you may face fines and regulatory sanctions.</li>
+                        </ul></li>
+                        <li>In many instances it is not a matter of choice,
+                            rather companies are legally obliged to
+                            report a breach / hack.</li>
+                        <li><a href="https://www.priv.gc.ca/en/privacy-topics/business-privacy/safeguards-and-breaches/privacy-breaches/respond-to-a-privacy-breach-at-your-business/gd_pb_201810">What you need to know about mandatory reporting of breaches of security safeguards:</a><ul>
+                            <li><u>Do I need to report all breaches to the OPC?</u>
+                                No. The law requires that you report any breach of security safeguards involving personal information under your control if it is reasonable in the circumstances to believe that the breach of security safeguards creates a real risk of significant harm (RROSH) to an individual.</li>
+                            <li><u>What is <b>real risk of significant harm (RROSH)</b>?</u>
+                                Significant harm includes bodily harm, humiliation, damage to reputation or relationships, loss of employment, business or professional opportunities, financial loss, identity theft, negative effects on the credit record and damage to or loss of property.
+                                
+                                Factors that are relevant to determining whether a breach of security safeguards creates a real risk of significant harm include the sensitivity of the personal information involved in the breach of security safeguards and the probability the personal information has been/is/will be misused.</li>
+                            <li>PIPEDA does not define sensitivity. However, the concept of sensitivity of personal information is discussed in Principle 4.3.4 of PIPEDA which states: <i>Although some information is almost always considered to be sensitive, any information can be sensitive, depending on the context. For example, the names and addresses of subscribers to a newsmagazine would generally not be considered sensitive information. However, the names and addresses of subscribers to some special-interest magazines might be considered sensitive.</i></li>
+                        </ul></li>
+                        <li class="Opened"><a href="https://coxandpalmerlaw.com/publication/bill-c-26-new-cyber-security-obligations-for-canadian-businesses-vital-to-national-security-and-public-safety/">Obligations of Designated Operators:</a><ul>
+                            <li>The CCSPA will apply to business operators of federally regulated systems and services that are designated under the CCSPA as being "vital to national security or public safety" (<b>Designated Operators</b>). Designated Operators include providers of telecommunications services, interprovincial or international pipeline and power line systems, nuclear energy systems, transportation systems that are within the legislative authority of Parliament, banking systems and clearing and settlement systems.</li>
+                            <li><b><u>Cyber Security Program:</u></b> Entails identifying and managing cyber security risks and taking action to prevent cyber systems from being compromised. Designated Operators will be required to conduct periodic reviews of their cyber systems to ensure system integrity.</li>
+                            <li><b><u>Mitigating Supply-Chain and Cyber Security Risks:</u></b> Designated Operators will be required to identify and manage any cyber risks associated with their supply chain and use of third-party products and services. Businesses that provide outsourced services to Designated Operators under the CCSPA should be aware that their cyber security systems and practices are likely to become more closely scrutinized for potential vulnerabilities that could be exploited by cyber attackers.</li>
+                            <li><b><u>Mandatory Reporting Requirements:</u></b> The CCSPA creates an obligation for Designated Operators to immediately report any "cyber security incident" to the Communications Security Establishment and the appropriate regulator. A cyber security incident is defined as any circumstance which interferes or may interfere with the continuity or security of a vital service or vital system, or the confidentiality, integrity or availability of a critical cyber system.</li>
+                            <li><b><u>Disclosure and Use of Information:</u></b> The obligations set out in CCSPA also apply to individuals. Subject to certain exceptions set out in the CCSPA, a person must not knowingly disclose or allow access to confidential information that:<ul>
+                                <li>concerns a vulnerability of any Designated Operator's critical cyber system or the methods used to protect that system;</li>
+                                <li>if disclosed could reasonably be expected to result in material financial loss or gain to, or could reasonably be expected to prejudice the competitive position of, a Designated Operator;</li>
+                                <li>if disclosed could reasonably be expected to interfere with contractual or other negotiations of a Designated Operator.</li>
+                            </ul></li>
+                            <li><b><u>Record Keeping Requirements:</u></b> Designated Operators will face enhanced record keeping requirements with regard to their cyber systems under the CCSPA. All records relating to the cyber security of a Designated Operator must be stored within Canada under the CCSPA. Designated Operators should proactively identify the geographic location of the servers or data centres where they store information, or outsource the storage or processing of such information, in order to avoid breaching the record keeping requirements of the CCSPA. Designated Operators will be obligated to keep records of:<ul>
+                                <li>any steps taken to implement a cyber security program;</li>
+                                <li>every cyber security incident;</li>
+                                <li>any steps taken to mitigate risks associated with their supply-chain or third-party products and services;</li>
+                                <li>any measures taken to implement a cyber security direction given by the Governor in Council.</li>
+                            </ul></li>
+                            <li><b><u>Liability and Penalties:</u></b> Canadian businesses must give careful attention to the new CCSPA obligations, as any violation can result in a severe monetary penalty. The amount of the penalty will be fixed by the regulations to be created under the CCSPA, and may be up to $1,000,000 in the case of an individual or $15,000,000 in any other case. As a violation that is committed or continued on more than one day is considered to be a separate violation in respect of each day on which it is committed or continued, there is the potential for the penalty to be applied per day.</li>
+                        </ul></li>
+                        </ul></li>
+                    <li><b>Data breach (data leak):</b> Exposing of
+                        sensitive, confidential and/or protected
+                        data to someone who should not have
+                        access to that data. Most common causes / actors: An accidental or careless insider;  a malicious insider; a malicious outsider.</li>
+                    <li><a href="https://www.idwatchdog.com/insider-threats-and-data-breaches/">HR's Role in Combating Malicious Insiders:</a><ul>
+                        <li><b>Screen new hires:</b> In general, experts say that the more time spent investigating an applicant's background, the better.</li>
+                        <li><b>Monitor for disgruntled or compromised employees:</b> HR teams should pay attention to potential red flags, such as low morale or an official reprimand of an employee.</li>
+                    </ul></li>
+                    <li><b>Hack:</b> Identification & exploitation of
+                        weaknesses in a computer system or
+                        a network in order to achieve a
+                        nefarious objective.</li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    <h2 id="intro">Introduction</h2>
+    <div class="content">
+        <div style="width: 49%;float: left;margin-left: 0.5%;margin-right: 0.5%;">
+            <ul>
+                <li><b>Computer:</b> general purpose device that can be
+                    programmed to carry out a set of arithmetic or logical
+                    operations automatically. <u>Alternative definition:</u> electronic device for storing and
+                    processing of data/information</li>
+            </ul>
+            <table style="width: 60%;margin-left: 20%;">
+                <tr><th>Data</th><th>Information</th></tr>
+                <tr><td>Raw Facts</td><td>Useful/Relevant</td></tr>
+                <tr><td>Unorganized</td><td>Organized</td></tr>
+                <tr><td>Unprocessed</td><td>Processed</td></tr>
+                <tr><td>Chaotic or Unsorted</td><td>Ordered or Sorted</td></tr>
+                <tr><td>Input to a Process</td><td>Output of a Process</td></tr>
+            </table>
+            <ul>
+                <li><u><b>Information Technology:</b></u> Technology
+                    involving development OR use of computer
+                    systems & networks for the purpose of
+                    processing & distribution of data/information. Categories of IT jobs: <ul>
+                        <li><b><u>IT engineer:</u></b> develops new or upgrades existing IT equipment
+                    (software or hardware)</li>
+                        <li><b><u>IT architect:</u></b> draws up plans for IT systems and how they
+                    will be implemented</li>
+                        <li><b><u>IT administrator:</u></b> installs, maintains, repairs IT equip./system</li>
+                        <li><b><u>IT manager:</u></b> oversees other IT employees, has authority
+                    to buy technology and plan budgets</li>
+                        <li><b><u>IT security specialist:</u></b> creates and executes security
+                    applications to maintain system security and safety</li>
+                    </ul></li>
+                <li><b><u>Information System:</u></b> Entire set of data as well as
+                    software, hardware, networks, people, procedures &
+                    policies that deal with processing & distribution of
+                    information (data) in an organization. Each component has its own strengths, weaknesses,
+                    and its own security requirements.</li>
+                <li><u><b>Information Security:</b></u> Practice of defending
+                    digital information.</li>
+                <li>Computer Security vs. Information Security:<ul>
+                    <li><b>Computer security</b> (aka IT security) is mostly concerned
+                        with information in <i>digital form</i>.
+                        </li>
+                    <li><b>Information security</b> is concerned with information in
+                        any form it may take: electronic, print, etc.</li>
+                </ul></li>
+                <li><a href='https://www.isa.org/intech-home/2020/march-april/departments/physical-security-of-a-data-center'><b>Physical security</b> is the protection of people, property, and assets, such as hardware, software, network, and data, from natural disasters, burglary, theft, terrorism, and other events that could cause damage or loss to an enterprise or institution.</a></li>
+                <li><a href="https://surreyfire.co.uk/types-of-fire-extinguisher/">There are six classes of fire:</a><ul>
+                    <li><b>Class A fires - combustible materials:</b> caused by flammable solids, such as wood, paper, and fabric</li>
+                    <li><b>Class B fires - flammable liquids:</b> such as petrol, turpentine or paint</li>
+                    <li><b>Class C fires - flammable gases:</b> like hydrogen, butane or methane</li>
+                    <li><b>Class D fires - combustible metals:</b> chemicals such as magnesium, aluminium or potassium</li>
+                    <li><b>Electrical fires - electrical equipment:</b> once the electrical item is removed, the fire changes class</li>
+                    <li><b>Class F fires - cooking oils:</b> typically a chip-pan fire</li>
+                </ul></li>
+                <img src="3482pics/1.PNG" style="width:98%;margin-left:1%">
+                <li><a href="https://en.wikipedia.org/wiki/Class_B_fire">The less-commonly-used Class F (known in the United States as Class K) refers to fires involving cooking oil or fat; these materials are technically part of Class B.</a></li>
+                <li>Information security is the responsibility of EVERY employee.</li>
+            </ul>
+        </div>
+        <div style="width: 49%;float: right;margin-left: 0.5%;margin-right: 0.5%;">
+            <ul>
+                <li>Bring Your own device:<ul>
+                    <img src="3482pics/2.PNG" style="width:100%">
+                    <img src="3482pics/3.PNG" style="width:70%;margin-left:15%">
+                    <img src="3482pics/4.PNG" style="width:80%;margin-left:10%">
+                    <li><a href="https://integrisit.com/byod-security-tips-six-ways-you-can-secure-your-network-now/">Take These Steps Now to Enhance Your BYOD Security:</a><ul>
+                        <li>Move Your Network to the Cloud</li>
+                        <li>Password Protection</li>
+                        <li>Restrict Permissions and Data Access</li>
+                        <li>Routine Back-Ups</li>
+                        <li>Protect Each Device with Antivirus Software</li>
+                        <li>Blacklist Prohibited Applications</li>
+                        <li>Cybersecurity Education</li>
+                    </ul></li>
+                </ul></li>
+                <li>3 key characteristics of information that must be protected by information security:<ul>
+                    <li><b>Confidentiality:</b> only authorized parties can view private
+                        information</li>
+                    <li><b>Integrity:</b> information is changed only in a specified and
+                        authorized manner (by authorized users)</li>
+                    <li><b>Availability:</b> information is accessible to authorized users
+                        whenever needed</li>
+                    <li>Different organizations may view one of the CIA
+                        components as being more important than others!</li>
+                    <li><u>How to ensure data confidentiality?</u> cryptography; b access control; limiting number of places where data can appear.</li>
+                    <li><u>Prevent & detect attack on data integrity?</u> b access control; cryptography (hashing) - detects attacks on data integrity; documenting system activity (logging) - who did what and when - detects attacks on data integrity.</li>
+                    <li><u>How to ensure data availability?</u> anti-DDoS system (e.g. content distribution networks or scrubbing centers); well established backup procedure.</li>
+                    <img src="3482pics/5.PNG" style="width:90%;margin-left:5%">
+                    <li><b>Authenticity:</b> being able to verify that users are who they claim to be, and that each data input has come from a trusted source.</li>
+                    <li><b>Accountability:</b> being able to trace actions of an entity uniquely to that entity.</li>
+                </ul></li>
+                <li><b>CNSS:</b> Committee on National Security Systems</li>
+                <li><b>McCumber Cube:</b></li>
+                <img src="3482pics/6.PNG" style="width:90%;margin-left:5%">
+                <li><a href="https://arstechnica.com/gadgets/2020/02/intel-promises-full-memory-encryption-in-upcoming-cpus/">Data stored in the encrypted enclave is only decrypted within the CPU - and even then, it is only decrypted at the request of instructions executed from within the enclave itself.</a></li>
+                <li><a href="https://iamtrask.github.io/2017/03/17/safe-ai/">Homomorphic Encryption is a special type of encryption though. It allows someone to modify the encrypted information in specific ways without being able to read the information. For example, homomorphic encryption can be performed on numbers such that multiplication and addition can be performed on encrypted values without decrypting them.</a></li>
+            </ul>
+        </div>
+    </div>
+    <h2 id="threats">Threats</h2>
+    <div class="content">
+        <div style="width: 49%;float: left;margin-left: 0.5%;margin-right: 0.5%;">
+            <h3>Security Threats - Definitions</h3>
+            <ul>
+                <li><a href="https://www.lockheedmartin.com/content/dam/lockheed-martin/rms/documents/cyber/LM-White-Paper-Threat-Driven-Approach.pdf">Threats, Assets and Controls Relationship Model:</a></li>
+                <img src="3482pics/7.PNG" style="width:70%;margin-left:15%">
+                <li><b>Security Threat:</b> Any event (action/inaction) that may / may not happen, but has the potential to cause disclosure, alteration, loss, damage or unavailability of a company's (or an individual's) assets. Three main components:<ul>
+                    <li><b>Target [asset/resource with vulnerability]:</b> organization's
+                        system resource that might be attacked (CIA of data/information directly or indirectly through software,
+                        hardware, communication facilities and networks, etc.).</li>
+                    <li><b>Agent [may or may not be present]:</b> people/organizations
+                        originating the threat - intentional or non-intentional (employees, ex-employees, hackers, commercial rivals, terrorists, etc.).</li>
+                    <li><b>Event:</b> possible action that exploits target's vulnerability (malicious / accidental destruction or alteration of information, misuse
+                        of authorized information, etc.).</li>
+                </ul></li>
+                <img src="3482pics/12.PNG" style="width:70%;margin-left:15%">
+                <li><b>Attack:</b> Threat event deliberately executed by an agent.</li>
+                <li>Criteria for threat identification/prioritization:<ul>
+                    <li>Asset identification (e.g. web servers (e-commerce company), or workstations (software develop. company))</li>
+                    <li>Threat identification [asset-vulnerability, agent, event]</li>
+                    <li>Organizational strategy regarding risk</li>
+                </ul></li>
+                <li><a href="https://cyber.gc.ca/en/guidance/introduction-cyber-threat-environment">Main Categories of Threat Agents:</a></li>
+                <img src="3482pics/8.jpg" style="width:90%;margin-left:5%">
+                <li>Main Groups of Threat Actions/Events:</li>
+                <img src="3482pics/9.PNG" style="width:100%">
+                <li><a href="https://assets.ey.com/content/dam/ey-sites/ey-com/en_ca/topics/advisory/ey-global-information-security-survey-2018-19.pdf">Top 10 biggest cyber threats
+                    to organizations:</a></li>
+                <img src="3482pics/10.PNG" style="width:50%;margin-left:25%;">
+                <li>Categories of Threat Events:</li>
+                <img src="3482pics/11.PNG" style="width:70%;margin-left:15%;">
+                <li>Threat Events: Unintentional & No Human:<ul>
+                    <li>Forces of Nature</li>
+                    <li>Hardware and Software Failures and Errors</li>
+                </ul></li>
+                <li>Threat Events: Unintentional With Human:<ul>
+                    <li>Act of Human Error or Failure</li>
+                    <li>Deviations in Quality of Service</li>
+                </ul></li>
+                <li>Intentional Attacks:<ul>
+                    <li><b>Passive Attack:</b> attempts
+                        to learn or make use of info.
+                        from the system but does not
+                        affect system resources.</li>
+                    <li><b>Active Attack:</b> attempts
+                        to alter system resources
+                        or affect their operation.</li>
+                    <li>Compromise to Intellectual Property (IP):<ul>
+                        <li>IP = any intangible asset that consist of
+                            human knowledge & ideas - creations of
+                            the mind (copyright, patent, trade secret).</li>
+                        <li>Besides stealing of 'raw' IP-related data,
+                            any unauthorized use of IP-containing
+                            product (MS Office, Adobe Acrobat) also
+                            constitutes a security threat.</li>
+                        <img src="3482pics/13.PNG" style="width: 80%;margin-left: 10%;">
+                        <li><a href="https://www.techradar.com/news/protecting-intellectual-property-from-insider-threat">How IP gets leaked?</a><ul>
+                            <li>Employees with a grievance against their employer bid to punish them by <b>sharing sensitive information</b> for personal profit.</li>
+                            <li>Another scenario might see an employee tempted by a high salary position with a competitor in return for <b>stealing</b> corporate secrets prior to leaving their current role.</li>
+                            <li>Employees don't always deliberately reveal secrets; they can simply be <b>targets of malicious activity</b> themselves. They may be recruited by bad actors using an apparently legitimate front.</li>
+                            <li>Compromised employees are vulnerable to <b>threats of blackmail</b> from actors who have either uncovered compromising information or have manipulated them into actions that they fear being made public.</li>
+                            <li><b>Bad actors</b> take roles within target organisations with the sole aim of accessing and exfiltrating trade secrets.</li>
+                        </ul></li>
+                    </ul></li>
+                    <li>Deliberate Act of Info. Extortion / Blackmail</li>
+                    <li>Deliberate Act of Sabotage or Vandalism</li>
+                    <li>Deliberate Act of Trespass: unauthorized access to info. that
+                        an organization is trying to protect</li>
+                </ul></li>
+            </ul>
+        </div>
+        <div style="width: 49%;float: right;margin-left: 0.5%;margin-right: 0.5%;">
+            <h3>Software Attacks</h3>
+            <ul>
+                <li>Types of attacks base on the type of malicious software:<ul>
+                    <li><b>Use of Malware:</b><ul>
+                        <li><b>Malware:</b> a program that is inserted into the victim system, usually covertly, with the intention to: compromise the CIA of the victim's data, application(s) or the OS, misuse the resources of the victim computer, or  otherwise annoy or disrupt the victim.</li>
+                        <img src="3482pics/17.PNG" style="width: 80%;margin-left: 10%;">
+                        <li>Malware Types:<ul>
+                            <li><b>Virus:</b><ul>
+                                <li>Piece of software that 'infects' other host programs
+                                (executable) by modifying them.</li>
+                                <li>When viruses attach themselves to the executable files, they alter the instruction pointer of the executable programs in such a way that the virus code gets executed first before the actual executable code.</li>
+                                <li>Virus lifetime:<ul>
+                                    <li><b>Dormant phase:</b> The virus is idle and eventually
+                                gets activated by some event (click on a file,
+                                click on a link, ...)</li>
+                                    <li><b>Infection + propagation phase:</b> The virus places a
+                                copy of itself into other programs - each infected
+                                program will contain a clone of the virus which
+                                itself will enter a propagation/replication phase</li>
+                                    <li><b>Triggering phase:</b> The virus is activated to perform
+                                the function for which it was intended - again, it
+                                can be caused by a variety of system events (e.g.,
+                                number of times that the virus has replicated)</li>
+                                    <li><b>Execution phase:</b> The malicious function is
+                                performed.</li>
+                                </ul></li>
+                                <li>Classification of viruses by target:<ul>
+                                    <li><b>Boot sector infector:</b> infects a master boot record
+                                        and spreads when a system is booted from the
+                                        disk containing the virus. The Master Boot
+                                        Record (MBR) is the
+                                        information in the
+                                        first sector of any
+                                        hard disk or
+                                        diskette that
+                                        identifies how and
+                                        where an operating
+                                        system is located so
+                                        that it can be boot
+                                        (loaded) into the
+                                        computer's main
+                                        storage or random
+                                        access memory.</li>
+                                    <li><b>File infector:</b> infects executable files.</li>
+                                    <li><b>Macro virus:</b> infects files with macro or scripting
+                                        code that are interpreted by an application.</li>
+                                    <li><b>Multipartite virus:</b> uses multiple 'attack vectors'.</li>
+                                </ul></li>
+                                <img src="3482pics/18.PNG" style="width: 100%;">
+                                <li><b>Blacklisting:</b> allow everything block some good for detecting yesterday's (known) threats</li>
+                                <li><b>Whitelisting:</b> block everything allow some - aka "zero trust" good for detecting zero-day threats</li>
+                                <li>Classification of viruses by concealment strategy:<ul>
+                                    <li><b>Polymorphic virus:</b> mutates (changes its appearance) with every infection to avoid 'signature' (bit pattern) detection.</li>
+                                    <li><b>Encrypted virus:</b> a portion of the virus creates a random key and encrypts the remainder - special case of polymorphic virus.</li>
+                                    <li><b>Stealth virus:</b> uses special techniques to conceal its presence on the OS; makes sure that 'last modified' date of host file remains unchanged; makes sure that the size of host file appears/stays the same - aka cavity viruses.</li>
+                                    <li><b>Metamorphic virus:</b> mutates (changes its behavior) with every infection while remaining 'functionally equivalent'.</li>
+                                </ul></li>
+                            </ul></li>
+                            <li><b>Worm:</b><ul>
+                                <img src="3482pics/21.PNG" style="width: 100%;">
+                                <img src="3482pics/22.PNG" style="width: 100%;">
+                                <li>Classification of worms by target discovery:<ul>
+                                    <li><b>Random IP:</b> Each compromised host probes random
+                                    addresses in IP addr. space - fast development, but
+                                    1) unknown results (many machines may not be
+                                    vulnerable), 2) some machine may already infected.</li>
+                                    <li><b>Hit list IP:</b> The attacker pre-compiles a long list of
+                                    potentially vulnerable machines, each infected
+                                    machine uses a part of this list.</li>
+                                    <li><b>Topological:</b> Worm uses information contained on
+                                    the infected machine to find more hosts to scan
+                                    - e.g., worms infecting/exploiting P2P applications.</li>
+                                    <li><b>Local subnet IP:</b> Worm uses the subnet address
+                                    to find other vulnerable machine on the same
+                                    network (works well against firewall-protection).</li>
+                                </ul></li>
+                                <img src="3482pics/23.PNG" style="width: 100%;">
+                            </ul></li>
+                            <li><b>Trojan horse:</b><ul>
+                                <li>Malware that looks legitimate and is
+                                    advertised as performing one activity
+                                    but actually does something else; it
+                                    does NOT self-replicate. Most Trojans do not 'damage'
+                                    the host computer,
+                                    but instead use its resources
+                                    for illegal purposes
+                                    through a client-server connection.
+                                    </li>
+                            </ul></li>
+                            <li><b>Logic Bomb:</b><ul>
+                                <li>Malware typically installed by an authorized
+                                    user; lies dormant until triggered by a
+                                    specific logical event; once triggered, it can
+                                    perform any number of malicious activities.</li>
+                                <li>Trigger events: a certain date reached on the calendar -
+                                    check for organization payroll data; a person was fired - files deleted once his account got disabled.</li>
+                                </ul></li>
+                            <li><b>Rootkit:</b><ul>
+                                <li>Stealthy software with root/administrator
+                                    privileges - aims to modify the operation of the
+                                    OS in order to facilitate a nonstandard or
+                                    unauthorized functions.</li>
+                                <li>Unlike virus, rootkit's goal is not to damage computer
+                                    directly or to spread, but to hide the presence and/or
+                                    control the function of other (malicious) software.</li>
+                                <li>Since rootkits change the OS, the only safe and
+                                    foolproof way to handle a rootkit infection is to
+                                    reformat the hard drive and reinstall the OS.</li>
+                            </ul></li>
+                            <li><b>Information Stealer:</b><ul>
+                                <li>Malware that steals information such as:
+                                    passwords, financial credentials, intellectual
+                                    property ... that resides in volatile memory
+                                    (i.e., are not stored on the hard drive).</li>
+                                <li><b>Software Keylogger:</b> captures keystrokes
+                                    in a compromised system.</li>
+                                <li><b>Hardware Keylogger:</b> Logger is plugged in between USB keyboard (connector) and USB port.
+                                    All keyboard activity is logged to its internal memory.</li>
+                                <li><b>Desktop Recorder:</b> takes screenshots of the
+                                    desktop.</li>
+                            </ul></li>
+                            <li><b>Ransomware:</b><ul>
+                                <li>Holds data or access to systems containing
+                                    data until the victim pays a ransom.</li>
+                                <li><b>CryptoLockers:</b> encrypts victim's data or
+                                    entire hard-drive get encrypted.</li>
+                                <li><b>ScreenLockers:</b> user is locked out and
+                                    denied login to the system.</li>
+                            </ul></li>
+                            <li><b>Scareware:</b> Malicious programs that aim to scare users
+                                into installing a program and sometimes
+                                even paying for it.</li>
+                            <li><b>Spyware:</b> Software that spies on users by gathering
+                                information without their consent, thus
+                                violating their privacy.</li>
+                            <li><b>Adware:</b> Software that
+                                delivers advertising content
+                                in a manner that is unexpected
+                                and unwanted by the user.</li>
+                        </ul></li>
+                    </ul></li>
+                    <li>Password Cracking</li>
+                    <li><b>DoS and DDoS:</b><ul>
+                        <li><b>DDoS:</b> A coordinated stream of requests
+                            is launched from many locations (zombies) simultaneously.</li>
+                        <li><b>Zombie/bot:</b> A compromised machine that can be commanded
+                            remotely by the master machine</li>
+                    </ul></li>
+                    <li><b>Spoofing</b>:<ul>
+                        <li>Insertion of forged Internet identification data in order to
+                            gain an illegitimate advantage (in packets, web-requests,
+                            emails).</li>
+                        <li><b>IP Spoofing:</b> creation of IP packets with a forged source IP
+                            address, e.g. for the purpose of 'passing through a firewall'
+                            </li>
+                        <li><b>Email Address Spoofing:</b> creation of email messages with
+                            a forged sender address, e.g. for the purposes of social
+                            engineering and data phishing.</li>
+                        <li><b>Referrer or User Agent Spoofing:</b> creation of HTTP requests
+                            with forged fields in order to gain access to a protected web-site.</li>
+                    </ul></li>
+                    <li><b>Sniffing:</b> Use of a program or device that can monitor data
+                            traveling over a network.</li>
+                    <li><b>Man-in-the-Middle:</b><ul>
+                        <li>gives an illusion that two computers are communicating
+                            with each other, when actually they are sending and
+                            receiving data with a computer between them</li>
+                        <li><b>Passive:</b> attacker records &
+                            resends data at a later time
+                            (acts as a signal/packet
+                            repeater)</li>
+                        <li><b>Active:</b> attacker intercepts, alters and sends data before or after the original arrives to the recipient</li>
+                        <img src="3482pics/26.PNG" style="width: 100%;">
+                    </ul></li>
+                    <li><b>Phishing:</b><ul>
+                    <li>Involves fake/spoofed emails + attempt to gain sensitive personal information by
+                        posing as a legitimate entity.</li>
+                    <li><b>Simple phishing:</b> an email is sent to the victim informing
+                        them of a problem (e.g. with their email or banking
+                        account) and asking them to provide their username,
+                        password, etc.</li>
+                    <li><b>Sophisticated phishing:</b> an email is sent to the victim
+                        containing a link to a bogus website that looks legitimate.</li>
+                    </ul></li>
+                    <li><b>Pharming:</b> Redirects users to false website without them
+                        even knowing it - typed in or clicked on URL looks OK.</li>
+                    <img src="3482pics/19.PNG" style="width: 90%;margin-left: 5%;">
+                    <img src="3482pics/20.PNG" style="width: 100%;">
+                </ul></li>
+                <img src="3482pics/15.PNG" style="width: 80%;margin-left: 10%;">
+                <img src="3482pics/16.PNG" style="width: 80%;margin-left: 10%;">
+                <li><b>Software (Security) Vulnerability:</b> an unintended characteristic
+                    of a software component/system or its configuration that increases
+                    the risk of an adverse event and/or a loss occurring due to accidental
+                    exposure, deliberate attack, or conflict with other system components</li>
+                <li><b><a href="https://owasp.org/www-project-top-ten/">Top 10 Web Application Security Risks:</a></b><ul>
+                    <img src="3482pics/24.PNG" style="width: 100%">
+                </ul></li>
+                <img src="3482pics/25.PNG" style="width: 80%;margin-left: 10%;">
+            </ul>
+        </div>
+    </div>
+    <h2 id="Steganography">Steganography</h2>
+    <div class="content">
+        <div style="width: 49%;float: left;margin-left: 0.5%;margin-right: 0.5%;">
+            <ul>
+                <li><b>Information Hiding:</b> The goal is not just to prevent others from accessing hidden
+                    information, but to make others unaware of the very existence
+                    of the hidden information - data is 'invisible'.</li>
+                <img src="3482pics/27.PNG" style="width: 60%;margin-left: 20%;">
+                <li>Techniques of Information Hiding:<ul>
+                    <li><b>Steganography:</b> Art and science of hiding information in some cover media
+                        for the purpose of protecting information confidentiality.</li>
+                    <li><b>Watermarking:</b> Also aims to make information invisible, but for the purpose
+                        of protection of intellectual property.</li>
+                    <li><b>Fingerprinting:</b> Embedding user-unique marking to different copies of content
+                    for the purpose of tracking of intellectual property.</li>
+                </ul></li>
+                <li>The main difference between watermarking and fingerprinting is that the WM
+                    remains the same for all copies of the IP while the FP is unique for each copy.</li>
+                <img src="3482pics/28.PNG" style="width: 60%;margin-left: 20%;">
+                <li>Elements of digital steganography system include:<ul>
+                    <li><b>Cover media (C):</b> that will hold the hidden data.</li>
+                    <li><b>Secret message (M)</b> may be plain text or any other type of data.</li>
+                    <li><b>Stego function (Fe):</b> and its inverse (Fe-1).</li>
+                    <li><b>Optional stego-key (K):</b> or password to hide and unhide the message.</li>
+                    <li><b>Stego object (S):</b> cover media + secret message.</li>
+                    <img src="3482pics/29.PNG" style="width: 90%;margin-left: 5%;">
+                </ul></li>
+                <li>Techniques of Digital Steganography:<ul>
+                    <li>Plaintext Steganography:<ul>
+                        <img src="3482pics/30.PNG" style="width: 90%;margin-left: 5%;">
+                        <img src="3482pics/31.PNG" style="width: 90%;margin-left: 5%;">
+                    </ul></li>
+                    <li>Still Imagery:<ul>
+                        <img src="3482pics/32.PNG" style="width: 80%;margin-left: 10%;">
+                        <img src="3482pics/33.PNG" style="width: 80%;margin-left: 10%;">
+                        <img src="3482pics/34.PNG" style="width: 80%;margin-left: 10%;">
+                        <img src="3482pics/35.PNG" style="width: 80%;margin-left: 10%;">
+                    </ul></li>
+                    <li>Audio and Video:<ul>
+                        <img src="3482pics/36.PNG" style="width: 80%;margin-left: 10%;">
+                        <img src="3482pics/37.PNG" style="width: 80%;margin-left: 10%;">
+                    </ul></li>
+                    <li>Datagram:<ul>
+                        <img src="3482pics/40.PNG" style="width: 80%;margin-left: 10%;">
+                        <img src="3482pics/41.PNG" style="width: 80%;margin-left: 10%;">
+                    </ul></li>
+                </ul></li>
+                <li>Magic Triangle of Data Hiding Techniques:<ul>
+                    <li><b>Capacity:</b> how much bits can be hidden in a cover image</li>
+                    <li><b>Imperceptibility:</b> how easy it is to spot hidden data</li>
+                    <li><b>Robustness:</b> hidden message in stego-object unaffected by: rotation, compression, cropping, additive noise</li>
+                </ul></li>
+                <li>Additional Requirement:<ul>
+                    <li><b>Security:</b> embedded info. cannot be removed unless attacker
+                        has the full knowledge of algorithm and/or secret key.</li>
+                    <li><b>Extraction complexity:</b> computational effort/time to extract
+                        hidden information.</li>
+                    <li><b>Embedding complexity:</b> computational effort/time to embed
+                        hidden information.</li>
+                </ul></li>
+                <img src="3482pics/42.PNG" style="width: 70%;margin-left: 15%;">
+            </ul>
+        </div>
+        <div style="width: 49%;float: right;margin-left: 0.5%;margin-right: 0.5%;">
+            <h3>Watermarking & Fingerprinting</h3>
+            <ul>
+                <img src="3482pics/43.PNG" style="width: 70%;margin-left: 15%;">
+                <img src="3482pics/44.PNG" style="width: 90%;margin-left: 5%;">
+                <li><b>Private:</b> Watermark is NOT visible & secret key was used, only authorized users can recover it (can be used by owner to demonstrate ownership in a specific case of illicit use).</li>
+                <li><b>Public:</b> Watermark is visible & key known to multiple parties (can be used to deter & discover ALL illicit uses e.g., by providing watermark key to search crawlers)</li>
+                <img src="3482pics/45.PNG" style="width: 80%;margin-left: 10%;">
+            </ul>
+        </div>
+    </div>
+    <h2 id="access control">Access Control</h2>
+    <div class="content">
+        <div style="width: 49%;float: left;margin-left: 0.5%;margin-right: 0.5%;">
+            <ul>
+                <li><b>Spheres of Information Use:</b> information can accessed
+                    directly (people accessing hard-copies) and/or indirectly
+                    by means of computer systems.</li>
+                <li><b>Spheres of Protection:</b> between each layer of use there
+                    must exist a layer of protection to prevent access to next
+                    inner layer.</li>
+                    <img src="3482pics/46.JPG" style="width: 70%;margin-left: 15%;">
+            </ul>
+            <div class="content">
+            <img src="3482pics/47.JPG" style="width: 40%;float: left;box-sizing: border-box;">
+            <ul style="box-sizing: border-box;width: 59%;float: right;margin-left: 1%;">
+            <li><b>Access Controls:</b> selective restriction of access to
+                a physical place, computer system
+                or other resource. Stages:<ul class="Opened">
+                    <li><b>Identification:</b><ul>
+                        <li>Obtain identity of an entity requesting access to a logical or physical area (obtain credentials).</li>
+                        <li>Must be a unique value that can be
+                        mapped to one and only one entity
+                        within the administered domain.</li>
+                        <li>In most organizations, identification = name OR (initial + surname).</li>
+                    </ul> 
+                        </li>
+                    <li><b>Authentication:</b> Confirm identity of the entity seeking access - making sure user's credentials are not false - the user 'is' who they claim to be.</li>
+                    <li><b>Authorization:</b> determine whether the authenticated entity is permitted to access a particular system (e.g., OS, firewall, router, database, ...) and its resources (e.g., system's files).</li>
+                </ul></li>
+            </ul>
+            </div>
+        </div>
+        <div style="width: 49%;float: right;margin-left: 0.5%;margin-right: 0.5%;">
+            <h3>Authentication</h3>
+            <ul>
+                <li>Something you know:<ul>
+                    <li><b>Password:</b> combination of characters
+                        that only the user should know</li>
+                    <li><b>Passphrase:</b> plain-language phrase
+                        typically longer but ber than a
+                        password</li>
+                </ul></li>
+                <li>Something you have:<ul>
+                    <li>Objects used for purpose of user authentication
+                        are called <b>tokens</b>.</li>
+                    <li>Token + PIN/password provides significantly
+                        greater security than password alone.</li>
+                    <li><b>Static Tokens:</b> Always supply the same auth. info.</li>
+                    <li><b>Synchronous (One-Time Password) Tokens:</b> Small LCD device that generates a
+                        unique new password periodically.</li>
+                        <img src="3482pics/48.JPG" style="width: 80%;margin-left: 10%;">
+                    <li><b>Asynchronous (Challenge-Response) Tokens:</b> Instead of time, token uses a
+                        challenge/nonce provided by the
+                        system to generate the password.</li>
+                </ul></li>
+                <li>Something you are:<ul>
+                    <li>Authentication mechanisms that takes
+                    advantage of users unique physical
+                    characteristics.</li>
+                    <li><b>Biometric Modality:</b> different types of biometric
+                        information / measurements that can be used to
+                        discriminate between different individuals. Should have
+                        the following properties:<ul>
+                            <li><b>Universality:</b> All individuals must be characterized by this information.</li>
+                            <li><b>Uniqueness / Distinctiveness:</b> This information must be as dissimilar as possible for two different individuals.</li>
+                            <li><b>Permanency / Stability:</b> This information should be present during the whole life of an individual and change as little as possible.</li>
+                            <li><b>Collectability / Measurability:</b> This information should be measured in an easy manner.</li>
+                            <li><b>Acceptability:</b> how willing individuals are to have this
+                                biometric information captured and assessed.</li>
+                            <li><b>Performance:</b> This information can be used to build accurate, fast and robust biometric/authentication systems.</li>
+                            <li><b>Resistance to Attack:</b> How easy it is for this information
+                                to be forged.</li>
+                            <img src="3482pics/49.JPG" style="width: 90%;margin-left: 5%;">
+                        </ul></li>
+                        <img src="3482pics/50.JPG" style="width: 90%;margin-left: 5%;">
+                        <li><b>Convenience:</b> 1 - FR; <b>Security:</b> 1 - FA.</li>
+                        <li><b>Crossover Error Rate (CER), aka Equal
+                            Error Rate:</b> point at which FRR = FAR - Operating Point of choice
+                            for most biometric systems: provides balance between
+                            sensitivity and performance.</li>
+                </ul></li>
+                <li>Something you produce:<ul>
+                    <li>Authentication mechanisms that makes
+                        use of something the user performs or
+                        produces: signature recognition; voice recognition; keystroke recognition.</li>
+                    <li>Less costly than 'what you are' systems,
+                        but not as reliable.</li>
+                </ul></li>
+                <li><b>Standard DoS Attack:</b>
+                    Attacker's goal is to prevent victim-server from providing access/service
+                    to all legitimate user.</li>
+                <li><b>Targeted DoS Attack:</b> Attacker's goal is to prevent one
+                    particular victim-user from obtaining
+                    access/service from a server.</li>
+                    <img src="3482pics/51.jpg" style="width: 90%;margin-left: 5%;">
+            </ul>
+        </div>
+    </div>
+    <h2 id="pc">Password Cracking</h2>
+    <div class="content">
+        <div style="width: 49%;float: left;margin-left: 0.5%;margin-right: 0.5%;">
+            <ul>
+                <li><a href='https://specopssoft.com/blog/why-is-password-reset-a-security-loophole/'>Why is password reset a security loophole?</a><ul>
+                    <li>Several websites are using "I forgot my password" feature - users can click on the password reset link and get their old password delivered to their inbox.</li>
+                    <li>It is a fairly common practice to send a password reset link via emails. Anyone that gains access to those emails can easily reset the passwords for the owners of these emails.</li>
+                    <li>Secret questions, or challenge questions, are one of the most common ways of authentication. The problem with secret questions is that they really aren't secrets.</li>
+                </ul></li>
+                <li>In most systems, passwords are stored in
+                    a protected (hash) form &Implies; snooper that
+                    gains internal access to system cannot
+                    easily retrieve/steal passwords.</li>
+                <li>Password Management in Windows:<ul>
+                    <li>Password hashes are stored in
+                    <b>Security Account Manager (SAM)</b> file.</li>
+                    <li>File used by OS; neither can be opened/copied
+                    on normal boot-up of the OS (i.e., while
+                    computer running).</li>
+                    <li>The SAM file is encrypted with the <b>SysKey</b>. During the boot-time of Windows the hashes from the SAM file get decrypted using the
+                        SysKey and these hashes are then loaded to the registry and used for authentication
+                        purpose.
+                        Both system and SAM files are unavailable (i.e., locked by kernel) during Windows'
+                        runtime.</li>
+                </ul></li>
+                <li>When a new user is created in Linux it affects 4 files:<ul>
+                    <li><b>/etc/passwd</b> file is essentially the user account database in which Linux stores
+                        valid accounts and related information about these accounts; typically has file
+                        system permissions that allow it to be readable by all users of the system</li>
+                    <li><b>/etc/shadow</b> file contains hashed passwords and bookkeeping information; accessible only by the super user</li>
+                    <li><b>/etc/group</b></li>
+                    <li><b>/etc/gshadow</b></li>
+                </ul></li>
+                <img src="3482pics/53.jpg" style="width: 90%;margin-left: 5%;">
+                <li><b>Brute-Force:</b> entire password space is 'tried'.</li>
+                <li><b>Biased Attack</b>, e.g: the search space is reduced by
+                    focusing on most likely combinations
+                    of words and/or numbers.</li>
+                <li><b>Dictionary Attack:</b> users often create passwords using
+                    common dictionary words; instead of trying every password, dictionary
+                    attack probes only common dictionary words.</li>
+                <li><b>Pre-Computed Dictionary Attack:</b> achieves TIME-SPACE tradeoff by
+                    pre-computing a list of hashes of
+                    dictionary words; pre-computed hashes are compared
+                    against those in a stolen password file. <b>Rainbow tables:</b> pregenerated sets/lists of hashes that
+                    fast to search.</li>
+            </ul>
+        </div>
+        <div style="width: 49%;float: right;margin-left: 0.5%;margin-right: 0.5%;">
+            <ul>
+                <li><b>Password Salting:</b> Adding a unique random value to
+                    each password before hashing.</li>
+                    <img src="3482pics/52.jpg" style="width: 90%;margin-left: 5%;">
+            </ul>
+        </div>
+    </div>
+
+    <h2 id="secManage">Security Risk Management</h2>
+    <div class="content">
+        <div style="width: 49%;float: left;margin-left: 0.5%;margin-right: 0.5%;">
+            <ul>
+                <li><b>Risk:</b> likelihood that a chosen action or activity
+                    (including the choice of inaction) will lead to a
+                    loss (or un undesired outcome).</li>
+                <li><b>Risk Management:</b> identification, assessment,
+                    and prioritization of risks followed by coordinated
+                    use of resources to monitor, control or minimize
+                    the impact of risk-related events (risk-related losses)
+                    or to maximize the gains.</li>
+                <li><b>Risks in Info. Security:</b> risks which arise from an
+                organization's use of info. technology (IT). Related Content:<ul>
+                    <li><b>Asset:</b> anything that needs to be protected because it
+                        has value and/or contributes to the successful
+                        achievement of the organization's objectives</li>
+                    <li><b>Vulnerability:</b> a weakness in an asset that can be
+                        exploited by adversary and cause harm to
+                        the asset and/or the organization
+                        </li>
+                    <li><b>Threat:</b> any circumstance or event with the potential
+                        to cause harm to an asset and/or result in harm
+                        to organization</li>
+                    <li><b>Risk:</b> probability of a threat acting upon a vulnerability
+                        causing harm to an asset.</li>
+                </ul></li>
+            </ul>
+            <img src="3482pics/55.jpg" style="width: 70%;margin-left: 15%;">
+        </div>
+        <div style="width: 49%;float: right;margin-left: 0.5%;margin-right: 0.5%;">
+            <ul>
+            <li>Difficult Risk-Related Question: Which vulnerabilities,
+                in which assets, should we worry about & remove first?</li></ul>
+            <img src="3482pics/54.png" style="width: 90%;margin-left: 5%;background-color: white;">
+            <img src="3482pics/56.jpg" style="width: 50%;margin-left: 25%;">
+        </div>
+        <h3>Risk Management</h3>
+        <img src="3482pics/57.jpg" style="width: 40%;margin-left:30%;">
+        <div style="width: 49%;float: left;margin-left: 0.5%;margin-right: 0.5%;">
+            <h3>Risk Identification & Assessment</h3>
+            <ul>
+                <li><b>Information Asset:</b> Any entity that produces profit, BUT also
+                    any entity whose failure (to properly operate)
+                    may end up causing losses for the company.</li>
+                <li><b>Risk identification</b> begins with identification of all
+                    information assets:<ul>
+                        <li><b>Identifying Hardware, Software (& Networking Assets):</b> Can be done automatically (using specialized software)
+                            or manually. Needs certain planning e.g. which attributes of each
+                            asset should be tracked (name, MAC address, IP address, software version, serial number).</li>
+                        <li><b>Identifying People, Procedures and Data Assets:</b> Not as readily identifiable as other assets - require that experience and judgment be used. Possible attributes:<ul>
+                            <li><u>People:</u> position name, position number/ID, computer/network access privileges (avoid personal names, as they may change).</li>
+                            <li><u>Procedures:</u> description, intended purpose, software/hardware/networking elements to which it is tied, location of reference-document.</li>
+                            <li><u>Data:</u> owner, creator, manager, location.</li>
+                        </ul></li>
+                    </ul></li>
+                <li>Assets should be ranked so that most valuable assets
+                    get highest priority when managing risks. Questions to consider when determining asset value/rank:<ol>
+                        <li>Which info. asset is most critical for the overall operation
+                            and success of organization?</li>
+                        <li>Which info. asset generates most revenue?</li>
+                        <li>Which info. asset generates highest profit?</li>
+                        <li>Which info. asset is most expensive to replace?</li>
+                        <li>Which info. asset's loss or compromise would be most
+                            embarrassing or cause greatest liability?</li>
+                    </ol></li>
+                <li>To keep risk management 'manageable' realistic threats must be identified and further investigated,
+                    while unimportant threats should be set aside.</li>
+                <li><b>Threat Modeling/Assessment:</b> practice of building
+                    an abstract model of how an attack may proceed and
+                    cause damage:<ul>
+                        <li><b>Attacker-centric:</b> starts from attackers, evaluates their
+                            motivations and goals, and how they might achieve them
+                            through attack tree.
+                            </li>
+                        <li><b>System-centric:</b> starts from model of system, and
+                            attempts to follow model dynamics and logic, looking
+                            for types of attacks against each element of the model.</li>
+                        <li><b>Asset-centric:</b> starts from assets entrusted to a system,
+                            such as a collection of sensitive personal information, and
+                            attempts to identify how CIA security breaches can happen.</li>
+                    </ul></li>
+                <li>Questions used to prioritize threats:<ol>
+                    <li>Which threats present a realistic danger to organization's assets in its current environment? <u>Goal:</u> reduce the risk management's scope and cost.
+                        </li>
+                    <li>Which threats represent the most severe danger? <u>Goal:</u> provide a rough assessment of each threat's potential
+                        impact given current level of organization's preparedness.
+                    </li>
+                    <li>How much would it cost to recover from a successful
+                        attack?</li>
+                    <li>Which threats would require greatest expenditure
+                        to prevent?</li>
+                </ol></li>
+                <li>'Danger' might be a measure of  <b>probability</b> that the threat attacks organization or <b>severity</b>, i.e. overall damage that the threat could create.</li>
+                <li>Once threats are prioritized, each asset should be reviewed
+                    against each threat to create a specific list of vulnerabilities.</li>
+                <li><b>Vulnerability:</b> flaw or weakness in an info. asset, its design, implementation or security
+                    procedure that can be exploited
+                    accidentally or deliberately by a threat. A known threat is a real 'threat' to an
+                    organization only if there is an actual
+                    vulnerability it can exploit.</li>
+                <li><b>TVA Worksheet:</b> at the end of risk identification
+                    procedure, organization should derive
+                    threats-vulnerabilities-assets (TVA)
+                    worksheet.<a href='http://kpark6578.blogspot.com/2014/01/week-8.html'>example</a>:</li>
+            <img src="3482pics/58.png" style="width: 80%;margin-left:10%;">
+                <li><b>Risk Assessment:</b> provides relative numerical risk
+                    ratings/scores for each vulnerability in risk management, it is not the
+                    presence of a vulnerability that really
+                    matters, but the associated risk!</li>
+                    <img src="3482pics/59.jpg" style="width: 80%;margin-left:10%;">
+                    <img src="3482pics/60.jpg" style="width: 90%;margin-left:5%;">
+                <li>Documenting Results: 5 types of documents
+                    ideally created<ol>
+                        <li>Information asset inventory worksheet</li>
+                        <li>Weighted asset worksheet</li>
+                        <li>Weighted threat worksheet</li>
+                        <li>TVA worksheet</li>
+                        <li>Ranked vulnerability risk worksheet: extension of TVA worksheet, showing only the assets
+                            and relevant vulnerabilities </li>
+                    </ol></li>
+            </ul>
+        </div>
+        <div style="float: right;width: 50%;">
+            <h3>Risk Control</h3>
+            <ul>
+                <li>Once all vulnerabilities/risks are evaluated, the company has to decide
+                    on the 'course of action' often influenced by risk level and cost of treatment.</li>
+            <img src="3482pics/61.jpg" style="width: 60%;margin-left:20%;">
+                <li>Basic Strategies to Control Risks:<ul>
+                    <div style="display: flex;"><li style="width: 60%;float: left;"><b>Avoidance:</b> do not proceed with the activity or system that creates this risk. Recommended for vulnerabilities with
+                        very high risk factor
+                        that are very costly to fix.</li>
+                        <img src="3482pics/62.jpg" style="width: 39%;float: right;"></div>
+                    <div style="display: flex;"><li style="width: 60%;float: left;"><b>Reduced Likelihood (Control):</b> risk control strategy that attempts to
+                        prevent exploitation of vulnerability by
+                        means of following techniques: application of technology (implementation of security controls & safeguards), policy (e.g. insisting on safe procedures), training and education. Recommended for vulnerabilities with
+                        high risk factor that are moderately- to low- costly to fix.
+                        Risk Control Strategies (cont.)</li><img src="3482pics/63.jpg" style="width: 39%;float: right;"></div>
+                    <div style="display: flex;"><li style="width: 60%;float: left;"><b>Transference:</b> risk control strategy that attempts
+                        to shift risk to other assets, other
+                        processes or other organizations. If organization does not have adequate
+                        security experience, hire individuals or
+                        firms that provide expertise Recommended for vulnerabilities with
+                        high risk factor that are moderately costly to fix
+                        if employing outside expertise.</li><img src="3482pics/64.jpg" style="width: 39%;float: right;"></div>
+                    <div style="display: flex;"><li style="width: 60%;float: left;"><b>Mitigation:</b> risk control strategy that attempts to
+                        reduce the significance of impact caused
+                        by a vulnerability. Recommended for vulnerabilities that are
+                        low (but not zero) risk and moderately to high costly to fix.</li><img src="3482pics/65.jpg" style="width: 39%;float: right;"></div>
+                    <div style="display: flex;"><li style="width: 60%;float: left;"><b>Acceptance:</b> assumes NO action towards protecting an
+                        an information asset - accept outcome. Recommended when vulnerability risk &lt;&lt; cost of any control. Should be used only after doing all of the
+                        following:<ul>
+                            <li>assess the probability of attack and likelihood
+                                of successful exploitation of a vulnerability</li>
+                            <li>approximate annual occurrence of such an attack</li>
+                            <li>estimate potential loss that could result from
+                                attacks</li>
+                            <li>perform a thorough cost-benefit analysis
+                                assuming various protection techniques</li>
+                            <li>determine that particular asset did not
+                                justify (additional) cost of protection!
+                                </li>
+                        </ul></li><img src="3482pics/66.jpg" style="width: 39%;float: right;"></div>
+                </ul></li>
+            <img src="3482pics/67.jpg" style="width: 70%;margin-left: 15%;">
+                <li><b>Cost-Benefit Analysis:</b> Is a security risk worth a security control?!</li>
+                <li><b>Quantitative Risk Analysis:</b> predicts level of monetary loss
+                    for each threat, and monetary cost
+                    & benefit of controlling the treat. Challenges: define likelihood & impact values
+                    in a manner that would allow the same
+                    scale to be used across multiple risk
+                    assessments.</li>
+                <li><b>Qualitative Risk Analysis:</b> scenario based approach - uses
+                    labels & relative values (high/low)
+                    rather than numbers; blends in
+                    experience & personal judgment.</li>
+                <li><b>Exposure Factor:</b> percentage loss that would occur from
+                    a given vulnerability being exploited
+                    by a given threat</li>
+                <li><b>Single Loss Expectancy
+                    (SLE):</b> most likely loss (in value) from an attack (Asset value * EF).</li>
+                <li><b>Annualized Rate of Occurrence (ARO):</b> indicates how often an attack is expected to successfully occur in a year.</li>
+                <li><b>Annualized Loss Expectancy
+                    (ALE):</b> overall loss incurred by an attack
+                    (i.e., by exploiting a vulnerability)
+                    in each year (ARO * SLE).</li>
+            <img src="3482pics/68.jpg" style="width: 70%;margin-left: 15%;">
+                <li><b>Net risk
+                    reduction
+                    benefit (NRRB)</b> = Gross risk reduction benefit (GRRB) - ACS</li>
+                <li>Other factors and 'measures of feasibility', when
+                    evaluating a security control, should be considered:<ul>
+                    <li><b>Organizational Feasibility:</b> Examines how well a proposed
+                        security control will contribute to
+                        organization's strategic objectives, e.g. a firewall might be a good
+                        security safeguard, but may prevent
+                        effective flow of multimedia data.
+                        </li>
+                    <li><b>Behavioral Feasibility:</b> examines user's and management's
+                        acceptance and support of a proposed
+                        security.</li>
+                    <li><b>Political Feasibility:</b> determines what can and cannot be done
+                        based on consensus and relationship
+                        between different departments.</li>
+                </ul></li>
+                <li>Rather than using quantitative or qualitative risk analysis
+                    an organization may resort to relative risk analysis of a
+                    control, including:<ul>
+                    <li><b>Benchmarking:</b> study practices used in other
+                        organizations that obtain results
+                        you would like to duplicate.</li>
+                    <li><b>Due Care or due diligence:</b> implement a minimum level of
+                        security.</li>
+                    <li><b>Best Practices:</b> implement entire set of security
+                        controls as recommended for your
+                        industry / general public.</li>
+                    <li><b>Gold Standard:</b> implement controls beyond best
+                        practices - for those that strive to
+                        be 'the best of the best'</li>
+                </ul></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
