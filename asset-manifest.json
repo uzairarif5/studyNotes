@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.c78ef0ee.css",
-    "main.js": "/static/js/main.423327ec.js",
+    "main.js": "/static/js/main.c096b534.js",
     "static/media/Amiri-Regular.ttf": "/static/media/Amiri-Regular.fbc5807f36683184655a.ttf",
     "static/media/Cabin-Regular.ttf": "/static/media/Cabin-Regular.6b2ccb2fbe0b49bfbeb8.ttf",
     "static/media/Simonetta.ttf": "/static/media/Simonetta.062cd090c70e22824110.ttf",
     "index.html": "/index.html",
     "main.c78ef0ee.css.map": "/static/css/main.c78ef0ee.css.map",
-    "main.423327ec.js.map": "/static/js/main.423327ec.js.map"
+    "main.c096b534.js.map": "/static/js/main.c096b534.js.map"
   },
   "entrypoints": [
     "static/css/main.c78ef0ee.css",
-    "static/js/main.423327ec.js"
+    "static/js/main.c096b534.js"
   ]
 }
