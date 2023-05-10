@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.fad28830.css",
-    "main.js": "/static/js/main.a6b516aa.js",
+    "main.css": "/static/css/main.5a0649ec.css",
+    "main.js": "/static/js/main.151e0a2a.js",
     "static/media/24.gif": "/static/media/24.cab9ebe691aa21854d6e.gif",
     "static/media/c10.jpg": "/static/media/c10.321db55e0647fb44f7e2.jpg",
     "static/media/55.jpg": "/static/media/55.7bd3b5c755eec8da2df1.jpg",
@@ -114,6 +114,7 @@
     "static/media/47.PNG": "/static/media/47.095fdd880f98c8af46b6.PNG",
     "static/media/13.PNG": "/static/media/13.4366b3d6deb82def6a2d.PNG",
     "static/media/34.PNG": "/static/media/34.6fe692d29dade0335b57.PNG",
+    "static/media/Simonetta-Black.ttf": "/static/media/Simonetta-Black.82ed1f0e73f6446be2ed.ttf",
     "static/media/78.PNG": "/static/media/78.680fc0d2ac66b23057b3.PNG",
     "static/media/55.PNG": "/static/media/55.abfc5733aaa5b40899fb.PNG",
     "static/media/32.PNG": "/static/media/32.65d886391fae9533ce34.PNG",
@@ -147,6 +148,7 @@
     "static/media/3.PNG": "/static/media/3.bee8a289d32cdeff92ec.PNG",
     "static/media/57.PNG": "/static/media/57.2d4fcd73357cc3931dba.PNG",
     "static/media/71.PNG": "/static/media/71.80da67cc4dbd00ebe816.PNG",
+    "static/media/Cabin-Bold.ttf": "/static/media/Cabin-Bold.4de0d00e58820dd193e2.ttf",
     "static/media/88.PNG": "/static/media/88.30b1637f37497036f893.PNG",
     "static/media/56.PNG": "/static/media/56.1a5b5f228eded01d5ab8.PNG",
     "static/media/59.PNG": "/static/media/59.7f709ab1645d21bc8ecc.PNG",
@@ -191,11 +193,11 @@
     "static/media/42.JPG": "/static/media/42.e35aa8d9005b882bcead.JPG",
     "static/media/31.JPG": "/static/media/31.7909a3ae2f2f7761232b.JPG",
     "index.html": "/index.html",
-    "main.fad28830.css.map": "/static/css/main.fad28830.css.map",
-    "main.a6b516aa.js.map": "/static/js/main.a6b516aa.js.map"
+    "main.5a0649ec.css.map": "/static/css/main.5a0649ec.css.map",
+    "main.151e0a2a.js.map": "/static/js/main.151e0a2a.js.map"
   },
   "entrypoints": [
-    "static/css/main.fad28830.css",
-    "static/js/main.a6b516aa.js"
+    "static/css/main.5a0649ec.css",
+    "static/js/main.151e0a2a.js"
   ]
 }
