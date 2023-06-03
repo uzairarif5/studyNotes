@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.63dbc868.css",
-    "main.js": "/static/js/main.028ab14b.js",
+    "main.css": "/static/css/main.8100c61b.css",
+    "main.js": "/static/js/main.429e5acf.js",
     "static/media/24.gif": "/static/media/24.cab9ebe691aa21854d6e.gif",
     "static/media/c10.jpg": "/static/media/c10.321db55e0647fb44f7e2.jpg",
     "static/media/55.jpg": "/static/media/55.7bd3b5c755eec8da2df1.jpg",
@@ -104,6 +104,7 @@
     "static/media/31.PNG": "/static/media/31.82db0efbe248d5dc4110.PNG",
     "static/media/54.png": "/static/media/54.2dd29cb6552bb225a46f.png",
     "static/media/30.PNG": "/static/media/30.07d50f16d8f4c4ad38bd.PNG",
+    "static/media/SourceSerifPro-SemiBoldItalic.ttf": "/static/media/SourceSerifPro-SemiBoldItalic.6f0a182d59591824c889.ttf",
     "static/media/24.png": "/static/media/24.e753666d28f07abf8f96.png",
     "static/media/26.PNG": "/static/media/26.fc6002105632cf2e0fc6.PNG",
     "static/media/25.PNG": "/static/media/25.26b78e64df120757bb4c.PNG",
@@ -113,7 +114,9 @@
     "static/media/5.PNG": "/static/media/5.e52b2351cf4d26fd5632.PNG",
     "static/media/37.PNG": "/static/media/37.07cd94451b5df9bcc93c.PNG",
     "static/media/Simonetta.ttf": "/static/media/Simonetta.062cd090c70e22824110.ttf",
+    "static/media/Ysabeau-Black.ttf": "/static/media/Ysabeau-Black.b7ff0781ebc612b1b87f.ttf",
     "static/media/22.PNG": "/static/media/22.3b13fbc1d0f66d59c1a9.PNG",
+    "static/media/Ysabeau-Bold.ttf": "/static/media/Ysabeau-Bold.25d583ccd5edd34f52ce.ttf",
     "static/media/47.PNG": "/static/media/47.095fdd880f98c8af46b6.PNG",
     "static/media/13.PNG": "/static/media/13.4366b3d6deb82def6a2d.PNG",
     "static/media/34.PNG": "/static/media/34.6fe692d29dade0335b57.PNG",
@@ -134,8 +137,8 @@
     "static/media/66.PNG": "/static/media/66.48fcc31928d565336314.PNG",
     "static/media/23.PNG": "/static/media/23.e01ee5d598d30984364f.PNG",
     "static/media/67.PNG": "/static/media/67.8c5b57948663c4400dd6.PNG",
+    "static/media/Capriola-Regular.ttf": "/static/media/Capriola-Regular.d4254863ce272dd7ab30.ttf",
     "static/media/38.PNG": "/static/media/38.f1bc48bf88024b5cc180.PNG",
-    "static/media/ProzaLibre-Medium.ttf": "/static/media/ProzaLibre-Medium.385331d1c1553e79aa83.ttf",
     "static/media/14.PNG": "/static/media/14.b1eb4ad1d3623fd30cb7.PNG",
     "static/media/54.PNG": "/static/media/54.ac13ee0d1dbbc0ffe4a6.PNG",
     "static/media/61.PNG": "/static/media/61.5e883305c962b889bfdd.PNG",
@@ -197,11 +200,11 @@
     "static/media/42.JPG": "/static/media/42.e35aa8d9005b882bcead.JPG",
     "static/media/31.JPG": "/static/media/31.7909a3ae2f2f7761232b.JPG",
     "index.html": "/index.html",
-    "main.63dbc868.css.map": "/static/css/main.63dbc868.css.map",
-    "main.028ab14b.js.map": "/static/js/main.028ab14b.js.map"
+    "main.8100c61b.css.map": "/static/css/main.8100c61b.css.map",
+    "main.429e5acf.js.map": "/static/js/main.429e5acf.js.map"
   },
   "entrypoints": [
-    "static/css/main.63dbc868.css",
-    "static/js/main.028ab14b.js"
+    "static/css/main.8100c61b.css",
+    "static/js/main.429e5acf.js"
   ]
 }
