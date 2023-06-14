@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.6d69ad1d.css",
-    "main.js": "/static/js/main.21f5ab24.js",
+    "main.css": "/static/css/main.9833e34f.css",
+    "main.js": "/static/js/main.564fece4.js",
     "static/media/24.gif": "/static/media/24.cab9ebe691aa21854d6e.gif",
     "static/media/c10.jpg": "/static/media/c10.321db55e0647fb44f7e2.jpg",
     "static/media/55.jpg": "/static/media/55.7bd3b5c755eec8da2df1.jpg",
@@ -75,7 +75,7 @@
     "static/media/sem9.jpg": "/static/media/sem9.07435527621f9060f0f5.jpg",
     "static/media/2.jpg": "/static/media/2.3d0a0002b1e433456478.jpg",
     "static/media/sem21.jpg": "/static/media/sem21.8ea6215139ef125f5454.jpg",
-    "static/media/3.jpg": "/static/media/3.009e5edd525c7d96e3b9.jpg",
+    "static/media/3.jpg": "/static/media/3.9541b07058d4440249a0.jpg",
     "static/media/sem7.jpg": "/static/media/sem7.eb17a52588c19815162c.jpg",
     "static/media/sem2.jpg": "/static/media/sem2.286f8cc492f733be16d7.jpg",
     "static/media/10.jpg": "/static/media/10.7d2d8b0a61d0d2befb03.jpg",
@@ -93,6 +93,7 @@
     "static/media/Itim-Regular.ttf": "/static/media/Itim-Regular.7bfadbc314e7b347734c.ttf",
     "static/media/9.PNG": "/static/media/9.4d4b7c86912140abd1ee.PNG",
     "static/media/44.PNG": "/static/media/44.b150ed6e9eb905f360b0.PNG",
+    "static/media/Alegreya-SemiBold.ttf": "/static/media/Alegreya-SemiBold.0857f0e6aaf076853d59.ttf",
     "static/media/20.PNG": "/static/media/20.ac106272d02dfb109edb.PNG",
     "static/media/1.PNG": "/static/media/1.3b426e550183ab7c5f5d.PNG",
     "static/media/2.PNG": "/static/media/2.9350712fcaf1ccbdcff4.PNG",
@@ -200,11 +201,11 @@
     "static/media/42.JPG": "/static/media/42.e35aa8d9005b882bcead.JPG",
     "static/media/31.JPG": "/static/media/31.7909a3ae2f2f7761232b.JPG",
     "index.html": "/index.html",
-    "main.6d69ad1d.css.map": "/static/css/main.6d69ad1d.css.map",
-    "main.21f5ab24.js.map": "/static/js/main.21f5ab24.js.map"
+    "main.9833e34f.css.map": "/static/css/main.9833e34f.css.map",
+    "main.564fece4.js.map": "/static/js/main.564fece4.js.map"
   },
   "entrypoints": [
-    "static/css/main.6d69ad1d.css",
-    "static/js/main.21f5ab24.js"
+    "static/css/main.9833e34f.css",
+    "static/js/main.564fece4.js"
   ]
 }
