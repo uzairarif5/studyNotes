@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.28224842.css",
-    "main.js": "/static/js/main.2b4f0805.js",
+    "main.css": "/static/css/main.6ced1bee.css",
+    "main.js": "/static/js/main.2088737d.js",
     "static/media/24.gif": "/static/media/24.cab9ebe691aa21854d6e.gif",
     "static/media/NotoSerifKR-Light.otf": "/static/media/NotoSerifKR-Light.e77ce81e644f439a2637.otf",
     "static/media/c10.jpg": "/static/media/c10.321db55e0647fb44f7e2.jpg",
@@ -56,6 +56,7 @@
     "static/media/c14.jpg": "/static/media/c14.ac0b3bcc5ae6fd1725d7.jpg",
     "static/media/sem14.jpg": "/static/media/sem14.58c0db5cce4d273d005d.jpg",
     "static/media/sem10.jpg": "/static/media/sem10.880ee5dfe001efd88eb5.jpg",
+    "static/media/NanumSquareNeoOTF-Rg.otf": "/static/media/NanumSquareNeoOTF-Rg.c99b7df19f3740ec73f9.otf",
     "static/media/sem13.jpg": "/static/media/sem13.665ec971e0801f9b7f41.jpg",
     "static/media/sem6.jpg": "/static/media/sem6.944cc91b6e4b44f7824b.jpg",
     "static/media/48.jpg": "/static/media/48.92f0e79baf6dccdacc1f.jpg",
@@ -204,11 +205,11 @@
     "static/media/42.JPG": "/static/media/42.e35aa8d9005b882bcead.JPG",
     "static/media/31.JPG": "/static/media/31.7909a3ae2f2f7761232b.JPG",
     "index.html": "/index.html",
-    "main.28224842.css.map": "/static/css/main.28224842.css.map",
-    "main.2b4f0805.js.map": "/static/js/main.2b4f0805.js.map"
+    "main.6ced1bee.css.map": "/static/css/main.6ced1bee.css.map",
+    "main.2088737d.js.map": "/static/js/main.2088737d.js.map"
   },
   "entrypoints": [
-    "static/css/main.28224842.css",
-    "static/js/main.2b4f0805.js"
+    "static/css/main.6ced1bee.css",
+    "static/js/main.2088737d.js"
   ]
 }
