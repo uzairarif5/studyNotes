@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.0c10fca0.css",
-    "main.js": "/static/js/main.de13af12.js",
+    "main.css": "/static/css/main.28224842.css",
+    "main.js": "/static/js/main.2b4f0805.js",
     "static/media/24.gif": "/static/media/24.cab9ebe691aa21854d6e.gif",
     "static/media/NotoSerifKR-Light.otf": "/static/media/NotoSerifKR-Light.e77ce81e644f439a2637.otf",
     "static/media/c10.jpg": "/static/media/c10.321db55e0647fb44f7e2.jpg",
@@ -137,6 +137,7 @@
     "static/media/7.PNG": "/static/media/7.bb5a6f5889d1bce8f65b.PNG",
     "static/media/60.PNG": "/static/media/60.6eee7584aebf026f15fd.PNG",
     "static/media/66.PNG": "/static/media/66.48fcc31928d565336314.PNG",
+    "static/media/Livvic-Medium.ttf": "/static/media/Livvic-Medium.e1727d156b658481f5c4.ttf",
     "static/media/23.PNG": "/static/media/23.e01ee5d598d30984364f.PNG",
     "static/media/67.PNG": "/static/media/67.8c5b57948663c4400dd6.PNG",
     "static/media/Capriola-Regular.ttf": "/static/media/Capriola-Regular.d4254863ce272dd7ab30.ttf",
@@ -161,6 +162,7 @@
     "static/media/88.PNG": "/static/media/88.30b1637f37497036f893.PNG",
     "static/media/56.PNG": "/static/media/56.1a5b5f228eded01d5ab8.PNG",
     "static/media/59.PNG": "/static/media/59.7f709ab1645d21bc8ecc.PNG",
+    "static/media/Gabriela-Regular.ttf": "/static/media/Gabriela-Regular.61d91e242d412030fa72.ttf",
     "static/media/52.PNG": "/static/media/52.b73be5531b5c33f890eb.PNG",
     "static/media/39.PNG": "/static/media/39.92718df0f10f0370572e.PNG",
     "static/media/49.JPG": "/static/media/49.7683b159091a4955c4a7.JPG",
@@ -202,11 +204,11 @@
     "static/media/42.JPG": "/static/media/42.e35aa8d9005b882bcead.JPG",
     "static/media/31.JPG": "/static/media/31.7909a3ae2f2f7761232b.JPG",
     "index.html": "/index.html",
-    "main.0c10fca0.css.map": "/static/css/main.0c10fca0.css.map",
-    "main.de13af12.js.map": "/static/js/main.de13af12.js.map"
+    "main.28224842.css.map": "/static/css/main.28224842.css.map",
+    "main.2b4f0805.js.map": "/static/js/main.2b4f0805.js.map"
   },
   "entrypoints": [
-    "static/css/main.0c10fca0.css",
-    "static/js/main.de13af12.js"
+    "static/css/main.28224842.css",
+    "static/js/main.2b4f0805.js"
   ]
 }
