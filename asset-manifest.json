@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.51053a9f.css",
-    "main.js": "/static/js/main.c2d8558c.js",
+    "main.css": "/static/css/main.17f2072f.css",
+    "main.js": "/static/js/main.d8bf46f9.js",
     "static/media/24.gif": "/static/media/24.cab9ebe691aa21854d6e.gif",
     "static/media/SourceHanSerifK-Medium.otf": "/static/media/SourceHanSerifK-Medium.58dfa282d0bf24f4f79a.otf",
     "static/media/c10.jpg": "/static/media/c10.321db55e0647fb44f7e2.jpg",
@@ -50,6 +50,7 @@
     "static/media/57.jpg": "/static/media/57.15ebb3e6b58354a3fa86.jpg",
     "static/media/28.jpg": "/static/media/28.b6d8c96776d95ea5d6a4.jpg",
     "static/media/11.jpg": "/static/media/11.251994f949f196dca149.jpg",
+    "static/media/2.jpg": "/static/media/2.3d0a0002b1e433456478.jpg",
     "static/media/sem22.jpg": "/static/media/sem22.572810d4fd0c8201309d.jpg",
     "static/media/53.jpg": "/static/media/53.41b4ccc89f16a5ece056.jpg",
     "static/media/c13.jpg": "/static/media/c13.116adb24a47e6c703707.jpg",
@@ -77,9 +78,8 @@
     "static/media/c12.jpg": "/static/media/c12.c2302be9d2092e5340f2.jpg",
     "static/media/12.gif": "/static/media/12.ed32cfc7fbb3735c21b5.gif",
     "static/media/sem9.jpg": "/static/media/sem9.07435527621f9060f0f5.jpg",
-    "static/media/2.jpg": "/static/media/2.3d0a0002b1e433456478.jpg",
     "static/media/sem21.jpg": "/static/media/sem21.8ea6215139ef125f5454.jpg",
-    "static/media/3.jpg": "/static/media/3.9541b07058d4440249a0.jpg",
+    "static/media/3.jpg": "/static/media/3.6140c044ac4d6ad9f536.jpg",
     "static/media/sem7.jpg": "/static/media/sem7.eb17a52588c19815162c.jpg",
     "static/media/4.png": "/static/media/4.e35009b849f2740a9e76.png",
     "static/media/13.gif": "/static/media/13.a77a942e5b0da7447506.gif",
@@ -100,7 +100,7 @@
     "static/media/18.PNG": "/static/media/18.d53104b1bca3740724fe.PNG",
     "static/media/Itim-Regular.ttf": "/static/media/Itim-Regular.7bfadbc314e7b347734c.ttf",
     "static/media/5.png": "/static/media/5.4667a5b9f9af60deb384.png",
-    "static/media/16.png": "/static/media/16.583c5ad502aaf15498a2.png",
+    "static/media/16.png": "/static/media/16.6e96338133f372b302f0.png",
     "static/media/ScheherazadeNew-Regular.ttf": "/static/media/ScheherazadeNew-Regular.0f96e9fb0e7b117699d5.ttf",
     "static/media/9.PNG": "/static/media/9.4d4b7c86912140abd1ee.PNG",
     "static/media/44.PNG": "/static/media/44.b150ed6e9eb905f360b0.PNG",
@@ -117,6 +117,7 @@
     "static/media/31.PNG": "/static/media/31.82db0efbe248d5dc4110.PNG",
     "static/media/54.png": "/static/media/54.2dd29cb6552bb225a46f.png",
     "static/media/30.PNG": "/static/media/30.07d50f16d8f4c4ad38bd.PNG",
+    "static/media/15.png": "/static/media/15.c0828adf086be8bb1ee3.png",
     "static/media/SourceSerifPro-SemiBoldItalic.ttf": "/static/media/SourceSerifPro-SemiBoldItalic.6f0a182d59591824c889.ttf",
     "static/media/24.png": "/static/media/24.e753666d28f07abf8f96.png",
     "static/media/10.png": "/static/media/10.f7880cb48c8550ee5b7f.png",
@@ -190,10 +191,9 @@
     "static/media/c19.JPG": "/static/media/c19.1b9f360c6a09a48eb9e4.JPG",
     "static/media/68.PNG": "/static/media/68.64687d7749e892d2cbba.PNG",
     "static/media/c17.JPG": "/static/media/c17.152d0bff44f675a9a006.JPG",
-    "static/media/15.png": "/static/media/15.c0828adf086be8bb1ee3.png",
     "static/media/48.PNG": "/static/media/48.2a7f78cbe38cb9959995.PNG",
     "static/media/47.JPG": "/static/media/47.01a267b38829d5c66558.JPG",
-    "static/media/1.png": "/static/media/1.d5bcd23c2d2297e788de.png",
+    "static/media/1.png": "/static/media/1.40b90dbb57d5e7af7c8c.png",
     "static/media/39.JPG": "/static/media/39.d3c720c139c9c8249478.JPG",
     "static/media/72.PNG": "/static/media/72.297b427553b49471e81b.PNG",
     "static/media/51.PNG": "/static/media/51.c7e5d876e93f5c9e4cba.PNG",
@@ -232,11 +232,11 @@
     "static/media/31.JPG": "/static/media/31.7909a3ae2f2f7761232b.JPG",
     "static/media/1.gif": "/static/media/1.51d5dc846dabd96840e3.gif",
     "index.html": "/index.html",
-    "main.51053a9f.css.map": "/static/css/main.51053a9f.css.map",
-    "main.c2d8558c.js.map": "/static/js/main.c2d8558c.js.map"
+    "main.17f2072f.css.map": "/static/css/main.17f2072f.css.map",
+    "main.d8bf46f9.js.map": "/static/js/main.d8bf46f9.js.map"
   },
   "entrypoints": [
-    "static/css/main.51053a9f.css",
-    "static/js/main.c2d8558c.js"
+    "static/css/main.17f2072f.css",
+    "static/js/main.d8bf46f9.js"
   ]
 }
