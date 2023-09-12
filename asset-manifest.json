@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.801508be.css",
-    "main.js": "/static/js/main.d359b719.js",
+    "main.js": "/static/js/main.38ac9b57.js",
     "static/media/24.gif": "/static/media/24.cab9ebe691aa21854d6e.gif",
     "static/media/SourceHanSerifK-Medium.otf": "/static/media/SourceHanSerifK-Medium.58dfa282d0bf24f4f79a.otf",
     "static/media/c10.jpg": "/static/media/c10.321db55e0647fb44f7e2.jpg",
@@ -106,8 +106,8 @@
     "static/media/9.PNG": "/static/media/9.f2eb293566478790a8ba.PNG",
     "static/media/44.PNG": "/static/media/44.b150ed6e9eb905f360b0.PNG",
     "static/media/Alegreya-SemiBold.ttf": "/static/media/Alegreya-SemiBold.0857f0e6aaf076853d59.ttf",
-    "static/media/20.PNG": "/static/media/20.ac106272d02dfb109edb.PNG",
-    "static/media/1.PNG": "/static/media/1.3b426e550183ab7c5f5d.PNG",
+    "static/media/20.PNG": "/static/media/20.0fcb2ccdaa848d9e939f.PNG",
+    "static/media/1.PNG": "/static/media/1.3f06ec9410a3ae6e3fce.PNG",
     "static/media/2.PNG": "/static/media/2.9350712fcaf1ccbdcff4.PNG",
     "static/media/36.PNG": "/static/media/36.e12f6e3583de2421eff4.PNG",
     "static/media/35.PNG": "/static/media/35.c9dd5d8251177431d237.PNG",
@@ -123,17 +123,17 @@
     "static/media/24.png": "/static/media/24.e753666d28f07abf8f96.png",
     "static/media/10.png": "/static/media/10.f7880cb48c8550ee5b7f.png",
     "static/media/9.png": "/static/media/9.9b05f724e459accbfb5a.png",
-    "static/media/26.PNG": "/static/media/26.fc6002105632cf2e0fc6.PNG",
-    "static/media/25.PNG": "/static/media/25.26b78e64df120757bb4c.PNG",
-    "static/media/27.PNG": "/static/media/27.659ab4f0bd0aaf83a12e.PNG",
+    "static/media/26.PNG": "/static/media/26.f2cd422efeaa0ca44a39.PNG",
+    "static/media/25.PNG": "/static/media/25.b12e1a78b4ad9359e18b.PNG",
+    "static/media/27.PNG": "/static/media/27.22ff1d67ecb50640201a.PNG",
     "static/media/97.PNG": "/static/media/97.9ff13f390d1e5c56e68a.PNG",
-    "static/media/21.PNG": "/static/media/21.b2ea11abb0f0bea28225.PNG",
+    "static/media/21.PNG": "/static/media/21.8a4171850ec966cf8f7f.PNG",
     "static/media/5.PNG": "/static/media/5.e52b2351cf4d26fd5632.PNG",
     "static/media/7.png": "/static/media/7.c3ad6c5e546d3f7b0898.png",
     "static/media/37.PNG": "/static/media/37.07cd94451b5df9bcc93c.PNG",
     "static/media/Simonetta.ttf": "/static/media/Simonetta.062cd090c70e22824110.ttf",
     "static/media/Ysabeau-Black.ttf": "/static/media/Ysabeau-Black.b7ff0781ebc612b1b87f.ttf",
-    "static/media/22.PNG": "/static/media/22.3b13fbc1d0f66d59c1a9.PNG",
+    "static/media/22.PNG": "/static/media/22.6b0c7f04cd0b1f549080.PNG",
     "static/media/Ysabeau-Bold.ttf": "/static/media/Ysabeau-Bold.25d583ccd5edd34f52ce.ttf",
     "static/media/47.PNG": "/static/media/47.095fdd880f98c8af46b6.PNG",
     "static/media/13.PNG": "/static/media/13.4366b3d6deb82def6a2d.PNG",
@@ -156,7 +156,7 @@
     "static/media/13.png": "/static/media/13.cd3ca414ac0ed97bd6a2.png",
     "static/media/66.PNG": "/static/media/66.48fcc31928d565336314.PNG",
     "static/media/Livvic-Medium.ttf": "/static/media/Livvic-Medium.e1727d156b658481f5c4.ttf",
-    "static/media/23.PNG": "/static/media/23.e01ee5d598d30984364f.PNG",
+    "static/media/23.PNG": "/static/media/23.4424860dad1475425b65.PNG",
     "static/media/67.PNG": "/static/media/67.8c5b57948663c4400dd6.PNG",
     "static/media/Capriola-Regular.ttf": "/static/media/Capriola-Regular.d4254863ce272dd7ab30.ttf",
     "static/media/38.PNG": "/static/media/38.f1bc48bf88024b5cc180.PNG",
@@ -175,7 +175,7 @@
     "static/media/5.gif": "/static/media/5.bfc5b7fdc7bf65a1f132.gif",
     "static/media/42.PNG": "/static/media/42.a359a88b6c6be784002f.PNG",
     "static/media/3.png": "/static/media/3.e18c234ded4c815a6f2f.png",
-    "static/media/3.PNG": "/static/media/3.aa07dc2cb0c8e20d81ef.PNG",
+    "static/media/3.PNG": "/static/media/3.114fedc05474c1735437.PNG",
     "static/media/57.PNG": "/static/media/57.2d4fcd73357cc3931dba.PNG",
     "static/media/71.PNG": "/static/media/71.80da67cc4dbd00ebe816.PNG",
     "static/media/Cabin-Bold.ttf": "/static/media/Cabin-Bold.4de0d00e58820dd193e2.ttf",
@@ -212,7 +212,7 @@
     "static/media/73.PNG": "/static/media/73.ab650d45a6aacf034679.PNG",
     "static/media/49.PNG": "/static/media/49.4a4643f51fddd9aec60b.PNG",
     "static/media/7.gif": "/static/media/7.936379bd9e77d8389392.gif",
-    "static/media/24.PNG": "/static/media/24.d53a12cbf730defdb40b.PNG",
+    "static/media/24.PNG": "/static/media/24.23bb335780e1e1b2c30d.PNG",
     "static/media/96.PNG": "/static/media/96.3457730f6c9fd0e4e939.PNG",
     "static/media/95.PNG": "/static/media/95.189eba87d07eb6d3d151.PNG",
     "static/media/8.PNG": "/static/media/8.45646f962b73d60b1613.PNG",
@@ -228,10 +228,10 @@
     "static/media/1.gif": "/static/media/1.51d5dc846dabd96840e3.gif",
     "index.html": "/index.html",
     "main.801508be.css.map": "/static/css/main.801508be.css.map",
-    "main.d359b719.js.map": "/static/js/main.d359b719.js.map"
+    "main.38ac9b57.js.map": "/static/js/main.38ac9b57.js.map"
   },
   "entrypoints": [
     "static/css/main.801508be.css",
-    "static/js/main.d359b719.js"
+    "static/js/main.38ac9b57.js"
   ]
 }
