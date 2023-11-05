@@ -58,20 +58,17 @@
         animation: goHigh 1s linear 0.5s infinite normal;
       }
     </style>
-    <script type="text/javascript">
-        alert("Page doesn't exist!");
-        document.getElementById("loadingMainText").textContent = "Going To Home Page";
-        window.setTimeout( window.location.href = '/',1000);
-    </script>
+    <script>alert("Page doesn't exist!");</script>
   </head>
   <body id="bodyId" style="min-width: 650px;">
     <div id="loading">
         <div id="loadingText">
-          <span id="loadingMainText">Loading</span>
+          <span id="loadingMainText">Going To Home Page</span>
           <span id="dot1">.</span>
           <span id="dot2">.</span>
           <span id="dot3">.</span>
         </div>
     </div>
   </body>
+  <script>window.setTimeout( window.location.href = '/',1000);</script>
 </html>
