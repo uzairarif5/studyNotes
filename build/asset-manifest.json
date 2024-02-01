@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/studyNotes/static/css/main.516ea20b.css",
-    "main.js": "/studyNotes/static/js/main.2c88bf4e.js",
+    "main.css": "/studyNotes/static/css/main.78e73267.css",
+    "main.js": "/studyNotes/static/js/main.da20bf39.js",
     "static/media/c10.jpg": "/studyNotes/static/media/c10.321db55e0647fb44f7e2.jpg",
     "static/media/c17.jpg": "/studyNotes/static/media/c17.042421a24e7aa3478467.jpg",
     "static/media/c19.jpg": "/studyNotes/static/media/c19.7c924c83866bb7a07acb.jpg",
@@ -156,11 +156,11 @@
     "static/media/chevron-circle-down.svg": "/studyNotes/static/media/chevron-circle-down.8a60a703bfed4bd9817d1ae73580aaf4.svg",
     "static/media/chevron-circle-right.svg": "/studyNotes/static/media/chevron-circle-right.532bc421e0c14e30c18c656e9e9504f4.svg",
     "static/media/chevron-circle-left.svg": "/studyNotes/static/media/chevron-circle-left.2d3e0f78bfd93a22bb5f832d326b0137.svg",
-    "main.516ea20b.css.map": "/studyNotes/static/css/main.516ea20b.css.map",
-    "main.2c88bf4e.js.map": "/studyNotes/static/js/main.2c88bf4e.js.map"
+    "main.78e73267.css.map": "/studyNotes/static/css/main.78e73267.css.map",
+    "main.da20bf39.js.map": "/studyNotes/static/js/main.da20bf39.js.map"
   },
   "entrypoints": [
-    "static/css/main.516ea20b.css",
-    "static/js/main.2c88bf4e.js"
+    "static/css/main.78e73267.css",
+    "static/js/main.da20bf39.js"
   ]
 }

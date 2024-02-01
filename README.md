@@ -46,6 +46,9 @@ This is my first big project that uses React.js and Redux
 
 ### Jan 31, 2024
 
+update 13.2:
+- Horizontal scroll was not showing when window was less than min-width, so that's fixed now.
+
 update 13.1:
 - Renamed repository to `studyNotes`.
 
