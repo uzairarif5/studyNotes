@@ -46,8 +46,8 @@ This is my first big project that uses React.js and Redux
 
 ### Feb 1, 2024
 
-update 13.3 - 13.4:
-- These commits are for testing
+update 13.3 - 13.5:
+- These commits are for testing. Made some bug fixes during these commits.
 
 ### Jan 31, 2024
 
