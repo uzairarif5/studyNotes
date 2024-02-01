@@ -45,6 +45,7 @@ This is my first big project that uses React.js and Redux
 ## Updates:
 
 ### Jan 31, 2024
+
 update 13.1:
 - Renamed repository to `studyNotes`.
 
