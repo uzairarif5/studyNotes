@@ -44,6 +44,16 @@ This is my first big project that uses React.js and Redux
 
 ## Updates:
 
+### March 3, 2024
+
+update 14.1:
+- Added `calculus.js`, `calculus_pics`, `data_mining.js`, `data_mining_pics`, `4412pics` and `data_mining_with_r.js`.
+- Links in the "Contents" section used to open in a new tab, now they don't.
+- Hovering on the left and right side of an overflowing table would now horizontally scroll it.
+- Added mobile-specific styles.
+- MathJax components are now static instead of relative.
+- In ordered sublists: images, figures and charts weren't suppose to show the number marker, so that's fixed now.
+
 ### Feb 1, 2024
 
 update 13.3 - 13.5:
