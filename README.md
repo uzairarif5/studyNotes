@@ -46,7 +46,7 @@ This is my first big project that uses React.js and Redux
 
 ### March 3, 2024
 
-update 14.2:
+update 14.2 - 14.3:
 - 404 now redirects to home page.
 
 update 14.1:

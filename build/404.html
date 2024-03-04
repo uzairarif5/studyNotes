@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="%PUBLIC_URL%/webPics/logo.png" rel="icon"/>
+    <link href="/webPics/logo.png" rel="icon"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>404 Error</title>
     <style>
       @font-face {
           font-family: 'main';
-          src: url('%PUBLIC_URL%/webPics/Gabriela-Regular.ttf');
+          src: url('/webPics/Gabriela-Regular.ttf');
       }
       #loading{
           position:fixed;
@@ -24,9 +24,19 @@
           user-select: none;
       }
       #loadingText{
-        display: none;
+          font-family: 'main';
+          font-size: 35px;
+          border-top-style: solid;
+          border-bottom-style: solid;
+          border-width: 2px;
+          padding: 0px 30px;
+          align-items: center;
+          margin-bottom: 10px;
+          justify-content: center;
+          height: 60px;
+          overflow: hidden;
+          width: 440px;
       }
-      /*#LoadingText is in index.scss*/
       #loadingMainText{
         line-height: 56px;
         padding-right: 1px;
@@ -45,6 +55,11 @@
       }
       #loading #dot3{
         animation: goHigh 1s linear 0.5s infinite normal;
+      }
+      
+      @media screen and (max-device-width: 700px){
+        /*max-device-width needs to be same as maxWidthForMobile in variables.modules.scss*/
+        #loadingText{font-size: 28px;width: 350px;}
       }
     </style>
     <script>
