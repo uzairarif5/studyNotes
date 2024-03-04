@@ -46,6 +46,9 @@ This is my first big project that uses React.js and Redux
 
 ### March 3, 2024
 
+update 14.2:
+- 404 now redirects to home page.
+
 update 14.1:
 - Added `calculus.js`, `calculus_pics`, `data_mining.js`, `data_mining_pics`, `4412pics` and `data_mining_with_r.js`.
 - Links in the "Contents" section used to open in a new tab, now they don't.
