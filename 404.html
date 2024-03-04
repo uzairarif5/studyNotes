@@ -6,40 +6,46 @@
     <title>404 Error</title>
     <style>
       @font-face {
-          font-family: 'main';
-          src: url('https://uzairarif5.github.io/studyNotes/webPics/Gabriela-Regular.ttf');
+        font-family: 'main';
+        src: url('https://uzairarif5.github.io/studyNotes/webPics/Gabriela-Regular.ttf');
+      }
+    
+      #bodyId{
+        box-sizing: border-box;
+        margin:0;
+        overflow: hidden;
+        -webkit-text-size-adjust: 100%;
       }
       #loading{
-          position:fixed;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          z-index: 2;
-          height: calc(100% + 100px);
-          width: 100%;
-          min-width: 650px;
-          background-color: #deb887;
-          top: -50px;
-          left: 0;
-          user-select: none;
+        position:fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+        height: calc(100% + 100px);
+        width: 100%;
+        background-color: #deb887;
+        top: -50px;
+        left: 0;
+        user-select: none;
       }
       #loadingText{
-          font-family: 'main';
-          font-size: 35px;
-          border-top-style: solid;
-          border-bottom-style: solid;
-          border-width: 2px;
-          padding: 0px 30px;
-          align-items: center;
-          margin-bottom: 10px;
-          justify-content: center;
-          height: 60px;
-          overflow: hidden;
-          width: 440px;
+        font-family: 'main';
+        font-size: 35px;
+        border-top-style: solid;
+        border-bottom-style: solid;
+        border-width: 2px;
+        padding: 0px 30px;
+        align-items: center;
+        margin-bottom: 10px;
+        justify-content: center;
+        height: 60px;
+        overflow: hidden;
+        width: 440px;
       }
       #loadingMainText{
-        line-height: 56px;
-        padding-right: 1px;
+      line-height: 56px;
+      padding-right: 1px;
       }
       @keyframes goHigh{
         0% {height: 40px;}
@@ -72,12 +78,12 @@
   </head>
   <body id="bodyId">
     <div id="loading">
-        <div id="loadingText">
-          <span id="loadingMainText">Loading</span>
-          <span id="dot1">.</span>
-          <span id="dot2">.</span>
-          <span id="dot3">.</span>
-        </div>
+      <div id="loadingText">
+        <span id="loadingMainText">Loading</span>
+        <span id="dot1">.</span>
+        <span id="dot2">.</span>
+        <span id="dot3">.</span>
+      </div>
     </div>
   </body>
 </html>
