@@ -46,7 +46,7 @@ This is my first big project that uses React.js and Redux
 
 ### March 5, 2024
 
-update 14.8:
+update 14.8 - 14.9:
 - In `article.js`, anchors in the sources section now have target="_blank".
 - When directly using any url other the the base url, github would redirect to 404.html, to fix this I changed my 404.html (using this article https://github.com/rafgraph/spa-github-pages).
 
