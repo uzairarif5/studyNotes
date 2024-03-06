@@ -44,10 +44,21 @@ This is my first big project that uses React.js and Redux
 
 ## Updates:
 
-### March 3, 2024
+### March 5, 2024
+
+update 14.8:
+- In `article.js`, anchors in the sources section now have target="_blank".
+- When directly using any url other the the base url, github would redirect to 404.html, to fix this I changed my 404.html (using this article https://github.com/rafgraph/spa-github-pages).
+
+### March 4, 2024
+
+update 14.7:
+- In `article.js`, the `this.getReferenceEl` needs only H2 elements as input.
 
 update 14.2 - 14.6:
 - 404 now redirects to home page.
+
+### March 3, 2024
 
 update 14.1:
 - Added `calculus.js`, `calculus_pics`, `data_mining.js`, `data_mining_pics`, `4412pics` and `data_mining_with_r.js`.

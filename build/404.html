@@ -1,90 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="https://uzairarif5.github.io/studyNotes/webPics/logo.png" rel="icon"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>404 Error</title>
-    <style>
-      @font-face {
-        font-family: 'main';
-        src: url('https://uzairarif5.github.io/studyNotes/webPics/Gabriela-Regular.ttf');
-      }
-    
-      #bodyId{
-        box-sizing: border-box;
-        margin:0;
-        overflow: hidden;
-        -webkit-text-size-adjust: 100%;
-      }
-      #loading{
-        position:fixed;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 2;
-        height: calc(100% + 100px);
-        width: 100%;
-        background-color: #deb887;
-        top: -50px;
-        left: 0;
-        user-select: none;
-      }
-      #loadingText{
-        display: flex;
-        font-family: 'main';
-        font-size: 35px;
-        border-top-style: solid;
-        border-bottom-style: solid;
-        border-width: 2px;
-        padding: 0px 30px;
-        align-items: center;
-        margin-bottom: 10px;
-        justify-content: center;
-        height: 60px;
-        overflow: hidden;
-        width: 440px;
-      }
-      #loadingMainText{
-      line-height: 56px;
-      padding-right: 1px;
-      }
-      @keyframes goHigh{
-        0% {height: 40px;}
-        25% {height: 46px;}
-        50% {height: 40px;}
-        100% {height: 40px;}
-      }
-      #loading #dot1{
-        animation: goHigh 1s linear 0s infinite normal;
-      }
-      #loading #dot2{
-        animation: goHigh 1s linear 0.25s infinite normal;
-      }
-      #loading #dot3{
-        animation: goHigh 1s linear 0.5s infinite normal;
-      }
-      
-      @media screen and (max-device-width: 700px){
-        /*max-device-width needs to be same as maxWidthForMobile in variables.modules.scss*/
-        #loadingText{font-size: 28px;width: 350px;}
-      }
-    </style>
-    <script>
-      window.onload = document.fonts.ready.then(window.setTimeout(()=>{
-        alert("Page doesn't Exists");
-        document.getElementById("loadingMainText").textContent = "Going To Home Page";
-        window.setTimeout(()=>{window.location.href = "https://uzairarif5.github.io/studyNotes/"}, 1000);
-      }, 1000));
+    <meta charset="utf-8">
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      // This script takes the current url and converts the path and query
+      // string into just a query string, and then redirects the browser
+      // to the new url with only a query string and hash fragment,
+      // e.g. https://www.foo.tld/one/two?a=b&c=d#qwe, becomes
+      // https://www.foo.tld/?/one/two&a=b~and~c=d#qwe
+      // Note: this 404.html file must be at least 512 bytes for it to work
+      // with Internet Explorer (it is currently > 512 bytes)
+
+      // If you're creating a Project Pages site and NOT using a custom domain,
+      // then set pathSegmentsToKeep to 1 (enterprise users may need to set it to > 1).
+      // This way the code will only replace the route part of the path, and not
+      // the real directory in which the app resides, for example:
+      // https://username.github.io/repo-name/one/two?a=b&c=d#qwe becomes
+      // https://username.github.io/repo-name/?/one/two&a=b~and~c=d#qwe
+      // Otherwise, leave pathSegmentsToKeep as 0.
+      var pathSegmentsToKeep = 0;
+
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
     </script>
   </head>
-  <body id="bodyId">
-    <div id="loading">
-      <div id="loadingText">
-        <span id="loadingMainText">Loading</span>
-        <span id="dot1">.</span>
-        <span id="dot2">.</span>
-        <span id="dot3">.</span>
-      </div>
-    </div>
-  </body>
 </html>
