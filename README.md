@@ -44,6 +44,10 @@ This is my first big project that uses React.js and Redux
 
 ## Updates:
 
+update 14.10:
+- Added `information_and_entropy.js`.
+- The `public` and `src` folders are now shows in GitHub.
+
 ### March 5, 2024
 
 update 14.8 - 14.9:
