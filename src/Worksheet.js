@@ -7,6 +7,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { fadeLoadingToInsv, showLoadingScreen, changeLoadingText } from "./loadingScreen.js";
 import { useSearchParams, useNavigate, Link } from "react-router-dom";
 import $ from 'jquery';
+import { defaultBC } from "./reducer.js";
 
 function TitlePage(props){
 	return(<>
@@ -119,7 +120,7 @@ function Worksheet () {
 		return ()=>{
 			if(stateChanged.current === false) store.dispatch({
 				type: CHANGE_APP_BC,
-				payload: "#deb887"
+				payload: defaultBC
 			});
 		};
 	},[curLoc, navigate, worksheetJsContent]);

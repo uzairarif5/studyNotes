@@ -10,17 +10,23 @@ import { sideB, showSideB, hideSideB } from './sideButtons.js';
 import { ImgView } from './ImgView';
 import styles from "../variables.module.scss";
 import { useNavigate } from "react-router-dom";
+import store from "../store";
+import { FORM_COUNTER } from "../actions";
 
 class Article extends React.Component {
 	static lastSavedScrollY = 0;
 
 	constructor(props) {
-			super(props);
-			showLoadingScreen();
-			this.sourcesList = [];
-			this.mainEl = document.getElementById("main");
-			this.pathnameToUse = window.location.pathname.substring("/studyNotes".length);
-			this.wholeContent = null;
+		super(props);
+		store.dispatch({
+			type: FORM_COUNTER,
+			payload: 0
+		});
+		showLoadingScreen();
+		this.sourcesList = [];
+		this.mainEl = document.getElementById("main");
+		this.pathnameToUse = window.location.pathname.substring("/studyNotes".length);
+		this.wholeContent = null;
 	}
 
 	getReferenceEl(h2s){
@@ -30,31 +36,37 @@ class Article extends React.Component {
 	}
 
 	getFooterEl(){
-			let footerEl = null;
-			try {
-				if(window.screen.width <= parseInt(styles.maxWidthForMobile)) throw new Error("worksheet not available in mobile");
-				require("../pages"+this.pathnameToUse+"_worksheet");
-				footerEl = <footer style={{gridTemplateColumns:"33% 33% 33%"}}>
-					<Link to="/studyNotes" onClick={showLoadingScreen}>Home Page</Link>
-					<Link to={"worksheet?topic=" + this.pathnameToUse.slice(1)}>Worksheet</Link>
-					<button onClick={()=>{alert("awdwad")}}>Contact Us</button>
-				</footer>
-			}
-			catch (err) {footerEl = <footer>
-				<Link to="/studyNotes">Home Page</Link>
-				<button onClick={()=>{alert("awdwad")}}>Contact Us</button>
-			</footer>}
-			return footerEl;
+		let footerEl = null;
+		try {
+			if(window.screen.width <= parseInt(styles.maxWidthForMobile)) throw new Error("worksheet not available in mobile");
+			require("../pages"+this.pathnameToUse+"_worksheet");
+			footerEl = <footer style={{gridTemplateColumns:"33% 33% 33%"}}>
+				<Link to="/studyNotes" onClick={showLoadingScreen}>Home Page</Link>
+				<Link to={"worksheet?topic=" + this.pathnameToUse.slice(1)}>Worksheet</Link>
+				<button onClick={()=>{store.dispatch({
+					type: FORM_COUNTER,
+					payload: -1
+				})}}>Contact Us</button>
+			</footer>
+		}
+		catch (err) {footerEl = <footer>
+			<Link to="/studyNotes">Home Page</Link>
+			<button onClick={()=>{store.dispatch({
+				type: FORM_COUNTER,
+				payload: -1
+			})}}>Contact Us</button>
+		</footer>}
+		return footerEl;
 	}
 
 	scrollFunc(el){
-			if(Article.lastSavedScrollY !== el.target.scrollTop){
-					if(el.target.scrollTop > 1000) showSideB("#upButton");
-					else hideSideB("#upButton");
-					if(el.target.scrollTop > el.target.scrollHeight-1000) hideSideB("#downButton");
-					else showSideB("#downButton");
-					Article.lastSavedScrollY = el.target.scrollTop;
-			}
+		if(Article.lastSavedScrollY !== el.target.scrollTop){
+			if(el.target.scrollTop > 1000) showSideB("#upButton");
+			else hideSideB("#upButton");
+			if(el.target.scrollTop > el.target.scrollHeight-1000) hideSideB("#downButton");
+			else showSideB("#downButton");
+			Article.lastSavedScrollY = el.target.scrollTop;
+		}
 	}
 
 	render() {
@@ -152,7 +164,7 @@ class Article extends React.Component {
 	}
 
 	componentWillUnmount() {
-			this.mainEl.removeEventListener("scroll",this.scrollFunc);
+		this.mainEl.removeEventListener("scroll",this.scrollFunc);
 	}
 }
 

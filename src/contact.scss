@@ -1,0 +1,41 @@
+#contactDialog{
+  border-radius: 15px;
+  border-width: 5px;
+  padding: 0;
+
+  label{
+    display: block;
+    font-family: 'main';
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  textarea{
+    height: 100px;
+    min-width: 150px;
+  }
+
+  input, textarea{
+    margin: 2px 15px 10px 15px;
+    outline: none;
+    border: rgba(0,0,0,0.1) solid 1px;
+    background-color: rgba(0,0,0,0.05);
+    font-family:'defaultArabicF','defaultTextF','defaultKoreanF';
+    font-size: 16px;
+    text-overflow: ellipsis;
+
+    &:hover{
+      border: rgba(0,0,0,0.1) solid 1px;
+    }
+  }
+
+  button{
+    cursor: pointer;
+    border: none;
+    font-family: 'main';
+    font-weight: bold;
+    font-size: 20px;
+    background-color: rgba($color: #000000, $alpha: 0);
+  }
+
+}

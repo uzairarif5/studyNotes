@@ -5,6 +5,8 @@ import './home.scss';
 import { fadeLoadingToInsv, showLoadingScreen } from "./loadingScreen.js";
 import { ContactComp } from "./Contact.js";
 import styles from "./variables.module.scss";
+import store from "./store";
+import { FORM_COUNTER } from "./actions";
 
 const Home = () => {
 	
@@ -12,7 +14,12 @@ const Home = () => {
 		showLoadingScreen();
 		document.fonts.ready.then(fadeLoadingToInsv);
 		document.documentElement.style.backgroundColor = "#913213";
-	},[])
+		store.dispatch({
+			type: FORM_COUNTER,
+			payload: 0
+		});
+	},[]);
+
 	function getSVG(){
 		if(window.screen.width <= parseInt(styles.maxWidthForMobile)){ return (
 			<div id='svgContainer'><svg height="30px" width="100%" viewBox="0 0 100 100"  preserveAspectRatio="none">
@@ -63,7 +70,13 @@ const Home = () => {
 				<Link to="tutorials/basics_of_r">Basics Of R</Link>
 				<h2>Blog</h2>
 				<Link to="blog/tree_blog">Tree Blog</Link>
-				<footer><Link to="guide">Website Guide</Link><button onClick={()=>{alert("awdwad")}} className="anchor">Contact Us</button></footer>
+				<footer>
+					<Link to="guide">Website Guide</Link>
+					<button onClick={()=>{store.dispatch({
+						type: FORM_COUNTER,
+						payload: -1
+					})}}>Contact Us</button>
+				</footer>
 			</div>
 			<ContactComp/>
 		</Suspense>

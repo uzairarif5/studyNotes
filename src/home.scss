@@ -1,100 +1,100 @@
 @import "./variables.module.scss";
 
 #home{
-    padding-top: 22px;
-    border-right: solid 3px #612;
+	padding-top: 22px;
+	border-right: solid 3px #612;
 
-    h1{
-        font-family: 'main';
-        font-weight: bold;
-        font-size: 40px;
-        line-height: 64px;
-        color: #df8b69ee;
-        text-align: center;
-        margin: 0px 20% 44px 20%;
-        width: 60%;
-        box-sizing: border-box;
-        border: #692112 ridge;
-        border-width: 0px 5px 5px 0px;
-        background-color: #913213;
-        border-radius: 15px;
-        border-style: solid;
-    }
-    h2{
-        font-family: 'main';
-        font-size: 28px;
-        text-decoration: underline;
-        margin: 35px 40px 0px 40px;
-        box-sizing: border-box;
-    }
+	h1{
+		font-family: 'main';
+		font-weight: bold;
+		font-size: 40px;
+		line-height: 64px;
+		color: #df8b69ee;
+		text-align: center;
+		margin: 0px 20% 44px 20%;
+		width: 60%;
+		box-sizing: border-box;
+		border: #692112 ridge;
+		border-width: 0px 5px 5px 0px;
+		background-color: #913213;
+		border-radius: 15px;
+		border-style: solid;
+	}
+	h2{
+		font-family: 'main';
+		font-size: 28px;
+		text-decoration: underline;
+		margin: 35px 40px 0px 40px;
+		box-sizing: border-box;
+	}
 
-    & > a{
-        font-family: 'main';
-        font-size: 18px;
-        line-height: 22px;
-        margin: 10px 50px 0px 70px;
-        text-decoration: none;
-        color: #692112;
-        display: block;
-        width: fit-content;
-        font-weight: bold;
-    }
-    & > a:hover{
-        text-decoration: underline;
-    }
+	& > a{
+		font-family: 'main';
+		font-size: 18px;
+		line-height: 22px;
+		margin: 10px 50px 0px 70px;
+		text-decoration: none;
+		color: #692112;
+		display: block;
+		width: fit-content;
+		font-weight: bold;
+	}
+	& > a:hover{
+		text-decoration: underline;
+	}
 
-    footer{
-        margin-top: 55px;
-        padding: 20px 0px 25px 0px;
-        border-top: solid 4px #612;
-        background-color: #832;
-        width: 100%;
-        box-sizing: border-box;
-        display: grid;
-        justify-content: space-evenly;
-        grid-template-columns: 45% 45%;
-        a, button{
-            font-size: 25px;
-            line-height: 30px;
-            color: black;
-            text-decoration: none;
-            font-family: 'main';
-            margin: auto;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-            background-color: transparent;
-        }
-        a:hover, button:hover{
-            font-size: 26px;
-            line-height: 30px;
-            color: black;
-        }
-    }
+	footer{
+		margin-top: 55px;
+		padding: 20px 0px 25px 0px;
+		border-top: solid 4px #612;
+		background-color: #832;
+		width: 100%;
+		box-sizing: border-box;
+		display: grid;
+		justify-content: space-evenly;
+		grid-template-columns: 45% 45%;
+		a, button{
+			font-size: 25px;
+			line-height: 30px;
+			color: black;
+			text-decoration: none;
+			font-family: 'main';
+			margin: auto;
+			font-weight: bold;
+			border: none;
+			cursor: pointer;
+			background-color: transparent;
+		}
+		a:hover, button:hover{
+			font-size: 26px;
+			line-height: 30px;
+			color: black;
+		}
+	}
 }
 
 @media screen and (max-device-width: $max-width-for-mobile){
-    #home{
-        padding-top: 0px;
-        border: none;
+	#home{
+		padding-top: 0px;
+		border: none;
 
-        h1{
-            width: 100%;
-            margin: 0;
-            border-radius: 0;
-            border-right: none;
-            color: #ddbb77;
-            font-size: 40px;
-            line-height: 80px;
-            border-bottom: none;
-            padding-top: 5px;
-            font-weight: normal;
-        }
-        h2{margin: 35px 20px 0px 20px;font-weight: normal;}
-        & > a{margin: 10px 30px 0px 30px;font-size: 16px;line-height: 18px;}
-        footer{background-color: #913213;padding-bottom: 150px;}
-        footer a, footer button{font-size: 25px;color: #da4;font-weight: normal;}
-        footer a:hover, footer button:hover{font-size: 28px;}
-    }
+		h1{
+			width: 100%;
+			margin: 0;
+			border-radius: 0;
+			border-right: none;
+			color: #ddbb77;
+			font-size: 40px;
+			line-height: 80px;
+			border-bottom: none;
+			padding-top: 5px;
+			font-weight: normal;
+		}
+		h2{margin: 35px 20px 0px 20px;font-weight: normal;}
+		& > a{margin: 10px 30px 0px 30px;font-size: 16px;line-height: 18px;}
+		footer{background-color: #913213;padding-bottom: 150px;}
+		footer a, footer button{font-size: 25px;color: #da4;font-weight: normal;}
+		footer a:hover, footer button:hover{font-size: 28px;}
+	}
 
 }
