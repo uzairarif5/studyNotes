@@ -49,6 +49,10 @@ export const content = <>
 					<ImgComp src={require("./calculus_pics/4.jpg")} width="50%"/>
 					<figcaption><b>Absolute value function</b>, also written as |x|.</figcaption>
 				</figure></li>
+			</ul>
+		</div>
+		<div data-source={36} style={{width: "49%",marginRight: "0.5%",float: "right"}}>
+			<ul style={{paddingBottom: "1px"}}>
 				<li><b>Algebraic function:</b><SubList>
 					<li>A function \(P\) is called a <b>polynomial</b> if:</li>
 					<MathStuff>{"\
@@ -63,10 +67,6 @@ export const content = <>
 					<li>A <b>rational function</b> \(f\) is a ratio of two polynomials: \(f(x) = \frac{"{3x-1}{5x+2}"}\).</li>
 					<li>If \(a = \frac{"1"}{"n"}\) where \(n\) is a positive integer, then \(f(x) = x^\frac{"1"}{"x"} = \sqrt[n]x\) is a <b>root function</b>. If \(a = -1\), then \(f(x) = x^{"{-1}"} = \frac{"1"}{"x"}\) is a <b>reciprocal function</b>.</li>
 				</SubList></li>
-			</ul>
-		</div>
-		<div data-source={36} style={{width: "49%",marginRight: "0.5%",float: "right"}}>
-			<ul style={{paddingBottom: "1px"}}>
 				<li><b>Mathematical model:</b><SubList>
 					<li>A <b>mathematical model</b> is a method of simulating real-life situations with mathematical equations.</li>
 					<li>Physicists, engineers, economists, and other researchers develop models by combining observation with quantitative data to develop equations, functions, graphs, and other mathematical tools to describe the behavior of various systems accurately. It is not an accurate representation of a physical situation.</li>

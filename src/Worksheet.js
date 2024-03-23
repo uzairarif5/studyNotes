@@ -63,59 +63,54 @@ function Worksheet () {
 			}, 1);
 		}
 		else{
-				stateChanged.current = false;
-				document.getElementById("main").scrollTo(0,0);
-				document.getElementById("workSheetInner").scrollTo(0,curLoc.scroll);
-				//Format the Page
-				if(curLoc.topic) {
-						//set overflowing content height
-						{
-								let totalHeight = -curLoc.scroll;
-								let selectedEl;
-								let pageH = document.getElementById("workSheetInner").clientHeight - 65;
-								let nextScrollPossible = false
-								$("#workSheetInner").children().each(function(){
-										let curH = totalHeight+$(this).outerHeight(true);
-										if(curH > pageH){
-												if(this.tagName === "OL"|| this.tagName === "UL") {
-														$(this).children().each(function(){
-																let curLiH = totalHeight + $(this).outerHeight(true);
-																if(curLiH > pageH) {
-																		selectedEl = this;
-																		return false;
-																}
-																else totalHeight = curLiH;
-														})
-												}
-												else selectedEl = this;
-												nextScrollPossible = true;
-												return false;
-										}
-										else totalHeight = curH;
-								});
-								changeAllowNextScroll(nextScrollPossible);
-								$(selectedEl).css("margin-top", (pageH - totalHeight + 80)+"px");
+			stateChanged.current = false;
+			document.getElementById("main").scrollTo(0,0);
+			document.getElementById("workSheetInner").scrollTo(0,curLoc.scroll);
+			window.MathJax.typesetPromise();
+			//Format the Page
+			if(curLoc.topic) {
+				//set overflowing content height
+				{
+					let totalHeight = -curLoc.scroll;
+					let selectedEl;
+					let pageH = document.getElementById("workSheetInner").clientHeight - 45;
+					let nextScrollPossible = false
+					$("#workSheetInner").children().each(function(){
+						let curH = totalHeight+$(this).outerHeight(true);
+						if(curH > pageH){
+							if(this.tagName === "OL"|| this.tagName === "UL") {
+								$(this).children().each(function(){
+									let curLiH = totalHeight + $(this).outerHeight(true);
+									if(curLiH > pageH) {
+										selectedEl = this;
+										return false;
+									}
+									else totalHeight = curLiH;
+								})
+							}
+							else selectedEl = this;
+							nextScrollPossible = true;
+							return false;
 						}
-
-						//set all tables
-						$("table").each(function(index,el){
-								let thisEl = $(el);
-								let selectedTD;
-								if(el.getAttribute("ans-col") !== null){
-										for(let col of el.getAttribute("ans-col").split(" ")){
-												selectedTD = thisEl.find("td:nth-child("+col+")");
-												selectedTD.attr("ansType","true");
-										}
-								}
-								else{
-										selectedTD = thisEl.find("td:nth-child(even)");
-										selectedTD.attr("ansType","true");
-								}
-						})
-
-						//set answers
-						reformatAns();
+						else totalHeight = curH;
+					});
+					changeAllowNextScroll(nextScrollPossible);
+					$(selectedEl).css("margin-top", (pageH - totalHeight + 60)+"px");
 				}
+
+				//set all tables
+				$("table").each(function(index,el){
+					let thisEl = $(el);
+					let selectedTD;
+					if(el.getAttribute("ans-col")) for(let col of el.getAttribute("ans-col").split(" ")){
+						selectedTD = thisEl.find("td:nth-child("+col+")");
+						selectedTD.attr("ansType","true");
+					}
+				})
+
+				//set answers
+				reformatAns();
+			}
 		}
 		return ()=>{
 			if(stateChanged.current === false) store.dispatch({
@@ -126,35 +121,43 @@ function Worksheet () {
 	},[curLoc, navigate, worksheetJsContent]);
 
 	function toggleAns(){
-			let tickImg = document.querySelector("#ansCheckBox img");
-			if(tickImg.style.display === "block"){
-					tickImg.style.display = "none";
-			}
-			else{
-					tickImg.style.display = "block";
-			}
-			reformatAns();
+		let tickImg = document.querySelector("#ansCheckBox img");
+		if(tickImg.style.display === "block"){
+			tickImg.style.display = "none";
+		}
+		else{
+			tickImg.style.display = "block";
+		}
+		reformatAns();
 	}
 
 	function reformatAns(){
-			if(document.querySelector("#ansCheckBox img").style.display === "none"){
-					$(".fillInTheBlank, .fullWidthBlank").css({
-							"color":"#deb887",
-							"user-select": "none"
-					});
-					$("td[ansType=\"true\"]").css({
-							"color":"#ddaa77",
-							"user-select": "none"
-					});
-					$(".boxAnswer").css({
-							"color":"#f0d4a0",
-							"user-select": "none"
-					});
-			}
-			else $(".fillInTheBlank, td[ansType=\"true\"], .boxAnswer, .fullWidthBlank").css({
-					"color":"black",
-					"user-select": "auto"
+		if(document.querySelector("#ansCheckBox img").style.display === "none"){
+			$(".fillInTheBlank, .fullWidthBlank").css({
+				"color":"#deb887",
+				"user-select": "none"
 			});
+			$("td[ansType=\"true\"]").css({
+				"color":"#ddaa77",
+				"user-select": "none"
+			});
+			$(".boxAnswer").css({
+				"color":"#f0d4a0",
+				"user-select": "none"
+			});
+			$(".boxAnswer img").css({
+				"visibility":"hidden"
+			});
+		}
+		else {
+			$(".fillInTheBlank, td[ansType=\"true\"], .boxAnswer, .fullWidthBlank").css({
+				"color":"black",
+				"user-select": "auto"
+			});
+			$(".boxAnswer img").css({
+				"visibility":"visible"
+			});
+		}
 	}
 
 	function topicSelected(el){
@@ -220,16 +223,16 @@ function Worksheet () {
 					</div>
 
 					<div id="sideButtons">
-							<div id="homeButton">
-									<Link to={{pathname:"/studyNotes"}}>
-											<img src={process.env.PUBLIC_URL+"/webPics/house-solid.svg"} alt="back to home page"/>
-									</Link>
-							</div>
-							<div id="bookButton">
-									<Link to={{pathname: "/studyNotes/" + searchParams.get("topic")}}>
-											<img src={process.env.PUBLIC_URL+"/webPics/book-solid.svg"} alt="back to notes pages"/>
-									</Link>
-							</div>
+						<div id="bookButton">
+							<Link to={{pathname: "/studyNotes/" + searchParams.get("topic")}}>
+								<img src={process.env.PUBLIC_URL+"/webPics/book-solid.svg"} alt="back to notes pages"/>
+							</Link>
+						</div>
+						<div id="homeButton">
+							<Link to={{pathname:"/studyNotes"}}>
+								<img src={process.env.PUBLIC_URL+"/webPics/house-solid.svg"} alt="back to home page"/>
+							</Link>
+						</div>
 					</div>
 
 					<div id="pageButtons">
@@ -285,9 +288,6 @@ function Worksheet () {
 export default Worksheet;
 
 //worksheet components
-export function Blank(props){
-	return <span className="fillInTheBlank">{props.children}</span>;
-}
 export function getFullWidthBlankLI(q,a){
 	return <ol>{q.map((val, i)=>{
 		return <li key={i}>
@@ -295,4 +295,11 @@ export function getFullWidthBlankLI(q,a){
 			<span className="fullWidthBlank">{a[i]}</span>
 		</li>
 	})}</ol>;
+}
+
+export function GraphBox(props){
+	if (Object.hasOwn(props,"style")) return <div className="boxAnswer">
+		<img src={props.src} alt="" style={props.style}/>
+	</div>
+	else return <div className="boxAnswer"><img src={props.src} alt=""/></div>
 }

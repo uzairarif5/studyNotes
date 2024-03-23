@@ -16,7 +16,7 @@ export function ContactComp() {
 			dialogRef.current.showModal();
 			dialogRef.current.firstChild.reset();
 		}
-		else if (formCounterVal == 0) dialogRef.current.close();
+		else if (formCounterVal === 0) dialogRef.current.close();
 		else if(state.succeeded) {
 			store.dispatch({
 				type: FORM_COUNTER,

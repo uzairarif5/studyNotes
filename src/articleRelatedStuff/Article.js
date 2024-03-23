@@ -141,8 +141,8 @@ class Article extends React.Component {
 				//colorSources
 				let sl = this.sourcesList;
 				$('[data-source]').each(function(){
-						let curList = $(this);
-						curList.css("background-color", sl[parseInt(curList.attr("data-source"))]);
+					let curList = $(this);
+					curList.css("background-color", sl[parseInt(curList.attr("data-source"))]);
 				});
 				//Format MathJax
 				window.MathJax.typesetPromise();

@@ -60,16 +60,15 @@
 			margin: 0px;
 			width: 100%;
 			background-color: rgba(0,0,0,0.05);
-			padding-bottom: 1px;
 			padding-left: 0px;
-			padding-top: 2px;
 			padding-right: 0px;
 
 			li{
 				position: relative;
 				font-size: 18px;
 				line-height: 26px;
-				padding-bottom: 6px;
+				padding-top: 1px;
+				padding-bottom: 5px;
 				font-family:'defaultArabicF','defaultTextF','defaultKoreanF';
 				margin-left: 21px;
 				margin-right: 21px;
@@ -146,7 +145,7 @@
 					padding-bottom: 2px;
 					border: rgba(0,0,0,0.1) solid 1px;
 					li{
-						padding-bottom: 5px;
+						padding-bottom: 4px;
 					}
 				}
 				ul{
@@ -314,7 +313,7 @@
 				list-style-type: none;
 				border: #883322 ridge 6px;
 				background-color: white;
-				padding-bottom: 0px;
+				margin-bottom: 10px;
 				font-size: 15px;
 				
 				svg{

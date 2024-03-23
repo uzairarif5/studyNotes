@@ -44,32 +44,28 @@ This is my first big project that uses React.js and Redux
 
 ## Updates:
 
-### March 15, 2024
+update 15.3:
+- Added content to `probability_and_statics.js`.
+
+update 15.2:
+- Added a license box in the home page which shows the website license.
 
 update 15.1:
 - Added a contact form
-
-### March 14, 2024
 
 update 14.10:
 - Added `information_and_entropy.js`.
 - The `public` and `src` folders are now shows in GitHub.
 
-### March 5, 2024
-
 update 14.8 - 14.9:
 - In `article.js`, anchors in the sources section now have target="_blank".
 - When directly using any url other the the base url, github would redirect to 404.html, to fix this I changed my 404.html (using this article https://github.com/rafgraph/spa-github-pages).
-
-### March 4, 2024
 
 update 14.7:
 - In `article.js`, the `this.getReferenceEl` needs only H2 elements as input.
 
 update 14.2 - 14.6:
 - 404 now redirects to home page.
-
-### March 3, 2024
 
 update 14.1:
 - Added `calculus.js`, `calculus_pics`, `data_mining.js`, `data_mining_pics`, `4412pics` and `data_mining_with_r.js`.
@@ -79,12 +75,8 @@ update 14.1:
 - MathJax components are now static instead of relative.
 - In ordered sublists: images, figures and charts weren't suppose to show the number marker, so that's fixed now.
 
-### Feb 1, 2024
-
 update 13.3 - 13.5:
 - These commits are for testing. Made some bug fixes during these commits.
-
-### Jan 31, 2024
 
 update 13.2:
 - Horizontal scroll was not showing when window was less than min-width, so that's fixed now.
@@ -92,40 +84,33 @@ update 13.2:
 update 13.1:
 - Renamed repository to `studyNotes`.
 
-### Jan 10, 2024
 update 12.1:
 - Added `number_theory.js`.
 
-### Jan 10, 2024
 update 11.5:
 - Added more content to `deep_learning.js`
 - `CodePre` now trims from both start and end.
 
-### Dec 12, 2023
 update 11.4:
 - Added more content to `deep_learning.js`
 
-### Nov 13, 2023
 update 11.3:
 - Added content to `probability_and_statistics.js`
 - Added `SubDiv.js` which can hold is a child of UL or OL and can hold multiple UL or OL
 - Added `ownExplanation` class for UL and OL which is for my own explanations
 
-### Nov 10, 2023
 update 11.2:
 - In `Article.js`, the functions in `componentDidMount` wrapped in `window.setTimeout`
 - Added `%PUBLIC_URL%` to `404.html` because the logo and font weren't displaying
 - Made changes in `Worksheet.js`:
     - Some of the dynamic DOM manipulation happens via React features, instead of directly through JQuery.
 
-### Nov 9, 2023
 update 11.1:
 - Made changes to `korean.js`
 - Made changes to `404.html`, so it shows the loading screen before going to home page
 - Added `Redux`, so now global states are being used to reduce direct DOM manipulation
     - For now, `Redux` is only being used for `ImgView`
 
-### Nov 6, 2023
 update 10.1:
 - Removed `[target = "_blank"]` from anchors
 - Removed `#main` from `worksheet.scss`
@@ -135,13 +120,11 @@ update 10.1:
 - Made changes to `ImgView` component so contents are displayed properly
 - Added `TableComp` component which will be used to manage tables
 
-### Nov 5, 2023
 update 9.4:
 - All pages now get their sources list from the sources "database". Actual db will be implemented later.
 - Edited the 404 page.
 - Made minor changes to the loading screen file.
 
-### Nov 3, 2023
 update 9.3:
 - Made minor changes to `README.md`
 

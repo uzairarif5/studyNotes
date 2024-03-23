@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/studyNotes/static/css/main.9e7b2fc0.css",
-    "main.js": "/studyNotes/static/js/main.917ca144.js",
+    "main.css": "/studyNotes/static/css/main.35dd2825.css",
+    "main.js": "/studyNotes/static/js/main.99f02dc2.js",
     "static/media/24.gif": "/studyNotes/static/media/24.cab9ebe691aa21854d6e.gif",
     "static/media/c10.jpg": "/studyNotes/static/media/c10.321db55e0647fb44f7e2.jpg",
     "static/media/34.jpg": "/studyNotes/static/media/34.9e65a521e56b5ddfcd5b.jpg",
@@ -71,7 +71,7 @@
     "static/media/sem2.jpg": "/studyNotes/static/media/sem2.286f8cc492f733be16d7.jpg",
     "static/media/10.jpg": "/studyNotes/static/media/10.7d2d8b0a61d0d2befb03.jpg",
     "static/media/sem12.jpg": "/studyNotes/static/media/sem12.610cdc1a42334e0cf392.jpg",
-    "static/media/11.png": "/studyNotes/static/media/11.4a8ac3bd6f8ec3379e9a.png",
+    "static/media/11.png": "/studyNotes/static/media/11.45186071c74e99927880.png",
     "static/media/sem5.jpg": "/studyNotes/static/media/sem5.46fb7edfdc8bf56708ac.jpg",
     "static/media/6.png": "/studyNotes/static/media/6.32ab8a89f265cd03eafb.png",
     "static/media/sem23.jpg": "/studyNotes/static/media/sem23.b042b1c4c78a478562b8.jpg",
@@ -98,7 +98,7 @@
     "static/media/30.PNG": "/studyNotes/static/media/30.9fc2e034a3861d16c837.PNG",
     "static/media/13.png": "/studyNotes/static/media/13.cd3ca414ac0ed97bd6a2.png",
     "static/media/7.png": "/studyNotes/static/media/7.dbd9084ab0659f3436ac.png",
-    "static/media/1.png": "/studyNotes/static/media/1.40b90dbb57d5e7af7c8c.png",
+    "static/media/1.png": "/studyNotes/static/media/1.81ce757fee73c48cdab1.png",
     "static/media/27.png": "/studyNotes/static/media/27.8781792a00789c4cd260.png",
     "static/media/47.PNG": "/studyNotes/static/media/47.095fdd880f98c8af46b6.PNG",
     "static/media/78.PNG": "/studyNotes/static/media/78.680fc0d2ac66b23057b3.PNG",
@@ -141,7 +141,7 @@
     "static/media/58.PNG": "/studyNotes/static/media/58.61351cc4a2c236994fb9.PNG",
     "static/media/33.PNG": "/studyNotes/static/media/33.195cf7be7a106f290108.PNG",
     "static/media/42.PNG": "/studyNotes/static/media/42.9374d0ef4da5e475960c.PNG",
-    "static/media/3.png": "/studyNotes/static/media/3.6fed415755c0a77f174f.png",
+    "static/media/3.png": "/studyNotes/static/media/3.716b83444391a7b22b32.png",
     "static/media/57.PNG": "/studyNotes/static/media/57.2d4fcd73357cc3931dba.PNG",
     "static/media/37.PNG": "/studyNotes/static/media/37.07cd94451b5df9bcc93c.PNG",
     "static/media/16.PNG": "/studyNotes/static/media/16.c38bb93ff751d772dc10.PNG",
@@ -232,11 +232,11 @@
     "static/media/chevron-circle-down.svg": "/studyNotes/static/media/chevron-circle-down.8a60a703bfed4bd9817d1ae73580aaf4.svg",
     "static/media/chevron-circle-right.svg": "/studyNotes/static/media/chevron-circle-right.532bc421e0c14e30c18c656e9e9504f4.svg",
     "static/media/chevron-circle-left.svg": "/studyNotes/static/media/chevron-circle-left.2d3e0f78bfd93a22bb5f832d326b0137.svg",
-    "main.9e7b2fc0.css.map": "/studyNotes/static/css/main.9e7b2fc0.css.map",
-    "main.917ca144.js.map": "/studyNotes/static/js/main.917ca144.js.map"
+    "main.35dd2825.css.map": "/studyNotes/static/css/main.35dd2825.css.map",
+    "main.99f02dc2.js.map": "/studyNotes/static/js/main.99f02dc2.js.map"
   },
   "entrypoints": [
-    "static/css/main.9e7b2fc0.css",
-    "static/js/main.917ca144.js"
+    "static/css/main.35dd2825.css",
+    "static/js/main.99f02dc2.js"
   ]
 }

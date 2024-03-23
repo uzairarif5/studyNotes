@@ -38,5 +38,6 @@ export const sourceList = [<></>, <><a href='https://eng.libretexts.org/Bookshel
     <>An Introduction To R: <a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.html">https://cran.r-project.org/doc/manuals/r-release/R-intro.html</a></>,
     <><a href='https://en.wikibooks.org/wiki/R_Programming'>R Programming</a> from WikiBooks</>,
     <><a href='https://ocw.mit.edu/courses/6-050j-information-and-entropy-spring-2008'>Information and Entropy (6.050J)</a> course from MIT</>,
+    <><a href='https://mostlyharmlessstat.wixsite.com/webpage'>Mostly Harmless Statistics</a> by Rachel L. Webb</>,
     <></>,
 ]
