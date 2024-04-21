@@ -140,9 +140,10 @@
 
 			ul, ol{
 				counter-reset: listCounter;
+				padding-top: 1px;
+				padding-bottom: 1px;
 
 				ul, ol{
-					padding-bottom: 2px;
 					border: rgba(0,0,0,0.1) solid 1px;
 					li{
 						padding-bottom: 4px;

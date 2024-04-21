@@ -21,8 +21,8 @@ export const sourceList = [<></>, <><a href='https://eng.libretexts.org/Bookshel
     <><a href='https://goalkicker.com/AlgorithmsBook/'>Algorithms Notes for Professionals book</a> from goalkicker</>,
     <>ChatGPT</>,
     <div className="emailed"><a href='https://www.cse.iitd.ac.in/~srsarangi/archbooksoft.html'>Basic Computer Architecture</a> by Smruti R. Sarangi</div>,
-    <><a href='elearningfrench.com'>elearningfrench.com</a></>,
-    <><a href='optilingo.com/blog/french/french-pronouns/'>optilingo.com/blog/french/french-pronouns/</a></>,
+    <><a href='https://www.elearningfrench.com'>elearningfrench.com</a></>,
+    <><a href='https://www.optilingo.com/blog/french/french-pronouns/'>optilingo.com/blog/french/french-pronouns/</a></>,
     <>Madinah Arabic Book 2 from <a href='http://www.lqtoronto.com/madinaarabic.html'>lqtoronto</a></>,
     <div className="emailed">York University, AP/LING 3150 M (2023 Winter)</div>,
     <><a href='https://openstax.org/details/books/university-physics-volume-1'>University Physics (Vol 1)</a> from OpenStax</>,
@@ -39,5 +39,7 @@ export const sourceList = [<></>, <><a href='https://eng.libretexts.org/Bookshel
     <><a href='https://en.wikibooks.org/wiki/R_Programming'>R Programming</a> from WikiBooks</>,
     <><a href='https://ocw.mit.edu/courses/6-050j-information-and-entropy-spring-2008'>Information and Entropy (6.050J)</a> course from MIT</>,
     <><a href='https://mostlyharmlessstat.wixsite.com/webpage'>Mostly Harmless Statistics</a> by Rachel L. Webb</>,
-    <></>,
+    <><a href='https://www.lawlessfrench.com/products/progress-with-lawless-french/'>Progress with Lawless French</a></>,
+    <>Wiktionary</>,
+    <></>
 ]

@@ -86,7 +86,6 @@ const HomeCompMemo = memo(()=>{
 		<Link to="electrical_engineering/signals_and_systems">Signal And Systems</Link>
 		<h2>Computer Science (Advance Topics)</h2>
 		<Link to="computer_science_advance_topics/deep_learning">Deep Learning</Link>
-		<Link to="computer_science_advance_topics/data_mining">Data Mining</Link>
 		<h2>Tutorials</h2>
 		<Link to="tutorials/basics_of_r">Basics Of R</Link>
 		<h2>Blog</h2>

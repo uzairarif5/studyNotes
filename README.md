@@ -44,6 +44,9 @@ This is my first big project that uses React.js and Redux
 
 ## Updates:
 
+update 15.4:
+- Added content to `french.js`.
+
 update 15.3:
 - Added content to `probability_and_statics.js`.
 
