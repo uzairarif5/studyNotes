@@ -67,6 +67,7 @@ const HomeCompMemo = memo(()=>{
 		<Link to="language_learning/korean">Korean</Link>
 		<Link to="language_learning/japanese">Japanese</Link>
 		<h2>Mathematics</h2>
+		<Link to="mathematics/precalculus">Precalculus</Link>
 		<Link to="mathematics/number_theory">Number Theory</Link>
 		<Link to="mathematics/probability_and_statistics">Probability And Statistics</Link>
 		<Link to="mathematics/calculus">Calculus</Link>

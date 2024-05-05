@@ -2,8 +2,15 @@ import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import SubList from "../../articleRelatedStuff/SubList";
 import { TableDiv, TableLI } from "../../articleRelatedStuff/tableManager";
 
+/*
+elearningfrench: Basic french course part 2
+Progress with Lawless french: A2
+Introduction to French: not started
+Liberté: not started
+*/
+
 export const title = "French Notes";
-export const sourcesColor = {25: null, 16:null,24:null, 42:null, 43:null};
+export const sourcesColor = {25: null, 16: null, 24: null, 42: null, 43: null, 44: null, 45: null, 46: null};
 export const content = <>
 	<h1>French Notes</h1>
 	<div id="date"><b>Last Edit:</b> {document.lastModified}</div>
@@ -2189,52 +2196,6 @@ export const content = <>
 						</tbody></TableLI>
 					</SubList></li>
 				</SubList></li>
-				<li>The object pronoun <b>y</b> is invariable. It precedes the verb, except in the imperative affirmative:<SubList>
-					<li><b>Y</b> replaces <i>à + noun or pronoun</i>.</li>
-					<TableLI><thead><tr>
-							<th>French / Fran&ccedil;ais</th>
-							<th>English / Anglais</th>
-						</tr></thead>
-						<tbody><tr>
-							<td>Il travaille &agrave; la gare.</td>
-							<td>He works at the station.</td>
-						</tr>
-						<tr>
-							<td>Il&nbsp;y&nbsp;travaille.</td>
-							<td>He works there.</td>
-						</tr>
-						<tr>
-							<td>Est-il au bureau?</td>
-							<td>Is he at the office?</td>
-						</tr>
-						<tr>
-							<td>Y&nbsp;est-il?</td>
-							<td>Is he there?</td>
-						</tr>
-					</tbody></TableLI>
-					<li><b>Y</b> could be translated by 'of or about it' or 'of or about them', but should only refer to an animal or an inanimate object.</li>
-					<TableLI><thead><tr>
-							<th>French / Fran&ccedil;ais</th>
-							<th>English / Anglais</th>
-						</tr></thead>
-						<tbody><tr>
-							<td>Nous pensons aux vacances.</td>
-							<td>We think about the vacation.</td>
-						</tr>
-						<tr>
-							<td>Nous&nbsp;y&nbsp;pensons.</td>
-							<td>We think about it.</td>
-						</tr>
-						<tr>
-							<td>Nous pensons &agrave; la neige.</td>
-							<td>We&rsquo;re thinking about the snow.</td>
-						</tr>
-						<tr>
-							<td>Nous&nbsp;y&nbsp;pensons.</td>
-							<td>We&rsquo;re thinking about it.</td>
-						</tr>
-					</tbody></TableLI>
-				</SubList></li>
 			</ul>
 		</div>
 		<div style={{marginRight:"1%",width:"48%",float:"right"}}>
@@ -2326,6 +2287,357 @@ export const content = <>
 					</tr>
 					</tbody></TableLI>
 				</SubList></li>
+				<li>Expressions of quantity:<SubList>
+					<li>Noun expressing <b>quantity + de + Noun</b>:</li>
+					<TableLI>
+						<tbody>
+							<tr><td>Apportez-nous une carafe de vin rouge.</td></tr>
+						</tbody>
+					</TableLI>
+					<li>Adverb expressing <b>quantity + de + Noun:</b></li>
+					<TableLI>
+						<tbody><tr>
+						<td>J&apos;ai beaucoup de travail.</td>
+						<td>I&apos;ve got a lot of work.</td>
+					</tr>
+					<tr>
+						<td>J&apos;ai trop de travail.</td>
+						<td>I&apos;ve got too much work.</td>
+					</tr>
+					<tr>
+						<td>J&apos;ai tant de travail.</td>
+						<td>I&apos;ve got so much work.</td>
+					</tr>
+					<tr>
+						<td>J&apos;ai peu de travail.</td>
+						<td>I&apos;ve got little work.</td>
+					</tr>
+					<tr>
+						<td>J&apos;ai pas mal de travail.</td>
+						<td>I&apos;ve got quite a bit of work</td>
+					</tr>
+					</tbody></TableLI>
+					<li>When comparing quantities, <b>de</b> should precede both nouns:<SubList>
+						<TableLI>
+						<thead><tr>
+							<th colSpan="2">French / Fran&ccedil;ais</th>
+							<th>English / Anglais</th>
+							</tr></thead>
+							<tbody><tr>
+							<td>plus</td>
+							<td rowSpan="3">de&nbsp;+ Noun +&nbsp;que de&nbsp;+ Noun</td>
+							<td>more&nbsp;+ Noun +&nbsp;than&nbsp;+ Noun</td>
+							</tr>
+							<tr>
+							<td>moins</td>
+							<td>less&nbsp;+ Noun +&nbsp;than&nbsp;+ Noun</td>
+							</tr>
+							<tr>
+							<td>autant</td>
+							<td>as much + Noun + as + Noun</td>
+							</tr>
+						</tbody></TableLI>
+						<li>Il y a plus de vin rouge que de vin blanc.</li>
+						<li>Nous avons moins de malles que de valises.</li>
+					</SubList></li>
+					<li>If such expressions occur without a noun following, the verb should be preceded by <b>en</b>:<SubList>
+						<TableLI>
+						<thead><tr><th>With a noun following</th><th>Without a noun following</th></tr></thead>
+							<tbody><tr>
+								<td>Je voudrais une chambre avec salle de bains.</td>
+								<td>J&apos;en voudrais une avec salle de bains.</td>
+							</tr>
+							<tr>
+								<td>Je crois qu&apos;il y a un restaurant au coin de la rue.</td>
+								<td>Je crois qu&apos;il y en a un au coin de la rue.</td>
+							</tr>
+							<tr>
+								<td>J&apos;ai deux coins fen&ecirc;tres.</td>
+								<td>J&apos;en ai deux.</td>
+							</tr>
+							<tr>
+								<td>Voici trois mod&egrave;les en marron.</td>
+								<td>En voici trois en marron.</td>
+							</tr>
+							<tr>
+								<td>Donnez-moi quatre chemises.</td>
+								<td>Donnez-m&apos;en quatre.</td>
+							</tr>
+							<tr>
+								<td>Nous avons plusieurs chambres de libres.</td>
+								<td>Nous en avons plusieurs de libres.</td>
+							</tr>
+							<tr>
+								<td>N&apos;y a-t-il pas plusieurs restaurants dans le quartier?</td>
+								<td>N&apos;y en a-t-il pas plusieurs dans le quartier?</td>
+							</tr>
+							<tr>
+								<td>Nous avons quelques livres.</td>
+								<td>Nous en avons&nbsp;quelques-uns.</td>
+							</tr>
+							<tr>
+								<td>Nous avons quelques chemises.</td>
+								<td>Nous en avons quelques-unes.</td>
+							</tr>
+							<tr>
+								<td>Nous vendons beaucoup de chemises.</td>
+								<td>Nous en vendons beaucoup.</td>
+							</tr>
+						</tbody></TableLI>
+					</SubList></li>
+				</SubList></li>
+				<li>Expressing the close past:<SubList>
+					<li>Recent past actions are expressed with the phrase: venir de + [infinitif].</li>
+					<TableLI>
+						<tbody>
+							<tr><td>Je viens de finir mon livre</td><td>I've just finished my book</td></tr>
+							<tr><td>Tu viens de rater ton train.</td><td>You've just missed your train.</td></tr>
+							<tr><td>Laurent vient d'arriver à l'instant</td><td>Laurent has just arrived this instant</td></tr>
+						</tbody>
+					</TableLI>
+				</SubList></li>
+				<li>To tell the time on the hour:<SubList>
+					<li>To express "it is [time]", you use: "Il est + [heure]".</li>
+					<TableLI>
+						<tbody>
+							<tr><td>Il est dix heures.</td><td>It is ten o'clock.</td></tr>
+							<tr><td>Il est minuit.</td><td>It is midnight.</td></tr>
+							<tr><td>Il est midi.</td><td>It is noon.</td></tr>
+						</tbody>
+					</TableLI>
+					<li>To express "half past", you use: [number of hours] + heure(s) + et demie</li>
+					<TableLI>
+						<tbody>
+							<tr><td>Il est six heures et demie.</td><td>It is half past six.</td></tr>
+							<tr><td>Il est trois heures et demie.</td><td>It is half past three.</td></tr>
+						</tbody>
+					</TableLI>
+					<li>For <b>midi/minuit</b>, use <b>demi</b>:</li>
+					<TableLI>
+						<tbody>
+							<tr><td>Il est minuit et demi.</td><td>It is half past midnight.</td></tr>
+							<tr><td>Il est midi et demi.</td><td>It is half past noon.</td></tr>
+						</tbody>
+					</TableLI>
+					<li>To express "quarter past", you use: [number of hours] + heure(s) + et quart</li>
+					<li>To express "quarter to", you use: [number of hours] + heure(s) + moins le quart</li>
+					<TableLI>
+						<tbody>
+							<tr><td>Il est sept heures et quart.</td><td>It is quarter past seven.</td></tr>
+							<tr><td>Il est minuit et quart.</td><td>It is quarter past midnight.</td></tr>
+							<tr><td>Il est cinq heures moins le quart.</td><td>It is quarter to five.</td></tr>
+							<tr><td>Il est midi moins le quart.</td><td>It is quarter to twelve. (noon)</td></tr>
+						</tbody>
+					</TableLI>
+					<li>To express "quarter past", you use: [number of hours] + heure(s) + et quart</li>
+					<li>To express "quarter to", you use: [number of hours] + heure(s) + moins le quart</li>
+					<TableLI>
+						<tbody>
+							<tr><td>Il est sept heures et quart.</td><td>It is quarter past seven.</td></tr>
+							<tr><td>Il est midi moins le quart.</td><td>It is quarter to twelve.</td></tr>
+						</tbody>
+					</TableLI>
+					<li>You use <b>à ... heure</b> to say at what time something happens.</li>
+					<li><b>En</b> expresses the length of time something takes to be done.</li>
+					<li><b>Dans</b> indicates the time until something will happen.</li>
+					<TableLI>
+						<tbody>
+							<tr><td>Je vais manger à huit heures.</td><td>I will eat at eight o'clock.</td></tr>
+							<tr><td>Nous allons partir à midi.</td><td>We're going to leave at midday.</td></tr>
+							<tr><td>Nous mangerons dans une heure.</td><td>We will eat in an hour's time.</td></tr>
+							<tr><td>Nous avons mangé en 40 minutes.</td><td>We ate in forty minutes.</td></tr>
+						</tbody>
+					</TableLI>
+				</SubList></li>
+				<li>To express a time unit or a duration:<SubList>
+					<li>In French, there are two words to talk about the different moments of the day (<b>matin/matinée</b>, <b>soir/soirée</b>), days (<b>jour/journée</b>) and years (<b>an/année</b>).</li>
+					<li>When we talk about a day or the year as a time unit in which an action took place, we use the masculine forms.</li>
+					<li>When we consider a day or year in its duration, when we emphasise the length of time, we use the feminine forms.</li>
+					<TableLI>
+						<tbody>
+							<tr><td>Je prends le train le matin.</td><td>I take the train in the morning.</td></tr>
+							<tr><td>J'ai travaillé toute la matinée.</td><td>I worked the whole morning.</td></tr>
+							<tr><td>Le soir, je bois un verre avec mes amis.</td><td>In the evening, I have a drink with my friends.</td></tr>
+							<tr><td>Cette soirée s'est très bien passée.</td><td>That evening went very well.</td></tr>
+						</tbody>
+					</TableLI>
+				</SubList></li>
+				<li>To express timeliness:<SubList>
+					<li>To say that you are late/early/on time in French, you use the expressions: "(être) en retard", "(être) en avance" or "(être) à l'heure".</li>
+					<TableLI>
+						<tbody>
+							<tr><td>Je suis désolé d'être en retard.</td><td>I'm sorry I'm late.</td></tr>
+							<tr><td>Je ne suis jamais à l'heure!</td><td>I am never on time!</td></tr>
+						</tbody>
+					</TableLI>
+					<li>To indicate the degree of timeliness (to be [5 minutes] late/early) in French, you can use these two expressions:<SubList>
+						<li><u>late:</u> avoir [5 minutes] de  retard OR être en retard de [5 minutes]</li>
+						<li><u>early:</u> avoir [5 minutes] d'avance OR être en avance de [5 minutes]</li>
+						<TableLI>
+							<tbody>
+								<tr><td>Notre train a été en retard de 2 heures à cause de la neige.</td><td>Our train was two hours late because of the snow.</td></tr>
+								<tr><td>tu as vingt minutes d'avance</td><td>you are twenty minutes early</td></tr>
+							</tbody>
+						</TableLI>
+					</SubList></li>
+					<li>In sentences with <b>arriver/venir/commencer/finir</b>:<SubList>
+						<li>"avec [5 minutes] de retard" / "avec [5 minutes] d'avance" or "[5 minutes] en retard" / "[5 minutes] en avance".</li>
+						<TableLI>
+							<tbody>
+								<tr><td>Je suis arrivé avec dix minutes de retard.<br/>Je suis arrivé dix minutes en retard.</td><td>I arrived ten minutes late.</td></tr>
+								<tr><td>Le concert a fini avec une heure de retard.<br/>Le concert a fini une heure en retard.</td><td>The concert ended one hour late.</td></tr>
+							</tbody>
+						</TableLI>
+					</SubList></li>
+				</SubList></li>
+				<li>Decimal and currency:<SubList>
+					<li>In French, commas are used where decimal points are in English!</li>
+					<TableLI>
+						<thead>
+							<tr><th>French</th><th>English</th></tr>
+						</thead>
+						<tbody>
+							<tr><td>19,99</td><td>19.99</td></tr>
+							<tr><td>18000,99</td><td>18,000.99</td></tr>
+						</tbody>
+					</TableLI>
+					<li>The currency sign is written after the price. If the value is a price in euros, you may write the Euro sign (€) in place of the decimal point:</li>
+					<TableLI>
+						<thead>
+							<tr><th>French</th><th>English</th></tr>
+						</thead>
+						<tbody>
+							<tr><td>66,50 £</td><td>£ 66.50</td></tr>
+							<tr><td>20 000 $</td><td>$ 20,000</td></tr>
+							<tr><td>5,67€</td><td>€5.67</td></tr>
+							<tr><td>5€67</td><td>€5.67</td></tr>
+						</tbody>
+					</TableLI>
+				</SubList></li>
+				<li>Ordinal numbers:<SubList>
+					<TableLI>
+						<tbody>
+							<tr><td>First</td><td>premier (m) / première (f)</td></tr>
+							<tr><td>Second</td><td>deuxième<br/>second (m) / seconde (f)</td></tr>
+							<tr><td>Third</td><td>troisième</td></tr>
+							<tr><td>Fourth</td><td>quatrième</td></tr>
+							<tr><td>Fifth</td><td>cinquième</td></tr>
+							<tr><td>Sixth</td><td>sixième</td></tr>
+							<tr><td>Ninth</td><td>neuvième</td></tr>
+						</tbody>
+					</TableLI>
+					<li>Cardinal numbers (deux, trois, quatre...) are used for royalty in French where ordinals (second, third, fourth...) are used in English.</li>
+					<TableLI>
+						<tbody>
+							<tr><td>Elisabeth deux est la reine d'Angleterre.</td><td>Elisabeth the second is queen of England.</td></tr>
+							<tr><td>Louis quatorze était surnommé Le Roi Soleil.</td><td>Louis the fourteenth's nickname was The Sun King.</td></tr>
+						</tbody>
+					</TableLI>
+				</SubList></li>
+				<li>Talking about leisure activities:<SubList>
+					<li>To describe which musical instrument you play, you can "jouer + de + definite article (le/la/l'/les) + [instrument]".</li>
+					<TableLI>
+						<tbody>
+							<tr><td>Je joue de la guitare.</td><td>I play the guitar.</td></tr>
+							<tr><td>Elle joue du violon.</td><td>She plays violin.</td></tr>
+						</tbody>
+					</TableLI>
+					<li>With sports, you use either <b>faire de</b> and <b>jouer à</b>.</li>
+					<TableLI>
+						<tbody>
+							<tr><td>Je fais du sport tous les jours.</td><td>I do sport every day.</td></tr>
+							<tr><td>Tu fais de la natation.</td><td>You swim (regularly / in a club).</td></tr>
+							<tr><td>Je fais du ski quand je suis dans les Alpes.</td><td>I ski when I'm in the Alps.</td></tr>
+							<tr><td>Je skie avec ma famille.</td><td>I'm skiing with my family.</td></tr>
+						</tbody>
+					</TableLI>
+					<li>English has two present tenses: I dance (simple), and I am dancing (continuous). French has no present continuous tense, so we use <b>faire de</b> to distinguish the regular activity that you do, from the one-off activity you are doing.</li>
+					<TableLI>
+						<tbody>
+							<tr><td>Ils jouent au basket.</td><td>They play basketball.</td></tr>
+							<tr><td>Je joue aux échecs</td><td>I paly chess.</td></tr>
+						</tbody>
+					</TableLI>
+				</SubList></li>
+				<li>Expressing ongoing actions:<SubList>
+					<li>Use the expression: <b>être + en train de + [infinitive]</b>.</li>
+					<TableLI>
+						<tbody>
+							<tr><td>Elle est en train de faire ses devoirs</td><td>She is doing her homework</td></tr>
+						</tbody>
+					</TableLI>
+				</SubList></li>
+				<li>To be afraid/scared:<SubList>
+					<li>Use the expression <b>avoir peur de</b>.</li>
+					<TableLI>
+						<tbody>
+							<tr><td>Elle a peur des araignées</td><td>She is scared of spiders.</td></tr>
+							<tr><td>J'ai peur de tomber</td><td>I'm scared of falling</td></tr>
+						</tbody>
+					</TableLI>
+				</SubList></li>
+				<li>"ça y est":<SubList>
+					<li>The expression "ça y est" (literally 'that is there') is used to emphasise a sense of relief after an action's been completed: that's it, it's done, finally!</li>
+					<TableLI>
+						<tbody>
+							<tr><td>Tu as fini ton repas ? - Oui, ça y est!</td><td>Have you finished your meal? - Yes, it's done!</td></tr>
+						</tbody>
+					</TableLI>
+				</SubList></li>
+				<li>The object pronoun <b>y</b> is invariable. It precedes the verb, except in the imperative affirmative:<SubList>
+					<li><b>Y</b> replaces <i>à + noun or pronoun</i>.</li>
+					<TableLI><thead><tr>
+							<th>French / Fran&ccedil;ais</th>
+							<th>English / Anglais</th>
+						</tr></thead>
+						<tbody><tr>
+							<td>Il travaille &agrave; la gare.</td>
+							<td>He works at the station.</td>
+						</tr>
+						<tr>
+							<td>Il&nbsp;y&nbsp;travaille.</td>
+							<td>He works there.</td>
+						</tr>
+						<tr>
+							<td>Est-il au bureau?</td>
+							<td>Is he at the office?</td>
+						</tr>
+						<tr>
+							<td>Y&nbsp;est-il?</td>
+							<td>Is he there?</td>
+						</tr>
+					</tbody></TableLI>
+					<li><b>Y</b> could be translated by 'of or about it' or 'of or about them', but should only refer to an animal or an inanimate object.</li>
+					<TableLI><thead><tr>
+							<th>French / Fran&ccedil;ais</th>
+							<th>English / Anglais</th>
+						</tr></thead>
+						<tbody><tr>
+							<td>Nous pensons aux vacances.</td>
+							<td>We think about the vacation.</td>
+						</tr>
+						<tr>
+							<td>Nous&nbsp;y&nbsp;pensons.</td>
+							<td>We think about it.</td>
+						</tr>
+						<tr>
+							<td>Nous pensons &agrave; la neige.</td>
+							<td>We&rsquo;re thinking about the snow.</td>
+						</tr>
+						<tr>
+							<td>Nous&nbsp;y&nbsp;pensons.</td>
+							<td>We&rsquo;re thinking about it.</td>
+						</tr>
+					</tbody></TableLI>
+				</SubList></li>
+			</ul>
+		</div>
+	</div>
+
+	<h2 id="Beginner4">Beginner Part 4</h2>
+	<div className="content">
+		<div style={{marginLeft:"1%",width:"48%",float:"left"}}>
+			<ul>
 				<li>A past tense called the <b>Passé Composé</b> is composed of the present of the auxiliary <b>avoir</b> (to have) or <b>être</b> (to be) followed by a past participle.</li>
 				<li>The Passé Composé of the verbs conjugated with the auxiliary <b>avoir</b>:<SubList>
 					<TableLI><thead><tr>
@@ -2782,209 +3094,6 @@ export const content = <>
 					</tbody></TableLI>
 					</SubList></li>
 				</SubList></li>
-				<li>Expressions of quantity:<SubList>
-					<li>Noun expressing <b>quantity + de + Noun</b>:</li>
-					<TableLI>
-						<tbody>
-							<tr><td>Apportez-nous une carafe de vin rouge.</td></tr>
-						</tbody>
-					</TableLI>
-					<li>Adverb expressing <b>quantity + de + Noun:</b></li>
-					<TableLI>
-						<tbody><tr>
-						<td>J&apos;ai beaucoup de travail.</td>
-						<td>I&apos;ve got a lot of work.</td>
-					</tr>
-					<tr>
-						<td>J&apos;ai trop de travail.</td>
-						<td>I&apos;ve got too much work.</td>
-					</tr>
-					<tr>
-						<td>J&apos;ai tant de travail.</td>
-						<td>I&apos;ve got so much work.</td>
-					</tr>
-					<tr>
-						<td>J&apos;ai peu de travail.</td>
-						<td>I&apos;ve got little work.</td>
-					</tr>
-					<tr>
-						<td>J&apos;ai pas mal de travail.</td>
-						<td>I&apos;ve got quite a bit of work</td>
-					</tr>
-					</tbody></TableLI>
-					<li>When comparing quantities, <b>de</b> should precede both nouns:<SubList>
-						<TableLI>
-						<thead><tr>
-							<th colSpan="2">French / Fran&ccedil;ais</th>
-							<th>English / Anglais</th>
-							</tr></thead>
-							<tbody><tr>
-							<td>plus</td>
-							<td rowSpan="3">de&nbsp;+ Noun +&nbsp;que de&nbsp;+ Noun</td>
-							<td>more&nbsp;+ Noun +&nbsp;than&nbsp;+ Noun</td>
-							</tr>
-							<tr>
-							<td>moins</td>
-							<td>less&nbsp;+ Noun +&nbsp;than&nbsp;+ Noun</td>
-							</tr>
-							<tr>
-							<td>autant</td>
-							<td>as much + Noun + as + Noun</td>
-							</tr>
-						</tbody></TableLI>
-						<li>Il y a plus de vin rouge que de vin blanc.</li>
-						<li>Nous avons moins de malles que de valises.</li>
-					</SubList></li>
-					<li>If such expressions occur without a noun following, the verb should be preceded by <b>en</b>:<SubList>
-						<TableLI>
-						<thead><tr><th>With a noun following</th><th>Without a noun following</th></tr></thead>
-							<tbody><tr>
-								<td>Je voudrais une chambre avec salle de bains.</td>
-								<td>J&apos;en voudrais une avec salle de bains.</td>
-							</tr>
-							<tr>
-								<td>Je crois qu&apos;il y a un restaurant au coin de la rue.</td>
-								<td>Je crois qu&apos;il y en a un au coin de la rue.</td>
-							</tr>
-							<tr>
-								<td>J&apos;ai deux coins fen&ecirc;tres.</td>
-								<td>J&apos;en ai deux.</td>
-							</tr>
-							<tr>
-								<td>Voici trois mod&egrave;les en marron.</td>
-								<td>En voici trois en marron.</td>
-							</tr>
-							<tr>
-								<td>Donnez-moi quatre chemises.</td>
-								<td>Donnez-m&apos;en quatre.</td>
-							</tr>
-							<tr>
-								<td>Nous avons plusieurs chambres de libres.</td>
-								<td>Nous en avons plusieurs de libres.</td>
-							</tr>
-							<tr>
-								<td>N&apos;y a-t-il pas plusieurs restaurants dans le quartier?</td>
-								<td>N&apos;y en a-t-il pas plusieurs dans le quartier?</td>
-							</tr>
-							<tr>
-								<td>Nous avons quelques livres.</td>
-								<td>Nous en avons&nbsp;quelques-uns.</td>
-							</tr>
-							<tr>
-								<td>Nous avons quelques chemises.</td>
-								<td>Nous en avons quelques-unes.</td>
-							</tr>
-							<tr>
-								<td>Nous vendons beaucoup de chemises.</td>
-								<td>Nous en vendons beaucoup.</td>
-							</tr>
-						</tbody></TableLI>
-					</SubList></li>
-				</SubList></li>
-				<li>Expressing the close past:<SubList>
-					<li>Recent past actions are expressed with the phrase: venir de + [infinitif].</li>
-					<TableLI>
-						<tbody>
-							<tr><td>Je viens de finir mon livre</td><td>I've just finished my book</td></tr>
-							<tr><td>Tu viens de rater ton train.</td><td>You've just missed your train.</td></tr>
-							<tr><td>Laurent vient d'arriver à l'instant</td><td>Laurent has just arrived this instant</td></tr>
-						</tbody>
-					</TableLI>
-				</SubList></li>
-				<li>To tell the time on the hour:<SubList>
-					<li>To express "it is [time]", you use: "Il est + [heure]".</li>
-					<TableLI>
-						<tbody>
-							<tr><td>Il est dix heures.</td><td>It is ten o'clock.</td></tr>
-							<tr><td>Il est minuit.</td><td>It is midnight.</td></tr>
-							<tr><td>Il est midi.</td><td>It is noon.</td></tr>
-						</tbody>
-					</TableLI>
-					<li>To express "half past", you use: [number of hours] + heure(s) + et demie</li>
-					<TableLI>
-						<tbody>
-							<tr><td>Il est six heures et demie.</td><td>It is half past six.</td></tr>
-							<tr><td>Il est trois heures et demie.</td><td>It is half past three.</td></tr>
-						</tbody>
-					</TableLI>
-					<li>For <b>midi/minuit</b>, use <b>demi</b>:</li>
-					<TableLI>
-						<tbody>
-							<tr><td>Il est minuit et demi.</td><td>It is half past midnight.</td></tr>
-							<tr><td>Il est midi et demi.</td><td>It is half past noon.</td></tr>
-						</tbody>
-					</TableLI>
-					<li>To express "quarter past", you use: [number of hours] + heure(s) + et quart</li>
-					<li>To express "quarter to", you use: [number of hours] + heure(s) + moins le quart</li>
-					<TableLI>
-						<tbody>
-							<tr><td>Il est sept heures et quart.</td><td>It is quarter past seven.</td></tr>
-							<tr><td>Il est minuit et quart.</td><td>It is quarter past midnight.</td></tr>
-							<tr><td>Il est cinq heures moins le quart.</td><td>It is quarter to five.</td></tr>
-							<tr><td>Il est midi moins le quart.</td><td>It is quarter to twelve. (noon)</td></tr>
-						</tbody>
-					</TableLI>
-					<li>To express "quarter past", you use: [number of hours] + heure(s) + et quart</li>
-					<li>To express "quarter to", you use: [number of hours] + heure(s) + moins le quart</li>
-					<TableLI>
-						<tbody>
-							<tr><td>Il est sept heures et quart.</td><td>It is quarter past seven.</td></tr>
-							<tr><td>Il est midi moins le quart.</td><td>It is quarter to twelve.</td></tr>
-						</tbody>
-					</TableLI>
-					<li>You use <b>à ... heure</b> to say at what time something happens.</li>
-					<li><b>En</b> expresses the length of time something takes to be done.</li>
-					<li><b>Dans</b> indicates the time until something will happen.</li>
-					<TableLI>
-						<tbody>
-							<tr><td>Je vais manger à huit heures.</td><td>I will eat at eight o'clock.</td></tr>
-							<tr><td>Nous allons partir à midi.</td><td>We're going to leave at midday.</td></tr>
-							<tr><td>Nous mangerons dans une heure.</td><td>We will eat in an hour's time.</td></tr>
-							<tr><td>Nous avons mangé en 40 minutes.</td><td>We ate in forty minutes.</td></tr>
-						</tbody>
-					</TableLI>
-				</SubList></li>
-				<li>To express a time unit or a duration:<SubList>
-					<li>In French, there are two words to talk about the different moments of the day (<b>matin/matinée</b>, <b>soir/soirée</b>), days (<b>jour/journée</b>) and years (<b>an/année</b>).</li>
-					<li>When we talk about a day or the year as a time unit in which an action took place, we use the masculine forms.</li>
-					<li>When we consider a day or year in its duration, when we emphasise the length of time, we use the feminine forms.</li>
-					<TableLI>
-						<tbody>
-							<tr><td>Je prends le train le matin.</td><td>I take the train in the morning.</td></tr>
-							<tr><td>J'ai travaillé toute la matinée.</td><td>I worked the whole morning.</td></tr>
-							<tr><td>Le soir, je bois un verre avec mes amis.</td><td>In the evening, I have a drink with my friends.</td></tr>
-							<tr><td>Cette soirée s'est très bien passée.</td><td>That evening went very well.</td></tr>
-						</tbody>
-					</TableLI>
-				</SubList></li>
-				<li>To express timeliness:<SubList>
-					<li>To say that you are late/early/on time in French, you use the expressions: "(être) en retard", "(être) en avance" or "(être) à l'heure".</li>
-					<TableLI>
-						<tbody>
-							<tr><td>Je suis désolé d'être en retard.</td><td>I'm sorry I'm late.</td></tr>
-							<tr><td>Je ne suis jamais à l'heure!</td><td>I am never on time!</td></tr>
-						</tbody>
-					</TableLI>
-					<li>To indicate the degree of timeliness (to be [5 minutes] late/early) in French, you can use these two expressions:<SubList>
-						<li><u>late:</u> avoir [5 minutes] de  retard OR être en retard de [5 minutes]</li>
-						<li><u>early:</u> avoir [5 minutes] d'avance OR être en avance de [5 minutes]</li>
-						<TableLI>
-							<tbody>
-								<tr><td>Notre train a été en retard de 2 heures à cause de la neige.</td><td>Our train was two hours late because of the snow.</td></tr>
-								<tr><td>tu as vingt minutes d'avance</td><td>you are twenty minutes early</td></tr>
-							</tbody>
-						</TableLI>
-					</SubList></li>
-					<li>In sentences with <b>arriver/venir/commencer/finir</b>:<SubList>
-						<li>"avec [5 minutes] de retard" / "avec [5 minutes] d'avance" or "[5 minutes] en retard" / "[5 minutes] en avance".</li>
-						<TableLI>
-							<tbody>
-								<tr><td>Je suis arrivé avec dix minutes de retard.<br/>Je suis arrivé dix minutes en retard.</td><td>I arrived ten minutes late.</td></tr>
-								<tr><td>Le concert a fini avec une heure de retard.<br/>Le concert a fini une heure en retard.</td><td>The concert ended one hour late.</td></tr>
-							</tbody>
-						</TableLI>
-					</SubList></li>
-				</SubList></li>
 				<li>There are two types of verb phrases: The <b>past participle</b> verb phrases and the <b>infinitive</b> verb phrases.</li>
 				<li>Some verbs often followed by an infinitive:<SubList>
 					<TableLI>
@@ -3115,174 +3224,6 @@ export const content = <>
 								<td>Oui, j&apos;en fais.</td>
 								<td>Yes, I do.</td>
 							</tr>
-						</tbody>
-					</TableLI>
-				</SubList></li>
-				<li>Expanded Noun Phrases:<SubList>
-					<TableLI>
-							<thead>
-								<tr>
-									<th colSpan="7" rowSpan="1" scope="col">Order of expanded noun phrases</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td colSpan="1" rowSpan="5">tout</td>
-									<td>le, la</td>
-									<td colSpan="1" rowSpan="4">
-										(cardinal number)
-									</td>
-									<td colSpan="1" rowSpan="4">
-										m&ecirc;me
-									</td>
-									<td colSpan="1" rowSpan="12">
-										autre<br/>(ordinal number)
-									</td>
-									<td>beau</td>
-									<td colSpan="1" rowSpan="12">Noun</td>
-								</tr>
-								<tr>
-									<td>ce</td>
-									<td>bon</td>
-								</tr>
-								<tr>
-									<td>mon</td>
-									<td>faux</td>
-								</tr>
-								<tr>
-									<td>quel</td>
-									<td>grand</td>
-								</tr>
-								<tr>
-									<td colSpan="3" rowSpan="1">un</td>
-									<td>gros</td>
-								</tr>
-								<tr>
-									<td colSpan="4" rowSpan="7">
-										chaque, quelques, plusieurs
-									</td>
-									<td>jeune</td>
-								</tr>
-								<tr>
-									<td>joli</td>
-								</tr>
-								<tr>
-									<td>mauvais</td>
-								</tr>
-								<tr>
-									<td>nouveau</td>
-								</tr>
-								<tr>
-									<td>petit</td>
-								</tr>
-								<tr>
-									<td>vieux</td>
-								</tr>
-								<tr>
-									<td>vrai</td>
-								</tr>
-						</tbody>
-					</TableLI>
-				</SubList></li>
-			</ul>
-		</div>
-	</div>
-
-	<h2 id="Beginner4">Beginner Part 4</h2>
-	<div className="content">
-		<div style={{marginLeft:"1%",width:"48%",float:"left"}}>
-			<ul>
-				<li>Decimal and currency:<SubList>
-					<li>In French, commas are used where decimal points are in English!</li>
-					<TableLI>
-						<thead>
-							<tr><th>French</th><th>English</th></tr>
-						</thead>
-						<tbody>
-							<tr><td>19,99</td><td>19.99</td></tr>
-							<tr><td>18000,99</td><td>18,000.99</td></tr>
-						</tbody>
-					</TableLI>
-					<li>The currency sign is written after the price. If the value is a price in euros, you may write the Euro sign (€) in place of the decimal point:</li>
-					<TableLI>
-						<thead>
-							<tr><th>French</th><th>English</th></tr>
-						</thead>
-						<tbody>
-							<tr><td>66,50 £</td><td>£ 66.50</td></tr>
-							<tr><td>20 000 $</td><td>$ 20,000</td></tr>
-							<tr><td>5,67€</td><td>€5.67</td></tr>
-							<tr><td>5€67</td><td>€5.67</td></tr>
-						</tbody>
-					</TableLI>
-				</SubList></li>
-				<li>Ordinal numbers:<SubList>
-					<TableLI>
-						<tbody>
-							<tr><td>First</td><td>premier (m) / première (f)</td></tr>
-							<tr><td>Second</td><td>deuxième<br/>second (m) / seconde (f)</td></tr>
-							<tr><td>Third</td><td>troisième</td></tr>
-							<tr><td>Fourth</td><td>quatrième</td></tr>
-							<tr><td>Fifth</td><td>cinquième</td></tr>
-							<tr><td>Sixth</td><td>sixième</td></tr>
-							<tr><td>Ninth</td><td>neuvième</td></tr>
-						</tbody>
-					</TableLI>
-					<li>Cardinal numbers (deux, trois, quatre...) are used for royalty in French where ordinals (second, third, fourth...) are used in English.</li>
-					<TableLI>
-						<tbody>
-							<tr><td>Elisabeth deux est la reine d'Angleterre.</td><td>Elisabeth the second is queen of England.</td></tr>
-							<tr><td>Louis quatorze était surnommé Le Roi Soleil.</td><td>Louis the fourteenth's nickname was The Sun King.</td></tr>
-						</tbody>
-					</TableLI>
-				</SubList></li>
-				<li>Talking about leisure activities:<SubList>
-					<li>To describe which musical instrument you play, you can "jouer + de + definite article (le/la/l'/les) + [instrument]".</li>
-					<TableLI>
-						<tbody>
-							<tr><td>Je joue de la guitare.</td><td>I play the guitar.</td></tr>
-							<tr><td>Elle joue du violon.</td><td>She plays violin.</td></tr>
-						</tbody>
-					</TableLI>
-					<li>With sports, you use either <b>faire de</b> and <b>jouer à</b>.</li>
-					<TableLI>
-						<tbody>
-							<tr><td>Je fais du sport tous les jours.</td><td>I do sport every day.</td></tr>
-							<tr><td>Tu fais de la natation.</td><td>You swim (regularly / in a club).</td></tr>
-							<tr><td>Je fais du ski quand je suis dans les Alpes.</td><td>I ski when I'm in the Alps.</td></tr>
-							<tr><td>Je skie avec ma famille.</td><td>I'm skiing with my family.</td></tr>
-						</tbody>
-					</TableLI>
-					<li>English has two present tenses: I dance (simple), and I am dancing (continuous). French has no present continuous tense, so we use <b>faire de</b> to distinguish the regular activity that you do, from the one-off activity you are doing.</li>
-					<TableLI>
-						<tbody>
-							<tr><td>Ils jouent au basket.</td><td>They play basketball.</td></tr>
-							<tr><td>Je joue aux échecs</td><td>I paly chess.</td></tr>
-						</tbody>
-					</TableLI>
-				</SubList></li>
-				<li>Expressing ongoing actions:<SubList>
-					<li>Use the expression: <b>être + en train de + [infinitive]</b>.</li>
-					<TableLI>
-						<tbody>
-							<tr><td>Elle est en train de faire ses devoirs</td><td>She is doing her homework</td></tr>
-						</tbody>
-					</TableLI>
-				</SubList></li>
-				<li>To be afraid/scared:<SubList>
-					<li>Use the expression <b>avoir peur de</b>.</li>
-					<TableLI>
-						<tbody>
-							<tr><td>Elle a peur des araignées</td><td>She is scared of spiders.</td></tr>
-							<tr><td>J'ai peur de tomber</td><td>I'm scared of falling</td></tr>
-						</tbody>
-					</TableLI>
-				</SubList></li>
-				<li>"ça y est":<SubList>
-					<li>The expression "ça y est" (literally 'that is there') is used to emphasise a sense of relief after an action's been completed: that's it, it's done, finally!</li>
-					<TableLI>
-						<tbody>
-							<tr><td>Tu as fini ton repas ? - Oui, ça y est!</td><td>Have you finished your meal? - Yes, it's done!</td></tr>
 						</tbody>
 					</TableLI>
 				</SubList></li>

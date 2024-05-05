@@ -247,7 +247,7 @@
 						color:#200;
 						vertical-align: middle;
 					}
-					thead th{
+					thead th, th[scope="col"]{
 						text-align: center;
 					}
 					td{

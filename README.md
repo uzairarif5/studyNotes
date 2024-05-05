@@ -44,6 +44,9 @@ This is my first big project that uses React.js and Redux
 
 ## Updates:
 
+update 15.5:
+- Added `precalculus.js` and changed the content of `calculus.js`.
+
 update 15.4:
 - Added content to `french.js`.
 

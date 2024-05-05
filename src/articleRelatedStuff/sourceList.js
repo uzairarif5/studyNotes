@@ -41,5 +41,7 @@ export const sourceList = [<></>, <><a href='https://eng.libretexts.org/Bookshel
     <><a href='https://mostlyharmlessstat.wixsite.com/webpage'>Mostly Harmless Statistics</a> by Rachel L. Webb</>,
     <><a href='https://www.lawlessfrench.com/products/progress-with-lawless-french/'>Progress with Lawless French</a></>,
     <>Wiktionary</>,
-    <></>
+    <><a href='https://ecampusontario.pressbooks.pub/french/'>Introduction to French</a> by Rita Palacios</>,
+    <><a href='https://dn720001.ca.archive.org/0/items/liberte-complete-july-2022/Liberte_Complete_July_2022.pdf'>Liberté</a> by Gretchen Angelo</>,
+    <>French OER (1 - 4) (Carrasco, Zahedi, and Parrish), available <a href='https://human.libretexts.org/Bookshelves/Languages/French'>here</a></>
 ]
