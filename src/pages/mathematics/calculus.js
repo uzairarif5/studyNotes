@@ -64,19 +64,19 @@ export const content = <>
 						<TableLI>
 							<caption>Intuitive Definition of an Infinite Limit</caption>
 							<tbody>
-								<tr><th colspan={2} scope={"col"}>From The Left Side</th></tr>
+								<tr><th colSpan={2} scope={"col"}>From The Left Side</th></tr>
 								<tr><td>
 									We write \[{"\\lim_{x \\to a^-} f(x) = \\infty "}\] to mean if the values of \(f(x)\) increase without bound as the values of \(x\) (where \(x \lt a\)) approach the number \(a\), then we say that the limit as \(x\) approaches \(a\) from the left is positive infinity.
 									<br/>
 									Similarly, \[{"\\lim_{x \\to a^-} f(x) = -\\infty "}\] means that if the values of \(f(x)\) decrease without bound as the values of \(x\) (where \(x \lt a\)) approach the number \(a\), then we say that the limit as \(x\) approaches \(a\) from the left is negative infinity.
 								</td></tr>
-								<tr><th colspan={2} scope={"col"}>From The Right Side</th></tr>
+								<tr><th colSpan={2} scope={"col"}>From The Right Side</th></tr>
 								<tr><td>
 									We write \[{"\\lim_{x \\to a^+} f(x) = \\infty "}\] to mean if the values of \(f(x)\) increase without bound as the values of \(x\) (where \(x \gt a\)) approach the number \(a\), then we say that the limit as \(x\) approaches \(a\) from the right is positive infinity.
 									<br/>
 									Similarly, \[{"\\lim_{x \\to a^+} f(x) = -\\infty "}\] means that if the values of \(f(x)\) decrease without bound as the values of \(x\) (where \(x \gt a\)) approach the number \(a\), then we say that the limit as \(x\) approaches \(a\) from the right is negative infinity.
 								</td></tr>
-								<tr><th colspan={2} scope={"col"}>Two-Sided Limits</th></tr>
+								<tr><th colSpan={2} scope={"col"}>Two-Sided Limits</th></tr>
 								<tr><td>
 									We write \[{"\\lim_{x \\to a} f(x) = \\infty "}\] to mean if the values of \(f(x)\) increase without bound as the values of \(x\) approach the number \(a\), then we say that the limit as \(x\) approaches \(a\) is positive infinity.
 									<br/>

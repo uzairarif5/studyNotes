@@ -44,6 +44,9 @@ This is my first big project that uses React.js and Redux
 
 ## Updates:
 
+update 15.6:
+- Hovering mouse on the article would now show the source.
+
 update 15.5:
 - Added `precalculus.js` and changed the content of `calculus.js`.
 

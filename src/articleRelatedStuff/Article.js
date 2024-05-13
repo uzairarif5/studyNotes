@@ -12,6 +12,8 @@ import styles from "../variables.module.scss";
 import { useNavigate } from "react-router-dom";
 import store from "../store";
 import { FORM_COUNTER } from "../actions";
+import { sourceList } from './sourceList.js';
+import { onlyText } from 'react-children-utilities';
 
 class Article extends React.Component {
 	static lastSavedScrollY = 0;
@@ -23,7 +25,7 @@ class Article extends React.Component {
 			payload: 0
 		});
 		showLoadingScreen();
-		this.sourcesList = [];
+		this.sourcesColor = [];
 		this.mainEl = document.getElementById("main");
 		this.pathnameToUse = window.location.pathname.substring("/studyNotes".length);
 		this.wholeContent = null;
@@ -85,7 +87,7 @@ class Article extends React.Component {
 				}
 				return arr;
 			},[]);
-			this.sourcesList = this.wholeContent.sourcesColor;
+			this.sourcesColor = this.wholeContent.sourcesColor;
 			let additionalResourcesHeader = 
 			(subChildren[1].props.id === "additionalResources") ? <h4>Additional Resources:</h4> : null;
 			//finalize return value
@@ -139,10 +141,12 @@ class Article extends React.Component {
 				//Add scroll functionality
 				this.mainEl.addEventListener("scroll",this.scrollFunc);
 				//colorSources
-				let sl = this.sourcesList;
+				let sc = this.sourcesColor;
 				$('[data-source]').each(function(){
 					let curList = $(this);
-					curList.css("background-color", sl[parseInt(curList.attr("data-source"))]);
+					let num = parseInt(curList.attr("data-source"));
+					curList.css("background-color", sc[num]);
+					curList.attr("title","Source: " + onlyText(sourceList[num]));
 				});
 				//Format MathJax
 				window.MathJax.typesetPromise();
