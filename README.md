@@ -10,39 +10,42 @@ This is my first big project that uses React.js and Redux
 - Some study notes may have a worksheet link in the footer, clicking on it will send you to a built-in worksheet page (from Worksheet.js [3])
 
 <table><tbody>
-    <tr>
-        <td>[1] First page screenshot:<br/><br/><img
-            src="website_screenshots/home.png"
-            style="width: 50%;border: solid #612 2px"
-        /></td>
-    </tr>
-    <tr>
-        <td>
-            [2] Study notes page screenshots:<br/><br/>
-            <img
-                src="website_screenshots/history_of_science.png"
-                style="border: solid #612 2px; float: left; width:45%;margin-left:1%"
-            />
-            <img
-                src="website_screenshots/probability_and_statistics.png"
-                style="border: solid #612 2px; float: right; width:51%;margin-right:1%"
-            />
-        </td>
-    </tr>
-    <tr><td>
-        [3] Worksheet screenshots:<br/><br/>
-        <img
-            src="website_screenshots/worksheet1.png"
-            style="float: left; width:48%; margin-left: 1%;border: solid #612 2px"
-        />
-        <img
-            src="website_screenshots/worksheet2.png"
-            style="float: right; width:48%; margin-right: 1%;border: solid #612 2px"
-        />
-    </td></tr>
+	<tr>
+		<td>[1] First page screenshot:<br/><br/><img
+			src="website_screenshots/home.png"
+			style="width: 50%;border: solid #612 2px"
+		/></td>
+	</tr>
+	<tr>
+		<td>
+			[2] Study notes page screenshots:<br/><br/>
+			<img
+				src="website_screenshots/history_of_science.png"
+				style="border: solid #612 2px; float: left; width:45%;margin-left:1%"
+			/>
+			<img
+				src="website_screenshots/probability_and_statistics.png"
+				style="border: solid #612 2px; float: right; width:51%;margin-right:1%"
+			/>
+		</td>
+	</tr>
+	<tr><td>
+		[3] Worksheet screenshots:<br/><br/>
+		<img
+			src="website_screenshots/worksheet1.png"
+			style="float: left; width:48%; margin-left: 1%;border: solid #612 2px"
+		/>
+		<img
+			src="website_screenshots/worksheet2.png"
+			style="float: right; width:48%; margin-right: 1%;border: solid #612 2px"
+		/>
+	</td></tr>
 </tbody></table>
 
 ## Updates:
+
+update 16.1:
+- github pages is no longer used, now the website is hosted on Vercel.
 
 update 15.7:
 - Added code was excluding private files, and made changes to `calculus.js` and `number_theory.js`. Also added `manim.js`.
@@ -115,13 +118,13 @@ update 11.2:
 - In `Article.js`, the functions in `componentDidMount` wrapped in `window.setTimeout`
 - Added `%PUBLIC_URL%` to `404.html` because the logo and font weren't displaying
 - Made changes in `Worksheet.js`:
-    - Some of the dynamic DOM manipulation happens via React features, instead of directly through JQuery.
+	- Some of the dynamic DOM manipulation happens via React features, instead of directly through JQuery.
 
 update 11.1:
 - Made changes to `korean.js`
 - Made changes to `404.html`, so it shows the loading screen before going to home page
 - Added `Redux`, so now global states are being used to reduce direct DOM manipulation
-    - For now, `Redux` is only being used for `ImgView`
+	- For now, `Redux` is only being used for `ImgView`
 
 update 10.1:
 - Removed `[target = "_blank"]` from anchors

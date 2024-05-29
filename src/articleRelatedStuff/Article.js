@@ -27,7 +27,7 @@ class Article extends React.Component {
 		showLoadingScreen();
 		this.sourcesColor = [];
 		this.mainEl = document.getElementById("main");
-		this.pathnameToUse = window.location.pathname.substring("/studyNotes".length);
+		this.pathnameToUse = window.location.pathname;
 		this.wholeContent = null;
 	}
 
@@ -44,7 +44,7 @@ class Article extends React.Component {
 				throw new Error("worksheet not available in mobile");
 			require("../pages"+this.pathnameToUse+"_worksheet");
 			footerEl = <footer style={{gridTemplateColumns:"33% 33% 33%"}}>
-				<Link to="/studyNotes" onClick={showLoadingScreen}>Home Page</Link>
+				<Link to="/" onClick={showLoadingScreen}>Home Page</Link>
 				<Link to={"worksheet?topic=" + this.pathnameToUse.slice(1)}>Worksheet</Link>
 				<button onClick={()=>{store.dispatch({
 					type: FORM_COUNTER,
@@ -180,7 +180,7 @@ function ArticleWrapper(){
 	const navigate = useNavigate();
 
 	useEffect(()=>{
-		if(!allowRender) navigate("/studyNotes");
+		if(!allowRender) navigate("/");
 	});
 
 	if(allowRender) return <Article changeAR={changeAR}/>;

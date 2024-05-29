@@ -59,7 +59,7 @@ function Worksheet () {
 			else window.setTimeout(()=>{
 				alert("worksheet not found");
 				changeLoadingText("Going To Home Page");
-				navigate("/studyNotes");
+				navigate("/");
 			}, 1);
 		}
 		else{
@@ -224,12 +224,12 @@ function Worksheet () {
 
 					<div id="sideButtons">
 						<div id="bookButton">
-							<Link to={{pathname: "/studyNotes/" + searchParams.get("topic")}}>
+							<Link to={{pathname: "/" + searchParams.get("topic")}}>
 								<img src={process.env.PUBLIC_URL+"/webPics/book-solid.svg"} alt="back to notes pages"/>
 							</Link>
 						</div>
 						<div id="homeButton">
-							<Link to={{pathname:"/studyNotes"}}>
+							<Link to={{pathname:"/"}}>
 								<img src={process.env.PUBLIC_URL+"/webPics/house-solid.svg"} alt="back to home page"/>
 							</Link>
 						</div>

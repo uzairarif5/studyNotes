@@ -15,9 +15,9 @@ export default function App(){
 	return <div id="appID" style={{backgroundColor: thisStyle}}>
 		<BrowserRouter>
 			<Routes>
-				<Route path="studyNotes/" element={<Home />} />
-				<Route path="studyNotes/*" element={<Article />} />
-				<Route path="studyNotes/worksheet" element={<Worksheet />} />
+				<Route path="/" element={<Home />} />
+				<Route path="/*" element={<Article />} />
+				<Route path="/worksheet" element={<Worksheet />} />
 			</Routes>
 		</BrowserRouter>
 		<Outlet/>
