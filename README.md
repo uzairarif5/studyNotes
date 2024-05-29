@@ -44,8 +44,8 @@ This is my first big project that uses React.js and Redux
 
 ## Updates:
 
-update 16.1:
-- github pages is no longer used, now the website is hosted on Vercel.
+update 16.1 - 16.2:
+- Github pages is no longer used, now the website is hosted on Vercel.
 
 update 15.7:
 - Added code was excluding private files, and made changes to `calculus.js` and `number_theory.js`. Also added `manim.js`.
