@@ -43,5 +43,14 @@ export const sourceList = [<></>, <><a href='https://eng.libretexts.org/Bookshel
     <>Wiktionary</>,
     <><a href='https://ecampusontario.pressbooks.pub/french/'>Introduction to French</a> by Rita Palacios</>,
     <><a href='https://dn720001.ca.archive.org/0/items/liberte-complete-july-2022/Liberte_Complete_July_2022.pdf'>Liberté</a> by Gretchen Angelo</>,
-    <>French OER (1 - 4) (Carrasco, Zahedi, and Parrish), available <a href='https://human.libretexts.org/Bookshelves/Languages/French'>here</a></>
+    <>French OER (1 - 4) (Carrasco, Zahedi, and Parrish), available <a href='https://human.libretexts.org/Bookshelves/Languages/French'>here</a></>,
+    <>COMP 4300 Game Programming course (available <a href='https://www.youtube.com/watch?v=s99UDGdYIUE&list=PL_xRyXins84_Jf-aCh7chj47HR4oZLPwK'>here</a>)</>,
+    <>Weiten, W., & McCann, D. (2016). <i>Psychology: Themes & Variations</i> (4th ed.). Nelson Education.</>,
+    <>UML Diagrams Full Course <a href='https://www.youtube.com/watch?v=WnMQ8HlmeXc'>video</a> from freeCodeCamp.org</>,
+    <>Source 1</>,
+    <>Source 2, whether a piece of content is from source 1 or 2 would be specified in the article, or you would have to use the colors.</>,
+    <>Source 3, sometimes instead of mentioning the source name, colors would be used to identify the source.</>,
+    <><a href='https://www.sfml-dev.org'>https://www.sfml-dev.org</a></>,
+    <>Strayer, J. K. (2002). Elementary Number Theory.</>,
+    <>Stillman, J. M. (1960). The story of alchemy and early chemistry (The Story of Early Chemistry).</>
 ]

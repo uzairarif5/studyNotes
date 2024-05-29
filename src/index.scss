@@ -23,6 +23,11 @@
         background: #832;
     }
 }
+
+.MJX_ToolTip, .MJX_LiveRegion, .MJX_HoverRegion{
+    background-color: transparent !important;
+}
+
 #loadingText{
     font-family: 'main';
     font-size: 35px;

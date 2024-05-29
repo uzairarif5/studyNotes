@@ -1,10 +1,13 @@
 
 import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import { MathStuff } from "../../articleRelatedStuff/MathStuff"; 
+import { TableLI } from "../../articleRelatedStuff/tableManager";
 import SubList from "../../articleRelatedStuff/SubList";
 
+//Elementary number theory: pg 18
+
 export const title = "Number Theory Notes";
-export const sourcesColor = {35: "rgb(80, 130, 160)"};
+export const sourcesColor = {35: null, 54: null};
 export const content = <>
   <h1>Number Theory</h1>
   <div id="date"><b>Last Edit:</b> {document.lastModified}</div>
@@ -12,12 +15,47 @@ export const content = <>
 
   <h2 id="introduction_and_divisibility">Introduction And Divisibility</h2>
   <div className="content">
-    <ul style={{width: "49%",float: "left",marginLeft: "0.5%", marginRight: "0.5%"}} data-source={35}>
+    <ul style={{width: "49%",float: "left",marginLeft: "0.5%", marginRight: "0.5%"}}>
       <li><b>Number theory</b> (at the most basic level) is the study of the properties of integers.</li>
       <li><b>Diophantine equation:</b><SubList>
         <li><a href='https://en.wikipedia.org/wiki/Diophantine_equation'>A <b>Diophantine equation</b> is an equation, typically a polynomial equation in two or more unknowns with integer coefficients, for which only integer solutions are of interest.</a></li>
         <li><u>Example:</u> The Pythagorean Theorem results in triples (3, 4, 5), (5, 12, 13), (7, 24, 25), (8, 15, 17), etc.</li>
       </SubList></li>
+      <li><b>Prime Numbers:</b><SubList>
+        <li>A <b>prime number</b> is an integer \({"p > 1"}\) such that it cannot be written as \(p = ab\) with \({"a, b > 1"}\).</li>
+        <li><b>Fundamental Theorem of Arithmetic:</b> Every positive integer can be written as a product of primes (possibly with repetition).</li>
+        <li>If \(p\) is prime and \(p|ab\), then \(p|a\) or \(p|b\) (<a href='https://www.deriveit.net/discrete_mathematics/divisibility_and_gcd/gcdLemma7'>proof</a>).</li>
+        <li>Let \(n\) be a composite number, then \(n\) has a prime divisor \(p\) with \(p \le \sqrt{"{n}"}\).</li>
+        <li><u>Sieve of Eratosthenes:</u><SubList>
+          <li>Suppose we wish to find all prime numbers less than or equal to 50. Any composite less than or equal to 50 must have a prime divisor less than or equal to \(\sqrt{"{50}"}\), which is around 7.07.</li>
+          <li>The prime numbers less than 7.07 are 2, 3, 5 and 7. In a list of integers from 2 to 50, we can delete all multiples of 2, 3, 5 and 7.</li>
+          <TableLI>
+            <tbody>
+              <tr><td>
+                2 3 4 5 6 7 8 9 10<br/>
+                11 12 13 14 15 16 17 18 19 20<br/>
+                21 22 23 24 25 26 27 28 29 30<br/>
+                31 32 33 34 35 36 37 38 39 40<br/>
+                41 42 43 44 45 46 47 48 49 50<br/>
+              </td></tr>
+              <tr><td>
+                2 3 - 5 - 7 - 9 -<br/>
+                11 - 13 - - - 17 - 19 -<br/>
+                - - 23 - - - - - 29 -<br/>
+                31 - - - - - 37 - - -<br/>
+                41 - 43 - - - 47 - - -<br/>
+              </td></tr>
+            </tbody>
+          </TableLI>
+          <li>Any number remaining in the list is not divisible by 2, 3, 5 or 7, and cannot be composite.</li>
+        </SubList></li>
+        <li><b>Goldbach's conjecture:</b> Every even integer greater than 2 can be expressed as the sum of two prime numbers (unsolved).</li>
+        <li>Any prime number expressible in the form \(2^p - 1\) with \(p\) prime is said to be <b>Mersenne prime</b>. There may be infinite of them.</li>
+        <li>Any prime number expressible in the form \(2^{"{2^n}"}+1\) (where \(n\) is a positive integer greater than 0) is said to be a <b>Fermat prime</b>, and only five are known.</li>
+        <li>There may be infinitely many primes expressible in the form \(n^2 + 1 \) where \(n\) is a positive integer.</li>
+      </SubList></li>
+    </ul>
+    <ul style={{width: "49%",float: "right",marginLeft: "0.5%", marginRight: "0.5%"}}>
       <li>GCD basics:<SubList>
         <li>\({"a|b, a|c \\implies a|(bx + cy) \\ \\forall x, y"}\) where \({"a, b, c, x, y \\in \\mathbb{Z}"}\) (<a href='https://www.deriveit.net/discrete_mathematics/divisibility_and_gcd/divisibility1'>proof</a>).</li>
         <li>If \((a, b) = 1\), then \(a\) and \(b\) are <b>coprime</b>.</li>
@@ -25,18 +63,11 @@ export const content = <>
         <li>If \((a, m) = 1\) and \((b, m) = 1\), then \((ab, m) = 1\) (<a href='https://www.deriveit.net/discrete_mathematics/divisibility_and_gcd/multiplicative'>proof</a>).</li>
         <li>If \(c|ab\) and \((c, a) = 1\), then \(c|b\) (<a href='https://www.deriveit.net/discrete_mathematics/divisibility_and_gcd/other'>proof</a>).</li>
       </SubList></li>
-    </ul>
-    <ul style={{width: "49%",float: "right",marginLeft: "0.5%", marginRight: "0.5%"}} data-source={35}>
       <li><b>Euclidean Algorithm:</b><SubList numbered>
         <li>If \({"a, b < 0"}\), replace with negative</li>
         <li>If \({"a > b"}\), switch \(a\) and \(b\)</li>
         <li>If \({"a = 0"}\), return \(b\)</li>
         <li>Since \({"a > 0"}\), write \({"b = aq + r"}\) with \({"0 ≤ r < a"}\). Replace \({"(a, b)"}\) with \((r, a)\) and go to Step 3.</li>
-      </SubList></li>
-      <li><b>Prime Numbers:</b><SubList>
-        <li>A <b>prime number</b> is an integer \({"p > 1"}\) such that it cannot be written as \(p = ab\) with \({"a, b > 1"}\).</li>
-        <li><b>Fundamental Theorem of Arithmetic:</b> Every positive integer can be written as a product of primes (possibly with repetition).</li>
-        <li>If \(p\) is prime and \(p|ab\), then \(p|a\) or \(p|b\).</li>
       </SubList></li>
       <li><b>Binomial Coefficient</b>:<SubList>
         <li>\(n(n − 1)(n − 2). . . 1 = n!\) is number of ways to order \(n\) objects.</li>
@@ -59,7 +90,7 @@ export const content = <>
 
   <h2 id="congruences">Congruences</h2>
   <div className="content">
-    <ul style={{width: "49%",float: "left",marginLeft: "0.5%", marginRight: "0.5%"}} data-source={35}>
+    <ul style={{width: "49%",float: "left",marginLeft: "0.5%", marginRight: "0.5%"}}>
       <li><b>Modulo:</b><SubList>
         <li><a href='https://en.wikipedia.org/wiki/Modular_arithmetic'><b>Modular arithmetic</b> is a system of arithmetic for integers, where numbers "wrap around" when reaching a certain value, called the <b>modulus</b></a>.</li>
         <li>Let \(a\), \(b\), \(m\) be integers, with \(m = 0\). We say \(a\) is congruent to \(b\) modulo \(m\) (represented as \(a ≡ b \mod m\)) if \(a\) and \(b\) have the same remainder when divided \(m\).</li>
@@ -89,7 +120,7 @@ export const content = <>
         <li>Let \(g = (a, m)\). Then there is a solution to \(ax ≡ b \mod m\) if and only if \(g|b\). <a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/congruence_solution'>How to find solutions?</a></li>
       </SubList></li>
     </ul>
-    <ul style={{width: "49%",float: "right",marginLeft: "0.5%", marginRight: "0.5%"}} data-source={35}>
+    <ul style={{width: "49%",float: "right",marginLeft: "0.5%", marginRight: "0.5%"}}>
       <li>Chinese Remainder Theorem:<SubList>
         <li>Suppose we have a systme of congruences of moduli:</li>
         <MathStuff>$${"\\begin{align} x &≡ a_1 \\mod m_1 \\\\ x &≡ a_2 \\mod m_2 \\\\ & \\quad \\vdots \\\\ x &≡ a_k \\mod m_k \\end{align}"}$$</MathStuff>

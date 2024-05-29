@@ -44,6 +44,9 @@ This is my first big project that uses React.js and Redux
 
 ## Updates:
 
+update 15.7:
+- Added code was excluding private files, and made changes to `calculus.js` and `number_theory.js`. Also added `manim.js`.
+
 update 15.6:
 - Hovering mouse on the article would now show the source.
 

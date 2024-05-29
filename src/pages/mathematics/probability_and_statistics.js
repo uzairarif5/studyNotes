@@ -270,10 +270,10 @@ export const content = <>
 					<li>If the dots are decreasing from left to right then there is a negative relationship.</li>
 					<li>If there is no apparent pattern going up or down, then we say there is no relationship between the two variables.</li>
 					<li><u>Example:</u><SubList>
-						<TableLI>
+						<TableLI><tbody>
 							<tr><th>Elevation (in feet)</th><td>7000 4000 6000 3000 7000 4500 5000</td></tr>
 							<tr><th>Temperature (°F)</th><td>50 60 48 70 55 55 60</td></tr>
-						</TableLI>
+						</tbody></TableLI>
 						<li><ImgComp src={require("./probability_and_statistics_pics/8.png")} width="70%"/></li>
 						<li>It also appears to be a negative relationship.</li>
 					</SubList></li>

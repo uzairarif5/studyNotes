@@ -40,7 +40,8 @@ class Article extends React.Component {
 	getFooterEl(){
 		let footerEl = null;
 		try {
-			if(window.screen.width <= parseInt(styles.maxWidthForMobile)) throw new Error("worksheet not available in mobile");
+			if(window.screen.width <= parseInt(styles.maxWidthForMobile))
+				throw new Error("worksheet not available in mobile");
 			require("../pages"+this.pathnameToUse+"_worksheet");
 			footerEl = <footer style={{gridTemplateColumns:"33% 33% 33%"}}>
 				<Link to="/studyNotes" onClick={showLoadingScreen}>Home Page</Link>
@@ -73,7 +74,9 @@ class Article extends React.Component {
 
 	render() {
 		//get whole content, 404 if page doesn't exists
-		try{this.wholeContent = require("../pages"+this.pathnameToUse+".js");}
+		try{
+			this.wholeContent = require("../pages"+this.pathnameToUse+".js");
+		}
 		catch{this.wholeContent = null;}
 		if(this.wholeContent){
 			//get content parts

@@ -212,6 +212,12 @@ export const content = <>
 					<li>\({"\\frac{d\\sec x}{dx} = \\sec x \\tan x"}\)</li>
 					<li>\({"\\frac{d\\csc x}{dx} = -\\csc x \\cot x"}\)</li>
 				</SubList></li>
+				<li>Chain Rule:<SubList>
+					<li>Let \(f\) and \(g\) be functions. For all \(x\) in the domain of \(g\) for which \(g\) is differentiable at \(x\) and \(f\) is differentiable at \(g(x)\), the derivative of the composite function \(h(x)=(f∘g)(x)=f(g(x))\) is given by:</li>
+					<li class={"mathStuff"}>$$h'(x)=f'(g(x))g'(x)$$</li>
+					<li>Alternatively, if \(y\) is a function of \(u\), and \(u\) is a function of \(x\), then:</li>
+					<li class={"mathStuff"}>$$ {"\\frac{dy}{dx} = \\frac{dy}{du} \\frac{du}{dx}"} $$</li>
+				</SubList></li>
 			</ul>
 		</div>
 	</div>
