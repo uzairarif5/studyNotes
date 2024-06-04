@@ -6,7 +6,6 @@ export const title = "My Japanese notes";
 export const sourcesColor = {4:null, 15:"#4f94ac", 16:"#3a3"};
 export const content = <>
 <h1>My Japanese Notes</h1>
-<div id="date"><b>Last Edit:</b> {document.lastModified}</div>
 {getSourcesOL(sourcesColor)}
 
 <h2 id="reading">Reading</h2>

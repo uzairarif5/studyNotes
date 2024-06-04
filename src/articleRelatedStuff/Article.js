@@ -53,7 +53,7 @@ class Article extends React.Component {
 			</footer>
 		}
 		catch (err) {footerEl = <footer>
-			<Link to="/studyNotes">Home Page</Link>
+			<Link to="/">Home Page</Link>
 			<button onClick={()=>{store.dispatch({
 				type: FORM_COUNTER,
 				payload: -1
@@ -81,18 +81,13 @@ class Article extends React.Component {
 		if(this.wholeContent){
 			//get content parts
 			let mainContent = this.wholeContent.content.props.children;
-			let subChildren = mainContent.slice(2);
-			let h2s = subChildren.reduce(function(arr, curEl) {
+			let h2s = mainContent.reduce(function(arr, curEl) {
 				if (curEl.type === "h2") arr.push(curEl);
-				else {
-					let checkIfFragmentAndHasH2 = (curEl.props.children[0] !== undefined) && curEl.props.children[0].type === "h2";
-					if (checkIfFragmentAndHasH2) arr.push(curEl.props.children[0]);
-				}
 				return arr;
 			},[]);
 			this.sourcesColor = this.wholeContent.sourcesColor;
 			let additionalResourcesHeader = 
-			(subChildren[1].props.id === "additionalResources") ? <h4>Additional Resources:</h4> : null;
+			(mainContent[2].props.id === "additionalResources") ? <h4>Additional Resources:</h4> : null;
 			//finalize return value
 			return <HelmetProvider>
 				<Helmet>
@@ -102,11 +97,10 @@ class Article extends React.Component {
 					<div id='article'>
 						{<div id="notFooter">
 							{mainContent[0]}
-							{mainContent[1]}
 							{this.getReferenceEl(h2s) /*will be set after mount*/}
-							{subChildren[0]}
+							{mainContent[1]}
 							{additionalResourcesHeader}
-							{subChildren.slice(1) /* may or may not include #additionalResources */}
+							{mainContent.slice(2) /* may or may not include #additionalResources */}
 						</div>}
 						{this.getFooterEl()}
 						<ImgView/>
@@ -131,6 +125,20 @@ class Article extends React.Component {
 	componentDidMount() {
 		window.setTimeout(()=>{ document.fonts.ready.then(()=>{
 			if(this.wholeContent) {
+				// add a date
+				fetch(`https://api.github.com/repos/uzairarif5/studyNotes/commits?path=src/pages${this.pathnameToUse}.js`)
+				.then(res => res.json())
+				.then(res => {
+					let dateText = res[0]["commit"]["committer"]["date"];
+					if (dateText) {
+						let dateStr = new Date(dateText).toString();
+						let formatedDate = dateStr.substring(0, dateStr.indexOf(" ("));
+						let dateEl = document.createElement("div");
+						dateEl.innerHTML = `<b>Last Commit:</b> ${formatedDate}`;
+						dateEl.id = "date";
+						document.querySelector("h1").after(dateEl);	
+					}
+				});
 				//change Loading Text
 				changeLoadingText("Gathering Notes"); 
 				//set body background color

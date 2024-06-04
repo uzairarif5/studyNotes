@@ -3,7 +3,6 @@ import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 export const title = "Tree Blog";
 export const content = <>
 	<h1>Tree Blog</h1>
-	<div id="date"><b>Last Edit:</b> {document.lastModified}</div>
 	<h2 id="toronto">Toronto</h2>
 	<div className="content">
 		<div style={{width: "24%", marginLeft: "0.5%", marginRight: "0.5%", float: "left"}}>

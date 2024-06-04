@@ -12,7 +12,6 @@ export const sourcesColor = {20: null, 23: null};
 export const content = 
 <>
 	<h1>Computer Organization And Architecture Notes</h1>
-	<div id="date"><b>Last Edit:</b> {document.lastModified}</div>
 	{getSourcesOL(sourcesColor)}
 	<h2 id="introduction_to_computer_architecture">Introduction To Computer Architecture</h2>
 	<div className="content">

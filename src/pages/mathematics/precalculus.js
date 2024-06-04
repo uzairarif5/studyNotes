@@ -10,7 +10,6 @@ export const sourcesColor = {36: "rgb(80, 130, 160)"};
 export const content = <>
 
 	<h1>Calculus Notes</h1>
-  <div id="date"><b>Last Edit:</b> {document.lastModified}</div>
   {getSourcesOL(sourcesColor)}
 
 	<h2 id="functionsAndModels">Functions Review</h2>

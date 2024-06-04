@@ -7,7 +7,6 @@ export const sourcesColor = {40: null};
 export const content = <>
 
   <h1>Calculus Notes</h1>
-  <div id="date"><b>Last Edit:</b> {document.lastModified}</div>
   {getSourcesOL(sourcesColor)}
 	<h2 id="bits">Bits</h2>
   <div className="content">

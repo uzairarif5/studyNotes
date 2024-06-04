@@ -8,7 +8,6 @@ export const title = "Cryptography Notes";
 export const sourcesColor = {33: null, 34: "rgb(204, 119, 153)"};
 export const content = <>
   <h1>Cryptography</h1>
-  <div id="date"><b>Last Edit:</b> {document.lastModified}</div>
   {getSourcesOL(sourcesColor)}
 
   <h2 id="introduction">Introduction</h2>

@@ -52,5 +52,6 @@ export const sourceList = [<></>, <><a href='https://eng.libretexts.org/Bookshel
     <>Source 3, sometimes instead of mentioning the source name, colors would be used to identify the source.</>,
     <><a href='https://www.sfml-dev.org'>https://www.sfml-dev.org</a></>,
     <>Strayer, J. K. (2002). Elementary Number Theory.</>,
-    <>Stillman, J. M. (1960). The story of alchemy and early chemistry (The Story of Early Chemistry).</>
+    <>Stillman, J. M. (1960). The story of alchemy and early chemistry (The Story of Early Chemistry).</>,
+    <><a href='https://openstax.org/details/books/chemistry-2e'>Chemistry (2e)</a> by OpenStax</>
 ]

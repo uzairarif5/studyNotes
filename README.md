@@ -44,6 +44,10 @@ This is my first big project that uses React.js and Redux
 
 ## Updates:
 
+update 16.3:
+- The article date below H1 is deleted from all files and is now automatically placed below H1 after the article is mounted.
+- Added `chemistry.js`
+
 update 16.1 - 16.2:
 - Github pages is no longer used, now the website is hosted on Vercel.
 

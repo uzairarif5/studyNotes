@@ -74,6 +74,7 @@ const HomeCompMemo = memo(()=>{
 		<Link to="mathematics/information_and_entropy">Information And Entropy</Link>
 		<h2>Natural Sciences</h2>
 		<Link to="natural_sciences/history_and_philosophy_of_science">History And Philosophy Of Science</Link>
+		<Link to="natural_sciences/chemistry">Chemistry</Link>
 		<Link to="natural_sciences/physics">Physics</Link>
 		<Link to="natural_sciences/meteorology">Meteorology</Link>
 		<Link to="natural_sciences/geology">Geology</Link>

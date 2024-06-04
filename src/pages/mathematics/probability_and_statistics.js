@@ -9,7 +9,6 @@ export const title = "Probability And Statistics Notes" ;
 export const sourcesColor = {7: null, 41: "#c45645"};
 export const content = <>
 	<h1>Probability And Statistics Notes</h1>
-	<div id="date"><b>Last Edit:</b> {document.lastModified}</div>
 	{getSourcesOL(sourcesColor)}
 
 	<h2 id="sampling_and_data">Sampling and Data</h2>
