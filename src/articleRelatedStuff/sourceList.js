@@ -53,5 +53,6 @@ export const sourceList = [<></>, <><a href='https://eng.libretexts.org/Bookshel
     <><a href='https://www.sfml-dev.org'>https://www.sfml-dev.org</a></>,
     <>Strayer, J. K. (2002). Elementary Number Theory.</>,
     <>Stillman, J. M. (1960). The story of alchemy and early chemistry (The Story of Early Chemistry).</>,
-    <><a href='https://openstax.org/details/books/chemistry-2e'>Chemistry (2e)</a> by OpenStax</>
+    <><a href='https://openstax.org/details/books/chemistry-2e'>Chemistry (2e)</a> by OpenStax</>,
+    <><a href='https://www.google.ca/books/edition/Web_Based_Learning_through_Educational_I/hHoVhZ8cm88C?hl=en&gbpv=0'>Web-Based Learning through Education Informatics: Information Science Meet Educational Computing</a> by Nigel Ford</>
 ]

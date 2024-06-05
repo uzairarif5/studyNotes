@@ -8,14 +8,14 @@ function SourcesLI(props){
 export function getSourcesOL(sourcesColor, sourcesOrder = null){
 
 	function getSourceInner(sourcesColor, i){
-			if(sourceList[i].props.className === "emailed"){
-				return <SourcesLI key={i.toString()} c={sourcesColor[i]}>
-					{sourceList[i].props.children}
-					&nbsp;
-					<img className="emailedSymbol" src="/webPics/star-solid.svg" alt=""/>
-				</SourcesLI>;
-			}
-			return <SourcesLI key={i.toString()} c={sourcesColor[i]}>{sourceList[i]}</SourcesLI>;
+		if(sourceList[i].props.className === "emailed"){
+			return <SourcesLI key={i.toString()} c={sourcesColor[i]}>
+				{sourceList[i].props.children}
+				&nbsp;
+				<img className="emailedSymbol" src="/webPics/star-solid.svg" alt=""/>
+			</SourcesLI>;
+		}
+		return <SourcesLI key={i.toString()} c={sourcesColor[i]}>{sourceList[i]}</SourcesLI>;
 	}
 
 	if (sourcesOrder == null){ return <><h4>Main Sources:</h4><ol id="sources">{

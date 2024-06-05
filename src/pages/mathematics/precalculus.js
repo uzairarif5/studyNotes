@@ -9,7 +9,7 @@ export const title = "Precalculus Notes";
 export const sourcesColor = {36: "rgb(80, 130, 160)"};
 export const content = <>
 
-	<h1>Calculus Notes</h1>
+	<h1>Precalculus Notes</h1>
   {getSourcesOL(sourcesColor)}
 
 	<h2 id="functionsAndModels">Functions Review</h2>

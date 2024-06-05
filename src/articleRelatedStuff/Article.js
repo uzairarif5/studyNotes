@@ -28,7 +28,7 @@ class Article extends React.Component {
 		this.sourcesColor = [];
 		this.mainEl = document.getElementById("main");
 		this.pathnameToUse = window.location.pathname;
-		this.wholeContent = null;
+		this.state = {wholeContent: null};
 	}
 
 	getReferenceEl(h2s){
@@ -73,58 +73,58 @@ class Article extends React.Component {
 	}
 
 	render() {
-		//get whole content, 404 if page doesn't exists
-		try{
-			this.wholeContent = require("../pages"+this.pathnameToUse+".js");
-		}
-		catch{this.wholeContent = null;}
-		if(this.wholeContent){
-			//get content parts
-			let mainContent = this.wholeContent.content.props.children;
+		if(this.state.wholeContent){
+			let mainContent = this.state.wholeContent["content"].props.children;
 			let h2s = mainContent.reduce(function(arr, curEl) {
 				if (curEl.type === "h2") arr.push(curEl);
 				return arr;
 			},[]);
-			this.sourcesColor = this.wholeContent.sourcesColor;
+			this.sourcesColor = this.state.wholeContent["sc"];
 			let additionalResourcesHeader = 
 			(mainContent[2].props.id === "additionalResources") ? <h4>Additional Resources:</h4> : null;
-			//finalize return value
 			return <HelmetProvider>
 				<Helmet>
-					<title>{this.wholeContent.title}</title>
+					<title>{this.state.wholeContent["title"]}</title>
 				</Helmet>
-				<Suspense>
-					<div id='article'>
-						{<div id="notFooter">
-							{mainContent[0]}
-							{this.getReferenceEl(h2s) /*will be set after mount*/}
-							{mainContent[1]}
-							{additionalResourcesHeader}
-							{mainContent.slice(2) /* may or may not include #additionalResources */}
-						</div>}
-						{this.getFooterEl()}
-						<ImgView/>
-						{sideB(
-							"upButton",
-							() => {this.mainEl.scrollTo(0,0);},
-							process.env.PUBLIC_URL+'/webPics/caret-up-solid.svg'
-						)}
-						{sideB(
-							"downButton",
-							()=>{this.mainEl.scrollTo(0, this.mainEl.scrollHeight);},
-							process.env.PUBLIC_URL+'/webPics/caret-down-solid.svg'
-						)}
+				<div id='article'>
+					<div id="notFooter">
+						{mainContent[0]}
+						{this.getReferenceEl(h2s)}
+						{mainContent[1]}
+						{additionalResourcesHeader}
+						{mainContent.slice(2)}
 					</div>
-					<ContactComp/>
-				</Suspense>
+					{this.getFooterEl()}
+					<ImgView/>
+					{sideB(
+						"upButton",
+						() => {this.mainEl.scrollTo(0,0);},
+						process.env.PUBLIC_URL+'/webPics/caret-up-solid.svg'
+					)}
+					{sideB(
+						"downButton",
+						()=>{this.mainEl.scrollTo(0, this.mainEl.scrollHeight);},
+						process.env.PUBLIC_URL+'/webPics/caret-down-solid.svg'
+					)}
+				</div>
+				<ContactComp/>
 			</HelmetProvider>;
 		}
-		else return null;
+		else { 
+			import("../pages"+this.pathnameToUse+".js").then(res => {this.setState({wholeContent: {
+				"title": res.title,
+				"content": res.content,
+				"sc": res.sourcesColor
+			}})});
+			return null;
+		}
 	}
 
-	componentDidMount() {
+	componentDidUpdate() {
 		window.setTimeout(()=>{ document.fonts.ready.then(()=>{
-			if(this.wholeContent) {
+			if(this.state.wholeContent) {
+				//change Loading Text
+				changeLoadingText("Gathering Notes"); 
 				// add a date
 				fetch(`https://api.github.com/repos/uzairarif5/studyNotes/commits?path=src/pages${this.pathnameToUse}.js`)
 				.then(res => res.json())
@@ -139,8 +139,6 @@ class Article extends React.Component {
 						document.querySelector("h1").after(dateEl);	
 					}
 				});
-				//change Loading Text
-				changeLoadingText("Gathering Notes"); 
 				//set body background color
 				document.documentElement.style.backgroundColor = "#832";
 				//Add hide function to headings

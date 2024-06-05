@@ -18,24 +18,24 @@ export const content = <>
       <li><b>Chemistry</b> is the study of the composition,
 properties, and interactions of matter.</li>
       <li>The Scientific Method:<SubList>
-	<li>Chemistry is a science based on observation and experimentation. Doing chemistry involves attempting to
-answer questions and explain observations in terms of the laws and theories of chemistry, using procedures
-that are accepted by the scientific community.</li>
-	<li>There is no single route to answering a question or explaining
-an observation, but there is an aspect common to every approach: Each uses knowledge based on experiments
-that can be reproduced to verify the results.</li>
-	<li>Some routes involve a <b>hypothesis</b>, a tentative explanation of observations that acts as a guide for gathering and checking information. A hypothesis is tested by
-experimentation, calculation, and/or comparison with the experiments of others and then refined as needed.</li>
-	<li>Some hypotheses are attempts to explain the behavior that is summarized in <b>laws</b>. The laws of science
-summarize a vast number of experimental observations, and describe or predict some facet of the natural
-world.</li>
-	<li>If such a hypothesis turns out to be capable of explaining a large body of experimental data, it can reach
-the status of a <b>theory</b>. Scientific theories are well-substantiated, comprehensive, testable explanations of
-particular aspects of nature.</li>
-	<li>The path of discovery that leads from question and observation
-to law or hypothesis to theory, combined with experimental verification of the hypothesis and any necessary
-modification of the theory, is called the <b>scientific method</b>.</li>
-	<li><ImgComp src={require("./chemistryPics/1.png")} style={{width:"80%"}}/></li>
+				<li>Chemistry is a science based on observation and experimentation. Doing chemistry involves attempting to
+			answer questions and explain observations in terms of the laws and theories of chemistry, using procedures
+			that are accepted by the scientific community.</li>
+				<li>There is no single route to answering a question or explaining
+			an observation, but there is an aspect common to every approach: Each uses knowledge based on experiments
+			that can be reproduced to verify the results.</li>
+				<li>Some routes involve a <b>hypothesis</b>, a tentative explanation of observations that acts as a guide for gathering and checking information. A hypothesis is tested by
+			experimentation, calculation, and/or comparison with the experiments of others and then refined as needed.</li>
+				<li>Some hypotheses are attempts to explain the behavior that is summarized in <b>laws</b>. The laws of science
+			summarize a vast number of experimental observations, and describe or predict some facet of the natural
+			world.</li>
+				<li>If such a hypothesis turns out to be capable of explaining a large body of experimental data, it can reach
+			the status of a <b>theory</b>. Scientific theories are well-substantiated, comprehensive, testable explanations of
+			particular aspects of nature.</li>
+				<li>The path of discovery that leads from question and observation
+			to law or hypothesis to theory, combined with experimental verification of the hypothesis and any necessary
+			modification of the theory, is called the <b>scientific method</b>.</li>
+				<li><ImgComp src={require("./chemistryPics/1.png")} style={{width:"80%"}}/></li>
       </SubList></li>
       <li>Domains of Chemistry:<SubList>
 	<li>The <b>macroscopic domain</b> is familiar to us: It is the realm of
@@ -527,4 +527,37 @@ with the same chemical formula but different molecular structures</li>
 	</div>
 </div>
 
+<h2>Composition of Substances and Solutions</h2>
+<div className="content">
+	<div style={{width: "49%",float: "left",marginLeft: "0.5%"}} data-source={56}>
+		<ul>
+			<li>Formula Mass for covalent substances:<SubList>
+				<li>For <b>covalent substances</b>, the formula represents the numbers and types of atoms composing a single molecule of the substance; therefore, the formula mass may be correctly referred to as a molecular mass. Consider chloroform (CHCl<sub>3</sub>), the average molecular mass of a chloroform molecule is therefore equal to the sum of the average atomic masses of these atoms.</li>
+				<li><ImgComp src={require("./chemistryPics/15.png")} style={{width:"80%"}}/></li>
+				<li>Likewise, the molecular mass of an aspirin molecule, C<sub>9</sub>H<sub>8</sub>O<sub>4</sub>, is the sum of the atomic masses of nine carbon atoms, eight hydrogen atoms, and four oxygen atoms, which amounts to 180.15 amu.</li>
+			</SubList></li>
+			<li>Formula mass for ionic compounds:<SubList>
+				<li>The formula mass for an <b>ionic compound</b> is calculated in the same way as the formula mass for covalent compounds: by summing the average atomic masses of all the atoms in the compound's formula.</li>
+				<li className="research">Keep in mind, however, that the formula for an ionic compound does not represent the composition of a discrete molecule, so it may not correctly be referred to as the "molecular mass".</li>
+				<li>Sodium chloride is an ionic compound composed of sodium cations, Na+, and chloride anions, Cl-, combined in a 1:1 ratio. The formula mass for this compound is computed as (22.99 + 35.45 =) 58.44 amu.</li>
+				<li>Note that the average masses of neutral sodium and chlorine atoms were used in this computation, rather than the masses for sodium cations and chlorine anions. This approach is perfectly acceptable when computing the formula mass of an ionic compound.</li>
+				<li>Even though a sodium cation has a slightly smaller mass than a sodium atom (since it is missing an electron), this difference will be offset by the fact that a chloride anion is slightly more massive than a chloride atom (due to the extra electron).</li>
+				<li>Even when calculating the mass of an isolated ion, the missing or additional electrons can generally be ignored, since their contribution to the overall mass is negligible.</li>
+				<li>The few exceptions to this guideline are very light ions derived from elements with precisely known atomic masses.</li>
+			</SubList></li>
+			<li><b>The Mole:</b><SubList>
+				<li>The <b>mole</b> is an amount unit similar to familiar units like pair, dozen, gross, etc. It provides a specific measure of the number of atoms or molecules in a sample of matter.</li>
+				<li>A mole of substance is that amount in which there are \(6.02214076 * 10^23\) discrete entities (atoms or molecules). This is a fundamental constant known as <b>Avogadro's number</b> (N<sub>A</sub>).</li>
+				<li>The <b>molar mass</b> of an element (or compound) is the mass in grams of 1 mole of that substance, a property expressed in units of grams per mole (g/mol).</li>
+				<li>Per the amu definition, a single <sup>12</sup>C atom weighs 12 amu (its atomic mass is 12 amu). A mole of <sup>12</sup>C weighs 12 g (its molar mass is 12 g/mol). This relationship holds for all elements, since their atomic masses are measured relative to that of the amu-reference substance, <sup>12</sup>C.</li>
+				<li>While atomic mass and molar mass are numerically equivalent, keep in mind that they are vastly different in terms of scale.</li>
+			</SubList></li>
+		</ul>
+	</div>
+	<div style={{width: "49%",float: "right",marginRight: "0.5%"}} data-source={56}>
+		<ul>
+			<li></li>
+		</ul>
+	</div>
+</div>
 </>

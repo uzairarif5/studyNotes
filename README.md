@@ -44,7 +44,10 @@ This is my first big project that uses React.js and Redux
 
 ## Updates:
 
-update 16.3:
+update 17.2:
+- In `Article.js`, the `import` function is used instead of `require`.
+
+update 16.3 (or 17.1):
 - The article date below H1 is deleted from all files and is now automatically placed below H1 after the article is mounted.
 - Added `chemistry.js`
 
