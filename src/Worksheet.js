@@ -21,19 +21,10 @@ function TitlePage(props){
 	</>);
 }
 
-function getWorksheetJsContent(searchParams){
-	try{
-		return require("./pages/"+searchParams.get("topic")+"_worksheet.js");
-	}
-	catch{
-		return null;
-	}
-}
-
 function Worksheet () {
 	const navigate = useNavigate();
 	const [searchParams] = useSearchParams();
-	const worksheetJsContent = getWorksheetJsContent(searchParams);
+	const [worksheetJsContent, setWSJSC] = useState(null);
 	const topicsArr = worksheetJsContent ?
 	[<TitlePage topic={searchParams.get("topic")}/>, ...worksheetJsContent.content] : null;
 	const [curLoc,changeLoc] = useState({scroll:0,topic:0});
@@ -43,26 +34,7 @@ function Worksheet () {
 	const optionsSelectedText = useRef("Title Page");
 
 	useEffect(()=>{
-		if(stateChanged.current === false){
-			//do first render
-			if(worksheetJsContent){
-				showLoadingScreen();
-				document.fonts.ready.then(()=>{
-					changeLoadingText("Creating Worksheet");
-					store.dispatch({
-						type: CHANGE_APP_BC,
-						payload: "rgb(70, 30, 10)"
-					});
-					window.setTimeout(fadeLoadingToInsv,1);
-				});
-			}
-			else window.setTimeout(()=>{
-				alert("worksheet not found");
-				changeLoadingText("Going To Home Page");
-				navigate("/");
-			}, 1);
-		}
-		else{
+		if(stateChanged.current){
 			stateChanged.current = false;
 			document.getElementById("main").scrollTo(0,0);
 			document.getElementById("workSheetInner").scrollTo(0,curLoc.scroll);
@@ -111,6 +83,17 @@ function Worksheet () {
 				//set answers
 				reformatAns();
 			}
+		}
+		else if(worksheetJsContent){
+			//do first render
+			document.fonts.ready.then(()=>{
+				changeLoadingText("Creating Worksheet");
+				store.dispatch({
+					type: CHANGE_APP_BC,
+					payload: "rgb(70, 30, 10)"
+				});
+				window.setTimeout(fadeLoadingToInsv,1);
+			});
 		}
 		return ()=>{
 			if(stateChanged.current === false) store.dispatch({
@@ -169,32 +152,32 @@ function Worksheet () {
 	}
 
 	function goNextPage(){
-			if(allowNextScroll){
-					stateChanged.current = true;
-					changeLoc({scroll: curLoc.scroll + 1143, topic:curLoc.topic});
-			}
+		if(allowNextScroll){
+			stateChanged.current = true;
+			changeLoc({scroll: curLoc.scroll + 1143, topic:curLoc.topic});
+		}
 	}
 
 	function goPrevPage(){
-			if(curLoc.scroll > 0){
-					stateChanged.current = true;
-					changeLoc({scroll: curLoc.scroll - 1143, topic:curLoc.topic});
-			}
+		if(curLoc.scroll > 0){
+			stateChanged.current = true;
+			changeLoc({scroll: curLoc.scroll - 1143, topic:curLoc.topic});
+		}
 	}
 
 	let tdStyle1 = {
-			backgroundImage: "linear-gradient(to left, rgb(100, 50, 30), rgba(100, 50, 30, 0.5))",
-			borderRight: "3px rgb(80, 40, 20) solid",
-			borderLeftStyle: "none",
-			textAlign:"right",
-			display: "block"
+		backgroundImage: "linear-gradient(to left, rgb(100, 50, 30), rgba(100, 50, 30, 0.5))",
+		borderRight: "3px rgb(80, 40, 20) solid",
+		borderLeftStyle: "none",
+		textAlign:"right",
+		display: "block"
 	};
 	let tdStyle2 = {
-			backgroundImage: "linear-gradient(to right, rgb(100, 50, 30), rgba(100, 50, 30, 0.5))",
-			borderLeft: "3px rgb(80, 40, 20) solid",
-			borderRightStyle: "none",
-			textAlign:"left",
-			display: "block"
+		backgroundImage: "linear-gradient(to right, rgb(100, 50, 30), rgba(100, 50, 30, 0.5))",
+		borderLeft: "3px rgb(80, 40, 20) solid",
+		borderRightStyle: "none",
+		textAlign:"left",
+		display: "block"
 	};
 
 	if(worksheetJsContent){
@@ -282,6 +265,16 @@ function Worksheet () {
 	}
 	else{
 		showLoadingScreen();
+		window.setTimeout(async ()=>{
+			try{
+				await import("./pages/"+searchParams.get("topic")+"_worksheet.js").then(res => setWSJSC(res));
+			}
+			catch{
+				alert("worksheet not found");
+				changeLoadingText("Going To Home Page");
+				navigate("/");
+			}
+		}, 1);
 		return null;
 	}
 }

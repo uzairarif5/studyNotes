@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Suspense } from 'react';
 import './Article.scss';
 import $ from 'jquery';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
