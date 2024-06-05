@@ -265,16 +265,17 @@ function Worksheet () {
 	}
 	else{
 		showLoadingScreen();
-		window.setTimeout(async ()=>{
-			try{
-				await import("./pages/"+searchParams.get("topic")+"_worksheet.js").then(res => setWSJSC(res));
-			}
-			catch{
+		//I want to show the loading screen
+		//so lets wait 100 millisecond
+		window.setTimeout(()=>{
+			import("./pages/"+searchParams.get("topic")+"_worksheet.js")
+			.then(res => setWSJSC(res))
+			.catch(err => {
 				alert("worksheet not found");
 				changeLoadingText("Going To Home Page");
 				navigate("/");
-			}
-		}, 1);
+			});
+		}, 100);
 		return null;
 	}
 }
