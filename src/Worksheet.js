@@ -189,21 +189,21 @@ function Worksheet () {
 			<Suspense>
 				<div id="worksheetWrap">
 					<div id='settings'>
-							<label>Topic:</label>
-							<div id="optionSelected" onClick={()=>{changeOptionsConDis(val => !val)}}>
-									<span>{optionsSelectedText.current}</span>
-									<img src={process.env.PUBLIC_URL+'/webPics/caret-down-solid-worksheet.svg'} alt=''/>
-							</div>
-							<div id="optionsContainer" style={
-									(optionsContainerDisplay) ? {display: "block"} : {display:"none"}
-							}>
-									<div key={0} value={0} onClick={topicSelected}>Title Page</div>
-									{worksheetJsTitle.current.map((t, index)=>{return <div key={index+1} value={index+1} onClick={topicSelected}>{t}</div>})}
-							</div>
-							<label>Show Ans:</label>
-							<div id="ansCheckBox" onClick={toggleAns}>
-									<img src={process.env.PUBLIC_URL+'/webPics/check-solid.svg'} alt='' style={{"display":"block"}}/>
-							</div>
+						<label>Topic:</label>
+						<div id="optionSelected" onClick={()=>{changeOptionsConDis(val => !val)}}>
+							<span>{optionsSelectedText.current}</span>
+							<img src={process.env.PUBLIC_URL+'/webPics/caret-down-solid-worksheet.svg'} alt=''/>
+						</div>
+						<div id="optionsContainer" style={
+							(optionsContainerDisplay) ? {display: "block"} : {display:"none"}
+						}>
+						<div key={0} value={0} onClick={topicSelected}>Title Page</div>
+							{worksheetJsTitle.current.map((t, index)=>{return <div key={index+1} value={index+1} onClick={topicSelected}>{t}</div>})}
+						</div>
+						<label>Show Ans:</label>
+						<div id="ansCheckBox" onClick={toggleAns}>
+							<img src={process.env.PUBLIC_URL+'/webPics/check-solid.svg'} alt='' style={{"display":"block"}}/>
+						</div>
 					</div>
 
 					<div id="sideButtons">
@@ -220,45 +220,45 @@ function Worksheet () {
 					</div>
 
 					<div id="pageButtons">
-							<div id="goLeft" onClick={goPrevPage} style={
-									curLoc.scroll ? {display: "block"} : {display: "none"}
-							}><img src={process.env.PUBLIC_URL+'/webPics/chevron-left-solid.svg'} alt=''/></div>
-							<div id="goRight" onClick={goNextPage} style={
-									allowNextScroll ? {display: "block"} : {display: "none"}
-							}><img src={process.env.PUBLIC_URL+'/webPics/chevron-right-solid.svg'} alt=''/></div>
+						<div id="goLeft" onClick={goPrevPage} style={
+							curLoc.scroll ? {display: "block"} : {display: "none"}
+						}><img src={process.env.PUBLIC_URL+'/webPics/chevron-left-solid.svg'} alt=''/></div>
+						<div id="goRight" onClick={goNextPage} style={
+							allowNextScroll ? {display: "block"} : {display: "none"}
+						}><img src={process.env.PUBLIC_URL+'/webPics/chevron-right-solid.svg'} alt=''/></div>
 					</div>
 
 					<div id="workSheet">
-							<div id="topicDiv" style={
-									curLoc.topic ?
-									((curLoc.scroll/1143)%2 ? tdStyle1 : tdStyle2) :
-									{display: "none"}
-							}>{
-									curLoc.topic ? (
-											((curLoc.scroll/1143) % 2) ?
-											<><span>{optionsSelectedText.current}</span> | {(curLoc.scroll/1143)+1}</>:
-											<>{(curLoc.scroll/1143)+1} | <span>{optionsSelectedText.current}</span></>
-									) : null
-							}</div>
-							<div id="workSheetInner" style={
-									curLoc.topic ?
-									(
-											(curLoc.scroll/1143)%2 ?
-											{
-													height: "1149px",
-													borderTopStyle:"solid",
-													borderLeftStyle:"none",
-													borderRightStyle:"solid"
-											} :
-											{
-													height: "1149px",
-													borderTopStyle:"solid",
-													borderLeftStyle:"solid",
-													borderRightStyle:"none"
-											}
-									) :
-									{height: "1202px"}
-							}>{topicsArr[curLoc.topic]}</div>
+						<div id="topicDiv" style={
+							curLoc.topic ?
+							((curLoc.scroll/1143)%2 ? tdStyle1 : tdStyle2) :
+							{display: "none"}
+						}>{
+							curLoc.topic ? (
+								((curLoc.scroll/1143) % 2) ?
+								<><span>{optionsSelectedText.current}</span> | {(curLoc.scroll/1143)+1}</>:
+								<>{(curLoc.scroll/1143)+1} | <span>{optionsSelectedText.current}</span></>
+							) : null
+						}</div>
+						<div id="workSheetInner" style={
+							curLoc.topic ?
+							(
+								(curLoc.scroll/1143)%2 ?
+								{
+									height: "1149px",
+									borderTopStyle:"solid",
+									borderLeftStyle:"none",
+									borderRightStyle:"solid"
+								} :
+								{
+									height: "1149px",
+									borderTopStyle:"solid",
+									borderLeftStyle:"solid",
+									borderRightStyle:"none"
+								}
+							) :
+							{height: "1202px"}
+						}>{topicsArr[curLoc.topic]}</div>
 					</div>
 				</div>
 			</Suspense>
@@ -266,20 +266,16 @@ function Worksheet () {
 	}
 	else{
 		showLoadingScreen();
-		//I want to show the loading screen
-		//so lets wait 100 millisecond
-		window.setTimeout(()=>{
-			import("./pages/"+searchParams.get("topic")+"_worksheet.js")
-			.then(res => {
-				worksheetJsTitle.current = res.titles;
-				setWSJSC(res.content);
-			})
-			.catch(err => {
-				alert("worksheet not found");
-				changeLoadingText("Going To Home Page");
-				navigate("/");
-			});
-		}, 100);
+		import("./pages/"+searchParams.get("topic")+"_worksheet.js")
+		.then(res => {
+			worksheetJsTitle.current = res.titles;
+			setWSJSC(res.content);
+		})
+		.catch(err => {
+			alert("worksheet not found");
+			changeLoadingText("Going To Home Page");
+			navigate("/");
+		});
 		return null;
 	}
 }
