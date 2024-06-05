@@ -25,8 +25,9 @@ function Worksheet () {
 	const navigate = useNavigate();
 	const [searchParams] = useSearchParams();
 	const [worksheetJsContent, setWSJSC] = useState(null);
+	const worksheetJsTitle = useRef(null);
 	const topicsArr = worksheetJsContent ?
-	[<TitlePage topic={searchParams.get("topic")}/>, ...worksheetJsContent.content] : null;
+	[<TitlePage topic={searchParams.get("topic")}/>, ...worksheetJsContent] : null;
 	const [curLoc,changeLoc] = useState({scroll:0,topic:0});
 	const stateChanged = useRef(false);
 	const [allowNextScroll,changeAllowNextScroll] = useState(false);
@@ -197,7 +198,7 @@ function Worksheet () {
 									(optionsContainerDisplay) ? {display: "block"} : {display:"none"}
 							}>
 									<div key={0} value={0} onClick={topicSelected}>Title Page</div>
-									{worksheetJsContent.titles.map((t, index)=>{return <div key={index+1} value={index+1} onClick={topicSelected}>{t}</div>})}
+									{worksheetJsTitle.current.map((t, index)=>{return <div key={index+1} value={index+1} onClick={topicSelected}>{t}</div>})}
 							</div>
 							<label>Show Ans:</label>
 							<div id="ansCheckBox" onClick={toggleAns}>
@@ -269,7 +270,10 @@ function Worksheet () {
 		//so lets wait 100 millisecond
 		window.setTimeout(()=>{
 			import("./pages/"+searchParams.get("topic")+"_worksheet.js")
-			.then(res => setWSJSC(res))
+			.then(res => {
+				worksheetJsTitle.current = res.titles;
+				setWSJSC(res.content);
+			})
 			.catch(err => {
 				alert("worksheet not found");
 				changeLoadingText("Going To Home Page");
