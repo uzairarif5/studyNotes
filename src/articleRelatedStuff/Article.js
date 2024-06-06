@@ -128,7 +128,7 @@ class Article extends React.Component {
 			}
 		}
 		else{
-			setFooterEl();
+			this.setFooterEl();
 			return null;
 		}
 	}
