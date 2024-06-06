@@ -266,16 +266,6 @@ function Worksheet () {
 	}
 	else{
 		showLoadingScreen();
-		import("./pages/"+searchParams.get("topic")+"_worksheet.js")
-		.then(res => {
-			worksheetJsTitle.current = res.titles;
-			setWSJSC(res.content);
-		})
-		.catch(err => {
-			alert("worksheet not found");
-			changeLoadingText("Going To Home Page");
-			navigate("/");
-		});
 		return null;
 	}
 }

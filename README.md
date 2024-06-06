@@ -44,7 +44,8 @@ This is my first big project that uses React.js and Redux
 
 ## Updates:
 
-update 17.3 - 17.9:
+
+update 17.3 - 17.10:
 - In `Worksheet.js`, the `import` function is used instead of `require`.
 
 update 17.2:
