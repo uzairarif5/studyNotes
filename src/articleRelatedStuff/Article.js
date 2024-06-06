@@ -27,7 +27,7 @@ class Article extends React.Component {
 		this.sourcesColor = [];
 		this.mainEl = document.getElementById("main");
 		this.pathnameToUse = window.location.pathname;
-		this.state = {wholeContent: null};
+		this.state = {wholeContent: null, footerEl: null};
 	}
 
 	getReferenceEl(h2s){
@@ -36,29 +36,34 @@ class Article extends React.Component {
 		)}</ol></>;
 	}
 
-	getFooterEl(){
-		let footerEl = null;
-		try {
-			if(window.screen.width <= parseInt(styles.maxWidthForMobile))
-				throw new Error("worksheet not available in mobile");
-			import("../pages"+this.pathnameToUse+"_worksheet"); //for code splitting and checking if worksheet exists
-			footerEl = <footer style={{gridTemplateColumns:"33% 33% 33%"}}>
-				<Link to="/" onClick={showLoadingScreen}>Home Page</Link>
-				<Link to={"worksheet?topic=" + this.pathnameToUse.slice(1)}>Worksheet</Link>
-				<button onClick={()=>{store.dispatch({
-					type: FORM_COUNTER,
-					payload: -1
-				})}}>Contact Us</button>
-			</footer>
-		}
-		catch (err) {footerEl = <footer>
+	setFooterEl(){
+		const noWSFooter = <footer>
 			<Link to="/">Home Page</Link>
 			<button onClick={()=>{store.dispatch({
 				type: FORM_COUNTER,
 				payload: -1
 			})}}>Contact Us</button>
-		</footer>}
-		return footerEl;
+		</footer>;
+
+		const WSFooter = <footer style={{gridTemplateColumns:"33% 33% 33%"}}>
+			<Link to="/" onClick={showLoadingScreen}>Home Page</Link>
+			<Link to={"worksheet?topic=" + this.pathnameToUse.slice(1)}>Worksheet</Link>
+			<button onClick={()=>{store.dispatch({
+				type: FORM_COUNTER,
+				payload: -1
+			})}}>Contact Us</button>
+		</footer>
+
+		if(window.screen.width <= parseInt(styles.maxWidthForMobile))
+			//no footer for mobile
+			this.state.setState({footerEl: noWSFooter});
+		else{
+			import("../pages"+this.pathnameToUse+"_worksheet")
+			//for code splitting and checking if worksheet exists
+			//there's probably a better way of doing this
+			.then(res => {this.state.setState({footerEl: WSFooter});})
+			.catch(err => {this.state.setState({footerEl: noWSFooter});})
+		}
 	}
 
 	scrollFunc(el){
@@ -72,107 +77,118 @@ class Article extends React.Component {
 	}
 
 	render() {
-		if(this.state.wholeContent){
-			let mainContent = this.state.wholeContent["content"].props.children;
-			let h2s = mainContent.reduce(function(arr, curEl) {
-				if (curEl.type === "h2") arr.push(curEl);
-				return arr;
-			},[]);
-			this.sourcesColor = this.state.wholeContent["sc"];
-			let additionalResourcesHeader = 
-			(mainContent[2].props.id === "additionalResources") ? <h4>Additional Resources:</h4> : null;
-			return <HelmetProvider>
-				<Helmet>
-					<title>{this.state.wholeContent["title"]}</title>
-				</Helmet>
-				<div id='article'>
-					<div id="notFooter">
-						{mainContent[0]}
-						{this.getReferenceEl(h2s)}
-						{mainContent[1]}
-						{additionalResourcesHeader}
-						{mainContent.slice(2)}
+		//first set footer then set wholeContent
+		if(this.state.footerEl){
+			if(this.state.wholeContent){
+				let mainContent = this.state.wholeContent["content"].props.children;
+				let h2s = mainContent.reduce(function(arr, curEl) {
+					if (curEl.type === "h2") arr.push(curEl);
+					return arr;
+				},[]);
+				this.sourcesColor = this.state.wholeContent["sc"];
+				let additionalResourcesHeader = 
+				(mainContent[2].props.id === "additionalResources") ? <h4>Additional Resources:</h4> : null;
+				return <HelmetProvider>
+					<Helmet>
+						<title>{this.state.wholeContent["title"]}</title>
+					</Helmet>
+					<div id='article'>
+						<div id="notFooter">
+							{mainContent[0]}
+							{this.getReferenceEl(h2s)}
+							{mainContent[1]}
+							{additionalResourcesHeader}
+							{mainContent.slice(2)}
+						</div>
+						{this.state.footerEl}
+						<ImgView/>
+						{sideB(
+							"upButton",
+							() => {this.mainEl.scrollTo(0,0);},
+							process.env.PUBLIC_URL+'/webPics/caret-up-solid.svg'
+						)}
+						{sideB(
+							"downButton",
+							()=>{this.mainEl.scrollTo(0, this.mainEl.scrollHeight);},
+							process.env.PUBLIC_URL+'/webPics/caret-down-solid.svg'
+						)}
 					</div>
-					{this.getFooterEl()}
-					<ImgView/>
-					{sideB(
-						"upButton",
-						() => {this.mainEl.scrollTo(0,0);},
-						process.env.PUBLIC_URL+'/webPics/caret-up-solid.svg'
-					)}
-					{sideB(
-						"downButton",
-						()=>{this.mainEl.scrollTo(0, this.mainEl.scrollHeight);},
-						process.env.PUBLIC_URL+'/webPics/caret-down-solid.svg'
-					)}
-				</div>
-				<ContactComp/>
-			</HelmetProvider>;
+					<ContactComp/>
+				</HelmetProvider>;
+			}
+			else { 
+				import("../pages"+this.pathnameToUse+".js")
+				.then(res => {this.setState({wholeContent: {
+					"title": res.title,
+					"content": res.content,
+					"sc": res.sourcesColor
+				}})})
+				.catch(err => this.setState({wholeContent: "ERROR"}));
+				return null;
+			}
 		}
-		else { 
-			import("../pages"+this.pathnameToUse+".js").then(res => {this.setState({wholeContent: {
-				"title": res.title,
-				"content": res.content,
-				"sc": res.sourcesColor
-			}})});
+		else{
+			setFooterEl();
 			return null;
 		}
 	}
 
 	componentDidUpdate() {
-		window.setTimeout(()=>{ document.fonts.ready.then(()=>{
-			if(this.state.wholeContent) {
-				//change Loading Text
-				changeLoadingText("Gathering Notes"); 
-				// add a date
-				fetch(`https://api.github.com/repos/uzairarif5/studyNotes/commits?path=src/pages${this.pathnameToUse}.js`)
-				.then(res => res.json())
-				.then(res => {
-					let dateText = res[0]["commit"]["committer"]["date"];
-					if (dateText) {
-						let dateStr = new Date(dateText).toString();
-						let formatedDate = dateStr.substring(0, dateStr.indexOf(" ("));
-						let dateEl = document.createElement("div");
-						dateEl.innerHTML = `<b>Last Commit:</b> ${formatedDate}`;
-						dateEl.id = "date";
-						document.querySelector("h1").after(dateEl);	
-					}
-				});
-				//set body background color
-				document.documentElement.style.backgroundColor = "#832";
-				//Add hide function to headings
-				$('h2').on("click",(el)=>{$(el.target).next().slideToggle();});
-				$('h3').on("click",(el)=>{$(el.target).nextUntil('h3, br').slideToggle();});
-				$("h3+ul").each(function(){this.previousElementSibling.style.backgroundColor= "rgba(0,0,0,0.05)";});
-				//add target="_blank" at all anchors (except in footer)
-				$(".content a, #sources a").attr("target","_blank");
-				//Add scroll functionality
-				this.mainEl.addEventListener("scroll",this.scrollFunc);
-				//colorSources
-				let sc = this.sourcesColor;
-				$('[data-source]').each(function(){
-					let curList = $(this);
-					let num = parseInt(curList.attr("data-source"));
-					curList.css("background-color", sc[num]);
-					curList.attr("title","Source: " + onlyText(sourceList[num]));
-				});
-				//Format MathJax
-				window.MathJax.typesetPromise();
-				//final settings
-				window.setTimeout(()=>{
-					//Remove loading
-					fadeLoadingToInsv();
-					//incase of hash
-					if(window.location.hash) window.location.href = window.location;
-				}, 1);
-			}
-			else{
-				//go to home page
-				alert("Article not found");
-				changeLoadingText("Going To Home Page");
-				this.props.changeAR(false);
-			}
-		})}, 1);
+		if(this.state.wholeContent) {
+			document.fonts.ready.then(()=>{
+				if(this.state.wholeContent === "ERROR"){
+					//go to home page
+					alert("Article not found");
+					changeLoadingText("Going To Home Page");
+					this.props.changeAR(false);
+				}
+				else {
+					//change Loading Text
+					changeLoadingText("Gathering Notes"); 
+					// add a date
+					fetch(`https://api.github.com/repos/uzairarif5/studyNotes/commits?path=src/pages${this.pathnameToUse}.js`)
+					.then(res => res.json())
+					.then(res => {
+						let dateText = res[0]["commit"]["committer"]["date"];
+						if (dateText) {
+							let dateStr = new Date(dateText).toString();
+							let formatedDate = dateStr.substring(0, dateStr.indexOf(" ("));
+							let dateEl = document.createElement("div");
+							dateEl.innerHTML = `<b>Last Commit:</b> ${formatedDate}`;
+							dateEl.id = "date";
+							document.querySelector("h1").after(dateEl);	
+						}
+					});
+					//set body background color
+					document.documentElement.style.backgroundColor = "#832";
+					//Add hide function to headings
+					$('h2').on("click",(el)=>{$(el.target).next().slideToggle();});
+					$('h3').on("click",(el)=>{$(el.target).nextUntil('h3, br').slideToggle();});
+					$("h3+ul").each(function(){this.previousElementSibling.style.backgroundColor= "rgba(0,0,0,0.05)";});
+					//add target="_blank" at all anchors (except in footer)
+					$(".content a, #sources a").attr("target","_blank");
+					//Add scroll functionality
+					this.mainEl.addEventListener("scroll",this.scrollFunc);
+					//colorSources
+					let sc = this.sourcesColor;
+					$('[data-source]').each(function(){
+						let curList = $(this);
+						let num = parseInt(curList.attr("data-source"));
+						curList.css("background-color", sc[num]);
+						curList.attr("title","Source: " + onlyText(sourceList[num]));
+					});
+					//Format MathJax
+					window.MathJax.typesetPromise();
+					//final settings
+					window.setTimeout(()=>{
+						//Remove loading
+						fadeLoadingToInsv();
+						//incase of hash
+						if(window.location.hash) window.location.href = window.location;
+					}, 1);
+				}
+			});
+		}
 	}
 
 	componentWillUnmount() {
@@ -191,5 +207,13 @@ function ArticleWrapper(){
 	if(allowRender) return <Article changeAR={changeAR}/>;
 	else return null;
 }
+
+const noWSFooter = <footer>
+	<Link to="/">Home Page</Link>
+	<button onClick={()=>{store.dispatch({
+		type: FORM_COUNTER,
+		payload: -1
+	})}}>Contact Us</button>
+</footer>;
 
 export default ArticleWrapper;
