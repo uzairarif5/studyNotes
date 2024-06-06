@@ -56,13 +56,13 @@ class Article extends React.Component {
 
 		if(window.screen.width <= parseInt(styles.maxWidthForMobile))
 			//no footer for mobile
-			this.state.setState({footerEl: noWSFooter});
+			this.setState({footerEl: noWSFooter});
 		else{
 			import("../pages"+this.pathnameToUse+"_worksheet")
 			//for code splitting and checking if worksheet exists
 			//there's probably a better way of doing this
-			.then(res => {this.state.setState({footerEl: WSFooter});})
-			.catch(err => {this.state.setState({footerEl: noWSFooter});})
+			.then(res => {this.setState({footerEl: WSFooter});})
+			.catch(err => {this.setState({footerEl: noWSFooter});})
 		}
 	}
 

@@ -44,7 +44,7 @@ This is my first big project that uses React.js and Redux
 
 ## Updates:
 
-update 17.17 - 17.18:
+update 17.17 - 17.19:
 - In `Article.js`, two states are now defined, one for footer and the other for `wholeContent`.
 
 update 17.3 - 17.16:
