@@ -17,6 +17,7 @@ export default function App(){
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/*" element={<Article />} />
+				<Route path="/worksheet" element={<Worksheet />} />
 			</Routes>
 		</BrowserRouter>
 		<Outlet/>
