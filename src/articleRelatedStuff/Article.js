@@ -14,6 +14,8 @@ import { FORM_COUNTER } from "../actions";
 import { sourceList } from './sourceList.js';
 import { onlyText } from 'react-children-utilities';
 
+const ERROR_VAR = "ERROR";
+
 class Article extends React.Component {
 	static lastSavedScrollY = 0;
 
@@ -77,9 +79,10 @@ class Article extends React.Component {
 	}
 
 	render() {
-		//first set footer then set wholeContent
+		//first set footer then set wholeContent (if not ERROR), if ERROR then return null
 		if(this.state.footerEl){
-			if(this.state.wholeContent){
+			if(this.state.wholeContent === ERROR_VAR) return null;
+			else if(this.state.wholeContent){
 				let mainContent = this.state.wholeContent["content"].props.children;
 				let h2s = mainContent.reduce(function(arr, curEl) {
 					if (curEl.type === "h2") arr.push(curEl);
@@ -123,7 +126,7 @@ class Article extends React.Component {
 					"content": res.content,
 					"sc": res.sourcesColor
 				}})})
-				.catch(err => this.setState({wholeContent: "ERROR"}));
+				.catch(err => this.setState({wholeContent: ERROR_VAR}));
 				return null;
 			}
 		}
@@ -136,7 +139,7 @@ class Article extends React.Component {
 	componentDidUpdate() {
 		if(this.state.wholeContent) {
 			document.fonts.ready.then(()=>{
-				if(this.state.wholeContent === "ERROR"){
+				if(this.state.wholeContent === ERROR_VAR){
 					//go to home page
 					alert("Article not found");
 					changeLoadingText("Going To Home Page");
@@ -207,13 +210,5 @@ function ArticleWrapper(){
 	if(allowRender) return <Article changeAR={changeAR}/>;
 	else return null;
 }
-
-const noWSFooter = <footer>
-	<Link to="/">Home Page</Link>
-	<button onClick={()=>{store.dispatch({
-		type: FORM_COUNTER,
-		payload: -1
-	})}}>Contact Us</button>
-</footer>;
 
 export default ArticleWrapper;
