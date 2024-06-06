@@ -41,7 +41,7 @@ class Article extends React.Component {
 		try {
 			if(window.screen.width <= parseInt(styles.maxWidthForMobile))
 				throw new Error("worksheet not available in mobile");
-			require("../pages"+this.pathnameToUse+"_worksheet");
+			import("../pages"+this.pathnameToUse+"_worksheet"); //for code splitting and checking if worksheet exists
 			footerEl = <footer style={{gridTemplateColumns:"33% 33% 33%"}}>
 				<Link to="/" onClick={showLoadingScreen}>Home Page</Link>
 				<Link to={"worksheet?topic=" + this.pathnameToUse.slice(1)}>Worksheet</Link>

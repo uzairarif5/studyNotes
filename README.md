@@ -45,8 +45,9 @@ This is my first big project that uses React.js and Redux
 ## Updates:
 
 
-update 17.3 - 17.15:
+update 17.3 - 17.16:
 - In `Worksheet.js`, the `import` function is used instead of `require`.
+- Most of these updates are for testing.
 
 update 17.2:
 - In `Article.js`, the `import` function is used instead of `require`.
