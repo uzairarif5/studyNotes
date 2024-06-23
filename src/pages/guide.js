@@ -4,6 +4,7 @@ import { MathStuff } from "../articleRelatedStuff/MathStuff";
 import { getSourcesOL } from "../articleRelatedStuff/sourcesManager";
 import { CodePre } from "../articleRelatedStuff/Code";
 import { drawLine, drawBar, drawHis } from "../articleRelatedStuff/drawCharts";
+import { Questions } from "../articleRelatedStuff/Questions";
 
 export const title = "My Study Notes: Guide";
 export const sourcesColor = {50:null, 51: "#3a3", 52:"#c45645"};
@@ -34,6 +35,10 @@ export const content = <>
 				<ul>
 					<li>This bullet point would be from source 2.</li>
 					<li>Sometimes you can hover on a section to see the source, but this only works if the code mentions the source of the section.</li>
+					<li>Sometimes if I don't fully understand a point, I might add extra questions to the end of the bullet point, like this:<Questions>
+						<li>Example Question 1</li>
+						<li>Example Question 2</li>
+					</Questions></li>
 				</ul>
 			</div>
 			<div style={{backgroundColor: "#c45645"}} data-source={52}>

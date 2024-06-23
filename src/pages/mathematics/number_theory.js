@@ -104,7 +104,7 @@ export const content = <>
     <ul style={{width: "49%",float: "left",marginLeft: "0.5%", marginRight: "0.5%"}} data-source={35}>
       <li><b>Modulo:</b><SubList>
         <li><a href='https://en.wikipedia.org/wiki/Modular_arithmetic'><b>Modular arithmetic</b> is a system of arithmetic for integers, where numbers "wrap around" when reaching a certain value, called the <b>modulus</b></a>.</li>
-        <li>Let \(a\), \(b\), \(m\) be integers, with \(m = 0\). We say \(a\) is congruent to \(b\) modulo \(m\) (represented as \(a ≡ b \mod m\)) if \(a\) and \(b\) have the same remainder when divided \(m\) (which is also if \(m|b-a\)) .</li>
+        <li>Let \(a\), \(b\), \(m\) be integers, with \(m = 0\). We say \(a\) is <b>congruent</b> to \(b\) modulo \(m\) (represented as \(a ≡ b \mod m\)) if \(a\) and \(b\) have the same remainder when divided \(m\) (which is also if \(m|b-a\)) .</li>
         <li>If [\(a ≡ b \mod m\)] and [\(c ≡ d \mod m\)], then [\(a + c ≡ b + d \mod m\)] (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/modLemma1'>proof</a>) and [\(ac ≡ bd \mod m\)] (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/modLemma2'>proof</a>).</li>
         <li>If \((x, m) = 1\) and [\(ax ≡ bx \mod m\)], then [\(a ≡ b \mod m\)] (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/modLemma3'>proof</a>).</li>
       </SubList></li>
@@ -121,17 +121,23 @@ export const content = <>
           </tbody>
         </TableLI>
       </SubList></li>
-      <li>Residue system:<SubList>
+      <li><b>Residue system:</b><SubList>
         <li><a href='https://artofproblemsolving.com/wiki/index.php/Residue_class'>In modular arithmetic, a <b>residue</b> of an integer \(a\) in modulo \(n\) is the unique value of \(0\leq r \leq n-1\) such that \(a=kn + r\). In the context of division, a residue is simply a remainder.</a></li>
         <li>A <b>complete residue system mod m</b> is a collection of integers \(a_1 \ldots a_m\) such that \(a_i \not\equiv a_j \mod m\) if \(i \ne j\) and any integer \(n\) is congruent to some \(a_i \mod m\).</li>
         <li data-source={54}>The set \({"\\{0,1,2,3\\}"}\) is a complete residue system modulo 4 and so is \({"\\{ 6,-11,19,1988 \\}"}\).</li>
-        <li>Take any complete residue system mod m and take the subset consisting of all the integers in it which are coprime to \(m\) - these will form a <b>reduced residue system</b>.</li>
-        <li>If \(m = 12\), then \({"\\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12\\}"}\) would be a complete residue and the reduced residue would be \({"\\{1, 5, 7, 11\\}"}\).</li>
+        <li>Take any complete residue system mod \(m\) and take the subset consisting of all the integers in it which are coprime to \(m\) - these will form a <b>reduced residue system</b>.</li>
+        <li data-source={54}>The \({"\\{ 0, 1, 2, \\ldots, m-1 \\} "}\) is said to be the <b>set of least nonnegative residue modulo m</b>.</li>
+        <li>If \(m = 12\), then \({"\\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 \\}"}\) would be a complete residue and the reduced residue would be \({"\\{1, 5, 7, 11\\}"}\).</li>
         <li>The number of elements in a reduced residue system mod m is called <b>Euler's totient function</b>: \(\phi(m)\) (ie., the number of positive integers \(≤ m\) and coprime to \(m\)).</li>
         <li><b>Euler's Theorem:</b> If \((a, m) = 1\), then \({"a^{\\phi(m)} ≡ 1 \\mod m"}\) (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/eulers_theorem'>proof</a>).</li>
       </SubList></li>
+      <li data-source={54}><b>Linear Congruences:</b><SubList>
+        <li>A congruence of the form \(ax ≡ b \mod m\) is said to be a <b>linear congruence</b> in the variable \(x\). The congruence is linear in the sense that the variable \(x\) occurs to the first power.</li>
+        <li></li>
+        <li></li>
+      </SubList></li>
       <li><b>Fermat's Little Theorem:</b> \(a^p ≡ a \mod p \) for prime \(p\) and an integer \(a\) (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/fermats_little_theorem'>proof</a>).</li>
-      <li><b>Freshman's Dream:</b> \((x + y)^p ≡ x^p + y^p (mod p)\) where \(x\) and \(y\) are integers and \(p\) is prime (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/freshmans_dream'>proof</a>).</li>
+      <li><b>Freshman's Dream:</b> \((x + y)^p ≡ x^p + y^p (\mod p)\) where \(x\) and \(y\) are integers and \(p\) is prime (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/freshmans_dream'>proof</a>).</li>
       <li>Inverses:<SubList>
         <li>If \((a, m) = 1\), then there is a unique integer \(b \mod m\) such that \(ab ≡ 1 \mod m\). This \(b\) is denoted by \({"\\frac{1}{a}"}\) or \(a^{"{-1}"} \mod m\) (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/modular_inverse'>proof</a>).</li>
         <li>The congruence \(x^2 ≡ 1 \mod p\) has only the solutions \(x ≡ ±1 \mod p\) (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/x_square_solution'>proof</a>).</li>

@@ -7,7 +7,6 @@ export const title = "Data Mining With R";
 export const sourcesColor = {38: null, 39: null};
 export const content = <>
   <h1>Data Mining With R</h1>
-  <div id="date"><b>Last Edit:</b> {document.lastModified}</div>
 	{getSourcesOL(sourcesColor)}
 	<h2 id="introduction">Introduction</h2>
 	<div className="content">
@@ -86,7 +85,7 @@ rep(x, each=5)
           <li>An "empty" object may still have a mode.</li>
         </SubList></li>
         <li>Recursive structures:<SubList>
-          <li>R also operates on objects called <b>lists</b>, which are of mode <i>list</i>. These are ordered sequences of objects which individually can be of any mode. lists are known as "recursive" rather than atomic structures since their components can themselves be lists in their own right.</li>
+          <li>R also operates on objects called <b>lists</b>, which are of mode <i>list</i>. These are ordered sequences of objects which individually can be of any mode. Lists are known as "recursive" rather than atomic structures since their components can themselves be lists in their own right.</li>
           <li>The other recursive structures are those of mode <i>function</i> and <i>expression</i>.</li>
         </SubList></li>
         <li>The class of an object:<SubList>
@@ -442,20 +441,19 @@ for (k in 1:10) {
       </ul>
       <ul className="ownExplanation">
         <li>Loading CSVs, making bivariate plots and saving to a png:<SubList>
-          <li>I am going to use this data: (<a href='https://www.kaggle.com/datasets/rashikrahmanpritom/heart-attack-analysis-prediction-dataset'>https://www.kaggle.com/datasets/rashikrahmanpritom/heart-attack-analysis-prediction-dataset</a>). You can read what the column values mean.</li>
+          <li>I am going to use this data: (<a href='https://www.kaggle.com/datasets/rashikrahmanpritom/heart-attack-analysis-prediction-dataset'>https://www.kaggle.com/datasets/rashikrahmanpritom/heart-attack-analysis-prediction-dataset</a>). You can read what the column values mean. For the sex, 0 = female and 1 = male.</li>
           <li>We can load the lattice package and the play store data like this:</li>
           <li><CodePre language='r'>{`
 library(lattice) #use lattice package
 data <- read.csv("heart.csv") #read csv file
           `}</CodePre></li>
-          <li>For the sex, 0 = female and 1 = male.</li>
           <li><code>table(data$cp)</code> gives us:</li>
           <li><CodePre>{`
   0   1   2   3
 143  50  87  23
           `}</CodePre></li>
 
-          <li>We can plot a barchart using <code>barchart(table(data$cp))</code>. For a larger font, use <code>barchart(table(data$cp), scales=list(cex=c(2,2)))</code>.</li>
+          <li>We can plot a barchart using <code>barchart(table(data$cp))</code>. For a larger font, use <code>barchart(table(data$cp), scales=list(cex=c(2,2)))</code>. Incase if you don't see any plots when running the R file, try putting the plot function inside <code>print(...)</code>.</li>
           <li><ImgComp src={require("./basics_of_r_pics/1.png")} style={{width: "60%"}}/></li>
           <li><code>table(data$cp,data$sex)</code> will give this output:</li>
           <li><CodePre>{`
@@ -542,10 +540,182 @@ levelplot(data$Weight ~ dataHeight * dataAge, scales=list(x=list(rot=90)))
   <div className="content">
 		<div style={{width: "49%",marginLeft: "0.5%",float: "left"}}>
       <ul className="ownExplanation">
-        <li></li>
+        <li>Standard Linear Regression:<SubList>
+          <li>The <code>lm()</code> function is used to fit linear regression models.</li>
+          <li>Let use <a href='https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset?resource=download'>this sleep health dataset</a> as an example.</li>
+          <li><CodePre language="r">{`
+SleepData <- read.csv("Sleep_health_and_lifestyle_dataset.csv")
+          `}</CodePre></li>
+          <li>I will try to model the stress level as a function  of some predictor variables. Let's find all the numeric data using <code>str(SleepData)</code>:</li>
+          <li><CodePre>{`
+ $ Person.ID              : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ Gender                 : chr  "Male" "Male" "Male" "Male" ...
+ $ Age                    : int  27 28 28 28 28 28 29 29 29 29 ...
+ $ Occupation             : chr  "Software Engineer" "Doctor" "Doctor" "Sales Representative" ...
+ $ Sleep.Duration         : num  6.1 6.2 6.2 5.9 5.9 5.9 6.3 7.8 7.8 7.8 ...
+ $ Quality.of.Sleep       : int  6 6 6 4 4 4 6 7 7 7 ...
+ $ Physical.Activity.Level: int  42 60 60 30 30 30 40 75 75 75 ...
+ $ Stress.Level           : int  6 8 8 8 8 8 7 6 6 6 ...
+ $ BMI.Category           : chr  "Overweight" "Normal" "Normal" "Obese" ...
+ $ Blood.Pressure         : chr  "126/83" "125/80" "125/80" "140/90" ...
+ $ Heart.Rate             : int  77 75 75 85 85 85 82 70 70 70 ...
+ $ Daily.Steps            : int  4200 10000 10000 3000 3000 3000 3500 8000 8000 8000 ...
+ $ Sleep.Disorder         : chr  "None" "None" "None" "Sleep Apnea" ...
+          `}</CodePre></li>
+          <li>From the numerical columns, lets find some good predictors. I will use <code>cor(SleepData[numericalColumns])["Stress.Level",]</code> to find the correlation of "Stress.Level" with the other numerical variables.</li>
+          <li><CodePre language="r">{`
+SleepData <- read.csv("Sleep_health_and_lifestyle_dataset.csv")
+
+numericalColumns = c("Age","Sleep.Duration","Quality.of.Sleep",
+"Physical.Activity.Level","Stress.Level",
+"Heart.Rate","Daily.Steps")
+
+print(cor(SleepData[numericalColumns])["Stress.Level",])
+          `}</CodePre></li>
+          <li>This gives:</li>
+          <li><CodePre>{`
+                    Age          Sleep.Duration        Quality.of.Sleep 
+            -0.42234448             -0.81102303             -0.89875203
+Physical.Activity.Level            Stress.Level              Heart.Rate 
+            -0.03413446              1.00000000              0.67002646
+            Daily.Steps
+             0.18682895 
+          `}</CodePre></li>
+          <li>It looks like "sleep duration" and "quality of sleep" are good predictors for stress levels. We can make a linear model and print it's summary like so:</li>
+          <li><CodePre language="r">{`
+model1 <- lm(Stress.Level ~ Sleep.Duration + Quality.of.Sleep,
+data = SleepData)
+print(summary(model1))
+          `}</CodePre></li>
+          <li>The output is:</li>
+          <li><CodePre>{`
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.88022 -0.15843 -0.07105  0.57679  1.48941
+
+Coefficients:
+                 Estimate Std. Error t value Pr(>|t|)    
+(Intercept)      15.62495    0.39480   39.58   <2e-16 ***
+Sleep.Duration   -0.17476    0.10787   -1.62    0.106
+Quality.of.Sleep -1.22983    0.07171  -17.15   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.7774 on 371 degrees of freedom
+Multiple R-squared:  0.8091,    Adjusted R-squared:  0.8081
+F-statistic: 786.2 on 2 and 371 DF,  p-value: < 2.2e-16
+          `}</CodePre></li>
+          <li>Let's see how accurate our model is. Our data set has 374 records. Let's randomly pick 50 of them and use them as a test, while the others would be used for training.</li>
+          <li><CodePre language="r">{`
+SleepData <- read.csv("Sleep_health_and_lifestyle_dataset.csv")
+randomNum <- sample.int(374, 50) #get 50 random numbers from [1, 374]
+testData <- SleepData[randomNum,]
+trainData <- SleepData[-randomNum,]
+          `}</CodePre></li>
+          <li>Now let's use the <code>predict()</code> function:</li>
+          <li><CodePre language="r">{`
+model1 <- lm(Stress.Level ~ Sleep.Duration + Quality.of.Sleep,
+data = SleepData)
+print(predict(model1, testData)) 
+          `}</CodePre></li>
+          <li>This gives:</li>
+          <li><CodePre>{`
+      23       60       30      214      180      210       31      326 
+5.670512 5.670512 5.635560 4.423207 4.423207 4.423207 8.357354 3.071048
+      99      175      283      320      117      220       18      186
+4.545538 4.458159 7.197429 3.088524 4.528062 7.110050 7.197429 7.057623
+     151      185       42       90      190      360      347       86 
+3.158427 7.057623 5.670512 4.510586 7.110050 3.140951 3.123475 4.528062
+     118      103      191       75      339      252      303      136 
+4.528062 4.528062 5.845270 7.197429 3.071048 5.827794 5.775366 4.510586
+      79      230      314       74      323      355      189      240
+7.197429 7.145002 3.088524 7.179953 3.088524 3.158427 5.845270 7.127526 
+     228       66      112      232      115      233      366      182
+7.145002 7.162477 4.493110 7.145002 4.528062 5.862746 3.158427 4.423207 
+     238      263
+5.880221 5.862746
+          `}</CodePre></li>
+          <li>Let's find the average error:</li>
+          <li><CodePre language="r">{`
+model1 <- lm(Stress.Level ~ Sleep.Duration + Quality.of.Sleep,
+data = SleepData)
+predictions <- predict(model1, testData)
+print(sum(testData$Stress.Level - predictions) / 50)
+          `}</CodePre></li>
+          <li>Running this code, the last result I got was 0.09643459.</li>
+        </SubList></li>
       </ul>
     </div>
     
+		<div style={{width: "49%",marginLeft: "0.5%",float: "right"}}>
+      <ul className="ownExplanation">
+        <li></li>
+      </ul>
+    </div>
+  </div>
+  <h2>Machine Learning</h2>
+  <div className="content">
+		<div style={{width: "49%",marginLeft: "0.5%",float: "left"}}>
+      <ul className="ownExplanation">
+        <li>Neural network:<SubList>
+          <li>Let use <a href='https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset'>diabetes_binary_health_indicators_BRFSS2015.csv</a> file as an example.</li>
+          <li><CodePre language="r">{`
+library(neuralnet)
+allData <- read.csv("diabetes_binary_health_indicators_BRFSS2015.csv")
+
+#use smaller data size (otherwise computing takes too long)
+dataSize <- 7000
+diabetesDataSmall <- allData[0:dataSize,]
+
+#use 500 random records as test data
+testDataSize <- 500
+randomNum <- sample.int(dataSize, testDataSize)
+testData <- diabetesDataSmall[randomNum,]
+trainData <- diabetesDataSmall[-randomNum,]
+
+#make model
+model1 = neuralnet(
+  Diabetes_binary ~ .,
+  data=diabetesDataSmall,
+  hidden = c(50,5),
+  linear.output = FALSE,
+  act.fct = "logistic",
+  learningrate = 0.05,
+  threshold = 1
+)
+
+#check prediction
+predictions <- predict(model1, testData)
+dif <- testData$Diabetes_binary - predictions
+tp <- sum((predictions >= 0.5) * (testData$Diabetes_binary==1))
+fp <- sum((predictions >= 0.5) * (testData$Diabetes_binary==0))
+tn <- sum((predictions <= 0.5) * (testData$Diabetes_binary==0))
+fn <- sum((predictions <= 0.5) * (testData$Diabetes_binary==1))
+print(tp)
+print(fp)
+print(tn)
+print(fn)
+
+          `}</CodePre></li>
+          <li>The neural network above has two hidden layers (first one with 50 and second one with 5), and has the "logistic" (sigmoid) as the activation function.</li>
+          <li>The first argument is <code>Diabetes_binary ~ .</code>. The <code>.</code> means "use every other variable not already mentioned".</li>
+          <li>The threshold is "a numeric value specifying the threshold for the partial derivatives of the error function as stopping criteria".</li>
+          <li>Here are my results:</li>
+          <li><CodePre>{`
+[1] 62
+[1] 3
+[1] 417
+[1] 18
+          `}</CodePre></li>
+          <li>Keep in mind that training the neural network takes a lot of time.</li>
+        </SubList></li>
+        <li>Using the <a href='https://torch.mlverse.org/packages/'>torch</a> library:<SubList>
+          <li></li>
+          <li></li>
+          <li></li>
+        </SubList></li>
+      </ul>
+    </div>
 		<div style={{width: "49%",marginLeft: "0.5%",float: "right"}}>
       <ul className="ownExplanation">
         <li></li>

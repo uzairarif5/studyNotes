@@ -44,6 +44,12 @@ This is my first big project that uses React.js and Redux
 
 ## Updates:
 
+update 18.1:
+- Added `Questions` component.
+- Added content to `number_theory` and `information_and_entropy`.
+- In `Article.js`, date is now in the `SMALL` tag.
+- Made some changes to the License section at home page.
+
 update 17.17 - 17.20:
 - In `Article.js`, two states are now defined, one for footer and the other for `wholeContent`.
 

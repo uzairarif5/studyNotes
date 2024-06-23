@@ -13,6 +13,7 @@ import store from "../store";
 import { FORM_COUNTER } from "../actions";
 import { sourceList } from './sourceList.js';
 import { onlyText } from 'react-children-utilities';
+import { QuestionsBox } from './Questions.js';
 
 const ERROR_VAR = "ERROR";
 
@@ -105,6 +106,7 @@ class Article extends React.Component {
 						</div>
 						{this.state.footerEl}
 						<ImgView/>
+						<QuestionsBox/>
 						{sideB(
 							"upButton",
 							() => {this.mainEl.scrollTo(0,0);},
@@ -148,7 +150,7 @@ class Article extends React.Component {
 				else {
 					//change Loading Text
 					changeLoadingText("Gathering Notes"); 
-					// add a date
+					//add a date
 					fetch(`https://api.github.com/repos/uzairarif5/studyNotes/commits?path=src/pages${this.pathnameToUse}.js`)
 					.then(res => res.json())
 					.then(res => {
@@ -157,7 +159,7 @@ class Article extends React.Component {
 							let dateStr = new Date(dateText).toString();
 							let formatedDate = dateStr.substring(0, dateStr.indexOf(" ("));
 							let dateEl = document.createElement("div");
-							dateEl.innerHTML = `<b>Last Commit:</b> ${formatedDate}`;
+							dateEl.innerHTML = `<small><b>Last Commit:</b> ${formatedDate}</small>`;
 							dateEl.id = "date";
 							document.querySelector("h1").after(dateEl);	
 						}
@@ -167,7 +169,6 @@ class Article extends React.Component {
 					//Add hide function to headings
 					$('h2').on("click",(el)=>{$(el.target).next().slideToggle();});
 					$('h3').on("click",(el)=>{$(el.target).nextUntil('h3, br').slideToggle();});
-					$("h3+ul").each(function(){this.previousElementSibling.style.backgroundColor= "rgba(0,0,0,0.05)";});
 					//add target="_blank" at all anchors (except in footer)
 					$(".content a, #sources a").attr("target","_blank");
 					//Add scroll functionality
@@ -182,13 +183,8 @@ class Article extends React.Component {
 					});
 					//Format MathJax
 					window.MathJax.typesetPromise();
-					//final settings
-					window.setTimeout(()=>{
-						//Remove loading
-						fadeLoadingToInsv();
-						//incase of hash
-						if(window.location.hash) window.location.href = window.location;
-					}, 1);
+					//Remove loading
+					window.setTimeout(fadeLoadingToInsv, 1);
 				}
 			});
 		}

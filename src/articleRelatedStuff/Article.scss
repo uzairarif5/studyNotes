@@ -47,6 +47,10 @@
 			cursor: pointer;
 			clear: both;
 			word-break: break-word;
+
+			&:has(+ul){
+				background-color: rgba($color: #000000, $alpha: 0.05);
+			}
 		}
 		h4{
 			font-weight: bold;
@@ -114,7 +118,6 @@
 				display: inline;
 				position: relative;
 				height: 14px;
-				cursor: pointer;
 			}
 		}
 		#reference, #sources, #additionalResources{
@@ -322,7 +325,7 @@
 				}
 			}
 			figure{
-				margin: auto;
+				margin: 5px auto 10px auto;
 
 				figcaption{
 					background-color: rgb(97, 36, 24);

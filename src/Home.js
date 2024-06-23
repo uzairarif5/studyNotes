@@ -105,12 +105,15 @@ function LicenseComp(props){
 	
 	return <div className="licenseComp" style={{display: props.dis}}>
 		<p {...{"xmlns:cc":"http://creativecommons.org/ns#", "xmlns:dct":"http://purl.org/dc/terms/"}} style={{backgroundColor: defaultBC}}>
-			<button onClick={()=>{props.setFunc("none")}}>&#x2716;</button>
+			<button onClick={()=>{props.setFunc("none")}}>X</button>
 			<span style={{margin:"20px 10px 10px 10px", fontSize:"18px", display:"block", textAlign:"center"}}>
-				<a property="dct:title" rel="cc:attributionURL" href="https://uzairarif5.github.io/studyNotes/">My Study Notes</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.linkedin.com/in/uzair0845/">Uzair Arif</a><br/>is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style={{display:"inline-block"}}>CC BY-NC-SA 4.0</a>
+				The <b>text content</b> of<br/><a property="dct:title" rel="cc:attributionURL" href="/">My Study Notes</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.linkedin.com/in/uzair0845/">Uzair Arif</a><br/>is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style={{display:"inline-block"}}>CC BY-NC-SA 4.0</a>
 			</span>
 			<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style={{display:"flex", justifyContent:"center"}}>
-				<img style={{height:"40px",verticalAlign:"text-bottom"}} src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""/><img style={{height:"40px",verticalAlign:"text-bottom"}} src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""/><img style={{height:"40px",verticalAlign:"text-bottom"}} src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""/><img style={{height:"40px",verticalAlign:"text-bottom"}} src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""/>
+				<img style={{height:"40px",verticalAlign:"text-bottom"}} src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""/>
+				<img style={{height:"40px",verticalAlign:"text-bottom"}} src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""/>
+				<img style={{height:"40px",verticalAlign:"text-bottom"}} src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""/>
+				<img style={{height:"40px",verticalAlign:"text-bottom"}} src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""/>
 			</a>
 		</p>
 	</div>;
