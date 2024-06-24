@@ -44,7 +44,7 @@ This is my first big project that uses React.js and Redux
 
 ## Updates:
 
-update 18.2 - 18.3:
+update 18.2 - 18.4:
 - `Questions` component dialog box is now closed by default.
 
 update 18.1:
