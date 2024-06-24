@@ -10,7 +10,7 @@ import { ImgView } from './ImgView';
 import styles from "../variables.module.scss";
 import { useNavigate } from "react-router-dom";
 import store from "../store";
-import { FORM_COUNTER } from "../actions";
+import { FORM_COUNTER, Q_COUNTER } from "../actions";
 import { sourceList } from './sourceList.js';
 import { onlyText } from 'react-children-utilities';
 import { QuestionsBox } from './Questions.js';
@@ -22,11 +22,15 @@ class Article extends React.Component {
 
 	constructor(props) {
 		super(props);
+		showLoadingScreen();
 		store.dispatch({
 			type: FORM_COUNTER,
 			payload: 0
 		});
-		showLoadingScreen();
+		store.dispatch({
+			type: Q_COUNTER,
+			payload: 0
+		});
 		this.sourcesColor = [];
 		this.mainEl = document.getElementById("main");
 		this.pathnameToUse = window.location.pathname;
