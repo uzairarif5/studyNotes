@@ -44,6 +44,9 @@ This is my first big project that uses React.js and Redux
 
 ## Updates:
 
+update 18.2:
+- `Questions` component dialog box is now closed by default.
+
 update 18.1:
 - Added `Questions` component.
 - Added content to `number_theory` and `information_and_entropy`.

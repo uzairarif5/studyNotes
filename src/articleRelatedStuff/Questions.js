@@ -30,7 +30,7 @@ export function QuestionsBox(){
 	var qCounterVal = useSelector(state => state.qCounter); //variable not needed, only state rerender
 
 	useEffect(()=>{
-		if (!dialogRef.current.open) {
+		if (qCounterVal && !dialogRef.current.open) {
 			dialogRef.current.showModal();
 		}
 		else dialogRef.current.close();
