@@ -20,7 +20,7 @@ export const sourceList = [<></>, <><a href='https://eng.libretexts.org/Bookshel
     <><a href='https://opendsa-server.cs.vt.edu/ODSA/Books/CS3/html/index.html'>CS3 Data Structures & Algorithms</a> by OpenDSA</>,
     <><a href='https://goalkicker.com/AlgorithmsBook/'>Algorithms Notes for Professionals book</a> from goalkicker</>,
     <>ChatGPT</>,
-    <div className="emailed"><a href='https://www.cse.iitd.ac.in/~srsarangi/archbooksoft.html'>Basic Computer Architecture</a> by Smruti R. Sarangi</div>,
+    <div><a href='https://www.cse.iitd.ac.in/~srsarangi/archbooksoft.html'>Basic Computer Architecture</a> by Smruti R. Sarangi</div>,
     <><a href='https://www.elearningfrench.com'>elearningfrench.com</a></>,
     <><a href='https://www.optilingo.com/blog/french/french-pronouns/'>optilingo.com/blog/french/french-pronouns/</a></>,
     <>Madinah Arabic Book 2 from <a href='http://www.lqtoronto.com/madinaarabic.html'>lqtoronto</a></>,
@@ -47,7 +47,7 @@ export const sourceList = [<></>, <><a href='https://eng.libretexts.org/Bookshel
     <>COMP 4300 Game Programming course (available <a href='https://www.youtube.com/watch?v=s99UDGdYIUE&list=PL_xRyXins84_Jf-aCh7chj47HR4oZLPwK'>here</a>)</>,
     <>Weiten, W., & McCann, D. (2016). <i>Psychology: Themes & Variations</i> (4th ed.). Nelson Education.</>,
     <>UML Diagrams Full Course <a href='https://www.youtube.com/watch?v=WnMQ8HlmeXc'>video</a> from freeCodeCamp.org</>,
-    <>Source 1</>,
+    <div className="emailed">Source 1</div>,
     <>Source 2, whether a piece of content is from source 1 or 2 would be specified in the article, or you would have to use the colors.</>,
     <>Source 3, sometimes instead of mentioning the source name, colors would be used to identify the source.</>,
     <><a href='https://www.sfml-dev.org'>https://www.sfml-dev.org</a></>,
@@ -56,5 +56,7 @@ export const sourceList = [<></>, <><a href='https://eng.libretexts.org/Bookshel
     <><a href='https://openstax.org/details/books/chemistry-2e'>Chemistry (2e)</a> by OpenStax</>,
     <><a href='https://www.google.ca/books/edition/Web_Based_Learning_through_Educational_I/hHoVhZ8cm88C?hl=en&gbpv=0'>Web-Based Learning through Education Informatics: Information Science Meet Educational Computing</a> by Nigel Ford</>,
     <><a href='https://udlbook.github.io/udlbook/'>Understanding Deep Learning</a></>,
+    <><a href='https://www.dr-chuck.com/net-intro/'>Introduction to Networking: How the Internet Works</a></>,
+    <><a href='https://pages.cs.wisc.edu/~remzi/OSTEP/'>Operating Systems: Three Easy Pieces</a> by Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau</>,
     <></>
 ]

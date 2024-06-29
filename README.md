@@ -44,6 +44,11 @@ This is my first big project that uses React.js and Redux
 
 ## Updates:
 
+update 19.1:
+- Added a "Close all lists" button.
+- Added `networking.js` and `information_and_entropy.js`.
+- Made changes to `guide.js`, `number_theory.js` and `calculus.js`.
+
 update 18.2 - 18.5:
 - `Questions` component dialog box is now closed by default.
 

@@ -425,10 +425,9 @@
 			}
 		}
 	}
-	#upButton, #downButton{
+	#listsUpButton, #upButton, #downButton{
 		position: fixed;
 		width: 50px;
-		right: 30px;
 		height: 44px;
 		text-align: center;
 		border: #612 solid 5px;
@@ -437,7 +436,6 @@
 		opacity: 0.7;
 		cursor: pointer;
 		user-select: none;
-		display:none;
 
 		img{
 			height: 30px;
@@ -447,11 +445,19 @@
 			opacity: 1;
 		}
 	}
+	#listsUpButton{
+		top: 20px;
+		right: 30px;
+	}
 	#upButton{
-		top: 30px;
+		top: 84px;
+		right: 30px;
+		display:none;
 	}
 	#downButton{
-		bottom: 30px;
+		bottom: 20px;
+		right: 30px;
+		display:none;
 	}
 	footer{
 		margin-top: 55px;

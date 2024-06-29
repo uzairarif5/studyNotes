@@ -71,7 +71,6 @@ const HomeCompMemo = memo(()=>{
 		<Link to="mathematics/number_theory">Number Theory</Link>
 		<Link to="mathematics/probability_and_statistics">Probability And Statistics</Link>
 		<Link to="mathematics/calculus">Calculus</Link>
-		<Link to="mathematics/information_and_entropy">Information And Entropy</Link>
 		<h2>Natural Sciences</h2>
 		<Link to="natural_sciences/history_and_philosophy_of_science">History And Philosophy Of Science</Link>
 		<Link to="natural_sciences/chemistry">Chemistry</Link>
@@ -81,7 +80,9 @@ const HomeCompMemo = memo(()=>{
 		<h2>Computer Science Fundamentals</h2>
 		<Link to="computer_science_fundamentals/data_structures_and_algorithms">Data Structures And Algorithms</Link>
 		<Link to="computer_science_fundamentals/useful_information_for_algorithms">Useful Information For Algorithms</Link>
-		<Link to="computer_science_fundamentals/computer_organization_and_architecture">Computer Organization And Architecture</Link>
+		<Link to="computer_science_fundamentals/operating_systems">Operating Systems</Link>
+		<Link to="computer_science_fundamentals/information_and_entropy">Information And Entropy</Link>
+		<Link to="computer_science_fundamentals/networking">Networking</Link>
 		<Link to="computer_science_fundamentals/cryptography">Cryptography</Link>
 		<h2>Electrical Engineering</h2>
 		<Link to="electrical_engineering/electricity_magnetism_and_circuits">Electricity, Magnetism And Circuits</Link>

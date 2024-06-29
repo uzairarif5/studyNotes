@@ -2,7 +2,8 @@ import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import SubList from "../../articleRelatedStuff/SubList";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 import { Questions } from "../../articleRelatedStuff/Questions";
-import { MathStuff } from "../../articleRelatedStuff/MathStuff"; 
+import { MathStuff } from "../../articleRelatedStuff/MathStuff";
+import { TableLI } from "../../articleRelatedStuff/tableManager";
 
 export const title = "Information And Entropy Notes";
 export const sourcesColor = {40: null};
@@ -49,6 +50,7 @@ export const content = <>
       </ul>
     </div>
   </div>
+  
   <h2 id="codes">Codes</h2>
   <div className="content">
 		<div data-source={40} style={{width: "49%",marginLeft: "0.5%",float: "left"}}>
@@ -229,6 +231,127 @@ Abraham Lempel, Jacob Ziv, and Terry Welch.</li>
             \\\\ \\text{ where } k_n \\begin{cases} \\sqrt{1/N} & \\text{ if } n = 0 \\\\ \\sqrt{2/N} & \\text{otherwise}\\end{cases}
           }`}$$</MathStuff>
           <li>This matrix C has an inverse which is equal to its transpose, so \({"\\mathbb{X} = \\mathbb{C} \\mathbb{Y} \\mathbb{C}^{T}"}\)</li>
+        </SubList></li>
+      </ul>
+    </div>
+  </div>
+
+	<h2 id="Errors">Errors</h2>
+  <div className="content">
+		<div data-source={40} style={{width: "49%",marginLeft: "0.5%",float: "left"}}>
+      <ul>
+        <li>Our model for information handling will be extended to include "channel coding". The new channel encoder adds bits to the message so that in case it gets corrupted in some way, the channel encoder will know that and possibly even be able to repair the damage.</li>
+        <li><ImgComp src={require("./information_and_entropy_pics/5.png")} style={{width:"100%"}}/></li>
+      </ul>
+    </div>
+		<div data-source={40} style={{width: "49%",marginRight: "0.5%",float: "right"}}>
+      <ul>
+        <li><b>Hamming Distance:</b><SubList>
+          <li>A useful definition of the difference between two bit patterns is the number of bits that are different between the two. This is called the <b>Hamming distance</b>, after Richard W. Hamming.</li>
+          <li>0110 and 1110 are separated by Hamming distance of one.</li>
+          <li>Note that a Hamming distance can only be defined between two bit patterns with the same number of
+          bits.</li>
+          <li>If two errors occur, this generally means a Hamming distance of two. However, if the two errors happen to the same bit, the second would cancel the first, and the Hamming distance would be zero.</li>
+        </SubList></li>
+        <li>Single Bits:<SubList>
+          <li>The way to protect a single bit is to send it more than once, and expect that more often than not each bit sent will be unchanged. The simplest case is to send it twice. Thus the message 0 is replaced by 00 and 1 by 11 by the channel encoder. The decoder can then raise an alarm if the two bits are different.</li>
+          <li>If two errors both happen on the same bit, then that bit gets restored to its original value and it is as though no error happened.</li>
+          <li>If two errors happen on different bits then they end up the same, although wrong,
+          and the error is undetected.</li>
+          <li>If there are more errors, then an odd number of errors would be detected but an even number would not.</li>
+          <li>To detect double errors, you can send the single bit three times. Unless all three are the same when received by the channel decoder, it is known that an error has occurred, but it is not known how many errors there might have been. Of course, triple errors may go undetected.</li>
+          <li>If a single bit is sent three times, then the channel decoder can tell whether an error has occurred (if the three bits are not all the same) and it can also tell what the original value was - the process used is sometimes called "majority logic". This technique, called <b>triple redundancy</b>.</li>
+          <li>Triple redundancy can be used either to correct single errors or to detect double errors, but
+          not both. If you need both, you can use <b>quadruple redundancy</b> - send four identical copies of the bit.</li>
+          <li><b>Code rate:</b> number of bits before channel coding divided by the number after the encoder.</li>
+        </SubList></li>
+        <li>Multiple Bits:<SubList>
+          <li>Parity:<SubList>
+            <li>Consider a byte, which is 8 bits. To enable detection of single errors, a <b>parity</b> bit (also called a "check bit") can be added, changing the 8-bit string into 9 bits. The added bit would be 1 if the number of bits
+equal to 1 is odd, and 0 otherwise. Thus the string of 9 bits would always have an even number of bits equal
+to 1.</li>
+            <li>Then the decoder would simply count the number of 1 bits and if it is odd, know there is an error (or, more generally, an odd number of errors).</li>
+            <li>The decoder could not repair the damage, and indeed could not
+even tell if the damage might by chance have occurred in the parity bit, in which case the data bits would
+still be correct.</li>
+            <li>The use of parity bits is efficient, since the code rate is 8/9, but of limited effectiveness.</li>
+          </SubList></li>
+          <li>Rectangular Codes:<SubList>
+            <li>Rectangular codes can provide single error correction and double error detection simultaneously.</li>
+            <li>Suppose we wish to protect a byte of information, the eight data bits D0 D1 D2 D3 D4 D5 D6 D7. Let us arrange these in a rectangular table and add parity bits for each of the two rows and four columns:</li>
+            <TableLI>
+              <tbody>
+                <tr><td>D0</td><td>D1</td><td>D2</td><td>D3</td><td><b>PR0</b></td></tr>
+                <tr><td>D4</td><td>D5</td><td>D6</td><td>D7</td><td><b>PR1</b></td></tr>
+                <tr><td><b>PC0</b></td><td><b>PC1</b></td><td><b>PC2</b></td><td><b>PC3</b></td><td><b>P</b></td></tr>
+              </tbody>
+            </TableLI>
+            <li>The idea is that each of the parity bits PR0 PR1 PC0 PC1 PC2 PC3 is set so that the overall parity
+            of the particular row or column is even.</li>
+            <li>The total parity bit P is then set so that the right-hand column consisting only of parity bits has itself even parity.</li>
+            <li>The 15 bits can be sent through the channel and the decoder analyzes the received bits.</li>
+            <li>If there is a single error in any one of the bits, then one of the three row parities and one of the five column parities will be wrong. The offending bit can thereby be identified (it lies at the intersection of the row and column with incorrect parity) and changed.</li>
+            <li>If there are two errors, there will be a different pattern of parity failures; double errors can be detected but not corrected.</li>
+          </SubList></li>
+          <li className="research">Hamming Codes</li>
+        </SubList></li>
+        <li><b>Block Codes:</b><SubList>
+          <li>It is convenient to think in terms of providing error-correcting protection to a certain amount of data and then sending the result in a block of length n. If the number of data bits in this block is \(k\), then the number of parity bits is \(n-k\), and it is customary to call such a code an \((n, k)\) block code.</li>
+          <li>It is also customary to include in the parentheses the minimum Hamming distance d between any two valid codewords, or original data items, in the form \((n, k, d)\). The Hamming Code that we just described can then be categorized as a \((7, 4, 3)\) block code.</li>
+        </SubList></li>
+        <li><b>Check Digits:</b><SubList>
+          <li>Credit Cards:<SubList>
+            <li>Credit card numbers have an extra check digit calculated in a way specified in 1954 by H. P. Luhn of IBM. It is designed to guard against a common type of error, which is transposition of two adjacent digits</li>
+            <li>Credit card numbers typically contain 15 or 16 digits (Luhn's algorithm actually works for any number of digits). The first six digits denote the organization that issued the card.</li>
+            <li>Of those six digits, the first denotes the economic sector associated with the card, for example
+1 and 2 for airlines, 3 for travel and entertainment, and 4, 5, and 6 for banks and stores.</li>
+            <li>The last digit is the check digit, and the other digits denote the individual card account.</li>
+            <li>The Luhn procedure:<SubList numbered>
+              <li>First, select those digits from the card number that appear in alternate positions, starting with the next-to-last digit. For example, if the card number is 1234 4567 7891, those digits would be 9, 7, 6, 4, 3, and 1.</li>
+              <li>Note how many of those digits are greater than 4 (in this case 3 of them).</li>
+              <li>Then add those digits together (for the example, 9 + 7 + 6 + 4 + 3 + 1 = 30).</li>
+              <li>Then add all the digits in the card number (in this example, 57).</li>
+              <li>Look at the sum of those three numbers (in this case 3 + 30 + 57 = 90).</li>
+              <li>If the result is a multiple of 10, as in this example, the card number passes the test and may be valid. Otherwise, it is not.</li>
+            </SubList></li>
+            <li>This procedure detects all single-digit errors, and almost all transpositions of adjacent digits (such as typing "1243" instead of "1234"), but there are many other possible transcription errors that are not caught, for example "3412" instead of "1234".</li>
+            <li>It has a high code rate (only one check digit added to 14 or 15 payload digits) and is simple to use. It cannot be used to correct the error.</li>
+          </SubList></li>
+          <li>ISBN:<SubList>
+            <li>The International Standard Book Number (ISBN) is a 13-digit number that uniquely identifies a book
+            or something similar to a book.</li>
+            <li>The system was created by the British bookseller W. H. Smith in 1966 using 9-digit numbers, then
+upgraded in 1970 for international use by prepending 0 to existing numbers, and then upgraded in 2007 to
+13-digit numbers by prepending 978 and recalculating the check digit.</li>
+            <li>There are five parts to an ISBN (four prior to 2007), of variable length, separated by hyphens:<SubList numbered>
+              <li>First is the prefix 978 (missing prior to 2007). When the numbers using this prefix are exhausted, the prefix 979 will be used.</li>
+              <li>Next is a country identifier (or groups of countries or areas sharing a common language).</li>
+              <li>Next is a number that identifies a particular publisher.</li>
+              <li>Then is the identifier of the title</li>
+              <li>Finally, the single check digit.</li>
+            </SubList></li>
+            <li>Consider ISBN 0-9764731-0-0 (which is in the pre-2007 format).</li>
+            <li>The language area code of 0 represents English speaking countries. The publisher 9764731 is the Department of Electrical Engineering and Computer Science, MIT. The item identifier 0 represents the book "The Electron and the Bit".</li>
+            <li>The identifier is 0 resulted from the fact that this book is the first published using an ISBN by this publisher.</li>
+            <li>Books published in 2007 and later have a 13-digit ISBN which is designed to be compatible with UPC
+(Universal Product Code) barcodes widely used in stores. The procedure for finding UPC check digits is
+used for 13-digit ISBNs:<SubList numbered>
+              <li>Start with the 12 digits (without the check digit).</li>
+              <li>Add the first, third, fifth, and other digits in odd-number positions together.</li>
+              <li>Multiply the sum by 3.</li>
+              <li>Then add the result to the sum of digits in the even-numbered positions (2, 4, 6, 8 10, and 12).</li>
+              <li>Subtract the result from the next higher multiple of 10.</li>
+              <li>The result, a number between 0 and 9, inclusive, is the desired check digit.</li>
+            </SubList></li>
+            <li>For books published prior to 2007, the check digit can be calculated by the following procedure:<SubList>
+              <li>Start with the nine-digit number (without the check digit).</li>
+              <li>Multiply each by its position, with the left-most position being 1, and the right-most position 9.</li>
+              <li>Add those products, and find the sum's residue modulo 11.</li>
+              <li>The result is a number between 0 and 10. That is the check digit.</li>
+              <li>For example, for ISBN 0-9764731-0-0, (1 * 0) + (2 * 9) + (3 * 7) + (4 * 6) + (5 * 4) + (6 * 7) + (7 * 3) + (8 * 1) + (9 * 0) = 154 which is 0 mod 11.</li>
+              <li>This technique yields a code with a large code rate (0.9) that is effective in detecting the transposition of two adjacent digits or the alteration of any single digit.</li>
+            </SubList></li>
+          </SubList></li>
         </SubList></li>
       </ul>
     </div>

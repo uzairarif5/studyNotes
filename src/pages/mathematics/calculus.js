@@ -217,6 +217,26 @@ export const content = <>
 					<li>Alternatively, if \(y\) is a function of \(u\), and \(u\) is a function of \(x\), then:</li>
 					<li class={"mathStuff"}>$$ {"\\frac{dy}{dx} = \\frac{dy}{du} \\frac{du}{dx}"} $$</li>
 				</SubList></li>
+				<li>Implicit Differentiation:<SubList>
+					<li>In most discussions of math, if the dependent variable \(y\) is a function of the independent variable \(x\), we express \(y\) in terms of \(x\).</li>
+					<li><b>Implicit differentiation</b> allows us to find slopes of tangents to curves that are clearly not functions (they fail the vertical line test).</li>
+					<li>An equation may define many different functions implicitly. For example:</li>
+					<MathStuff>$$y={`\\begin{cases} \\sqrt{25 - x^2} \\\\ -\\sqrt{25 - x^2} \\end{cases}`}$$</MathStuff>
+					<li>To perform implicit differentiation on an equation that defines a function \(y\) implicitly in terms of a variable \(x\), use the following steps:<SubList numbered>
+						<li>Take the derivative of both sides of the equation.</li>
+						<li>Rewrite the equation so that all terms containing \({"\\frac{dy}{dx}"}\) are on the left and all terms that do not contain \({"\\frac{dy}{dx}"}\) are on the right.</li>
+						<li>Factor out \({"\\frac{dy}{dx}"}\) on the left.</li>
+						<li>Solve for \({"\\frac{dy}{dx}"}\) by dividing both sides of the equation by an appropriate algebraic expression.</li>
+					</SubList></li>
+				</SubList></li>
+				<li>Derivatives of Exponential and Logarithmic Functions:<SubList>
+					<li>The function \(E(x) = e^x\) is called the <b>natural exponential function</b>. Its inverse, \(L(x)= \log_e (x) = \ln x\) is called the <b>natural logarithmic function</b>.</li>
+					<li>the line \(y=x+1\) is tangent to the graph of \(E(x)=e^x\) at \(x=0\). Also, \(E'(x) = e^x\).</li>
+					<li><a href="https://www.deriveit.net/calculus/using_euler's_number/bx">Derivative of \(b^x\) is \((b^x) * ln(b)\)</a>.</li>
+					<li>If \(y= \log_b x\), then \(b^y = x\).</li>
+					<MathStuff>\[ {"\\frac{dy}{dx} = \\frac{1}{x \\ln b}"} \]</MathStuff>
+					<li></li>
+				</SubList></li>
 			</ul>
 		</div>
 	</div>

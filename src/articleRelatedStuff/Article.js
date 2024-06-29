@@ -5,12 +5,12 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { ContactComp } from "../Contact.js";
 import { fadeLoadingToInsv , changeLoadingText, showLoadingScreen} from "../loadingScreen.js";
 import { Link } from 'react-router-dom';
-import { sideB, showSideB, hideSideB } from './sideButtons.js';
+import { SideB, showSideB, hideSideB, CloseListsButton } from './sideButtons.js';
 import { ImgView } from './ImgView';
 import styles from "../variables.module.scss";
 import { useNavigate } from "react-router-dom";
 import store from "../store";
-import { FORM_COUNTER, Q_COUNTER } from "../actions";
+import { FORM_COUNTER, Q_COUNTER, CLOSING_LIST_PROCESS } from "../actions";
 import { sourceList } from './sourceList.js';
 import { onlyText } from 'react-children-utilities';
 import { QuestionsBox } from './Questions.js';
@@ -30,6 +30,10 @@ class Article extends React.Component {
 		store.dispatch({
 			type: Q_COUNTER,
 			payload: 0
+		});
+		store.dispatch({
+			type: CLOSING_LIST_PROCESS,
+			payload: false
 		});
 		this.sourcesColor = [];
 		this.mainEl = document.getElementById("main");
@@ -62,7 +66,7 @@ class Article extends React.Component {
 		</footer>
 
 		if(window.screen.width <= parseInt(styles.maxWidthForMobile))
-			//no footer for mobile
+			//no worksheet for mobile
 			this.setState({footerEl: noWSFooter});
 		else{
 			import("../pages"+this.pathnameToUse+"_worksheet")
@@ -111,16 +115,19 @@ class Article extends React.Component {
 						{this.state.footerEl}
 						<ImgView/>
 						<QuestionsBox/>
-						{sideB(
-							"upButton",
-							() => {this.mainEl.scrollTo(0,0);},
-							process.env.PUBLIC_URL+'/webPics/caret-up-solid.svg'
-						)}
-						{sideB(
-							"downButton",
-							()=>{this.mainEl.scrollTo(0, this.mainEl.scrollHeight);},
-							process.env.PUBLIC_URL+'/webPics/caret-down-solid.svg'
-						)}
+						<CloseListsButton/>
+						<SideB
+							name={"upButton"}
+							clickFunc={() => {this.mainEl.scrollTo(0,0);}}
+							imageSrc={process.env.PUBLIC_URL+'/webPics/caret-up-solid.svg'}
+							title={"Go Up"}
+						/>
+						<SideB
+							name={"downButton"}
+							clickFunc={()=>{this.mainEl.scrollTo(0, this.mainEl.scrollHeight);}}
+							imageSrc={process.env.PUBLIC_URL+'/webPics/caret-down-solid.svg'}
+							title={"Go Down"}
+						/>
 					</div>
 					<ContactComp/>
 				</HelmetProvider>;
