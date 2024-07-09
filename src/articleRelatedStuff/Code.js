@@ -33,19 +33,20 @@ export function CodePre(props){
 		}}>{props.children}</pre>;
 	}
 	else{
+		let code = props.children.trimStart();
 		switch(props.language){
 			case "armasm":
-				mainContent = <SyntaxHighlighter language={"armasm"} style={atelierCaveDark} showLineNumbers={true} startingLineNumber={props.startingLineNumber || 1} customStyle={{"padding":"0px","fontSize":"14px","lineHeight":"18px","marginTop":"0px","paddingTop":"5px"}}>{props.children.trim()}</SyntaxHighlighter>
+				mainContent = <SyntaxHighlighter language={"armasm"} style={atelierCaveDark} showLineNumbers={true} startingLineNumber={props.startingLineNumber || 1} customStyle={{"padding":"0px","fontSize":"14px","lineHeight":"18px","marginTop":"0px","paddingTop":"5px"}}>{code}</SyntaxHighlighter>
 				break;
 			case "plaintext":
-				mainContent = <SyntaxHighlighter language={"plaintext"} style={kimbieLight} showLineNumbers={true} startingLineNumber={props.startingLineNumber || 1} customStyle={{"padding":"0px","fontSize":"14px","lineHeight":"18px","marginTop":"0px","paddingTop":"5px"}}>{props.children.trim()}</SyntaxHighlighter>
+				mainContent = <SyntaxHighlighter language={"plaintext"} style={kimbieLight} showLineNumbers={true} startingLineNumber={props.startingLineNumber || 1} customStyle={{"padding":"0px","fontSize":"14px","lineHeight":"18px","marginTop":"0px","paddingTop":"5px"}}>{code}</SyntaxHighlighter>
 				break;
 			case "cpp":
 			case "c":
-				mainContent = <Prism language={props.language} style={oneDark} showLineNumbers={true} startingLineNumber={props.startingLineNumber || 1} customStyle={{"padding":"0px","fontSize":"15px","lineHeight":"18px","marginTop":"0px","paddingTop":"5px","borderRadius":"0"}}>{props.children.trim()}</Prism>
+				mainContent = <Prism language={props.language} style={oneDark} showLineNumbers={true} startingLineNumber={props.startingLineNumber || 1} customStyle={{"padding":"0px","fontSize":"15px","lineHeight":"18px","marginTop":"0px","paddingTop":"5px","borderRadius":"0"}}>{code}</Prism>
 				break;
 			default:
-				mainContent = <Prism language={props.language} style={vscDarkPlus} showLineNumbers={true} startingLineNumber={props.startingLineNumber || 1} customStyle={{"padding":"0px","fontSize":"15px","lineHeight":"18px","marginTop":"0px","paddingTop":"5px"}}>{props.children.trim()}</Prism>
+				mainContent = <Prism language={props.language} style={vscDarkPlus} showLineNumbers={true} startingLineNumber={props.startingLineNumber || 1} customStyle={{"padding":"0px","fontSize":"15px","lineHeight":"18px","marginTop":"0px","paddingTop":"5px"}}>{code}</Prism>
 		}
 
 		counter += 1;

@@ -562,6 +562,7 @@ export const content = <>
 	<h2 id="random_variables">Random Variables</h2>
 	<div className="content">
 		<div style={{width: "49%",marginLeft: "0.5%",float: "left"}}>
+			<h3>Discrete</h3>
 			<ul data-source={41}>
 				<li>Random variables:<SubList>
 					<li>A <b>random variable</b> (usually X) is a numeric description of an event. The possible outcomes of \(X\) are labeled with a corresponding lower-case letter \(x\) and subscripts like \(x_1\), \(x_2\), etc.</li>
@@ -630,49 +631,60 @@ export const content = <>
 				</SubList></li>
 			</ul>
 		</div>
-		<ul style={{width: "49%",marginRight: "0.5%",float: "right"}}>
-			<li>The graph of a <b>continuous probability distribution</b> is a curve. Probability is represented by area under the curve. The curve is called the <b>probability density function</b> (abbreviated as pdf).</li>
-			<li><b>Uniform Distribution:</b><SubList>
-				<li>The <b>uniform distribution</b> is a continuous probability distribution and is concerned with events that are equally likely to occur.</li>
-				<li>When working out problems that have a uniform distribution, be careful to note if the data is inclusive or exclusive of endpoints.</li>
-				<li>The notation for the uniform distribution is where \(X \sim U(a, b)\) where \(a\) = the lowest value of x and \(b\) = the highest value. The probability density function is \(\frac{"{1}{b-a}"}\) for \({"a ≤ x ≤ b"}\).</li>
-				<li>Formulas for the theoretical mean and standard deviation are:</li>
-				<MathStuff>$${"μ=\\frac{a+b}{2}, σ=\\sqrt{ \\frac{(b-a)^2}{12} }"}$$</MathStuff>
-				<li>Example:<SubList>
-					<li>The amount of time, in minutes, that a person must wait for a bus is uniformly distributed between zero and 15 minutes, inclusive.</li>
-					<MathStuff>$${"\\begin{align} P(x<12.5)=(base)(height) &= (12.5-0)(115) \\\\ &=0.8333 \\end{align}"}$$</MathStuff>
-					<ImgComp src={require("./probability_and_statistics_pics/11.png")} width="80%"/>
-					<li>The mean here is \(7.5\) and standard deviation \(4.3\).</li>
+		<div style={{width: "49%",marginRight: "0.5%",float: "right"}}>
+			<h3>Continuous</h3>
+			<ul>
+				<li>The graph of a <b>continuous probability distribution</b> is a curve. Probability is represented by area under the curve. The curve is called the <b>probability density function</b> (abbreviated as pdf).</li>
+				<li><b>Uniform Distribution:</b><SubList>
+					<li>The <b>uniform distribution</b> is a continuous probability distribution and is concerned with events that are equally likely to occur.</li>
+					<li>When working out problems that have a uniform distribution, be careful to note if the data is inclusive or exclusive of endpoints.</li>
+					<li>The notation for the uniform distribution is where \(X \sim U(a, b)\) where \(a\) = the lowest value of x and \(b\) = the highest value. The probability density function is \(\frac{"{1}{b-a}"}\) for \({"a ≤ x ≤ b"}\).</li>
+					<li>Formulas for the theoretical mean and standard deviation are:</li>
+					<MathStuff>$${"μ=\\frac{a+b}{2}, σ=\\sqrt{ \\frac{(b-a)^2}{12} }"}$$</MathStuff>
+					<li><u>Example:</u><SubList>
+						<li>The amount of time, in minutes, that a person must wait for a bus is uniformly distributed between zero and 15 minutes, inclusive.</li>
+						<MathStuff>$${"\\begin{align} P(x<12.5)=(base)(height) &= (12.5-0)(115) \\\\ &=0.8333 \\end{align}"}$$</MathStuff>
+						<ImgComp src={require("./probability_and_statistics_pics/11.png")} width="80%"/>
+						<li>The mean here is \(7.5\) and standard deviation \(4.3\).</li>
+					</SubList></li>
 				</SubList></li>
-			</SubList></li>
-			<li><b>Exponential distribution:</b><SubList>
-				<li>The <b>exponential distribution</b> is often concerned with the amount of time until some specific event occurs.</li>
-				<li><b>Memoryless property:</b><SubList>
-					<li>Let \(X\) = amount of time (in minutes) a postal clerk spends with their customer, with the average amount of time equal to 4 minutes.</li>
-					<li>Suppose that five minutes have elapsed since the last customer arrived. Since an unusually long amount of time has now elapsed, it would seem to be more likely for a customer to arrive within the next minute.</li>
-					<li>With the exponential distribution, this is not the case - the additional time spent waiting for the next customer does not depend on how much time has already elapsed since the last customer. This is referred to as the <b>memoryless property</b>.</li>
-					<MathStuff>$${"P(X > r + t | X > r) = P(X > t)"}$$</MathStuff>
+				<li><b>Exponential distribution:</b><SubList>
+					<li>The <b>exponential distribution</b> is often concerned with the amount of time until some specific event occurs.</li>
+					<li><b>Memoryless property:</b><SubList>
+						<li>Let \(X\) = amount of time (in minutes) a postal clerk spends with their customer, with the average amount of time equal to 4 minutes.</li>
+						<li>Suppose that five minutes have elapsed since the last customer arrived. Since an unusually long amount of time has now elapsed, it would seem to be more likely for a customer to arrive within the next minute.</li>
+						<li>With the exponential distribution, this is not the case - the additional time spent waiting for the next customer does not depend on how much time has already elapsed since the last customer. This is referred to as the <b>memoryless property</b>.</li>
+						<MathStuff>$${"P(X > r + t | X > r) = P(X > t)"}$$</MathStuff>
+					</SubList></li>
+					<li>The distribution notation is \(X \sim Exp(m)\), where \(m = (\mu)^{"{-1}"}\) is the <b>decay parameter</b>. The probability density function is:</li>
+					<MathStuff>$${"f(x) = me^{-mx}"}$$</MathStuff>
+					<li>The standard deviation, \(σ\), is the same as the mean.</li>
 				</SubList></li>
-				<li>The distribution notation is \(X \sim Exp(m)\), where \(m = (\mu)^{"{-1}"}\) is the <b>decay parameter</b>. The probability density function is:</li>
-				<MathStuff>$${"f(x) = me^{-mx}"}$$</MathStuff>
-				<li><a href='https://youtu.be/N8O6zd6vTZ8?t=9m46s'>If \(X\) is a positive continuous random variable with a memoryless property, then \(X \sim Exp(m)\) for some \(m\).</a></li>
-				<li>The standard deviation, \(σ\), is the same as the mean.</li>
-			</SubList></li>
-			<li><b>Normal Distribution:</b><SubList>
-				<li>In \(X \sim N(μ, σ)\), \(μ\) is the mean and \(σ\) is the standard deviation.</li>
-				<li>The probability density function is a rather complicated mathematical function:</li>
-				<MathStuff>$${"f(x) = \\frac{1}{σ\\sqrt{2π}} e^{-\\frac{1}{2}(\\frac{x-μ}{σ})^2}"}$$</MathStuff>
-			</SubList></li>
-			<li><b>Central limit theorem:</b><SubList>
-				<li>There are two alternative forms of the theorem:<SubList opened>
-					<li>If we collect samples of size \(n\) with a "large enough n," calculate each sample's mean, and create a histogram of those means, then the resulting histogram will tend to have an approximate normal bell shape.</li>
-					<li>If we again collect samples of size n that are "large enough," calculate the sum of each sample and create a histogram, then the resulting histogram will again tend to have a normal bell-shape.</li>
+				<li><b>Normal Distribution:</b><SubList>
+					<li>In \(X \sim N(μ, σ)\), \(μ\) is the mean and \(σ\) is the standard deviation.</li>
+					<li>The probability density function is a rather complicated mathematical function:</li>
+					<MathStuff>$${"f(x) = \\frac{1}{σ\\sqrt{2π}} e^{-\\frac{1}{2}(\\frac{x-μ}{σ})^2}"}$$</MathStuff>
 				</SubList></li>
-				<li>Sampling is done with replacement.</li>
-				<li>Suppose \(X\) is a random variable with a distribution that may be known or unknown (it can be any distribution). Let \(μ_X\) be the mean of \(X\) and let \(σ_X\) be the standard deviation of \(X\). If you draw random samples of size \(n\), then as \(n\) increases, the random variable \(\overline x\) which consists of sample means, tends to be normally distributed, like this:</li>
-				<MathStuff>$${"\\overline{x} \\sim N \\left( μ_X, \\frac{σ_X}{\\sqrt{n}} \\right)"}$$</MathStuff>
-			</SubList></li>
-		</ul>
+				<li data-source={41}>Standardizing and Z-score:<SubList>
+					<li>A <b>z-score</b> is the number of standard deviations an observation \(x\) is above or below the mean \(μ\). If \(x\) is an observation from a distribution that has mean \(μ\) and standard deviation \(σ\), the standardized value of \(x\):</li>
+					<li><mathStuff>$${"z=\\frac{x-μ}{𝜎}"}$$</mathStuff></li>
+					<li>A normal distribution with mean \(μ = 0\) and standard deviation \(σ = 1\) is called the <b>standard normal distribution</b>.</li>
+					<li><figure>
+						<ImgComp src={require("./probability_and_statistics_pics/12.png")} style={{width:"90%"}}/>
+						<figcaption>The area under the standard normal distribution to the left of z = 1.39.</figcaption>	
+					</figure></li>
+				</SubList></li>
+				<li><b>Central limit theorem:</b><SubList>
+					<li>There are two alternative forms of the theorem:<SubList opened>
+						<li>If we collect samples of size \(n\) with a "large enough n," calculate each sample's mean, and create a histogram of those means, then the resulting histogram will tend to have an approximate normal bell shape.</li>
+						<li>If we again collect samples of size n that are "large enough," calculate the sum of each sample and create a histogram, then the resulting histogram will again tend to have a normal bell-shape.</li>
+					</SubList></li>
+					<li>Sampling is done with replacement.</li>
+					<li>Suppose \(X\) is a random variable with a distribution that may be known or unknown (it can be any distribution). Let \(μ_X\) be the mean of \(X\) and let \(σ_X\) be the standard deviation of \(X\). If you draw random samples of size \(n\), then as \(n\) increases, the random variable \(\overline x\) which consists of sample means, tends to be normally distributed, like this:</li>
+					<MathStuff>$${"\\overline{x} \\sim N \\left( μ_X, \\frac{σ_X}{\\sqrt{n}} \\right)"}$$</MathStuff>
+				</SubList></li>
+			</ul>
+		</div>
 	</div>
 
 	<h2 id="confidence_intervals_and_hypothesis_testing">Confidence Intervals And Hypothesis Testing</h2>

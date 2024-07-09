@@ -436,6 +436,7 @@
 		opacity: 0.7;
 		cursor: pointer;
 		user-select: none;
+		right: 30px;
 
 		img{
 			height: 30px;
@@ -447,16 +448,13 @@
 	}
 	#listsUpButton{
 		top: 20px;
-		right: 30px;
 	}
 	#upButton{
 		top: 84px;
-		right: 30px;
 		display:none;
 	}
 	#downButton{
 		bottom: 20px;
-		right: 30px;
 		display:none;
 	}
 	footer{
@@ -520,6 +518,26 @@
 				.mathStuff, .contentImg, .chartContainer, figure figcaption{border: rgb(124, 45, 29) solid 3px;}
 			}
 			.icon{top:2px;height: 12px;}
+		}
+		#listsUpButton, #upButton, #downButton{
+			width: 40px;
+			height: 34px;
+			border: #612 solid 3px;
+			right: 10px;
+
+			img{
+				height: 24px;
+				margin-top: 3px;
+			}
+		}
+		#listsUpButton{
+			top: 20px;
+		}
+		#upButton{
+			top: 74px;
+		}
+		#downButton{
+			bottom: 20px;
 		}
 		footer{
 			padding-bottom: 140px;

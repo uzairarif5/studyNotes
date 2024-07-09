@@ -3,47 +3,103 @@ import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 import { TableLI } from "../../articleRelatedStuff/tableManager";
 import SubList from "../../articleRelatedStuff/SubList";
+import { CodePre } from "../../articleRelatedStuff/Code";
+import { MathStuff } from "../../articleRelatedStuff/MathStuff";
+
 
 export const title = "Cryptography Notes";
-export const sourcesColor = {33: null, 34: "rgb(204, 119, 153)"};
+export const sourcesColor = {33: null, 34: "rgb(204, 119, 153)", 61: "rgb(180,120,180)"};
 export const content = <>
   <h1>Cryptography</h1>
   {getSourcesOL(sourcesColor)}
 
-  <h2 id="introduction">Introduction</h2>
+  <h2 id="crypt_basics">Cryptography Basics</h2>
   <div className="content">
 	  <div style={{width: "49%",float: "left",marginLeft: "0.5%", marginRight: "0.5%"}}>
-		  <ul>
-			  <li className="Opened"><b>Cryptography:</b> process/technique(s) of converting data into unintelligible form in order to ensure: confidentiality, data integrity, and authentication<SubList>
+		  <ul data-source={61}>
+				<li>Encryption Basics & Terminology:<SubList>
+					<li>Alice has a message \(m\) that she wants to send (privately) to Bob. We call \(m\) the <b>plaintext</b>. We assume she will somehow transform that plaintext into a value \(c\) (called the <b>ciphertext</b>) that she will actually send to Bob. The process of transforming \(m\) into \(c\) is called <b>encryption</b>. </li>
+					<li>When Bob receives \(c\), he runs a decryption algorithm to recover the original plaintext. We assume that the ciphertext may be observed by the eavesdropper Eve, so the (informal) goal is for the ciphertext to be meaningful to Bob but meaningless to Eve.</li>
+				</SubList></li>
+				<li>Secrets & Kerckhoff's Principle:<SubList>
+					<li>If we want Bob to be able to decrypt \(c\), but Eve to not be able to decrypt \(c\), then Bob must have some information that Eve doesn't have.</li>
+					<li>You might suggest to make the details of the <code>Enc</code> and <code>Dec</code> algorithms secret. This is how cryptography was done throughout most of the last 2000 years, but it has major drawbacks. If the attacker does eventually learn the details of <code>Enc</code> and <code>Dec</code>, then the only way to recover security is to invent new algorithms.</li>
+					<li>If you have a system with many users, then the only way to prevent everyone from reading everyone else's messages is to invent new algorithms for each pair of users. Inventing even one good encryption method is already hard enough!</li>
+					<li>In 1883 Auguste Kerckhoffs formulated a set of cryptographic design principles. Item #2 on his list is now known as <b>Kerckhoff's principle</b>:</li>
+					<TableLI>
+						<tbody>
+							<tr><td><i>[The method] must not be required to be secret, and it must be able to fall into the enemy's hands without causing inconvenience</i></td></tr>
+						</tbody>
+					</TableLI>
+					<li>If the algorithms themselves are not secret, then there must be some other secret information in the system. That information is called the <b>(secret) key</b>.</li>
+					<li>Another way to interpret Kerckhoff's principle is that <i>all of the security of the system should be concentrated in the secrecy of the key</i>, not the secrecy of the algorithms.</li>
+					<li>If a secret key gets compromised, you only need to choose a new one, not reinvent an entirely new encryption algorithm. Multiple users can all safely use the same encryption algorithm but with independently chosen secret keys.</li>
+					<li>The process of choosing a secret key is called <b>key generation</b>, and we write <code>KeyGen</code> to refer to the (randomized) key generation algorithm. We call the collection of three algorithms (<code>Enc</code>, <code>Dec</code>, <code>KeyGen</code>) an encryption scheme.</li>
+					<li>Kerckhoff's principle says that we should assume that an attacker knows the details of the <code>KeyGen</code> algorithm.</li>
+				  <li><ImgComp src={require("./cryptography_pics/1.png")} style={{width:"60%",marginLeft:"10%"}}/></li>
+				</SubList></li>
+				<li>We are not trying to hide the fact that Alice is sending something to Bob, we only want to hide the contents of that message. Hiding the existence of a communication channel is called <b>steganography</b>.</li>
+				<li>People use many techniques to try to hide information, but many are "non-cryptographic" since they don't follow Kerckhoff's principle:<SubList>
+					<li>Encoding/decoding methods like base64 are useful for incorporating arbitrary binary data into a structured file format that supports limited kinds of characters. But since base64 encoding/decoding involves no secret information, it adds nothing in terms of security.</li>
+					<li>Writing something in binary is not a security measure!</li>
+				</SubList></li>
+				<li>Specifics of <b>One-Time Pad</b>:<SubList>
+					<li>People have been trying to send secret messages for roughly 2000 years, but there are really only 2 useful ideas from before 1900 that have any relevance to modern cryptography. The rst idea is Kerckhoff's principle, which you have already seen. The other idea is <b>one-time pad (OTP)</b>.</li>
+					<li>In most of this book (The Joy of Cryptography), secret keys will be strings of bits. λ refers to the length (# of bits) of the secret key in a scheme.</li>
+					<li>In the case of one-time pad, the choice of λ doesn't affect security (λ = 10 is "just as secure" as λ = 1000); however, the length of the keys and plaintexts must be compatible. In future chapters, increasing λ has the effect of making the scheme harder to break. For that reason, λ is often called the <b>security parameter</b> of the scheme.</li>
+					<li>In one-time pad, not only are the keys λ-bit strings, but plaintexts and ciphertexts are too.</li>
+					<li>The specific <code>KeyGen</code>, <code>Enc</code>, and <code>Dec</code> algorithms for one-time pad are given below:</li>
+				  <li><ImgComp src={require("./cryptography_pics/2.png")} style={{width:"70%"}}/></li>
+					<li>\({"k ← {0,1}^λ"}\) means to sample k uniformly from the set of λ-bit strings.</li>
+					<li><u>Example:</u><SubList>
+						<li>Encrypting the following 20-bit plaintext \(m\) under the 20-bit key \(k\):</li>
+						<MathStuff>$${`\\begin{align}
+11101111101111100011& \\ (m) \\\\
+\\underline{\\oplus \\ 00011001110000111101}&  \\ (k)\\\\
+11110110011111011110&  \\ (c)
+						\\end{align}`}$$</MathStuff>
+						<li>Decrypting the following ciphertext \(c\) using the key \(k\):</li>
+						<MathStuff>$${`\\begin{align}
+00001001011110010000& \\ (c) \\\\
+\\underline{\\oplus \\ 10010011101011100010}&  \\ (k)\\\\
+10011010110101110010& \\ (m)
+						\\end{align}`}$$</MathStuff>
+					</SubList></li>
+					<li>Security:<SubList>
+						<li>From Eve's point of view, Alice uses a key that was chosen in a specific way (uniformly at random),she encrypts a plaintext with that key using OTP, and reveals only the resulting ciphertext to Eve.</li>
+						<MathStuff>{`\\begin{align}
+& \\underline{\\operatorname{EAVESDROP}(m ∈ {0,1}^λ):} \\\\
+&	\\quad k ← {0,1}^λ	\\\\
+& \\quad c := k ⊕ m \\\\
+& \\quad \\text{return } c \\\\
+						\\end{align}`}</MathStuff>
+						<li>The <code>EAVESDROP</code> algorithm represents what the attacker sees.</li>
+						<li>Fr every \(m\) and \(c\), the probability that \({"\\operatorname{EAVESDROP}(m)"}\) outputs \(c\) is exactly \(1/2 ^ λ\).</li>
+						<li>Taking the eavesdropper's point of view, suppose someone chooses a plaintext \(m\) and you get to see the resulting cipher text: a sample from the distribution \({"\\operatorname{EAVESDROP}(m)"}\). This is a distribution that you can sample from yourself, even if you don't know \(m\)!</li>
+						<li>You could have chosen a totally different \(m'\) and run \({"\\operatorname{EAVESDROP}(m')"}\) in your imagination, and this would have produced the same distribution as \({"\\operatorname{EAVESDROP}(m)"}\).</li>
+						<li>The "real" ciphertext that you see doesn't carry any information about \(m\) if it is possible to sample from the same distribution without even knowing \(m\)!</li>
+					</SubList></li>
+					<li>Limitations:<SubList>
+						<li>The keys are as long as the plaintexts they encrypt.</li>
+						<li>A key can be used to encrypt only one plaintext (hence, "one-time" pad). Suppose Alice encrypts two plaintexts \(m\) and \(m'\) using one-time pad with the same key \(k\). What information about \(m\) and \(m'\) is leaked to an eavesdropper by doing this (assume the eavesdropper knows that Alice has reused \(k\))?</li>
+					</SubList></li>
+				</SubList></li>
+			</ul>
+	  </div>
+	  <div style={{width: "49%",float: "right",marginLeft: "0.5%",marginRight: "0.5%"}}>			
+			<ul>
+			  <li><b>Cryptography:</b> technique(s) of converting data into unintelligible form in order to ensure: confidentiality, data integrity, and authentication:<SubList>
 				  <li><b>requirement 1:</b> no data should be lost during encryption</li>
 				  <li><b>requirement 2:</b> decryption should ensure perfect data recovery</li>
 			  </SubList></li>
-			  <li className="Opened">Elements of Encryption System:<SubList>
-				  <li><b>Plaintext:</b> original message that should be "protected"</li>
-				  <li><b>Encryption algorithm:</b> performs various substitutions,
-				  permutations and transformations on plaintext</li>
-				  <li><b>Key:</b> variable data that is input into encryption algorithm
-				  together with plaintext - determines exact substitutions, permutations and
-				  transformations performed on plaintext</li>
-				  <li><b>Ciphertext:</b> scrambled message produced as output</li>
-				  <li><b>Decryption algorithm:</b> encryption algorithm run in
-				  reverse</li>
-			  </SubList></li>
-			  <li><a href='https://en.wikipedia.org/w/index.php?title=Kerckhoffs%27s_principle&oldid=1137001231'><b>Kerckhoffs's principle:</b> The principle holds that a cryptosystem should be secure, even if everything about the system, except the key, is public knowledge.</a></li>
-			  <li>In modern cryptography encryption/decryption algorithm
-				  is not a secret.</li>
 			  <TableLI><tbody><tr><td>Crypto-attack speed = n<sub>keys</sub> X t<sub>one-decryption</sub></td></tr></tbody></TableLI>
-		  </ul>
-	  </div>
-	  <div style={{width: "49%",float: "right",marginLeft: "0.5%",marginRight: "0.5%"}}>
-		  <ul>
 			  <li><a href='https://www.differencebetween.info/difference-between-cryptography-and-cryptanalysis'>Comparison between Cryptography and Cryptanalysis:</a></li>
 			  <TableLI>
 				  <thead><tr><th></th><th>Cryptography</th><th>Cryptanalysis</th></tr></thead>
 				  <tbody>
 					  <tr>
 						  <th>
-							  Defintion
+							  Definition
 						  </th>
 						  <td>
 							  The art or science of encrypting plain messages into cipher text for security of the messages especially while transmission.
@@ -265,14 +321,9 @@ export const content = <>
 	  <div style={{width: "49%",float: "right",marginLeft: "0.5%",marginRight: "0.5%"}} data-source={34}>
 		  <ul>
 			  <li><b>Primitive Roots:</b><SubList>
-				  <li><ImgComp src={require("./cryptography_pics/c8.jpg")} style={{width:"80%",marginLeft:"10%"}}/></li></SubList></li>
+				  <li><ImgComp src={require("./cryptography_pics/c8.jpg")} style={{width:"80%",marginLeft:"10%"}}/></li>
+				</SubList></li>
 			  <li><a href='https://en.wikipedia.org/w/index.php?title=Trapdoor_function&oldid=1132232623'>A <b>trapdoor function</b> is a function that is easy to compute in one direction, yet difficult to compute in the opposite direction (finding its inverse) without special information, called the "trapdoor".</a></li>
-			  <li><b>The Euclidean Algorithm:</b><SubList>
-				  <li><ImgComp src={require("./cryptography_pics/c9.jpg")} style={{width: "70%",marginLeft: "15%"}}/></li>
-				  <li>15 divides 105; 15 divides 225; 15 divides 1680; 15 divides 1905; 15 divides 11205. Thus 15 is a common divisor of 11205 and 1905.</li>
-				  <li><ImgComp src={require("./cryptography_pics/c10.jpg")} style={{width: "70%",marginLeft: "15%"}}/></li>
-				  <li>The Euclidean Algorithm yields not only the greatest common divisor of a and b, d, but it also yields two constants h and k such that: d = ha + kb.</li>
-			  </SubList></li>
 			  <li><a href="https://www.doc.ic.ac.uk/~mrh/330tutor/ch05s02.html">The <b>totient \({"\\phi(n)"}\)</b> of a positive integer \({"n"}\) greater than 1 is defined to be the number of positive integers less than \({"n"}\) that are coprime to \({"n"}\).</a></li>
 			  <li><b>Diffie-Hellman public key exchange:</b><SubList>
 				  <li>Our collection of people p<sub>1</sub>, p<sub>2</sub>, ..., p<sub>k</sub> first agree on a modulus, p, in which they do their

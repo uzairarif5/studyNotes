@@ -12,7 +12,7 @@ export const sourceList = [<></>, <><a href='https://eng.libretexts.org/Bookshel
     <>Youtube Channel: <a href='https://www.youtube.com/@KOREANFULLCOURSE'>KOREAN FULL COURSE</a></>,
     <>90daykorean.com</>,
     <>howtostudykorean.com</>,
-    <>Renshuu</>,
+    <>Renshuu</> /* REMOVE */,
     <>Doulingo</>,
     <>http://www.lqtoronto.com/videos.html</>,
     <>Madinah Arabic Book 3 from <a href="http://www.lqtoronto.com/madinaarabic.html">lqtoronto</a></>,
@@ -31,7 +31,7 @@ export const sourceList = [<></>, <><a href='https://eng.libretexts.org/Bookshel
     <>Physical Geogology book, available <a href="https://opentextbc.ca/geology/">here</a></>,
     <>Introduction to History and Philosophy of Science book, available <a href="http://hakobsandbox.openetext.utoronto.ca/">here</a></>,
     <div className="emailed">York University, LE/EECS 3482 M course (Winter 2023)</div>,
-    <>York University, SC/MATH 4161 M course (Winter 2023)</>,
+    <>York University, SC/MATH 4161 M course (Winter 2023)</> /* REMOVE LATER */,
     <>MIT course 18.781 <a href='https://ocw.mit.edu/courses/18-781-theory-of-numbers-spring-2012/'>Theory Of Numbers</a> (Instructor: Prof. Abhinav Kumar)</>,
     <><a href='https://openstax.org/details/books/calculus-volume-1'>Calculus (Vol 1)</a> from OpenStax</>,
     <>York University, LE/EECS 4412 M course (Winter 2023)</>,
@@ -58,5 +58,7 @@ export const sourceList = [<></>, <><a href='https://eng.libretexts.org/Bookshel
     <><a href='https://udlbook.github.io/udlbook/'>Understanding Deep Learning</a></>,
     <><a href='https://www.dr-chuck.com/net-intro/'>Introduction to Networking: How the Internet Works</a></>,
     <><a href='https://pages.cs.wisc.edu/~remzi/OSTEP/'>Operating Systems: Three Easy Pieces</a> by Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau</>,
-    <></>
+    <><a href='https://joyofcryptography.com'>The Joy of Cryptography</a> by Mike Rosulek</>,
+    <>MIT course <a href='https://ocw.mit.edu/courses/6-s095-programming-for-the-puzzled-january-iap-2018/pages/syllabus/'>6.S095</a></>,
+    <><a href="http://www.stat.ucla.edu/~ywu/linear.pdf">The mathematics of quantum mechanics</a>, Martin Laforest</>,
 ]

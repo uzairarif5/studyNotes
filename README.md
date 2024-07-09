@@ -44,6 +44,12 @@ This is my first big project that uses React.js and Redux
 
 ## Updates:
 
+update 19.2:
+- `cryptography` is now an advanced topic.
+- removed `opearting systems`
+- The `listsUpButton` button now disappears when viewing an image.
+- Updated `cryptography.js`, `number_theory.js` and `probability_and_Statistics.js`.
+
 update 19.1:
 - Added a "Close all lists" button.
 - Added `networking.js` and `information_and_entropy.js`.

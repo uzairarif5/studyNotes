@@ -65,7 +65,7 @@ const HomeCompMemo = memo(()=>{
 		<Link to="language_learning/madinah_arabic_book_3">Madinah Arabic Book 3</Link>
 		<Link to="language_learning/french">French</Link>
 		<Link to="language_learning/korean">Korean</Link>
-		<Link to="language_learning/japanese">Basic Japanese</Link>
+		<Link to="language_learning/japanese">Japanese</Link>
 		<h2>Mathematics</h2>
 		<Link to="mathematics/precalculus">Precalculus</Link>
 		<Link to="mathematics/number_theory">Number Theory</Link>
@@ -80,14 +80,13 @@ const HomeCompMemo = memo(()=>{
 		<h2>Computer Science Fundamentals</h2>
 		<Link to="computer_science_fundamentals/data_structures_and_algorithms">Data Structures And Algorithms</Link>
 		<Link to="computer_science_fundamentals/useful_information_for_algorithms">Useful Information For Algorithms</Link>
-		<Link to="computer_science_fundamentals/operating_systems">Operating Systems</Link>
 		<Link to="computer_science_fundamentals/information_and_entropy">Information And Entropy</Link>
 		<Link to="computer_science_fundamentals/networking">Networking</Link>
-		<Link to="computer_science_fundamentals/cryptography">Cryptography</Link>
 		<h2>Electrical Engineering</h2>
 		<Link to="electrical_engineering/electricity_magnetism_and_circuits">Electricity, Magnetism And Circuits</Link>
 		<Link to="electrical_engineering/signals_and_systems">Signal And Systems</Link>
 		<h2>Computer Science (Advance Topics)</h2>
+		<Link to="computer_science_advance_topics/cryptography">Cryptography</Link>
 		<Link to="computer_science_advance_topics/deep_learning">Deep Learning</Link>
 		<h2>Tutorials</h2>
 		<Link to="tutorials/basics_of_r">Basics Of R</Link>

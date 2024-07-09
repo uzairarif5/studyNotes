@@ -13,6 +13,7 @@ function removeViewer(){
 	window.scrollBy(0,1);
 	showSideB("#upButton");
 	showSideB("#downButton");
+	showSideB("#listsUpButton");
 }
 
 export function viewImg(el, type, textCon){
@@ -28,6 +29,7 @@ export function viewImg(el, type, textCon){
 	}
 	hideSideB("#upButton");
 	hideSideB("#downButton");
+	hideSideB("#listsUpButton");
 	store.dispatch({
 		type: SHOW_IMGVIEWER,
 		payload: {width:"100%",height:"100%", paddingBottom:"20px", paddingTop:"20px"}

@@ -1,7 +1,7 @@
-
 import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import { MathStuff } from "../../articleRelatedStuff/MathStuff"; 
 import { TableLI } from "../../articleRelatedStuff/tableManager";
+import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 import SubList from "../../articleRelatedStuff/SubList";
 
 //Elementary number theory: pg 18
@@ -57,25 +57,31 @@ export const content = <>
           <li>This means for large \(x\), \(\pi (x)\) may be approximated by \({"\\frac{x}{\\ln x}"}\).</li>
         </SubList></li>
         <li><b>Goldbach's conjecture:</b> Every even integer greater than 2 can be expressed as the sum of two prime numbers.</li>
-        <li>Any prime number expressible in the form \(2^p - 1\) with \(p\) prime is said to be <b>Mersenne prime</b>. There may be infinite of them.</li>
+        <li>Any prime number expressible in the form \(2^p - 1\) for some prime \(p\) is said to be a <b>Mersenne prime</b>. There may be infinite of them. If \(2^p - 1\) is prime, then \(p\) is prime (<a href='http://localhost:3001/discrete_mathematics/prime_numbers/Mersenne_prime1'>proof</a>).</li>
         <li>Any prime number expressible in the form \(2^{"{2^n}"}+1\) (where \(n\) is a positive integer greater than 0) is said to be a <b>Fermat prime</b>, and only five are known.</li>
         <li>There may be infinitely many primes expressible in the form \(n^2 + 1 \) where \(n\) is a positive integer.</li>
         <li><b>Dirichlet's Theorem:</b> Let \(a,b \gt 0\) and \((a,b)=1\), then arithmetic progression \(a, a+b, a+2b, \ldots \) contains infinitely many primes.</li>
         <li>There are infinite primes expressible in the form \(4n+3\) (<a href='https://www.deriveit.net/discrete_mathematics/prime_numbers/infinite_primes_4k_plus_3'>proof</a>).</li>
       </SubList></li>
+      <li data-source={35}><b>Binomial Coefficient</b>:<SubList>
+        <li>\(n(n − 1)(n − 2). . . 1 = n!\) is number of ways to order \(n\) objects.</li>
+        <li>The <b>Binomial Coefficient</b> is number of ways to pick \(k\) of \(n\) objects.</li>
+        <MathStuff>$${"\\binom{n}{k}=\\frac{n!}{(n-k)!k!}"}$$</MathStuff>
+        <li>This is used in the <b>binomial theorem</b>:</li>
+        <MathStuff>$${"(x+y)^n=\\sum^n_{k=0}\\binom{n}{k}x^{k}y^{n-k}"}$$</MathStuff>
+        <li>See <a href='https://www.youtube.com/watch?v=2pYzly7jLqs'>this video</a> to understand the binomial theorem.</li>
+      </SubList></li>
     </ul>
     <ul style={{width: "49%",float: "right",marginLeft: "0.5%", marginRight: "0.5%"}} data-source={35}>
-      <li data-source={35}>Common divisor:<SubList>
-        <li>\({"a|b, a|c \\implies a|(bx + cy) \\ \\forall x, y"}\) where \({"a, b, c, x, y \\in \\mathbb{Z}"}\) (<a href='https://www.deriveit.net/discrete_mathematics/divisibility_and_gcd/divisibility1'>proof</a>).</li>
-        <li>\({"\\gcd(a, b)"}\) is the greatest common divisor of \({"a"}\) and \({"b"}\). It can also be represented as \({"(a, b)"}\). <a href='https://math.libretexts.org/Bookshelves/Combinatorics_and_Discrete_Mathematics/A_Spiral_Workbook_for_Discrete_Mathematics_(Kwong)/05%3A_Basic_Number_Theory/5.05%3A_More_on_GCD'>Every linear combination of \({"a"}\) and \({"b"}\) is a multiple of \({"\\gcd(a,b)"}\)</a>.</li>
-        <li>If \((a, b) = 1\), then \(a\) and \(b\) are <b>coprime</b> <span data-source={54}>or <b>relatively prime</b></span>.</li>
-        <li data-source={54}>Let \((a, b) = d\), then \((a/d, b/d) = 1\) (<a href='https://www.deriveit.net/discrete_mathematics/divisibility/gcdLemma8'>proof</a>).</li>
-        <li data-source={54}> Smallest possible linear combination of \(a\) and \(b\) is \((a, b)\) (<a href='https://www.deriveit.net/discrete_mathematics/divisibility/linear_combination_smallest_gcd'>proof</a>).</li>
-        <li>If \((a, m) = 1\) and \((b, m) = 1\), then \((ab, m) = 1\) (<a href='https://www.deriveit.net/discrete_mathematics/divisibility_and_gcd/multiplicative'>proof</a>).</li>
-        <li>If \(c|ab\) and \((c, a) = 1\), then \(c|b\) (<a href='https://www.deriveit.net/discrete_mathematics/divisibility_and_gcd/other'>proof</a>).</li>
-        <li data-source={54}>Let \((a_1,a_2,\ldots,a_n)=1\), then \(a_1,a_2,\ldots,a_n\) are said to be <b>relatively prime</b>. If \((a_i,a_j)=1\) for all pairs \(i\) and \(j\) with \(i \ne j\), then \(a_1,a_2,\ldots,a_n\) are said to be <b>pairwise relatively prime</b>.</li>
-      </SubList></li>
-      <li data-source={54}>Least common multiple:<SubList>
+      <li data-source={54}>Divisors and multiples:<SubList>
+        <li data-source={35}>\({"a|b, a|c \\implies a|(bx + cy) \\ \\forall x, y"}\) where \({"a, b, c, x, y \\in \\mathbb{Z}"}\) (<a href='https://www.deriveit.net/discrete_mathematics/divisibility_and_gcd/divisibility1'>proof</a>).</li>
+        <li data-source={35}>\({"\\gcd(a, b)"}\) is the greatest common divisor of \({"a"}\) and \({"b"}\). It can also be represented as \({"(a, b)"}\). <a href='https://math.libretexts.org/Bookshelves/Combinatorics_and_Discrete_Mathematics/A_Spiral_Workbook_for_Discrete_Mathematics_(Kwong)/05%3A_Basic_Number_Theory/5.05%3A_More_on_GCD'>Every linear combination of \({"a"}\) and \({"b"}\) is a multiple of \({"\\gcd(a,b)"}\)</a>.</li>
+        <li data-source={35}>If \((a, b) = 1\), then \(a\) and \(b\) are <b>coprime</b> <span data-source={54}>or <b>relatively prime</b></span>.</li>
+        <li>Let \((a, b) = d\), then \((a/d, b/d) = 1\) (<a href='https://www.deriveit.net/discrete_mathematics/divisibility/gcdLemma8'>proof</a>).</li>
+        <li> Smallest possible linear combination of \(a\) and \(b\) is \((a, b)\) (<a href='https://www.deriveit.net/discrete_mathematics/divisibility/linear_combination_smallest_gcd'>proof</a>).</li>
+        <li data-source={35}>If \((a, m) = 1\) and \((b, m) = 1\), then \((ab, m) = 1\) (<a href='https://www.deriveit.net/discrete_mathematics/divisibility_and_gcd/multiplicative'>proof</a>).</li>
+        <li data-source={35}>If \(c|ab\) and \((c, a) = 1\), then \(c|b\) (<a href='https://www.deriveit.net/discrete_mathematics/divisibility_and_gcd/other'>proof</a>).</li>
+        <li>Let \((a_1,a_2,\ldots,a_n)=1\), then \(a_1,a_2,\ldots,a_n\) are said to be <b>relatively prime</b>. If \((a_i,a_j)=1\) for all pairs \(i\) and \(j\) with \(i \ne j\), then \(a_1,a_2,\ldots,a_n\) are said to be <b>pairwise relatively prime</b>.</li>
         <li>The <b>least common multiple</b> of \(a\) and \(b\), denoted \([a,b]\), is the least positive integer \(m\) such that \(a|m\) and \(b|m\).</li>
         <li>Let \({"a={p_1}^{a_1}{p_2}^{a_2}\\ldots{p_n}^{a_n}"}\) and let \({"b={p_1}^{b_1}{p_2}^{b_2}\\ldots{p_n}^{b_n}"}\), then:</li>
         <MathStuff>$${`\\begin{align}
@@ -85,19 +91,11 @@ export const content = <>
         <li>This also means \((a,b)[a,b] = ab\).</li>
         <li>\([a, b] = 1\) if and only if \((a,b)\).</li>
       </SubList></li>
-      <li data-source={35}><b>Euclidean Algorithm:</b><SubList numbered>
-        <li>If \({"a, b < 0"}\), replace with negative</li>
-        <li>If \({"a > b"}\), switch \(a\) and \(b\)</li>
-        <li>If \({"a = 0"}\), return \(b\)</li>
-        <li>Since \({"a > 0"}\), write \({"b = aq + r"}\) with \({"0 ≤ r < a"}\). Replace \({"(a, b)"}\) with \((r, a)\) and go to Step 3.</li>
-      </SubList></li>
-      <li data-source={35}><b>Binomial Coefficient</b>:<SubList>
-        <li>\(n(n − 1)(n − 2). . . 1 = n!\) is number of ways to order \(n\) objects.</li>
-        <li>The <b>Binomial Coefficient</b> is number of ways to pick \(k\) of \(n\) objects.</li>
-        <MathStuff>$${"\\binom{n}{k}=\\frac{n!}{(n-k)!k!}"}$$</MathStuff>
-        <li>This is used in the <b>binomial theorem</b>:</li>
-        <MathStuff>$${"(x+y)^n=\\sum^n_{k=0}\\binom{n}{k}x^{k}y^{n-k}"}$$</MathStuff>
-        <li>See <a href='https://www.youtube.com/watch?v=2pYzly7jLqs'>this video</a> to understand the binomial theorem.</li>
+      <li className="ownExplanation"><b>The Euclidean Algorithm:</b><SubList>
+        <li><ImgComp src={require("./number_theory_pics/1.jpg")} style={{width: "70%",marginLeft: "15%"}}/></li>
+        <li>15 divides 105; 15 divides 225; 15 divides 1680; 15 divides 1905; 15 divides 11205. Thus 15 is a common divisor of 11205 and 1905.</li>
+        <li><ImgComp src={require("./number_theory_pics/2.jpg")} style={{width: "70%",marginLeft: "15%"}}/></li>
+        <li>The Euclidean Algorithm yields not only the greatest common divisor of a and b, d, but it also yields two constants h and k such that: d = ha + kb.</li>
       </SubList></li>
       <li className="ownExplanation">Exactly divides:<SubList>
         <li><a href='https://planetmath.org/exactlydivides'>Let \(a\) and \(b\) be integers and \(n\) a positive integer. Then \(a^m\) exactly divides \(b\) (denoted as \(a^n∥n\)) if \(a^n\) divides \(b\) but \(a^{"{n+1}"}\) does not</a>, meaning \(a\) divides \(b\) exactly \(n\) times.</li>

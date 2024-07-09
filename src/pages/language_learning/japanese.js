@@ -3,7 +3,7 @@ import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import { TableLI, TableDiv } from "../../articleRelatedStuff/tableManager";
 
 export const title = "My Japanese notes";
-export const sourcesColor = {4:null, 15:"#4f94ac", 16:"#3a3"};
+export const sourcesColor = {4:null, 16:"#3a3"};
 export const content = <>
 <h1>My Japanese Notes</h1>
 {getSourcesOL(sourcesColor)}
@@ -552,57 +552,7 @@ export const content = <>
 
 <h2 id="basics">Basics</h2>
 <div className="content">
-	<div style={{width: "49%", marginLeft: "0.5%", float: "left"}}>
-		<div data-source={15}>
-			<ul>
-				<li>Simple "I am / you are / this is " sentence:<SubList>
-					<TableLI><tbody><tr><td>AはBです。</td></tr></tbody></TableLI>
-					<li>A is what you're talking about, while B is an adjective/noun that describes A. In other words, A is B.</li>
-					<li>In Japanese, verbs come at the end of the sentences (in this case です, for negative use じやないです, or the more polite form ではありません).</li>
-					<li>The は particle acts as a topic marker, and is read as "wa". It is also read as "wa" in ではありません.</li>
-					<TableLI><tbody>
-						<tr><td>わたし は かわいい です。</td><td>I am cute.</td></tr>
-						<tr><td>かれ は かわいい です。</td><td>He is cute.</td></tr>
-						<tr><td>わたし は カナダじん じやないです。</td><td>I am not Canadian.</td></tr>
-						<tr><td>わたし は にんげん ではありません。</td><td>I am not human.</td></tr>
-						<tr><td>かれ は しんせつ じやないです。</td><td>He is not kind.</td></tr>
-					</tbody></TableLI>
-				</SubList></li>
-				<li>Common Use of の:<SubList>
-					<li>Most common use is to mark possession.</li>
-					<TableLI><tbody>
-						<tr><td>カオちゃん の。</td><td>Kao chan's</td></tr>
-						<tr><td>あなた の。</td><td>your</td></tr>
-						<tr><td>わたし の なまえ は カオ です。</td><td>my name is Kao.</td></tr>
-						<tr><td>わたし の おとうと は カオ です。</td><td>my little brother is Kao.</td></tr>
-						<tr><td>カオ は わたし の おとうと です。</td><td>Kao is my little brother.</td></tr>
-					</tbody></TableLI>
-					<li>Other use is to add more information to the second noun.</li>
-					<TableLI><tbody>
-						<tr><td>きょう の てんき。</td><td>today's weather</td></tr>
-						<tr><td>にほんご の せんせい。</td><td>Japanese teacher</td></tr>
-					</tbody></TableLI>
-				</SubList></li>
-				<li>There are two kinds of adjectives: い-adjectives and な-adjectives:<SubList>
-					<li>ちいさい ほん: The word ちいさい is an い-adjective, meaning 'small',  so this phrase means 'a small book'.</li>
-					<TableLI><tbody>
-						<tr><td><b>かわいい</b> いぬ</td><td>a cute dog</td></tr>
-						<tr><td><b>げんきな</b> がくせい</td><td>an energetic student</td></tr>
-						<tr><td><b>きれいな</b> へや</td><td>a pretty room</td></tr>
-						<tr><td>じしょ は <b>おおきい</b> ほん です。</td><td>a dictionary (じしょ) is a big book.</td></tr>
-						<tr><td>かのじょ は <b>しずかな</b> ひと です。</td><td>She is a quiet person.</td></tr>
-						<tr><td>これ は <b>おいしい</b> コーヒー です。</td><td>This is delicious coffee.</td></tr>
-					</tbody></TableLI>
-					<li>You could also drop the noun and just place an adjective before です. Example: じしょ は おおきい です ((the) dictionary is big).</li>
-					<li>In this pattern [AはAdjectiveです], you do not include the な in the な-adjective. It is used only when modifying the noun.</li>
-					<TableLI><tbody>
-						<tr><td>かのじょ は しずか です。</td><td>She is quiet.</td></tr>
-					</tbody></TableLI>
-				</SubList></li>
-			</ul>
-		</div>
-	</div>
-	<div style={{width: "49%", marginRight: "0.5%", float: "right"}} data-source={16}>
+	<div style={{width: "49%", marginLeft: "0.5%", float: "left"}} data-source={16}>
 		<ul>
 			<li>In Japanese, verbs go at the end. Also, Japanese does not have words like "a" or "the":<SubList>
 				<TableLI><tbody>
@@ -640,6 +590,8 @@ export const content = <>
 				</tbody></TableLI>
 			</SubList></li>
 		</ul>
+	</div>
+	<div style={{width: "49%", marginRight: "0.5%", float: "right"}}>
 	</div>
 </div>
 
