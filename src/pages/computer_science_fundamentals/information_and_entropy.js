@@ -28,7 +28,6 @@ export const content = <>
             <li>After Bob knows that a card is drawn but before receiving Alice's message, he is uncertain about the suit. His uncertainty, or lack of information, can be expressed in bits. Upon hearing the result, his uncertainty is reduced by the information he receives.</li>
           </SubList></li>
         </SubList></li>
-        <li>The Boolean Bit: Read <a href='../computer_science_fundamentals/computer_organization_and_architecture#architecture_software_interface'>Architecture: Software Interface, The Language Of Bits</a>.</li>
         <li>The Physical Bit:<SubList>
           <li>If a bit is to be stored or transported, it must have a physical form. Whatever object stores the bit has two distinct states, one of which is interpreted as 0 and the other as 1.</li>
           <li>If the object has moved from one location to another without changing its state then communications has occurred. If the object has persisted over some time in its same state then it has served as a memory. If the object has had its state changed in a random way then its original value has been forgotten.</li>

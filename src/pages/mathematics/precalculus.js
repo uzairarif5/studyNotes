@@ -20,14 +20,14 @@ export const content = <>
 					<li>A <b>function</b> \(f\) consists of a set of inputs, a set of outputs, and a rule for assigning each input to exactly one output. The set of inputs is called the domain of the function. The set of outputs is called the range of the function.</li>
 					<li>For a general function \(f\) with domain \(D\), we often use \(x\) to denote the input and \(y\) to denote the output associated with \(x\). When doing so, we refer to \(x\) as the independent variable and \(y\) as the dependent variable, because it depends on \(x\). Using function notation, we write \(y = f (x)\).</li>
 					<li><figure>
-							<ImgComp src={require("./calculus_pics/1.jpg")} width="75%" />
+							<ImgComp src={require("./precalculus_pics/1.jpg")} width="75%" />
 							<figcaption>1) It's helpful to think of a function as a machine; when \(x\) enters the machine, it's accepted as an input and the machine produces an output \(f(x)\). 2) Another way to picture a function is by an arrow diagram; Each arrow connects an element of \(D\) to an element of \(E\).</figcaption>
 					</figure></li>
 				</SubList></li>
 				<li><b>The Vertical Line Test:</b><SubList>
 					<li>Since a function has exactly one output for each input, the graph of a function can have, at most, one y -intercept.</li>
 					<li>Given a function \(f\), every vertical line that may be drawn intersects the graph of \(f\) no more than once. If any vertical line intersects a set of points more than once, the set of points does not represent a function.</li>
-					<li><ImgComp src={require("./calculus_pics/2.jpg")} width="50%"/></li>
+					<li><ImgComp src={require("./precalculus_pics/2.jpg")} width="50%"/></li>
 				</SubList></li>
 				<li>Typically, a function can be represented by a <b>table</b>, <b>graph</b>, or <b>formula</b>.</li>
 				<li>A funciton \(f\) is called <b>increasing</b> on an interval \(I\) if \(f(x_1) \le f(x_2)\) whenever \(x_1 \lt x_2\) in \(I\) and <b>decreasing</b> if \(f(x_1) \ge f(x_2)\) whenever \(x_1 \lt x_2\) in \(I\).</li>
@@ -45,7 +45,7 @@ export const content = <>
 					<li>If a function \(f\) satisfies \(f(-x)=f(x)\) for every number \(x\) in its domain, then \(f\) is called an <b>even function</b>. If \(f\) satisfies \(f(-x)=f(x)\) for every number \(x\) in its domain, then \(f\) is called an <b>odd function</b>.</li>
 				</SubList></li>
 				<li><figure>
-					<ImgComp src={require("./calculus_pics/4.jpg")} width="50%"/>
+					<ImgComp src={require("./precalculus_pics/4.jpg")} width="50%"/>
 					<figcaption><b>Absolute value function</b>, also written as |x|.</figcaption>
 				</figure></li>
 			</ul>
@@ -73,7 +73,7 @@ export const content = <>
 				<li><b>Transcendental functions:</b><SubList>
 					<li>Some functions, however, cannot be described by basic algebraic operations. These functions are known as <b>transcendental functions</b>.</li>
 					<li><b>Trigonometric functions:</b><SubList>
-						<li style={{float: "right", width: "50%",listStyleType: "none"}}><ImgComp style={{width: "90%"}} src={require("./calculus_pics/5.jpg")}/></li>
+						<li style={{float: "right", width: "50%",listStyleType: "none"}}><ImgComp style={{width: "90%"}} src={require("./precalculus_pics/5.jpg")}/></li>
 						<li style={{width: "40%"}}>\(sin \theta = \frac{" y"}{"r"}\)</li>
 						<li style={{width: "40%"}}>\(cos \theta = \frac{" x"}{"r"}\)</li>
 						<li style={{width: "40%"}}>\(sec \theta = \frac{" r"}{"x"}\)</li>
@@ -92,14 +92,14 @@ export const content = <>
 					</SubList></li>
 				</SubList></li>
 				<li><figure>
-						<ImgComp src={require("./calculus_pics/3.jpg")} width="80%"/>
+						<ImgComp src={require("./precalculus_pics/3.jpg")} width="80%"/>
 						<figcaption>Functions defined by different formulas in different parts of their domains are called <b>piecewise defined functions</b>.</figcaption>
 				</figure></li>
 				<li>Transformations of Functions:<SubList>
 					<li>Translating a graph:<SubList>
 							<li>\(y=f(x)+c\) shifts the graph of \(y=f(x)\) a distance \(c\) units upwards.</li>
 							<li>\(y=f(x+c)\) shifts the graph of \(y=f(x)\) a distance \(c\) units to the left.</li>
-							<li><ImgComp src={require("./calculus_pics/6.jpg")} style={{width: "80%"}}/></li>
+							<li><ImgComp src={require("./precalculus_pics/6.jpg")} style={{width: "80%"}}/></li>
 					</SubList></li>
 					<li>Stretching and reflecting a graph:<SubList>
 						<TableLI>
@@ -113,13 +113,13 @@ export const content = <>
 										<tr><td>\(y=f(-x)\)</td><td>reflect about the y-axis</td></tr>
 								</tbody>
 						</TableLI>
-						<li><ImgComp src={require("./calculus_pics/7.jpg")} width="70%"/></li>
+						<li><ImgComp src={require("./precalculus_pics/7.jpg")} width="70%"/></li>
 					</SubList></li>
 				</SubList></li>
 				<li><b>Inverse functions:</b><SubList>
 					<li>A function is <b>one-to-one</b> if it never takes the same value twice, so that means \(f(x_1) \ne f(x_2) \) whenever \(x_1 \ne x_2\).</li>
 					<li><figure>
-							<ImgComp src={require("./calculus_pics/8.jpg")} style={{width: "80%"}}/>
+							<ImgComp src={require("./precalculus_pics/8.jpg")} style={{width: "80%"}}/>
 							<figcaption><b>The Horizontal Line Test:</b> A function is one-to-one if and only if no horizontal line can intersect its graph more than once.</figcaption>
 					</figure></li>
 					<li>Let \(f\) be a one-to-one function with domain \(A\) and range \(B\), then its <b>inverse function</b> \(f^{"{-1}"}\) has domain \(B\) and range \(A\).</li>
@@ -127,7 +127,7 @@ export const content = <>
 					<li>The graph of \(f^{"{-1}"}\) is a reflection of \(f\) about the line \(y = x\).</li>
 					<li>Trigonometric functions are not one-to-one, they don't have an inverse function. This difficulty is overcome by restricting the domain.</li>
 					<li><figure>
-							<ImgComp src={require("./calculus_pics/9.jpg")} style={{width: "80%"}}/>
+							<ImgComp src={require("./precalculus_pics/9.jpg")} style={{width: "80%"}}/>
 							<figcaption>The \(f(x) = sin(x)\) is not one-to-one, but the function \(g(x) = sin x\), \(-\pi/2 \le x \le \pi/2\) is one-to-one.</figcaption>
 					</figure></li>
 				</SubList></li>

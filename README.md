@@ -44,6 +44,10 @@ This is my first big project that uses React.js and Redux
 
 ## Updates:
 
+update 19.3:
+- Updated `cryptography.js`, `information_and_entropy.js`, `number_theory.js`, `precalculus.js` and `calculus.js`.
+- Precalculus pictures now have a different folder.
+   
 update 19.2:
 - `cryptography` is now an advanced topic.
 - removed `opearting systems`

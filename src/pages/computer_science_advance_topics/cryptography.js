@@ -3,12 +3,11 @@ import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 import { TableLI } from "../../articleRelatedStuff/tableManager";
 import SubList from "../../articleRelatedStuff/SubList";
-import { CodePre } from "../../articleRelatedStuff/Code";
 import { MathStuff } from "../../articleRelatedStuff/MathStuff";
 
 
 export const title = "Cryptography Notes";
-export const sourcesColor = {33: null, 34: "rgb(204, 119, 153)", 61: "rgb(180,120,180)"};
+export const sourcesColor = {33: null, 34: "rgb(204, 119, 153)", 61: "rgb(157, 112, 181)"};
 export const content = <>
   <h1>Cryptography</h1>
   {getSourcesOL(sourcesColor)}

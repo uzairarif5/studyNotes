@@ -2,6 +2,7 @@ import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import { MathStuff } from "../../articleRelatedStuff/MathStuff"; 
 import SubList from "../../articleRelatedStuff/SubList";
 import { TableLI, TableDiv } from "../../articleRelatedStuff/tableManager";
+import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 
 export const title = "Calculus Notes";
 
@@ -187,10 +188,6 @@ export const content = <>
 					<MathStuff>\[{"f''(x),f'''(x),f^{(4)}(x), \\ldots, f^{(n)}(x)"}\]\[{"\\frac{d^2y}{(dx)^2},\\frac{d^3y}{(dx)^3},\\ldots, \\frac{d^ny}{(dx)^n}"}\]</MathStuff>
 					<li>The notation for \({"\\frac{d^2y}{(dx)^2}"}\) may be viewed as an attempt to express \({"\\frac{d}{dx} \\left( \\frac{dy}{dx}  \\right)"}\) more compactly.</li>
 				</SubList></li>
-			</ul>
-		</div>
-		<div data-source={36} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
-			<ul>
 				<li>Derivative Rules:<SubList>
 					<li><b>Constant Rule:</b> \({"\\frac{d}{dx}c = 0"}\) if \(c\) is constant.</li>
 					<li><b>Power Rule:</b> \({"\\frac{d}{dx} x^n = nx^{n-1}"}\)</li>
@@ -211,6 +208,10 @@ export const content = <>
 					<li>\({"\\frac{d\\sec x}{dx} = \\sec x \\tan x"}\)</li>
 					<li>\({"\\frac{d\\csc x}{dx} = -\\csc x \\cot x"}\)</li>
 				</SubList></li>
+			</ul>
+		</div>
+		<div data-source={36} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
+			<ul>
 				<li>Chain Rule:<SubList>
 					<li>Let \(f\) and \(g\) be functions. For all \(x\) in the domain of \(g\) for which \(g\) is differentiable at \(x\) and \(f\) is differentiable at \(g(x)\), the derivative of the composite function \(h(x)=(f∘g)(x)=f(g(x))\) is given by:</li>
 					<li class={"mathStuff"}>$$h'(x)=f'(g(x))g'(x)$$</li>
@@ -237,8 +238,154 @@ export const content = <>
 					<MathStuff>\[ {"\\frac{dy}{dx} = \\frac{1}{x \\ln b}"} \]</MathStuff>
 					<li></li>
 				</SubList></li>
+				<li>Related-Rates Problems:<SubList>
+					<li>In many real-world applications, related quantities are changing with respect to time.</li>
+					<TableLI>
+						<caption>Example</caption>
+						<tbody>
+							<tr><td>
+								<b><u>Question:</u></b>
+								<br/>
+								A spherical balloon is being filled with air at the constant rate of  2 cm<sup>3</sup>/sec How fast is the radius increasing when the radius is 3cm?
+								<br/>
+								<b><u>Answer:</u></b>
+								<br/>
+								The volume of a sphere of radius \(r\) centimeters at time \(t\) is:
+								\[V(t) = {"\\frac{4}{3} \\pi [r(t)^3]"}\]
+								The volume of a sphere of radius \(r\) centimeters is gives:
+								\[V'(t) = {"4 \\pi [r(t)^2] r'(t) "}\]
+								The balloon is being filled with air at the constant rate of 2 cm<sup>3</sup>/sec:
+								\[2 = {"4 \\pi [r(t)^2] r'(t) "}\]
+								which implies:
+								\[{"r'(t) = \\frac{1}{2 \\pi [r(t)^2]}"}\]
+								When the radius \(r=3\)cm:
+								\[{"r'(t) = \\frac{1}{18 \\pi} \\text{ cm/sec}"}\]
+							</td></tr>
+						</tbody>
+					</TableLI>
+				</SubList></li>
+				<li>Linear Approximation of a Function at a Point:<SubList>
+					<li>Consider a function \(f\) that is differentiable at a point \(x=a\). Recall that the tangent line to the graph of \(f\) at \(a\) is given by the equation:</li>
+					<MathStuff>$$ y = f(a) + f'(a)(x-a) $$</MathStuff>
+					<li>For a differentiable function \(f\), the equation of the tangent line to \(f\) at \(x=a\) can be used to approximate \(f(x)\) for \(x\) near \(a\).</li>
+					<MathStuff>$$ f(x) \approx f(a) + f'(a)(x-a) {"\\text{ for } x \\text{ near } a "} $$</MathStuff>
+					<li>We call the linear function, \(L(x) = f(a) + f'(a)(x-a)\), the <b>linear approximation</b>, or <b>tangent line approximation</b>, of \(f\) at \(x=a\).</li>
+					<li><b>Differentials</b> provide us with a way of estimating the amount a function changes as a result of a small change in input values.</li>
+					<li>Suppose \(y=f(x)\) is a differentiable function. Let \(dx\) be an independent variable that can be assigned any nonzero real number, and define the dependent variable \(dy\) by \(dy=f'(x)dx\).</li>
+					<li>It is important to notice that \(dy\) is a function of both \(x\) and \(dx\). The expressions \(dy\) and \(dx\) are called <b>differentials</b>.</li>
+					<TableLI>
+						<caption>Example</caption>
+						<tbody>
+							<tr><td>
+								<b><u>Question:</u></b>
+								<br/>
+								For each of the following functions, find \(dy\) and evaluate when \(x=3\) and \(dx=0.1\).
+								<br/>
+								<b><u>Answer:</u></b>
+								<br/>
+								\[{"\\displaylines{f(x) = x^2 + 2x \\\\ f'(x) = 2x+2 \\\\ dy = (2x+2)dx }"}\]
+								When \(x=3\) and \(dx=0.1\),
+								\[dy=(2⋅3+2)(0.1)=0.8\]
+							</td></tr>
+						</tbody>
+					</TableLI>
+				</SubList></li>
+				<li>Propagated error:<SubList>
+					<li>Consider a function \(f\) that is differentiable at point \(a\). Suppose the input \(x\) changes by a small amount. We are interested in how much the output \(y\) changes. If \(x\) changes from \(a\) to \(a+dx\), then the change in \(x\) is \(dx\), and the change in \(y\) is given by:</li>
+					<MathStuff>$$ \Delta y=f(a+dx) - f(a) $$</MathStuff>
+					<li>Instead of calculating the exact change in \(y\), however, it is often easier to approximate the change in \(y\) by using a linear approximation.</li>
+					<MathStuff>$$ {"\\displaylines{f(a+dx) ≈ L(a+dx) = f(a)+f'(a)(a+dx-a) \\\\ f(a+dx)-f(a) ≈ L(a+dx)-f(a)=f'(a)dx \\\\ f(a+dx)-f(a) ≈ f'(a)dx}"} $$</MathStuff>
+					<li>Consider a function \(f\) with an input that is a measured quantity. Suppose the exact value of the measured quantity is \(a\), but the measured value is \(a+dx\). We say the measurement error is \(dx\). As a result, an error occurs in the calculated quantity \(f(x)\). This type of error is known as a <b>propagated error</b> and is given by:</li>
+					<MathStuff>$$ \Delta y=f(a+dx) - f(a)$$</MathStuff>
+					<li>Since all measurements are prone to some degree of error, we do not know the exact value of a measured quantity, so we cannot calculate the propagated error exactly. However, given an estimate of the accuracy of a measurement, we can use differentials to approximate the propagated error:</li>
+					<MathStuff>$$ \Delta y ≈ dy = f'(a)dx $$</MathStuff>
+					<li>Unfortunately, we do not know the exact value \(a\). However, we can use the measured value \(a+dx\):</li>
+					<MathStuff>$$ \Delta y ≈ dy ≈ f'(a+dx)dx $$</MathStuff>
+					<TableLI>
+						<caption>Example</caption>
+						<tbody>
+							<tr><td>
+								<b><u>Question:</u></b>
+								<br/>
+								Suppose the side length of a cube is measured to be 5 cm with an accuracy of 0.1 cm.
+								<ul>
+									<li>Use differentials to estimate the error in the computed volume of the cube.</li>
+									<li>Compare the estimated error with the actual potential error.</li>
+								</ul>
+								<br/>
+								<b><u>Answer:</u></b>
+								<br/>
+								The measurement of the side length is accurate to within ±0.1 cm. Therefore:
+								\[-0.1 ≤ dx ≤0.1\]
+								The volume of a cube is given by \(V=x^3\), which leads to:
+								\[dV=3x^2 dx\]
+								Using the measured side length of 5 cm, we can estimate that:
+								\[{"\\displaylines{-3(5)2(0.1)≤ dV ≤3(5)2(0.1) \\\\ -7.5≤dV≤7.5}"}\]
+								If the side length is actually 4.9 cm, then the volume of the cube is 117.649 cm<sup>3</sup>. If the side length is actually 5.1 cm, then the volume of the cube is 132.651 cm<sup>3</sup>.
+								<br/>
+								The error in the computed volume is:
+								\[{"\\displaylines{117.649- 5^3 ≤ \\Delta V ≤132.651- 5^3 \\\\ -7.351≤ \\Delta V≤7.651}"}\]
+								We see the estimated error \(dV\) is relatively close to the actual potential error in the computed volume.
+							</td></tr>
+						</tbody>
+					</TableLI>
+					<li>Given an absolute error \(\Delta q\) for a particular quantity, we define the relative error as  \({"\\frac{\\Delta q}{q}"}\), where \(q\) is the actual value of the quantity.</li>
+				</SubList></li>
+				<li>Maxima and Minima:<SubList>
+					<li>Let \(f\) be a function defined over an interval \(I\) and let \(c∈I\). We say \(f\) has an <b>absolute maximum</b> on \(I\) at \(c\) if \(f(c)≥f(x)\) for all \(x∈I\).</li>
+					<li>We say \(f\) has an <b>absolute minimum</b> on \(I\) at \(c\) if \(f(c)≤f(x)\) for all \(x∈I\).</li>
+					<li>If \(f\) has an absolute maximum or an absolute minimum on \(I\) at \(c\), we say \(f\) has an absolute extremum on \(I\) at \(c\).</li>
+					<li><b><u>Extreme Value Theorem:</u></b> If \(f\) is a continuous function over the closed, bounded interval \([a,b]\), then there is a point in \([a,b]\) at which \(f\) has an absolute maximum over \([a,b]\) and there is a point in \([a,b]\) at which \(f\) has an absolute minimum over \([a,b]\).</li>
+					<li>A function \(f\) has a <b>local maximum</b> at \(c\) if there exists an open interval \(I\) containing \(c\) such that \(I\) is contained in the domain of \(f\) and \(f(c)≥f(x)\) for all \(x∈I\).</li>
+					<li>A function \(f\) has a <b>local minimum</b> at \(c\) if there exists an open interval \(I\) containing \(c\) such that \(I\) is contained in the domain of \(f\) and \(f(c)≤f(x)\) for all \(x∈I\).</li>
+					<li><figure>
+						<ImgComp src={require("./calculus_pics/1.png")} width="60%" />
+						<figcaption>There is a local minimum at \(x=1\) and a local maximum at \(x=0\) and \(x=2\). The local maximum at \(x=2\) is also the absolute maximum.</figcaption>
+					</figure></li>
+					<li>A function \(f\) has a <b>local extremum</b> at \(c\) if \(f\) has a local maximum or a local minimum at \(c\).</li>
+					<li>Let \(c\) be an interior point in the domain of \(f\). We say that \(c\) is a critical number of \(f\) if \(f'(c)=0\) or \(f'(c)\) is undefined.</li>
+					<li><b>Fermat's Theorem:</b> If \(f\) has a local extremum at a point \(c\) and \(f\) is differentiable at \(c\) then \(f'(c)=0\).</li>
+				</SubList></li>
+				<li><b>The Mean Value Theorem:</b><SubList>
+					<li><b>Rolle's Theorem:</b> Let \(f\) be a continuous function over the closed interval \([a,b]\) and differentiable over the open interval \((a,b)\) such that \(f(a)=f(b)\). There then exists at least one \(c∈(a,b)\) such that \(f'(c)=0\).</li>
+					<li><b>Mean Value Theorem:</b> Let \(f\) be continuous over the closed interval \([a,b]\) and differentiable over the open interval \((a,b)\). Then, there exists at least one point \(c∈(a,b)\) such that:</li>
+					<MathStuff>$${" f'(c) = \\frac{f(b) - f(a)}{b-a} "}$$</MathStuff>
+					<li><ImgComp src={require("./calculus_pics/2.jfif")} width="70%" /></li>
+					<li><u>Corollary 1:</u> Let \(f\) be differentiable over an interval \(I\). If \(f'(x)=0\) for all \(x∈I\), then \(f(x)= \text{"{ some constant }"}\) for all \(x∈I\).</li>
+					<li><u>Corollary 2:</u> If \(f\) and \(g\) are differentiable over an interval \(I\) and \(f'(x)=g'(x)\) for all \(x∈I\), then \(f(x)=g(x)+C\) for some constant \(C\).</li>
+					<li><u>Corollary 3:</u> Let \(f\) be continuous over the closed interval \([a,b]\) and differentiable over the open interval \((a,b)\):<SubList opened>
+						<li>If \(f'(x) \gt 0\) for all \(x∈(a,b)\), then \(f\) is an increasing function over \([a,b]\).</li>
+						<li>If \(f′(x) \gt 0\) for all \(x∈(a,b)\), then \(f\) is a decreasing function over \([a,b]\).</li>
+					</SubList></li>
+				</SubList></li>
+				<li>Derivative Tests:<SubList>
+					<li><ImgComp src={require("./calculus_pics/3.jfif")} width="90%" /></li>
+					<li><b><u>First Derivative Test:</u></b> If \(f\) is differentiable over \(I\), except possibly at point \(c\), then \(f(c)\) satisfies one of the following descriptions:<SubList opened>
+						<li>If \(f'\) changes sign from positive when \(x \lt c\) to negative when \(x \gt c\), then \(f(c)\) is a local maximum of \(f\).</li>
+						<li>If \(f'\) changes sign from negative when \(x \lt c\) to positive when\(x \gt c\), then \(f(c)\) is a local minimum of \(f\).</li>
+						<li>If \(f'\) has the same sign for \(x \lt c\) and \(x \gt c\), then \(f(c)\) is neither a local maximum nor a local minimum of \(f\).</li>
+					</SubList></li>
+					<li>Let \(f\) be a function that is differentiable over an open interval \(I\). If \(f'\) is increasing over \(I\), we say \(f\) is <b>concave up</b> over \(I\). If \(f'\) is decreasing over \(I\), we say \(f\) is <b>concave down</b> over \(I\).</li>
+					<li><ImgComp src={require("./calculus_pics/4.jfif")} width="80%" /></li>
+					<li><b>Test for Concavity</b> Let \(f\) be a function that is twice differentiable over an interval \(I\):<SubList opened>
+						<li>If \(f''(x) \gt 0\) for all \(x∈I\), then \(f\) is concave up over \(I\).</li>
+						<li>If \(f''(x)\lt 0\) for all \(x∈I\), then \(f\) is concave down over \(I\).</li>
+					</SubList></li>					
+					<li>If \(f\) is continuous at \(a\) and \(f\) changes concavity at \(a\), the point \((a,f(a))\) is an inflection point of \(f\).</li>
+					<li><ImgComp src={require("./calculus_pics/5.jfif")} width="80%" /></li>
+					<li><b><u>Second Derivative Test:</u></b> Suppose \(f'(c)=0\) and \(f''\) is continuous over an interval containing \(c\):<SubList opened>
+						<li>If \(f''(c) \gt 0\), then \(f\) has a local minimum at \(c\).</li>
+						<li>If \(f''(c) \lt 0\), then \(f\) has a local maximum at \(c\).</li>
+						<li>If \(f''(c)=0\), then the test is inconclusive.</li>
+					</SubList></li>
+				</SubList></li>
+				<li>Limits at Infinity and Asymptotes:<SubList>
+					<li></li>
+					<li></li>
+					<li></li>
+				</SubList></li>
 			</ul>
-		</div>
+		</div>  
 	</div>
 
 </>
