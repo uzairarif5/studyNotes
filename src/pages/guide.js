@@ -35,7 +35,7 @@ export const content = <>
 				<h3>Subheading A</h3>
 				<ul>
 					<li>This bullet point would be from source 2.</li>
-					<li>Sometimes you can hover on a section to see the source, but this only works if the code mentions the source of the section.</li>
+					<li>Sometimes you can hover on a section to see the source (you can toggle the visibility by pressing "s"), but this only works if the code mentions the source of the section.</li>
 					<li>The "Purpose Of This Website" section below is an example of a content not being associated with any source.</li>
 					<li>Sometimes if I don't fully understand a point, I might add extra questions to the end of the bullet point, like this:<Questions>
 						<li>Example Question 1</li>

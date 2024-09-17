@@ -7,6 +7,9 @@ export const sourcesColor = {4:null, 16:"#3a3"};
 export const content = <>
 <h1>My Japanese Notes</h1>
 {getSourcesOL(sourcesColor)}
+<ol id="additionalResources">
+	<li><a href='https://www.renshuu.org'>Renshuu</a></li>
+</ol>
 
 <h2 id="reading">Reading</h2>
 <div className="content">

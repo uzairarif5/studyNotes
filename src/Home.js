@@ -81,6 +81,7 @@ const HomeCompMemo = memo(()=>{
 		<Link to="computer_science_fundamentals/data_structures_and_algorithms">Data Structures And Algorithms</Link>
 		<Link to="computer_science_fundamentals/useful_information_for_algorithms">Useful Information For Algorithms</Link>
 		<Link to="computer_science_fundamentals/information_and_entropy">Information And Entropy</Link>
+		<Link to="computer_science_fundamentals/operating_systems">Operating Systems</Link>
 		<Link to="computer_science_fundamentals/networking">Networking</Link>
 		<h2>Electrical Engineering</h2>
 		<Link to="electrical_engineering/electricity_magnetism_and_circuits">Electricity, Magnetism And Circuits</Link>
@@ -88,15 +89,17 @@ const HomeCompMemo = memo(()=>{
 		<h2>Computer Science (Advance Topics)</h2>
 		<Link to="computer_science_advance_topics/cryptography">Cryptography</Link>
 		<Link to="computer_science_advance_topics/deep_learning">Deep Learning</Link>
-		<h2>Tutorials</h2>
+		<h2>Tutorials/Guides</h2>
+    <Link to="tutorials/c_programming_language">C programming language</Link>
 		<Link to="tutorials/basics_of_r">Basics Of R</Link>
     <Link to="tutorials/manim">Manim Basics</Link>
 		<h2>Blog</h2>
 		<Link to="blog/tree_blog">Tree Blog</Link>
+		<Link to="blog/saved_resources">Saved Resources</Link>
 		{
 			(!process.env.NODE_ENV || process.env.NODE_ENV === 'development') ?
-			require("./private_links.js").default()
-			: null
+			require("./private_links.js").default() :
+			null
 		}
 	</div>
 })

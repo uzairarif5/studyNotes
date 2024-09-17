@@ -44,6 +44,15 @@ This is my first big project that uses React.js and Redux
 
 ## Updates:
 
+Versioning is done using "npm version [new-version] --git-tag-version false"
+
+update 19.4:
+- Made coding style changes to `Article.js`.
+- Added REMOVE tag to some sources in `sourceList.js`.
+- Added `saved_resources.js` and `c_programming_language.js`.
+- Added `operating_systems.js` (this was private before).
+- Made changes to `japanese.js` and `korean.js`.
+
 update 19.3:
 - Updated `cryptography.js`, `information_and_entropy.js`, `number_theory.js`, `precalculus.js` and `calculus.js`.
 - Precalculus pictures now have a different folder.
