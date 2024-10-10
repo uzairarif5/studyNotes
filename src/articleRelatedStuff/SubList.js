@@ -26,11 +26,15 @@ class SubListInner extends React.Component {
 		switch(ci){
 			case "right":
 				el.src = iconDown;
-				selectedEl.slideDown();
+				selectedEl.slideDown("fast",
+					()=>document.getElementById("main").scrollBy(0, 1) //to make down button visible again
+				);
 				break;
 			case "left":
 				el.src = iconDown;
-				selectedEl.slideDown();
+				selectedEl.slideDown("fast",
+					()=>document.getElementById("main").scrollBy(0, 1) //to make down button visible again
+				);
 				break;
 			default:
 				if(this.parentDir === "ltr") el.src = iconRight;

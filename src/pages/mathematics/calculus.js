@@ -208,11 +208,7 @@ export const content = <>
 					<li>\({"\\frac{d\\sec x}{dx} = \\sec x \\tan x"}\)</li>
 					<li>\({"\\frac{d\\csc x}{dx} = -\\csc x \\cot x"}\)</li>
 				</SubList></li>
-			</ul>
-		</div>
-		<div data-source={36} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
-			<ul>
-				<li>Chain Rule:<SubList>
+				<li><b>Chain Rule:</b><SubList>
 					<li>Let \(f\) and \(g\) be functions. For all \(x\) in the domain of \(g\) for which \(g\) is differentiable at \(x\) and \(f\) is differentiable at \(g(x)\), the derivative of the composite function \(h(x)=(f∘g)(x)=f(g(x))\) is given by:</li>
 					<li class={"mathStuff"}>$$h'(x)=f'(g(x))g'(x)$$</li>
 					<li>Alternatively, if \(y\) is a function of \(u\), and \(u\) is a function of \(x\), then:</li>
@@ -230,6 +226,10 @@ export const content = <>
 						<li>Solve for \({"\\frac{dy}{dx}"}\) by dividing both sides of the equation by an appropriate algebraic expression.</li>
 					</SubList></li>
 				</SubList></li>
+			</ul>
+		</div>
+		<div data-source={36} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
+			<ul>
 				<li>Derivatives of Exponential and Logarithmic Functions:<SubList>
 					<li>The function \(E(x) = e^x\) is called the <b>natural exponential function</b>. Its inverse, \(L(x)= \log_e (x) = \ln x\) is called the <b>natural logarithmic function</b>.</li>
 					<li>the line \(y=x+1\) is tangent to the graph of \(E(x)=e^x\) at \(x=0\). Also, \(E'(x) = e^x\).</li>
@@ -380,9 +380,134 @@ export const content = <>
 					</SubList></li>
 				</SubList></li>
 				<li>Limits at Infinity and Asymptotes:<SubList>
-					<li></li>
-					<li></li>
-					<li></li>
+					<li>If \(\lim_{"{x \\to \\infty} f(x) = L"}\) or \(\lim_{"{x \\to -\\infty} f(x) = L"}\), then the line \(y=L\) is a horizontal asymptote of \(f\).</li>
+					<TableLI>
+						<caption>Definition of limit at infinity</caption>
+						<tbody>
+							<tr><td>
+								We say a function \(f\) has a limit at infinity, if there exists a real number \(L\) such that for all \(ε \gt 0\), there exists \(N \gt 0\) such that \[|f(x) - L | = ε\] for all \(x \gt N\).<br/>
+								We say a function \(f\) has a limit at negative infinity, if there exists a real number \(L\) such that for all \(ε \gt 0\), there exists \(N \lt 0\) such that \[|f(x) - L | = ε\] for all \(x \lt N\).
+							</td></tr>
+						</tbody>
+					</TableLI>
+					<TableLI>
+						<caption>Definition of an infinite limit at infinity</caption>
+						<tbody>
+							<tr><td>
+								We say a function \(f\) has an infinite limit at infinity, if for all \(M \gt 0\), there exists \(N \gt 0\) such that \[f(x) \gt M\] for all \(x \gt N\).<br/>
+								We say a function \(f\) has a negative infinite limit at infinity, if for all \(M \lt 0\), there exists \(N \gt 0\) such that \[f(x) \lt M\] for all \(x \gt N\).
+							</td></tr>
+						</tbody>
+					</TableLI>
+					<li>The behavior of a function as  \(x→±∞\) is called the function's <b>end behavior</b>:<SubList>
+						<li>The function \(f(x)\) approaches a horizontal asymptote \(y=L\).</li>
+						<li>The function \(f(x)→∞\) or \(f(x)→−∞\).</li>
+						<li>The function does not approach a finite limit, nor does it approach \(∞\) or \(−∞\). In this case, the function may have some oscillatory behavior.</li>
+					</SubList></li>
+					<li>End behavior for polynomial functions:<SubList>
+						<li>Consider a polynomial function:</li>
+						<MathStuff>$$f(x)= a_n x^n+ a_{"{n-1}"} x^{"{n-1}"} + \ldots + a_1 x + a_0 $$</MathStuff>
+						<li>of degree \(n≥1\) so that \(a_n ≠0\). Factoring, we see that:</li>
+						<MathStuff>$$f(x)= a_n x^n \left( 1 + \frac{"{a_{n-1}}{a_n x}"} + \ldots + \frac{"{a_1}{a_n x^{n-1}}"} + \frac{"{a_0}{a_n x^n}"} \right) $$</MathStuff>
+						<li>As \(x→±∞\), all the terms inside the parentheses approach zero except the first term. We conclude that:</li>
+						<MathStuff>$$\lim_{"{x \\to ±\\infty}"} f(x) = \lim_{"{x \\to ±\\infty}"} a_n x^n$$</MathStuff>
+					</SubList></li>
+					<li>End behavior for rational functions:<SubList>
+						<li>To evaluate the limits at infinity for a rational function, we need to determine which term in the overall expression dominates the behavior of the function at large values of \(x\).</li>
+						<li>Consider a rational function:</li>
+						<MathStuff>$$f(x) = \frac{"{a_n x^n + a_{n-1} x^{n-1} + \\ldots a_1x + a_0}{b_m x^m + b_{m-1} x^{m-1} + \\ldots b_1x + b_0}"}$$</MathStuff>
+						<TableLI>
+							<caption>Rules</caption>
+							<tbody>
+								<tr><td>If the degree of the numerator is the same as the degree of the denominator \((n=m)\), then there is a horizontal asymptote of \(y= \frac{"{a_n}{b_m}"}\).<br/><u>Ex:</u> If \(f(x) = \frac{"{3x-1}{2x+5}"}\), then \(\lim_{"{x \\to ±\\infty}"} f(x) = \frac{"{3}{2}"}\).</td></tr>
+								<tr><td>If the degree of the numerator is less then the degree of the denominator, then there is a horizontal asymptote of \(y=0\).<br/><u>Ex:</u> If \(f(x) = \frac{"{3x^2+2x}{4x^3-5x+7}"}\), then \(\lim_{"{x \\to ±\\infty}"} f(x) = 0\), since the largest power of \(x\) is \(x^3\) in the denominator.</td></tr>
+								<tr><td>If the degree of the numerator is greater then the degree of the denominator, then the limits at infinity are either positive or negative infinity, depending on the signs of the leading terms.<br/><u>Ex:</u> If \(f(x) = \frac{"{3x^2+4x}{x+2}"}\), then \(\lim_{"{x \\to ±\\infty}"} f(x) = {"\\infty"}\).<br/>In addition, using long division, the function can be rewritten as: \[f(x) = \frac{"{p(x)}{q(x)}"} = g(x) + \frac{"{r(x)}{q(x)}"} \] Since the degree of \(r(x)\) is less than the degree of \(q(x)\), \[\lim_{"{x→±∞}"} \frac{"{r(x)}{q(x)}"}=0\] Therefore, the values of \([f(x) - g(x)]\) approach zero as \(x→±∞\). If \(g(x)\) is linear then, it would be an asymptote (not horizontal but it would be called <b>oblique asymptote</b>). \(g(x)\) would be linear if the degree of \(p(x)\) is exactly one more than the degree of \(q(x)\).</td></tr>
+							</tbody>
+						</TableLI>
+					</SubList></li>
+				</SubList></li>
+				<li><b>L'Hôpital's Rule:</b><SubList>
+					<li>Suppose \(f\) and \(g\) are differentiable functions over an open interval containing \(a\), except possibly at \(a\). If \(\lim_{"{x→a}"}f(x)=0\) and \(\lim_{"{x→a}"}g(x)=0\), then:</li>
+					<MathStuff>$$ \lim_{"{x→a}"} \frac{"{f(x)}{g(x)}"} = \lim_{"{x→a}"} \frac{"{f'(x)}{g'(x)}"} $$</MathStuff>
+					<li>Assuming the limit on the right exists or is ∞ or −∞.</li>
+					<li>The result also holds if we are considering one-sided limits, or if \(a=∞\) and \(-∞\).</li>
+					<li>If \(\lim_{"{x→a}"}f(x)=0\) and \(\lim_{"{x→a}"}g(x)=0\), then \(\lim_{"{x→a}"}\frac{"{f(x)}{g(x)}"}\) is one of the <b>indeterminate forms</b>, of type \(\frac{"{0}{0}"}\).</li>
+					<li>It's is considered an indeterminate form because we cannot determine the exact behavior of \(\frac{"{f(x)}{g(x)}"}\) as \(x→a\) without further analysis.</li>
+					<li>Other indeterminate forms:<SubList opened>
+						<li>\(\frac{"{\\infty}{\\infty}"}\)</li>
+						<li>\(0 \cdot \infty \)</li>
+						<li>\(\infty - \infty \)</li>
+						<li>\(1^\infty \)</li>
+						<li>\(0^0\)</li>
+						<li>\(\infty ^0\)</li>
+					</SubList></li>
+					<li>Suppose \(f\) and \(g\) are differentiable functions over an open interval containing \(a\), except possibly at \(a\). If \(\lim_{"{x→a}"}f(x)= \infty \) (or -\(\infty\)) and \(\lim_{"{x→a}"}g(x)= \infty\) (or -\(\infty\)), then:</li>
+					<MathStuff>$$ \lim_{"{x→a}"} \frac{"{f(x)}{g(x)}"} = \lim_{"{x→a}"} \frac{"{f'(x)}{g'(x)}"} $$</MathStuff>
+					<li>Assuming the limit on the right exists or is ∞ or −∞.</li>
+					<li>The result also holds if the limit is infinite, if \(a=∞\) or \(−∞\), or the limit is one-sided.</li>
+					<TableLI>
+						<caption>Indeterminate Form of Type \(0⋅∞\)</caption>
+						<tbody>
+							<tr><td>
+								<u><b>Task:</b></u> Evaluate \(\lim_{"{x→0^+}"}x \ln x\).<br/>
+								<b><u>Solution:</u></b> Rewrite the function \(x \ln x\) as a quotient:
+								\[ x \ln x = \frac{"{\\ln x}{1/x}"} \]
+								We can apply L'Hôpital's rule:
+								\[ \lim_{"{x→0^+}"} \frac{"{\\ln x}{1/x}"} = \lim_{"{x→0^+}"} \frac{"{1/x}{-1/x^2}"} = \lim_{"{x→0^+}"} -x = 0 \]
+							</td></tr>
+						</tbody>
+					</TableLI>
+					<TableLI>
+						<caption>Indeterminate Form of Type \(∞ - ∞\)</caption>
+						<tbody>
+							<tr><td>
+								<u><b>Task:</b></u> Evaluate \[ \lim_{"{x→0^+}"} \left( \frac{"{1}{x^2}"} - \frac{"{1}{\\tan x}"} \right) \]
+								<b><u>Solution:</u></b> Rewrite the function as a quotient:
+								\[ \frac{"{1}{x^2}"} - \frac{"{1}{\\tan x}"} = \frac{"{(\\tan x) - x^2}{x^2 \\tan x}"}\]
+								We can apply L'Hôpital's rule:
+								\[ \lim_{"{x→0^+}"} \frac{"{(\\tan x) - x^2}{x^2 \\tan x}"} = \lim_{"{x→0^+}"} \frac{"{(\\sec ^2 x) - 2x}{x^2 \\sec ^2 x + 2x \\tan x}"} \]
+								As \(x→0^+\), \((\sec^2 x)-2x → 1\) and \(x^2 \sec^2 x + 2x \tan x→0\). Therefore:
+								\[ \lim_{"{x→0^+}"} \frac{"{(\\sec ^2 x) - 2x}{x^2 \\sec ^2 x + 2x \\tan x}"} = \infty \]
+							</td></tr>
+						</tbody>
+					</TableLI>
+				</SubList></li>
+				<li>L'Hôpital's Rule with exponents:<SubList>
+					<li>Since L'Hôpital's rule applies to quotients, we use the natural logarithm function and its properties to reduce a problem involving exponents to a problem involving a quotient.</li>
+					<li>If \(y = f(x)^{"{g(x)}"}\), then:</li>
+					<MathStuff> $$ \begin{"{align}"}
+						\ln y &= \ln \left( f(x)^{"{g(x)}"} \right) = g(x) \ln \left( f(x) \right) \\
+						\lim_{"{x→a}"} \left[ \ln y \right] &= \lim_{"{x→a}"} \left[ \ln \left( f(x)^{"{g(x)}"} \right) = g(x) \ln \left( f(x) \right) \right]
+					\end{"{align}"} $$</MathStuff>
+					<li>Suppose \(\lim_{"{x→a}"} g(x) \ln(f(x))=L\):</li>
+					<MathStuff>$$ \begin{"{align}"}
+						\lim_{"{x→a}"} \left[ \ln y \right] &= L \\
+						\ln \left( \lim_{"{x→a}"} y \right) &= L \\
+						\lim_{"{x→a}"} y &= e^L 
+					\end{"{align}"} $$</MathStuff>
+				</SubList></li>
+				<li>Newton's method:<SubList>
+					<li><b>Newton's method</b> is a way to approximate the solutions of \(f(x)=0\).</li>
+					<li>Let's start by sketching a graph of \(f\) and make a guess of the \(x\) value where \(f(x)=0\), we will call this \(x_0\).</li>
+					<li>We then draw a tangent line to \(f\) at \(x_0\).</li>
+					<li>If \(f'(x_0)≠0\), this tangent line intersects the x-axis at some point \((x_1,0)\).</li>
+					<li>Now let \(x_1\) be the next approximation to the actual root. Typically, \(x_1\) is closer than \(x_0\) to an actual root.</li>
+					<li>Next we draw the tangent line to \(f\) at \(x_1\). If \(f'(x_1)≠0\), this tangent line also intersects the x-axis, producing another approximation, \(x_2\).</li>
+					<li>We continue in this way, deriving a list of approximations: \(x0,x1,x2, \ldots\). Typically, the numbers \(x0,x1,x2, \ldots\) quickly approach an actual root \(x*\).</li>
+					<li><ImgComp src={require("./calculus_pics/6.jfif")} style={{width:"80%"}}/></li>
+					<li>The equation of this tangent line at \(x_0\) is given by:</li>
+					<MathStuff>$$ y=f(x_0) + f'(x_0)(x-x_0) $$</MathStuff>
+					<li>Therefore, \(x_1\) must satisfy:</li>
+					<MathStuff>$$ f(x_0) + f'(x_0)(x_1 - x_0) =0 $$</MathStuff>
+					<li>We conclude that:</li>
+					<MathStuff>$$ x_1 = x_0 - \frac{"{f(x_0)}{f'(x_0)}"} $$</MathStuff>
+					<li>Similarly, \(x_2\) satisfies:</li>
+					<MathStuff>$$ x_2 = x_1 - \frac{"{f(x_1)}{f'(x_1)}"} $$</MathStuff>
+					<li>Failures of Newton's Method:<SubList numbered>
+						<li>At one of the approximations \(x_n\), the derivative \(f'\) is zero at \(x_n\), but \(f(x_n)≠0\).</li>
+						<li>The approximations \(x_0,x_1,x_2,\ldots\) may approach a different root. If the function \(f\) has more than one root, it is possible that our approximations do not approach the one for which we are looking, but approach a different root.</li>
+						<li>The approximations may fail to approach a root entirely. There may be a function and an initial guess \(x_0\) such that the successive approximations never approach a root because the successive approximations continue to alternate back and forth between two values.</li>
+					</SubList></li>
 				</SubList></li>
 			</ul>
 		</div>  

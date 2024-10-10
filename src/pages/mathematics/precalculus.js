@@ -62,9 +62,9 @@ export const content = <>
 					<li>A polynomial of degree 2 [\(P(x) = ax^2 + bx + c\)] is a <b>quadratic function</b>.</li>
 					<li>A polynomial of degree 3 [\(P(x) = ax^3 + bx^2 + cx + d\)] is a <b>cubic function</b>.</li>
 					<li>A function of the form \(f(x) = x^a\) where \(a\) is a constant is called a <b>power function</b>.</li>
-					<li>An <b>algebraic function</b> is a larger class of function that involves addition, subtraction, multiplication, division, rational powers, and roots.</li>
 					<li>A <b>rational function</b> \(f\) is a ratio of two polynomials: \(f(x) = \frac{"{3x-1}{5x+2}"}\).</li>
 					<li>If \(a = \frac{"1"}{"n"}\) where \(n\) is a positive integer, then \(f(x) = x^\frac{"1"}{"x"} = \sqrt[n]x\) is a <b>root function</b>. If \(a = -1\), then \(f(x) = x^{"{-1}"} = \frac{"1"}{"x"}\) is a <b>reciprocal function</b>.</li>
+					<li>An <b>algebraic functions</b> is a larger class of functions that involves addition, subtraction, multiplication, division, rational powers, and roots.</li>
 				</SubList></li>
 				<li><b>Mathematical model:</b><SubList>
 					<li>A <b>mathematical model</b> is a method of simulating real-life situations with mathematical equations.</li>

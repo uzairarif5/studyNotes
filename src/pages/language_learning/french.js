@@ -10,10 +10,13 @@ Liberté: not started
 */
 
 export const title = "French Notes";
-export const sourcesColor = {25: null, 16: null, 24: null, 42: null, 43: null, 44: null, 45: null, 46: null};
+export const sourcesColor = {25: null, 16: null, 24: null, 42: null, 43: null, 44: null, 46: null};
 export const content = <>
 	<h1>French Notes</h1>
 	{getSourcesOL(sourcesColor)}
+	<ol id="additionalResources">
+		<li><a href='https://progress.lawlessfrench.com/learn/theme'>Vocabulary Lists</a> by Progress with Lawless French.</li>
+	</ol>
 
 	<h2 id="Beginner1">Beginner Part 1</h2>
 	<div className="content">

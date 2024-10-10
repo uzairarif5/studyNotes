@@ -2,8 +2,6 @@ import SubList from "../../articleRelatedStuff/SubList";
 import { CodePre } from "../../articleRelatedStuff/Code";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
-import { MathStuff } from "../../articleRelatedStuff/MathStuff";
-import { TableLI } from "../../articleRelatedStuff/tableManager";
 
 export const title = "Operating Systems Notes";
 export const sourcesColor = {20: null};

@@ -18,7 +18,6 @@ import { QuestionsBox } from './Questions.js';
 const ERROR_VAL = "ERROR";
 
 class Article extends React.Component {
-	static lastSavedScrollY = 0;
 
 	constructor(props) {
 		super(props);
@@ -85,16 +84,6 @@ class Article extends React.Component {
 			"sc": res.sourcesColor
 		}})})
 		.catch(()=>this.setState({wholeContent: ERROR_VAL}));
-	}
-
-	scrollFunc(el){
-		if(Article.lastSavedScrollY !== el.target.scrollTop){
-			if(el.target.scrollTop > 1000) showSideB("#upButton");
-			else hideSideB("#upButton");
-			if(el.target.scrollTop > el.target.scrollHeight-1000) hideSideB("#downButton");
-			else showSideB("#downButton");
-			Article.lastSavedScrollY = el.target.scrollTop;
-		}
 	}
 
 	getElementToRender(){
@@ -193,6 +182,13 @@ class Article extends React.Component {
 	addTogglesToH(){
 		$('h2').on("click",(el)=> $(el.target).next().slideToggle());
 		$('h3').on("click",(el)=> $(el.target).nextUntil('h3, br').slideToggle());
+	}
+
+	scrollFunc(el){
+		if(el.target.scrollTop > 100) showSideB("#upButton");
+		else hideSideB("#upButton");
+		if(el.target.scrollTop > el.target.scrollHeight-800) hideSideB("#downButton");
+		else showSideB("#downButton");
 	}
 
 	addColors(){

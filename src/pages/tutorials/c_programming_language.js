@@ -768,30 +768,6 @@ void main(void) {
 					<li><a href='https://stackoverflow.com/questions/16438721/if-and-if-which-one-is-better-to-use'>If you use the preprocessor's <code>#if</code>, the condition is evaluated at compile-time, and the code for the false branch is not included in the compiled program.</a></li>
 				</SubList></li>
 			</SubList></li>
-			<li>GTK:<SubList>
-				<li><b>GTK</b> (formerly known as GTK+) is short for <b>GIMP ToolKit</b>. Its website (gtk.org) describes it as "a multi-platform toolkit for creating graphical user interfaces".</li>
-				<li>GTK was originally written to provide the user interface elements used to create the GIMP picture-editing program.</li>
-				<li>It has grown beyond that into a general user interface toolkit, and is now one of the most widely used user interface libraries on the Linux desktop.</li>
-				<li>The fundamental building blocks of GTK projects are called <b>widgets</b>. Everything you see on the screen (a window, a button, a label) is a widget.</li>
-				<li>A simple GTK program:</li>
-				<li><CodePre language="c">{`
-#include <gtk/gtk.h>
-
-int main(int argc, char *argv[]) {
-  gtk_init(&argc, &argv);
-  GtkWidget *win = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-  gtk_widget_show(win);
-  gtk_main();
-  return 0;
-}
-				`}</CodePre></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-			</SubList></li>
 		</ul>
 	</div>
 	<div style={{width: "49%",float: "right",marginRight: "0.5%"}}>
