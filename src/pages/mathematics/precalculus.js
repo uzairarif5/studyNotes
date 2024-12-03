@@ -133,12 +133,12 @@ export const content = <>
 				</SubList></li>
 				<li><b>Hyperbolic functions:</b><SubList>
 					<li><a href='https://en.wikipedia.org/wiki/Hyperbolic_functions'>Hyperbolic functions are analogues of the ordinary trigonometric functions, but defined using the hyperbola rather than the circle. Just as the points \((\cos t, \sin t)\) form a circle with a unit radius, the points \((\cosh t, \sinh t)\) form the right half of the unit hyperbola.</a></li>
-					<li><b>Hyperbolic cosine:</b> \(\cosh x = \frac{"{e^x + e^{-x}}{2}"}\)</li>
 					<li><b>Hyperbolic sine:</b> \(\sinh x = \frac{"{e^x - e^{-x}}{2}"}\)</li>
-					<li><b>Hyperbolic tangent:</b> \(\tanh x = {"\\frac{\\sinh x}{\\cosh x} = \\frac{e^x - e^{-x}}{e^x + e^{-x}}"}\)</li>
-					<li><b>Hyperbolic cosecant:</b> \(\operatorname{"{csch}"} x = \frac{"{1}{\\sinh x} = \\frac{2}{e^x - e^{-x}}"}\)</li>
+					<li><b>Hyperbolic cosine:</b> \(\cosh x = \frac{"{e^x + e^{-x}}{2}"}\)</li>
+					<li><b>Hyperbolic tangent:</b> \(\tanh x = \frac{"{\\sinh x}{\\cosh x} = \\frac{e^x - e^{-x}}{e^x + e^{-x}}"}\)</li>
+					<li><b>Hyperbolic cotangent:</b> \(\coth x = \frac{"{\\cosh x}{\\sinh x} = \\frac{e^x + e^{-x}}{e^x - e^{-x}}"}\)</li>
 					<li><b>Hyperbolic secant:</b> \(\operatorname{"{sech}"} x = \frac{"{1}{\\cosh x} = \\frac{2}{e^x + e^{-x}}"}\)</li>
-					<li><b>Hyperbolic cotangent:</b> \(\coth x = \frac{"{\\cosh x}{\\sinh x} = \\frac{ex + e-x}{e^x - e^{-x}}"}\)</li>
+					<li><b>Hyperbolic cosecant:</b> \(\operatorname{"{csch}"} x = \frac{"{1}{\\sinh x} = \\frac{2}{e^x - e^{-x}}"}\)</li>
 				</SubList></li>
 			</ul>
 		</div>

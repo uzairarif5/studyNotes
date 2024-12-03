@@ -47,7 +47,7 @@ This is my first big project that uses React.js and Redux
 Versioning is done using "npm version [new-version] --git-tag-version false"
 
 update 19.5:
-- Made changes to `calculus.js`.
+- Made changes to `data_structures_and_algorithm.js`, `calculus.js`, `numbert_theory.js` and `precalculus.js`.
 - Removed the `lastSavedScrollY` static variable from `Article.js`.
 - `#DownButton` now disappears when you are 800px pixels below the bottom of the page but becomes visible again if you open a long sublist.
 

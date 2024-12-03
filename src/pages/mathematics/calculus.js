@@ -14,151 +14,151 @@ export const content = <>
 
 	<h2 id="limits">Limits</h2>
 	<div className="content">
-			<div data-source={36} style={{width: "49%",marginLeft: "0.5%",float: "left"}}>
-				<ul>
-					<li><u>Definition:</u><SubList>
+		<div data-source={36} style={{width: "49%",marginLeft: "0.5%",float: "left"}}>
+			<ul>
+				<li><u>Definition:</u><SubList>
+					<TableLI>
+					<caption>Definition of a Limit</caption>
+					<tbody>
+						<tr><td>
+							Let \(f(x)\) be a function defined at all values in an open interval containing \(a\), with the possible exception of a itself, and let \(L\) be a real number. If \(f(x)\) approaches the real number \(L\) as \(x\) approaches the number \(a\), then we say that the limit of \(f(x)\) as \(x\) approaches \(a\) is \(L\). Symbolically, we express this idea as \({"\\lim_{x \\to a} f(x) = L"}\).
+						</td></tr>
+					</tbody>
+					</TableLI>
+					<li>Let's try to evaluate the limit of \({"\\frac{\\sin x}{x}"}\) as \(x\) approaches \(0\):</li>
+					<li style={{listStyleType: "none"}}>
+						<TableDiv style={{float:"left",width:"50%"}}>
+							<thead><tr><th>\(x\)</th><th>\({"\\frac{\\sin x}{x}"}\)</th></tr></thead>
+							<tbody>
+								<tr><td>-0.1</td><td>0.998334166468</td></tr>
+								<tr><td>-0.01</td><td>0.999983333417</td></tr>
+								<tr><td>-0.001</td><td>0.999999833333</td></tr>
+								<tr><td>-0.0001</td><td>0.999999998333</td></tr>
+							</tbody>
+						</TableDiv>
+						<TableDiv style={{float:"right",width:"50%"}}>
+							<thead><tr><th>\(x\)</th><th>\({"\\frac{\\sin x}{x}"}\)</th></tr></thead>
+							<tbody>
+								<tr><td>0.1</td><td>0.998334166468</td></tr>
+								<tr><td>0.01</td><td>0.999983333417</td></tr>
+								<tr><td>0.001</td><td>0.999999833333</td></tr>
+								<tr><td>0.0001</td><td>0.999999998333</td></tr>
+							</tbody>
+						</TableDiv>
+						<div style={{width:"100%", clear:"both"}}></div>
+					</li>
+					<li>The values in each column appear to be approaching one. Thus, it is fairly reasonable to conclude that \({"lim_{x → 0} \\frac{sin x}{x} = 1"}\).</li>
+					<TableLI>
+						<caption>Definition of One-Sided Limit</caption>
+						<tbody>
+								<tr><td>
+										We write \[{"\\lim_{x \\to a^-} f(x) = L"}\] to express that if the values of the function \(f(x)\) approach the real number \(L\) as the values of \(x\) (where \(x \lt a\)) approach the number \(a\), then we say that \(L\) is the limit of \(f(x)\) as \(x\) approaches \(a\) from the left.
+										<br/>
+										Similarly, if we require that \({"x"}\) be greater than \({"a"}\), we write \[{"\\lim_{x \\to a^+} f(x) = L"}\] and say "the values of the function \(f(x)\) approach the real number \(L\) as the values of \(x\) (where \(x \gt a\)) approach the number \(a\), then we say that \(L\) is the limit of \(f(x)\) as \(x\) approaches \(a\) from the right".
+								</td></tr>
+						</tbody>
+					</TableLI>
+				</SubList></li>
+				<li>\({"\\lim_{x \\to a} f(x) = L"}\) if and only if \({"\\lim_{x \\to a^-} f(x) = L"}\) and \({"\\lim_{x \\to a^+} f(x) = L"}\).</li>
+				<li>Infinite Limits:<SubList>
+					<TableLI>
+						<caption>Intuitive Definition of an Infinite Limit</caption>
+						<tbody>
+							<tr><th colSpan={2} scope={"col"}>From The Left Side</th></tr>
+							<tr><td>
+								We write \[{"\\lim_{x \\to a^-} f(x) = \\infty "}\] to mean if the values of \(f(x)\) increase without bound as the values of \(x\) (where \(x \lt a\)) approach the number \(a\), then we say that the limit as \(x\) approaches \(a\) from the left is positive infinity.
+								<br/>
+								Similarly, \[{"\\lim_{x \\to a^-} f(x) = -\\infty "}\] means that if the values of \(f(x)\) decrease without bound as the values of \(x\) (where \(x \lt a\)) approach the number \(a\), then we say that the limit as \(x\) approaches \(a\) from the left is negative infinity.
+							</td></tr>
+							<tr><th colSpan={2} scope={"col"}>From The Right Side</th></tr>
+							<tr><td>
+								We write \[{"\\lim_{x \\to a^+} f(x) = \\infty "}\] to mean if the values of \(f(x)\) increase without bound as the values of \(x\) (where \(x \gt a\)) approach the number \(a\), then we say that the limit as \(x\) approaches \(a\) from the right is positive infinity.
+								<br/>
+								Similarly, \[{"\\lim_{x \\to a^+} f(x) = -\\infty "}\] means that if the values of \(f(x)\) decrease without bound as the values of \(x\) (where \(x \gt a\)) approach the number \(a\), then we say that the limit as \(x\) approaches \(a\) from the right is negative infinity.
+							</td></tr>
+							<tr><th colSpan={2} scope={"col"}>Two-Sided Limits</th></tr>
+							<tr><td>
+								We write \[{"\\lim_{x \\to a} f(x) = \\infty "}\] to mean if the values of \(f(x)\) increase without bound as the values of \(x\) approach the number \(a\), then we say that the limit as \(x\) approaches \(a\) is positive infinity.
+								<br/>
+								Similarly, \[{"\\lim_{x \\to a} f(x) = -\\infty "}\] means that if the values of \(f(x)\) decrease without bound as the values of \(x\) approach the number \(a\), then we say that the limit as \(x\) approaches \(a\) is negative infinity.
+							</td></tr>
+						</tbody>
+					</TableLI>
+					<li>The line \(x = a\) is a <b>vertical asymptote</b> of \(f(x)\) if \({"\\lim_{x \\to a^-} f(x) = ±∞"}\), \({"\\lim_{x \\to a^+} f(x) = ±∞"}\) or \({"\\lim_{x \\to a} f(x) =±∞"}\).</li>
+					<li>The line \({"y = L"}\) is called a <b>horizontal asymptote</b> of the curve \({"y=f(x)"}\) if either \({"\\lim_{x \\to \\infty} f(x) = L"}\) or \({"\\lim_{x \\to -\\infty} f(x) = L"}\).</li>
+				</SubList></li>
+				<li>Limit Laws (<a href='https://www.deriveit.net/calculus/limits/product'>proof here</a>):<SubList>
+						<li>\({"\\lim_{x \\to a} [f(x)+g(x)] = \\lim_{x \\to a}f(x) + \\lim_{x \\to a}g(x)"}\)</li>
+						<li>\({"\\lim_{x \\to a} [f(x)g(x)] = \\lim_{x \\to a}f(x) \\cdot \\lim_{x \\to a}g(x)"}\)</li>
+						<li>\({"\\lim_{x \\to a} \\frac{f(x)}{g(x)} = \\frac{\\lim_{x \\to a}f(x)}{\\lim_{x \\to a}g(x)} \\text{ if } \\lim_{x \\to a}g(x) \\ne 0"}\)</li>
+						<li>\({"\\lim_{x \\to a} c = c"}\)</li>
+						<li>\({"\\lim_{x \\to a} x = a"}\)</li>
+						<li>\({"\\lim_{x \\to a} [f(x)]^n = [\\lim_{x \\to a} f(x)]^n"}\)</li>
+						<li>\({"\\lim_{x \\to a} f(g(x)) = f(\\lim_{x \\to a} g(x))"}\) if \(f\) is continous there.</li>
+						<li>\({"\\lim_{x \\to a}\\sqrt[n]{f(x)} = \\sqrt[n]{\\lim_{x \\to a} f(x)}"}\):<SubList>
+							<li>Let \({"\\lim_{x \\to a} f(x) = L"}\).</li>
+							<li>\({"\\lim_{x \\to a}\\sqrt[n]{f(x)} = \\sqrt[n]{L}"}\) for all \(L\) if \(n\) is odd.</li>
+							<li>\({"\\lim_{x \\to a}\\sqrt[n]{f(x)} = \\sqrt[n]{L}"}\) for \(L≥0\) if \(n\) is even.</li>
+						</SubList></li>
+				</SubList></li>
+				<TableLI>
+					<caption>Squeeze Theorem</caption>
+					<tbody><tr><td>If \({"f(x) \\le g(x) \\le h(x)"}\) when \({"x"}\) is near \({"a"}\) (except possibly at \({"a"}\)) and \[{"\\lim_{x \\to a} f(x) = \\lim_{x \\to a} h(x) = L"}\]then \({"\\lim_{x \\to a} g(x) = L"}\).</td></tr></tbody>
+				</TableLI>
+			</ul>
+		</div>
+		<div data-source={36} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
+			<ul>
+				<li>\({"\\lim_{\\theta \\to 0} \\frac{\\sin(\\theta))}{\\theta} = 1"}\)</li>
+				<li>\({"\\lim_{\\theta \\to 0} \\frac{1-\\cos(\\theta))}{\\theta} = 0"}\)</li>
+				<li><b>Continuity:</b><SubList>
+						<li>A function \({"f"}\) is <b>continuous</b> at \({"a"}\) if \({"\\lim_{x \\to a} f(x)"}\) exists, \(f(a)\) is defined and \({"\\lim_{x \\to a} f(x) = f(a)"}\).</li>
+						<li>A function \({"f"}\) is <b>continuous on an interval</b> if it is continuous at every number in the interval.</li>
+						<li>A function \({"f"}\) is <b>continuous from the right</b> at \({"a"}\) if \({"\\lim_{x \\to a^+} f(x) = f(a)"}\).</li>
+						<li>A function \({"f"}\) is <b>continuous from the left</b> at \({"a"}\) if \({"\\lim_{x \\to a^-} f(x) = f(a)"}\).</li>
+						<li><b>Intermediate Value Theorem:</b> Suppose that \({"f"}\) is continuous on the close interval \({"[a, b]"}\) and let \({"N"}\) be any number between \({"f(a)"}\) and \({"f(b)"}\), where \({"f(a) \\ne f(b)"}\). Then there exists a number \({"c"}\) in \({"(a, b)"}\) such that \({"f(c)=N"}\).</li>
+				</SubList></li>
+				<li>Types of Discontinuities:<SubList>
+					<li>\(f\) has a <b>removable discontinuity</b> at \(a\) if \(\lim_{"{x→a}"} f(x)\) exists.</li>
+					<li>\(f\) has a <b>jump discontinuity</b> at \(a\) if \(\lim_{"{x → a^-}"} f(x)\) and \(\lim_{"{x → a^+}"} f(x)\) both exist, but \(\lim_{"{x → a^-}"} f(x) \ne \lim_{"{x → a^+}"} f(x)\). (Note: When we state that the one sided limit exists, we mean that it's real-valued and not infinity.)</li>
+					<li>\(f\) has an <b>infinite discontinuity</b> at \(a\) if \(\lim_{"{x → a^-}"} f(x) = ±∞\) or \(\lim_{"{x → a^+}"} f(x) = ±∞\).</li>
+				</SubList></li>
+				<li>Precise definition of a limit:<SubList>
 						<TableLI>
-						<caption>Definition of a Limit</caption>
+						<caption>Precise Definition Of A Limit</caption>
+						<tbody>
+								<tr><td>
+								Let \(f(x)\) be defined for all \(x ≠ a\) over an open interval containing \(a\). Let \(L\) be a real number. Then \[{"\\lim_{x \\to a} f(x) = L"}\] if, for every \(ε \gt 0\), there exists a \(δ \gt 0\), such that if \(0 \lt |x - a| \lt δ\), then \(|f(x) - L| \lt ε\).
+								</td></tr>
+						</tbody>
+						</TableLI>
+						<TableLI>
+						<caption>Definition Of A Right-Hand Limit</caption>
+						<tbody>
+								<tr><td>
+										\[{"\\lim_{x \\to a^+} f(x) = L"}\] if for every number \({"\\epsilon \\gt 0"}\) there is a number \({"\\delta \\gt 0"}\) such that if \(0 \lt x-a \lt \delta \) then \(|f(x)-L|\lt \epsilon\).
+								</td></tr>
+						</tbody>
+						</TableLI>
+						<TableLI>
+						<caption>Definition Of A Left-Hand Limit</caption>
 						<tbody>
 							<tr><td>
-								Let \(f(x)\) be a function defined at all values in an open interval containing \(a\), with the possible exception of a itself, and let \(L\) be a real number. If \(f(x)\) approaches the real number \(L\) as \(x\) approaches the number \(a\), then we say that the limit of \(f(x)\) as \(x\) approaches \(a\) is \(L\). Symbolically, we express this idea as \({"\\lim_{x \\to a} f(x) = L"}\).
+								\[{"\\lim_{x \\to a^-} f(x) = L"}\] if for every number \({"\\epsilon \\gt 0"}\) there is a number \({"\\delta \\gt 0"}\) such that if \(-\delta \lt x-a \lt 0\) then \(|f(x)-L|\lt \epsilon\).
 							</td></tr>
 						</tbody>
 						</TableLI>
-						<li>Let's try to evaluate the limit of \({"\\frac{\\sin x}{x}"}\) as \(x\) approaches \(0\):</li>
-						<li style={{listStyleType: "none"}}>
-							<TableDiv style={{float:"left",width:"50%"}}>
-								<thead><tr><th>\(x\)</th><th>\({"\\frac{\\sin x}{x}"}\)</th></tr></thead>
-								<tbody>
-									<tr><td>-0.1</td><td>0.998334166468</td></tr>
-									<tr><td>-0.01</td><td>0.999983333417</td></tr>
-									<tr><td>-0.001</td><td>0.999999833333</td></tr>
-									<tr><td>-0.0001</td><td>0.999999998333</td></tr>
-								</tbody>
-							</TableDiv>
-							<TableDiv style={{float:"right",width:"50%"}}>
-								<thead><tr><th>\(x\)</th><th>\({"\\frac{\\sin x}{x}"}\)</th></tr></thead>
-								<tbody>
-									<tr><td>0.1</td><td>0.998334166468</td></tr>
-									<tr><td>0.01</td><td>0.999983333417</td></tr>
-									<tr><td>0.001</td><td>0.999999833333</td></tr>
-									<tr><td>0.0001</td><td>0.999999998333</td></tr>
-								</tbody>
-							</TableDiv>
-							<div style={{width:"100%", clear:"both"}}></div>
-						</li>
-						<li>The values in each column appear to be approaching one. Thus, it is fairly reasonable to conclude that \({"lim_{x → 0} \\frac{sin x}{x} = 1"}\).</li>
 						<TableLI>
-							<caption>Definition of One-Sided Limit</caption>
-							<tbody>
-									<tr><td>
-											We write \[{"\\lim_{x \\to a^-} f(x) = L"}\] to express that if the values of the function \(f(x)\) approach the real number \(L\) as the values of \(x\) (where \(x \lt a\)) approach the number \(a\), then we say that \(L\) is the limit of \(f(x)\) as \(x\) approaches \(a\) from the left.
-											<br/>
-											Similarly, if we require that \({"x"}\) be greater than \({"a"}\), we write \[{"\\lim_{x \\to a^+} f(x) = L"}\] and say "the values of the function \(f(x)\) approach the real number \(L\) as the values of \(x\) (where \(x \gt a\)) approach the number \(a\), then we say that \(L\) is the limit of \(f(x)\) as \(x\) approaches \(a\) from the right".
-									</td></tr>
-							</tbody>
+						<caption>Precise Definition Of An Infinite Limit</caption>
+						<tbody>
+							<tr><td>
+								Let \({"f"}\) be a function defined on some open interval that contains the number \({"a"}\), except possibly \({"a"}\) at itself. Then \[{"\\lim_{x \\to a} f(x) = \\infty "}\] means that for every positive number \({"M"}\) there is a positive number \({"\\delta"}\) such that if \(0 \lt|x-a|\lt \delta\) then \(f(x)\gt M\). Also \[{"\\lim_{x \\to a} f(x) = -\\infty "}\] means that for every positive number \({"M"}\) there is a positive number \({"\\delta"}\) such that if \(0 \lt|x-a|\lt \delta\) then \(f(x) \lt -M\).
+							</td></tr>
+						</tbody>
 						</TableLI>
-					</SubList></li>
-					<li>\({"\\lim_{x \\to a} f(x) = L"}\) if and only if \({"\\lim_{x \\to a^-} f(x) = L"}\) and \({"\\lim_{x \\to a^+} f(x) = L"}\).</li>
-					<li>Infinite Limits:<SubList>
-						<TableLI>
-							<caption>Intuitive Definition of an Infinite Limit</caption>
-							<tbody>
-								<tr><th colSpan={2} scope={"col"}>From The Left Side</th></tr>
-								<tr><td>
-									We write \[{"\\lim_{x \\to a^-} f(x) = \\infty "}\] to mean if the values of \(f(x)\) increase without bound as the values of \(x\) (where \(x \lt a\)) approach the number \(a\), then we say that the limit as \(x\) approaches \(a\) from the left is positive infinity.
-									<br/>
-									Similarly, \[{"\\lim_{x \\to a^-} f(x) = -\\infty "}\] means that if the values of \(f(x)\) decrease without bound as the values of \(x\) (where \(x \lt a\)) approach the number \(a\), then we say that the limit as \(x\) approaches \(a\) from the left is negative infinity.
-								</td></tr>
-								<tr><th colSpan={2} scope={"col"}>From The Right Side</th></tr>
-								<tr><td>
-									We write \[{"\\lim_{x \\to a^+} f(x) = \\infty "}\] to mean if the values of \(f(x)\) increase without bound as the values of \(x\) (where \(x \gt a\)) approach the number \(a\), then we say that the limit as \(x\) approaches \(a\) from the right is positive infinity.
-									<br/>
-									Similarly, \[{"\\lim_{x \\to a^+} f(x) = -\\infty "}\] means that if the values of \(f(x)\) decrease without bound as the values of \(x\) (where \(x \gt a\)) approach the number \(a\), then we say that the limit as \(x\) approaches \(a\) from the right is negative infinity.
-								</td></tr>
-								<tr><th colSpan={2} scope={"col"}>Two-Sided Limits</th></tr>
-								<tr><td>
-									We write \[{"\\lim_{x \\to a} f(x) = \\infty "}\] to mean if the values of \(f(x)\) increase without bound as the values of \(x\) approach the number \(a\), then we say that the limit as \(x\) approaches \(a\) is positive infinity.
-									<br/>
-									Similarly, \[{"\\lim_{x \\to a} f(x) = -\\infty "}\] means that if the values of \(f(x)\) decrease without bound as the values of \(x\) approach the number \(a\), then we say that the limit as \(x\) approaches \(a\) is negative infinity.
-								</td></tr>
-							</tbody>
-						</TableLI>
-						<li>The line \(x = a\) is a <b>vertical asymptote</b> of \(f(x)\) if \({"\\lim_{x \\to a^-} f(x) = ±∞"}\), \({"\\lim_{x \\to a^+} f(x) = ±∞"}\) or \({"\\lim_{x \\to a} f(x) =±∞"}\).</li>
-						<li>The line \({"y = L"}\) is called a <b>horizontal asymptote</b> of the curve \({"y=f(x)"}\) if either \({"\\lim_{x \\to \\infty} f(x) = L"}\) or \({"\\lim_{x \\to -\\infty} f(x) = L"}\).</li>
-					</SubList></li>
-					<li>Limit Laws (<a href='https://www.deriveit.net/calculus/limits/product'>proof here</a>):<SubList>
-							<li>\({"\\lim_{x \\to a} [f(x)+g(x)] = \\lim_{x \\to a}f(x) + \\lim_{x \\to a}g(x)"}\)</li>
-							<li>\({"\\lim_{x \\to a} [f(x)g(x)] = \\lim_{x \\to a}f(x) \\cdot \\lim_{x \\to a}g(x)"}\)</li>
-							<li>\({"\\lim_{x \\to a} \\frac{f(x)}{g(x)} = \\frac{\\lim_{x \\to a}f(x)}{\\lim_{x \\to a}g(x)} \\text{ if } \\lim_{x \\to a}g(x) \\ne 0"}\)</li>
-							<li>\({"\\lim_{x \\to a} c = c"}\)</li>
-							<li>\({"\\lim_{x \\to a} x = a"}\)</li>
-							<li>\({"\\lim_{x \\to a} [f(x)]^n = [\\lim_{x \\to a} f(x)]^n"}\)</li>
-							<li>\({"\\lim_{x \\to a} f(g(x)) = f(\\lim_{x \\to a} g(x))"}\) if \(f\) is continous there.</li>
-							<li>\({"\\lim_{x \\to a}\\sqrt[n]{f(x)} = \\sqrt[n]{\\lim_{x \\to a} f(x)}"}\):<SubList>
-								<li>Let \({"\\lim_{x \\to a} f(x) = L"}\).</li>
-								<li>\({"\\lim_{x \\to a}\\sqrt[n]{f(x)} = \\sqrt[n]{L}"}\) for all \(L\) if \(n\) is odd.</li>
-								<li>\({"\\lim_{x \\to a}\\sqrt[n]{f(x)} = \\sqrt[n]{L}"}\) for \(L≥0\) if \(n\) is even.</li>
-							</SubList></li>
-					</SubList></li>
-					<TableLI>
-						<caption>Squeeze Theorem</caption>
-						<tbody><tr><td>If \({"f(x) \\le g(x) \\le h(x)"}\) when \({"x"}\) is near \({"a"}\) (except possibly at \({"a"}\)) and \[{"\\lim_{x \\to a} f(x) = \\lim_{x \\to a} h(x) = L"}\]then \({"\\lim_{x \\to a} g(x) = L"}\).</td></tr></tbody>
-					</TableLI>
-				</ul>
-			</div>
-			<div data-source={36} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
-				<ul>
-					<li>\({"\\lim_{\\theta \\to 0} \\frac{sin(\\theta))}{\\theta} = 1"}\)</li>
-					<li>\({"\\lim_{\\theta \\to 0} \\frac{1-cos(\\theta))}{\\theta} = 0"}\)</li>
-					<li><b>Continuity:</b><SubList>
-							<li>A function \({"f"}\) is <b>continuous</b> at \({"a"}\) if \({"\\lim_{x \\to a} f(x)"}\) exists, \(f(a)\) is defined and \({"\\lim_{x \\to a} f(x) = f(a)"}\).</li>
-							<li>A function \({"f"}\) is <b>continuous on an interval</b> if it is continuous at every number in the interval.</li>
-							<li>A function \({"f"}\) is <b>continuous from the right</b> at \({"a"}\) if \({"\\lim_{x \\to a^+} f(x) = f(a)"}\).</li>
-							<li>A function \({"f"}\) is <b>continuous from the left</b> at \({"a"}\) if \({"\\lim_{x \\to a^-} f(x) = f(a)"}\).</li>
-							<li><b>Intermediate Value Theorem:</b> Suppose that \({"f"}\) is continuous on the close interval \({"[a, b]"}\) and let \({"N"}\) be any number between \({"f(a)"}\) and \({"f(b)"}\), where \({"f(a) \\ne f(b)"}\). Then there exists a number \({"c"}\) in \({"(a, b)"}\) such that \({"f(c)=N"}\).</li>
-					</SubList></li>
-					<li>Types of Discontinuities:<SubList>
-						<li>\(f\) has a <b>removable discontinuity</b> at \(a\) if \(\lim_{"{x→a}"} f(x)\) exists.</li>
-						<li>\(f\) has a <b>jump discontinuity</b> at \(a\) if \(\lim_{"{x → a^-}"} f(x)\) and \(\lim_{"{x → a^+}"} f(x)\) both exist, but \(\lim_{"{x → a^-}"} f(x) \ne \lim_{"{x → a^+}"} f(x)\). (Note: When we state that the one sided limit exists, we mean that it's real-valued and not infinity.)</li>
-						<li>\(f\) has an <b>infinite discontinuity</b> at \(a\) if \(\lim_{"{x → a^-}"} f(x) = ±∞\) or \(\lim_{"{x → a^+}"} f(x) = ±∞\).</li>
-					</SubList></li>
-					<li>Precise definition of a limit:<SubList>
-							<TableLI>
-							<caption>Precise Definition Of A Limit</caption>
-							<tbody>
-									<tr><td>
-									Let \(f(x)\) be defined for all \(x ≠ a\) over an open interval containing \(a\). Let \(L\) be a real number. Then \[{"\\lim_{x \\to a} f(x) = L"}\] if, for every \(ε \gt 0\), there exists a \(δ \gt 0\), such that if \(0 \lt |x - a| \lt δ\), then \(|f(x) - L| \lt ε\).
-									</td></tr>
-							</tbody>
-							</TableLI>
-							<TableLI>
-							<caption>Definition Of A Right-Hand Limit</caption>
-							<tbody>
-									<tr><td>
-											\[{"\\lim_{x \\to a^+} f(x) = L"}\] if for every number \({"\\epsilon \\gt 0"}\) there is a number \({"\\delta \\gt 0"}\) such that if \(0 \lt x-a \lt \delta \) then \(|f(x)-L|\lt \epsilon\).
-									</td></tr>
-							</tbody>
-							</TableLI>
-							<TableLI>
-							<caption>Definition Of A Left-Hand Limit</caption>
-							<tbody>
-									<tr><td>
-											\[{"\\lim_{x \\to a^-} f(x) = L"}\] if for every number \({"\\epsilon \\gt 0"}\) there is a number \({"\\delta \\gt 0"}\) such that if \(-\delta \lt x-a \lt 0\) then \(|f(x)-L|\lt \epsilon\).
-									</td></tr>
-							</tbody>
-							</TableLI>
-							<TableLI>
-							<caption>Precise Definition Of An Infinite Limit</caption>
-							<tbody>
-									<tr><td>
-											Let \({"f"}\) be a function defined on some open interval that contains the number \({"a"}\), except possibly \({"a"}\) at itself. Then \[{"\\lim_{x \\to a} f(x) = \\infty "}\] means that for every positive number \({"M"}\) there is a positive number \({"\\delta"}\) such that if \(0 \lt|x-a|\lt \delta\) then \(f(x)\gt M\). Also \[{"\\lim_{x \\to a} f(x) = -\\infty "}\] means that for every positive number \({"M"}\) there is a positive number \({"\\delta"}\) such that if \(0 \lt|x-a|\lt \delta\) then \(f(x) \lt -M\).
-									</td></tr>
-							</tbody>
-							</TableLI>
-					</SubList></li>
-				</ul>
-			</div>
+				</SubList></li>
+			</ul>
+		</div>
 	</div>
 
 	<h2>Derivatives</h2>
@@ -214,6 +214,22 @@ export const content = <>
 					<li>Alternatively, if \(y\) is a function of \(u\), and \(u\) is a function of \(x\), then:</li>
 					<li class={"mathStuff"}>$$ {"\\frac{dy}{dx} = \\frac{dy}{du} \\frac{du}{dx}"} $$</li>
 				</SubList></li>
+			</ul>
+			<ul className="ownExplanation">
+				<li>Derivatives of inverse functions:<SubList>
+					<li>If \(f(x)\) is both invertible and differentiable. Let \(g\) be the inverse of \(f\):</li>
+					<MathStuff>\[ g'(x) = \frac{"{1}{f'(g(x))}"} \]</MathStuff>
+					<li>\(\frac{"{d}{dx} \\arcsin(x) = \\frac{1}{| \\sqrt{1-x^2}|}"}\)</li>
+					<li>\(\frac{"{d}{dx} \\arccos(x) = - \\frac{1}{| \\sqrt{1-x^2}|}"}\)</li>
+					<li>\(\frac{"{d}{dx} \\operatorname{arcsec}(x) = \\frac{1}{|x| |\\sqrt{x^2-1}|}"}\)</li>
+					<li>\(\frac{"{d}{dx} \\operatorname{arccosec}(x) = - \\frac{1}{|x| |\\sqrt{x^2-1}|}"}\)</li>
+					<li>\(\frac{"{d}{dx} \\arctan(x) = \\frac{1}{x^2+1}"}\)</li>
+					<li>\(\frac{"{d}{dx} \\operatorname{arccot}(x)= -\\frac{1}{x^2+1}"}\)</li>
+				</SubList></li>
+			</ul>
+		</div>
+		<div data-source={36} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
+			<ul>
 				<li>Implicit Differentiation:<SubList>
 					<li>In most discussions of math, if the dependent variable \(y\) is a function of the independent variable \(x\), we express \(y\) in terms of \(x\).</li>
 					<li><b>Implicit differentiation</b> allows us to find slopes of tangents to curves that are clearly not functions (they fail the vertical line test).</li>
@@ -226,17 +242,12 @@ export const content = <>
 						<li>Solve for \({"\\frac{dy}{dx}"}\) by dividing both sides of the equation by an appropriate algebraic expression.</li>
 					</SubList></li>
 				</SubList></li>
-			</ul>
-		</div>
-		<div data-source={36} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
-			<ul>
 				<li>Derivatives of Exponential and Logarithmic Functions:<SubList>
 					<li>The function \(E(x) = e^x\) is called the <b>natural exponential function</b>. Its inverse, \(L(x)= \log_e (x) = \ln x\) is called the <b>natural logarithmic function</b>.</li>
-					<li>the line \(y=x+1\) is tangent to the graph of \(E(x)=e^x\) at \(x=0\). Also, \(E'(x) = e^x\).</li>
-					<li><a href="https://www.deriveit.net/calculus/using_euler's_number/bx">Derivative of \(b^x\) is \((b^x) * ln(b)\)</a>.</li>
-					<li>If \(y= \log_b x\), then \(b^y = x\).</li>
+					<li>The line \(y=x+1\) is tangent to the graph of \(E(x)=e^x\) at \(x=0\). Also, \(E'(x) = e^x\).</li>
+					<li>Derivative of \(b^x\) is \(b^x \ln(b)\).</li>
+					<li>If \(y= \log_b x\), then:</li>
 					<MathStuff>\[ {"\\frac{dy}{dx} = \\frac{1}{x \\ln b}"} \]</MathStuff>
-					<li></li>
 				</SubList></li>
 				<li>Related-Rates Problems:<SubList>
 					<li>In many real-world applications, related quantities are changing with respect to time.</li>
@@ -511,6 +522,160 @@ export const content = <>
 				</SubList></li>
 			</ul>
 		</div>  
+	</div>
+
+	<h2>Integration</h2>
+	<div className="content">
+		<div data-source={36} style={{width:" 49%",marginLeft: "0.5%",float: "left"}}>
+			<ul >
+				<li>Approximating Areas:<SubList>
+					<li>Let \(f(x)\) be a continuous, nonnegative function defined on the closed interval \([a,b]\). We want to approximate the area \(A\) bounded by \(f(x)\) above, the x-axis below, the line \(x=a\) on the left, and the line \(x=b\) on the right.</li>
+					<li><ImgComp src={require("./calculus_pics/7.jfif")}/></li>
+					<li>We begin by dividing the interval \([a,b]\) into \(n\) subintervals of equal width, \({"\\frac{b-a}{n} = \\Delta x"}\). We do this by selecting equaly spaced points \(x_0 , x_1 , x_2, \ldots , x_n\) with \(x_0 =a\) and \(x_n=b\), so:</li>
+					<MathStuff>$$ x_i - x_{"{i-1}"} = \frac{"{b-a}{n}"} $$</MathStuff>
+					<li><b>Left-endpoint approximation:</b><SubList>
+						<li>On each subinterval \({"[x_{i-1},x_i]"}\) (for \(i=1,2,3, \ldots, n\)), construct a rectangle with width \(\Delta x\) and height equal to \(f(x_{"{i-1}"})\), which is the function value at the left endpoint of the subinterval.</li>
+						<li>The area of this rectangle is \(f(x_{"{i-1}"})\Delta x\). Adding the areas of all these rectangles, we get an approximate value for \(A\).</li>
+						<li>Left-endpoint approximation (denoted as \(L_n\)) of \(A\) using \(n\) subintervals:</li>
+						<MathStuff>$$\begin{"{align}"} A \approx &L_n = f(x_0) \Delta x + f(x_1) \Delta x + \ldots + f(x_{"{n-1}"}) \Delta x \\ & L_n= \sum_{"{i=1}"}^n f(x_{"{i-1}"}) \Delta x \end{"{align}"}$$</MathStuff>
+						<li><ImgComp src={require("./calculus_pics/8.jfif")}/></li>
+					</SubList></li>
+					<li><b>Right-endpoint approximation:</b><SubList>
+						<li>On each subinterval \({"[x_{i-1},x_i]"}\) (for \(i=1,2,3, \ldots, n\)), construct a rectangle with width \(\Delta x\) and height equal to \(f(x_i)\), which is the function value at the right endpoint of the subinterval.</li>
+						<li>The area of this rectangle is \(f(x_i)\Delta x\). Adding the areas of all these rectangles, we get an approximate value for \(A\).</li>
+						<li>Right-endpoint approximation (denoted as \(L_n\)) of \(A\) using \(n\) subintervals:</li>
+						<MathStuff>$$\begin{"{align}"} A \approx & R_n = f(x_1) \Delta x + \ldots + f(x_{"{n-1}"}) \Delta x + f(x_n) \Delta x + \\ & R_n= \sum_{"{i=1}"}^n f(x_i) \Delta x \end{"{align}"}$$</MathStuff>
+						<li><ImgComp src={require("./calculus_pics/9.jfif")}/></li>
+					</SubList></li>
+					<li>We could evaluate the function at any point \(x^*_i\) in the subinterval \([x_{"{i-1}"},x_i]\), and use \(f(x^*_i)\) as the height of our rectangle. This gives us an estimate for the area of the form:</li>
+					<MathStuff>$$ A \approx \sum^n_{"{i=1}"} f(x_i^*) \Delta x $$</MathStuff>
+					<li>A sum of this form is called a <b>Riemann sum</b>.</li>
+				</SubList></li>
+				<li>The definite integral:<SubList>
+					<li>If \(f(x)\) is a function defined on an interval \([a,b]\), the definite integral of \(f\) from \(a\) to \(b\) is given by:</li>
+					<MathStuff>$$ {"\\int_a^b f(x) dx = \\lim_{n \\to \\infty} \\sum^n_{i=1} f(x_i^*) \\Delta x"} $$</MathStuff>
+					<li>If this limit exists, the function \(f(x)\) is said to be integrable on \([a,b]\), or is an <b>integrable function</b>.</li>
+					<li>The numbers \(a\) and \(b\) are x-values and are called the <b>limits of integration</b>. The function \(f(x)\) the <b>integrand</b>, and the \(dx\) indicates that \(f(x)\) is a function with respect to \(x\), called the variable of <b>integration</b>.</li>
+					<li>If \(f(x)\) is continuous on \([a,b]\), then \(f\) is integrable on \([a,b]\).</li>
+					<li>Functions that are not continuous on \([a,b]\) may still be integrable, depending on the nature of the discontinuities.</li>
+					<li>Properties of a definite integral:<SubList>
+						<MathStuff>$$ {"\\int_a^a f(x) dx = 0"} $$</MathStuff>
+						<MathStuff>$$ {"\\int_a^b f(x) dx = - \\int_b^a f(x) dx"} $$</MathStuff>
+						<MathStuff>$$ {"\\int_a^b f(x) + g(x) dx = \\int_a^b f(x) dx + \\int_a^b g(x) dx"} $$</MathStuff>
+						<MathStuff>$$ {"\\int_a^b c f(x) dx = c \\int_a^b f(x) dx"} $$</MathStuff>
+					</SubList></li>
+				</SubList></li>
+				<li>Net Signed Area:<SubList>
+					<li>Consider, the function \(f(x)=2-2x^2\) on the interval \([0,2]\). Use \(n=8\) and choose \({"{x^*_i}"}\) as the left endpoint of each interval. Construct a rectangle on each subinterval of height \(f(x^*_i)\) and width \(\Delta x\). When \(f(x^*_i)\) is positive, the product \(f(x^*_i) \Delta x\) represents the area of the rectangle, as before. When \(f(x^*_i)\) is negative, however, the product \(f(x^*_i) \Delta x\) represents the negative of the area of the rectangle.</li>
+					<li><ImgComp src={require("./calculus_pics/10.jfif")}/></li>
+					<li>The Riemann sum then becomes = [(Area of rectangles above the x-axis) - (Area of rectangles below the x-axis)]</li>
+					<li><ImgComp src={require("./calculus_pics/11.jfif")}/></li>
+					<li>The quantity \(A_1-A_2\) is called the <b>net signed area</b>.</li>
+					<MathStuff>$$\begin{"{align}"} \int ^2_0 f(x) dx &= \lim _{"{n \\to \\infty}"} \sum ^n_{"{i=1}"} f(c_i) \Delta x \\ &= A_1 - A_2 \end{"{align}"}$$</MathStuff>
+					<li>The <b>total area</b> between \(f(x)\) and the x-axis is given by:</li>
+					<MathStuff>$$\int ^b_a | f(x) | dx = A_1 + A_2 $$</MathStuff>
+				</SubList></li>
+				<li><b>Integration by substitution:</b><SubList>
+					<li>Example:</li>
+					<TableLI>
+						<tbody>
+							<tr><td>
+								Evaluate the integral:
+								\[ \int^1_0 xe^{"{4x^2 +3}"} dx\]
+								<b><u>Answer:</u></b><br/>
+								Let \(u = 4x^2 +3\):
+								\[ \frac{"{du}{dx}"} = 8x \]
+								\[ \frac{"{du}{8}"} = x dx\]
+								If \(x=1\), then \(u=7\) and if \(x=0\), then \(u=3\)<br/>
+								This means:
+								\[ \int^1_0 e^{"{4x^2 +3}"} xdx = \int^7_3 \frac{"{e^u}{8}"} du \]
+								\[ \frac{"{1}{8}"}[ e^u ]^7_3 = \frac{"{e^7 - e^3}{8}"} \approx 134.568 \]
+							</td></tr>
+						</tbody>
+					</TableLI>
+					<li>The method is called substitution because we substitute part of the integrand with the variable \(u\) and part of the integrand with \(du\).</li>
+					<li>It is also referred to as <b>change of variables</b> because we are changing variables to obtain an expression that is easier to work with for applying the integration rules.</li>
+					<li>We are looking for an integrand of the form  \(f[g(x)]g'(x)dx\).</li>
+				</SubList></li>
+				<li>Integrals involving exponential and logarithmic functions:<SubList>
+					<li>Integral of \(b^x\):</li>
+					<MathStuff>\[ \int b^x \ dx = \frac{"{b^x}{\\ln(b)}"} + C \]</MathStuff>
+					<li>Logarithmic integrals:</li>
+					<MathStuff>\[\begin{"{align}"} \int x^{"{-1}"} \ dx &= \ln|x| +C \\ \int \log_b x \ dx &= \frac{"{x}{\\ln b}"} (\ln x -1) +C\end{"{align}"}\]</MathStuff>
+				</SubList></li>
+			</ul>
+			<ul className="ownExplanation">
+				<li>Integral of inverse trigonometric functions:<SubList>
+					<li>\(\int \arcsin(x) \ dx = x (\arcsin(x)) + \sqrt{"{1-x^2}"} + C\)</li>
+					<li>\(\int \arccos(x) \ dx = x (\arcsin(x)) - \sqrt{"{1-x^2}"} + C\)</li>
+					<li>\(\int \arctan(x) \ dx = x (\arctan(x)) - (1/2 \ \ln (x^2 +1)) + C\)</li>
+					<li>\(\int \operatorname{"{arccot}"}(x) \ dx = x (\operatorname{"{arccot}"}(x)) + (1/2 \ \ln (x^2 +1)) + C\)</li>
+					<li>\(\int \operatorname{"{arcsec}"}(x) \ dx = x (\operatorname{"{arcsec}"}(x)) - \ln (|x|+|\sqrt{"{x^2-1}"}|) + C\)</li>
+					<li>\(\int \operatorname{"{arccosec}"}(x) \ dx = x (\operatorname{"{arccosec}"}(x)) + \ln (|x|+|\sqrt{"{x^2-1}"}|) + C\)</li>
+				</SubList></li>
+			</ul>
+			<h3>Volume Stuff</h3>
+			<ul>
+				<li><b>The slicing method:</b><SubList>
+					<li>We can use a definite integral to calculate the volume of the solid. We do this by slicing the solid into pieces, estimating the volume of each slice, and then adding those estimated volumes together.</li>
+					<li>Consider the solid \(S\), extending along the x-axis.</li>
+					<li><ImgComp src={require("./calculus_pics/15.jfif")}/></li>
+					<li>We want to divide \(S\) into slices perpendicular to the x-axis.</li>
+					<li>Because the cross-sectional area is not constant, we let \(A(x)\) represent the area of the cross-section at point \(x\). Now let \({"P={x_0,x_1,…,X_n}"}\) be a regular partition of \([a,b]\), and for \(i=1,2,…n\), let \(S_i\) represent the slice of \(S\) stretching from x_{"{i-1}"} to \(x_i\). The following figure shows the sliced solid with \(n=3\).</li>
+					<li><ImgComp src={require("./calculus_pics/16.jfif")}/></li>
+					<li>For \(i=1,2,…,n\), let \(x*_i\) be an arbitrary point in \({"[x_{i-1}, x_i]"}\). Then the volume of slice \(S_i\) can be estimated by \(V(S_i)≈A(x*_i)Δx\). Adding these approximations together, we see the volume of the entire solid \(S\) can be approximated by:</li>
+					<MathStuff>\[V(S)≈ \sum_{"{i=1}"}^n A(x*_i)Δx\]</MathStuff>
+					<li>By now, we can recognize this as a Riemann sum, and our next step is to take the limit as \(n→∞\). Then we have:</li>
+					<MathStuff>\[V(S) \ \lim_{"{n \\to \\infty}"} \sum_{"{i=1}"}^n A(x*_i)Δx= \int^b_a A(x) \ dx\]</MathStuff>
+				</SubList></li>
+				<li><b>The disk method:</b><SubList>
+					<li>Define \(R\) as the region bounded above by the graph of \(f(x)\), below by the x-axis, on the left by the line \(x=a\), and on the right by the line \(x=b\).</li>
+					<li>The volume of the solid of revolution formed by revolving \(R\) around the x-axis is given by:</li>
+					<MathStuff>\[ V = \int^b_a \pi [f(x)]^2 \ dx \]</MathStuff>
+					<li><ImgComp src={require("./calculus_pics/13.jfif")} style={{width:"90%"}}/></li>
+				</SubList></li>
+				<li><b>The washer method:</b><SubList>
+					<li>Suppose \(f(x)\) and \(g(x)\) are continuous, nonnegative functions such that \(f(x)≥g(x)\) over \([a,b]\).</li>
+					<li>Let \(R\) denote the region bounded above by the graph of \(f(x)\), below by the graph of \(g(x)\), on the left by the line \(x=a\), and on the right by the line \(x=b\).</li>
+					<li>The volume of the solid of revolution formed by revolving \(R\) around the x-axis is given by:</li>
+					<MathStuff>\[ V = \int^b_a \pi [f(x)^2 - g(x)^2] \ dx \]</MathStuff>
+					<li><ImgComp src={require("./calculus_pics/12.jfif")} style={{width:"90%"}}/></li>
+				</SubList></li>
+				<li><b>The method of Cylindrical Shells</b>:<SubList>
+					<li>Let \(f(x)\) be continuous and nonnegative.</li>
+					<li>Define \(R\) as the region bounded above by the graph of \(f(x)\), below by the x-axis, on the left by the line \(x=a\), and on the right by the line \(x=b\).</li>
+					<li>The volume of the solid of revolution formed by revolving \(R\) around the y-axis is given by:</li>
+					<MathStuff>\[ V = \int^b_a (2 \pi x f(x)) \ dx \]</MathStuff>
+					<li><ImgComp src={require("./calculus_pics/14.jfif")} style={{width:"90%"}}/></li>
+				</SubList></li>
+			</ul>
+		</div>
+		<div data-source={36} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
+			<ul>
+				<li>Arc Length of a Curve:<SubList>
+					<li>Let \(f(x)\) be a smooth function over the interval \([a,b]\).</li>
+					<li>The arc length of the portion of the graph of \(f(x)\) from the point \((a,f(a))\) to the point \((b,f(b))\) is given by:</li>
+					<MathStuff>\[ \int^b_a \sqrt{"{1+[f'(x)]^2}"} \ dx \]</MathStuff>
+				</SubList></li>
+				<li>Surface Area of a Surface of Revolution:<SubList>
+					<li>Let \(f(x)\) be a nonnegative smooth function over the interval \([a,b]\).</li>
+					<li>The surface area of the surface of revolution formed by revolving the graph of \(f(x)\)
+					around the x-axis is given by:</li>
+					<MathStuff>\[ \int^b_a (2 \pi f(x) \sqrt{"{1+f'(x)^2}"}) \ dx \]</MathStuff>
+				</SubList></li>
+				<li>Exponential growth and decay:<SubList>
+					<li>Systems that exhibit <b>exponential growth</b> increase according to the mathematical model:</li>
+					<MathStuff>\[ y=y_0e^{"{kt}"} \]</MathStuff>
+					<li>where \(y_0\) represents the <b>initial state</b> and \(k\) is a positive constant called the <b>growth constant</b>.</li>
+					<MathStuff>\[ \frac{"{d}{dt}"}y=y_0e^{"{kt}"} (k) = ky\]</MathStuff>
+					<li>Systems that exhibit <b>exponential decay</b> behave according to the model:</li>
+					<MathStuff>\[ y=y_0e^{"{-kt}"} \]</MathStuff>
+					<li>where \(y_0\) represents the <b>initial state</b> and \(k\) is a positive constant called the <b>decay constant</b>.</li>
+					<li>If a quantity decays exponentially, the <b>half-life</b> is the amount of time it takes the quantity to be reduced by half:</li>
+					<MathStuff>\[ t_{"{1/2}"} = \frac{"{\\ln(2)}{k}"} \]</MathStuff>
+				</SubList></li>
+			</ul>
+		</div>
 	</div>
 
 </>

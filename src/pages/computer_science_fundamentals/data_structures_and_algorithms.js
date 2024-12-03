@@ -930,8 +930,8 @@ class LQueue&lt;E> implements Queue&lt;E> {
 					A <b>graph</b> data structure consists of a finite (and possibly mutable) set of <b>vertices</b> (also called <b>nodes</b>), together with a set of unordered pairs of these vertices for an undirected graph or a set of ordered pairs for a directed graph. These pairs are known as <b>edges</b>, and for a directed graph are also known as edges but also sometimes <b>arrows</b>.
 				</li>
 				<li>
-					<figure>
-						<ImgComp src={require("./data_structures_and_algorithms_pics/6.png")} style={{width: "250px"}}/>
+					<figure style={{width:"45%"}}>
+						<ImgComp src={require("./data_structures_and_algorithms_pics/6.png")}/>
 						<figcaption>A directed graph with three vertices (blue circles) and three edges (black arrows).</figcaption>
 					</figure>
 				</li>
@@ -1071,8 +1071,8 @@ is_BST(root, min, max):
 					obtained by starting at the root and filling the tree by levels from left to right. In the
 					complete binary tree of height \(d\), all levels except possibly level \(d-1\) are completely
 					full. The bottom level has its nodes filled in from the left side.</li>
-				<li><figure>
-					<ImgComp src={require("./data_structures_and_algorithms_pics/15.PNG")} style={{width:"70%"}}/>
+				<li><figure style={{width:"70%"}}>
+					<ImgComp src={require("./data_structures_and_algorithms_pics/15.PNG")}/>
 					<figcaption>(a) This tree is full (but
 						not complete). (b) This tree is complete (but not full).
 						</figcaption>
@@ -1085,7 +1085,7 @@ is_BST(root, min, max):
 		<ul>
 			<li>An array can store the tree's data values efficiently, placing each data value in the array position
 			corresponding to that node's position within the tree:<SubList>
-				<li><figure><ImgComp src={require("./data_structures_and_algorithms_pics/16.PNG")} style={{width:"75%"}}/>
+				<li><figure style={{width:"75%"}}><ImgComp src={require("./data_structures_and_algorithms_pics/16.PNG")}/>
 					<figcaption>A complete binary tree and its array implementation. (a) The complete binary tree with twelve nodes. Each node has been labeled with its position
 						in the tree. (b) The positions for the relatives of each node.</figcaption>
 				</figure></li>
@@ -1203,8 +1203,8 @@ public class MaxHeap&lt;E extends Comparable&lt;? super E>> {
 					or equal to that of its children.</li>
 			</SubList></li>
 			<li><b>Huffman Coding Trees:</b><SubList>
-				<li><figure>
-					<ImgComp src={require("./data_structures_and_algorithms_pics/17.PNG")} style={{width:"55%"}}/>
+				<li><figure style={{width:"55%"}}>
+					<ImgComp src={require("./data_structures_and_algorithms_pics/17.PNG")}/>
 					<figcaption>Relative frequencies for the 26 letters of the alphabet as they appear in a selected set of English documents. "Frequency" represents the expected frequency of occurrence per 1000 letters.</figcaption>
 				</figure></li>
 				<li><b>Huffman coding</b> assigns codes to characters such that the length of the code depends on the relative frequency or weight of the corresponding character.</li>
@@ -1303,7 +1303,7 @@ static HuffTree<Character> buildTree() {
 				<li>Using Huffman Codes:<SubList>
 					<li>'0' is assigned to edges connecting a node with its left child, and
 						'1' to edges connecting a node with its right child</li>
-					<li><figure><ImgComp src={require("./data_structures_and_algorithms_pics/19.PNG")} style={{width:"50%"}}/>
+					<li><figure style={{width:"50%"}}><ImgComp src={require("./data_structures_and_algorithms_pics/19.PNG")}/>
 						<figcaption> The code for K is '111101'.</figcaption>
 					</figure></li>
 				</SubList></li>
@@ -1460,7 +1460,7 @@ public Integer FIND(Integer curr) {
 				<li>This approach assumes that the number of children is known when the node is created. </li>
 				<li>If the number of children does change, then some special recovery mechanism must be provided to support a change in the size of the child pointer array.</li>
 				<li>One possibility is to allocate a new node of the correct size from free store and return the old copy of the node to free store for later reuse.</li>
-				<li><figure><ImgComp src={require("./data_structures_and_algorithms_pics/24.PNG")} style={{width:"70%"}}/><figcaption> For each node,
+				<li><figure style={{width:"70%"}}><ImgComp src={require("./data_structures_and_algorithms_pics/24.PNG")}/><figcaption> For each node,
 					the first field stores the node value while the second field stores the size of the
 					child pointer array.</figcaption></figure></li>
 			</SubList></li>
@@ -1509,15 +1509,15 @@ public Integer FIND(Integer curr) {
 				<li>A graph with labels associated with its vertices is called a <b>labeled graph</b>.</li>
 				<li>Two vertices are adjacent if they are joined by an <b>edge</b>. Such vertices are also called <b>neighbors</b>.</li>
 				<li>An edge connecting Vertices \(U\) and \(V\) is written \((U, V)\). Such an edge is said to be incident on Vertices \(U\) and \(V\). Associated with each edge may be a cost or <b>weight</b>. Graphs whose edges have weights are said to be <b>weighted</b>.</li>
-				<li><figure><ImgComp src={require("./data_structures_and_algorithms_pics/28.PNG")} style={{width:"70%"}}/><figcaption> (a) A graph. (b) A directed graph (digraph). (c) A labeled (directed) graph with weights associated with the edges.</figcaption></figure></li>
+				<li><figure style={{width:"70%"}}><ImgComp src={require("./data_structures_and_algorithms_pics/28.PNG")}/><figcaption> (a) A graph. (b) A directed graph (digraph). (c) A labeled (directed) graph with weights associated with the edges.</figcaption></figure></li>
 				<li>In a directed graph, the <b>out degree</b> for a vertex is the number of neighbors adjacent from it (or the number of edges going out from it), while the <b>in degree</b> is the number of neighbors adjacent to it (or the number of edges coming in to it).</li>
 				<li>A sequence of vertices \(v_1, v_2, \ldots, v_n\) forms a <b>path</b> of length \(n - 1\) if there exist edges from \(v_i\) to \(v_i+1\) for \(1 ≤ i &lt; n\). A path is <b>simple</b> if all vertices on the path are distinct. The <b>length</b> of a path is the number of edges it contains.</li>
 				<li>A <b>cycle</b> is a path of length three or more that connects some vertex \(v_1\) to itself. A cycle is <b>simple</b> if the path is simple, except for the first and last vertices being the same.</li>
 				<li>A <b>subgraph \(S\)</b> is formed from graph \(G\) by selecting a subset \(V_s\) of \(G\)'s vertices and a subset \(E_s\) of \(G\)'s edges such that for every edge \(e ∈ E_s\), both vertices of \(e\) are in \(V_s\). Any subgraph of \(V\) where all vertices in the graph connect to all other vertices in the subgraph is called a <b>clique</b>.</li>
 				<li>An undirected graph is <b>connected</b> if there is at least one path from any vertex
 					to any other.</li>
-				<li><figure>
-					<ImgComp src={require("./data_structures_and_algorithms_pics/29.PNG")} style={{width:"50%"}}/>
+				<li><figure style={{width:"50%"}}>
+					<ImgComp src={require("./data_structures_and_algorithms_pics/29.PNG")}/>
 					<figcaption> An undirected graph with three connected components. Vertices 0, 1, 2, 3, and 4 form one connected component. Vertices 5 and 6 form a second connected component. Vertex 7 by itself forms a third connected component.</figcaption>
 				</figure></li>
 				<li>The maximally connected subgraphs of an undirected graph are called <b>connected components</b>.</li>
@@ -1532,7 +1532,7 @@ public Integer FIND(Integer curr) {
 				<li>In either case, the space requirements for the adjacency matrix are \(\Theta(|V|^2)\).</li>
 				<li>The second common representation for graphs is the <b>adjacency list</b>. The adjacency list is an array of linked lists. The array is \(|V|\) items long, with position \(i\) storing a pointer to the linked list of edges for Vertex \(v_i\). </li>
 				<li><figure>
-					<ImgComp src={require("./data_structures_and_algorithms_pics/30.PNG")} style={{width:"60%"}}/>
+					<ImgComp src={require("./data_structures_and_algorithms_pics/30.PNG")}/>
 					<figcaption>(a) A directed graph. (b) The adjacency matrix for the graph of (a). (c) The adjacency list for the graph of (a).</figcaption>
 				</figure></li>
 				<li>The storage requirements for the adjacency list depend on both the number of
@@ -1697,7 +1697,9 @@ public class GraphL implements Graph {
 		else {
 			curr.next = new Edge(w, wgt, curr, curr.next);
 			numEdge++;
-			if (curr.next.next != null) { curr.next.next.prev = curr.next; }
+			if (curr.next.next != null) {
+				curr.next.next.prev = curr.next;
+			}
 		}
 	}
 	
@@ -1807,7 +1809,7 @@ static void BFS(Graph G, int v) {
 				<li>Assume that we need to schedule a series of tasks, such as classes or construction jobs, where we cannot start one task until after its prerequisites are completed. We wish to organize the tasks into a linear order that allows us to complete them one at a time without violating any prerequisites. We can model the problem using a <i>direct acyclic graph</i> (DAG).</li>
 				<li><b>Topological sort</b> is the process of laying out the vertices of a DAG in a linear order such that no vertex \(A\) in the order is preceded by a vertex that can be reached by a (directed) path from \(A\).</li>
 				<li><figure>
-					<ImgComp src={require("./data_structures_and_algorithms_pics/31.PNG")} style={{width:"60%"}}/>
+					<ImgComp src={require("./data_structures_and_algorithms_pics/31.PNG")}/>
 					<figcaption>Seven tasks have dependencies as shown by the directed graph.</figcaption>
 				</figure></li>
 				<li>A topological sort may be found by performing a DFS on the graph. When a vertex is visited, no action is taken (i.e., function <code>PreVisit</code> does nothing). When the recursion pops back to that vertex, function <code>PostVisit</code> prints the vertex. This yields a topological sort in reverse order.</li>
@@ -1971,7 +1973,7 @@ static void DijkstraPQ(Graph G, int s, int[] D) {
 				</ol></li>
 				<li>The MCST is a free tree with \(|V|-1\) edges. The name "minimum-cost spanning tree" comes from the fact that the required set of edges forms a tree, it spans the vertices (i.e., it connects them together), and it has minimum cost.</li>
 				<li><figure>
-					<ImgComp src={require("./data_structures_and_algorithms_pics/32.PNG")} style={{width: "60%"}}/>
+					<ImgComp src={require("./data_structures_and_algorithms_pics/32.PNG")}/>
 					<figcaption>All edges appear in the original graph. Those edges drawn with heavy lines indicate the subset making up the MCST. Note that edge \((C,F)\) could be replaced with edge \((D,F)\) to form a different MCST with equal cost.</figcaption>
 				</figure></li>
 			</SubList></li>
@@ -2090,7 +2092,7 @@ void Kruskal(Graph G) {
 			<li>All-Pairs Shortest Paths:<SubList>
 				<li>Define a \(k\)-path from vertex v to vertex \(u\) to be any path whose intermediate vertices (aside from \(v\) and \(u\)) all have indices less than \(k\). A \(0\)-path is defined to be a direct edge from \(v\) to \(u\).</li>
 				<li><figure>
-					<ImgComp src={require("./data_structures_and_algorithms_pics/33.PNG")} style={{width: "65%"}}/>
+					<ImgComp src={require("./data_structures_and_algorithms_pics/33.PNG")}/>
 					<figcaption>Path 1-3 is a \(0\)-path by definition. Path 3-0-2 is not a \(0\)-path, but it is a \(1\)-path (as well as a \(2\)-path, a \(3\)-path, and a \(4\)-path) because the largest intermediate vertex is 0. Path 1-3-2 is a \(4\)-path, but not a \(3\)-path because the intermediate vertex is 3. All paths in this graph are \(4\)-paths.</figcaption>
 				</figure></li>
 				<li>Define \(D_k(v,u)\) to be the length of the shortest \(k\)-path from vertex \(v\) to vertex \(u\). Assume that we already know the shortest \(k\)-path from \(v\) to \(u\). The shortest \((k+1)\)-path either goes through vertex \(k\) or it does not. If it does go through \(k\), then the best path is the best \(k\)-path from \(v\) to \(k\) followed by the best \(k\)-path from \(k\) to \(u\). Otherwise, we should keep the best \(k\)-path seen before.</li>
