@@ -7,7 +7,7 @@ import SubList from "../../articleRelatedStuff/SubList";
 //Elementary number theory: pg 18
 
 export const title = "Number Theory Notes";
-export const sourcesColor = {35: null, 54: null};
+export const sourcesColor = {35: null, 54: null, 4: null};
 export const content = <>
   <h1>Number Theory</h1>
   {getSourcesOL(sourcesColor)}
@@ -147,8 +147,9 @@ export const content = <>
         <li>Take any complete residue system mod \(m\) and take the subset consisting of all the integers in it which are coprime to \(m\) - these will form a <b>reduced residue system</b>.</li>
         <li>If \(m = 12\), then \({"\\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 \\}"}\) would be a complete residue and the reduced residue would be \({"\\{1, 5, 7, 11\\}"}\).</li>
         <li data-source={54}>The set \({"\\{ 0, 1, 2, \\ldots, m-1 \\} "}\) is said to be the <b>set of least nonnegative residue modulo m</b>.</li>
-        <li>The number of elements in a reduced residue system mod \(m\) is called <b>Euler's totient function</b>: \(\phi(m)\) (ie., the number of positive integers \(≤ m\) and coprime to \(m\)).</li>
-        <li><b>Euler's Theorem:</b> If \((a, m) = 1\), then \({"a^{\\phi(m)} ≡ 1 \\bmod m"}\) (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/eulers_theorem'>proof</a>).</li>
+        <li>The number of elements in a reduced residue system mod \(m\) is called <b>Euler's totient function</b>: \(\phi(m)\).</li>
+        <li data-source={4}>A <b>totative</b> of a given positive integer \(m\) is an integer \(k\) such that \(0 \lt k \le m\) and k is coprime to m. Euler's totient function \(\phi(m)\) counts the number of totatives of \(m\).</li>
+        <li><b>Euler's Theorem:</b> If \((a, m) = 1\), then \({"a^{\\phi(m)} ≡ 1 \\bmod m"}\) (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/Eulers_theorem'>proof</a>).</li>
       </SubList></li>
       <li data-source={54}><b>Linear Congruences:</b><SubList>
         <li>A congruence of the form \(ax ≡ b \bmod m\) is said to be a <b>linear congruence</b> in the variable \(x\). The congruence is linear in the sense that the variable \(x\) occurs to the first power.</li>
