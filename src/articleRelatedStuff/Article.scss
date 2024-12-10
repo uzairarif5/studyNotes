@@ -95,12 +95,21 @@
 		}
 		#sources, #additionalResources{
 			list-style: none;
-			span{
-				margin-right: 2px;
-			}
 			li{
 				padding-left: 35px;
 				margin-left: 0px;
+				position: relative;
+				.colorContainer{
+					display: inline-block;
+					margin-right: 2px;
+					width: 8px;
+					height: 12px;
+				}
+				.emailedSymbol{
+					display: inline;
+					position: relative;
+					height: 14px;
+				}
 			}
 			li:nth-child(1){
 				counter-reset: sourcescounter;
@@ -113,11 +122,6 @@
 				text-align: right;
 				width: 30px;
 				left: 0px;
-			}
-			.emailedSymbol{
-				display: inline;
-				position: relative;
-				height: 14px;
 			}
 		}
 		#reference, #sources, #additionalResources{

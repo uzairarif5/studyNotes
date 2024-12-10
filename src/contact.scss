@@ -1,7 +1,16 @@
+@import "./variables.module.scss";
+
 #contactDialog{
   border-radius: 15px;
   border-width: 5px;
   padding: 0;
+
+  #fieldContainer{
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    clear:both;
+  }
 
   label{
     display: block;
@@ -35,7 +44,18 @@
     font-family: 'main';
     font-weight: bold;
     font-size: 20px;
+    padding: 10px auto;
     background-color: rgba($color: #000000, $alpha: 0);
+    color: black;
   }
 
+}
+
+
+@media screen and (max-device-width: $max-width-for-mobile){
+  #contactDialog{
+    #fieldContainer{
+      grid-template-columns: 100%;
+    }
+  }
 }

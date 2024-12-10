@@ -2,7 +2,9 @@ import { sourceList } from "./sourceList";
 
 function SourcesLI(props){
 	if(props.c == null) return <li>{props.children}</li>;
-	else return <li><span style={{backgroundColor: props.c}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>{props.children}</li>;
+	else return <li>
+		<span className="colorContainer" style={{backgroundColor: props.c}}></span>{props.children}
+	</li>;
 }
 
 export function getSourcesOL(sourcesColor, sourcesOrder = null){

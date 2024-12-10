@@ -36,20 +36,19 @@ export function ContactComp() {
 				})}}
 				type='button'
 				formNoValidate={true}
-				style={{padding:"10px auto",float:"right"}}
+				style={{float:"right"}}
 			>X</button>
-			<div style={{padding: "20px",clear:"both"}}>
-				<div style={{float:"left"}}>
+			<div id="fieldContainer">
+				<div>
 					<label htmlFor="name">Name</label>
 					<input id="name" type="name" name="name" required/>
 					<label htmlFor="email">Email Address</label>
 					<input id="email" type="email" name="email" required/>
 				</div>
-				<div style={{float:"right"}}>
+				<div>
 					<label htmlFor="message">Message</label>
 					<textarea id="message" name="message" style={{resize:"none"}} required/>
 				</div>
-				<div style={{width:"100%",clear:"both"}}></div>
 			</div>
 			<div style={{
 				width:"100%",
@@ -61,7 +60,6 @@ export function ContactComp() {
 				type="submit"
 				disabled={state.submitting}
 				formMethod="post"
-				style={{padding:"10px auto"}}
 			>Submit</button></div>
 		</form>
 	</dialog>

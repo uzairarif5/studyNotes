@@ -142,8 +142,20 @@
 			& > a{margin: 10px 30px 0px 30px;font-size: 16px;line-height: 18px;}
 		}
 
-		footer{background-color: #913213;padding-bottom: 150px;}
-		footer a, footer button{font-size: 25px;color: #da4;font-weight: normal;}
-		footer a:hover, footer button:hover{font-size: 28px;}
+		footer{
+			background-color: #913213;
+			padding-bottom: 150px;
+			width: 100%;
+			overflow: hidden;
+			a, button{
+				font-size: 25px;
+				color: #da4;
+				font-weight: normal;
+			}
+			a:hover, button:hover{
+				font-size: 28px;
+				color: #da4;
+			}
+		}
 	}
 }
