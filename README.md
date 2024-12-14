@@ -46,6 +46,10 @@ This is my first big project that uses React.js and Redux
 
 Versioning is done using "npm version [new-version] --git-tag-version false"
 
+update 19.9:
+- Added content to `precalculus.js`.
+- Added another source in `calculus.js`.
+
 update 19.8:
 - Fixed horizontal overflow issue at the home page for mobile.
 - Made styling changes for the contact form and the color boxes in sources list.

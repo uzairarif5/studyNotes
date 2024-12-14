@@ -6,7 +6,7 @@ import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 
 export const title = "Calculus Notes";
 
-export const sourcesColor = {36: "rgb(80, 130, 160)"};
+export const sourcesColor = {36: "rgb(80, 130, 160)", 65: "rgb(110, 110, 140)"};
 export const content = <>
 
 	<h1>Calculus Notes</h1>
@@ -526,7 +526,7 @@ export const content = <>
 
 	<h2>Integration</h2>
 	<div className="content">
-		<div data-source={36} style={{width:" 49%",marginLeft: "0.5%",float: "left"}}>
+		<div data-source={65} style={{width:" 49%",marginLeft: "0.5%",float: "left"}}>
 			<ul >
 				<li>Approximating Areas:<SubList>
 					<li>Let \(f(x)\) be a continuous, nonnegative function defined on the closed interval \([a,b]\). We want to approximate the area \(A\) bounded by \(f(x)\) above, the x-axis below, the line \(x=a\) on the left, and the line \(x=b\) on the right.</li>
@@ -650,7 +650,7 @@ export const content = <>
 				</SubList></li>
 			</ul>
 		</div>
-		<div data-source={36} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
+		<div data-source={65} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
 			<ul>
 				<li>Arc Length of a Curve:<SubList>
 					<li>Let \(f(x)\) be a smooth function over the interval \([a,b]\).</li>

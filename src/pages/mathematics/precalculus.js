@@ -74,21 +74,21 @@ export const content = <>
 					<li>Some functions, however, cannot be described by basic algebraic operations. These functions are known as <b>transcendental functions</b>.</li>
 					<li><b>Trigonometric functions:</b><SubList>
 						<li style={{float: "right", width: "50%",listStyleType: "none"}}><ImgComp style={{width: "90%"}} src={require("./precalculus_pics/5.jpg")}/></li>
-						<li style={{width: "40%"}}>\(sin \theta = \frac{" y"}{"r"}\)</li>
-						<li style={{width: "40%"}}>\(cos \theta = \frac{" x"}{"r"}\)</li>
-						<li style={{width: "40%"}}>\(sec \theta = \frac{" r"}{"x"}\)</li>
-						<li style={{width: "40%"}}>\(cosec \theta = \frac{" r"}{"y"}\)</li>
-						<li style={{width: "40%"}}>\(tan \theta = \frac{" y"}{"x"}\)</li>
-						<li style={{width: "40%"}}>\(cotan \theta = \frac{" x"}{"y"}\)</li>
+						<li style={{width: "40%"}}>\(\sin \theta = \frac{"{y}{r}"}\)</li>
+						<li style={{width: "40%"}}>\(\cos \theta = \frac{"{x}{r}"}\)</li>
+						<li style={{width: "40%"}}>\(\sec \theta = \frac{"{r}{x}"}\)</li>
+						<li style={{width: "40%"}}>\(\csc \theta = \frac{"{r}{y}"}\)</li>
+						<li style={{width: "40%"}}>\(\tan \theta = \frac{"{y}{x}"}\)</li>
+						<li style={{width: "40%"}}>\(\cot \theta = \frac{"{x}{y}"}\)</li>
 						<li>In calculus, the convention is that radian measure is always used.</li>
 						<li>The trigonometric functions are periodic functions. The period of a function \(f\) is defined to be the smallest positive value \(p\) such that \(f(x + p) = f (x)\) for all values \(x\) in the domain of \(f\).</li>
 					</SubList></li>
 					<li><b>Exponential functions</b> are of the form \(f(x) = b^x\) where \(b\) is a positive constant.</li>
 					<li>The <b>logarithmic functions</b> is of the form \(f(x) = log_bx\), where base \(b\) is a positive constant. Properties (<a href='https://www.deriveit.net/algebra'>proof here</a>):<SubList>
-							<li>\(log(xy) = log(x) + log(y)\)</li>
-							<li>\(log(\frac{" x"}{"y"}) = log(x) - log(y)\)</li>
-							<li>\(log(x^r) = rlog(x)\)</li>
-							<li>\(log_b(x)=\frac{"{log_a x}{log_a b}"}\)</li>
+							<li>\(\log(xy) = \log(x) + \log(y)\)</li>
+							<li>\(\log(\frac{"{x}{y}"}) = \log(x) - \log(y)\)</li>
+							<li>\(\log(x^r) = r \log(x)\)</li>
+							<li>\(\log_b(x)=\frac{"{\\log_a x}{\\log_a b}"}\)</li>
 					</SubList></li>
 				</SubList></li>
 				<li><figure>
@@ -144,4 +144,51 @@ export const content = <>
 		</div>
   </div>
 
+	<h2>Trigonometric Identities</h2>
+  <div className="content">
+		<div className="ownExplanation" style={{width: "49%",marginLeft: "0.5%",float: "left"}}>
+			<ul>
+				<li>Pythagorean identities:<SubList>
+					<li>\(\sin^2(x) + \cos^2(x) = 1\)</li>
+					<li>\(\sec^2(x) = 1 + \tan^2(x)\)</li>
+					<li>\(\csc^2(x) = 1 + \cot^2(x)\)</li>
+				</SubList></li>
+				<li>Sum/difference identites:<SubList>
+					<li>\(\sin(x+y) = \sin(x) \cos(y) + \cos(x) \sin(y)\)</li>
+					<li>\(\sin(x-y) = \sin(x) \cos(y) - \cos(x) \sin(y)\)</li>
+					<li>\(\cos(x+y) = \cos(x) \cos(y) - \sin(x) \sin(y)\)</li>
+					<li>\(\cos(x-y) = \cos(x) \cos(y) + \sin(x) \sin(y)\)</li>
+					<li>\(\tan(x+y) = \frac{"{\\tan(x) + \\tan(y)}{1 - \\tan(x) \\tan(y)}"}\)</li>
+					<li>\(\tan(x-y) = \frac{"{\\tan(x) - \\tan(y)}{1 + \\tan(x) \\tan(y)}"}\)</li>
+				</SubList></li>
+				<li>Double angle identities:<SubList>
+					<li>\(\sin(2x) = 2 \sin(x) \cos(x)\)</li>
+					<li>\(\cos(2x) = \cos^2(x) - \sin^2(x)\)</li>
+					<li>\(\cos(2x) = 2 \cos^2(x) - 1\)</li>
+					<li>\(\cos(2x) = 1 - 2 \sin^2(x)\)</li>
+					<li>\(\tan(2x) = \frac{"{2 \\tan(x)}{1 - \\tan^2(x)}"}\)</li>
+				</SubList></li>
+			</ul>
+		</div>
+		<div className="ownExplanation" style={{width: "49%",marginRight: "0.5%",float: "right"}}>
+			<ul>
+				<li>Half angle identities:<SubList>
+					<li>\(\sin^2(x/2) = \frac{"{1 - \\cos(x)}{2}"}\)</li>
+					<li>\(\cos^2(x/2) = \frac{"{1 + \\cos(x)}{2}"}\)</li>
+					<li>\(\tan^2(x/2) = \frac{"{1- \\cos(x)}{1 + \\cos(x)}"}\)</li>
+				</SubList></li>
+				<li>Product to sum identities:<SubList>
+					<li>\(\sin(x) \sin(y) = (\cos(x-y) - \cos(x+y))/2\)</li>
+					<li>\(\cos(x) \cos(y) = (\cos(x-y) + \cos(x+y))/2\)</li>
+					<li>\(\sin(x) \cos(y) = (\sin(x+y) + \sin(x-y))/2\)</li>
+				</SubList></li>
+				<li>Sum to product identities:<SubList>
+					<li>\(\sin(x) + \sin(y) = 2 \sin(\frac{"{x+y}{2}"}) \cos(\frac{"{x-y}{2}"})\)</li>
+					<li>\(\sin(x) - \sin(y) = 2 \cos(\frac{"{x+y}{2}"}) \sin(\frac{"{x-y}{2}"})\)</li>
+					<li>\(\cos(x) + \cos(y) = 2 \cos(\frac{"{x+y}{2}"}) \cos(\frac{"{x-y}{2}"})\)</li>
+					<li>\(\cos(x) - \cos(y) = -2 \sin(\frac{"{x+y}{2}"}) \sin(\frac{"{x-y}{2}"})\)</li>
+				</SubList></li>
+			</ul>
+		</div>
+	</div>
 </>

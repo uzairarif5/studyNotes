@@ -61,5 +61,6 @@ export const sourceList = [<></>, <><a href='https://eng.libretexts.org/Bookshel
     <><a href='https://joyofcryptography.com'>The Joy of Cryptography</a> by Mike Rosulek</>,
     <>MIT course <a href='https://ocw.mit.edu/courses/6-s095-programming-for-the-puzzled-january-iap-2018/pages/syllabus/'>6.S095</a></>,
     <><a href="http://www.stat.ucla.edu/~ywu/linear.pdf">The mathematics of quantum mechanics</a>, Martin Laforest</>,
-    <><a href='https://www.mclibre.org/descargar/docs/revistas/magpi-books/raspberry-pi-c-gui-programming-en-201904.pdf'>An Introduction to C & GUI Programming</a> by Simon Long</>
+    <><a href='https://www.mclibre.org/descargar/docs/revistas/magpi-books/raspberry-pi-c-gui-programming-en-201904.pdf'>An Introduction to C & GUI Programming</a> by Simon Long</>,
+    <><a href='https://openstax.org/details/books/calculus-volume-2'>Calculus (Vol 2)</a> from OpenStax</>,
 ]
