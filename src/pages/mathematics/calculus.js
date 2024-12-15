@@ -25,29 +25,6 @@ export const content = <>
 						</td></tr>
 					</tbody>
 					</TableLI>
-					<li>Let's try to evaluate the limit of \({"\\frac{\\sin x}{x}"}\) as \(x\) approaches \(0\):</li>
-					<li style={{listStyleType: "none"}}>
-						<TableDiv style={{float:"left",width:"50%"}}>
-							<thead><tr><th>\(x\)</th><th>\({"\\frac{\\sin x}{x}"}\)</th></tr></thead>
-							<tbody>
-								<tr><td>-0.1</td><td>0.998334166468</td></tr>
-								<tr><td>-0.01</td><td>0.999983333417</td></tr>
-								<tr><td>-0.001</td><td>0.999999833333</td></tr>
-								<tr><td>-0.0001</td><td>0.999999998333</td></tr>
-							</tbody>
-						</TableDiv>
-						<TableDiv style={{float:"right",width:"50%"}}>
-							<thead><tr><th>\(x\)</th><th>\({"\\frac{\\sin x}{x}"}\)</th></tr></thead>
-							<tbody>
-								<tr><td>0.1</td><td>0.998334166468</td></tr>
-								<tr><td>0.01</td><td>0.999983333417</td></tr>
-								<tr><td>0.001</td><td>0.999999833333</td></tr>
-								<tr><td>0.0001</td><td>0.999999998333</td></tr>
-							</tbody>
-						</TableDiv>
-						<div style={{width:"100%", clear:"both"}}></div>
-					</li>
-					<li>The values in each column appear to be approaching one. Thus, it is fairly reasonable to conclude that \({"lim_{x → 0} \\frac{sin x}{x} = 1"}\).</li>
 					<TableLI>
 						<caption>Definition of One-Sided Limit</caption>
 						<tbody>
@@ -674,6 +651,27 @@ export const content = <>
 					<li>If a quantity decays exponentially, the <b>half-life</b> is the amount of time it takes the quantity to be reduced by half:</li>
 					<MathStuff>\[ t_{"{1/2}"} = \frac{"{\\ln(2)}{k}"} \]</MathStuff>
 				</SubList></li>
+				<li>Integration by parts:<SubList>
+					<MathStuff>\[ \int u dv = uv - \int v du\]</MathStuff>
+				</SubList></li>
+				<li>Integrating \(\cos^j x \sin^k x dx\):<SubList numbered>
+					<li>If \(k\) is odd, rewrite \(\sin^k x = sin^{"{k-1}"}x \sin x\) and use the identity \(sin^2 x= 1-cos^2 x\) to rewrite \(sin^{"{k-1}"} x\) in terms of \(\cos x\). Integrate using the substitution \(u= \cos x\). This substitution makes \(du = - \sin x dx\).</li>
+					<li>If \(j\) is odd, rewrite \(\cos^j x = \cos^{"{j-1}"} x \cos x\) and use the identity \(cos^2 x= 1- \sin^2 x\) to rewrite \(\cos{"{j-1}"} x\) in terms of \(\sin x\). Integrate using the substitution \(u=\sin x\). This substitution makes \(du= \cos x dx\).</li>
+					<li>If both \(j\) and \(k\) are odd, either strategy 1 or strategy 2 may be used.</li>
+					<li>If both \(j\) and \(k\) are even, use \(\sin^2 x = (1 - \cos (2x))/2\) and \(\cos^2 x = (1+ \cos(2x))/2\).</li>
+				</SubList></li>
+				<li>Integrating \(\tan^k x \sec^j x dx\):<SubList numbered>
+					<li>If only \(j\) is even and \(j≥2\), rewrite \(\sec^j x= sec^{"{j-2}"} x \sec^2 x\) and use \(\sec^2 x = \tan^2 x+1\) to rewrite \(\sec^{"{j-2}"} x\) in terms of \(\tan x\). Let \(u=\tan x\) and \(du=\sec^2 x dx\).</li>
+					<li>If only \(k\) is odd and \(j≥1\), rewrite \(\tan^k x \sec^j x = \tan^{"{k-1}"} x \sec^{"{j-1}"} x \sec x \tan x\) and use \(\tan^2 x = \sec^2x - 1\) to rewrite \(tan{"{k-1}"} x\) in terms of \(\sec x\). Let \(u=\sec x\) and \(du= \sec x \tan x dx\).</li>
+					<li>If \(j\) is even and \(k\) is odd, then either strategy 1 or strategy 2 may be used.</li>
+					<li>If \(k\) is odd where \(k≥3\) and \(j=0\), rewrite \(\tan^k x= \tan^{"{k-2}"} x \tan^2 x= \tan{"{k-2}"} x (\sec^2x - 1) = \tan{"{k-2}"} x \sec^2 x- \tan{"{k-2}"}x\). It may be necessary to repeat this process on the \(\tan^{"{k-2}"}x\) term.</li>
+					<li>If \(k\) is even and \(j\) is odd, then use \(\tan^2 x = \sec^2 x - 1\) to express \(\tan^k x\)in terms of \(\sec x\). Use integration by parts to integrate odd powers of \(\sec x\).</li>
+				</SubList></li>
+				<li>Reduction formulas:<SubList>
+					<MathStuff>\[ \int \sec^n \ dx = \frac{"{1}{n-1}"} \left( \sec^{"{n-2}"}x \tan x + (n-2) \int \sec^{"{n-2}"}x \dx \right) \]</MathStuff>
+					<MathStuff>\[ \int \tan^n \ dx = \frac{"{\\tan^{n-1} x}{n-1}"} - \int \tan^{"{n-2}"}x \dx \]</MathStuff>
+				</SubList></li>
+				<li></li>
 			</ul>
 		</div>
 	</div>

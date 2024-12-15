@@ -46,6 +46,9 @@ This is my first big project that uses React.js and Redux
 
 Versioning is done using "npm version [new-version] --git-tag-version false"
 
+update 19.10:
+- Edited `calculus.js`.
+
 update 19.9:
 - Added content to `precalculus.js`.
 - Added another source in `calculus.js`.
