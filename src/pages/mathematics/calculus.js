@@ -585,10 +585,10 @@ export const content = <>
 				<li>Integral of trigonometric functions:<SubList>
 					<li>\(\int \sin(x) \ dx = -\cos(x) + C\)</li>
 					<li>\(\int \cos(x) \ dx = \sin(x) + C\)</li>
-					<li>\(\int \sec(x) \ dx = \ln| \sec(x) + \tan(x)|\) + C</li>
-					<li>\(\int \csc(x) \ dx = \ln| \csc(x) + \cot(x)|\) + C</li>
-					<li>\(\int \tan(x) \ dx = \ln| \sec(x) |\) + C</li>
-					<li>\(\int \cot(x) \ dx = \ln| \sin(x) |\) + C</li>
+					<li>\(\int \sec(x) \ dx = \ln| \sec(x) + \tan(x)| + C\)</li>
+					<li>\(\int \csc(x) \ dx = \ln| \csc(x) + \cot(x)| + C\)</li>
+					<li>\(\int \tan(x) \ dx = \ln| \sec(x) | + C\)</li>
+					<li>\(\int \cot(x) \ dx = \ln| \sin(x) | + C\)</li>
 				</SubList></li>
 				<li>Integral of inverse trigonometric functions:<SubList>
 					<li>\(\int \arcsin(x) \ dx = x (\arcsin(x)) + \sqrt{"{1-x^2}"} + C\)</li>
@@ -663,23 +663,35 @@ export const content = <>
 					<MathStuff>\[ \int u dv = uv - \int v du\]</MathStuff>
 				</SubList></li>
 				<li>Integrating \(\cos^j x \sin^k x \ dx\):<SubList numbered>
-					<li>If \(k\) is odd, rewrite \(\sin^k x = \sin^{"{k-1}"}x \sin x\) and use the identity \(\sin^2 x= 1- \cos^2 x\) to rewrite \(sin^{"{k-1}"} x\) in terms of \(\cos x\). Integrate using the substitution \(u= \cos x\). This substitution makes \(du = - \sin x dx\).</li>
-					<li>If \(j\) is odd, rewrite \(\cos^j x = \cos^{"{j-1}"} x \cos x\) and use the identity \(cos^2 x= 1- \sin^2 x\) to rewrite \(\cos^{"{j-1}"} x\) in terms of \(\sin x\). Integrate using the substitution \(u=\sin x\). This substitution makes \(du= \cos x dx\).</li>
+					<li>If \(k\) is odd, rewrite \(\sin^k x = \sin^{"{k-1}"}x \sin x\) and use the identity \(\sin^2 x= 1- \cos^2 x\) to rewrite \(\sin^{"{k-1}"} x\) in terms of \(\cos x\). Integrate using the substitution \(u= \cos x\). This substitution makes \(du = - \sin x \ dx\).</li>
+					<li>If \(j\) is odd, rewrite \(\cos^j x = \cos^{"{j-1}"} x \cos x\) and use the identity \(\cos^2 x= 1- \sin^2 x\) to rewrite \(\cos^{"{j-1}"} x\) in terms of \(\sin x\). Integrate using the substitution \(u=\sin x\). This substitution makes \(du= \cos x \ dx\).</li>
 					<li>If both \(j\) and \(k\) are odd, either strategy 1 or strategy 2 may be used.</li>
 					<li>If both \(j\) and \(k\) are even, use \(\sin^2 x = (1 - \cos (2x))/2\) and \(\cos^2 x = (1+ \cos(2x))/2\).</li>
 				</SubList></li>
-				<li>Integrating \(\tan^k x \sec^j x dx\):<SubList numbered>
+				<li>Integrating \(\tan^k x \sec^j x \ dx\):<SubList numbered>
 					<li>If only \(j\) is even and \(j≥2\), rewrite \(\sec^j x= \sec^{"{j-2}"} x \sec^2 x\) and use \(\sec^2 x = \tan^2 x+1\) to rewrite \(\sec^{"{j-2}"} x\) in terms of \(\tan x\). Let \(u=\tan x\) and \(du=\sec^2 x \ dx\).</li>
 					<li>If only \(k\) is odd and \(j≥1\), rewrite \(\tan^k x \sec^j x = \tan^{"{k-1}"} x \sec^{"{j-1}"} x \sec x \tan x\) and use \(\tan^2 x = \sec^2x - 1\) to rewrite \(\tan^{"{k-1}"} x\) in terms of \(\sec x\). Let \(u=\sec x\) and \(du= \sec x \tan x \ dx\).</li>
 					<li>If \(j\) is even and \(k\) is odd, then either strategy 1 or strategy 2 may be used.</li>
-					<li>If \(k\) is odd where \(k≥3\) and \(j=0\), rewrite \(\tan^k x= \tan^{"{k-2}"} x \tan^2 x= \tan^{"{k-2}"} x (\sec^2x - 1) = \tan^{"{k-2}"} x \sec^2 x- \tan^{"{k-2}"} x\). It may be necessary to repeat this process on the \(\tan^{"{k-2}"}x\) term.</li>
+					<li>If \(k\) is odd where \(k≥3\) and \(j=0\), rewrite \(\tan^k x = \tan^{"{k-2}"} x \sec^2 x- \tan^{"{k-2}"} x\). It may be necessary to repeat this process on the \(\tan^{"{k-2}"}x\) term.</li>
 					<li>If \(k\) is even and \(j\) is odd, then use \(\tan^2 x = \sec^2 x - 1\) to express \(\tan^k x\)in terms of \(\sec x\). Use integration by parts to integrate odd powers of \(\sec x\).</li>
 				</SubList></li>
 				<li>Reduction formulas:<SubList>
 					<MathStuff>\[ \int \sec^n \ dx = \frac{"{\\sec^{n-2}x \\tan x}{n-1}"} + \frac{"{n-2}{n-1}"} \int \sec^{"{n-2}"}x \ dx \]</MathStuff>
 					<MathStuff>\[ \int \tan^n \ dx = \frac{"{\\tan^{n-1} x}{n-1}"} - \int \tan^{"{n-2}"}x \ dx \]</MathStuff>
 				</SubList></li>
-				<li></li>
+				<li>Integrating expressions involving \(\sqrt{"{a^2 - x^2}"}\):<SubList>
+					<li>Make the substitution \(x = a \sin \theta\) and \(dx = a \cos \theta \ d \theta\). This will yield \(\sqrt{"{a^2 - x^2}"} = a \cos \theta\).</li>
+					<li>Since \(x^2\) would have to be less than or equal to \(a^2\) for \(\sqrt{"{a^2 - x^2}"}\) to exist, then \(-\frac{"{\\pi}{2}"}\le \theta \le \frac{"{\\pi}{2}"}\).</li>
+				</SubList></li>
+				<li>Integrating expressions involving \(\sqrt{"{a^2 + x^2}"}\):<SubList>
+					<li>Make the substitution \(x = a \tan \theta\) and \(dx = a \sec^2 \theta \ d \theta\). This will yield \(\sqrt{"{a^2 + x^2}"} = |a \sec \theta|\).</li>
+					<li>We are only considering \(\theta\) where \(-\frac{"{\\pi}{2}"}\le \theta \le \frac{"{\\pi}{2}"}\). Therefore, \(\sqrt{"{a^2 + x^2}"} = a \sec \theta \).</li>
+				</SubList></li>
+				<li>Integrating expressions involving \(\sqrt{"{x^2 - a^2}"}\):<SubList>
+					<li>Make the substitution \(x = a \sec \theta\) and \(dx = a \sec \theta \tan \theta \ d \theta\). This will yield \(\sqrt{"{a^2 + x^2}"} = |a \tan \theta|\).</li>
+					<li>For \(x \ge a\), \(|a \tan \theta| = a \tan \theta\).</li>
+					<li>For \(x \le -a\), \(|a \tan \theta| = - a \tan \theta\).</li>
+				</SubList></li>
 			</ul>
 		</div>
 	</div>
