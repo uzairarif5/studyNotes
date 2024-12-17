@@ -723,7 +723,7 @@ export const content = <>
 			</ul>
 		</div>
 	</div>
-	<h2>Introduction to Differential Equations</h2>
+	<h2>Differential Equations</h2>
 	<div className="content">
 		<div data-source={65} style={{width:" 49%",marginLeft: "0.5%",float: "left"}}>
 			<ul>
@@ -748,31 +748,38 @@ export const content = <>
 								To do this, we find an antiderivative of both sides of the differential equation:
 								\[y=3 e^x + \frac{"{x^3}{3}"} -4x + C\]
 								Now let's substitute x and y:
-								\[\being{"{align}"}5 &= 3 e^0 + \frac{"{0^3}{3}"} -4(0) + C \\ 5 &= 3 + C \end{"{align}"}\]
+								\[\begin{"{align}"}5 &= 3 e^0 + \frac{"{0^3}{3}"} -4(0) + C \\ 5 &= 3 + C \end{"{align}"}\]
 								Therefore, C = 2. This means:
 								\[y=3 e^x + \frac{"{x^3}{3}"} -4x + 2\]
 							</td></tr>
 						</tbody>
 					</TableLI>
-					<li><b>Direction Fields:</b><SubList>
-						<li>A <b>direction field</b> (or <b>slope field</b>) is a mathematical object used to graphically represent solutions to a first-order differential equation. At each point in a direction field, a line segment appears whose slope is equal to the slope of a solution to the differential equation passing through that point. In particular, we consider a first-order differential equation of the form \(y'=f(x,y)\).</li>
-						<li>Consider \(y'=3x+2y-4\), if we choose \(x=1\) and \(y=2\), then \(y'=3\). To start creating the direction field, we put a short line segment at the point \((1,2)\) having slope \(3\). We can do this for any point in the domain of the function  \(f(x,y)=3x+2y-4\), which consists of all ordered pairs \((x,y)\) in \(\mathbb{"{R}"}^2\).</li>
-						<li><figure>
-							<ImgComp src={require("./calculus_pics/17.jfif")} width="60%" />
-							<figcaption>Direction field for the differential equation \(y'=3x+2y-4\).</figcaption>
-						</figure></li>
-						<li>If a solution to the differential equation passes through the point \((0,1)\), then the slope of the solution passing through that point is given by \(y'=3(0)+2(1)-4=-2\). The curve is called a <b>solution curve</b> passing through the point \((0,1)\).
-						</li>
-						<li><figure>
-							<ImgComp src={require("./calculus_pics/18.jfif")} width="60%" />
-							<figcaption>Direction field for the differential equation \(y'=3x+2y-4\) with the solution passing through the point \((0,1)\).</figcaption>
-						</figure></li>
-					</SubList></li>
-					<li>An <b>equilibrium solution</b> is any solution to the differential equation of the form \(y=c\), where \(c\) is a constant:<SubList>
-						<li></li>
-						<li></li>
-						<li></li>
-					</SubList></li>
+				</SubList></li>
+				<li><b>Direction Fields:</b><SubList>
+					<li>A <b>direction field</b> (or <b>slope field</b>) is a mathematical object used to graphically represent solutions to a first-order differential equation. In particular, we consider a first-order differential equation of the form \(y'=f(x,y)\).</li>
+					<li>At each point in a direction field, a line segment appears whose slope is equal to the slope of a solution to the differential equation passing through that point.</li>
+					<li>Consider \(y'=3x+2y-4\), if we choose \(x=1\) and \(y=2\), then \(y'=3\). To start creating the direction field, we put a short line segment at the point \((1,2)\) having slope \(3\). We can do this for any point in the domain of the function  \(f(x,y)=3x+2y-4\), which consists of all ordered pairs \((x,y)\) in \(\mathbb{"{R}"}^2\).</li>
+					<li><figure>
+						<ImgComp src={require("./calculus_pics/17.jfif")} width="60%" />
+						<figcaption>Direction field for the differential equation \(y'=3x+2y-4\).</figcaption>
+					</figure></li>
+					<li>If a solution to the differential equation passes through the point \((0,1)\), then the slope of the solution passing through that point is given by \(y'=3(0)+2(1)-4=-2\). The curve is called a <b>solution curve</b> passing through the point \((0,1)\).
+					</li>
+					<li><figure>
+						<ImgComp src={require("./calculus_pics/18.jfif")} width="60%" />
+						<figcaption>Direction field for the differential equation \(y'=3x+2y-4\) with the solution passing through the point \((0,1)\).</figcaption>
+					</figure></li>
+				</SubList></li>
+				<li>An <b>equilibrium solution</b> is any solution to the differential equation of the form \(y=c\), where \(c\) is a constant:<SubList>
+					<li>An equilibrium solution of the differential equation is any function of the form \(y=k\) such that \(f(x,k)=0\) for all values of \(x\) in the domain of \(f\).</li>
+					<li>An important characteristic of equilibrium solutions concerns whether or not they approach the line \(y=k\) as an asymptote for large values of \(x\).</li>
+					<li>\(y=k\) is an <b>asymptotically stable solution</b> to the differential equation if there exists \(ε \gt 0\) such that for any value \(c∈(k-ε,k+ε)\) the solution to the initial-value problem \(y'=f(x,y), y(x_0)=c\) approaches \(k\) as \(x\) approaches infinity.</li>
+					<li>\(y=k\) is an <b>asymptotically unstable solution</b> to the differential equation if there exists \(ε \gt 0\) such that for any value \(c∈(k-ε,k+ε)\) the solution to the initial-value problem \(y'=f(x,y), y(x_0)=c\) never approaches \(k\) as \(x\) approaches infinity.</li>
+					<li>\(y=k\) is an <b>asymptotically semi-stable solution</b> to the differential equation if it is neither asymptotically stable nor asymptotically unstable.</li>
+					<li>For the differential equation \(y'=(y-3)^2 (y^2+y-2)\), The equilibrium solutions are \(y=-2\), \(y=1\) and \(y=3\).</li>
+					<li>At \(y=-2\) the arrows directly below this solution point up, and the arrows directly above the solution point down. Therefore all initial conditions close to \(y=-2\) approach \(y=-2\), and the solution is stable.</li>
+					<li>For the solution \(y=1\), all initial conditions above and below \(y=1\) are repelled (pushed away) from \(y=1\), so this solution is unstable.</li>
+					<li>The solution \(y=3\) is semi-stable, because for initial conditions slightly greater than 3, the solution approaches infinity, and for initial conditions slightly less than 3, the solution approaches \(y=3\).</li>
 				</SubList></li>
 			</ul>
 		</div>
