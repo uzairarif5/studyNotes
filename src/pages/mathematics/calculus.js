@@ -753,6 +753,25 @@ export const content = <>
 						</td></tr>
 					</tbody>
 				</TableLI>
+				<li><b>Direction Fields:</b><SubList>
+					<li>A <b>direction field</b> (or <b>slope field</b>) is a mathematical object used to graphically represent solutions to a first-order differential equation. At each point in a direction field, a line segment appears whose slope is equal to the slope of a solution to the differential equation passing through that point. In particular, we consider a first-order differential equation of the form \(y'=f(x,y)\).</li>
+					<li>Consider \(y'=3x+2y-4\), if we choose \(x=1\) and \(y=2\), then \(y'=3\). To start creating the direction field, we put a short line segment at the point \((1,2)\) having slope \(3\). We can do this for any point in the domain of the function  \(f(x,y)=3x+2y-4\), which consists of all ordered pairs \((x,y)\) in \(\mathbb{"{R}"}^2\).</li>
+					<li><figure>
+						<ImgComp src={require("./calculus_pics/17.jfif")} width="60%" />
+						<figcaption>Direction field for the differential equation \(y'=3x+2y-4\).</figcaption>
+					</figure></li>
+					<li>If a solution to the differential equation passes through the point \((0,1)\), then the slope of the solution passing through that point is given by \(y'=3(0)+2(1)-4=-2\). The curve is called a <b>solution curve</b> passing through the point \((0,1)\).
+					</li>
+					<li><figure>
+						<ImgComp src={require("./calculus_pics/18.jfif")} width="60%" />
+						<figcaption>Direction field for the differential equation \(y'=3x+2y-4\) with the solution passing through the point \((0,1)\).</figcaption>
+					</figure></li>
+				</SubList></li>
+				<li>An <b>equilibrium solution</b> is any solution to the differential equation of the form \(y=c\), where \(c\) is a constant:<SubList>
+					<li></li>
+					<li></li>
+					<li></li>
+				</SubList></li>
 			</SubList></li>
 		</ul>
 	</div>
