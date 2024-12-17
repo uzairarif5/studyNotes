@@ -696,7 +696,7 @@ export const content = <>
 					<li>Make sure that \(\text{"{deg}"}(P(x)) \le \text{"{deg}"}(Q(x))\). If not, perform long division of polynomials.</li>
 					<li>Factor \(Q(x)\) into the product of linear and irreducible quadratic factors. An <b>irreducible quadratic</b> is a quadratic that has no real zeros.</li>
 					<li>Assuming that \(\text{"{deg}"}(P(x)) \le \text{"{deg}"}(Q(x))\), the factors of \(Q(x)\) determine the form of the decomposition of \(P(x)/Q(x)\):<SubList>
-						<li>If \(Q(x)\) can be factored as \((a_1 x +b_1)(a_2 x +b_2) \ldots (a_n x + b_n)\), where each linear factor is distinct, then it is possible to find constants \(A_1, A_2, \ldot, A_n\) satisfying:</li>
+						<li>If \(Q(x)\) can be factored as \((a_1 x +b_1)(a_2 x +b_2) \ldots (a_n x + b_n)\), where each linear factor is distinct, then it is possible to find constants \(A_1, A_2, \ldots, A_n\) satisfying:</li>
 						<MathStuff>\[ \frac{"{P(x)}{Q(x)}"} = \frac{"{A_1}{a_1 x +b_1}"} + \frac{"{A_2}{a_2 x +b_2}"} + \ldots + \frac{"{A_n}{a_n x +b_n}"} \]</MathStuff>
 						<li>If \(Q(x)\) contains the repeated linear factor \((ax+b)^n\), then the decomposition must contain:</li>
 						<MathStuff>\[ \frac{"{A_1}{a x+ b}"} + \frac{"{A_2}{(ax+b)^2}"} + \ldots + \frac{"{A_n}{(ax+b)^n}"}\]</MathStuff>
@@ -706,6 +706,12 @@ export const content = <>
 						<MathStuff>\[\frac{"{A_1 x + B_1}{ax^2+bx+c}"}+\frac{"{A_2 x + B_2}{(ax^2+bx+c)^2}"}+ \ldots + \frac{"{A_n x + B_n}{(ax^2+bx+c)^n}"}\]</MathStuff>
 						<li>After the appropriate decomposition is determined, solve for the constants.</li>
 					</SubList></li>
+				</SubList></li>
+				<li>Numerical Integration:<SubList>
+					<li><b>The Midpoint Rule:</b> Assume that \(f(x)\) is continuous on \([a,b]\). Let \(n\) be a positive integer and  \(Δx= \frac{"{b-a}{n}"}\). If \([a,b]\) is divided into \(n\) subintervals, each of length \(Δx\), and \(m_i\) is the midpoint of the \(i\)th subinterval, set:</li>
+					<MathStuff>\[M_n = \sum^n_{"{i=1}"} f(x_i) \Delta x\]</MathStuff>
+					<li>Then \(\lim_{"{n \\to \\infty}"}M_n = \int^b_a f(x) \ dx\).</li>
+					<li></li>
 				</SubList></li>
 			</ul>
 		</div>
