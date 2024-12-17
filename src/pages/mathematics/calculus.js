@@ -781,6 +781,12 @@ export const content = <>
 					<li>For the solution \(y=1\), all initial conditions above and below \(y=1\) are repelled (pushed away) from \(y=1\), so this solution is unstable.</li>
 					<li>The solution \(y=3\) is semi-stable, because for initial conditions slightly greater than 3, the solution approaches infinity, and for initial conditions slightly less than 3, the solution approaches \(y=3\).</li>
 				</SubList></li>
+				<li>Euler's method:<SubList>
+					<li>Consider the initial-value problem \(y'=f(x,y)\), \(y(x0)=y0\).</li>
+					<li>To approximate a solution to this problem using Euler's method, define:</li>
+					<li><MathStuff>$$x_n=x_0 + n h$$$$y_n=y_{"{n-1}"}+h f(x_{"{n-1}"},y_{"{n-1}"})$$</MathStuff></li>
+					<li>Here \(h \gt 0\) represents the step size and \(n\) is an integer, starting with 1. The number of steps taken is counted by the variable \(n\). \(h\) is typically very small, like 0.05.</li>
+				</SubList></li>
 			</ul>
 		</div>
 		<div data-source={65} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
