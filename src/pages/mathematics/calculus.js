@@ -692,18 +692,18 @@ export const content = <>
 					<li>For \(x \ge a\), \(|a \tan \theta| = a \tan \theta\).</li>
 					<li>For \(x \le -a\), \(|a \tan \theta| = - a \tan \theta\).</li>
 				</SubList></li>
-				<li>To decompose the rational function \(P(x)/Q(x)\), use the following steps:<SubList>
+				<li>To decompose the rational function \(P(x)/Q(x)\):<SubList>
 					<li>Make sure that \(\text{"{deg}"}(P(x)) \le \text{"{deg}"}(Q(x))\). If not, perform long division of polynomials.</li>
 					<li>Factor \(Q(x)\) into the product of linear and irreducible quadratic factors. An <b>irreducible quadratic</b> is a quadratic that has no real zeros.</li>
 					<li>Assuming that \(\text{"{deg}"}(P(x)) \le \text{"{deg}"}(Q(x))\), the factors of \(Q(x)\) determine the form of the decomposition of \(P(x)/Q(x)\):<SubList>
-						<li>If \(Q(x)\) can be factored as \((a_1 x +b_1)(a_2 x +b_2) \ldot (a_n x + b_n)\), where each linear factor is distinct, then it is possible to find constants \(A_1, A_2, \ldot, A_n\) satisfying:</li>
-						<MathStuff>\[ \frac{"{P(x)}{Q(x)}"} = \frac{"{A_1}{a_1 x +b_1}"} + \frac{"{A_2}{a_2 x +b_2}"} + \ldot + \frac{"{A_n}{a_n x +b_n}"} \]</MathStuff>
+						<li>If \(Q(x)\) can be factored as \((a_1 x +b_1)(a_2 x +b_2) \ldots (a_n x + b_n)\), where each linear factor is distinct, then it is possible to find constants \(A_1, A_2, \ldot, A_n\) satisfying:</li>
+						<MathStuff>\[ \frac{"{P(x)}{Q(x)}"} = \frac{"{A_1}{a_1 x +b_1}"} + \frac{"{A_2}{a_2 x +b_2}"} + \ldots + \frac{"{A_n}{a_n x +b_n}"} \]</MathStuff>
 						<li>If \(Q(x)\) contains the repeated linear factor \((ax+b)^n\), then the decomposition must contain:</li>
-						<MathStuff>\[ \frac{"{A_1}{a x+ b}"} + \frac{"{A_2}{(ax+b)^2}"} + \ldot + \frac{"{A_n}{(ax+b)^n}"}\]</MathStuff>
+						<MathStuff>\[ \frac{"{A_1}{a x+ b}"} + \frac{"{A_2}{(ax+b)^2}"} + \ldots + \frac{"{A_n}{(ax+b)^n}"}\]</MathStuff>
 						<li>For each irreducible quadratic factor \(ax^2+bx+c\) that \(Q(x)\) contains, the decomposition must include:</li>
 						<MathStuff>\[\frac{"{Ax+B}{ax^2+bx+c}"}\]</MathStuff>
 						<li>For each repeated irreducible quadratic factor \((ax^2+bx+c)^n\), the decomposition must include:</li>
-						<MathStuff>\[\frac{"{A_1 x + B_1}{ax^2+bx+c}"}+\frac{"{A_2 x + B_2}{(ax^2+bx+c)^2}"}+ \ldot + \frac{"{A_n x + B_n}{(ax^2+bx+c)^n}"}\]</MathStuff>
+						<MathStuff>\[\frac{"{A_1 x + B_1}{ax^2+bx+c}"}+\frac{"{A_2 x + B_2}{(ax^2+bx+c)^2}"}+ \ldots + \frac{"{A_n x + B_n}{(ax^2+bx+c)^n}"}\]</MathStuff>
 						<li>After the appropriate decomposition is determined, solve for the constants.</li>
 					</SubList></li>
 				</SubList></li>
