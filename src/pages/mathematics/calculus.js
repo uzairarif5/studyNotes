@@ -28,11 +28,11 @@ export const content = <>
 					<TableLI>
 						<caption>Definition of One-Sided Limit</caption>
 						<tbody>
-								<tr><td>
-										We write \[{"\\lim_{x \\to a^-} f(x) = L"}\] to express that if the values of the function \(f(x)\) approach the real number \(L\) as the values of \(x\) (where \(x \lt a\)) approach the number \(a\), then we say that \(L\) is the limit of \(f(x)\) as \(x\) approaches \(a\) from the left.
-										<br/>
-										Similarly, if we require that \({"x"}\) be greater than \({"a"}\), we write \[{"\\lim_{x \\to a^+} f(x) = L"}\] and say "the values of the function \(f(x)\) approach the real number \(L\) as the values of \(x\) (where \(x \gt a\)) approach the number \(a\), then we say that \(L\) is the limit of \(f(x)\) as \(x\) approaches \(a\) from the right".
-								</td></tr>
+							<tr><td>
+								We write \[{"\\lim_{x \\to a^-} f(x) = L"}\] to express that if the values of the function \(f(x)\) approach the real number \(L\) as the values of \(x\) (where \(x \lt a\)) approach the number \(a\), then we say that \(L\) is the limit of \(f(x)\) as \(x\) approaches \(a\) from the left.
+								<br/>
+								Similarly, if we require that \({"x"}\) be greater than \({"a"}\), we write \[{"\\lim_{x \\to a^+} f(x) = L"}\] and say "the values of the function \(f(x)\) approach the real number \(L\) as the values of \(x\) (where \(x \gt a\)) approach the number \(a\), then we say that \(L\) is the limit of \(f(x)\) as \(x\) approaches \(a\) from the right".
+							</td></tr>
 						</tbody>
 					</TableLI>
 				</SubList></li>
@@ -64,7 +64,7 @@ export const content = <>
 					<li>The line \(x = a\) is a <b>vertical asymptote</b> of \(f(x)\) if \({"\\lim_{x \\to a^-} f(x) = ±∞"}\), \({"\\lim_{x \\to a^+} f(x) = ±∞"}\) or \({"\\lim_{x \\to a} f(x) =±∞"}\).</li>
 					<li>The line \({"y = L"}\) is called a <b>horizontal asymptote</b> of the curve \({"y=f(x)"}\) if either \({"\\lim_{x \\to \\infty} f(x) = L"}\) or \({"\\lim_{x \\to -\\infty} f(x) = L"}\).</li>
 				</SubList></li>
-				<li>Limit Laws (<a href='https://www.deriveit.net/calculus/limits/product'>proof here</a>):<SubList>
+				<li>Limit Laws:<SubList>
 						<li>\({"\\lim_{x \\to a} [f(x)+g(x)] = \\lim_{x \\to a}f(x) + \\lim_{x \\to a}g(x)"}\)</li>
 						<li>\({"\\lim_{x \\to a} [f(x)g(x)] = \\lim_{x \\to a}f(x) \\cdot \\lim_{x \\to a}g(x)"}\)</li>
 						<li>\({"\\lim_{x \\to a} \\frac{f(x)}{g(x)} = \\frac{\\lim_{x \\to a}f(x)}{\\lim_{x \\to a}g(x)} \\text{ if } \\lim_{x \\to a}g(x) \\ne 0"}\)</li>
@@ -252,7 +252,7 @@ export const content = <>
 						</tbody>
 					</TableLI>
 				</SubList></li>
-				<li>Linear Approximation of a Function at a Point:<SubList>
+				<li>Linear Approximation of a function at a point:<SubList>
 					<li>Consider a function \(f\) that is differentiable at a point \(x=a\). Recall that the tangent line to the graph of \(f\) at \(a\) is given by the equation:</li>
 					<MathStuff>$$ y = f(a) + f'(a)(x-a) $$</MathStuff>
 					<li>For a differentiable function \(f\), the equation of the tangent line to \(f\) at \(x=a\) can be used to approximate \(f(x)\) for \(x\) near \(a\).</li>
@@ -504,7 +504,7 @@ export const content = <>
 	<h2>Integration</h2>
 	<div className="content">
 		<div data-source={65} style={{width:" 49%",marginLeft: "0.5%",float: "left"}}>
-			<ul >
+			<ul>
 				<li>Approximating Areas:<SubList>
 					<li>Let \(f(x)\) be a continuous, nonnegative function defined on the closed interval \([a,b]\). We want to approximate the area \(A\) bounded by \(f(x)\) above, the x-axis below, the line \(x=a\) on the left, and the line \(x=b\) on the right.</li>
 					<li><ImgComp src={require("./calculus_pics/7.jfif")}/></li>
@@ -711,17 +711,54 @@ export const content = <>
 					<li><b><u>The Midpoint Rule:</u></b> Assume that \(f(x)\) is continuous on \([a,b]\). Let \(n\) be a positive integer and  \(\Delta x= \frac{"{b-a}{n}"}\). If \([a,b]\) is divided into \(n\) subintervals, each of length \(\Delta x\), and \(m_i\) is the midpoint of the \(i\)th subinterval, set:</li>
 					<MathStuff>\[M_n = \sum^n_{"{i=1}"} f(x_i) \Delta x\]</MathStuff>
 					<li>Then, \(\lim_{"{n \\to \\infty}"}M_n = \int^b_a f(x) \ dx\).</li>
-					<li><b><u>The Trapezoidal Rule:</u></b> Assume that \(f(x)\) is continuous over \([a,b]\). Let \(n\) be a positive integer and  \(\Delta x= \frac{"{b-a}{n}"}\). Let \([a,b]\) be divided into \(n\) subintervals, each of length \(\Delta x\), with endpoints at \(P={"{x_0,x_1,x_2, \\ldots ,x_n}"}\). Set:</li>
+					<li><b><u>The Trapezoidal Rule:</u></b> Assume that \(f(x)\) is continuous over \([a,b]\). Let \(n\) be a positive integer and \(\Delta x= \frac{"{b-a}{n}"}\). Let \([a,b]\) be divided into \(n\) subintervals, each of length \(\Delta x\). Set:</li>
 					<MathStuff>\[ T_n = \frac{"{1}{2}"} \Delta x (f(x_0) + 2(f(x_1) + f(x_2) + \ldots + f(x_{"{n-1}"})) + f(x_n)) \]</MathStuff>
 					<li>Then, \(\lim_{"{n \\to \\infty}"} T_n = \int^b_a f(x) \ dx\).</li>
 					<li>The trapezoidal rule tends to overestimate the value of a definite integral systematically over intervals where the function is concave up and to underestimate the value of a definite integral systematically over intervals where the function is concave down.</li>
 					<li>On the other hand, the midpoint rule tends to average out these errors somewhat by partially overestimating and partially underestimating the value of the definite integral. This leads us to hypothesize that, in general, the midpoint rule tends to be more accurate than the trapezoidal rule.</li>
-					<li><b>Simpson's Rule:</b> Assume that \(f(x)\) is continuous over \([a,b]\). Let \(n\) be a positive even integer and  \(\Delta x= \frac{"{b-a}{n}"}\). Let \([a,b]\) be divided into \(n\) subintervals, each of length \(\Delta x\). Set:</li>
-					<MathStuff>\[Sn={"\\frac{\\Delta x}{3}(f(x_0)+4f(x_1)+2f(x_2)+4f(x_3)+2f(x_4)+\\ldots+2f(x_{n-2})+4f(x_{n-1})+f(x_n)"}\]</MathStuff>
-					<li>Then, \(\lim_{"{n \\to \\infty}"} S_n \int^b_a f(x) \ dx\)</li>
+					<li><b><u>Simpson's Rule:</u></b> Assume that \(f(x)\) is continuous over \([a,b]\). Let \(n\) be a positive even integer and  \(\Delta x= \frac{"{b-a}{n}"}\). Let \([a,b]\) be divided into \(n\) subintervals, each of length \(\Delta x\). Set:</li>
+					<MathStuff>\[S_n={"\\frac{\\Delta x}{3}(f(x_0)+4f(x_1)+2f(x_2)+4f(x_3)+2f(x_4)+\\ldots+2f(x_{n-2})+4f(x_{n-1})+f(x_n)"}\]</MathStuff>
+					<li>Then, \(\lim_{"{n \\to \\infty}"} S_n \int^b_a f(x) \ dx\).</li>
 				</SubList></li>
 			</ul>
 		</div>
 	</div>
-
+	<h2>Introduction to Differential Equations</h2>
+	<div data-source={65} style={{width:" 49%",marginLeft: "0.5%",float: "left"}}>
+		<ul>
+			<li>A <b>differential equation</b> is an equation involving an unknown function \(y=f(x)\) and one or more of its derivatives.</li>
+			<li>Solution to a differential equation:<SubList>
+				<li>A solution to a differential equation is a function \(y=f(x)\) that satisfies the differential equation when \(f\) and its derivatives are substituted into the equation.</li>
+				<li>The function \(y=2e^{"{-2t}"}+e^t\) is a solution to the differential equation \(y'+2y=3e^t\).</li>
+				<li>Any solution of the differential equation \(y'=2x\) must be of the form \(y=x^2+C\). This is an example of a <b>general solution</b> to a differential equation. \(y=x^2-3\) is a member of the family of solutions to this differential equation. This is called a <b>particular solution</b> to the differential equation.</li>
+			</SubList></li>
+			<li>The <b>order of a differential equation</b> is the highest order of any derivative of the unknown function that appears in the equation.</li>
+			<li>Initial-Value Problems:<SubList>
+				<li>Usually a given differential equation has an infinite number of solutions, so it is natural to ask which one we want to use. Some specific information that can be useful is an <b>initial value</b>, which is an ordered pair that is used to find a particular solution.</li>
+				<li>A differential equation together with one or more initial values is called an <b>initial-value problem</b>.</li>
+				<TableLI>
+					<caption>Example</caption>
+					<tbody>
+						<tr><td>
+							Solve the following initial-value problem:
+							\[y'=3 e^x + x^2 -4, y(0)=5\]
+							<br/>
+							<b><u>Solution:</u></b>
+							To do this, we find an antiderivative of both sides of the differential equation:
+							\[y=3 e^x + \frac{"{x^3}{3}"} -4x + C\]
+							Now let's substitute x and y:
+							\[\being{"{align}"}5 &= 3 e^0 + \frac{"{0^3}{3}"} -4(0) + C \\ 5 &= 3 + C \end{"{align}"}\]
+							Therefore, C = 2. This means:
+							\[y=3 e^x + \frac{"{x^3}{3}"} -4x + 2\]
+						</td></tr>
+					</tbody>
+				</TableLI>
+			</SubList></li>
+		</ul>
+	</div>
+	<div data-source={65} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
+		<ul>
+			<li></li>
+		</ul>
+	</div>
 </>
