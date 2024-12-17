@@ -760,13 +760,13 @@ export const content = <>
 					<li>At each point in a direction field, a line segment appears whose slope is equal to the slope of a solution to the differential equation passing through that point.</li>
 					<li>Consider \(y'=3x+2y-4\), if we choose \(x=1\) and \(y=2\), then \(y'=3\). To start creating the direction field, we put a short line segment at the point \((1,2)\) having slope \(3\). We can do this for any point in the domain of the function  \(f(x,y)=3x+2y-4\), which consists of all ordered pairs \((x,y)\) in \(\mathbb{"{R}"}^2\).</li>
 					<li><figure>
-						<ImgComp src={require("./calculus_pics/17.jfif")} width="60%" />
+						<ImgComp src={require("./calculus_pics/17.jfif")} width="70%" />
 						<figcaption>Direction field for the differential equation \(y'=3x+2y-4\).</figcaption>
 					</figure></li>
 					<li>If a solution to the differential equation passes through the point \((0,1)\), then the slope of the solution passing through that point is given by \(y'=3(0)+2(1)-4=-2\). The curve is called a <b>solution curve</b> passing through the point \((0,1)\).
 					</li>
 					<li><figure>
-						<ImgComp src={require("./calculus_pics/18.jfif")} width="60%" />
+						<ImgComp src={require("./calculus_pics/18.jfif")} width="70%" />
 						<figcaption>Direction field for the differential equation \(y'=3x+2y-4\) with the solution passing through the point \((0,1)\).</figcaption>
 					</figure></li>
 				</SubList></li>
@@ -784,7 +784,7 @@ export const content = <>
 				<li>Euler's method:<SubList>
 					<li>Consider the initial-value problem \(y'=f(x,y)\), \(y(x0)=y0\).</li>
 					<li>To approximate a solution to this problem using Euler's method, define:</li>
-					<li><MathStuff>$$x_n=x_0 + n h$$$$y_n=y_{"{n-1}"}+h f(x_{"{n-1}"},y_{"{n-1}"})$$</MathStuff></li>
+					<MathStuff>$$x_n=x_0 + n h$$$$y_n=y_{"{n-1}"}+h f(x_{"{n-1}"},y_{"{n-1}"})$$</MathStuff>
 					<li>Here \(h \gt 0\) represents the step size and \(n\) is an integer, starting with 1. The number of steps taken is counted by the variable \(n\). \(h\) is typically very small, like 0.05.</li>
 				</SubList></li>
 			</ul>
