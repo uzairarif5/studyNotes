@@ -708,10 +708,17 @@ export const content = <>
 					</SubList></li>
 				</SubList></li>
 				<li>Numerical Integration:<SubList>
-					<li><b>The Midpoint Rule:</b> Assume that \(f(x)\) is continuous on \([a,b]\). Let \(n\) be a positive integer and  \(Δx= \frac{"{b-a}{n}"}\). If \([a,b]\) is divided into \(n\) subintervals, each of length \(Δx\), and \(m_i\) is the midpoint of the \(i\)th subinterval, set:</li>
+					<li><b><u>The Midpoint Rule:</u></b> Assume that \(f(x)\) is continuous on \([a,b]\). Let \(n\) be a positive integer and  \(\Delta x= \frac{"{b-a}{n}"}\). If \([a,b]\) is divided into \(n\) subintervals, each of length \(\Delta x\), and \(m_i\) is the midpoint of the \(i\)th subinterval, set:</li>
 					<MathStuff>\[M_n = \sum^n_{"{i=1}"} f(x_i) \Delta x\]</MathStuff>
-					<li>Then \(\lim_{"{n \\to \\infty}"}M_n = \int^b_a f(x) \ dx\).</li>
-					<li></li>
+					<li>Then, \(\lim_{"{n \\to \\infty}"}M_n = \int^b_a f(x) \ dx\).</li>
+					<li><b><u>The Trapezoidal Rule:</u></b> Assume that \(f(x)\) is continuous over \([a,b]\). Let \(n\) be a positive integer and  \(\Delta x= \frac{"{b-a}{n}"}\). Let \([a,b]\) be divided into \(n\) subintervals, each of length \(\Delta x\), with endpoints at \(P={"{x_0,x_1,x_2, \\ldots ,x_n}"}\). Set:</li>
+					<MathStuff>\[ T_n = \frac{"{1}{2}"} \Delta x (f(x_0) + 2(f(x_1) + f(x_2) + \ldots + f(x_{"{n-1}"})) + f(x_n)) \]</MathStuff>
+					<li>Then, \(\lim_{"{n \\to \\infty}"} T_n = \int^b_a f(x) \ dx\).</li>
+					<li>The trapezoidal rule tends to overestimate the value of a definite integral systematically over intervals where the function is concave up and to underestimate the value of a definite integral systematically over intervals where the function is concave down.</li>
+					<li>On the other hand, the midpoint rule tends to average out these errors somewhat by partially overestimating and partially underestimating the value of the definite integral over these same types of intervals. This leads us to hypothesize that, in general, the midpoint rule tends to be more accurate than the trapezoidal rule.</li>
+					<li><b>Simpson's Rule:</b> Assume that \(f(x)\) is continuous over \([a,b]\). Let \(n\) be a positive even integer and  \(\Delta x= \frac{"{b-a}{n}"}\). Let \([a,b]\) be divided into \(n\) subintervals, each of length \(\Delta x\), with endpoints at \(P={"{x_0,x_1,x_2,\\ldots,x_n}"}\). Set:</li>
+					<MathStuff>Sn={"\\frac{\\Delta x}{3}(f(x_0)+4f(x_1)+2f(x_2)+4f(x_3)+2f(x_4)+\\ldots+2f(x_{n-2})+4f(x_{n-1})+f(x_n)"})</MathStuff>
+					<li>Then, \(\lim_{"{n \\to \\infty}"} S_n \int^b_a f(x) \ dx\)</li>
 				</SubList></li>
 			</ul>
 		</div>
