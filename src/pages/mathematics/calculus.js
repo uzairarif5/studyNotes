@@ -185,6 +185,10 @@ export const content = <>
 				</SubList></li>
 				<li>If \(f(x)\) is both invertible and differentiable. Let \(g\) be the inverse of \(f\):</li>
 				<MathStuff>\[ g'(x) = \frac{"{1}{f'(g(x))}"} \]</MathStuff>
+			</ul>
+		</div>
+		<div data-source={36} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
+			<ul>
 				<li>Derivative of trigonometric functions:<SubList>
 					<li>\({"\\frac{d}{dx} \\sin x = \\cos x"}\)</li>
 					<li>\({"\\frac{d}{dx} \\cos x = -\\sin x"}\)</li>
@@ -204,8 +208,6 @@ export const content = <>
 					<li>\(\frac{"{d}{dx} \\operatorname{arccosec}(x) = - \\frac{1}{|x| |\\sqrt{x^2-1}|}"}\)</li>
 				</SubList></li>
 			</ul>
-		</div>
-		<div data-source={36} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
 			<ul>
 				<li>Implicit Differentiation:<SubList>
 					<li>In most discussions of math, if the dependent variable \(y\) is a function of the independent variable \(x\), we express \(y\) in terms of \(x\).</li>
@@ -500,10 +502,10 @@ export const content = <>
 				<li>Derivative of hyperbolic functions:<SubList>
 					<li>\({"\\frac{d}{dx} \\sinh x = \\cosh x"}\)</li>
 					<li>\({"\\frac{d}{dx} \\cosh x = \\sinh x"}\)</li>
-					<li>\({"\\frac{d}{dx} \\tanh x = \\sech^2 x"}\)</li>
-					<li>\({"\\frac{d}{dx} \\coth x = -\\csch^2 x"}\)</li>
-					<li>\({"\\frac{d}{dx} \\sech x = -\\sech x \\tanh x"}\)</li>
-					<li>\({"\\frac{d}{dx} \\csch x = -\\csch x \\coth x"}\)</li>
+					<li>\({"\\frac{d}{dx} \\tanh x = \\operatorname{sech}^2 x"}\)</li>
+					<li>\({"\\frac{d}{dx} \\coth x = -\\operatorname{csch}^2 x"}\)</li>
+					<li>\({"\\frac{d}{dx} \\operatorname{sech} x = -\\operatorname{sech} x \\tanh x"}\)</li>
+					<li>\({"\\frac{d}{dx} \\operatorname{csch} x = -\\operatorname{csch} x \\coth x"}\)</li>
 					<li>\(\frac{"{d}{dx} \\operatorname{arsinh}(x) = \\frac{1}{|\\sqrt{1+x^2}|}"}\)</li>
 					<li>\(\frac{"{d}{dx} \\operatorname{arcosh}(x) = - \\frac{1}{|\\sqrt{x^2 - 1}|}"}\)</li>
 					<li>\(\frac{"{d}{dx} \\operatorname{artanh}(x) = \\frac{1}{1-x^2}"}\) where \(|x| \lt 1\)</li>
