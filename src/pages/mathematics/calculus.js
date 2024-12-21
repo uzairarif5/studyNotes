@@ -183,28 +183,26 @@ export const content = <>
 					<li>Alternatively, if \(y\) is a function of \(u\), and \(u\) is a function of \(x\), then:</li>
 					<li class={"mathStuff"}>$$ {"\\frac{dy}{dx} = \\frac{dy}{du} \\frac{du}{dx}"} $$</li>
 				</SubList></li>
+				<li>If \(f(x)\) is both invertible and differentiable. Let \(g\) be the inverse of \(f\):</li>
+				<MathStuff>\[ g'(x) = \frac{"{1}{f'(g(x))}"} \]</MathStuff>
 				<li>Derivative of trigonometric functions:<SubList>
-					<li>\({"\\frac{d\\sin x}{dx} = \\cos x"}\)</li>
-					<li>\({"\\frac{d\\cos x}{dx} = -\\sin x"}\)</li>
-					<li>\({"\\frac{d\\tan x}{dx} = \\sec^2 x"}\)</li>
-					<li>\({"\\frac{d\\cot x}{dx} = -\\csc^2 x"}\)</li>
-					<li>\({"\\frac{d\\sec x}{dx} = \\sec x \\tan x"}\)</li>
-					<li>\({"\\frac{d\\csc x}{dx} = -\\csc x \\cot x"}\)</li>
+					<li>\({"\\frac{d}{dx} \\sin x = \\cos x"}\)</li>
+					<li>\({"\\frac{d}{dx} \\cos x = -\\sin x"}\)</li>
+					<li>\({"\\frac{d}{dx} \\tan x = \\sec^2 x"}\)</li>
+					<li>\({"\\frac{d}{dx} \\cot x = -\\csc^2 x"}\)</li>
+					<li>\({"\\frac{d}{dx} \\sec x = \\sec x \\tan x"}\)</li>
+					<li>\({"\\frac{d}{dx} \\csc x = -\\csc x \\cot x"}\)</li>
 				</SubList></li>
 			</ul>
 			<ul className="ownExplanation">
 				<li>Derivatives of inverse trigonometric functions:<SubList>
 					<li>\(\frac{"{d}{dx} \\arcsin(x) = \\frac{1}{| \\sqrt{1-x^2}|}"}\)</li>
 					<li>\(\frac{"{d}{dx} \\arccos(x) = - \\frac{1}{| \\sqrt{1-x^2}|}"}\)</li>
-					<li>\(\frac{"{d}{dx} \\operatorname{arcsec}(x) = \\frac{1}{|x| |\\sqrt{x^2-1}|}"}\)</li>
-					<li>\(\frac{"{d}{dx} \\operatorname{arccosec}(x) = - \\frac{1}{|x| |\\sqrt{x^2-1}|}"}\)</li>
 					<li>\(\frac{"{d}{dx} \\arctan(x) = \\frac{1}{x^2+1}"}\)</li>
 					<li>\(\frac{"{d}{dx} \\operatorname{arccot}(x)= -\\frac{1}{x^2+1}"}\)</li>
+					<li>\(\frac{"{d}{dx} \\operatorname{arcsec}(x) = \\frac{1}{|x| |\\sqrt{x^2-1}|}"}\)</li>
+					<li>\(\frac{"{d}{dx} \\operatorname{arccosec}(x) = - \\frac{1}{|x| |\\sqrt{x^2-1}|}"}\)</li>
 				</SubList></li>
-			</ul>
-			<ul>
-				<li>If \(f(x)\) is both invertible and differentiable. Let \(g\) be the inverse of \(f\):</li>
-				<MathStuff>\[ g'(x) = \frac{"{1}{f'(g(x))}"} \]</MathStuff>
 			</ul>
 		</div>
 		<div data-source={36} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
@@ -498,6 +496,20 @@ export const content = <>
 						<li>The approximations \(x_0,x_1,x_2,\ldots\) may approach a different root. If the function \(f\) has more than one root, it is possible that our approximations do not approach the one for which we are looking, but approach a different root.</li>
 						<li>The approximations may fail to approach a root entirely. There may be a function and an initial guess \(x_0\) such that the successive approximations never approach a root because the successive approximations continue to alternate back and forth between two values.</li>
 					</SubList></li>
+				</SubList></li>
+				<li>Derivative of hyperbolic functions:<SubList>
+					<li>\({"\\frac{d}{dx} \\sinh x = \\cosh x"}\)</li>
+					<li>\({"\\frac{d}{dx} \\cosh x = \\sinh x"}\)</li>
+					<li>\({"\\frac{d}{dx} \\tanh x = \\sech^2 x"}\)</li>
+					<li>\({"\\frac{d}{dx} \\coth x = -\\csch^2 x"}\)</li>
+					<li>\({"\\frac{d}{dx} \\sech x = -\\sech x \\tanh x"}\)</li>
+					<li>\({"\\frac{d}{dx} \\csch x = -\\csch x \\coth x"}\)</li>
+					<li>\(\frac{"{d}{dx} \\operatorname{arsinh}(x) = \\frac{1}{|\\sqrt{1+x^2}|}"}\)</li>
+					<li>\(\frac{"{d}{dx} \\operatorname{arcosh}(x) = - \\frac{1}{|\\sqrt{x^2 - 1}|}"}\)</li>
+					<li>\(\frac{"{d}{dx} \\operatorname{artanh}(x) = \\frac{1}{1-x^2}"}\) where \(|x| \lt 1\)</li>
+					<li>\(\frac{"{d}{dx} \\operatorname{arcoth}(x) = \\frac{1}{1-x^2}"}\) where \(|x| \gt 1\)</li>
+					<li>\(\frac{"{d}{dx} \\operatorname{arsech}(x) = \\frac{1}{|x| |\\sqrt{x^2-1}|}"}\)</li>
+					<li>\(\frac{"{d}{dx} \\operatorname{arcsch}(x) = - \\frac{1}{|x| |\\sqrt{x^2-1}|}"}\)</li>
 				</SubList></li>
 			</ul>
 		</div>  
