@@ -177,6 +177,12 @@ export const content = <>
 					<li><b>Inverse Function Theorem:</b> If \(g(x)\) be the inverse of \(f(x)\), then:</li>
 					<MathStuff>\[{"g'(x) = \\frac{1}{f'(g(x))}"}\]</MathStuff>
 				</SubList></li>
+				<li><b>Chain Rule:</b><SubList>
+					<li>Let \(f\) and \(g\) be functions. For all \(x\) in the domain of \(g\) for which \(g\) is differentiable at \(x\) and \(f\) is differentiable at \(g(x)\), the derivative of the composite function \(h(x)=(f∘g)(x)=f(g(x))\) is given by:</li>
+					<li class={"mathStuff"}>$$h'(x)=f'(g(x))g'(x)$$</li>
+					<li>Alternatively, if \(y\) is a function of \(u\), and \(u\) is a function of \(x\), then:</li>
+					<li class={"mathStuff"}>$$ {"\\frac{dy}{dx} = \\frac{dy}{du} \\frac{du}{dx}"} $$</li>
+				</SubList></li>
 				<li>Derivative of trigonometric functions:<SubList>
 					<li>\({"\\frac{d\\sin x}{dx} = \\cos x"}\)</li>
 					<li>\({"\\frac{d\\cos x}{dx} = -\\sin x"}\)</li>
@@ -185,17 +191,9 @@ export const content = <>
 					<li>\({"\\frac{d\\sec x}{dx} = \\sec x \\tan x"}\)</li>
 					<li>\({"\\frac{d\\csc x}{dx} = -\\csc x \\cot x"}\)</li>
 				</SubList></li>
-				<li><b>Chain Rule:</b><SubList>
-					<li>Let \(f\) and \(g\) be functions. For all \(x\) in the domain of \(g\) for which \(g\) is differentiable at \(x\) and \(f\) is differentiable at \(g(x)\), the derivative of the composite function \(h(x)=(f∘g)(x)=f(g(x))\) is given by:</li>
-					<li class={"mathStuff"}>$$h'(x)=f'(g(x))g'(x)$$</li>
-					<li>Alternatively, if \(y\) is a function of \(u\), and \(u\) is a function of \(x\), then:</li>
-					<li class={"mathStuff"}>$$ {"\\frac{dy}{dx} = \\frac{dy}{du} \\frac{du}{dx}"} $$</li>
-				</SubList></li>
 			</ul>
 			<ul className="ownExplanation">
-				<li>Derivatives of inverse functions:<SubList>
-					<li>If \(f(x)\) is both invertible and differentiable. Let \(g\) be the inverse of \(f\):</li>
-					<MathStuff>\[ g'(x) = \frac{"{1}{f'(g(x))}"} \]</MathStuff>
+				<li>Derivatives of inverse trigonometric functions:<SubList>
 					<li>\(\frac{"{d}{dx} \\arcsin(x) = \\frac{1}{| \\sqrt{1-x^2}|}"}\)</li>
 					<li>\(\frac{"{d}{dx} \\arccos(x) = - \\frac{1}{| \\sqrt{1-x^2}|}"}\)</li>
 					<li>\(\frac{"{d}{dx} \\operatorname{arcsec}(x) = \\frac{1}{|x| |\\sqrt{x^2-1}|}"}\)</li>
@@ -203,6 +201,10 @@ export const content = <>
 					<li>\(\frac{"{d}{dx} \\arctan(x) = \\frac{1}{x^2+1}"}\)</li>
 					<li>\(\frac{"{d}{dx} \\operatorname{arccot}(x)= -\\frac{1}{x^2+1}"}\)</li>
 				</SubList></li>
+			</ul>
+			<ul>
+				<li>If \(f(x)\) is both invertible and differentiable. Let \(g\) be the inverse of \(f\):</li>
+				<MathStuff>\[ g'(x) = \frac{"{1}{f'(g(x))}"} \]</MathStuff>
 			</ul>
 		</div>
 		<div data-source={36} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
@@ -552,7 +554,7 @@ export const content = <>
 					<li>The <b>total area</b> between \(f(x)\) and the x-axis is given by:</li>
 					<MathStuff>$$\int ^b_a | f(x) | dx = A_1 + A_2 $$</MathStuff>
 				</SubList></li>
-				<li><b>Integration by substitution:</b><SubList>
+				<li>Integration by substitution:<SubList>
 					<li>Example:</li>
 					<TableLI>
 						<tbody>
@@ -785,7 +787,8 @@ export const content = <>
 					<li>Consider the initial-value problem \(y'=f(x,y)\), \(y(x0)=y0\).</li>
 					<li>To approximate a solution to this problem using Euler's method, define:</li>
 					<MathStuff>$$x_n=x_0 + n h$$$$y_n=y_{"{n-1}"}+h f(x_{"{n-1}"},y_{"{n-1}"})$$</MathStuff>
-					<li>Here \(h \gt 0\) represents the step size and \(n\) is an integer, starting with 1. The number of steps taken is counted by the variable \(n\). \(h\) is typically very small, like 0.05.</li>
+					<li>Here \(h \gt 0\) represents the step size and \(n\) is an integer, starting with 1. The number of steps taken is counted by the variable \(n\).</li>
+					<li>\(h\) is typically very small, like 0.05.</li>
 				</SubList></li>
 			</ul>
 		</div>
