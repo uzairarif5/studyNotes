@@ -506,7 +506,9 @@ export const content = <>
 					<li>\({"\\frac{d}{dx} \\coth x = -\\operatorname{csch}^2 x"}\)</li>
 					<li>\({"\\frac{d}{dx} \\operatorname{sech} x = -\\operatorname{sech} x \\tanh x"}\)</li>
 					<li>\({"\\frac{d}{dx} \\operatorname{csch} x = -\\operatorname{csch} x \\coth x"}\)</li>
-					<li>\(\frac{"{d}{dx} \\operatorname{arsinh}(x) = \\frac{1}{|\\sqrt{1+x^2}|}"}\)</li>
+				</SubList></li>
+				<li>Derivative of inverse hyperbolic functions:<SubList>
+					<li>\(\frac{"{d}{dx} \\operatorname{arsinh}(x) = \\frac{1}{|\\sqrt{x^2 + 1}|}"}\)</li>
 					<li>\(\frac{"{d}{dx} \\operatorname{arcosh}(x) = - \\frac{1}{|\\sqrt{x^2 - 1}|}"}\)</li>
 					<li>\(\frac{"{d}{dx} \\operatorname{artanh}(x) = \\frac{1}{1-x^2}"}\) where \(|x| \lt 1\)</li>
 					<li>\(\frac{"{d}{dx} \\operatorname{arcoth}(x) = \\frac{1}{1-x^2}"}\) where \(|x| \gt 1\)</li>
