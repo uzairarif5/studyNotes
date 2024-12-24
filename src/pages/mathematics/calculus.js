@@ -621,9 +621,9 @@ export const content = <>
 					<li>\(\int \cosh(x) \ dx = \sinh(x) + C\)</li>
 					<li>\(\int \tanh(x) \ dx = \ln| \cosh(x) | + C\)</li>
 					<li>\(\int \coth(x) \ dx = \ln| \sinh(x) | + C\)</li>
-					<li>\(\int \sech(x) \ dx = 2 \arctan(e^x) + C\)</li>
-					<li>If \(x \lt 0\), then \(\int \csch(x) \ dx = 2 \artanh(e^x) + C\)</li>
-					<li>If \(x \gt 0\), then \(\int \csch(x) \ dx = 2 \arcoth(e^x) + C\)</li>
+					<li>\(\int \operatorname{"{sech}"}(x) \ dx = 2 \arctan(e^x) + C\)</li>
+					<li>If \(x \lt 0\), then \(\int \operatorname{"{csch}"}(x) \ dx = 2 \operatorname{"{artanh}"}(e^x) + C\)</li>
+					<li>If \(x \gt 0\), then \(\int \operatorname{"{csch}"}(x) \ dx = 2 \operatorname{"{arcoth}"}(e^x) + C\)</li>
 				</SubList></li>
 			</ul>
 			<h3>Volume Stuff</h3>
