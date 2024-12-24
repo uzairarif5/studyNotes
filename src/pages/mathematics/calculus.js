@@ -626,12 +626,12 @@ export const content = <>
 					<li>If \(x \gt 0\), then \(\int \operatorname{"{csch}"}(x) \ dx = 2 \operatorname{"{arcoth}"}(e^x) + C\)</li>
 				</SubList></li>
 				<li>Integral of inverse hyperbolic functions:<SubList>
-					<li>\({"\\int \\operatorname{arsinh}(x) dx = x \\operatorname{arsinh}(x) - |\\sqrt{x^2+1}| + C"}\)</li>
-					<li>\({"\\int \\operatorname{arcosh}(x) dx = x \\operatorname{arcosh}(x) - |\\sqrt{x^2-1}| + C"}\)</li>
-					<li>\({"\\int \\operatorname{artanh}(x) dx = x \\operatorname{artanh}(x) - \\frac{1}{2} \\ln |\\sqrt{1-x^2}| + C"}\) where \(|x| \lt 1\)</li>
-					<li>\({"\\int \\operatorname{arcoth}(x) dx = x \\operatorname{arcoth}(x) - \\frac{1}{2} \\ln |\\sqrt{1-x^2}| + C"}\) where \(|x| \gt 1\)</li>
-					<li>\({"\\int \\operatorname{arsech}(x) dx = x \\operatorname{arsech}(x) + \\operatorname{arsinh}(x) + C"}\)</li>
-					<li>\({"\\int \\operatorname{arcsch}(x) dx = x \\operatorname{arcsch}(x) + |\\operatorname{arsinh}(x)| + C"}\)</li>
+					<li>\({"\\int \\operatorname{arsinh}(x) \\ dx = x \\operatorname{arsinh}(x) - |\\sqrt{x^2+1}| + C"}\)</li>
+					<li>\({"\\int \\operatorname{arcosh}(x) \\ dx = x \\operatorname{arcosh}(x) - |\\sqrt{x^2-1}| + C"}\)</li>
+					<li>\({"\\int \\operatorname{artanh}(x) \\ dx = x \\operatorname{artanh}(x) + \\frac{1}{2} \\ln |\\sqrt{1-x^2}| + C"}\) where \(|x| \lt 1\)</li>
+					<li>\({"\\int \\operatorname{arcoth}(x) \\ dx = x \\operatorname{arcoth}(x) + \\frac{1}{2} \\ln |\\sqrt{1-x^2}| + C"}\) where \(|x| \gt 1\)</li>
+					<li>\({"\\int \\operatorname{arsech}(x) \\ dx = x \\operatorname{arsech}(x) + \\operatorname{arsinh}(x) + C"}\)</li>
+					<li>\({"\\int \\operatorname{arcsch}(x) \\ dx = x \\operatorname{arcsch}(x) + |\\operatorname{arsinh}(x)| + C"}\)</li>
 				</SubList></li>
 			</ul>
 			<h3>Volume Stuff</h3>
