@@ -512,8 +512,8 @@ export const content = <>
 					<li>\(\frac{"{d}{dx} \\operatorname{arcosh}(x) = - \\frac{1}{|\\sqrt{x^2 - 1}|}"}\)</li>
 					<li>\(\frac{"{d}{dx} \\operatorname{artanh}(x) = \\frac{1}{1-x^2}"}\) where \(|x| \lt 1\)</li>
 					<li>\(\frac{"{d}{dx} \\operatorname{arcoth}(x) = \\frac{1}{1-x^2}"}\) where \(|x| \gt 1\)</li>
-					<li>\(\frac{"{d}{dx} \\operatorname{arsech}(x) = \\frac{1}{|x| |\\sqrt{x^2-1}|}"}\)</li>
-					<li>\(\frac{"{d}{dx} \\operatorname{arcsch}(x) = - \\frac{1}{|x| |\\sqrt{x^2-1}|}"}\)</li>
+					<li>\(\frac{"{d}{dx} \\operatorname{arsech}(x) = \\frac{-1}{x|\\sqrt{1-x^2}|}"}\)</li>
+					<li>\(\frac{"{d}{dx} \\operatorname{arcsch}(x) = - \\frac{-1}{|x| |\\sqrt{1+x^2}|}"}\)</li>
 				</SubList></li>
 			</ul>
 		</div>  
