@@ -619,10 +619,11 @@ export const content = <>
 				<li>Integral of hyperbolic functions:<SubList>
 					<li>\(\int \sinh(x) \ dx = \cosh(x) + C\)</li>
 					<li>\(\int \cosh(x) \ dx = \sinh(x) + C\)</li>
-					<li>\(\int \sech(x) \ dx = 2 \arctan(e^x) + C\)</li>
-					<li>\(\int \csch(x) \ dx = 2 \artanh(e^x) + C \text{"{ where }"} e^x \lt 1, 2 \arcoth(e^x) + C \text{"{ where }"} e^x \gt 1\)</li>
 					<li>\(\int \tanh(x) \ dx = \ln| \cosh(x) | + C\)</li>
 					<li>\(\int \coth(x) \ dx = \ln| \sinh(x) | + C\)</li>
+					<li>\(\int \sech(x) \ dx = 2 \arctan(e^x) + C\)</li>
+					<li>If \(x \lt 0\), then \(\int \csch(x) \ dx = 2 \artanh(e^x) + C\)</li>
+					<li>If \(x \gt 0\), then \(\int \csch(x) \ dx = 2 \arcoth(e^x) + C\)</li>
 				</SubList></li>
 			</ul>
 			<h3>Volume Stuff</h3>
