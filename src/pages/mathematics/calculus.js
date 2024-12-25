@@ -827,7 +827,8 @@ export const content = <>
 		</div>
 		<div data-source={65} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
 			<ul>
-				<li>Separable differential equations:<SubList>
+				<li><b>Autonomous differential equation:</b> when \(y'\) is a function of \(y\) alone.</li>
+				<li><b>Separable differential equations:</b><SubList>
 					<li>A <b>separable differential equation</b> is any equation that can be written in the form: \(y'=f(x)g(x)\).</li>
 					<li>Five-step method of separation of variables:<SubList numbered>
 						<li>Check for any values of \(y\) that make \(g(y)=0\). These correspond to constant solutions.</li>
@@ -857,9 +858,8 @@ export const content = <>
 						</tbody>
 					</TableLI>
 				</SubList></li>
-				<li>The Logistic Equation:<SubList>
+				<li><b>The logistic equation:</b><SubList>
 					<li>One problem with the exponential growth function is its prediction that as time goes on, the population grows without bound. This is unrealistic in a real-world setting.</li>
-					<li>The growth constant \(r\) usually takes into consideration the birth and death rates but none of the other factors, and it can be interpreted as a net (birth minus death) percent growth rate per unit time.</li>
 					<li>The <b>carrying capacity</b> of an organism in a given environment is defined to be the maximum population of that organism that the environment can sustain indefinitely.</li>
 					<li>Let \(K\) represent the carrying capacity for a particular organism in a given environment, and let \(r\) be a real number that represents the growth rate. The function \(P(t)\) represents the population of this organism as a function of time \(t\). Then the <b>logistic differential equation</b> is:</li>
 					<MathStuff>$$\frac{"{dP}{dt}"} = rP \left( 1 - \frac{"{P}{K}"} \right)$$</MathStuff>
@@ -870,6 +870,17 @@ export const content = <>
 						<MathStuff>$$ t = \frac{"{1}{r}"} \ln \frac{"{K-P_0}{P_0}"} $$</MathStuff>
 						<li>Notice that if \(P_0 \gt K\), then this quantity is undefined, and the graph does not have a point of inflection.</li>
 					</SubList></li>
+				</SubList></li>
+				<li><b>First-order linear equations:</b><SubList>
+					<li>A <b>first-order differential equation</b> is linear if it can be written in the form \(a(x)y'+b(x)y=c(x)\) where \(a(x)\), \(b(x)\) and \(c(x)\) are arbitrary functions of \(x\).</li>
+					<li>It is useful to have the coefficient of \(y'\) be equal to 1. This is called the <b>standard form of the differential equation</b>:</li>
+					<MathStuff>$$ y'+ \frac{"{b(x)}{a(x)}"}y= \frac{"{c(x)}{a(x)}"} $$</MathStuff>
+					<li>We can define \(p(x)= \frac{"{b(x)}{a(x)}"}\) and \(q(x)= \frac{"{c(x)}{a(x)}"}\).</li>
+					<MathStuff>$$ y'+ p(x) y= q(x) $$</MathStuff>
+					<li>Solution to this type of differetial equation is:</li>
+					<MathStuff>$$ y= \frac{"{1}{u(x)}"}[\int u(x)q(x) \ dx + C] $$</MathStuff>
+					<li>Where:</li>
+					<MathStuff>$$ u(x) = e^{"{\\int p(x) \\ dx}"} $$</MathStuff>
 				</SubList></li>
 			</ul>
 		</div>
