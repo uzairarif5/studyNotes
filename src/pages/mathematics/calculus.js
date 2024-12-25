@@ -734,7 +734,7 @@ export const content = <>
 						<li>If \(Q(x)\) can be factored as \((a_1 x +b_1)(a_2 x +b_2) \ldots (a_n x + b_n)\), where each linear factor is distinct, then it is possible to find constants \(A_1, A_2, \ldots, A_n\) satisfying:</li>
 						<MathStuff>\[ \frac{"{P(x)}{Q(x)}"} = \frac{"{A_1}{a_1 x +b_1}"} + \frac{"{A_2}{a_2 x +b_2}"} + \ldots + \frac{"{A_n}{a_n x +b_n}"} \]</MathStuff>
 						<li>If \(Q(x)\) contains the repeated linear factor \((ax+b)^n\), then the decomposition must contain:</li>
-						<MathStuff>\[ \frac{"{A_1}{a x+ b}"} + \frac{"{A_2}{(ax+b)^2}"} + \ldots + \frac{"{A_n}{(ax+b)^n}"}\]</MathStuff>
+						<MathStuff>\[ \frac{"{A_1}{(a x+ b)}"} + \frac{"{A_2}{(ax+b)^2}"} + \ldots + \frac{"{A_n}{(ax+b)^n}"}\]</MathStuff>
 						<li>For each irreducible quadratic factor \(ax^2+bx+c\) that \(Q(x)\) contains, the decomposition must include:</li>
 						<MathStuff>\[\frac{"{Ax+B}{ax^2+bx+c}"}\]</MathStuff>
 						<li>For each repeated irreducible quadratic factor \((ax^2+bx+c)^n\), the decomposition must include:</li>
@@ -747,7 +747,7 @@ export const content = <>
 					<MathStuff>\[M_n = \sum^n_{"{i=1}"} f(x_i) \Delta x\]</MathStuff>
 					<li>Then, \(\lim_{"{n \\to \\infty}"}M_n = \int^b_a f(x) \ dx\).</li>
 					<li><b><u>The Trapezoidal Rule:</u></b> Assume that \(f(x)\) is continuous over \([a,b]\). Let \(n\) be a positive integer and \(\Delta x= \frac{"{b-a}{n}"}\). Let \([a,b]\) be divided into \(n\) subintervals, each of length \(\Delta x\). Set:</li>
-					<MathStuff>\[ T_n = \frac{"{1}{2}"} \Delta x (f(x_0) + 2(f(x_1) + f(x_2) + \ldots + f(x_{"{n-1}"})) + f(x_n)) \]</MathStuff>
+					<MathStuff>\[ T_n = \frac{"{\\Delta x}{2}"} (f(x_0) + 2(f(x_1) + \ldots + f(x_{"{n-1}"})) + f(x_n)) \]</MathStuff>
 					<li>Then, \(\lim_{"{n \\to \\infty}"} T_n = \int^b_a f(x) \ dx\).</li>
 					<li>The trapezoidal rule tends to overestimate the value of a definite integral systematically over intervals where the function is concave up and to underestimate the value of a definite integral systematically over intervals where the function is concave down.</li>
 					<li>On the other hand, the midpoint rule tends to average out these errors somewhat by partially overestimating and partially underestimating the value of the definite integral. This leads us to hypothesize that, in general, the midpoint rule tends to be more accurate than the trapezoidal rule.</li>
@@ -816,7 +816,7 @@ export const content = <>
 					<li>For the solution \(y=1\), all initial conditions above and below \(y=1\) are repelled (pushed away) from \(y=1\), so this solution is unstable.</li>
 					<li>The solution \(y=3\) is semi-stable, because for initial conditions slightly greater than 3, the solution approaches infinity, and for initial conditions slightly less than 3, the solution approaches \(y=3\).</li>
 				</SubList></li>
-				<li>Euler's method:<SubList>
+				<li><b>Euler's method:</b><SubList>
 					<li>Consider the initial-value problem \(y'=f(x,y)\), \(y(x0)=y0\).</li>
 					<li>To approximate a solution to this problem using Euler's method, define:</li>
 					<MathStuff>$$x_n=x_0 + n h$$$$y_n=y_{"{n-1}"}+h f(x_{"{n-1}"},y_{"{n-1}"})$$</MathStuff>
@@ -827,7 +827,37 @@ export const content = <>
 		</div>
 		<div data-source={65} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
 			<ul>
-				<li></li>
+				<li>Separable differential equations:<SubList>
+					<li>A <b>separable differential equation</b> is any equation that can be written in the form: \(y'=f(x)g(x)\).</li>
+					<li>Five-step method of separation of variables:<SubList numbered>
+						<li>Check for any values of \(y\) that make \(g(y)=0\). These correspond to constant solutions.</li>
+						<li>Rewrite the differential equation in the form \(\frac{"{dy}{g(y)}"}=f(x) dx\).</li>
+						<li>Integrate both sides of the equation.</li>
+						<li>Solve the resulting equation for \(y\) if possible.</li>
+						<li>If an initial condition exists, substitute the appropriate values for \(x\) and \(y\) into the equation and solve for the constant.</li>
+					</SubList></li>
+					<TableLI>
+						<caption>Example</caption>
+						<tbody>
+							<tr><td>
+								Find a general solution to the differential equation \(y'=(x^2 -4)(3y+2)\) using the method of separation of variables.
+								<br/>
+								<b><u>Solution:</u></b>
+								Let \(f(x)=x^2 - 4\) and \(g(y)=3y+2\). Setting \(g(y)=0\) gives \(y=-\frac{"{2}{3}"}\) as a constant solution.<br/>
+								Rewrite the differential equation in the form \[\frac{"{dy}{3y+2}"}= (x^2 - 4) \ dx \]
+								Integrate both sides of the equation:
+								\[\int \frac{"{dy}{3y+2}"}=\int (x^2 - 4) \ dx \]
+								\[\frac{"{1}{3}"} \ln|3y+2| = \frac{"{1}{3}"}x^3 -4x + C\]
+								Solve for \(y\):
+								\[y=-2\frac{"{±Ce^{x^3-12x}}{3}"}\]
+								Since the constant can have either sign:
+								\[y=-2\frac{"{Ce^{x^3-12x}}{3}"}\]
+								Since initial condition is imposed, then we are finished.
+							</td></tr>
+						</tbody>
+					</TableLI>
+					<li></li>
+				</SubList></li>
 			</ul>
 		</div>
 	</div>
