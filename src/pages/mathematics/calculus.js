@@ -856,7 +856,20 @@ export const content = <>
 							</td></tr>
 						</tbody>
 					</TableLI>
-					<li></li>
+				</SubList></li>
+				<li>The Logistic Equation:<SubList>
+					<li>One problem with the exponential growth function is its prediction that as time goes on, the population grows without bound. This is unrealistic in a real-world setting.</li>
+					<li>The growth constant \(r\) usually takes into consideration the birth and death rates but none of the other factors, and it can be interpreted as a net (birth minus death) percent growth rate per unit time.</li>
+					<li>The <b>carrying capacity</b> of an organism in a given environment is defined to be the maximum population of that organism that the environment can sustain indefinitely.</li>
+					<li>Let \(K\) represent the carrying capacity for a particular organism in a given environment, and let \(r\) be a real number that represents the growth rate. The function \(P(t)\) represents the population of this organism as a function of time \(t\). Then the <b>logistic differential equation</b> is:</li>
+					<MathStuff>$$\frac{"{dP}{dt}"} = rP \left( 1 - \frac{"{P}{K}"} \right)$$</MathStuff>
+					<li>Consider the logistic differential equation subject to an initial population of \(P_0\). The solution to the corresponding initial-value problem is given by:</li>
+					<MathStuff>$$ P(t) = \frac{"{P_0 K e^{rt}}{(K-P_0) + P_0 e^{rt}}"} $$</MathStuff>
+					<li>Value of \(t\) for the point of inflection:<SubList>
+						<li>In the logistic graph, the point of inflection can be seen as the point where the graph changes from concave up to concave down:</li>
+						<MathStuff>$$ t = \frac{"{1}{r}"} \ln \frac{"{K-P_0}{P_0}"} $$</MathStuff>
+						<li>Notice that if \(P_0 \gt K\), then this quantity is undefined, and the graph does not have a point of inflection.</li>
+					</SubList></li>
 				</SubList></li>
 			</ul>
 		</div>
