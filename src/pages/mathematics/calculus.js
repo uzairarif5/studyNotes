@@ -891,25 +891,26 @@ export const content = <>
 		<div data-source={65} style={{width:" 49%",marginLeft: "0.5%",float: "left"}}>
 			<ul>
 				<li>Terminology of sequences:<SubList>
-					<li>An infinite sequence (denoted as \({"{a_n}"}\) or \({"{a_n}^\\infty_{n=1}"}\)) is an ordered list of numbers of the form:</li>
+					<li>An infinite sequence (denoted as \({"\\{ a_n \\}"}\) or \({"\\{ a_n \\}^\\infty_{n=1}"}\)) is an ordered list of numbers of the form:</li>
 					<MathStuff>$$a_1,a_2, \ldots , a_n, \ldots $$</MathStuff>
 					<li>The subscript \(n\) is called the <b>index variable</b> of the sequence. Each number \(a_n\) is a term of the sequence.</li>
 					<li>Sometimes sequences are defined by <b>explicit formulas</b>, in which case \(a_n=f(n)\) for some function \(f(n)\) defined over the positive integers.</li>
 					<li>In a <b>recurrence relation</b>, one term (or more) of the sequence is given explicitly, and subsequent terms are defined in terms of earlier terms in the sequence.</li>
-					<li>Note that the index does not have to start at \(n=1\) but could start with other integers: \(a_0,a_1,a_2,\ldots\).</li>
-					<li>Consider the ordered list \(2,4,8,16,32, \ldots\), we can write the \(n\)th term by an explicit formula: \(a_n = 2^n\) or by the recurrence relation: \(a_n = 2 a_{"{n-1}"}\). We can write the sequence like this: \({"{2^n}_{n=1}^\\infty"}\).</li>
+					<li>Note that the index does not have to start at \(n=1\) but could start with other integers. For example:</li>
+					<MathStuff>$$a_0, a_1,a_2, \ldots $$</MathStuff>
+					<li>Consider the ordered list \(2,4,8,16,32, \ldots\). We can write the \(n\)th term by an explicit formula: \(a_n = 2^n\) or by the recurrence relation: \(a_n = 2 a_{"{n-1}"}\). We can write the sequence like this: \({"\\{ 2^n \\}_{n=1}^\\infty"}\).</li>
 				</SubList></li>
 				<li><b>Arithmetic sequence:</b><SubList>
 					<li>In an <b>arithmetic sequence</b>, the difference between every pair of consecutive terms is the same.</li>
-					<li>Consider the sequence \(3,7,11,15,19,\ ldots\). The terms can be described by the recurrence relation:</li>
-					<MathStuff>$$a_n = {"{\\begin{cases} a_1 = 3 \\\\ a_n = a_{n-1} + 4 \\end{end}}"}$$</MathStuff>
+					<li>Consider the sequence \(3,7,11,15,19, \ldots\). The terms can be described by the recurrence relation:</li>
+					<MathStuff>$$a_n = {"{\\begin{cases} a_1 = 3 \\\\ a_n = a_{n-1} + 4 \\end{cases}}"}$$</MathStuff>
 					<li>The terms can also be described by the explicit formula: \(a_n = 3 + 4(n-1) = 4n-1\).</li>
 				</SubList></li>
 				<li><b>Geometric sequence:</b><SubList>
 					<li>In a geometric sequence, the ratio of every pair of consecutive terms is the same. For example, consider the sequence:</li>
 					<MathStuff>$$ 2, -\frac{"{2}{3}"},  \frac{"{2}{9}"}, \frac{"{2}{27}"}, - \frac{"{2}{81}"}, \ldots $$</MathStuff>
 					<li>We see that the ratio of any term to the preceding term is \(-\frac{"{1}{3}"}\). Assuming this pattern continues, this sequence is a geometric sequence. It can be defined recursively as:</li>
-					<MathStuff>$$ a_n = {"{\\begin{cases} a_1 = 2 \\\\ a_n = - \\frac{a_{n-1}}{3} \\end{end}}"} $$</MathStuff>
+					<MathStuff>$$ a_n = {"{\\begin{cases} a_1 = 2 \\\\ a_n = - \\frac{a_{n-1}}{3} \\end{cases}}"} $$</MathStuff>
 					<li>We can also use the explicit formula:</li>
 					<MathStuff>$$ a_n = 2 \left( -\frac{"{1}{3}"} \right)^{"{n-1}"} $$</MathStuff>
 				</SubList></li>
@@ -930,7 +931,7 @@ export const content = <>
 								Consider sequences \({"{a_n}"}\), \({"{b_n}"}\), and \({"{c_n}"}\). Suppose there exists an integer \(N\) such that:
 								\[a_n≤b_n≤c_n \text{"{ for all }"} n≥N\]
 								If there exists a real number \(L\) such that:
-								\[lim_{"{n \\to \\infty}"} a_n =L= \lim_{"{n \\to \\infty}"} c_n\]
+								\[ \lim_{"{n \\to \\infty}"} a_n =L= \lim_{"{n \\to \\infty}"} c_n\]
 								then \({"{b_n}"}\) converges and \(\lim_{"{n \\to \\infty}"} b_n=L\).
 							</td></tr>
 						</tbody>
@@ -949,7 +950,7 @@ export const content = <>
 					<MathStuff>$$ \sum^\infty_{"{n=1}"} a_n = a_1 + a_2 + a_3 + \dots $$</MathStuff>
 					<li>A <b>partial sum</b> of an infinite series is a finite sum of the form:</li>
 					<MathStuff>$$ \sum^k_{"{n=1}"} a_n = a_1 + a_2 + a_3 + \dots + a_k $$</MathStuff>
-					<li>A <b>harmonic series</b> \(\left( 1 + {"\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4}"} + \ldots \right)\) deso nto converge.</li>
+					<li>A <b>harmonic series</b> \(\left( 1 + {"\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4}"} + \ldots \right)\) does not converge.</li>
 				</SubList></li>
 				<li><b>Geometric series:</b><SubList>
 					<li>A <b>geometric series</b> is any series that we can write in the form:</li>
@@ -958,7 +959,13 @@ export const content = <>
 					<MathStuff>$$ S_k = \frac{"{a(1-r^k)}{1-r}"} $$</MathStuff>
 					<li>If \(|r| \lt 1\), \(S_k → a/(1-r)\) (i.e. the series converges), and if \(|r| \ge 1\), \(S_k\) diverges.</li>
 				</SubList></li>
-				<li>A <b>telescoping series</b> is a series in which most of the terms cancel in each of the partial sums, leaving only some of the first terms and some of the last terms.</li>
+				<li>Telescoping series:<SubList>
+					<li>A <b>telescoping series</b> is a series in which most of the terms cancel in each of the partial sums, leaving only some of the first terms and some of the last terms.</li>
+					<li>For example, any series of the form:</li>
+					<MathStuff>$$ \sum^k_{"{n=1}"} [b_n - b_{"{n+1}"}] = b_1 - b_2 + b_2 - b_3 + \dots + b_k - b_{"{k+1}"} = b_1 - b_{"{k+1}"} $$</MathStuff>
+					<li>f \(b_n\) converegs to \(B\) when \(n \to \infty\):</li>
+					<MathStuff>$$ \sum^\infty_{"{n=1}"} [b_n - b_{"{n+1}"}] = b_1 - B $$</MathStuff>
+					</SubList></li>
 			</ul>
 		</div>
 		<div data-source={65} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
