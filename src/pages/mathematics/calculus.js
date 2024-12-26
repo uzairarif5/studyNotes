@@ -904,7 +904,7 @@ export const content = <>
 					<li>In an <b>arithmetic sequence</b>, the difference between every pair of consecutive terms is the same.</li>
 					<li>Consider the sequence \((3,7,11,15,19, \ldots)\). The terms can be described by the recurrence relation:</li>
 					<MathStuff>$$a_n = {"{\\begin{cases} a_1 = 3 \\\\ a_n = a_{n-1} + 4 \\end{cases}}"}$$</MathStuff>
-					<li>The terms can also be described by the explicit formula: \(a_n = 4n-1\).</li>
+					<li>The terms can be described by the explicit formula \(a_n = 4n-1\).</li>
 					<li className="ownExplanation">The general explicit formula is: \(a_n = a_0 + (n-1)d\) where \(d\) is the difference.</li>
 				</SubList></li>
 				<li><b>Geometric sequence:</b><SubList>
@@ -927,7 +927,7 @@ export const content = <>
 					</TableLI>
 					<li>Consider a sequence \({"{a_n}"}\) and suppose there exists a real number \(L\) such that the sequence \({"{a_n}"}\) converges to \(L\). Suppose \(f\) is a continuous function at \(L\). The sequence \({"{f(a_n)}"}\) converges to \(f(L)\). If \({"{f(a_n)}"}\) is not defined for all \(a_n\), there should exist an integer \(N\) such that \(f\) is defined at all values \(a_n\) for \(n≥N\).</li>
 					<TableLI>
-						<caption>Sueeze theorem for sequences</caption>
+						<caption>Squeeze theorem for sequences</caption>
 						<tbody>
 							<tr><td>
 								Consider sequences \({"{a_n}"}\), \({"{b_n}"}\), and \({"{c_n}"}\). Suppose there exists an integer \(N\) such that:
@@ -965,7 +965,7 @@ export const content = <>
 				<li>Telescoping series:<SubList>
 					<li>A <b>telescoping series</b> is a series in which most of the terms cancel in each of the partial sums, leaving only some of the first terms and some of the last terms.</li>
 					<li>For example, any series of the form:</li>
-					<MathStuff>$$\begin{"{aligned}"} \sum^k_{"{n=1}"} [b_n - b_{"{n+1}"}] &= b_1 - b_2 + b_2 - b_3 + \dots + b_k - b_{"{k+1}"} &= b_1 - b_{"{k+1}"} \end{"{aligned}"}$$</MathStuff>
+					<MathStuff>$$\begin{"{aligned}"} \sum^k_{"{n=1}"} [b_n - b_{"{n+1}"}] &= b_1 - b_2 + b_2 - b_3 + \dots + b_k - b_{"{k+1}"} \\ &= b_1 - b_{"{k+1}"} \end{"{aligned}"}$$</MathStuff>
 					<li>If \(b_n\) converegs to \(B\) when \(n \to \infty\):</li>
 					<MathStuff>$$ \sum^\infty_{"{n=1}"} [b_n - b_{"{n+1}"}] = b_1 - B $$</MathStuff>
 					</SubList></li>
