@@ -898,13 +898,14 @@ export const content = <>
 					<li>In a <b>recurrence relation</b>, one term (or more) of the sequence is given explicitly, and subsequent terms are defined in terms of earlier terms in the sequence.</li>
 					<li>Note that the index does not have to start at \(n=1\) but could start with other integers. For example:</li>
 					<MathStuff>$$a_0, a_1,a_2, \ldots $$</MathStuff>
-					<li>Consider the ordered list \(2,4,8,16,32, \ldots\). We can write the \(n\)th term by an explicit formula: \(a_n = 2^n\) or by the recurrence relation: \(a_n = 2 a_{"{n-1}"}\). We can write the sequence like this: \({"\\{ 2^n \\}_{n=1}^\\infty"}\).</li>
+					<li>Consider the ordered list \((2,4,8,16,32, \ldots)\). We can write the \(n\)th term by an explicit formula: \(a_n = 2^n\) or by the recurrence relation: \(a_n = 2 a_{"{n-1}"}\). We can write the sequence like this: \({"\\{ 2^n \\}_{n=1}^\\infty"}\).</li>
 				</SubList></li>
 				<li><b>Arithmetic sequence:</b><SubList>
 					<li>In an <b>arithmetic sequence</b>, the difference between every pair of consecutive terms is the same.</li>
-					<li>Consider the sequence \(3,7,11,15,19, \ldots\). The terms can be described by the recurrence relation:</li>
+					<li>Consider the sequence \((3,7,11,15,19, \ldots)\). The terms can be described by the recurrence relation:</li>
 					<MathStuff>$$a_n = {"{\\begin{cases} a_1 = 3 \\\\ a_n = a_{n-1} + 4 \\end{cases}}"}$$</MathStuff>
-					<li>The terms can also be described by the explicit formula: \(a_n = 3 + 4(n-1) = 4n-1\).</li>
+					<li>The terms can also be described by the explicit formula: \(a_n = 4n-1\).</li>
+					<li className="ownExplanation">The general explicit formula is: \(a_n = a_0 + (n-1)d\) where \(d\) is the difference.</li>
 				</SubList></li>
 				<li><b>Geometric sequence:</b><SubList>
 					<li>In a geometric sequence, the ratio of every pair of consecutive terms is the same. For example, consider the sequence:</li>
@@ -913,6 +914,7 @@ export const content = <>
 					<MathStuff>$$ a_n = {"{\\begin{cases} a_1 = 2 \\\\ a_n = - \\frac{a_{n-1}}{3} \\end{cases}}"} $$</MathStuff>
 					<li>We can also use the explicit formula:</li>
 					<MathStuff>$$ a_n = 2 \left( -\frac{"{1}{3}"} \right)^{"{n-1}"} $$</MathStuff>
+					<li className="ownExplanation">The general explicit formula is: \(a_n = a_0 r^{"{n-1}"}\) where \(r\) is the ratio.</li>
 				</SubList></li>
 				<li>Limit of a sequence:<SubList>
 					<li>Given a sequence \({"{a_n}"}\), if the terms \(a_n\) become arbitrarily close to a finite number \(L\) as \(n\) becomes sufficiently large, we say \({"{a_n}"}\) is a <b>convergent sequence</b> and \(L\) is the limit of the sequence. In this case, we write: \(\lim_{"{n \\to \\infty}"} a_n = L\)</li>
@@ -951,6 +953,7 @@ export const content = <>
 					<li>A <b>partial sum</b> of an infinite series is a finite sum of the form:</li>
 					<MathStuff>$$ \sum^k_{"{n=1}"} a_n = a_1 + a_2 + a_3 + \dots + a_k $$</MathStuff>
 					<li>A <b>harmonic series</b> \(\left( 1 + {"\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4}"} + \ldots \right)\) does not converge.</li>
+					<li className="ownExplanation">An <b>arithmetic series</b> is the sum of an arithmetic sequence. A general formula for it is \(S_k = \frac{"{k}{2}(2 a_0 + (k-1)d)"}\).</li>
 				</SubList></li>
 				<li><b>Geometric series:</b><SubList>
 					<li>A <b>geometric series</b> is any series that we can write in the form:</li>
@@ -962,8 +965,8 @@ export const content = <>
 				<li>Telescoping series:<SubList>
 					<li>A <b>telescoping series</b> is a series in which most of the terms cancel in each of the partial sums, leaving only some of the first terms and some of the last terms.</li>
 					<li>For example, any series of the form:</li>
-					<MathStuff>$$ \sum^k_{"{n=1}"} [b_n - b_{"{n+1}"}] = b_1 - b_2 + b_2 - b_3 + \dots + b_k - b_{"{k+1}"} = b_1 - b_{"{k+1}"} $$</MathStuff>
-					<li>f \(b_n\) converegs to \(B\) when \(n \to \infty\):</li>
+					<MathStuff>$$\begin{"{aligned}"} \sum^k_{"{n=1}"} [b_n - b_{"{n+1}"}] &= b_1 - b_2 + b_2 - b_3 + \dots + b_k - b_{"{k+1}"} &= b_1 - b_{"{k+1}"} \end{"{aligned}"}$$</MathStuff>
+					<li>If \(b_n\) converegs to \(B\) when \(n \to \infty\):</li>
 					<MathStuff>$$ \sum^\infty_{"{n=1}"} [b_n - b_{"{n+1}"}] = b_1 - B $$</MathStuff>
 					</SubList></li>
 			</ul>
