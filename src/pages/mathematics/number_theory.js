@@ -117,15 +117,18 @@ export const content = <>
     <ul style={{width: "49%",float: "left",marginLeft: "0.5%", marginRight: "0.5%"}}>
       <li data-source={35}><b>Modulo:</b><SubList>
         <li><a href='https://en.wikipedia.org/wiki/Modular_arithmetic'><b>Modular arithmetic</b> is a system of arithmetic for integers, where numbers "wrap around" when reaching a certain value, called the <b>modulus</b></a>.</li>
-        <li>Let \(a\), \(b\), \(m\) be integers, with \(m = 0\). We say \(a\) is <b>congruent</b> to \(b\) modulo \(m\) (represented as \(a ≡ b \bmod m\)) if \(a\) and \(b\) have the same remainder when divided \(m\) (which is also if \(m|b-a\)) .</li>
-        <li>Let [\(a ≡ b \bmod m\)].<SubList>
-          <li>If [\(k ≡ j \bmod m\)], then [\(a + k ≡ b + j \bmod m\)] and [\(ak ≡ bj \bmod m\)]</li>
-          <li>If [\(n|m\)], then [\(a ≡ b \bmod nm\)].</li>
-          <li>If \(c\) is a positive integer, then [\(ca ≡ cb \bmod cm\)].</li>
-          <li>If \(d|a\), \(d|b\) and \(d|m\), then [\({"\\frac{a}{d} ≡ \\frac{b}{d} \\bmod \\frac{m}{d}"}\)].</li>
+        <li data-source={54}>Let \(a\), \(b\), \(m\) be integers, with \(m = 0\). We say \(a\) is <b>congruent</b> to \(b\) modulo \(m\) (represented as \(a ≡ b \bmod m\)) if \(a\) and \(b\) have the same remainder when divided \(m\) (which is also if \(m|b-a\)) .</li>
+        <li data-source={54}>Let \([a ≡ b \bmod m]\):<SubList>
+          <li>If \([k ≡ j \bmod m]\), then \([a + k ≡ b + j \bmod m]\) and \([ak ≡ bj \bmod m]\)</li>
+          <li>If \([n|m]\), then \([a ≡ b \bmod nm]\).</li>
+          <li>If \(c\) is a positive integer, then \([ca ≡ cb \bmod cm]\).</li>
+          <li>If \(d|a\), \(d|b\) and \(d|m\), then \([{"\\frac{a}{d} ≡ \\frac{b}{d} \\bmod \\frac{m}{d}"}]\).</li>
+          <li>\((a, m) = (b, m)\).</li>
+          <li>If \([c ≡ d \bmod m]\), \(c|a\) and \(d|b\), then \([{"\\frac{a}{d} ≡ \\frac{b}{d} \\bmod m"}]\).</li>
         </SubList></li>
-        <li>Consider the congruencce \(6a ≡ 6b \bmod 3\), which is true for all integers \(a\) and \(b\). It is a natural tendency to cancel out the 6 on each side, leaving \(a ≡ b \bmod 3\). This is wrong.</li>
+        <li data-source={54}>Consider the congruencce \(6a ≡ 6b \bmod 3\), which is true for all integers \(a\) and \(b\). It is a natural tendency to cancel out the 6 on each side, leaving \(a ≡ b \bmod 3\). This is wrong.</li>
         <li data-source={54}>\([ca ≡ cb \bmod m] \iff [a ≡ b \bmod m/(c, m)]\).</li>
+        <li data-source={54}>If \(c\) is an even integer, then \([c^2 ≡ 0 \bmod 4]\). If \(c\) is an odd integer, then \([c^2 ≡ 1 \bmod 4]\) and \([c^2 ≡ 1 \bmod 8]\)</li>
       </SubList></li>
       <li data-source={54}>Congruence modulo \(m\) is an equivalence relation on \(\mathbb{"{Z}"}\) (set of integers):<SubList>
         <li>Since any integer divides 0, then \(m | 0\), and therefore \(m | a - a\). This means \(a ≡ a \bmod m\), and this shows that congruence modulo \(m\) is reflexive on \(\mathbb{"{Z}"}\).</li>
