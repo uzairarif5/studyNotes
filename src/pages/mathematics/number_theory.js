@@ -114,13 +114,18 @@ export const content = <>
 
   <h2 id="congruences">Congruences</h2>
   <div className="content">
-    <ul style={{width: "49%",float: "left",marginLeft: "0.5%", marginRight: "0.5%"}} data-source={35}>
-      <li><b>Modulo:</b><SubList>
+    <ul style={{width: "49%",float: "left",marginLeft: "0.5%", marginRight: "0.5%"}}>
+      <li data-source={35}><b>Modulo:</b><SubList>
         <li><a href='https://en.wikipedia.org/wiki/Modular_arithmetic'><b>Modular arithmetic</b> is a system of arithmetic for integers, where numbers "wrap around" when reaching a certain value, called the <b>modulus</b></a>.</li>
         <li>Let \(a\), \(b\), \(m\) be integers, with \(m = 0\). We say \(a\) is <b>congruent</b> to \(b\) modulo \(m\) (represented as \(a ≡ b \bmod m\)) if \(a\) and \(b\) have the same remainder when divided \(m\) (which is also if \(m|b-a\)) .</li>
-        <li>If [\(a ≡ b \bmod m\)] and [\(c ≡ d \bmod m\)], then [\(a + c ≡ b + d \bmod m\)] (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/modLemma1'>proof</a>) and [\(ac ≡ bd \bmod m\)] (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/modLemma2'>proof</a>).</li>
+        <li>Let [\(a ≡ b \bmod m\)].<SubList>
+          <li>If [\(k ≡ j \bmod m\)], then [\(a + k ≡ b + j \bmod m\)] and [\(ak ≡ bj \bmod m\)]</li>
+          <li>If [\(n|m\)], then [\(a ≡ b \bmod nm\)].</li>
+          <li>If \(c\) is a positive integer, then [\(ca ≡ cb \bmod cm\)].</li>
+          <li>If \(d|a\), \(d|b\) and \(d|m\), then [\({"\\frac{a}{d} ≡ \\frac{b}{d} \\bmod \\frac{m}{d}"}\)].</li>
+        </SubList></li>
         <li>Consider the congruencce \(6a ≡ 6b \bmod 3\), which is true for all integers \(a\) and \(b\). It is a natural tendency to cancel out the 6 on each side, leaving \(a ≡ b \bmod 3\). This is wrong.</li>
-        <li data-source={54}>\([ca ≡ cb \bmod m] \iff [a ≡ b \bmod m/(c, m)]\) (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/modLemma4'>proof</a>).</li>
+        <li data-source={54}>\([ca ≡ cb \bmod m] \iff [a ≡ b \bmod m/(c, m)]\).</li>
       </SubList></li>
       <li data-source={54}>Congruence modulo \(m\) is an equivalence relation on \(\mathbb{"{Z}"}\) (set of integers):<SubList>
         <li>Since any integer divides 0, then \(m | 0\), and therefore \(m | a - a\). This means \(a ≡ a \bmod m\), and this shows that congruence modulo \(m\) is reflexive on \(\mathbb{"{Z}"}\).</li>
@@ -141,30 +146,29 @@ export const content = <>
         </TableLI>
       </SubList></li>
       <li><b>Residue system:</b><SubList>
-        <li><a href='https://artofproblemsolving.com/wiki/index.php/Residue_class'>In modular arithmetic, a <b>residue</b> of an integer \(a\) in modulo \(n\) is the unique value of \(0\leq r \leq n-1\) such that \(a=kn + r\). In the context of division, a residue is simply a remainder.</a></li>
-        <li>A <b>complete residue system mod m</b> is a collection of integers \(a_1 \ldots a_m\) such that \(a_i \not\equiv a_j \bmod m\) if \(i \ne j\) and any integer \(n\) is congruent to some \(a_i \bmod m\).</li>
+        <li data-source={35}>A <b>complete residue system mod m</b> is a collection of integers \(a_1 \ldots a_m\) such that \(a_i \not\equiv a_j \bmod m\) if \(i \ne j\) and any integer \(n\) is congruent to some \(a_i \bmod m\).</li>
         <li data-source={54}>The set \({"\\{0,1,2,3\\}"}\) is a complete residue system modulo 4 and so is \({"\\{ 6,-11,19,1988 \\}"}\).</li>
-        <li>Take any complete residue system mod \(m\) and take the subset consisting of all the integers in it which are coprime to \(m\) - these will form a <b>reduced residue system</b>.</li>
-        <li>If \(m = 12\), then \({"\\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 \\}"}\) would be a complete residue and the reduced residue would be \({"\\{1, 5, 7, 11\\}"}\).</li>
-        <li data-source={54}>The set \({"\\{ 0, 1, 2, \\ldots, m-1 \\} "}\) is said to be the <b>set of least nonnegative residue modulo m</b>.</li>
-        <li>The number of elements in a reduced residue system mod \(m\) is called <b>Euler's totient function</b>: \(\phi(m)\).</li>
-        <li data-source={4}>A <b>totative</b> of a given positive integer \(m\) is an integer \(k\) such that \(0 \lt k \le m\) and k is coprime to m. Euler's totient function \(\phi(m)\) counts the number of totatives of \(m\).</li>
-        <li><b>Euler's Theorem:</b> If \((a, m) = 1\), then \({"a^{\\phi(m)} ≡ 1 \\bmod m"}\) (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/Eulers_theorem'>proof</a>).</li>
+        <li data-source={35}>Take any complete residue system mod \(m\) and take the subset consisting of all the integers in it which are coprime to \(m\) - these will form a <b>reduced residue system</b>.</li>
+        <li data-source={35}>If \(m = 12\), then \({"\\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 \\}"}\) would be a complete residue system and the reduced residue system would be \({"\\{1, 5, 7, 11\\}"}\).</li>
+        <li data-source={54}>The set \({"\\{ 0, 1, 2, \\ldots, m-1 \\} "}\) is said to be the <b>set of least nonnegative residues modulo m</b>.</li>
+        <li data-source={35}>The number of elements in a reduced residue system mod \(m\) is called <b>Euler's totient function</b>: \(\phi(m)\).</li>
+        <li data-source={4}>A <b>totative</b> of a given positive integer \(m\) is an integer \(k\) such that \(0 \lt k \le m\) and \(k\) is coprime to \(m\). Euler's totient function \(\phi(m)\) counts the number of totatives of \(m\).</li>
+        <li data-source={35}><b>Euler's Theorem:</b> If \((a, m) = 1\), then \({"a^{\\phi(m)} ≡ 1 \\bmod m"}\).</li>
       </SubList></li>
       <li data-source={54}><b>Linear Congruences:</b><SubList>
         <li>A congruence of the form \(ax ≡ b \bmod m\) is said to be a <b>linear congruence</b> in the variable \(x\). The congruence is linear in the sense that the variable \(x\) occurs to the first power.</li>
         <li></li>
         <li></li>
       </SubList></li>
-      <li><b>Fermat's Little Theorem:</b> \(a^p ≡ a \bmod p \) for prime \(p\) and an integer \(a\) (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/fermats_little_theorem'>proof</a>).</li>
-      <li><b>Freshman's Dream:</b> \((x + y)^p ≡ x^p + y^p (\bmod p)\) where \(x\) and \(y\) are integers and \(p\) is prime (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/freshmans_dream'>proof</a>).</li>
-      <li>Inverses:<SubList>
+      <li data-source={35}><b>Fermat's Little Theorem:</b> \(a^p ≡ a \bmod p \) for prime \(p\) and an integer \(a\) (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/fermats_little_theorem'>proof</a>).</li>
+      <li data-source={35}><b>Freshman's Dream:</b> \((x + y)^p ≡ x^p + y^p (\bmod p)\) where \(x\) and \(y\) are integers and \(p\) is prime (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/freshmans_dream'>proof</a>).</li>
+      <li data-source={35}>Inverses:<SubList>
         <li>If \((a, m) = 1\), then there is a unique integer \(b \bmod m\) such that \(ab ≡ 1 \bmod m\). This \(b\) is denoted by \({"\\frac{1}{a}"}\) or \(a^{"{-1}"} \bmod m\) (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/modular_inverse'>proof</a>).</li>
         <li>The congruence \(x^2 ≡ 1 \bmod p\) has only the solutions \(x ≡ ±1 \bmod p\) (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/x_square_solution'>proof</a>).</li>
         <li><b>Wilson's Theorem:</b> If \(p\) is a prime then \((p - 1)! ≡ -1 \bmod p\) (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/wilsons_theorem'>proof</a>).</li>
         <li>The congruence \(x^2 ≡ -1 \bmod p\) is solvable if and only if \(p = 2\) or \(p ≡ 1 \bmod 4\). If \(p ≡ 1 \bmod 4\), then \(x = (\frac{"{p-1}{2}"})!\) (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/x_square_solvable'>proof</a>).</li>
       </SubList></li>
-      <li>Congruence (equation):<SubList>
+      <li data-source={35}>Congruence (equation):<SubList>
         <li>A congruence (equation) is of the form \({"a_nx^n + a_{n-1}x^{n-1} + \\ldots + a_0 ≡ 0 \\bmod m"}\) where \(a_n \ldots a_0\) are integers.</li>
         <li><b>Linear Congruence:</b> \(ax ≡ b \bmod m\).</li>
         <li>Let \(g = (a, m)\). Then there is a solution to \(ax ≡ b \bmod m\) if and only if \(g|b\). <a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/congruence_solution'>How to find solutions?</a></li>
