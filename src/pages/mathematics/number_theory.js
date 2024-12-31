@@ -108,6 +108,14 @@ export const content = <>
           <li>There is a lower bound on \(e\) (<a href='https://www.deriveit.net/discrete_mathematics/divisibility_and_gcd/legendres_formula_lower_bound'>proof</a>):</li>
           <MathStuff>$${"e \\le \\frac{ n }{p - 1 }"}$$</MathStuff>
         </SubList></li>
+        <li>Divisibility rules:<SubList>
+          <li>An integer is divisible by 2 if its last digit is divisible by 2.</li>
+          <li>An integer is divisble by 3 if the sum of its digits is divisible by 3.</li>
+          <li>An integer is divisible by 5 if its last digit is 5 or 0.</li>
+          <li>An integer is divisible by 6 if it is divisible by both 2 and 3.</li>
+          <li>An integer is divisible by 7 if the alternating sum of blocks of three from is divisible by 7.</li>
+          <li>An integer is divisible by 11 if the integer obtained by alternately adding and substracting the digits is divisible by 11.</li>
+        </SubList></li>
       </ul>
     </div>
   </div>
@@ -115,20 +123,27 @@ export const content = <>
   <h2 id="congruences">Congruences</h2>
   <div className="content">
     <ul style={{width: "49%",float: "left",marginLeft: "0.5%", marginRight: "0.5%"}}>
-      <li data-source={35}><b>Modulo:</b><SubList>
+      <li data-source={54}><b>Modulo:</b><SubList>
         <li><a href='https://en.wikipedia.org/wiki/Modular_arithmetic'><b>Modular arithmetic</b> is a system of arithmetic for integers, where numbers "wrap around" when reaching a certain value, called the <b>modulus</b></a>.</li>
-        <li data-source={54}>Let \(a\), \(b\), \(m\) be integers, with \(m = 0\). We say \(a\) is <b>congruent</b> to \(b\) modulo \(m\) (represented as \(a ≡ b \bmod m\)) if \(a\) and \(b\) have the same remainder when divided \(m\) (which is also if \(m|b-a\)) .</li>
-        <li data-source={54}>Let \([a ≡ b \bmod m]\):<SubList>
+        <li>Let \(a\), \(b\), \(m\) be integers, with \(m = 0\). We say \(a\) is <b>congruent</b> to \(b\) modulo \(m\) (represented as \(a ≡ b \bmod m\)) if \(a\) and \(b\) have the same remainder when divided \(m\) (which is also if \(m|b-a\)) .</li>
+        <li>Let \([a ≡ b \bmod m]\):<SubList>
           <li>If \([k ≡ j \bmod m]\), then \([a + k ≡ b + j \bmod m]\) and \([ak ≡ bj \bmod m]\)</li>
           <li>If \([n|m]\), then \([a ≡ b \bmod nm]\).</li>
+          <li>\((a, m) = (b, m)\).</li>
           <li>If \(c\) is a positive integer, then \([ca ≡ cb \bmod cm]\).</li>
           <li>If \(d|a\), \(d|b\) and \(d|m\), then \([{"\\frac{a}{d} ≡ \\frac{b}{d} \\bmod \\frac{m}{d}"}]\).</li>
-          <li>\((a, m) = (b, m)\).</li>
           <li>If \([c ≡ d \bmod m]\), \(c|a\) and \(d|b\), then \([{"\\frac{a}{d} ≡ \\frac{b}{d} \\bmod m"}]\).</li>
         </SubList></li>
-        <li data-source={54}>Consider the congruencce \(6a ≡ 6b \bmod 3\), which is true for all integers \(a\) and \(b\). It is a natural tendency to cancel out the 6 on each side, leaving \(a ≡ b \bmod 3\). This is wrong.</li>
-        <li data-source={54}>\([ca ≡ cb \bmod m] \iff [a ≡ b \bmod m/(c, m)]\).</li>
-        <li data-source={54}>If \(c\) is an even integer, then \([c^2 ≡ 0 \bmod 4]\). If \(c\) is an odd integer, then \([c^2 ≡ 1 \bmod 4]\) and \([c^2 ≡ 1 \bmod 8]\)</li>
+        <li>Consider the congruencce \(6a ≡ 6b \bmod 3\), which is true for all integers \(a\) and \(b\). It is a natural tendency to cancel out the 6 on each side, leaving \(a ≡ b \bmod 3\). This is wrong.</li>
+        <li>\([ca ≡ cb \bmod m] \iff [a ≡ b \bmod m/(c, m)]\).</li>
+        <li>If \((a ≡ b \bmod m)\), \((a ≡ b \bmod n)\) and gcd(m, n) = 1, then \((a ≡ b \bmod mn)\).</li>
+        <li>If \(c\) is an even integer, then \([c^2 ≡ 0 \bmod 4]\). If \(c\) is an odd integer, then \([c^2 ≡ 1 \bmod 4]\) and \([c^2 ≡ 1 \bmod 8]\)</li>
+        <li>If n is odd and \((3 ∤ n)\), then \((n^2 ≡ 1 \bmod 24)\).</li>
+        <li>If n is a positve integer and \((n ≡ 3 \bmod 4)\), then n cannot be written as a sum of two square integers.</li>
+        <li>If \(p\) is prime and \((a^2 ≡ b^2 \bmod p)\), then \((a ≡ ±b \bmod p)\).</li>
+        <li>1 + 2 + 3 + ... + (n-1) ≡ 0 \(\bmod n\) if and only if \(n\) is odd.</li>
+        <li>If 1<sup>2</sup> + 2<sup>2</sup> + 3<sup>2</sup> + ... + (n-1)<sup>2</sup> ≡ 0 \(\bmod n\), then n ≡ ±1 \(\bmod 6\).</li>
+        <li>1<sup>3</sup> + 2<sup>3</sup> + 3<sup>3</sup> + ... + (n-1)<sup>3</sup> ≡ 0 \(\bmod n\), then n is not congruent to 2 mod 4</li>
       </SubList></li>
       <li data-source={54}>Congruence modulo \(m\) is an equivalence relation on \(\mathbb{"{Z}"}\) (set of integers):<SubList>
         <li>Since any integer divides 0, then \(m | 0\), and therefore \(m | a - a\). This means \(a ≡ a \bmod m\), and this shows that congruence modulo \(m\) is reflexive on \(\mathbb{"{Z}"}\).</li>
@@ -154,11 +169,13 @@ export const content = <>
         <li data-source={35}>Take any complete residue system mod \(m\) and take the subset consisting of all the integers in it which are coprime to \(m\) - these will form a <b>reduced residue system</b>.</li>
         <li data-source={35}>If \(m = 12\), then \({"\\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 \\}"}\) would be a complete residue system and the reduced residue system would be \({"\\{1, 5, 7, 11\\}"}\).</li>
         <li data-source={54}>The set \({"\\{ 0, 1, 2, \\ldots, m-1 \\} "}\) is said to be the <b>set of least nonnegative residues modulo m</b>.</li>
+        <li data-source={4}>If \((a, m) = 1\) and if \(r^1, \ldots, r^{"{φ(m)}"}\) is a reduced residue system (modulo \(m\)), then \(ar^1, \ldots, ar^{"{φ(m)}"}\) is also a reduced residue system.</li>
         <li data-source={35}>The number of elements in a reduced residue system mod \(m\) is called <b>Euler's totient function</b>: \(\phi(m)\).</li>
         <li data-source={4}>A <b>totative</b> of a given positive integer \(m\) is an integer \(k\) such that \(0 \lt k \le m\) and \(k\) is coprime to \(m\). Euler's totient function \(\phi(m)\) counts the number of totatives of \(m\).</li>
         <li data-source={35}><b>Euler's Theorem:</b> If \((a, m) = 1\), then \({"a^{\\phi(m)} ≡ 1 \\bmod m"}\).</li>
       </SubList></li>
-      <li data-source={54}><b>Linear Congruences:</b><SubList>
+      <li>If \(p\) is prime and \((a^2 ≡ a \bmod p)\), then \((a ≡ 0)\) or \((a ≡ 1)\).</li>
+      <li data-source={54}>Linear Congruences in one variable:<SubList>
         <li>A congruence of the form \(ax ≡ b \bmod m\) is said to be a <b>linear congruence</b> in the variable \(x\). The congruence is linear in the sense that the variable \(x\) occurs to the first power.</li>
         <li></li>
         <li></li>
