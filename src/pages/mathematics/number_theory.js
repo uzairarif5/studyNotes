@@ -134,7 +134,7 @@ export const content = <>
           <li>If \(d|a\), \(d|b\) and \(d|m\), then \([{"\\frac{a}{d} ≡ \\frac{b}{d} \\bmod \\frac{m}{d}"}]\).</li>
           <li>If \([c ≡ d \bmod m]\), \(c|a\) and \(d|b\), then \([{"\\frac{a}{d} ≡ \\frac{b}{d} \\bmod m"}]\).</li>
         </SubList></li>
-        <li>Consider the congruencce \(6a ≡ 6b \bmod 3\), which is true for all integers \(a\) and \(b\). It is a natural tendency to cancel out the 6 on each side, leaving \(a ≡ b \bmod 3\). This is wrong.</li>
+        <li>Consider the congruence \(6a ≡ 6b \bmod 3\), which is true for all integers \(a\) and \(b\). It is a natural tendency to cancel out the 6 on each side, leaving \(a ≡ b \bmod 3\). This is wrong.</li>
         <li>\([ca ≡ cb \bmod m] \iff [a ≡ b \bmod m/(c, m)]\).</li>
         <li>If \((a ≡ b \bmod m)\), \((a ≡ b \bmod n)\) and gcd(m, n) = 1, then \((a ≡ b \bmod mn)\).</li>
         <li>If \(c\) is an even integer, then \([c^2 ≡ 0 \bmod 4]\). If \(c\) is an odd integer, then \([c^2 ≡ 1 \bmod 4]\) and \([c^2 ≡ 1 \bmod 8]\)</li>
@@ -175,30 +175,27 @@ export const content = <>
         <li data-source={35}><b>Euler's Theorem:</b> If \((a, m) = 1\), then \({"a^{\\phi(m)} ≡ 1 \\bmod m"}\).</li>
       </SubList></li>
       <li>If \(p\) is prime and \((a^2 ≡ a \bmod p)\), then \((a ≡ 0)\) or \((a ≡ 1)\).</li>
-      <li data-source={54}>Linear Congruences in one variable:<SubList>
-        <li>A congruence of the form \(ax ≡ b \bmod m\) is said to be a <b>linear congruence</b> in the variable \(x\). The congruence is linear in the sense that the variable \(x\) occurs to the first power.</li>
-        <li></li>
-        <li></li>
+      <li>Congruence (equation):<SubList>
+        <li data-source={35}>A congruence (equation) is of the form \({"a_nx^n + a_{n-1}x^{n-1} + \\ldots + a_0 ≡ 0 \\bmod m"}\) where \(a_n \ldots a_0\) are integers.</li>
+        <li data-source={54}>A congruence of the form \(ax ≡ b \bmod m\) is said to be a <b>linear congruence</b> in the variable \(x\). The congruence is linear in the sense that the variable \(x\) occurs to the first power.</li>
+        <li data-source={54}>If one element of a conguence class is a solution to \(ax ≡ b \bmod m\), then all elements of the congruence class solutions of \(ax ≡ b \bmod m\). Any linear congruence in one variable has either no solution in \(\mathbb{"{Z}"}\) or infinitely many solutions in \(\mathbb{"{Z}"}\).</li>
+        <li className="ownExplanation">Let \(g = (a, m)\). Since \(g\) is the smallest positive linear combination, then \(g = ap - mq\), and one of the solution to the linear congruence is \(\frac{"{b}{g}"}p\\).</li>
+        <li className="ownExplanation">There are infinitely many solutions of the form: \(\frac{"{b}{g}"}p + \\frac{"{m}{g}"} n\), where \(n = 0, 1, 2, \\ldots\). A linear congruence has \\(g\\) incongruent solutions, so \(n = 0, 1, 2, \\ldots, (g-1)\) is sufficient.</li>
       </SubList></li>
-      <li data-source={35}><b>Fermat's Little Theorem:</b> \(a^p ≡ a \bmod p \) for prime \(p\) and an integer \(a\) (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/fermats_little_theorem'>proof</a>).</li>
-      <li data-source={35}><b>Freshman's Dream:</b> \((x + y)^p ≡ x^p + y^p (\bmod p)\) where \(x\) and \(y\) are integers and \(p\) is prime (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/freshmans_dream'>proof</a>).</li>
+      <li data-source={35}><b>Fermat's Little Theorem:</b> \(a^p ≡ a \bmod p \) for prime \(p\) and an integer \(a\).</li>
+      <li data-source={35}><b>Freshman's dream:</b> \((x + y)^p ≡ x^p + y^p (\bmod p)\) where \(x\) and \(y\) are integers and \(p\) is prime.</li>
       <li data-source={35}>Inverses:<SubList>
-        <li>If \((a, m) = 1\), then there is a unique integer \(b \bmod m\) such that \(ab ≡ 1 \bmod m\). This \(b\) is denoted by \({"\\frac{1}{a}"}\) or \(a^{"{-1}"} \bmod m\) (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/modular_inverse'>proof</a>).</li>
-        <li>The congruence \(x^2 ≡ 1 \bmod p\) has only the solutions \(x ≡ ±1 \bmod p\) (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/x_square_solution'>proof</a>).</li>
-        <li><b>Wilson's Theorem:</b> If \(p\) is a prime then \((p - 1)! ≡ -1 \bmod p\) (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/wilsons_theorem'>proof</a>).</li>
-        <li>The congruence \(x^2 ≡ -1 \bmod p\) is solvable if and only if \(p = 2\) or \(p ≡ 1 \bmod 4\). If \(p ≡ 1 \bmod 4\), then \(x = (\frac{"{p-1}{2}"})!\) (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/x_square_solvable'>proof</a>).</li>
-      </SubList></li>
-      <li data-source={35}>Congruence (equation):<SubList>
-        <li>A congruence (equation) is of the form \({"a_nx^n + a_{n-1}x^{n-1} + \\ldots + a_0 ≡ 0 \\bmod m"}\) where \(a_n \ldots a_0\) are integers.</li>
-        <li><b>Linear Congruence:</b> \(ax ≡ b \bmod m\).</li>
-        <li>Let \(g = (a, m)\). Then there is a solution to \(ax ≡ b \bmod m\) if and only if \(g|b\). <a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/congruence_solution'>How to find solutions?</a></li>
+        <li>If \((a, m) = 1\), then there is a unique integer \(b \bmod m\) such that \(ab ≡ 1 \bmod m\). This \(b\) is denoted by \({"\\frac{1}{a}"}\) or \(a^{"{-1}"} \bmod m\).</li>
+        <li><b>Wilson's Theorem:</b> If \(p\) is a prime then \((p - 1)! ≡ -1 \bmod p\).</li>
+        <li>The congruence \(x^2 ≡ -1 \bmod p\) is solvable if and only if \(p = 2\) or \(p ≡ 1 \bmod 4\). If \(p ≡ 1 \bmod 4\), then \(x = (\frac{"{p-1}{2}"})!\).</li>
       </SubList></li>
     </ul>
     <ul style={{width: "49%",float: "right",marginLeft: "0.5%", marginRight: "0.5%"}}>
-      <li data-source={35}><b>Chinese Remainder Theorem:</b><SubList>
-        <li>Suppose we have a systme of congruences of moduli:</li>
-        <MathStuff>$${"\\begin{align} x &≡ a_1 \\bmod m_1 \\\\ x &≡ a_2 \\bmod m_2 \\\\ & \\quad \\vdots \\\\ x &≡ a_k \\bmod m_k \\end{align}"}$$</MathStuff>
-        <li><b>Chinese Remainder Theorem:</b> If the moduli are coprime in pairs (\((m_i, m_j ) = 1\) for \(i \ne j\)), then the system has a unique solution mod \(m_1m_2 \ldots m_k\) (<a href='https://www.deriveit.net/discrete_mathematics/modular_arithmetic/chinese_remainder_theorem'>proof</a>).</li>
+      <li data-source={54}><b>Chinese Remainder Theorem:</b><SubList>
+        <li>Suppose we have a system of congruences of moduli:</li>
+        <MathStuff>$${"\\begin{align} x &≡ b_1 \\bmod m_1 \\\\ x &≡ b_2 \\bmod m_2 \\\\ & \\quad \\vdots \\\\ x &≡ b_k \\bmod m_k \\end{align}"}$$</MathStuff>
+        <li><b>Chinese Remainder Theorem:</b> If the moduli are pairwise relatively prime, then the system has a unique solution mod \(m_1m_2 \ldots m_k\).</li>
+        <li>Let \(M = m_1m_2 \ldots m_k\) and \(M_i = \frac{"{M}{m_i}"}\), then the solution is \(M_1M_1^{"{-1}"} b_1 + M_2M_2^{"{-1}"} b_2 + M_3M_3^{"{-1}"} b_3 + \ldots + M_kM_k^{"{-1}"} b_k\).</li>
       </SubList></li>
     </ul>
   </div>
