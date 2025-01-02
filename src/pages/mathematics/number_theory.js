@@ -169,7 +169,7 @@ export const content = <>
         <li data-source={35}>Take any complete residue system mod \(m\) and take the subset consisting of all the integers in it which are coprime to \(m\) - these will form a <b>reduced residue system</b>.</li>
         <li data-source={35}>If \(m = 12\), then \({"\\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 \\}"}\) would be a complete residue system and the reduced residue system would be \({"\\{1, 5, 7, 11\\}"}\).</li>
         <li data-source={54}>The set \({"\\{ 0, 1, 2, \\ldots, m-1 \\} "}\) is said to be the <b>set of least nonnegative residues modulo m</b>.</li>
-        <li data-source={4}>If \((a, m) = 1\) and if \(r^1, \ldots, r^{"{φ(m)}"}\) is a reduced residue system (modulo \(m\)), then \(ar^1, \ldots, ar^{"{φ(m)}"}\) is also a reduced residue system.</li>
+        <li data-source={4}>If \((a, m) = 1\) and if \({"\\{r^1, \ldots, r^{φ(m)} \\}"}\) is a reduced residue system (modulo \(m\)), then \({"\\{ ar^1, \ldots, ar^{φ(m)} \\}"}\) is also a reduced residue system.</li>
         <li data-source={35}>The number of elements in a reduced residue system mod \(m\) is called <b>Euler's totient function</b>: \(\phi(m)\).</li>
         <li data-source={4}>A <b>totative</b> of a given positive integer \(m\) is an integer \(k\) such that \(0 \lt k \le m\) and \(k\) is coprime to \(m\). Euler's totient function \(\phi(m)\) counts the number of totatives of \(m\).</li>
         <li data-source={35}><b>Euler's Theorem:</b> If \((a, m) = 1\), then \({"a^{\\phi(m)} ≡ 1 \\bmod m"}\).</li>
@@ -179,16 +179,12 @@ export const content = <>
         <li data-source={35}>A congruence (equation) is of the form \({"a_nx^n + a_{n-1}x^{n-1} + \\ldots + a_0 ≡ 0 \\bmod m"}\) where \(a_n \ldots a_0\) are integers.</li>
         <li data-source={54}>A congruence of the form \(ax ≡ b \bmod m\) is said to be a <b>linear congruence</b> in the variable \(x\). The congruence is linear in the sense that the variable \(x\) occurs to the first power.</li>
         <li data-source={54}>If one element of a conguence class is a solution to \(ax ≡ b \bmod m\), then all elements of the congruence class solutions of \(ax ≡ b \bmod m\). Any linear congruence in one variable has either no solution in \(\mathbb{"{Z}"}\) or infinitely many solutions in \(\mathbb{"{Z}"}\).</li>
-        <li className="ownExplanation">Let \(g = (a, m)\). Since \(g\) is the smallest positive linear combination, then \(g = ap - mq\), and one of the solution to the linear congruence is \(\frac{"{b}{g}"}p\\).</li>
-        <li className="ownExplanation">There are infinitely many solutions of the form: \(\frac{"{b}{g}"}p + \\frac{"{m}{g}"} n\), where \(n = 0, 1, 2, \\ldots\). A linear congruence has \\(g\\) incongruent solutions, so \(n = 0, 1, 2, \\ldots, (g-1)\) is sufficient.</li>
+        <li className="ownExplanation">Let \(g = (a, m)\). Since \(g\) is the smallest positive linear combination, then \(g = ap - mq\), and one of the solution to the linear congruence is \( \frac{"{b}{g}"}p \).</li>
+        <li className="ownExplanation">There are infinitely many solutions of the form: \(\frac{"{b}{g}"}p + \frac{"{m}{g}"} n\), where \(n = 0, 1, 2, \ldots\). A linear congruence has \(g\) incongruent solutions, so \(n = 0, 1, 2, \ldots, (g-1)\) is sufficient.</li>
+        <li data-source={35}>If \((a, m) = 1\), then there is a unique integer \(b \bmod m\) such that \(ab ≡ 1 \bmod m\). This \(b\) is denoted by \({"\\frac{1}{a}"}\) or \(a^{"{-1}"} \bmod m\).</li>
       </SubList></li>
       <li data-source={35}><b>Fermat's Little Theorem:</b> \(a^p ≡ a \bmod p \) for prime \(p\) and an integer \(a\).</li>
       <li data-source={35}><b>Freshman's dream:</b> \((x + y)^p ≡ x^p + y^p (\bmod p)\) where \(x\) and \(y\) are integers and \(p\) is prime.</li>
-      <li data-source={35}>Inverses:<SubList>
-        <li>If \((a, m) = 1\), then there is a unique integer \(b \bmod m\) such that \(ab ≡ 1 \bmod m\). This \(b\) is denoted by \({"\\frac{1}{a}"}\) or \(a^{"{-1}"} \bmod m\).</li>
-        <li><b>Wilson's Theorem:</b> If \(p\) is a prime then \((p - 1)! ≡ -1 \bmod p\).</li>
-        <li>The congruence \(x^2 ≡ -1 \bmod p\) is solvable if and only if \(p = 2\) or \(p ≡ 1 \bmod 4\). If \(p ≡ 1 \bmod 4\), then \(x = (\frac{"{p-1}{2}"})!\).</li>
-      </SubList></li>
     </ul>
     <ul style={{width: "49%",float: "right",marginLeft: "0.5%", marginRight: "0.5%"}}>
       <li data-source={54}><b>Chinese Remainder Theorem:</b><SubList>
@@ -196,7 +192,10 @@ export const content = <>
         <MathStuff>$${"\\begin{align} x &≡ b_1 \\bmod m_1 \\\\ x &≡ b_2 \\bmod m_2 \\\\ & \\quad \\vdots \\\\ x &≡ b_k \\bmod m_k \\end{align}"}$$</MathStuff>
         <li><b>Chinese Remainder Theorem:</b> If the moduli are pairwise relatively prime, then the system has a unique solution mod \(m_1m_2 \ldots m_k\).</li>
         <li>Let \(M = m_1m_2 \ldots m_k\) and \(M_i = \frac{"{M}{m_i}"}\), then the solution is \(M_1M_1^{"{-1}"} b_1 + M_2M_2^{"{-1}"} b_2 + M_3M_3^{"{-1}"} b_3 + \ldots + M_kM_k^{"{-1}"} b_k\).</li>
+        <MathStuff>$$ M_1M_1^{"{-1}"} b_1 + M_2M_2^{"{-1}"} b_2 + M_3M_3^{"{-1}"} b_3 + \ldots + M_kM_k^{"{-1}"} b_k $$</MathStuff>
       </SubList></li>
+      <li data-source={35}><b>Wilson's Theorem:</b> If \(p\) is a prime then \((p - 1)! ≡ -1 \bmod p\).</li>
+      <li data-source={35}>The congruence \(x^2 ≡ -1 \bmod p\) is solvable if and only if \(p = 2\) or \(p ≡ 1 \bmod 4\). If \(p ≡ 1 \bmod 4\), then \(x = (\frac{"{p-1}{2}"})!\).</li>
     </ul>
   </div>
 </>
