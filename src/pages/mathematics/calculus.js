@@ -1001,14 +1001,14 @@ export const content = <>
 					<MathStuff>$$ \int^\infty_{"{N+1}"} f(x) dx \lt R_N \lt \int^\infty_N f(x) dx $$</MathStuff>
 				</SubList></li>
 				<li><b>Comparison Test:</b><SubList>
-					<li>Suppose there exists an integer \(N\) such that \(0≤ a_n ≤ b_n\) for all \(n≥N\). If \(\sum^∞_{"{n=1}"}=b_n\) converges, then \(\sum^∞_{"{n=1}"}=a_n\) converges.</li>
-					<li>Suppose there exists an integer \(N\) such that \(0 \ge a_n \ge b_n\) for all \(n≥N\). If \( \sum^∞_{"{n=1}"}= b_n \) diverges, then \(\sum^∞_{"{n=1}"}= a_n\) diverges.</li>
+					<li>Suppose there exists an integer \(N\) such that \(0≤ a_n ≤ b_n\) for all \(n≥N\). If \(\sum^∞_{"{n=1}"} b_n\) converges, then \(\sum^∞_{"{n=1}"} a_n\) converges.</li>
+					<li>Suppose there exists an integer \(N\) such that \(0 \ge a_n \ge b_n\) for all \(n≥N\). If \( \sum^∞_{"{n=1}"} b_n \) diverges, then \(\sum^∞_{"{n=1}"} a_n\) diverges.</li>
 				</SubList></li>
 				<li>Limit Comparison Test:<SubList>
 					<li>Let \(a_n, b_n≥ 0\) for all \(n≥1\):<SubList opened>
-						<li>If \(\lim_{"{n→∞}"} \frac{"{a_n}{b_n}"} = L ≠ 0\), then \(\sum^∞_{"{n=1}"}=a_n\) and \(\sum^∞_{"{n=1}"}=b_n\) both converge or both diverge.</li>
-						<li>If \(\lim_{"{n→∞}"} \frac{"{a_n}{b_n}"} = 0\) and \(\sum^∞_{"{n=1}"}=b_n\) converges, then \(\sum^∞_{"{n=1}"}=a_n\) converges.</li>
-						<li>If \(\lim_{"{n→∞}"} \frac{"{a_n}{b_n}"} = \infty\) and \(\sum^∞_{"{n=1}"}=b_n\) diverges, then \(\sum^∞_{"{n=1}"}=a_n\) diverges.</li>
+						<li>If \(\lim_{"{n→∞}"} \frac{"{a_n}{b_n}"} = L ≠ 0\), then \(\sum^∞_{"{n=1}"} a_n\) and \(\sum^∞_{"{n=1}"} b_n\) both converge or both diverge.</li>
+						<li>If \(\lim_{"{n→∞}"} \frac{"{a_n}{b_n}"} = 0\) and \(\sum^∞_{"{n=1}"} b_n\) converges, then \(\sum^∞_{"{n=1}"} a_n\) converges.</li>
+						<li>If \(\lim_{"{n→∞}"} \frac{"{a_n}{b_n}"} = \infty\) and \(\sum^∞_{"{n=1}"} b_n\) diverges, then \(\sum^∞_{"{n=1}"} a_n\) diverges.</li>
 					</SubList></li>
 				</SubList></li>
 			</ul>
