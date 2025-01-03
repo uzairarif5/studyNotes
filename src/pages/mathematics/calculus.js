@@ -6,7 +6,7 @@ import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 
 export const title = "Calculus Notes";
 
-export const sourcesColor = {36: "rgb(80, 130, 160)", 65: "rgb(110, 110, 140)"};
+export const sourcesColor = {36: "rgb(80, 130, 160)", 65: "rgb(110, 110, 140)", 4: "rgb(220,220,220)"};
 export const content = <>
 
 	<h1>Calculus Notes</h1>
@@ -71,7 +71,7 @@ export const content = <>
 						<li>\({"\\lim_{x \\to a} c = c"}\)</li>
 						<li>\({"\\lim_{x \\to a} x = a"}\)</li>
 						<li>\({"\\lim_{x \\to a} [f(x)]^n = [\\lim_{x \\to a} f(x)]^n"}\)</li>
-						<li>\({"\\lim_{x \\to a} f(g(x)) = f(\\lim_{x \\to a} g(x))"}\) if \(f\) is continous there.</li>
+						<li>\({"\\lim_{x \\to a} f(g(x)) = f(\\lim_{x \\to a} g(x))"}\) if \(f\) is continuous there.</li>
 						<li>\({"\\lim_{x \\to a}\\sqrt[n]{f(x)} = \\sqrt[n]{\\lim_{x \\to a} f(x)}"}\):<SubList>
 							<li>Let \({"\\lim_{x \\to a} f(x) = L"}\).</li>
 							<li>\({"\\lim_{x \\to a}\\sqrt[n]{f(x)} = \\sqrt[n]{L}"}\) for all \(L\) if \(n\) is odd.</li>
@@ -545,6 +545,8 @@ export const content = <>
 					<li>We could evaluate the function at any point \(x^*_i\) in the subinterval \([x_{"{i-1}"},x_i]\), and use \(f(x^*_i)\) as the height of our rectangle. This gives us an estimate for the area of the form:</li>
 					<MathStuff>$$ A \approx \sum^n_{"{i=1}"} f(x_i^*) \Delta x $$</MathStuff>
 					<li>A sum of this form is called a <b>Riemann sum</b>.</li>
+					<li>If we choose \(x^*_i\) such that for \(i=1,2,3,…,n\), \(f(x^*_i) ≥ f(x)\) for all \(x∈[x_{"{i-1}"},x_i]\), then the Riemann sum is called an <b>upper sum</b>. This sum is an overestimate.</li>
+					<li>If we choose \(x^*_i\) so that for \(i=1,2,3,…,n\), \(f(x^*_i) \le f(x)\) for all \([x_{"{i-1}"},x_i]\), then the Riemann sum is called a <b>lower sum</b>. This sum is an underestimate.</li>
 				</SubList></li>
 				<li>The definite integral:<SubList>
 					<li>If \(f(x)\) is a function defined on an interval \([a,b]\), the definite integral of \(f\) from \(a\) to \(b\) is given by:</li>
@@ -952,7 +954,6 @@ export const content = <>
 					<MathStuff>$$ \sum^\infty_{"{n=1}"} a_n = a_1 + a_2 + a_3 + \dots $$</MathStuff>
 					<li>A <b>partial sum</b> of an infinite series is a finite sum of the form:</li>
 					<MathStuff>$$ \sum^k_{"{n=1}"} a_n = a_1 + a_2 + a_3 + \dots + a_k $$</MathStuff>
-					<li>A <b>harmonic series</b> \(\left( 1 + {"\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4}"} + \ldots \right)\) does not converge.</li>
 					<li className="ownExplanation">An <b>arithmetic series</b> is the sum of an arithmetic sequence. A general formula for it is \(S_k = \frac{"{k}{2}(2 a_0 + (k-1)d)"}\).</li>
 				</SubList></li>
 				<li><b>Geometric series:</b><SubList>
@@ -971,8 +972,32 @@ export const content = <>
 					</SubList></li>
 			</ul>
 		</div>
-		<div data-source={65} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
-
+		<div style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
+			<ul>
+				<li className={"ownExplanation"}><b>Divergence test:</b><SubList>
+					<li>If \(\lim_{"{n \\to \\infty}"} a_n \to L\) where \(L\) is a non-zero constant or if \(\lim_{"{n \\to \\infty}"} a_n \) does not exist, then \(\sum^∞_{"{n=1}"} a_n\) cannot converge.</li>
+					<li>If \(\lim_{"{n \\to \\infty}"} a_n \to 0\), then \(\sum^∞_{"{n=1}"} a_n\) may or may not converge.</li>
+					<li>A <b>harmonic series</b> \(\left( 1 + {"\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4}"} + \ldots \right)\) does not converge.</li>
+				</SubList></li>
+				<li className="ownExplanation"><b>Integral test:</b><SubList>
+					<li>Consider a series \(\sum_{"{n=1}"}^∞ a_n\).</li>
+					<li>Let there be an integer \(N\) and a monotone decreasing function \(f\), such that \(f\) is defined on \([N, ∞)\) and \(f(n) = a_n\) for \(n \ge N\).</li>
+					<li>Let \(N=2\), and let \(f\) be monotone decreasing when \(x \gt 0\), then the left Riemann sum of \(\int^6_2 f(x) dx\) would be the sum of the rectangles shown below.</li>
+					<ImgComp src={require("./calculus_pics/2.png")} width="60%" />
+					<li>The area of the recantagle between 2 and 3 is \(f(2)*1 = a_2 *1 = a_2\), the area of the recantagle between 3 and 4 is \(f(3)*1 = a_3 *1 = a_3\), and so on.</li>
+					<li>\(\sum_{"{n=2}"}^5 a_n\) would be an overestimate of \(\int^6_2 f(x) dx\). This means:</li>
+					<MathStuff>$$ \sum_{"{n=2}"}^5 a_n \ge \int^6_2 f(x) dx $$</MathStuff>
+					<li>The right Riemann sum of \(\int^5_2 f(x) dx\) would be the sum of the rectangles shown below.</li>
+					<li>\(\sum_{"{n=3}"}^5 a_n\) would be an underestimate of \(\int^5_2 f(x) dx\). This means:</li>
+					<MathStuff>$$\begin{"{gather}"} \sum_{"{n=3}"}^5 a_n \le \int^5_2 f(x) dx \\\\ \sum_{"{n=2}"}^5 a_n \le a_2 + \int^5_2 f(x) dx \end{"{gather}"}$$</MathStuff>
+					<li>Putting them together:</li>
+					<MathStuff>$$ \int^6_2 f(x) dx \le \sum_{"{n=2}"}^5 a_n \le a_2 + \int^5_2 f(x) dx $$</MathStuff>
+					<li>We can generalize this:</li>
+					<MathStuff>$$ \int^{"{k+1}"}_N f(x) dx \le \sum_{"{n=N}"}^k a_n \le a_N + \int^k_N f(x) dx $$</MathStuff>
+					<li>If we take \(k \to \infty\):</li>
+					<MathStuff>$$ \int^\infty _N f(x) dx \le \sum_{"{n=N}"}^\infty a_n \le a_N + \int_N^\infty f(x) dx $$</MathStuff>
+					</SubList></li>
+			</ul>
 		</div>
 	</div>
 </>
