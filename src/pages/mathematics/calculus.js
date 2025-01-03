@@ -973,13 +973,13 @@ export const content = <>
 			</ul>
 		</div>
 		<div style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
-			<ul>
-				<li className={"ownExplanation"}><b>Divergence test:</b><SubList>
+			<ul className={"ownExplanation"}>
+				<li><b>Divergence test:</b><SubList>
 					<li>If \(\lim_{"{n \\to \\infty}"} a_n \to L\) where \(L\) is a non-zero constant or if \(\lim_{"{n \\to \\infty}"} a_n \) does not exist, then \(\sum^∞_{"{n=1}"} a_n\) cannot converge.</li>
 					<li>If \(\lim_{"{n \\to \\infty}"} a_n \to 0\), then \(\sum^∞_{"{n=1}"} a_n\) may or may not converge.</li>
 					<li>A <b>harmonic series</b> \(\left( 1 + {"\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4}"} + \ldots \right)\) does not converge.</li>
 				</SubList></li>
-				<li className="ownExplanation"><b>Integral test:</b><SubList>
+				<li><b>Integral test:</b><SubList>
 					<li>Consider a series \(\sum_{"{n=1}"}^∞ a_n\).</li>
 					<li>Let there be an integer \(N\) and a monotone decreasing function \(f\), such that \(f\) is defined on \([N, ∞)\) and \(f(n) = a_n\) for \(n \ge N\).</li>
 					<li>Let \(N=2\), and let \(f\) be monotone decreasing when \(x \gt 0\), then the left Riemann sum of \(\int^6_2 f(x) dx\) would be the sum of the rectangles shown below.</li>
@@ -988,6 +988,7 @@ export const content = <>
 					<li>\(\sum_{"{n=2}"}^5 a_n\) would be an overestimate of \(\int^6_2 f(x) dx\). This means:</li>
 					<MathStuff>$$ \sum_{"{n=2}"}^5 a_n \ge \int^6_2 f(x) dx $$</MathStuff>
 					<li>The right Riemann sum of \(\int^5_2 f(x) dx\) would be the sum of the rectangles shown below.</li>
+					<ImgComp src={require("./calculus_pics/3.png")} width="60%" />
 					<li>\(\sum_{"{n=3}"}^5 a_n\) would be an underestimate of \(\int^5_2 f(x) dx\). This means:</li>
 					<MathStuff>$$\begin{"{gather}"} \sum_{"{n=3}"}^5 a_n \le \int^5_2 f(x) dx \\\\ \sum_{"{n=2}"}^5 a_n \le a_2 + \int^5_2 f(x) dx \end{"{gather}"}$$</MathStuff>
 					<li>Putting them together:</li>
