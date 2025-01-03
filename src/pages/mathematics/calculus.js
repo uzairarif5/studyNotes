@@ -6,7 +6,7 @@ import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 
 export const title = "Calculus Notes";
 
-export const sourcesColor = {36: "rgb(80, 130, 160)", 65: "rgb(110, 110, 140)", 4: "rgb(220,220,220)"};
+export const sourcesColor = {36: "rgb(80, 130, 160)", 65: "rgb(110, 110, 140)"};
 export const content = <>
 
 	<h1>Calculus Notes</h1>
@@ -981,23 +981,36 @@ export const content = <>
 				</SubList></li>
 				<li><b>Integral test:</b><SubList>
 					<li>Consider a series \(\sum_{"{n=1}"}^∞ a_n\).</li>
-					<li>Let there be an integer \(N\) and a monotone decreasing function \(f\), such that \(f\) is defined on \([N, ∞)\) and \(f(n) = a_n\) for \(n \ge N\).</li>
-					<li>Let \(N=2\), and let \(f\) be monotone decreasing when \(x \gt 0\), then the left Riemann sum of \(\int^6_2 f(x) dx\) would be the sum of the rectangles shown below.</li>
-					<ImgComp src={require("./calculus_pics/2.png")} width="60%" />
-					<li>The area of the recantagle between 2 and 3 is \(f(2)*1 = a_2 *1 = a_2\), the area of the recantagle between 3 and 4 is \(f(3)*1 = a_3 *1 = a_3\), and so on.</li>
-					<li>\(\sum_{"{n=2}"}^5 a_n\) would be an overestimate of \(\int^6_2 f(x) dx\). This means:</li>
-					<MathStuff>$$ \sum_{"{n=2}"}^5 a_n \ge \int^6_2 f(x) dx $$</MathStuff>
-					<li>The right Riemann sum of \(\int^5_2 f(x) dx\) would be the sum of the rectangles shown below.</li>
-					<ImgComp src={require("./calculus_pics/3.png")} width="60%" />
-					<li>\(\sum_{"{n=3}"}^5 a_n\) would be an underestimate of \(\int^5_2 f(x) dx\). This means:</li>
-					<MathStuff>$$\begin{"{gather}"} \sum_{"{n=3}"}^5 a_n \le \int^5_2 f(x) dx \\\\ \sum_{"{n=2}"}^5 a_n \le a_2 + \int^5_2 f(x) dx \end{"{gather}"}$$</MathStuff>
-					<li>Putting them together:</li>
-					<MathStuff>$$ \int^6_2 f(x) dx \le \sum_{"{n=2}"}^5 a_n \le a_2 + \int^5_2 f(x) dx $$</MathStuff>
-					<li>We can generalize this:</li>
-					<MathStuff>$$ \int^{"{k+1}"}_N f(x) dx \le \sum_{"{n=N}"}^k a_n \le a_N + \int^k_N f(x) dx $$</MathStuff>
-					<li>If we take \(k \to \infty\):</li>
-					<MathStuff>$$ \int^\infty _N f(x) dx \le \sum_{"{n=N}"}^\infty a_n \le a_N + \int_N^\infty f(x) dx $$</MathStuff>
+					<li>Let there be an integer \(N\) and a monotone decreasing function \(f\), such that \(f\) is defined on \([N, ∞)\) and \(f(n) = a_n\) for \(n \ge N\). We can find an approximation of \(\sum_{"{n=N}"}^∞ a_n\) using this:</li>
+					<MathStuff>$$ \int^\infty_N f(x) dx \le \sum_{"{n=N}"}^\infty a_n \le a_N + \int_N^\infty f(x) dx $$</MathStuff>
+				</SubList></li>
+			</ul>
+			<ul data-source={65}>
+				<li><b>The p-Series:</b><SubList>
+					<li>For any real number \(p\), the series \(\sum^\infty_{"{n=1}"}\frac{"{1}{n^p}"}\) is called a <b>p-series</b>.</li>
+					<li>The p-series diverges if \(p \le 1\).</li>
+					<li>If \(p \gt 1\), then \(\sum^\infty_{"{n=1}"}\frac{"{1}{n^p}"}\) converges because\(\int^\infty_1 \frac{"{1}{x^p}"} dx\) converges.</li>
+					<MathStuff>$$ \int^\infty_1 \frac{"{1}{x^p}"} dx = \frac{"{1}{p-1}"} \text{"{ if }"} p \gt 1$$</MathStuff>
+				</SubList></li>
+				<li>Remainder estimate from the integral test:<SubList>
+					<li>Suppose \(\sum_{"{n=1}"}^∞ a_n\) is a convergent series with positive terms.</li>
+					<li>Let \(S_N\) be the \(N\)th partial sum of \(\sum_{"{n=1}"}^∞ a_n\).</li>
+					<li>Let \(R_N\) be defined as:</li>
+					<MathStuff>$$ R_N = \sum_{"{n=N}"}^∞ a_n - S_N = \sum_{"{n=N+1}"}^∞ a_n$$</MathStuff>
+					<li>The <b>remainder estimate</b>:</li>
+					<MathStuff>$$ \int^\infty_{"{N+1}"} f(x) dx \lt R_N \lt \int^\infty_N f(x) dx $$</MathStuff>
+				</SubList></li>
+				<li><b>Comparison Test:</b><SubList>
+					<li>Suppose there exists an integer \(N\) such that \(0≤ a_n ≤ b_n\) for all \(n≥N\). If \(\sum^∞_n=\frac{"{1}{b_n}"}\) converges, then \(\sum^∞_n=\frac{"{1}{a_n}"}\) converges.</li>
+					<li>Suppose there exists an integer \(N\) such that \(0 \ge a_n \ge b_n\) for all \(n≥N\). If \(\sum^∞_n=\frac{"{1}{b_n}"}\) diverges, then \(\sum^∞_n=\frac{"{1}{a_n}"}\) diverges.</li>
+				</SubList></li>
+				<li>Limit Comparison Test:<SubList>
+					<li>Let \(a_n, b_n≥ 0\) for all \(n≥1\):<SubList opened>
+						<li>If \(\lim_{"{n→∞}"} \frac{"{a_n}{b_n}"} = L ≠ 0\), then \(\sum^∞_n=\frac{"{1}{a_n}"}\) and \(\sum^∞_n=\frac{"{1}{b_n}"}\) both converge or both diverge.</li>
+						<li>If \(\lim_{"{n→∞}"} \frac{"{a_n}{b_n}"} = 0\) and \(\sum^∞_n=\frac{"{1}{b_n}"}\) converges, then \(\sum^∞_n=\frac{"{1}{a_n}"}\) converges.</li>
+						<li>If \(\lim_{"{n→∞}"} \frac{"{a_n}{b_n}"} = \infty\) and \(\sum^∞_n=\frac{"{1}{b_n}"}\) diverges, then \(\sum^∞_n=\frac{"{1}{a_n}"}\) diverges.</li>
 					</SubList></li>
+				</SubList></li>
 			</ul>
 		</div>
 	</div>
