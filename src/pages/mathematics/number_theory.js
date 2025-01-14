@@ -138,8 +138,8 @@ export const content = <>
         <li>\([ca ≡ cb \bmod m] \iff [a ≡ b \bmod m/(c, m)]\).</li>
         <li>If \((a ≡ b \bmod m)\), \((a ≡ b \bmod n)\) and gcd(m, n) = 1, then \((a ≡ b \bmod mn)\).</li>
         <li>If \(c\) is an even integer, then \([c^2 ≡ 0 \bmod 4]\). If \(c\) is an odd integer, then \([c^2 ≡ 1 \bmod 4]\) and \([c^2 ≡ 1 \bmod 8]\)</li>
-        <li>If n is odd and \((3 ∤ n)\), then \((n^2 ≡ 1 \bmod 24)\).</li>
-        <li>If n is a positve integer and \((n ≡ 3 \bmod 4)\), then n cannot be written as a sum of two square integers.</li>
+        <li>If \(n\) is odd and \((3 ∤ n)\), then \((n^2 ≡ 1 \bmod 24)\).</li>
+        <li>If \(n\) is a positve integer and \((n ≡ 3 \bmod 4)\), then n cannot be written as a sum of two square integers.</li>
         <li>If \(p\) is prime and \((a^2 ≡ b^2 \bmod p)\), then \((a ≡ ±b \bmod p)\).</li>
         <li>1 + 2 + 3 + ... + (n-1) ≡ 0 \(\bmod n\) if and only if \(n\) is odd.</li>
         <li>If 1<sup>2</sup> + 2<sup>2</sup> + 3<sup>2</sup> + ... + (n-1)<sup>2</sup> ≡ 0 \(\bmod n\), then n ≡ ±1 \(\bmod 6\).</li>
@@ -179,14 +179,24 @@ export const content = <>
         <li data-source={35}>A congruence (equation) is of the form \({"a_nx^n + a_{n-1}x^{n-1} + \\ldots + a_0 ≡ 0 \\bmod m"}\) where \(a_n \ldots a_0\) are integers.</li>
         <li data-source={54}>A congruence of the form \(ax ≡ b \bmod m\) is said to be a <b>linear congruence</b> in the variable \(x\). The congruence is linear in the sense that the variable \(x\) occurs to the first power.</li>
         <li data-source={54}>If one element of a conguence class is a solution to \(ax ≡ b \bmod m\), then all elements of the congruence class solutions of \(ax ≡ b \bmod m\). Any linear congruence in one variable has either no solution in \(\mathbb{"{Z}"}\) or infinitely many solutions in \(\mathbb{"{Z}"}\).</li>
-        <li className="ownExplanation">Let \(g = (a, m)\). Since \(g\) is the smallest positive linear combination, then \(g = ap - mq\), and one of the solution to the linear congruence is \( \frac{"{b}{g}"}p \).</li>
+        <li className="ownExplanation">Let \(g = (a, m)\). A linear congruence will have a solution if and only if \(g|b\). Since \(g\) is the smallest positive linear combination, then \(g = ap - mq\) for some integers \(p\) and \(q\), and one of the solution to the linear congruence is \( \frac{"{b}{g}"}p \).</li>
         <li className="ownExplanation">There are infinitely many solutions of the form: \(\frac{"{b}{g}"}p + \frac{"{m}{g}"} n\), where \(n = 0, 1, 2, \ldots\). A linear congruence has \(g\) incongruent solutions, so \(n = 0, 1, 2, \ldots, (g-1)\) is sufficient.</li>
         <li data-source={35}>If \((a, m) = 1\), then there is a unique integer \(b \bmod m\) such that \(ab ≡ 1 \bmod m\). This \(b\) is denoted by \({"\\frac{1}{a}"}\) or \(a^{"{-1}"} \bmod m\).</li>
       </SubList></li>
-      <li data-source={35}><b>Fermat's Little Theorem:</b> \(a^p ≡ a \bmod p \) for prime \(p\) and an integer \(a\).</li>
-      <li data-source={35}><b>Freshman's dream:</b> \((x + y)^p ≡ x^p + y^p (\bmod p)\) where \(x\) and \(y\) are integers and \(p\) is prime.</li>
+      <li data-source={54}><b>Wilson's Theorem:</b> If \(p\) is a prime then \((p - 1)! ≡ -1 \bmod p\). The converse of this is also true: If \((n - 1)! ≡ -1 \bmod n\), then \(n\) is prime.</li>
+      <li data-source={54}>A prime number \(p\) is called <b>Wilson prime</b> if \((p - 1)! ≡ -1 \bmod p^2\). Only three are known: 5, 13, 563.</li>
     </ul>
     <ul style={{width: "49%",float: "right",marginLeft: "0.5%", marginRight: "0.5%"}}>
+      <li className="ownExplanation">The congruence \(x^2 ≡ -1 \bmod p\) is solvable if and only if \(p = 2\) or \(p ≡ 1 \bmod 4\). If \(p ≡ 1 \bmod 4\), then \(x = (\frac{"{p-1}{2}"})!\).</li>
+      <li data-source={54}><b>Fermat's Little Theorem:</b>:<SubList>
+        <li><b>Fermat's Little Theorem:</b> If \(p | a\), then \(a^{"{p-1}"} ≡ 1 \bmod p \) for prime \(p\) and an integer \(a\).</li>
+        <li><u>Corollary:</u> If \(p | a\), then \(a^p ≡ a \bmod p \).</li>
+        <li><u>Corollary:</u> If \(p \nmid a\), then the inverse of \(a\) modulo \(p\) is \(a^{"{p-2}"}\).</li>
+        <li>Let \(p\) and \(q\) be distinct odd prime integers with \(p-1|q-1\). If \(a\) is an integer where \((a, pq)=1\), then \(a^{"{q-1}"} ≡ 1 \bmod pq\).</li>
+        <li>From both Wilson's theorem and Fermat's little theorem, we can derive \(p|a^p + (p-1)!a\) and \(p|(p-1)! a^p + a\).</li>
+      </SubList></li>
+      <li data-source={54}>If \(n\) is a composite integer and \(2^n ≡ 2 \bmod n\), then \(n\) is a <b>pseudoprime</b>. If \(n\) is a composite integer and \(b^n ≡ b \bmod n\), then \(n\) is a pseudoprime to the base \(b\).</li>
+      <li data-source={35}><b>Freshman's dream:</b> \((x + y)^p ≡ x^p + y^p (\bmod p)\) where \(x\) and \(y\) are integers and \(p\) is prime.</li>
       <li data-source={54}><b>Chinese Remainder Theorem:</b><SubList>
         <li>Suppose we have a system of congruences of moduli:</li>
         <MathStuff>$${"\\begin{align} x &≡ b_1 \\bmod m_1 \\\\ x &≡ b_2 \\bmod m_2 \\\\ & \\quad \\vdots \\\\ x &≡ b_k \\bmod m_k \\end{align}"}$$</MathStuff>
@@ -194,8 +204,6 @@ export const content = <>
         <li>Let \(M = m_1m_2 \ldots m_k\) and \(M_i = \frac{"{M}{m_i}"}\), then the solution is \(M_1M_1^{"{-1}"} b_1 + M_2M_2^{"{-1}"} b_2 + M_3M_3^{"{-1}"} b_3 + \ldots + M_kM_k^{"{-1}"} b_k\).</li>
         <MathStuff>$$ M_1M_1^{"{-1}"} b_1 + M_2M_2^{"{-1}"} b_2 + M_3M_3^{"{-1}"} b_3 + \ldots + M_kM_k^{"{-1}"} b_k $$</MathStuff>
       </SubList></li>
-      <li data-source={35}><b>Wilson's Theorem:</b> If \(p\) is a prime then \((p - 1)! ≡ -1 \bmod p\).</li>
-      <li data-source={35}>The congruence \(x^2 ≡ -1 \bmod p\) is solvable if and only if \(p = 2\) or \(p ≡ 1 \bmod 4\). If \(p ≡ 1 \bmod 4\), then \(x = (\frac{"{p-1}{2}"})!\).</li>
     </ul>
   </div>
 </>

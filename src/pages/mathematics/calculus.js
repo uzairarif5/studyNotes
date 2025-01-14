@@ -998,7 +998,7 @@ export const content = <>
 					<li>Let \(R_N\) be defined as:</li>
 					<MathStuff>$$ R_N = \sum_{"{n=N}"}^∞ a_n - S_N = \sum_{"{n=N+1}"}^∞ a_n$$</MathStuff>
 					<li>The <b>remainder estimate</b>:</li>
-					<MathStuff>$$ \int^\infty_{"{N+1}"} f(x) dx \lt R_N \lt \int^\infty_N f(x) dx $$</MathStuff>
+					<MathStuff>$$\begin{"{gather}"} \int^\infty_{"{N+1}"} f(x) dx \le R_N \le a_{"{N+1}"} \int^\infty_{"{N+1}"} f(x) dx \\ \int^\infty_{"{N+1}"} f(x) dx \le R_N \le \int^\infty_N f(x) dx \end{"{gather}"}$$</MathStuff>
 				</SubList></li>
 				<li><b>Comparison Test:</b><SubList>
 					<li>Suppose there exists an integer \(N\) such that \(0≤ a_n ≤ b_n\) for all \(n≥N\). If \(\sum^∞_{"{n=1}"} b_n\) converges, then \(\sum^∞_{"{n=1}"} a_n\) converges.</li>
