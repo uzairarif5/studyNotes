@@ -975,8 +975,8 @@ export const content = <>
 		<div style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
 			<ul className={"ownExplanation"}>
 				<li><b>Divergence test:</b><SubList>
-					<li>If \(\lim_{"{n \\to \\infty}"} a_n \to L\) where \(L\) is a non-zero constant or if \(\lim_{"{n \\to \\infty}"} a_n \) does not exist, then \(\sum^∞_{"{n=1}"} a_n\) cannot converge.</li>
-					<li>If \(\lim_{"{n \\to \\infty}"} a_n \to 0\), then \(\sum^∞_{"{n=1}"} a_n\) may or may not converge.</li>
+					<li>If \(\lim_{"{n \\to \\infty}"} a_n = L\) where \(L\) is a non-zero constant or if \(\lim_{"{n \\to \\infty}"} a_n \) does not exist, then \(\sum^∞_{"{n=1}"} a_n\) cannot converge.</li>
+					<li>If \(\lim_{"{n \\to \\infty}"} a_n = 0\), then \(\sum^∞_{"{n=1}"} a_n\) may or may not converge.</li>
 					<li>A <b>harmonic series</b> \(\left( 1 + {"\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4}"} + \ldots \right)\) does not converge.</li>
 				</SubList></li>
 				<li><b>Integral test:</b><SubList>
@@ -1004,12 +1004,37 @@ export const content = <>
 					<li>Suppose there exists an integer \(N\) such that \(0≤ a_n ≤ b_n\) for all \(n≥N\). If \(\sum^∞_{"{n=1}"} b_n\) converges, then \(\sum^∞_{"{n=1}"} a_n\) converges.</li>
 					<li>Suppose there exists an integer \(N\) such that \(0 \ge a_n \ge b_n\) for all \(n≥N\). If \( \sum^∞_{"{n=1}"} b_n \) diverges, then \(\sum^∞_{"{n=1}"} a_n\) diverges.</li>
 				</SubList></li>
-				<li>Limit Comparison Test:<SubList>
+				<li><b>Limit Comparison Test:</b><SubList>
 					<li>Let \(a_n, b_n≥ 0\) for all \(n≥1\):<SubList opened>
 						<li>If \(\lim_{"{n→∞}"} \frac{"{a_n}{b_n}"} = L ≠ 0\), then \(\sum^∞_{"{n=1}"} a_n\) and \(\sum^∞_{"{n=1}"} b_n\) both converge or both diverge.</li>
 						<li>If \(\lim_{"{n→∞}"} \frac{"{a_n}{b_n}"} = 0\) and \(\sum^∞_{"{n=1}"} b_n\) converges, then \(\sum^∞_{"{n=1}"} a_n\) converges.</li>
 						<li>If \(\lim_{"{n→∞}"} \frac{"{a_n}{b_n}"} = \infty\) and \(\sum^∞_{"{n=1}"} b_n\) diverges, then \(\sum^∞_{"{n=1}"} a_n\) diverges.</li>
 					</SubList></li>
+				</SubList></li>
+				<li><b>Alternating Series:</b><SubList>
+					<li>Any series whose terms alternate between positive and negative values is called an <b>alternating series</b>. An alternating series can be written in one of these forms:</li>
+					<MathStuff>$$\begin{"{gather}"} \sum^{"{\\infty}"}_{"{n=1}"} (-1)^{"{n+1}"} b_n = b_1 - b_2 + b_3 - b_4 + b_5 - \cdots \\ \sum^{"{\\infty}"}_{"{n=1}"} (-1)^n b_n = - b_1 + b_2 - b_3 + b_4 - b_5 + \cdots \end{"{gather}"}$$</MathStuff>
+					<li>Where \(b_n \gt 0\).</li>
+					<li>It converges if there exists \(N\) such that \(0 \lt b_{"{n+1}"} \le b_n\) for all \(n \ge N\) and if \(\lim_{"{n \\to \\infty}"} b_n = 0\). This is known as the <b>alternating series test</b>.</li>
+					<li className="ownExplanation">Suppose the odd terms in an alternating series are the positive terms while the even terms are negative and suppose \(0 \lt b_{"{n+1}"} \le b_n\) for all \(n\), then the sum of the alternating series, will never go above \(b_1\).</li>
+					<li className="ownExplanation"><ImgComp src={require("./calculus_pics/19.jpg")} width="70%" /></li>
+					<li className="ownExplanation">Similarly, if there exists an odd integer \(N\) such that \(0 \lt b_{"{n+1}"} \le b_n\) for all \(n \ge N\), and if the odd terms are positive while the even terms are negative, then the sum of the alternating series, will never go above \(b_N\).</li>
+					<li className="ownExplanation">Let there be an integer \(N\) such that \(0 \lt b_{"{n+1}"} \le b_n\) for all \(n \ge N\). Let \(S\) be the sum of the entire alternating series, let \(S_N\) be the sum of the alternating series up to and including \(n=N\), and let \(R_N = S - S_N\) (i.e. \(R_N\) is the remaining sum from \(n=N+1\) onwards). The first term of the remaining sum is \((±b_{"{N+1}"})\). If this is a positive term, then the remaining sum (\(R_N\)) is upper bounded by that first term, or in other words, \(R_N \le b_{"{N+1}"}\).</li>
+					<li className="ownExplanation">The first term of the remaining sum is \((±b_{"{N+1}"})\). If this is a negative term, then the remaining sum (\(R_N\)) is lower bounded by that term, or in other words, \(R_N \ge b_{"{N+1}"}\).</li>
+					<li>A series \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) exhibits <b>absolute convergence</b> if \(\sum^{"{\\infty}"}_{"{n=1}"} |a_n|\) converges. A series \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) exhibits <b>conditional convergence</b> if \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) converges but \(\sum^{"{\\infty}"}_{"{n=1}"} |a_n|\) diverges.</li>
+					<li><u>Absolute Convergence Implies Convergence:</u> If \(\sum^{"{\\infty}"}_{"{n=1}"} |a_n|\) converges, then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) converges.</li>
+				</SubList></li>
+				<li><b>Ratio test:</b><SubList>
+					<li>Let \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) be a series with nonzero terms, and let \(p = \lim_{"{n \\to \\infty}"} | \frac{"{a_{n+1}}{a_n}"} |\).</li>
+					<li>If \(0 \le p \lt 1\), then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) converges absolutely.</li>
+					<li>If \(p \gt 1\) or \(p=\ infty\), then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) diverges.</li>
+					<li>If \(p=1\), the test does not provide any information.</li>
+				</SubList></li>
+				<li><b>Root test:</b><SubList>
+					<li>Let \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) be a series with nonzero terms, and let \(p = \sqrt[n]{"{|a_n|}"}\).</li>
+					<li>If \(0 \le p \lt 1\), then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) converges absolutely.</li>
+					<li>If \(p \gt 1\) or \(p=\ infty\), then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) diverges.</li>
+					<li>If \(p=1\), the test does not provide any information.</li>
 				</SubList></li>
 			</ul>
 		</div>

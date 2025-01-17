@@ -175,27 +175,35 @@ export const content = <>
         <li data-source={35}><b>Euler's Theorem:</b> If \((a, m) = 1\), then \({"a^{\\phi(m)} ≡ 1 \\bmod m"}\).</li>
       </SubList></li>
       <li>If \(p\) is prime and \((a^2 ≡ a \bmod p)\), then \((a ≡ 0)\) or \((a ≡ 1)\).</li>
+      <li>If a prime \(p\) does not divides \(a\) or \(b\), and \(a^p ≡ b^p \bmod p\), then \(a ≡ b \bmod p\) and \(a^p ≡ b^p \bmod p^2\).</li>
       <li>Congruence (equation):<SubList>
         <li data-source={35}>A congruence (equation) is of the form \({"a_nx^n + a_{n-1}x^{n-1} + \\ldots + a_0 ≡ 0 \\bmod m"}\) where \(a_n \ldots a_0\) are integers.</li>
         <li data-source={54}>A congruence of the form \(ax ≡ b \bmod m\) is said to be a <b>linear congruence</b> in the variable \(x\). The congruence is linear in the sense that the variable \(x\) occurs to the first power.</li>
         <li data-source={54}>If one element of a conguence class is a solution to \(ax ≡ b \bmod m\), then all elements of the congruence class solutions of \(ax ≡ b \bmod m\). Any linear congruence in one variable has either no solution in \(\mathbb{"{Z}"}\) or infinitely many solutions in \(\mathbb{"{Z}"}\).</li>
         <li className="ownExplanation">Let \(g = (a, m)\). A linear congruence will have a solution if and only if \(g|b\). Since \(g\) is the smallest positive linear combination, then \(g = ap - mq\) for some integers \(p\) and \(q\), and one of the solution to the linear congruence is \( \frac{"{b}{g}"}p \).</li>
         <li className="ownExplanation">There are infinitely many solutions of the form: \(\frac{"{b}{g}"}p + \frac{"{m}{g}"} n\), where \(n = 0, 1, 2, \ldots\). A linear congruence has \(g\) incongruent solutions, so \(n = 0, 1, 2, \ldots, (g-1)\) is sufficient.</li>
-        <li data-source={35}>If \((a, m) = 1\), then there is a unique integer \(b \bmod m\) such that \(ab ≡ 1 \bmod m\). This \(b\) is denoted by \({"\\frac{1}{a}"}\) or \(a^{"{-1}"} \bmod m\).</li>
+        <li><span data-source={35}>If \((a, m) = 1\), then there is a unique integer \(b \bmod m\) such that \(ab ≡ 1 \bmod m\). This \(b\) is denoted by \(a^{"{-1}"} \bmod m\).</span> <span data-source={54}>In this case, \(b\) would be called the <b>inverse</b> of \(a\).</span></li>
       </SubList></li>
       <li data-source={54}><b>Wilson's Theorem:</b> If \(p\) is a prime then \((p - 1)! ≡ -1 \bmod p\). The converse of this is also true: If \((n - 1)! ≡ -1 \bmod n\), then \(n\) is prime.</li>
       <li data-source={54}>A prime number \(p\) is called <b>Wilson prime</b> if \((p - 1)! ≡ -1 \bmod p^2\). Only three are known: 5, 13, 563.</li>
     </ul>
     <ul style={{width: "49%",float: "right",marginLeft: "0.5%", marginRight: "0.5%"}}>
-      <li className="ownExplanation">The congruence \(x^2 ≡ -1 \bmod p\) is solvable if and only if \(p = 2\) or \(p ≡ 1 \bmod 4\). If \(p ≡ 1 \bmod 4\), then \(x = (\frac{"{p-1}{2}"})!\).</li>
-      <li data-source={54}><b>Fermat's Little Theorem:</b>:<SubList>
+      <li data-source={54}>The congruence \(x^2 ≡ -1 \bmod p\) is solvable if and only if \(p = 2\) or \(p ≡ 1 \bmod 4\). If \(p ≡ 1 \bmod 4\), then \(x = (\frac{"{p-1}{2}"})!\).</li>
+      <li data-source={54}>If \(p ≡ 3 \bmod 4\), then \(((p-1)/2)! ≡ ±1 \bmod p\).</li>
+      <li data-source={54}><b>Fermat's Little Theorem:</b><SubList>
         <li><b>Fermat's Little Theorem:</b> If \(p | a\), then \(a^{"{p-1}"} ≡ 1 \bmod p \) for prime \(p\) and an integer \(a\).</li>
         <li><u>Corollary:</u> If \(p | a\), then \(a^p ≡ a \bmod p \).</li>
         <li><u>Corollary:</u> If \(p \nmid a\), then the inverse of \(a\) modulo \(p\) is \(a^{"{p-2}"}\).</li>
         <li>Let \(p\) and \(q\) be distinct odd prime integers with \(p-1|q-1\). If \(a\) is an integer where \((a, pq)=1\), then \(a^{"{q-1}"} ≡ 1 \bmod pq\).</li>
-        <li>From both Wilson's theorem and Fermat's little theorem, we can derive \(p|a^p + (p-1)!a\) and \(p|(p-1)! a^p + a\).</li>
+        <li>From both Wilson's theorem and Fermat's little theorem, we can derive \([p|a^p + (p-1)!a]\) and \([p|(p-1)! a^p + a]\).</li>
       </SubList></li>
-      <li data-source={54}>If \(n\) is a composite integer and \(2^n ≡ 2 \bmod n\), then \(n\) is a <b>pseudoprime</b>. If \(n\) is a composite integer and \(b^n ≡ b \bmod n\), then \(n\) is a pseudoprime to the base \(b\).</li>
+      <li data-source={54}>Pseudoprimes:<SubList>
+        <li>If \(n\) is a composite integer and \(2^n ≡ 2 \bmod n\), then \(n\) is a <b>pseudoprime</b>.</li>
+        <li>If \(n\) is a composite integer and let \(b\) be a postive integer. If \(b^n ≡ b \bmod n\), then \(n\) is a pseudoprime to the base \(b\). If the base is not specified, then it is assumed that the base is 2.</li>
+        <li>If \(n\) is a pseudoprime, then \(2^n - 1\) is also a pseudoprime.</li>
+        <li>If \(n\) is a composite integer, and \(b^n ≡ b \bmod n\) for all integers \(b\), then \(n\) is an <b>absolute pseudoprime</b> or <b>Carmichael number</b>. If \((b, n) = 1\), then \(b^{"{n-1}"} ≡ 1 \bmod n\).</li>
+        <li></li>
+      </SubList></li>
       <li data-source={35}><b>Freshman's dream:</b> \((x + y)^p ≡ x^p + y^p (\bmod p)\) where \(x\) and \(y\) are integers and \(p\) is prime.</li>
       <li data-source={54}><b>Chinese Remainder Theorem:</b><SubList>
         <li>Suppose we have a system of congruences of moduli:</li>
