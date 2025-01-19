@@ -1,7 +1,7 @@
 import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import { MathStuff } from "../../articleRelatedStuff/MathStuff"; 
 import SubList from "../../articleRelatedStuff/SubList";
-import { TableLI, TableDiv } from "../../articleRelatedStuff/tableManager";
+import { TableLI } from "../../articleRelatedStuff/tableManager";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 
 export const title = "Calculus Notes";
@@ -133,6 +133,60 @@ export const content = <>
 							</td></tr>
 						</tbody>
 						</TableLI>
+				</SubList></li>
+				<li className="ownExplanation">My understanding of the precise definition of a limit:<SubList>
+					<li>Let \(f\) be a strictly increasing function continuous at all values of \(x\) except 5. If \(x\) were to approach 5, then \(f(x)\) would approach 2.005. Let's see the values of \(f\) when \(x\) approaches 5.</li>
+					<TableLI>
+						<thead>
+							<tr><th>x</th><th>f(x)</th><th>x</th><th>f(x)</th></tr>
+						</thead>
+						<tbody>
+							<tr><td>3</td><td>1.6</td><td>7</td><td>2.3</td></tr>
+							<tr><td>4</td><td>1.716</td><td>6</td><td>2.21</td></tr>
+							<tr><td>4.5</td><td>1.87</td><td>5.9</td><td>2.15</td></tr>
+							<tr><td>4.6</td><td>1.988</td><td>5.8</td><td>2.11</td></tr>
+							<tr><td>4.9</td><td>1.99997</td><td>5.1</td><td>2.101</td></tr>
+						</tbody>
+					</TableLI>
+					<li>The function seems to be approaching 2. However, if we continue:</li>
+					<TableLI>
+						<thead>
+							<tr><th>x</th><th>f(x)</th><th>x</th><th>f(x)</th></tr>
+						</thead>
+						<tbody>
+							<tr><td>4.99</td><td>2.004</td><td>5.01</td><td>2.006</td></tr>
+							<tr><td>4.999</td><td>2.0049</td><td>5.001</td><td>2.0051</td></tr>
+						</tbody>
+					</TableLI>
+					<li>Intuitively, it would make sense to define the <b>limit</b>, \(\lim_{"{x \\to a} f(x) = L"}\), as a number such that every time there is a difference between \(x\) and \(a\), then a difference in \(f(x)\) and \(L\) would also exist. 2 is not a valid limit because as \(x\) approaches 5, after a certain point \(f(x)\) goes past 2, which means there was a point where \(f(x)=2\) while \(x\) was still approaching 5. Meanwhile, 2.005 is a valid limit because no matter how close \(x\) is to 5 (whether from the left side or the right), \(f(x)\) will never go past 2.005 or be equal to it.</li>
+					<TableLI>
+					<caption>Possible Definition Of A Limit</caption>
+					<tbody>
+						<tr><td>
+						For every \(δ \gt 0\), there exists \(ε \gt 0\) such that for all \(x\) in the domain of \(f(x)\):<br/>
+						If \(0 \lt |x - a| \lt δ\), then \(|f(x) - L| \lt ε\).
+						</td></tr>
+					</tbody>
+					</TableLI>
+					<li>The above definition says: "For all \(x\) in the range \((a-δ, a) ∪ (a, a+δ)\), where you choose the value of δ, there will always be some range \((L-ε, L+ε)\), where the values of \(f(x)\) lies, and this is true no matter how small δ is".</li>
+					<li>Earlier we stated \(f(x)\) approaches 2.005, and not 2, when \(x\) approaches 5. This should match with our definition. According to our definition, for every \(δ \gt 0\), there exists \(ε \gt 0\) such that for all \(x\) in the domain of \(f(x)\), if \(0 \lt |x - 5| \lt δ\), then \(|f(x) - 2.005| \lt ε\). This is true.</li>
+					<li>However, it is also true that if \(0 \lt |x - 5| \lt δ\), then \(|f(x) - 2| \lt ε\). This is because you would be able to find a range \((5-δ, 5) ∪ (5, 5+δ)\) such that for all \(x\) in that range, you would be able to find another range \((2-ε, 2+ε)\) where all the \(f(x)\) values would fit in.</li>
+					<ImgComp src={require("./calculus_pics/21.jpg")} width="70%" />
+					<li>What if instead of having a choice on \(δ \gt 0\), we have a choice on \(ε \gt 0\)? This would make sense since we can now shorten the range for \(f(x)\) as small as possible.</li>
+					<TableLI>
+					<caption>Possible Definition Of A Limit</caption>
+					<tbody>
+						<tr><td>
+						For every \(ε \gt 0\), there exists \(δ \gt 0\) such that for all \(x\) in the domain of \(f(x)\):<br/>
+						If \(0 \lt |x - a| \lt δ\), then \(|f(x) - L| \lt ε\).
+						</td></tr>
+					</tbody>
+					</TableLI>
+					<li>The above definition says: "For any range \((L-ε, L+ε)\) you can think of, there will always be another range \((a-δ, a) ∪ (a, a+δ)\) such that for all \(x\) in \((a-δ, a) ∪ (a, a+δ)\), the value for \(f(x)\) will be in \((L-ε, L+ε)\)".</li>
+					<ImgComp src={require("./calculus_pics/20.jpg")} width="70%" />
+					<li>Earlier we stated \(f(x)\) approaches 2.005, and not 2, when \(x\) approaches 5. This should match with our definition. According to our definition, for every \(δ \gt 0\), there exists \(ε \gt 0\) such that for all \(x\) in the domain of \(f(x)\), if \(0 \lt |x - 5| \lt δ\), then \(|f(x) - 2.005| \lt ε\). This is true.</li>
+					<li>Also, it is not true that if \(0 \lt |x - 5| \lt δ\), then \(|f(x) - 2| \lt ε\). This is because if you choose \(ε\) that is very small, like 0.0001, then there is no possible value for \(δ\) such that for all \(x\), if \(x\) is in \((5-δ, 5) ∪ (5, 5+δ)\), then \(f(x)\) would be in \((1.999, 2.001)\).</li>
+					<ImgComp src={require("./calculus_pics/22.jpg")} width="70%" />
 				</SubList></li>
 			</ul>
 		</div>
@@ -971,8 +1025,6 @@ export const content = <>
 					<MathStuff>$$ \sum^\infty_{"{n=1}"} [b_n - b_{"{n+1}"}] = b_1 - B $$</MathStuff>
 					</SubList></li>
 			</ul>
-		</div>
-		<div style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
 			<ul className={"ownExplanation"}>
 				<li><b>Divergence test:</b><SubList>
 					<li>If \(\lim_{"{n \\to \\infty}"} a_n = L\) where \(L\) is a non-zero constant or if \(\lim_{"{n \\to \\infty}"} a_n \) does not exist, then \(\sum^∞_{"{n=1}"} a_n\) cannot converge.</li>
@@ -985,6 +1037,8 @@ export const content = <>
 					<MathStuff>$$ \int^\infty_N f(x) dx \le \sum_{"{n=N}"}^\infty a_n \le a_N + \int_N^\infty f(x) dx $$</MathStuff>
 				</SubList></li>
 			</ul>
+		</div>
+		<div style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
 			<ul data-source={65}>
 				<li><b>The p-Series:</b><SubList>
 					<li>For any real number \(p\), the series \(\sum^\infty_{"{n=1}"}\frac{"{1}{n^p}"}\) is called a <b>p-series</b>.</li>
@@ -1019,21 +1073,23 @@ export const content = <>
 					<li className="ownExplanation">Suppose the odd terms in an alternating series are the positive terms while the even terms are negative and suppose \(0 \lt b_{"{n+1}"} \le b_n\) for all \(n\), then the sum of the alternating series, will never go above \(b_1\).</li>
 					<li className="ownExplanation"><ImgComp src={require("./calculus_pics/19.jpg")} width="70%" /></li>
 					<li className="ownExplanation">Similarly, if there exists an odd integer \(N\) such that \(0 \lt b_{"{n+1}"} \le b_n\) for all \(n \ge N\), and if the odd terms are positive while the even terms are negative, then the sum of the alternating series, will never go above \(b_N\).</li>
-					<li className="ownExplanation">Let there be an integer \(N\) such that \(0 \lt b_{"{n+1}"} \le b_n\) for all \(n \ge N\). Let \(S\) be the sum of the entire alternating series, let \(S_N\) be the sum of the alternating series up to and including \(n=N\), and let \(R_N = S - S_N\) (i.e. \(R_N\) is the remaining sum from \(n=N+1\) onwards). The first term of the remaining sum is \((±b_{"{N+1}"})\). If this is a positive term, then the remaining sum (\(R_N\)) is upper bounded by that first term, or in other words, \(R_N \le b_{"{N+1}"}\).</li>
-					<li className="ownExplanation">The first term of the remaining sum is \((±b_{"{N+1}"})\). If this is a negative term, then the remaining sum (\(R_N\)) is lower bounded by that term, or in other words, \(R_N \ge b_{"{N+1}"}\).</li>
+					<li className="ownExplanation"><ImgComp src={require("./calculus_pics/23.jpg")} width="70%" /></li>
+					<li className="ownExplanation">Let there be an integer \(N\) such that \(0 \lt b_{"{n+1}"} \le b_n\) for all \(n \ge N\). Let \(S\) be the sum of the entire alternating series, let \(S_N\) be the sum of the alternating series up to and including \(n=N\), and let \(R_N = S - S_N\) (i.e. \(R_N\) is the remaining sum from \(n=N+1\) onwards). The first term of the remaining sum is \((±b_{"{N+1}"})\).</li>
+					<li className="ownExplanation">If this is a positive term, then the remaining sum (\(R_N\)) is upper bounded by that first term, or in other words, \(R_N \le b_{"{N+1}"}\).</li>
+					<li className="ownExplanation">If this is a negative term, then the remaining sum (\(R_N\)) is lower bounded by that term, or in other words, \(R_N \ge b_{"{N+1}"}\).</li>
 					<li>A series \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) exhibits <b>absolute convergence</b> if \(\sum^{"{\\infty}"}_{"{n=1}"} |a_n|\) converges. A series \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) exhibits <b>conditional convergence</b> if \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) converges but \(\sum^{"{\\infty}"}_{"{n=1}"} |a_n|\) diverges.</li>
 					<li><u>Absolute Convergence Implies Convergence:</u> If \(\sum^{"{\\infty}"}_{"{n=1}"} |a_n|\) converges, then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) converges.</li>
 				</SubList></li>
 				<li><b>Ratio test:</b><SubList>
 					<li>Let \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) be a series with nonzero terms, and let \(p = \lim_{"{n \\to \\infty}"} | \frac{"{a_{n+1}}{a_n}"} |\).</li>
 					<li>If \(0 \le p \lt 1\), then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) converges absolutely.</li>
-					<li>If \(p \gt 1\) or \(p=\ infty\), then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) diverges.</li>
+					<li>If \(p \gt 1\) or \(p=\infty\), then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) diverges.</li>
 					<li>If \(p=1\), the test does not provide any information.</li>
 				</SubList></li>
 				<li><b>Root test:</b><SubList>
 					<li>Let \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) be a series with nonzero terms, and let \(p = \sqrt[n]{"{|a_n|}"}\).</li>
 					<li>If \(0 \le p \lt 1\), then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) converges absolutely.</li>
-					<li>If \(p \gt 1\) or \(p=\ infty\), then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) diverges.</li>
+					<li>If \(p \gt 1\) or \(p=\infty\), then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) diverges.</li>
 					<li>If \(p=1\), the test does not provide any information.</li>
 				</SubList></li>
 			</ul>
