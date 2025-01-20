@@ -1119,7 +1119,9 @@ export const content = <>
 					<MathStuff>$${" \\left( \\sum_{n=0}^{\\infty} c_n x^n \\right) \\left( \\sum_{n=0}^{\\infty} d_n x^n \\right) = \\sum_{n=0}^{\\infty} e_n x^n "}$$</MathStuff>
 					<li>Where \(\sum{"_{n=0}^{\\infty}"} e_n x^n\) is known as the <b>Cauchy product</b> and it converges to \(f(x) * g(x)\) on \(I\).</li>
 				</SubList></li>
-				<li className="ownExplanation"><b>Taylor series</b> introduction:<SubList>
+			</ul>
+			<ul className="ownExplanation">
+				<li><b>Taylor series</b> introduction:<SubList>
 					<li>Let's say \(\sin(a)\) is known to to us, along with the derivatives of all orders of \(\sin(x)\) evaluated at \(x=a\), and let's say \(\sin(x)\) for \(x\) values very close to \(a\) is difficult to calculate.</li>
 					<ImgComp src={require("./calculus_pics/24.png")} width="70%" />
 					<li>Suppose we want to find a polynomial \(f(x)\) which is equal to \(\sin(x)\) at \(x=a\) and very close to \(\sin(x)\) near \(x=a\), then we can use \(f(x)\) to find the approximate value of \(\sin(x)\) around \(a\).</li>
@@ -1190,10 +1192,22 @@ export const content = <>
 					</TableLI>
 					<ImgComp src={require("./calculus_pics/28.png")} width="70%" />
 					<li>You can probably now guess what the formula for \(f_n(x)\) would be:</li>
-					<MathStuff>$${"\\begin{align} f_n(x) = &f(a) + f'(a)(x-a) - \\frac{f''(a)}{2}(x-a)^2 - \\frac{f'''(a)}{3!}(x-a)^3 \\\\ &+ \\frac{f^{(4)}(a)}{4!}(x-a)^4 + \\cdots + \\frac{f^{(n)}(a)}{n!}(x-a)^n \\end{align}"}$$</MathStuff>
+					<MathStuff>$${"\\begin{align} f_n(x) = &f(a) + f'(a)(x-a) + \\frac{f''(a)}{2}(x-a)^2 + \\\\ &\\frac{f'''(a)}{3!}(x-a)^3 + \\frac{f^{(4)}(a)}{4!}(x-a)^4 + \\\\ &\\cdots + \\frac{f^{(n)}(a)}{n!}(x-a)^n \\end{align}"}$$</MathStuff>
+					<li>This is an example of a <b>Taylor polynomial</b>.</li>
 					<li>We choose \(f(x)\) to be a polynomial with finite terms, but what if we let \(f(x)\) be a power series (i.e. have infinite terms).</li>
 					<MathStuff>$${" f(x) = \\sum^{\\infty}_{n=0} \\frac{f^{(n)}(a)}{n!}(x-a)^n "}$$</MathStuff>
 					<li>This is called the <b>Taylor series</b>.</li>
+				</SubList></li>
+			</ul>
+			<ul>
+				<li><b>Taylor/Maclaurin Series:</b><SubList>
+					<li>If \(f\) has derivatives of all orders at \(x=a\), then the <b>Taylor series</b> for the function \(f\) at \(a\) is:</li>
+					<MathStuff>$${" f(x) = \\sum^{\\infty}_{n=0} \\frac{f^{(n)}(a)}{n!}(x-a)^n "}$$</MathStuff>
+					<li>The Taylor series for \(f\) at 0 is known as the <b>Maclaurin series</b> for \(f\).</li>
+					<li>If a function \(f\) has a power series at a that converges to \(f\) on some open interval containing \(a\), then that power series is the Taylor series for \(f\) at \(a\).</li>
+					<li>These partial sums are finite polynomials, known as <b>Taylor polynomials</b>. If \(a=0\),
+					then they are known as <b>Maclaurin polynomials</b>.</li>
+					<li></li>
 				</SubList></li>
 			</ul>
 		</div>
