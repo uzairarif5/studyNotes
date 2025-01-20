@@ -1121,7 +1121,7 @@ export const content = <>
 				</SubList></li>
 				<li className="ownExplanation"><b>Taylor series</b> introduction:<SubList>
 					<li>Let's say \(\sin(a)\) is known to to us, along with the derivatives of all orders of \(\sin(x)\) evaluated at \(x=a\), and let's say \(\sin(x)\) for \(x\) values very close to \(a\) is difficult to calculate.</li>
-					<ImgComp src={require("./calculus_pics/24.jpg")} width="70%" />
+					<ImgComp src={require("./calculus_pics/24.png")} width="70%" />
 					<li>Suppose we want to find a polynomial \(f(x)\) which is equal to \(\sin(x)\) at \(x=a\) and very close to \(\sin(x)\) near \(x=a\), then we can use \(f(x)\) to find the approximate value of \(\sin(x)\) around \(a\).</li>
 					<li>A polynomial is of the form:</li>
 					<MathStuff>$${" c_0 + c_1 x + c_2 x^2 + c_3 x ^3 + \\cdots + c_n x^n "}$$</MathStuff>
@@ -1135,22 +1135,41 @@ export const content = <>
 					<MathStuff>$${"\\begin{gather} f_0 (a) = f_1 (a) = f_2 (a) = \\sin(a) \\\\ c_0 = c_0 + c_1 (0) = c_0 + c_1 (0) + c_2 (0)^2 = \\sin(a) \\end{gather}"}$$</MathStuff>
 					<li>This will lead to \(c_0 = \sin(a)\):</li>
 					<MathStuff>$${" f_n(x) = \\sin(a) + c_1 (x-a) + c_2 (x-a)^2 + \\cdots + c_n (x-a)^n "}$$</MathStuff>
-					<li>Is \(f_0(x) = \sin(a)\) a good approximation for \(\sin(x)\) when \(x\) is near \(a\)? Let's find out:</li>
+					<li>Is \(f_0(x) = \sin(a)\) a good approximation for \(\sin(x)\) when \(x\) is near \(a\)?</li>
+					<ImgComp src={require("./calculus_pics/25.png")} width="70%" />
 					<TableLI>
 						<caption>Let \(a = (2\pi)/3\)</caption>
 						<thead>
 							<tr><th>x</th><th>\(f_0(x)\)</th><th>\(\sin(x)\)</th></tr>
 						</thead>
 						<tbody>
-							<tr><td>2.074</td><td>0.866</td><td>0.8759</td></tr>
-							<tr><td>2.084</td><td>0.866</td><td>0.8710</td></tr>
+							<tr><td>\((2\pi)/3\) - 0.02</td><td>0.866</td><td>0.8759</td></tr>
+							<tr><td>\((2\pi)/3\) - 0.01</td><td>0.866</td><td>0.8710</td></tr>
 							<tr><td>\((2\pi)/3\)</td><td>0.866</td><td>0.866</td></tr>
-							<tr><td>2.1044</td><td>0.866</td><td>0.8610</td></tr>
-							<tr><td>2.1144</td><td>0.866</td><td>0.8559</td></tr>
+							<tr><td>\((2\pi)/3\) + 0.01</td><td>0.866</td><td>0.8610</td></tr>
+							<tr><td>\((2\pi)/3\) + 0.02</td><td>0.866</td><td>0.8559</td></tr>
 						</tbody>
 					</TableLI>
 					<li>I'm sure we can do better. Let' say we also want the derivative of \(f(x)\) be equal the derivative of \(\sin(x)\) at \(x=a\):</li>
-					<MathStuff>$${"\\begin{gather} f_n(x) = \\sin(a) + c_1 (x-a) + c_2 (x-a)^2 + \\cdots + c_n (x-a)^n \\\\ \\left. \\frac{d}{dx} f_n (x) \\right\\rvert_{x=a} = c_1 = \\frac{d}{dx} \\left. \\sin(x) \\right\\rvert_{x=a} \\end{gather}"}$$</MathStuff>
+					<MathStuff>$${"\\begin{gather} f_n(x) = \\sin(a) + c_1 (x-a) + c_2 (x-a)^2 + \\cdots + c_n (x-a)^n \\\\ \\left. \\frac{d}{dx} f_n (x) \\right\\rvert_{x=a} = c_1 = \\frac{d}{dx} \\left. \\sin(x) \\right\\rvert_{x=a} \\\\ c_1 = \\cos(a) \\end{gather}"}$$</MathStuff>
+					<li>Is \(f_1(x) = \sin(a) + \cos(a)(x-a)\) a good approximation for \(\sin(x)\) when \(x\) is near \(a\)?</li>
+					<ImgComp src={require("./calculus_pics/26.jpg")} width="70%" />
+					<TableLI>
+						<caption>Let \(a = (2\pi)/3\)</caption>
+						<thead>
+							<tr><th>x</th><th>\(f_1(x)\)</th><th>\(\sin(x)\)</th></tr>
+						</thead>
+						<tbody>
+							<tr><td>\((2\pi)/3\) - 0.02</td><td>0.87603</td><td>0.87585</td></tr>
+							<tr><td>\((2\pi)/3\) - 0.01</td><td>0.87103</td><td>0.87098</td></tr>
+							<tr><td>\((2\pi)/3\)</td><td>0.866</td><td>0.866</td></tr>
+							<tr><td>\((2\pi)/3\) + 0.01</td><td>0.86103</td><td>0.86098</td></tr>
+							<tr><td>\((2\pi)/3\) + 0.02</td><td>0.85603</td><td>0.85585</td></tr>
+						</tbody>
+					</TableLI>
+					<li>I'm sure we can do better. Let' say we also want the second derivative of \(f(x)\) be equal the derivative of \(\sin(x)\) at \(x=a\):</li>
+					<MathStuff>$${"\\begin{gather} f_n(x) = \\sin(a) + \\cos(a) (x-a) + c_2 (x-a)^2 + \\cdots + c_n (x-a)^n \\\\ \\left. (\\frac{d}{dx})^2 f_n (x) \\right\\rvert_{x=a} = \\frac{c_2}{2} = (\\frac{d}{dx})^2 \\left. \\sin(x) \\right\\rvert_{x=a} \\\\ c_2 = -2\\sin(a) \\end{gather}"}$$</MathStuff>
+					<li>Is \(f_2(x) = \sin(a) + \cos(a)(x-a) - \sin(a)(x-a)^2\) a good approximation for \(\sin(x)\) when \(x\) is near \(a\)?</li>
 				</SubList></li>
 			</ul>
 		</div>
