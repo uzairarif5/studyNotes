@@ -575,8 +575,8 @@ export const content = <>
 
 	<h2>Integration</h2>
 	<div className="content">
-		<div data-source={65} style={{width:" 49%",marginLeft: "0.5%",float: "left"}}>
-			<ul>
+		<div style={{width:" 49%",marginLeft: "0.5%",float: "left"}}>
+			<ul data-source={65}>
 				<li>Approximating Areas:<SubList>
 					<li>Let \(f(x)\) be a continuous, nonnegative function defined on the closed interval \([a,b]\). We want to approximate the area \(A\) bounded by \(f(x)\) above, the x-axis below, the line \(x=a\) on the left, and the line \(x=b\) on the right.</li>
 					<li><ImgComp src={require("./calculus_pics/7.jfif")}/></li>
@@ -654,8 +654,6 @@ export const content = <>
 					<li>Logarithmic integrals:</li>
 					<MathStuff>\[\begin{"{align}"} \int x^{"{-1}"} \ dx &= \ln|x| +C \\ \int \log_b x \ dx &= \frac{"{x}{\\ln b}"} (\ln x -1) +C\end{"{align}"}\]</MathStuff>
 				</SubList></li>
-			</ul>
-			<ul className="ownExplanation">
 				<li>Integral of trigonometric functions:<SubList>
 					<li>\(\int \sin(x) \ dx = -\cos(x) + C\)</li>
 					<li>\(\int \cos(x) \ dx = \sin(x) + C\)</li>
@@ -691,7 +689,7 @@ export const content = <>
 				</SubList></li>
 			</ul>
 			<h3>Volume Stuff</h3>
-			<ul>
+			<ul data-source={65}>
 				<li><b>The slicing method:</b><SubList>
 					<li>We can use a definite integral to calculate the volume of the solid. We do this by slicing the solid into pieces, estimating the volume of each slice, and then adding those estimated volumes together.</li>
 					<li>Consider the solid \(S\), extending along the x-axis.</li>
@@ -814,6 +812,7 @@ export const content = <>
 			</ul>
 		</div>
 	</div>
+
 	<h2>Differential Equations</h2>
 	<div className="content">
 		<div data-source={65} style={{width:" 49%",marginLeft: "0.5%",float: "left"}}>
@@ -1091,6 +1090,67 @@ export const content = <>
 					<li>If \(0 \le p \lt 1\), then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) converges absolutely.</li>
 					<li>If \(p \gt 1\) or \(p=\infty\), then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) diverges.</li>
 					<li>If \(p=1\), the test does not provide any information.</li>
+				</SubList></li>
+			</ul>
+			<br/>
+			<ul data-source={65}>
+				<li><b>Power series:</b><SubList>
+					<li>A series of the form:</li>
+					<MathStuff>$$ \sum^{"{\\infty}_{n=0}"} c_n (x-a)^n = c_0 + c_1 (x-a) + c_2(x-a)^2 + c_3 (x-a)^3 + c_4 (x-a)^4 + \cdots $$</MathStuff>
+					<li>is a <b>power series</b> centered at \(x=a\).</li>
+					<li className="ownExplanation">A power series has infinite terms while polynomials have finite terms. A partial sum of a power series is a polynomial.</li>
+					<li className="ownExplanation">Let \(p = \lim_{"{n \\to \\infty}"} | \frac{"{c_{n+1} (x-a)^{n+1}}{c_n (x-a)^n}"} |\) According to the ratio test, the series converges if \(p \lt 1\), diverges if \(p \gt 1\), and inconclusive if \(p=1\).</li>
+					<li className="ownExplanation">If \(p = \lim_{"{n \\to \\infty}"} | \frac{"{c_{n+1} (x-a)^{n+1}}{c_n (x-a)^n}"} | \), then \(p = (\lim_{"{n \\to \\infty}"} | \frac{"{c_{n+1}}{c_n}"} |) |x-a| = L |x-a| \).</li>
+					<li className="ownExplanation">For a series to converge, \(|x-a| L \lt 1 \), or \(|x-a| \lt 1/L \). Let \(R = 1/L\). This means \(R\) is a value where the series converges if \(|x-a| \lt R \). For a series to diverge, \(|x-a| L \gt 1 \) or \(|x-a| \gt R \).</li>
+					<li>The set of values \(x\) for which the series converges is known as the <b>interval of convergence</b>. The value \(R\) is called the <b>radius of convergence</b>.</li>
+					<li>The geometric series shown below converges in the interval \((-1, 1)\):</li>
+					<MathStuff>$$ 1+x+ x^2 + x^3 + \cdots = \frac{"{1}{1-x}"} $$</MathStuff>
+				</SubList></li>
+				<li>Properties of a power series:<SubList>
+					<li>Suppose that the two power series \(\sum_{"{n=0}"}^{"{\\infty}"} c_n x^n\) and \(\sum_{"{n=0}"}^{"{\\infty}"} d_n x^n\) converge to the functions \(f\) and \(g\), respectively, on a common interval \(I\).</li>
+					<li>The power series \(\sum_{"{n=0}"}^{"{\\infty}"} (c_n x^n ± d_nx^n)\) converges to \(f±g\) on \(I\).</li>
+					<li>Let \(m \ge 0\) be an integer and \(b\) be a real number:<SubList opened>
+						<li>The series \(\sum_{"{n=0}"}^{"{\\infty}"} b x^m c_n x^n\) converges to \(b x^m f(x)\) on \(I\).</li>
+						<li>The series \(\sum_{"{n=0}"}^{"{\\infty}"} c_n (b^m)^n\) converges to \(f(bxm)\) for all x such that \(bxm\) is in \(I\).</li>
+					</SubList></li>
+					<li>Let \(e^n\) be defined as:</li>
+					<MathStuff>$${"\\begin{align} e_n &= {c_0 dn^+ c_1d^{n-1}+c_2 d^{n-2}+ \\cdots +c_{n-1}d^1+c_n d^0 &= \\sum_{k=0}^n c_k d^{n-k} } \\end{align}"}$$</MathStuff>
+					<li>Then:</li>
+					<MathStuff>$${" \\left( \\sum_{n=0}^{\\infty} c_n x^n \\right) \\left( \\sum_{n=0}^{\\infty} d_n x^n \\right) = \\sum_{n=0}^{\\infty} e_n x^n "}$$</MathStuff>
+					<li>Where \(\sum{"_{n=0}^{\\infty}"} e_n x^n\) is known as the <b>Cauchy product</b> and it converges to \(f(x) * g(x)\) on \(I\).</li>
+				</SubList></li>
+				<li className="ownExplanation"><b>Taylor series</b> introduction:<SubList>
+					<li>Let's say \(\sin(a)\) is known to to us, along with the derivatives of all orders of \(\sin(x)\) evaluated at \(x=a\), and let's say \(\sin(x)\) for \(x\) values very close to \(a\) is difficult to calculate.</li>
+					<ImgComp src={require("./calculus_pics/24.jpg")} width="70%" />
+					<li>Suppose we want to find a polynomial \(f(x)\) which is equal to \(\sin(x)\) at \(x=a\) and very close to \(\sin(x)\) near \(x=a\), then we can use \(f(x)\) to find the approximate value of \(\sin(x)\) around \(a\).</li>
+					<li>A polynomial is of the form:</li>
+					<MathStuff>$${" c_0 + c_1 x + c_2 x^2 + c_3 x ^3 + \\cdots + c_n x^n "}$$</MathStuff>
+					<li>If the polyomial is shifted to some \(b\) units to the right, we get another more general polynomial:</li>
+					<MathStuff>$${" c_0 + c_1 (x-b) + c_2 (x-b)^2 + c_3 (x-b)^3 + \\cdots + c_n (x-b)^n "}$$</MathStuff>
+					<li>Let this polynomial be equal to \(f_n(x)\), where \(n\) represents the degree of the polynomial:</li>
+					<MathStuff>$${" f_n(x) = c_0 + c_1 (x-b) + c_2 (x-b)^2 + \\cdots + c_n (x-b)^n "}$$</MathStuff>
+					<li>We want \(f(x)\) at any degree to be equal to \(\sin(x)\) at \(x=a\). This means</li>
+					<MathStuff>$${"\\begin{gather} f_0 (a) = f_1 (a) = f_2 (a) = \\sin(a) \\\\ c_0 = c_0 + c_1 (a-b) = c_0 + c_1 (a-b) + c_2 (a-b)^2 = \\sin(a) \\end{gather}"}$$</MathStuff>
+					<li>This is only possible if \(b=a\):</li>
+					<MathStuff>$${"\\begin{gather} f_0 (a) = f_1 (a) = f_2 (a) = \\sin(a) \\\\ c_0 = c_0 + c_1 (0) = c_0 + c_1 (0) + c_2 (0)^2 = \\sin(a) \\end{gather}"}$$</MathStuff>
+					<li>This will lead to \(c_0 = \sin(a)\):</li>
+					<MathStuff>$${" f_n(x) = \\sin(a) + c_1 (x-a) + c_2 (x-a)^2 + \\cdots + c_n (x-a)^n "}$$</MathStuff>
+					<li>Is \(f_0(x) = \sin(a)\) a good approximation for \(\sin(x)\) when \(x\) is near \(a\)? Let's find out:</li>
+					<TableLI>
+						<caption>Let \(a = (2\pi)/3\)</caption>
+						<thead>
+							<tr><th>x</th><th>\(f_0(x)\)</th><th>\(\sin(x)\)</th></tr>
+						</thead>
+						<tbody>
+							<tr><td>2.074</td><td>0.866</td><td>0.8759</td></tr>
+							<tr><td>2.084</td><td>0.866</td><td>0.8710</td></tr>
+							<tr><td>\((2\pi)/3\)</td><td>0.866</td><td>0.866</td></tr>
+							<tr><td>2.1044</td><td>0.866</td><td>0.8610</td></tr>
+							<tr><td>2.1144</td><td>0.866</td><td>0.8559</td></tr>
+						</tbody>
+					</TableLI>
+					<li>I'm sure we can do better. Let' say we also want the derivative of \(f(x)\) be equal the derivative of \(\sin(x)\) at \(x=a\):</li>
+					<MathStuff>$${"\\begin{gather} f_n(x) = \\sin(a) + c_1 (x-a) + c_2 (x-a)^2 + \\cdots + c_n (x-a)^n \\\\ \\left. \\frac{d}{dx} f_n (x) \\right\\rvert_{x=a} = c_1 = \\frac{d}{dx} \\left. \\sin(x) \\right\\rvert_{x=a} \\end{gather}"}$$</MathStuff>
 				</SubList></li>
 			</ul>
 		</div>

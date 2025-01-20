@@ -120,7 +120,7 @@ if (showExample):
 			<ul>
 				<li>The purpose of this website is to store my studynotes.</li>
 				<li>The content is suppose to get a summary of what I read. It is something you read as revision after reading the main material.</li>
-				<li>Though sometimes I might add proves, it is not the primary focus. If you want proof, you can check out my second website: <a href='https://www.deriveit.net'>DeriveIt</a>.</li>
+				<li>Though sometimes I might add proofs, it is not the primary focus. If you want proofs, you can check out my second website: <a href='https://www.deriveit.net'>DeriveIt</a>.</li>
 				<li>I might makes mistakes when adding content, so always remember to send feedback if you find any error.</li>
 			</ul>
 		</div>
