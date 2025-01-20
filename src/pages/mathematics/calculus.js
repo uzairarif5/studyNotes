@@ -1199,7 +1199,7 @@ export const content = <>
 					<li>This is called the <b>Taylor series</b>.</li>
 				</SubList></li>
 			</ul>
-			<ul>
+			<ul data-source={65}>
 				<li><b>Taylor/Maclaurin Series:</b><SubList>
 					<li>If \(f\) has derivatives of all orders at \(x=a\), then the <b>Taylor series</b> for the function \(f\) at \(a\) is:</li>
 					<MathStuff>$${" f(x) = \\sum^{\\infty}_{n=0} \\frac{f^{(n)}(a)}{n!}(x-a)^n "}$$</MathStuff>
@@ -1222,7 +1222,7 @@ export const content = <>
 						<li>converges to \(f(x)\) for all \(x\) in \(I\) if and only if \(lim_{"{n→\\infty}"} R_n (x)=0\)</li>
 						<li>for all \(x\) in \(I\).</li>
 					</SubList></li>
-					<ImgComp src={require("./calculus_pics/29.png")} width="70%" />
+					<ImgComp src={require("./calculus_pics/29.png")} width="90%" />
 				</SubList></li>
 			</ul>
 		</div>
