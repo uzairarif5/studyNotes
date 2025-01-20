@@ -1125,7 +1125,7 @@ export const content = <>
 					<li>Suppose we want to find a polynomial \(f(x)\) which is equal to \(\sin(x)\) at \(x=a\) and very close to \(\sin(x)\) near \(x=a\), then we can use \(f(x)\) to find the approximate value of \(\sin(x)\) around \(a\).</li>
 					<li>A polynomial is of the form:</li>
 					<MathStuff>$${" c_0 + c_1 x + c_2 x^2 + c_3 x ^3 + \\cdots + c_n x^n "}$$</MathStuff>
-					<li>If the polyomial is shifted to some \(b\) units to the right, we get another more general polynomial:</li>
+					<li>If the polyomial is shifted to some variable \(b\) units to the right, we get another more general polynomial:</li>
 					<MathStuff>$${" c_0 + c_1 (x-b) + c_2 (x-b)^2 + c_3 (x-b)^3 + \\cdots + c_n (x-b)^n "}$$</MathStuff>
 					<li>Let this polynomial be equal to \(f_n(x)\), where \(n\) represents the degree of the polynomial:</li>
 					<MathStuff>$${" f_n(x) = c_0 + c_1 (x-b) + c_2 (x-b)^2 + \\cdots + c_n (x-b)^n "}$$</MathStuff>
@@ -1150,7 +1150,7 @@ export const content = <>
 						</tbody>
 					</TableLI>
 					<ImgComp src={require("./calculus_pics/25.png")} width="70%" />
-					<li>Can we do better? Let' say we also want the derivative of \(f(x)\) be equal the derivative of \(\sin(x)\) at \(x=a\):</li>
+					<li>Can we do better? Let' say we also want the derivative of \(f(x)\) to be equal the derivative of \(\sin(x)\) at \(x=a\):</li>
 					<MathStuff>$${"\\begin{gather} f_n(x) = \\sin(a) + c_1 (x-a) + c_2 (x-a)^2 + \\cdots + c_n (x-a)^n \\\\ \\left. \\frac{d}{dx} f_n (x) \\right\\rvert_{x=a} = c_1 = \\frac{d}{dx} \\left. \\sin(x) \\right\\rvert_{x=a} \\\\ c_1 = \\cos(a) \\end{gather}"}$$</MathStuff>
 					<li>Is \(f_1(x) = \sin(a) + \cos(a)(x-a)\) a good approximation for \(\sin(x)\) when \(x\) is near \(a\)?</li>
 					<TableLI>
@@ -1167,14 +1167,14 @@ export const content = <>
 						</tbody>
 					</TableLI>
 					<ImgComp src={require("./calculus_pics/26.png")} width="70%" />
-					<li>Can we do better? Let' say we also want the second derivative of \(f(x)\) be equal the derivative of \(\sin(x)\) at \(x=a\):</li>
+					<li>Can we do better? Let' say we also want the second derivative of \(f(x)\) to be equal the derivative of \(\sin(x)\) at \(x=a\):</li>
 					<MathStuff>$${"\\begin{gather} f_n(x) = \\sin(a) + \\cos(a) (x-a) + c_2 (x-a)^2 + \\cdots + c_n (x-a)^n \\\\ \\left. \\left( \\frac{d}{dx} \\right)^2 f_n (x) \\right\\rvert_{x=a} = 2c_2 = \\left( \\frac{d}{dx} \\right)^2 \\left. \\sin(x) \\right\\rvert_{x=a} \\\\ c_2 = -\\frac{\\sin(a)}{2} \\end{gather}"}$$</MathStuff>
 					<li>If \(f_2(x) = \sin(a) + \cos(a)(x-a) - \frac{"{\\sin(a)}{2}"}(x-a)^2\), then \(f_2(a) = \sin(a)\), \(f_2'(a) = \cos(a)\) and \(f_2''(a) = -2\sin(a)\).</li>
 					<ImgComp src={require("./calculus_pics/27.png")} width="70%" />
 					<li>Let's try to do the same with the third and fourth derivative.</li>
-					<MathStuff>$${"\\begin{gather} f_n(x) = \\sin(a) + \\cos(a) (x-a) + c_2 (x-a)^2 + \\cdots + c_n (x-a)^n \\\\ \\left.  \\left( \\frac{d}{dx} \\right)^3 f_n (x) \\right\\rvert_{x=a} = (3)(2) c_3 = \\left( \\frac{d}{dx} \\right)^3 \\left. \\sin(x) \\right\\rvert_{x=a} \\\\ c_3 = -\\frac{\\cos(a)}{(3)(2)} \\\\ \\left. \\left( \\frac{d}{dx} \\right)^4 f_n (x) \\right\\rvert_{x=a} = (4)(3)(2) c_4 = \\left( \\frac{d}{dx} \\right)^4 \\left. \\sin(x) \\right\\rvert_{x=a} \\\\ c_4 = \\frac{\\sin(a)}{(4)(3)(2)} \\end{gather}"}$$</MathStuff>
+					<MathStuff>$${"\\begin{gather} \\left.  \\left( \\frac{d}{dx} \\right)^3 f_n (x) \\right\\rvert_{x=a} = (3)(2) c_3 = \\left( \\frac{d}{dx} \\right)^3 \\left. \\sin(x) \\right\\rvert_{x=a} \\\\ c_3 = -\\frac{\\cos(a)}{(3)(2)} \\\\ \\left. \\left( \\frac{d}{dx} \\right)^4 f_n (x) \\right\\rvert_{x=a} = (4)(3)(2) c_4 = \\left( \\frac{d}{dx} \\right)^4 \\left. \\sin(x) \\right\\rvert_{x=a} \\\\ c_4 = \\frac{\\sin(a)}{(4)(3)(2)} \\end{gather}"}$$</MathStuff>
 					<li>Is \(f_4(x)\) a good approximation for \(\sin(x)\) when \(x\) is near \(a\)?</li>
-					<MathStuff>$${"f_4(x) = \\sin(a) + \\cos(a)(x-a) - \\frac{\\sin(a)}{2}}(x-a)^2 - \\frac{\\cos(a)}{3!}(x-a)^3 + \\frac{\\sin(a)}{4!}(x-a)^4"}$$</MathStuff>
+					<MathStuff>$${"f_4(x) = \\sin(a) + \\cos(a)(x-a) - \\frac{\\sin(a)}{2}(x-a)^2 - \\frac{\\cos(a)}{3!}(x-a)^3 + \\frac{\\sin(a)}{4!}(x-a)^4"}$$</MathStuff>
 					<TableLI>
 						<caption>Let \(a = (2\pi)/3\)</caption>
 						<thead>
@@ -1189,6 +1189,11 @@ export const content = <>
 						</tbody>
 					</TableLI>
 					<ImgComp src={require("./calculus_pics/28.png")} width="70%" />
+					<li>You can probably now guess what the formula for \(f_n(x)\) would be:</li>
+					<MathStuff>$${"\\begin{align} f_n(x) = &f(a) + f'(a)(x-a) - \\frac{f''(a)}{2}(x-a)^2 - \\frac{f'''(a)}{3!}(x-a)^3 \\\\ &+ \\frac{f^{(4)}(a)}{4!}(x-a)^4 + \\cdots + \\frac{f^{(n)}(a)}{n!}(x-a)^n \\end{align}"}$$</MathStuff>
+					<li>We choose \(f(x)\) to be a polynomial with finite terms, but what if we let \(f(x)\) be a power series (i.e. have infinite terms).</li>
+					<MathStuff>$${" f(x) = \\sum^{\\infty}_{n=0} \\frac{f^{(n)}(a)}{n!}(x-a)^n "}$$</MathStuff>
+					<li>This is called the <b>Taylor series</b>.</li>
 				</SubList></li>
 			</ul>
 		</div>
