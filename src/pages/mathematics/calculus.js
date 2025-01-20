@@ -1219,9 +1219,9 @@ export const content = <>
 					<li>Convergence of Taylor Series:<SubList>
 						<li>Suppose that \(f\) has derivatives of all orders on an interval \(I\) containing \(a\). Then the Taylor series:</li>
 						<MathStuff>$${" \\sum_{n=0}^{\\infty} \\frac{f^{(n)}(a)}{n!} (x-a)^n "}$$</MathStuff>
-						<li>converges to \(f(x)\) for all \(x\) in \(I\) if and only if \(\lim_{"{n→\\infty}"} R_n (x)=0\)</li>
-						<li>for all \(x\) in \(I\).</li>
+						<li>converges to \(f(x)\) for all \(x\) in \(I\) if and only if \(\lim_{"{n→\\infty}"} R_n (x)=0\) for all \(x\) in \(I\).</li>
 					</SubList></li>
+					<li><a href='https://en.wikipedia.org/wiki/Taylor_series'>A function may differ from the sum of its Taylor series, even if its Taylor series is convergent. A function is <b>analytic</b> at a point \(x\) if it is equal to the sum of its Taylor series in some open interval containing \(x\).</a></li>
 					<ImgComp src={require("./calculus_pics/29.png")} width="90%" />
 				</SubList></li>
 			</ul>
