@@ -1213,13 +1213,13 @@ export const content = <>
 						<li>then for each \(x\) in the interval \(I\), there exists a real number \(c\) between \(a\) and \(x\) such that:</li>
 						<MathStuff>$${" R_n(x) = \\frac{f^{(n+1)} (c)}{(n+1)!} (x-a)^{n+1} "}$$</MathStuff>
 						<li>if there exists a real number \(M\) such that \(| f(n+1)(x) | \le M\) for all \(x∈I\), then:</li>
-						<MathStuff>$${" | R_n(x) | \\le \\frac{M} (c)}{(n+1)!} |x-a|^{n+1} "}$$</MathStuff>
+						<MathStuff>$${" | R_n(x) | \\le \\frac{M }{(n+1)!} |x-a|^{n+1} "}$$</MathStuff>
 						<li>for all \(x∈I\).</li>
 					</SubList></li>
 					<li>Convergence of Taylor Series:<SubList>
 						<li>Suppose that \(f\) has derivatives of all orders on an interval \(I\) containing \(a\). Then the Taylor series:</li>
 						<MathStuff>$${" \\sum_{n=0}^{\\infty} \\frac{f^{(n)}(a)}{n!} (x-a)^n "}$$</MathStuff>
-						<li>converges to \(f(x)\) for all \(x\) in \(I\) if and only if \(lim_{"{n→\\infty}"} R_n (x)=0\)</li>
+						<li>converges to \(f(x)\) for all \(x\) in \(I\) if and only if \(\lim_{"{n→\\infty}"} R_n (x)=0\)</li>
 						<li>for all \(x\) in \(I\).</li>
 					</SubList></li>
 					<ImgComp src={require("./calculus_pics/29.png")} width="90%" />
