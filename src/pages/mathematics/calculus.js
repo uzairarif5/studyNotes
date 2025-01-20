@@ -1136,7 +1136,6 @@ export const content = <>
 					<li>This will lead to \(c_0 = \sin(a)\):</li>
 					<MathStuff>$${" f_n(x) = \\sin(a) + c_1 (x-a) + c_2 (x-a)^2 + \\cdots + c_n (x-a)^n "}$$</MathStuff>
 					<li>Is \(f_0(x) = \sin(a)\) a good approximation for \(\sin(x)\) when \(x\) is near \(a\)?</li>
-					<ImgComp src={require("./calculus_pics/25.png")} width="70%" />
 					<TableLI>
 						<caption>Let \(a = (2\pi)/3\)</caption>
 						<thead>
@@ -1150,10 +1149,10 @@ export const content = <>
 							<tr><td>\((2\pi)/3\) + 0.02</td><td>0.866</td><td>0.8559</td></tr>
 						</tbody>
 					</TableLI>
-					<li>I'm sure we can do better. Let' say we also want the derivative of \(f(x)\) be equal the derivative of \(\sin(x)\) at \(x=a\):</li>
+					<ImgComp src={require("./calculus_pics/25.png")} width="70%" />
+					<li>Can we do better? Let' say we also want the derivative of \(f(x)\) be equal the derivative of \(\sin(x)\) at \(x=a\):</li>
 					<MathStuff>$${"\\begin{gather} f_n(x) = \\sin(a) + c_1 (x-a) + c_2 (x-a)^2 + \\cdots + c_n (x-a)^n \\\\ \\left. \\frac{d}{dx} f_n (x) \\right\\rvert_{x=a} = c_1 = \\frac{d}{dx} \\left. \\sin(x) \\right\\rvert_{x=a} \\\\ c_1 = \\cos(a) \\end{gather}"}$$</MathStuff>
 					<li>Is \(f_1(x) = \sin(a) + \cos(a)(x-a)\) a good approximation for \(\sin(x)\) when \(x\) is near \(a\)?</li>
-					<ImgComp src={require("./calculus_pics/26.png")} width="70%" />
 					<TableLI>
 						<caption>Let \(a = (2\pi)/3\)</caption>
 						<thead>
@@ -1167,7 +1166,8 @@ export const content = <>
 							<tr><td>\((2\pi)/3\) + 0.02</td><td>0.85603</td><td>0.85585</td></tr>
 						</tbody>
 					</TableLI>
-					<li>I'm sure we can do better. Let' say we also want the second derivative of \(f(x)\) be equal the derivative of \(\sin(x)\) at \(x=a\):</li>
+					<ImgComp src={require("./calculus_pics/26.png")} width="70%" />
+					<li>Can we do better? Let' say we also want the second derivative of \(f(x)\) be equal the derivative of \(\sin(x)\) at \(x=a\):</li>
 					<MathStuff>$${"\\begin{gather} f_n(x) = \\sin(a) + \\cos(a) (x-a) + c_2 (x-a)^2 + \\cdots + c_n (x-a)^n \\\\ \\left. \\left( \\frac{d}{dx} \\right)^2 f_n (x) \\right\\rvert_{x=a} = 2c_2 = \\left( \\frac{d}{dx} \\right)^2 \\left. \\sin(x) \\right\\rvert_{x=a} \\\\ c_2 = -\\frac{\\sin(a)}{2} \\end{gather}"}$$</MathStuff>
 					<li>If \(f_2(x) = \sin(a) + \cos(a)(x-a) - \frac{"{\\sin(a)}{2}"}(x-a)^2\), then \(f_2(a) = \sin(a)\), \(f_2'(a) = \cos(a)\) and \(f_2''(a) = -2\sin(a)\).</li>
 					<ImgComp src={require("./calculus_pics/27.png")} width="70%" />
@@ -1175,7 +1175,6 @@ export const content = <>
 					<MathStuff>$${"\\begin{gather} f_n(x) = \\sin(a) + \\cos(a) (x-a) + c_2 (x-a)^2 + \\cdots + c_n (x-a)^n \\\\ \\left.  \\left( \\frac{d}{dx} \\right)^3 f_n (x) \\right\\rvert_{x=a} = (3)(2) c_3 = \\left( \\frac{d}{dx} \\right)^3 \\left. \\sin(x) \\right\\rvert_{x=a} \\\\ c_3 = -\\frac{\\cos(a)}{(3)(2)} \\\\ \\left. \\left( \\frac{d}{dx} \\right)^4 f_n (x) \\right\\rvert_{x=a} = (4)(3)(2) c_4 = \\left( \\frac{d}{dx} \\right)^4 \\left. \\sin(x) \\right\\rvert_{x=a} \\\\ c_4 = \\frac{\\sin(a)}{(4)(3)(2)} \\end{gather}"}$$</MathStuff>
 					<li>Is \(f_4(x)\) a good approximation for \(\sin(x)\) when \(x\) is near \(a\)?</li>
 					<MathStuff>$${"f_4(x) = \\sin(a) + \\cos(a)(x-a) - \\frac{\\sin(a)}{2}}(x-a)^2 - \\frac{\\cos(a)}{3!}(x-a)^3 + \\frac{\\sin(a)}{4!}(x-a)^4"}$$</MathStuff>
-					<ImgComp src={require("./calculus_pics/28.png")} width="70%" />
 					<TableLI>
 						<caption>Let \(a = (2\pi)/3\)</caption>
 						<thead>
@@ -1189,6 +1188,7 @@ export const content = <>
 							<tr><td>\((2\pi)/3\) + 0.04</td><td>0.845338009171</td><td>0.845338008739</td></tr>
 						</tbody>
 					</TableLI>
+					<ImgComp src={require("./calculus_pics/28.png")} width="70%" />
 				</SubList></li>
 			</ul>
 		</div>
