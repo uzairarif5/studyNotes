@@ -1207,7 +1207,22 @@ export const content = <>
 					<li>If a function \(f\) has a power series at a that converges to \(f\) on some open interval containing \(a\), then that power series is the Taylor series for \(f\) at \(a\).</li>
 					<li>These partial sums are finite polynomials, known as <b>Taylor polynomials</b>. If \(a=0\),
 					then they are known as <b>Maclaurin polynomials</b>.</li>
-					<li></li>
+					<li><b>Taylor's Theorem with Remainder:</b><SubList>
+						<li>Let \(f\) be a function that can be differentiated \(n+1\) times on an interval \(I\) containing the real number \(a\). Let \(p_n\) be the \(n\)th Taylor polynomial of \(f\) at \(a\) and let \(R_n (x)\) be the \(n\)th remainder:</li>
+						<MathStuff>$${" R_n(x) = f(x) - p_n(x) "}$$</MathStuff>
+						<li>then for each \(x\) in the interval \(I\), there exists a real number \(c\) between \(a\) and \(x\) such that:</li>
+						<MathStuff>$${" R_n(x) = \\frac{f^{(n+1)} (c)}{(n+1)!} (x-a)^{n+1} "}$$</MathStuff>
+						<li>if there exists a real number \(M\) such that \(| f(n+1)(x) | \le M\) for all \(x∈I\), then:</li>
+						<MathStuff>$${" | R_n(x) | \\le \\frac{M} (c)}{(n+1)!} |x-a|^{n+1} "}$$</MathStuff>
+						<li>for all \(x∈I\).</li>
+					</SubList></li>
+					<li>Convergence of Taylor Series:<SubList>
+						<li>Suppose that \(f\) has derivatives of all orders on an interval \(I\) containing \(a\). Then the Taylor series:</li>
+						<MathStuff>$${" \\sum_{n=0}^{\\infty} \\frac{f^{(n)}(a)}{n!} (x-a)^n "}$$</MathStuff>
+						<li>converges to \(f(x)\) for all \(x\) in \(I\) if and only if \(lim_{"{n→\\infty}"} R_n (x)=0\)</li>
+						<li>for all \(x\) in \(I\).</li>
+					</SubList></li>
+					<ImgComp src={require("./calculus_pics/29.png")} width="70%" />
 				</SubList></li>
 			</ul>
 		</div>
