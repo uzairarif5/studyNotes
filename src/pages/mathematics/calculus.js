@@ -1091,16 +1091,13 @@ export const content = <>
 					<li>If \(p \gt 1\) or \(p=\infty\), then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) diverges.</li>
 					<li>If \(p=1\), the test does not provide any information.</li>
 				</SubList></li>
-			</ul>
-			<br/>
-			<ul data-source={65}>
 				<li><b>Power series:</b><SubList>
 					<li>A series of the form:</li>
 					<MathStuff>$$ \sum^{"{\\infty}_{n=0}"} c_n (x-a)^n = c_0 + c_1 (x-a) + c_2(x-a)^2 + c_3 (x-a)^3 + c_4 (x-a)^4 + \cdots $$</MathStuff>
 					<li>is a <b>power series</b> centered at \(x=a\).</li>
 					<li className="ownExplanation">A power series has infinite terms while polynomials have finite terms. A partial sum of a power series is a polynomial.</li>
-					<li className="ownExplanation">Let \(p = \lim_{"{n \\to \\infty}"} | \frac{"{c_{n+1} (x-a)^{n+1}}{c_n (x-a)^n}"} |\) According to the ratio test, the series converges if \(p \lt 1\), diverges if \(p \gt 1\), and inconclusive if \(p=1\).</li>
-					<li className="ownExplanation">If \(p = \lim_{"{n \\to \\infty}"} | \frac{"{c_{n+1} (x-a)^{n+1}}{c_n (x-a)^n}"} | \), then \(p = (\lim_{"{n \\to \\infty}"} | \frac{"{c_{n+1}}{c_n}"} |) |x-a| = L |x-a| \).</li>
+					<li className="ownExplanation">Let \(p = \lim_{"{n \\to \\infty}"} | \frac{"{c_{n+1} (x-a)^{n+1}}{c_n (x-a)^n}"} |\). According to the ratio test, the series converges if \(p \lt 1\), diverges if \(p \gt 1\), and inconclusive if \(p=1\).</li>
+					<li className="ownExplanation">If \(p = \lim_{"{n \\to \\infty}"} | \frac{"{c_{n+1} (x-a)^{n+1}}{c_n (x-a)^n}"} | \), then \(p = (\lim_{"{n \\to \\infty}"} | \frac{"{c_{n+1}}{c_n}"} |) |x-a|\), so \(p = L |x-a| \).</li>
 					<li className="ownExplanation">For a series to converge, \(|x-a| L \lt 1 \), or \(|x-a| \lt 1/L \). Let \(R = 1/L\). This means \(R\) is a value where the series converges if \(|x-a| \lt R \). For a series to diverge, \(|x-a| L \gt 1 \) or \(|x-a| \gt R \).</li>
 					<li>The set of values \(x\) for which the series converges is known as the <b>interval of convergence</b>. The value \(R\) is called the <b>radius of convergence</b>.</li>
 					<li>The geometric series shown below converges in the interval \((-1, 1)\):</li>
@@ -1114,92 +1111,11 @@ export const content = <>
 						<li>The series \(\sum_{"{n=0}"}^{"{\\infty}"} c_n (b^m)^n\) converges to \(f(bxm)\) for all x such that \(bxm\) is in \(I\).</li>
 					</SubList></li>
 					<li>Let \(e^n\) be defined as:</li>
-					<MathStuff>$${"\\begin{align} e_n &= {c_0 dn^+ c_1d^{n-1}+c_2 d^{n-2}+ \\cdots +c_{n-1}d^1+c_n d^0 &= \\sum_{k=0}^n c_k d^{n-k} } \\end{align}"}$$</MathStuff>
+					<MathStuff>$${"\\begin{align} e_n &= {c_0 d^n + c_1d^{n-1} + c_2 d^{n-2} + \\cdots +c_{n-1}d^1 + c_n d^0 &= \\sum_{k=0}^n c_k d^{n-k} } \\end{align}"}$$</MathStuff>
 					<li>Then:</li>
 					<MathStuff>$${" \\left( \\sum_{n=0}^{\\infty} c_n x^n \\right) \\left( \\sum_{n=0}^{\\infty} d_n x^n \\right) = \\sum_{n=0}^{\\infty} e_n x^n "}$$</MathStuff>
 					<li>Where \(\sum{"_{n=0}^{\\infty}"} e_n x^n\) is known as the <b>Cauchy product</b> and it converges to \(f(x) * g(x)\) on \(I\).</li>
 				</SubList></li>
-			</ul>
-			<ul className="ownExplanation">
-				<li><b>Taylor series</b> introduction:<SubList>
-					<li>Let's say \(\sin(a)\) is known to to us, along with the derivatives of all orders of \(\sin(x)\) evaluated at \(x=a\), and let's say \(\sin(x)\) for \(x\) values very close to \(a\) is difficult to calculate.</li>
-					<ImgComp src={require("./calculus_pics/24.png")} width="70%" />
-					<li>Suppose we want to find a polynomial \(f(x)\) which is equal to \(\sin(x)\) at \(x=a\) and very close to \(\sin(x)\) near \(x=a\), then we can use \(f(x)\) to find the approximate value of \(\sin(x)\) around \(a\).</li>
-					<li>A polynomial is of the form:</li>
-					<MathStuff>$${" c_0 + c_1 x + c_2 x^2 + c_3 x ^3 + \\cdots + c_n x^n "}$$</MathStuff>
-					<li>If the polyomial is shifted to some variable \(b\) units to the right, we get another more general polynomial:</li>
-					<MathStuff>$${" c_0 + c_1 (x-b) + c_2 (x-b)^2 + c_3 (x-b)^3 + \\cdots + c_n (x-b)^n "}$$</MathStuff>
-					<li>Let this polynomial be equal to \(f_n(x)\), where \(n\) represents the degree of the polynomial:</li>
-					<MathStuff>$${" f_n(x) = c_0 + c_1 (x-b) + c_2 (x-b)^2 + \\cdots + c_n (x-b)^n "}$$</MathStuff>
-					<li>We want \(f(x)\) at any degree to be equal to \(\sin(x)\) at \(x=a\). This means</li>
-					<MathStuff>$${"\\begin{gather} f_0 (a) = f_1 (a) = f_2 (a) = \\sin(a) \\\\ c_0 = c_0 + c_1 (a-b) = c_0 + c_1 (a-b) + c_2 (a-b)^2 = \\sin(a) \\end{gather}"}$$</MathStuff>
-					<li>This is only possible if \(b=a\):</li>
-					<MathStuff>$${"\\begin{gather} f_0 (a) = f_1 (a) = f_2 (a) = \\sin(a) \\\\ c_0 = c_0 + c_1 (0) = c_0 + c_1 (0) + c_2 (0)^2 = \\sin(a) \\end{gather}"}$$</MathStuff>
-					<li>This will lead to \(c_0 = \sin(a)\):</li>
-					<MathStuff>$${" f_n(x) = \\sin(a) + c_1 (x-a) + c_2 (x-a)^2 + \\cdots + c_n (x-a)^n "}$$</MathStuff>
-					<li>Is \(f_0(x) = \sin(a)\) a good approximation for \(\sin(x)\) when \(x\) is near \(a\)?</li>
-					<TableLI>
-						<caption>Let \(a = (2\pi)/3\)</caption>
-						<thead>
-							<tr><th>x</th><th>\(f_0(x)\)</th><th>\(\sin(x)\)</th></tr>
-						</thead>
-						<tbody>
-							<tr><td>\((2\pi)/3\) - 0.02</td><td>0.866</td><td>0.8759</td></tr>
-							<tr><td>\((2\pi)/3\) - 0.01</td><td>0.866</td><td>0.8710</td></tr>
-							<tr><td>\((2\pi)/3\)</td><td>0.866</td><td>0.866</td></tr>
-							<tr><td>\((2\pi)/3\) + 0.01</td><td>0.866</td><td>0.8610</td></tr>
-							<tr><td>\((2\pi)/3\) + 0.02</td><td>0.866</td><td>0.8559</td></tr>
-						</tbody>
-					</TableLI>
-					<ImgComp src={require("./calculus_pics/25.png")} width="70%" />
-					<li>Can we do better? Let' say we also want the derivative of \(f(x)\) to be equal the derivative of \(\sin(x)\) at \(x=a\):</li>
-					<MathStuff>$${"\\begin{gather} f_n(x) = \\sin(a) + c_1 (x-a) + c_2 (x-a)^2 + \\cdots + c_n (x-a)^n \\\\ \\left. \\frac{d}{dx} f_n (x) \\right\\rvert_{x=a} = c_1 = \\frac{d}{dx} \\left. \\sin(x) \\right\\rvert_{x=a} \\\\ c_1 = \\cos(a) \\end{gather}"}$$</MathStuff>
-					<li>Is \(f_1(x) = \sin(a) + \cos(a)(x-a)\) a good approximation for \(\sin(x)\) when \(x\) is near \(a\)?</li>
-					<TableLI>
-						<caption>Let \(a = (2\pi)/3\)</caption>
-						<thead>
-							<tr><th>x</th><th>\(f_1(x)\)</th><th>\(\sin(x)\)</th></tr>
-						</thead>
-						<tbody>
-							<tr><td>\((2\pi)/3\) - 0.02</td><td>0.87603</td><td>0.87585</td></tr>
-							<tr><td>\((2\pi)/3\) - 0.01</td><td>0.87103</td><td>0.87098</td></tr>
-							<tr><td>\((2\pi)/3\)</td><td>0.866</td><td>0.866</td></tr>
-							<tr><td>\((2\pi)/3\) + 0.01</td><td>0.86103</td><td>0.86098</td></tr>
-							<tr><td>\((2\pi)/3\) + 0.02</td><td>0.85603</td><td>0.85585</td></tr>
-						</tbody>
-					</TableLI>
-					<ImgComp src={require("./calculus_pics/26.png")} width="70%" />
-					<li>Can we do better? Let' say we also want the second derivative of \(f(x)\) to be equal the derivative of \(\sin(x)\) at \(x=a\):</li>
-					<MathStuff>$${"\\begin{gather} f_n(x) = \\sin(a) + \\cos(a) (x-a) + c_2 (x-a)^2 + \\cdots + c_n (x-a)^n \\\\ \\left. \\left( \\frac{d}{dx} \\right)^2 f_n (x) \\right\\rvert_{x=a} = 2c_2 = \\left( \\frac{d}{dx} \\right)^2 \\left. \\sin(x) \\right\\rvert_{x=a} \\\\ c_2 = -\\frac{\\sin(a)}{2} \\end{gather}"}$$</MathStuff>
-					<li>If \(f_2(x) = \sin(a) + \cos(a)(x-a) - \frac{"{\\sin(a)}{2}"}(x-a)^2\), then \(f_2(a) = \sin(a)\), \(f_2'(a) = \cos(a)\) and \(f_2''(a) = -2\sin(a)\).</li>
-					<ImgComp src={require("./calculus_pics/27.png")} width="70%" />
-					<li>Let's try to do the same with the third and fourth derivative.</li>
-					<MathStuff>$${"\\begin{gather} \\left.  \\left( \\frac{d}{dx} \\right)^3 f_n (x) \\right\\rvert_{x=a} = (3)(2) c_3 = \\left( \\frac{d}{dx} \\right)^3 \\left. \\sin(x) \\right\\rvert_{x=a} \\\\ c_3 = -\\frac{\\cos(a)}{(3)(2)} \\\\ \\left. \\left( \\frac{d}{dx} \\right)^4 f_n (x) \\right\\rvert_{x=a} = (4)(3)(2) c_4 = \\left( \\frac{d}{dx} \\right)^4 \\left. \\sin(x) \\right\\rvert_{x=a} \\\\ c_4 = \\frac{\\sin(a)}{(4)(3)(2)} \\end{gather}"}$$</MathStuff>
-					<li>Is \(f_4(x)\) a good approximation for \(\sin(x)\) when \(x\) is near \(a\)?</li>
-					<MathStuff>$${"f_4(x) = \\sin(a) + \\cos(a)(x-a) - \\frac{\\sin(a)}{2}(x-a)^2 - \\frac{\\cos(a)}{3!}(x-a)^3 + \\frac{\\sin(a)}{4!}(x-a)^4"}$$</MathStuff>
-					<TableLI>
-						<caption>Let \(a = (2\pi)/3\)</caption>
-						<thead>
-							<tr><th>x</th><th>\(f_4(x)\)</th><th>\(\sin(x)\)</th></tr>
-						</thead>
-						<tbody>
-							<tr><td>\((2\pi)/3\) - 0.04</td><td>0.885327342504</td><td>0.885327342926</td></tr>
-							<tr><td>\((2\pi)/3\) - 0.02</td><td>0.875851537811</td><td>0.875851537824</td></tr>
-							<tr><td>\((2\pi)/3\)</td><td>0.866</td><td>0.866</td></tr>
-							<tr><td>\((2\pi)/3\) + 0.02</td><td>0.855852871144</td><td>0.85585287113</td></tr>
-							<tr><td>\((2\pi)/3\) + 0.04</td><td>0.845338009171</td><td>0.845338008739</td></tr>
-						</tbody>
-					</TableLI>
-					<ImgComp src={require("./calculus_pics/28.png")} width="70%" />
-					<li>You can probably now guess what the formula for \(f_n(x)\) would be:</li>
-					<MathStuff>$${"\\begin{align} f_n(x) = &f(a) + f'(a)(x-a) + \\frac{f''(a)}{2}(x-a)^2 + \\\\ &\\frac{f'''(a)}{3!}(x-a)^3 + \\frac{f^{(4)}(a)}{4!}(x-a)^4 + \\\\ &\\cdots + \\frac{f^{(n)}(a)}{n!}(x-a)^n \\end{align}"}$$</MathStuff>
-					<li>This is an example of a <b>Taylor polynomial</b>.</li>
-					<li>We choose \(f(x)\) to be a polynomial with finite terms, but what if we let \(f(x)\) be a power series (i.e. have infinite terms).</li>
-					<MathStuff>$${" f(x) = \\sum^{\\infty}_{n=0} \\frac{f^{(n)}(a)}{n!}(x-a)^n "}$$</MathStuff>
-					<li>This is called the <b>Taylor series</b>.</li>
-				</SubList></li>
-			</ul>
-			<ul data-source={65}>
 				<li><b>Taylor/Maclaurin Series:</b><SubList>
 					<li>If \(f\) has derivatives of all orders at \(x=a\), then the <b>Taylor series</b> for the function \(f\) at \(a\) is:</li>
 					<MathStuff>$${" f(x) = \\sum^{\\infty}_{n=0} \\frac{f^{(n)}(a)}{n!}(x-a)^n "}$$</MathStuff>
