@@ -1032,7 +1032,9 @@ export const content = <>
 				</SubList></li>
 				<li><b>Integral test:</b><SubList>
 					<li>Consider a series \(\sum_{"{n=1}"}^∞ a_n\).</li>
-					<li>Let there be an integer \(N\) and a monotone decreasing function \(f\), such that \(f\) is defined on \([N, ∞)\) and \(f(n) = a_n\) for \(n \ge N\). We can find an approximation of \(\sum_{"{n=N}"}^∞ a_n\) using this:</li>
+					<li>Let there be an integer \(N\) and a monotone decreasing function \(f\), such that \(f\) is defined on \([N, ∞)\) and \(f(n) = a_n\) for \(n \ge N\), then both the integral and the series below either converge or they both diverge:</li>
+					<MathStuff>$$ \sum_{"{n=1}"}^\infty a_n \quad \int_N^\infty f(x) dx $$</MathStuff>
+					<li>We can find an approximation of \(\sum_{"{n=N}"}^∞ a_n\) using this:</li>
 					<MathStuff>$$ \int^\infty_N f(x) dx \le \sum_{"{n=N}"}^\infty a_n \le a_N + \int_N^\infty f(x) dx $$</MathStuff>
 				</SubList></li>
 			</ul>
