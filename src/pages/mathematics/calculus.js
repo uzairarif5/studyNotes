@@ -1111,7 +1111,7 @@ export const content = <>
 						<li>The series \(\sum_{"{n=0}"}^{"{\\infty}"} c_n (b^m)^n\) converges to \(f(bxm)\) for all x such that \(bxm\) is in \(I\).</li>
 					</SubList></li>
 					<li>Let \(e^n\) be defined as:</li>
-					<MathStuff>$${"\\begin{align} e_n &= {c_0 d^n + c_1d^{n-1} + c_2 d^{n-2} + \\cdots +c_{n-1}d^1 + c_n d^0 &= \\sum_{k=0}^n c_k d^{n-k} } \\end{align}"}$$</MathStuff>
+					<MathStuff>$${"\\begin{align} e_n &= c_0 d^n + c_1d^{n-1} + c_2 d^{n-2} + \\cdots +c_{n-1}d^1 + c_n d^0 \\\\ &= \\sum_{k=0}^n c_k d^{n-k} \\end{align}"}$$</MathStuff>
 					<li>Then:</li>
 					<MathStuff>$${" \\left( \\sum_{n=0}^{\\infty} c_n x^n \\right) \\left( \\sum_{n=0}^{\\infty} d_n x^n \\right) = \\sum_{n=0}^{\\infty} e_n x^n "}$$</MathStuff>
 					<li>Where \(\sum{"_{n=0}^{\\infty}"} e_n x^n\) is known as the <b>Cauchy product</b> and it converges to \(f(x) * g(x)\) on \(I\).</li>
