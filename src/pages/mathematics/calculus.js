@@ -1031,7 +1031,7 @@ export const content = <>
 					<li>A <b>harmonic series</b> \(\left( 1 + {"\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4}"} + \ldots \right)\) does not converge.</li>
 				</SubList></li>
 				<li><b>Integral test:</b><SubList>
-					<li>Consider a series \(\sum_{"{n=1}"}^∞ a_n\).</li>
+					<li>Consider a series \(\sum_{"{n=1}"}^∞ a_n\) with only positive terms.</li>
 					<li>Let there be an integer \(N\) and a monotone decreasing function \(f\), such that \(f\) is defined on \([N, ∞)\) and \(f(n) = a_n\) for \(n \ge N\), then both the integral and the series below either converge or they both diverge:</li>
 					<MathStuff>$$ \sum_{"{n=1}"}^\infty a_n \quad \int_N^\infty f(x) dx $$</MathStuff>
 					<li>We can find an approximation of \(\sum_{"{n=N}"}^∞ a_n\) using this:</li>
@@ -1052,8 +1052,11 @@ export const content = <>
 					<li>Let \(S_N\) be the \(N\)th partial sum of \(\sum_{"{n=1}"}^∞ a_n\).</li>
 					<li>Let \(R_N\) be defined as:</li>
 					<MathStuff>$$ R_N = \sum_{"{n=N}"}^∞ a_n - S_N = \sum_{"{n=N+1}"}^∞ a_n$$</MathStuff>
+					<li>This means:</li>
+					<MathStuff>$$ \int^\infty_{"{N+1}"} f(x) dx \le R_N \le a_{"{N+1}"} + \int^\infty_{"{N+1}"} f(x) dx $$</MathStuff>
+					<li>Since \(\int^\infty_N f(x) dx \ge a_{"{N+1}"} + \int^\infty_{"{N+1}"} f(x) dx \):</li>
+					<MathStuff>$$ \int^\infty_{"{N+1}"} f(x) dx \le R_N \le \int^\infty_N f(x) dx $$</MathStuff>
 					<li>The <b>remainder estimate</b>:</li>
-					<MathStuff>$$\begin{"{gather}"} \int^\infty_{"{N+1}"} f(x) dx \le R_N \le a_{"{N+1}"} \int^\infty_{"{N+1}"} f(x) dx \\ \int^\infty_{"{N+1}"} f(x) dx \le R_N \le \int^\infty_N f(x) dx \end{"{gather}"}$$</MathStuff>
 				</SubList></li>
 				<li><b>Comparison Test:</b><SubList>
 					<li>Suppose there exists an integer \(N\) such that \(0≤ a_n ≤ b_n\) for all \(n≥N\). If \(\sum^∞_{"{n=1}"} b_n\) converges, then \(\sum^∞_{"{n=1}"} a_n\) converges.</li>
