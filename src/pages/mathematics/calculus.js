@@ -399,7 +399,7 @@ export const content = <>
 					<li><u>Corollary 2:</u> If \(f\) and \(g\) are differentiable over an interval \(I\) and \(f'(x)=g'(x)\) for all \(x∈I\), then \(f(x)=g(x)+C\) for some constant \(C\).</li>
 					<li><u>Corollary 3:</u> Let \(f\) be continuous over the closed interval \([a,b]\) and differentiable over the open interval \((a,b)\):<SubList opened>
 						<li>If \(f'(x) \gt 0\) for all \(x∈(a,b)\), then \(f\) is an increasing function over \([a,b]\).</li>
-						<li>If \(f′(x) \gt 0\) for all \(x∈(a,b)\), then \(f\) is a decreasing function over \([a,b]\).</li>
+						<li>If \(f'(x) \lt 0\) for all \(x∈(a,b)\), then \(f\) is a decreasing function over \([a,b]\).</li>
 					</SubList></li>
 				</SubList></li>
 				<li>Derivative Tests:<SubList>
@@ -972,34 +972,34 @@ export const content = <>
 					<li className="ownExplanation">The general explicit formula is: \(a_n = a_0 r^{"{n-1}"}\) where \(r\) is the ratio.</li>
 				</SubList></li>
 				<li>Limit of a sequence:<SubList>
-					<li>Given a sequence \({"{a_n}"}\), if the terms \(a_n\) become arbitrarily close to a finite number \(L\) as \(n\) becomes sufficiently large, we say \({"{a_n}"}\) is a <b>convergent sequence</b> and \(L\) is the limit of the sequence. In this case, we write: \(\lim_{"{n \\to \\infty}"} a_n = L\)</li>
-					<li>If a sequence \({"{a_n}"}\) is not convergent, we say it is a <b>divergent sequence</b>.</li>
+					<li>Given a sequence \({"\\{a_n\\}"}\), if the terms \(a_n\) become arbitrarily close to a finite number \(L\) as \(n\) becomes sufficiently large, we say \({"\\{a_n\\}"}\) is a <b>convergent sequence</b> and \(L\) is the limit of the sequence. In this case, we write: \(\lim_{"{n \\to \\infty}"} a_n = L\)</li>
+					<li>If a sequence \({"\\{a_n\\}"}\) is not convergent, we say it is a <b>divergent sequence</b>.</li>
 					<TableLI>
 						<caption>Definition</caption>
 						<tbody>
-							<tr><td>A sequence \({"{a_n}"}\) converges to a real number \(L\) if for all \(ε \gt 0\), there exists an integer \(N\) such that \(|a_n-L| \lt ε\) if \(n≥N\). The number \(L\) is the limit of the sequence and we write: \[\lim_{"{n \\to \\infty}"} a_n = L\]</td></tr>
+							<tr><td>A sequence \({"\\{a_n\\}"}\) converges to a real number \(L\) if for all \(ε \gt 0\), there exists an integer \(N\) such that \(|a_n-L| \lt ε\) if \(n≥N\). The number \(L\) is the limit of the sequence and we write: \[\lim_{"{n \\to \\infty}"} a_n = L\]</td></tr>
 						</tbody>
 					</TableLI>
-					<li>Consider a sequence \({"{a_n}"}\) and suppose there exists a real number \(L\) such that the sequence \({"{a_n}"}\) converges to \(L\). Suppose \(f\) is a continuous function at \(L\). The sequence \({"{f(a_n)}"}\) converges to \(f(L)\). If \({"{f(a_n)}"}\) is not defined for all \(a_n\), there should exist an integer \(N\) such that \(f\) is defined at all values \(a_n\) for \(n≥N\).</li>
+					<li>Consider a sequence \({"\\{a_n\\}"}\) and suppose there exists a real number \(L\) such that the sequence \({"\\{a_n\\}"}\) converges to \(L\). Suppose \(f\) is a continuous function at \(L\). The sequence \({"\\{f(a_n) \\}"}\) converges to \(f(L)\). If \({"\\{ f(a_n) \\}"}\) is not defined for all \(a_n\), there should exist an integer \(N\) such that \(f\) is defined at all values \(a_n\) for \(n≥N\).</li>
 					<TableLI>
 						<caption>Squeeze theorem for sequences</caption>
 						<tbody>
 							<tr><td>
-								Consider sequences \({"{a_n}"}\), \({"{b_n}"}\), and \({"{c_n}"}\). Suppose there exists an integer \(N\) such that:
+								Consider sequences \({"\\{a_n\\}"}\), \({"\\{b_n \\}"}\), and \({"\\{ c_n \\}"}\). Suppose there exists an integer \(N\) such that:
 								\[a_n≤b_n≤c_n \text{"{ for all }"} n≥N\]
 								If there exists a real number \(L\) such that:
 								\[ \lim_{"{n \\to \\infty}"} a_n =L= \lim_{"{n \\to \\infty}"} c_n\]
-								then \({"{b_n}"}\) converges and \(\lim_{"{n \\to \\infty}"} b_n=L\).
+								then \({"\\{ b_n \\}"}\) converges and \(\lim_{"{n \\to \\infty}"} b_n=L\).
 							</td></tr>
 						</tbody>
 					</TableLI>
-					<li>A sequence \({"{a_n}"}\) is bounded above if there exists a real number \(M\) such that \(a_n \le M \) for all positive integers \(n\).</li>
-					<li>A sequence \({"{a_n}"}\) is bounded below if there exists a real number \(M\) such that \(a_n \ge M \) for all positive integers \(n\).</li>
-					<li>A sequence \({"{a_n}"}\) is a <b>bounded sequence</b> if it is bounded above and bounded below. Otherwise it is an <b>unbounded sequence</b>.</li>
-					<li>A sequence \({"{a_n}"}\) is increasing for all \(n≥n_0\) if \({"a_{n+1} \\ge a_n"}\) for all \(n≥n_0\).</li>
-					<li>A sequence \({"{a_n}"}\) is decreasing for all \(n≥n_0\) if \({"a_{n+1} \\le a_n"}\) for all \(n≥n_0\).</li>
-					<li>A sequence \({"{a_n}"}\) is a <b>monotone sequence</b> for all \(n≥n_0\) if it is increasing for all \(n≥n_0\) or decreasing for all \(n≥n_0\).</li>
-					<li><u><b>Monotone convergence theorem:</b></u> If \({"{a_n}"}\) is a bounded sequence and there exists a positive integer \(n_0\) such that \({"{a_n}"}\) is monotone for all \(n≥n_0\), then \({"{a_n}"}\) converges.</li>
+					<li>A sequence \({" \\{a_n \\}"}\) is bounded above if there exists a real number \(M\) such that \(a_n \le M \) for all positive integers \(n\).</li>
+					<li>A sequence \({" \\{a_n \\}"}\) is bounded below if there exists a real number \(M\) such that \(a_n \ge M \) for all positive integers \(n\).</li>
+					<li>A sequence \({" \\{a_n \\}"}\) is a <b>bounded sequence</b> if it is bounded above and bounded below. Otherwise it is an <b>unbounded sequence</b>.</li>
+					<li>A sequence \({" \\{a_n \\}"}\) is increasing for all \(n≥n_0\) if \({"a_{n+1} \\ge a_n"}\) for all \(n≥n_0\).</li>
+					<li>A sequence \({" \\{a_n \\}"}\) is decreasing for all \(n≥n_0\) if \({"a_{n+1} \\le a_n"}\) for all \(n≥n_0\).</li>
+					<li>A sequence \({" \\{a_n \\}"}\) is a <b>monotone sequence</b> for all \(n≥n_0\) if it is increasing for all \(n≥n_0\) or decreasing for all \(n≥n_0\).</li>
+					<li><u><b>Monotone convergence theorem:</b></u> If \({" \\{a_n \\}"}\) is a bounded sequence and there exists a positive integer \(n_0\) such that \({" \\{a_n \\}"}\) is monotone for all \(n≥n_0\), then \({" \\{a_n \\}"}\) converges.</li>
 				</SubList></li>
 				<li>Sums and series:<SubList>
 					<li>We have seen that a sequence is an ordered set of terms. If you add these terms together, you get a <b>series</b>.</li>
@@ -1008,6 +1008,12 @@ export const content = <>
 					<li>A <b>partial sum</b> of an infinite series is a finite sum of the form:</li>
 					<MathStuff>$$ \sum^k_{"{n=1}"} a_n = a_1 + a_2 + a_3 + \dots + a_k $$</MathStuff>
 					<li className="ownExplanation">An <b>arithmetic series</b> is the sum of an arithmetic sequence. A general formula for it is \(S_k = \frac{"{k}{2}(2 a_0 + (k-1)d)"}\).</li>
+				</SubList></li>
+				<li>Algebraic properties of convergent series:<SubList>
+					<li>Let \(\sum^\infty_{"{n=1}"} a_n\) and \(\sum^\infty_{"{n=1}"} b_n\) be convergent series.</li>
+					<li>\(\sum^\infty_{"{n=1}"} a_n + b_n\) = \(\sum^\infty_{"{n=1}"} a_n\) + \(\sum^\infty_{"{n=1}"} b_n\)</li>
+					<li>\(\sum^\infty_{"{n=1}"} a_n - b_n\) = \(\sum^\infty_{"{n=1}"} a_n\) - \(\sum^\infty_{"{n=1}"} b_n\)</li>
+					<li>c\(\sum^\infty_{"{n=1}"} a_n\) = \(\sum^\infty_{"{n=1}"} ca_n\)</li>
 				</SubList></li>
 				<li><b>Geometric series:</b><SubList>
 					<li>A <b>geometric series</b> is any series that we can write in the form:</li>
@@ -1026,7 +1032,7 @@ export const content = <>
 			</ul>
 			<ul className={"ownExplanation"}>
 				<li><b>Divergence test:</b><SubList>
-					<li>If \(\lim_{"{n \\to \\infty}"} a_n = L\) where \(L\) is a non-zero constant or if \(\lim_{"{n \\to \\infty}"} a_n \) does not exist, then \(\sum^∞_{"{n=1}"} a_n\) cannot converge.</li>
+					<li>If \(\lim_{"{n \\to \\infty}"} a_n = L\) where \(L\) is a non-zero constant or if \(\lim_{"{n \\to \\infty}"} a_n \) does not exist, then \(\sum^∞_{"{n=1}"} a_n\) diverges.</li>
 					<li>If \(\lim_{"{n \\to \\infty}"} a_n = 0\), then \(\sum^∞_{"{n=1}"} a_n\) may or may not converge.</li>
 					<li>A <b>harmonic series</b> \(\left( 1 + {"\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4}"} + \ldots \right)\) does not converge.</li>
 				</SubList></li>
@@ -1047,20 +1053,17 @@ export const content = <>
 					<li>If \(p \gt 1\), then \(\sum^\infty_{"{n=1}"}\frac{"{1}{n^p}"}\) converges because\(\int^\infty_1 \frac{"{1}{x^p}"} dx\) converges.</li>
 					<MathStuff>$$ \int^\infty_1 \frac{"{1}{x^p}"} dx = \frac{"{1}{p-1}"} \text{"{ if }"} p \gt 1$$</MathStuff>
 				</SubList></li>
-				<li>Remainder estimate from the integral test:<SubList>
+				<li>Remainder estimate for the integral test:<SubList>
 					<li>Suppose \(\sum_{"{n=1}"}^∞ a_n\) is a convergent series with positive terms.</li>
 					<li>Let \(S_N\) be the \(N\)th partial sum of \(\sum_{"{n=1}"}^∞ a_n\).</li>
 					<li>Let \(R_N\) be defined as:</li>
 					<MathStuff>$$ R_N = \sum_{"{n=N}"}^∞ a_n - S_N = \sum_{"{n=N+1}"}^∞ a_n$$</MathStuff>
 					<li>This means:</li>
-					<MathStuff>$$ \int^\infty_{"{N+1}"} f(x) dx \le R_N \le a_{"{N+1}"} + \int^\infty_{"{N+1}"} f(x) dx $$</MathStuff>
-					<li>Since \(\int^\infty_N f(x) dx \ge a_{"{N+1}"} + \int^\infty_{"{N+1}"} f(x) dx \):</li>
-					<MathStuff>$$ \int^\infty_{"{N+1}"} f(x) dx \le R_N \le \int^\infty_N f(x) dx $$</MathStuff>
-					<li>The <b>remainder estimate</b>:</li>
+					<li>The <b>remainder estimate</b>.</li>
 				</SubList></li>
 				<li><b>Comparison Test:</b><SubList>
 					<li>Suppose there exists an integer \(N\) such that \(0≤ a_n ≤ b_n\) for all \(n≥N\). If \(\sum^∞_{"{n=1}"} b_n\) converges, then \(\sum^∞_{"{n=1}"} a_n\) converges.</li>
-					<li>Suppose there exists an integer \(N\) such that \(0 \ge a_n \ge b_n\) for all \(n≥N\). If \( \sum^∞_{"{n=1}"} b_n \) diverges, then \(\sum^∞_{"{n=1}"} a_n\) diverges.</li>
+					<li>Suppose there exists an integer \(N\) such that \(a_n \ge b_n \ge 0\) for all \(n≥N\). If \( \sum^∞_{"{n=1}"} b_n \) diverges, then \(\sum^∞_{"{n=1}"} a_n\) diverges.</li>
 				</SubList></li>
 				<li><b>Limit Comparison Test:</b><SubList>
 					<li>Let \(a_n, b_n≥ 0\) for all \(n≥1\):<SubList opened>
@@ -1080,7 +1083,8 @@ export const content = <>
 					<li className="ownExplanation"><ImgComp src={require("./calculus_pics/23.jpg")} width="70%" /></li>
 					<li className="ownExplanation">Let there be an integer \(N\) such that \(0 \lt b_{"{n+1}"} \le b_n\) for all \(n \ge N\). Let \(S\) be the sum of the entire alternating series, let \(S_N\) be the sum of the alternating series up to and including \(n=N\), and let \(R_N = S - S_N\) (i.e. \(R_N\) is the remaining sum from \(n=N+1\) onwards). The first term of the remaining sum is \((±b_{"{N+1}"})\).</li>
 					<li className="ownExplanation">If this is a positive term, then the remaining sum (\(R_N\)) is upper bounded by that first term, or in other words, \(R_N \le b_{"{N+1}"}\).</li>
-					<li className="ownExplanation">If this is a negative term, then the remaining sum (\(R_N\)) is lower bounded by that term, or in other words, \(R_N \ge b_{"{N+1}"}\).</li>
+					<li className="ownExplanation">If this is a negative term, then the remaining sum (\(R_N\)) is lower bounded by that term, or in other words, \(R_N \ge -b_{"{N+1}"}\).</li>
+					<li className="ownExplanation">This also means that the sum \(S\) lies between the partial sums \(S_N\) and \(S_N+1\).</li>
 					<li>A series \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) exhibits <b>absolute convergence</b> if \(\sum^{"{\\infty}"}_{"{n=1}"} |a_n|\) converges. A series \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) exhibits <b>conditional convergence</b> if \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) converges but \(\sum^{"{\\infty}"}_{"{n=1}"} |a_n|\) diverges.</li>
 					<li><u>Absolute Convergence Implies Convergence:</u> If \(\sum^{"{\\infty}"}_{"{n=1}"} |a_n|\) converges, then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) converges.</li>
 				</SubList></li>
@@ -1133,7 +1137,7 @@ export const content = <>
 						<MathStuff>$${" R_n(x) = f(x) - p_n(x) "}$$</MathStuff>
 						<li>then for each \(x\) in the interval \(I\), there exists a real number \(c\) between \(a\) and \(x\) such that:</li>
 						<MathStuff>$${" R_n(x) = \\frac{f^{(n+1)} (c)}{(n+1)!} (x-a)^{n+1} "}$$</MathStuff>
-						<li>if there exists a real number \(M\) such that \(| f(n+1)(x) | \le M\) for all \(x∈I\), then:</li>
+						<li>If there exists a real number \(M\) such that \(| f(n+1)(x) | \le M\) for all \(x∈I\), then:</li>
 						<MathStuff>$${" | R_n(x) | \\le \\frac{M }{(n+1)!} |x-a|^{n+1} "}$$</MathStuff>
 						<li>for all \(x∈I\).</li>
 					</SubList></li>
