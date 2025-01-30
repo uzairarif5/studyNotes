@@ -575,8 +575,8 @@ export const content = <>
 
 	<h2>Integration</h2>
 	<div className="content">
-		<div style={{width:" 49%",marginLeft: "0.5%",float: "left"}}>
-			<ul data-source={65}>
+		<div data-source={65} style={{width:" 49%",marginLeft: "0.5%",float: "left"}}>
+			<ul>
 				<li>Approximating Areas:<SubList>
 					<li>Let \(f(x)\) be a continuous, nonnegative function defined on the closed interval \([a,b]\). We want to approximate the area \(A\) bounded by \(f(x)\) above, the x-axis below, the line \(x=a\) on the left, and the line \(x=b\) on the right.</li>
 					<li><ImgComp src={require("./calculus_pics/7.jfif")}/></li>
@@ -689,7 +689,7 @@ export const content = <>
 				</SubList></li>
 			</ul>
 			<h3>Volume Stuff</h3>
-			<ul data-source={65}>
+			<ul>
 				<li><b>The slicing method:</b><SubList>
 					<li>We can use a definite integral to calculate the volume of the solid. We do this by slicing the solid into pieces, estimating the volume of each slice, and then adding those estimated volumes together.</li>
 					<li>Consider the solid \(S\), extending along the x-axis.</li>
@@ -1005,8 +1005,10 @@ export const content = <>
 					<li>We have seen that a sequence is an ordered set of terms. If you add these terms together, you get a <b>series</b>.</li>
 					<li>An <b>infinite series</b> is a sum of infinitely many terms and is written in the form:</li>
 					<MathStuff>$$ \sum^\infty_{"{n=1}"} a_n = a_1 + a_2 + a_3 + \dots $$</MathStuff>
-					<li>A <b>partial sum</b> of an infinite series is a finite sum of the form:</li>
+					<li>A \(k\)th <b>partial sum</b> of an infinite series is a finite sum of the form:</li>
 					<MathStuff>$$ \sum^k_{"{n=1}"} a_n = a_1 + a_2 + a_3 + \dots + a_k $$</MathStuff>
+					<li>Let \(S_k\) be the \(k\)th partial sum, and let \(\{"\\{S_k\\}"}\) be sequence of partial sums. If \(\{"\\{S_k\\}"}\) converges (i.e. \(S_k\) approaches a real number when \(k\) goes to infinity), then the infinite series converges.</li>
+					<li>If \(\{"\\{S_k\\}"}\) diverges, then the infinite series diverges.</li>
 					<li className="ownExplanation">An <b>arithmetic series</b> is the sum of an arithmetic sequence. A general formula for it is \(S_k = \frac{"{k}{2}(2 a_0 + (k-1)d)"}\).</li>
 				</SubList></li>
 				<li>Algebraic properties of convergent series:<SubList>
@@ -1076,27 +1078,21 @@ export const content = <>
 					<li>Any series whose terms alternate between positive and negative values is called an <b>alternating series</b>. An alternating series can be written in one of these forms:</li>
 					<MathStuff>$$\begin{"{gather}"} \sum^{"{\\infty}"}_{"{n=1}"} (-1)^{"{n+1}"} b_n = b_1 - b_2 + b_3 - b_4 + b_5 - \cdots \\ \sum^{"{\\infty}"}_{"{n=1}"} (-1)^n b_n = - b_1 + b_2 - b_3 + b_4 - b_5 + \cdots \end{"{gather}"}$$</MathStuff>
 					<li>Where \(b_n \gt 0\).</li>
-					<li>It converges if there exists \(N\) such that \(0 \lt b_{"{n+1}"} \le b_n\) for all \(n \ge N\) and if \(\lim_{"{n \\to \\infty}"} b_n = 0\). This is known as the <b>alternating series test</b>.</li>
-					<li className="ownExplanation">Suppose the odd terms in an alternating series are the positive terms while the even terms are negative and suppose \(0 \lt b_{"{n+1}"} \le b_n\) for all \(n\), then the sum of the alternating series, will never go above \(b_1\).</li>
-					<li className="ownExplanation"><ImgComp src={require("./calculus_pics/19.jpg")} width="70%" /></li>
-					<li className="ownExplanation">Similarly, if there exists an odd integer \(N\) such that \(0 \lt b_{"{n+1}"} \le b_n\) for all \(n \ge N\), and if the odd terms are positive while the even terms are negative, then the sum of the alternating series, will never go above \(b_N\).</li>
-					<li className="ownExplanation"><ImgComp src={require("./calculus_pics/23.jpg")} width="70%" /></li>
-					<li className="ownExplanation">Let there be an integer \(N\) such that \(0 \lt b_{"{n+1}"} \le b_n\) for all \(n \ge N\). Let \(S\) be the sum of the entire alternating series, let \(S_N\) be the sum of the alternating series up to and including \(n=N\), and let \(R_N = S - S_N\) (i.e. \(R_N\) is the remaining sum from \(n=N+1\) onwards). The first term of the remaining sum is \((±b_{"{N+1}"})\).</li>
-					<li className="ownExplanation">If this is a positive term, then the remaining sum (\(R_N\)) is upper bounded by that first term, or in other words, \(R_N \le b_{"{N+1}"}\).</li>
-					<li className="ownExplanation">If this is a negative term, then the remaining sum (\(R_N\)) is lower bounded by that term, or in other words, \(R_N \ge -b_{"{N+1}"}\).</li>
-					<li className="ownExplanation">This also means that the sum \(S\) lies between the partial sums \(S_N\) and \(S_N+1\).</li>
+					<li>If there exists \(N\) such that \(0 \lt b_{"{n+1}"} \le b_n\) for all \(n \ge N\) and if \(\lim_{"{n \\to \\infty}"} b_n = 0\), then it converges. This is known as the <b>alternating series test</b>.</li>
+				</SubList></li>
+				<li>Absolute convergence and conditional convergence:<SubList>
 					<li>A series \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) exhibits <b>absolute convergence</b> if \(\sum^{"{\\infty}"}_{"{n=1}"} |a_n|\) converges. A series \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) exhibits <b>conditional convergence</b> if \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) converges but \(\sum^{"{\\infty}"}_{"{n=1}"} |a_n|\) diverges.</li>
 					<li><u>Absolute Convergence Implies Convergence:</u> If \(\sum^{"{\\infty}"}_{"{n=1}"} |a_n|\) converges, then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) converges.</li>
 				</SubList></li>
 				<li><b>Ratio test:</b><SubList>
 					<li>Let \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) be a series with nonzero terms, and let \(p = \lim_{"{n \\to \\infty}"} | \frac{"{a_{n+1}}{a_n}"} |\).</li>
-					<li>If \(0 \le p \lt 1\), then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) converges absolutely.</li>
+					<li>If \(p \lt 1\), then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) converges absolutely.</li>
 					<li>If \(p \gt 1\) or \(p=\infty\), then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) diverges.</li>
 					<li>If \(p=1\), the test does not provide any information.</li>
 				</SubList></li>
 				<li><b>Root test:</b><SubList>
 					<li>Let \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) be a series with nonzero terms, and let \(p = \sqrt[n]{"{|a_n|}"}\).</li>
-					<li>If \(0 \le p \lt 1\), then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) converges absolutely.</li>
+					<li>If \(p \lt 1\), then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) converges absolutely.</li>
 					<li>If \(p \gt 1\) or \(p=\infty\), then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) diverges.</li>
 					<li>If \(p=1\), the test does not provide any information.</li>
 				</SubList></li>
@@ -1129,9 +1125,8 @@ export const content = <>
 					<li>If \(f\) has derivatives of all orders at \(x=a\), then the <b>Taylor series</b> for the function \(f\) at \(a\) is:</li>
 					<MathStuff>$${" f(x) = \\sum^{\\infty}_{n=0} \\frac{f^{(n)}(a)}{n!}(x-a)^n "}$$</MathStuff>
 					<li>The Taylor series for \(f\) at 0 is known as the <b>Maclaurin series</b> for \(f\).</li>
-					<li>If a function \(f\) has a power series at a that converges to \(f\) on some open interval containing \(a\), then that power series is the Taylor series for \(f\) at \(a\).</li>
-					<li>These partial sums are finite polynomials, known as <b>Taylor polynomials</b>. If \(a=0\),
-					then they are known as <b>Maclaurin polynomials</b>.</li>
+					<li>The \(n\)th partial sum is known as the \(n\)th <b>Taylor polynomials</b>. If \(a=0\), then they are known as <b>Maclaurin polynomials</b>.</li>
+					<li><a href='https://en.wikipedia.org/wiki/Taylor_series'>A function is <b>analytic</b> at a point \(a\) if it is equal to the sum of its Taylor series in some open interval containing \(a\). A function may differ from the sum of its Taylor series, even if its Taylor series is convergent.</a></li>
 					<li><b>Taylor's Theorem with Remainder:</b><SubList>
 						<li>Let \(f\) be a function that can be differentiated \(n+1\) times on an interval \(I\) containing the real number \(a\). Let \(p_n\) be the \(n\)th Taylor polynomial of \(f\) at \(a\) and let \(R_n (x)\) be the \(n\)th remainder:</li>
 						<MathStuff>$${" R_n(x) = f(x) - p_n(x) "}$$</MathStuff>
@@ -1146,7 +1141,6 @@ export const content = <>
 						<MathStuff>$${" \\sum_{n=0}^{\\infty} \\frac{f^{(n)}(a)}{n!} (x-a)^n "}$$</MathStuff>
 						<li>converges to \(f(x)\) for all \(x\) in \(I\) if and only if \(\lim_{"{n→\\infty}"} R_n (x)=0\) for all \(x\) in \(I\).</li>
 					</SubList></li>
-					<li><a href='https://en.wikipedia.org/wiki/Taylor_series'>A function may differ from the sum of its Taylor series, even if its Taylor series is convergent. A function is <b>analytic</b> at a point \(x\) if it is equal to the sum of its Taylor series in some open interval containing \(x\).</a></li>
 					<ImgComp src={require("./calculus_pics/29.png")} width="90%" />
 				</SubList></li>
 			</ul>
