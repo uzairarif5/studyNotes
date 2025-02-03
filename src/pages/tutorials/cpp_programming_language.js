@@ -2,14 +2,14 @@ import SubList from "../../articleRelatedStuff/SubList";
 import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import { CodePre } from "../../articleRelatedStuff/Code";
 
-export const title = "C Programming Language notes";
+export const title = "C++ Programming Language notes";
 export const sourcesColor = {64: null};
 
 export const content = <>
-<h1>C Programming Language</h1>
+<h1>C++ Programming Language</h1>
 {getSourcesOL(sourcesColor)}
 
-<h2 id="Basic">Basics</h2>
+<h2 id="c-only">C-only stuff</h2>
 <div className="content" data-source={64}>
 	<div style={{width: "49%",float: "left",marginLeft: "0.5%"}}>
 		<ul>
@@ -214,6 +214,10 @@ void main (void){
 				<li>In the case above we test the value of <code>a</code> inside the loop itself in an if statement, and if <code>a</code> is equal to 5, we call <code>break</code>. This causes the loop to end and execution to continue with the statement after the loop.</li>
 				<li>The keyword <code>continue</code> can be used in a loop instead of break, but instead of breaking out of the loop, it skips all the rest of the code in the current iteration, and returns to the test case at the start of the loop. </li>
 			</SubList></li>
+		</ul>
+	</div>
+	<div style={{width: "49%",float: "right",marginRight: "0.5%"}}>
+		<ul>
 			<li>Pointers:<SubList>
 				<li><CodePre language="c">{`
 #include <stdio.h> 
@@ -255,10 +259,6 @@ void main(void) {
 				<li><code>(*a)++</code> increments the value pointed to by <code>a</code>, but <code>*(a++)</code> increments the pointer itself rather than the value it points <code>a</code>.</li>
 				<li className="ownExplanation">Incrementing a pointer increments by the size of the variable rather than 1. For example, if <code>b</code> stores a <code>double</code> (which is of 8 bytes) and is at memory address <code>1673526400</code>, then <code>b+1</code> is at memory address <code>1673526408</code>.</li>
 			</SubList></li>
-		</ul>
-	</div>
-	<div style={{width: "49%",float: "right",marginRight: "0.5%"}}>
-		<ul>
 			<li>Functions:<SubList>
 				<li>Example of our own function:</li>
 				<li><CodePre language="c">{`
@@ -501,6 +501,14 @@ void main(void) {
 				`}</CodePre></li>
 				<li><code>fgets</code> takes three arguments. The first is the buffer into which it should store the input. The second is the maximum number of bytes it will write into that buffer. Finally, it takes an argument telling it where to read from; in this case, this is set to <code>stdin</code> (short for 'standard input'), which tells it to read from the console.</li>
 			</SubList></li>
+		</ul>
+	</div>
+</div>
+
+<h2 id="more_c_only">More C-Only Stuff</h2>
+<div className="content" data-source={64}>
+	<div style={{width: "49%",float: "left",marginLeft: "0.5%"}}>
+		<ul>
 			<li>Strict definition of <code>main</code>:<SubList>
 				<li>The strict definition of <code>main</code> looks like this:</li>
 				<li><CodePre language="c">{`
@@ -525,14 +533,6 @@ int main(int argc, char * argv[]) {
 }
 				`}</CodePre></li>
 			</SubList></li>
-		</ul>
-	</div>
-</div>
-
-<h2>More Basics</h2>
-<div className="content" data-source={64}>
-	<div style={{width: "49%",float: "left",marginLeft: "0.5%"}}>
-		<ul>
 			<li>Reading a file:<SubList>
 				<li>In C, files are accessed by use of <b>file pointers</b>.</li>
 				<li>A file pointer contains all the information required to access a file: both its name and location on the file system, and the current position within the file at which data will be read or written.</li>
@@ -641,6 +641,10 @@ void main(void) {
 				<li>Local variables in functions are temporarily allocated space while the function is running, and the memory is freed up as soon as the function ends.</li>
 				<li>Global variables are allocated space when the program starts, and that space isn't freed until the program ends; if you allocate enough of them, you can run out of memory on some systems.</li>
 			</SubList></li>
+		</ul>
+	</div>
+	<div style={{width: "49%",float: "right",marginRight: "0.5%"}}>
+		<ul>
 			<li>More on types:<SubList>
 				<li>C allows you to define your own types, with what is known as a <b>typedef</b>.</li>
 				<li>A typedef is a line of the format <code>{"typedef <existing type> <new name>"}</code>, usually put at the start of a program. For example: <code>{"typedef unsigned char BYTE;"}</code></li>
@@ -770,10 +774,6 @@ void main(void) {
 			</SubList></li>
 		</ul>
 	</div>
-	<div style={{width: "49%",float: "right",marginRight: "0.5%"}}>
-
-	</div>
-
 </div>
 
 

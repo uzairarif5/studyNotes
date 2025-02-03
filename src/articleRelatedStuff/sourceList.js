@@ -11,7 +11,7 @@ export const sourceList = [<></>, <><a href='https://eng.libretexts.org/Bookshel
     <>koreanwikiproject.com</>,
     <>Youtube Channel: <a href='https://www.youtube.com/@KOREANFULLCOURSE'>KOREAN FULL COURSE</a></>,
     <><a href='https://www.90daykorean.com'>90daykorean.com</a></>,
-    <><a href='https://www.howtostudykorean.com'>howtostudykorean.com</a></> /* REMOVE */,
+    <><a href='https://www.learncpp.com'>learncpp.com</a></>, /*REMOVE */
     <>Renshuu</> /* REMOVE */,
     <>Doulingo</>,
     <>http://www.lqtoronto.com/videos.html</>,

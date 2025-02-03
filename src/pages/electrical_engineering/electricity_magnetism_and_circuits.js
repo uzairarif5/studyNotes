@@ -13,46 +13,6 @@ export const content = <>
 	<h2 id="electric_charges_and_fields">Electric Charges and Fields</h2>
 	<div className="content">
 		<ul style={{width: "49%",marginLeft: "0.5%",float: "left"}}>
-			<li>Some history:<SubList>
-				<li>The ancient Greek philosopher <b>Thales of Miletus</b> (624-546 BCE) recorded that when amber (a hard, translucent, fossilized resin from extinct trees) was vigorously rubbed with a piece of fur, a force was created that caused the fur and the amber to be attracted to each other.</li>
-				<li>Additionally, he found that the rubbed amber would not only attract the fur, and the fur attract the amber, but they both could affect other (nonmetallic) objects, even if not in contact with those objects.</li>
-				<li>The English physicist <b>William Gilbert</b> (1544-1603) also studied this attractive force, using various substances. He found that the metals never exhibited this force, whereas the minerals did. Moreover, although an electrified amber rod would attract a piece of fur, it would repel another electrified amber rod; similarly, two electrified pieces of fur would repel each other.</li>
-				<li>The American physicist and statesman <b>Benjamin Franklin</b> found that he could concentrate charge in a "Leyden jar", which was essentially a glass jar with two sheets of metal foil, one inside and one outside, with the glass between them. This created a large electric force between the two foil sheets.</li>
-				<li><ImgComp src={require("./electricity_magnetism_and_circuits_pics/1.png")}/></li>
-				<li>Franklin pointed out that the observed behavior could be explained by supposing that one of the two types of charge remained motionless, while the other type of charge flowed from one piece of foil to the other. He further suggested that an excess of what he called this "electrical fluid" be called "positive electricity" and the deficiency of it be called "negative electricity".</li>
-				<li>With the experiments that he was able to do, this was a pure guess; he had no way of actually determining the sign of the moving charge. Unfortunately, he guessed wrong; we now know that the charges that flow are the ones Franklin labeled negative, and the positive charges remain largely motionless.</li>
-				<li>Let's list the specific observations that we have of electric force:<SubList>
-					<li>The force acts without physical contact between the two objects.</li>
-					<li>The force can be either attractive or repulsive: If two interacting objects carry the same sign of charge,
-					the force is repulsive; if the charges are of opposite sign, the force is attractive.</li>
-					<li>Not all objects are affected by this force.</li>
-					<li>The magnitude of the force decreases (rapidly) with increasing separation distance between the
-					objects. To be more precise, we find experimentally that the magnitude of the force decreases as the square of the distance between the two interacting objects increases.</li>
-				</SubList></li>
-				<li>In addition to the existence of two types of charge, several other properties of charge have been discovered:<SubList>
-					<li><b>Charge is quantized:</b> This means that electric charge comes in discrete amounts, and there is a smallest possible amount of charge that an object can have. In the SI system, this smallest amount is \(e=1.602 \times 10^{"{-9}"}\).</li>
-					<li><b>Charge is conserved:</b> Charge can neither be created nor destroyed; it can only be transferred from place to place, from one object to another.</li>
-					<li><b>Charge is conserved in closed systems:</b> If the total charge you have in your local system on your lab bench is changing, there will be a measurable flow of charge into or out of the system.</li>
-				</SubList></li>
-			</SubList></li>
-			<li><b>Electrons</b> and <b>protons</b>:<SubList>
-				<li>Once it became clear that all matter was composed of particles that came to be called atoms, it also quickly became clear that the constituents of the atom included both positively charged particles and negatively charged particles.</li>
-				<li>The negatively charged particle was the first one to be discovered. In 1897, the English physicist <b>J. J. Thomson</b> was studying what was then known as cathode rays. Some years before, the English physicist William Crookes had shown that these "rays" were negatively charged, but his experiments were unable to tell any more than that. The fact that they carried a negative electric charge was strong evidence that these were not rays at all, but particles.</li>
-				<li>Thomson prepared a pure beam of these particles and sent them through crossed electric and magnetic fields, and adjusted the various field strengths until the net deflection of the beam was zero. With this experiment, he was able to determine the charge-to-mass ratio of the particle. This ratio showed that the mass of the particle was much smaller than that of any other previously known particle (1837 times smaller).</li>
-				<li>Eventually, this particle came to be called the <b>electron</b>.</li>
-				<li>Since the atom as a whole is electrically neutral, the next question was to determine how the positive and negative charges are distributed within the atom.</li>
-				<li>The New Zealand physicist <b>Ernest Rutherford</b> showed that the positive charges of the atom existed within a tiny core - called a <b>nucleus</b> - that took up only a very tiny fraction of the overall volume of the atom.</li>
-				<li>In addition, he showed that the negatively charged electrons perpetually orbited about this nucleus, forming a sort of electrically charged cloud that surrounds the nucleus. Rutherford concluded that the nucleus was constructed of small, massive particles that he named <b>protons</b>.</li>
-			</SubList></li>
-			<li>Discovery of <b>neutron</b>:<SubList>
-				<li>Since it was known that different atoms have different masses, and that ordinarily atoms are electrically neutral, it was natural to suppose that different atoms have different numbers of protons in their nucleus, with an equal umber of negatively charged electrons orbiting about the positively charged nucleus.</li>
-				<li>However, it was soon discovered that although the lightest atom, hydrogen, did indeed have a single proton as its nucleus, the next heaviest atom, helium, has twice the number of protons (two), but four times the mass of hydrogen.</li>
-				<li>This mystery was resolved in 1932 by the English physicist <b>James Chadwick</b>, with the discovery of the <b>neutron</b>. The neutron is, essentially, an electrically neutral twin of the proton, with no electric charge, but (nearly) identical mass to the proton.</li>
-				<li>In 1932, the picture of the atom was of a small, massive nucleus constructed of a combination of protons and neutrons, surrounded by a collection of electrons whose combined motion formed a sort of negatively charged "cloud" around the nucleus.</li>
-				<li><ImgComp src={require("./electricity_magnetism_and_circuits_pics/2.png")}/></li>
-				<li> The very low-mass electrons can be more or less easily removed or added to an atom, changing the net charge on the atom (though without changing its type). An atom that has had the charge altered in this way is called an <b>ion</b>.</li>
-				<li>In the latter part of the twentieth century, many more subatomic particles were discovered in the nucleus of the atom: pions, neutrinos, and quarks, among others. With the exception of the photon, none of these particles are directly relevant to the study of electromagnetism.</li>
-			</SubList></li>
 			<li>Separation of Charge in Atoms:<SubList>
 				<li>Some atoms and molecules have a greater affinity for electrons than others and will become negatively charged by close contact in rubbing, leaving the other material positively charged.</li>
 				<li>Methods other than rubbing can also separate charges. Batteries use combinations of substances that interact in such a way as to separate charges. Chemical interactions may transfer negative charge from one substance to the other, making one battery terminal negative and leaving the first one positive.</li>

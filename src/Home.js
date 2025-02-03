@@ -72,7 +72,7 @@ const HomeCompMemo = memo(()=>{
 		<Link to="mathematics/probability_and_statistics">Probability And Statistics</Link>
 		<Link to="mathematics/calculus">Calculus</Link>
 		<h2>Natural Sciences</h2>
-		<Link to="natural_sciences/history_and_philosophy_of_science">History And Philosophy Of Science</Link>
+		<Link to="natural_sciences/philosophy_of_science">Philosophy Of Science</Link>
 		<Link to="natural_sciences/chemistry">Chemistry</Link>
 		<Link to="natural_sciences/physics">Physics</Link>
 		<Link to="natural_sciences/meteorology">Meteorology</Link>
@@ -90,7 +90,7 @@ const HomeCompMemo = memo(()=>{
 		<Link to="computer_science_advance_topics/cryptography">Cryptography</Link>
 		<Link to="computer_science_advance_topics/deep_learning">Deep Learning</Link>
 		<h2>Tutorials/Guides</h2>
-    <Link to="tutorials/c_programming_language">C programming language</Link>
+    <Link to="tutorials/cpp_programming_language">C++ programming language</Link>
 		<Link to="tutorials/basics_of_r">Basics Of R</Link>
     <Link to="tutorials/manim">Manim Basics</Link>
 		<h2>Blog</h2>

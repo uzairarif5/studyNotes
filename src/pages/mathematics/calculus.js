@@ -1007,8 +1007,8 @@ export const content = <>
 					<MathStuff>$$ \sum^\infty_{"{n=1}"} a_n = a_1 + a_2 + a_3 + \dots $$</MathStuff>
 					<li>A \(k\)th <b>partial sum</b> of an infinite series is a finite sum of the form:</li>
 					<MathStuff>$$ \sum^k_{"{n=1}"} a_n = a_1 + a_2 + a_3 + \dots + a_k $$</MathStuff>
-					<li>Let \(S_k\) be the \(k\)th partial sum, and let \(\{"\\{S_k\\}"}\) be sequence of partial sums. If \(\{"\\{S_k\\}"}\) converges (i.e. \(S_k\) approaches a real number when \(k\) goes to infinity), then the infinite series converges.</li>
-					<li>If \(\{"\\{S_k\\}"}\) diverges, then the infinite series diverges.</li>
+					<li>Let \(S_k\) be the \(k\)th partial sum, and let \({"\\{S_k\\}"}\) be sequence of partial sums. If \({"\\{S_k\\}"}\) converges (i.e. \(S_k\) approaches a real number when \(k\) goes to infinity), then the infinite series converges.</li>
+					<li>If \({"\\{S_k\\}"}\) diverges, then the infinite series diverges.</li>
 					<li className="ownExplanation">An <b>arithmetic series</b> is the sum of an arithmetic sequence. A general formula for it is \(S_k = \frac{"{k}{2}(2 a_0 + (k-1)d)"}\).</li>
 				</SubList></li>
 				<li>Algebraic properties of convergent series:<SubList>
@@ -1100,20 +1100,14 @@ export const content = <>
 					<li>A series of the form:</li>
 					<MathStuff>$$ \sum^{"{\\infty}_{n=0}"} c_n (x-a)^n = c_0 + c_1 (x-a) + c_2(x-a)^2 + c_3 (x-a)^3 + c_4 (x-a)^4 + \cdots $$</MathStuff>
 					<li>is a <b>power series</b> centered at \(x=a\).</li>
-					<li className="ownExplanation">A power series has infinite terms while polynomials have finite terms. A partial sum of a power series is a polynomial.</li>
-					<li className="ownExplanation">Let \(p = \lim_{"{n \\to \\infty}"} | \frac{"{c_{n+1} (x-a)^{n+1}}{c_n (x-a)^n}"} |\). According to the ratio test, the series converges if \(p \lt 1\), diverges if \(p \gt 1\), and inconclusive if \(p=1\).</li>
-					<li className="ownExplanation">If \(p = \lim_{"{n \\to \\infty}"} | \frac{"{c_{n+1} (x-a)^{n+1}}{c_n (x-a)^n}"} | \), then \(p = (\lim_{"{n \\to \\infty}"} | \frac{"{c_{n+1}}{c_n}"} |) |x-a|\), so \(p = L |x-a| \).</li>
-					<li className="ownExplanation">For a series to converge, \(|x-a| L \lt 1 \), or \(|x-a| \lt 1/L \). Let \(R = 1/L\). This means \(R\) is a value where the series converges if \(|x-a| \lt R \). For a series to diverge, \(|x-a| L \gt 1 \) or \(|x-a| \gt R \).</li>
 					<li>The set of values \(x\) for which the series converges is known as the <b>interval of convergence</b>. The value \(R\) is called the <b>radius of convergence</b>.</li>
-					<li>The geometric series shown below converges in the interval \((-1, 1)\):</li>
-					<MathStuff>$$ 1+x+ x^2 + x^3 + \cdots = \frac{"{1}{1-x}"} $$</MathStuff>
 				</SubList></li>
 				<li>Properties of a power series:<SubList>
 					<li>Suppose that the two power series \(\sum_{"{n=0}"}^{"{\\infty}"} c_n x^n\) and \(\sum_{"{n=0}"}^{"{\\infty}"} d_n x^n\) converge to the functions \(f\) and \(g\), respectively, on a common interval \(I\).</li>
 					<li>The power series \(\sum_{"{n=0}"}^{"{\\infty}"} (c_n x^n ± d_nx^n)\) converges to \(f±g\) on \(I\).</li>
 					<li>Let \(m \ge 0\) be an integer and \(b\) be a real number:<SubList opened>
 						<li>The series \(\sum_{"{n=0}"}^{"{\\infty}"} b x^m c_n x^n\) converges to \(b x^m f(x)\) on \(I\).</li>
-						<li>The series \(\sum_{"{n=0}"}^{"{\\infty}"} c_n (b^m)^n\) converges to \(f(bxm)\) for all x such that \(bxm\) is in \(I\).</li>
+						<li>The series \(\sum_{"{n=0}"}^{"{\\infty}"} c_n (bx^m)^n\) converges to \(f(bx^m)\) for all x such that \(bx^m\) is in \(I\).</li>
 					</SubList></li>
 					<li>Let \(e^n\) be defined as:</li>
 					<MathStuff>$${"\\begin{align} e_n &= c_0 d^n + c_1d^{n-1} + c_2 d^{n-2} + \\cdots +c_{n-1}d^1 + c_n d^0 \\\\ &= \\sum_{k=0}^n c_k d^{n-k} \\end{align}"}$$</MathStuff>
@@ -1132,7 +1126,7 @@ export const content = <>
 						<MathStuff>$${" R_n(x) = f(x) - p_n(x) "}$$</MathStuff>
 						<li>then for each \(x\) in the interval \(I\), there exists a real number \(c\) between \(a\) and \(x\) such that:</li>
 						<MathStuff>$${" R_n(x) = \\frac{f^{(n+1)} (c)}{(n+1)!} (x-a)^{n+1} "}$$</MathStuff>
-						<li>If there exists a real number \(M\) such that \(| f(n+1)(x) | \le M\) for all \(x∈I\), then:</li>
+						<li>If there exists a real number \(M\) such that \(| f^{"{(n+1)}"}(x) | \le M\) for all \(x∈I\), then:</li>
 						<MathStuff>$${" | R_n(x) | \\le \\frac{M }{(n+1)!} |x-a|^{n+1} "}$$</MathStuff>
 						<li>for all \(x∈I\).</li>
 					</SubList></li>

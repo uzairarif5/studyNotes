@@ -26,7 +26,9 @@ export const content =
         <li><a href="http://www.stat.ucla.edu/~ywu/linear.pdf">The mathematics of quantum mechanics</a>, Martin Laforest</li>
       </SubList></li>
       <li><u>Programming:</u><SubList>
+        <li><a href='https://www.learncpp.com'>learncpp.com</a></li>
         <li>Data Mining and Business Analytics with R by Johannes Ledolter</li>
+        <li><a href='https://scholarworks.montana.edu/items/8d0ebbc9-147f-498b-8c9f-f1735d8e74cf'>Intermediate Statistics with R</a> by Greenwood, Mark C.</li>
       </SubList></li>
       <li><u>Miscellaneous:</u><SubList>
         <li><a href='https://www.google.ca/books/edition/Web_Based_Learning_through_Educational_I/hHoVhZ8cm88C?hl=en&gbpv=0'>Web-Based Learning through Education Informatics: Information Science Meet Educational Computing</a> by Nigel Ford</li>
