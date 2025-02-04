@@ -46,7 +46,16 @@ This is my first big project that uses React.js and Redux
 
 Versioning is done using "npm version [new-version] --git-tag-version false"
 
-update 19.55 - 19.74:
+update 19.75:
+- Added more content and made changes to `calculus.js`.
+
+update 19.74:
+- Added more content and made changes to `calculus.js`.
+- Changed `history_and_philosophy_of_science.js` to `philosophy_of_science.js`.
+- Changed `c_programming.js` to `cpp_programming.js`, and also made changes to the file.
+- Removed the history part in `electricity_magnetism_and_circuits.js`.
+
+update 19.55 - 19.73:
 - Added more content and made changes to `calculus.js`.
   
 update 19.42 - 19.54:
