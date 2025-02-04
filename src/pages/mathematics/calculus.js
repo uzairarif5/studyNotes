@@ -1122,7 +1122,7 @@ export const content = <>
 					<li>The \(n\)th partial sum is known as the \(n\)th <b>Taylor polynomials</b>. If \(a=0\), then they are known as <b>Maclaurin polynomials</b>.</li>
 					<li><a href='https://en.wikipedia.org/wiki/Taylor_series'>A function is <b>analytic</b> at a point \(a\) if it is equal to the sum of its Taylor series in some open interval containing \(a\). A function may differ from the sum of its Taylor series, even if its Taylor series is convergent.</a></li>
 					<li><a href='https://en.wikipedia.org/wiki/Non-analytic_smooth_function'>Consider the function below defined for every real number \(x\):</a></li>
-					<MathStuff>$$ f(x) = {"\\begin{cases} e^{-1/x} \\\\ 0 \\end{cases}"} $$</MathStuff>
+					<MathStuff>$$ f(x) = {"\\begin{cases} e^{-1/x} &\\text{ if } x \\gt 0 \\\\ 0 &\\text{ if } x \\le 0 \\end{cases}"} $$</MathStuff>
 					<li><a href='https://en.wikipedia.org/wiki/Non-analytic_smooth_function'>The function \(f\) is smooth, and all its derivatives at the origin are 0. Therefore, the Taylor series of \(f\) at the origin converges everywhere to the zero function, and so the Taylor series does not equal \(f(x)\) for \(x \gt 0\). Consequently, \(f\) is not analytic at the origin.</a></li>
 					<li><b>Taylor's Theorem with Remainder:</b><SubList>
 						<li>Let \(f\) be a function that can be differentiated \(n+1\) times on an interval \(I\) containing the real number \(a\). Let \(p_n\) be the \(n\)th Taylor polynomial of \(f\) at \(a\) and let \(R_n (x)\) be the \(n\)th remainder:</li>
