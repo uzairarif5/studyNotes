@@ -817,8 +817,8 @@ export const content = <>
 	<div className="content">
 		<div data-source={65} style={{width:" 49%",marginLeft: "0.5%",float: "left"}}>
 			<ul>
-				<li>A <b>differential equation</b> is an equation involving an unknown function \(y=f(x)\) and one or more of its derivatives.</li>
-				<li>Solution to a differential equation:<SubList>
+				<li><b>Differential equation:</b><SubList>
+					<li>A <b>differential equation</b> is an equation involving an unknown function \(y=f(x)\) and one or more of its derivatives.</li>
 					<li>A solution to a differential equation is a function \(y=f(x)\) that satisfies the differential equation when \(f\) and its derivatives are substituted into the equation.</li>
 					<li>The function \(y=2e^{"{-2t}"}+e^t\) is a solution to the differential equation \(y'+2y=3e^t\).</li>
 					<li>Any solution of the differential equation \(y'=2x\) must be of the form \(y=x^2+C\). This is an example of a <b>general solution</b> to a differential equation. \(y=x^2-3\) is a member of the family of solutions to this differential equation. This is called a <b>particular solution</b> to the differential equation.</li>
@@ -1143,5 +1143,134 @@ export const content = <>
 				</SubList></li>
 			</ul>
 		</div>
+	</div>
+
+	<h2>Parametric Equations and Polar Coordinates</h2>
+	<div className="content">
+		<ul data-source={65} style={{width:" 49%",marginLeft: "0.5%",float: "left"}}>
+			<li>Parametric equations:<SubList>
+				<li>If \(x\) and \(y\) are continuous functions of \(t\) on an interval \(I\), then the equations \(x= x(t)\) and \(y = y(t)\) are called <b>parametric equations</b> and \(t\) is called the parameter.</li>
+				<li>The set of points \((x,y)\) obtained as \(t\) varies over the interval \(I\) is called <i>the graph of the parametric equations</i>. The graph of parametric equations is called a <b>parametric curve</b> or <b>plane curve</b>, and is denoted by \(C\).</li>
+				<li></li>
+			</SubList></li>
+			<li>Calculus of parametric curves:<SubList>
+				<li>Consider the plane curve defined by the parametric equations \(x=x(t)\) and \(y=y(t)\). Suppose that \(x'(t)\) and \(y'(t)\) exist, and assume that \(x'(t)≠0\). Then the derivative \(\frac{"{dy}{dx}"}\) is given by:</li>
+				<MathStuff>$${" \\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{y'(t)}{x'(t)}"}$$</MathStuff>
+				<li>The second derivative is:</li>
+				<MathStuff>$${" \\frac{d^2 y}{dx^2} = \\frac{d}{dx} \\left[ \\frac{dy}{dx} \\right] = \\frac{d/dt}{dx/dt} \\left[ \\frac{dy}{dx} \\right]"}$$</MathStuff>
+				<li>The area under the parametric curve from \(t=a\) to \(t=b\) would be:</li>
+				<MathStuff>$${" A= \\int_a^b y(t) x'(t)\\ dt"}$$</MathStuff>
+				<li>The arc from from \(t=a\) to \(t=b\) would be:</li>
+				<MathStuff>$${"L = \\int_a^b \\sqrt{\\left( \\frac{dx}{dt} \\right)^2 + \\left( \\frac{dy}{dt} \\right)^2} dt"}$$</MathStuff>
+			</SubList></li>
+			<li>Polar coordinates:<SubList>
+				<li>Consider point \(P\) with the Cartesian coordinates \((x,y)\). The line segment connecting the origin to the point \(P\) measures the distance from the origin to \(P\) and has length \(r\). The angle between the positive \(x\)-axis and the line segment has measure \(θ\).</li>
+				<ImgComp src={require("./calculus_pics/23.png")} />
+				<li>This observation suggests a natural correspondence between the coordinate pair \((x,y)\) and the values \(r\) and \(θ\). This correspondence is the basis of the <b>polar coordinate system</b>.</li>
+				<li>Using right-triangle trigonometry:</li>
+				<MathStuff>$${"\\begin{align} \\cos(θ) &= \\frac{x}{r} \\implies x = r \\cos(θ) \\\\ \\sin(θ) &= \\frac{y}{r} \\implies y = r \\sin(θ) \\end{align}"}$$</MathStuff>
+				<li>Furthermore:</li>
+				<MathStuff>$${"\\begin{gather} r^2 = x^2 + y^2 \\\\ \\tan(θ) = \\frac{y}{x}\\end{gather}"}$$</MathStuff>
+				<li>Each point \((x,y)\) in the Cartesian coordinate system can therefore be represented as an ordered pair \((r,θ)\) in the polar coordinate system. The first coordinate is called the <b>radial coordinate</b> and the second coordinate is called the <b>angular coordinate</b>.</li>
+				<li>The line segment starting from the center of the graph going to the right (called the positive x-axis in the Cartesian system) is the <b>polar axis</b>. The center point is the <b>pole</b>, or origin, of the coordinate system, and corresponds to \(r=0\).</li>
+			</SubList></li>
+			<li>Curves defined by polar equations:<SubList>
+				<ImgComp src={require("./calculus_pics/24.png")} />
+				<ImgComp src={require("./calculus_pics/25.png")} />
+				<li>A cardioid is a special case of a limaçon.</li>
+			</SubList></li>
+			<li>Symmetry in Polar Curves and Equations:<SubList>
+				<li>The curve is symmetric about the polar axis if \(r=f(θ)\) is unchanged by replacing \(θ\) with \(−θ\).</li>
+				<li>The curve is symmetric about the pole if \(r=f(θ)\) is unchanged when replacing \(r\) with \(-r\), or \(θ\) with \(π+θ\).</li>
+				<li>The curve is symmetric about the vertical line \(θ=\frac{"{π}{2}"}\) if \(r=f(θ)\) is unchanged when \(θ\) is replaced by \(π−θ\).</li>
+				<ImgComp src={require("./calculus_pics/26.png")} />
+			</SubList></li>
+			<li>Calculus in polar coordinates:<SubList>
+				<li>Suppose \(f\) is continuous and nonnegative on the interval \(α \le θ \le β\) with \(0 \lt β−α \le 2π\). The area of the region bounded by the graph of \(r=f(θ)\) between the radial lines \(θ=α\) and \(θ=β\) is:</li>
+				<MathStuff>$$ {"A = \\int^β_α \\frac{1}{2} [f(θ)]^2 dθ = \\int^β_α \\frac{1}{2} r^2 dθ"} $$</MathStuff>
+				<li>The length of the graph of \(r=f(θ)\) from \(θ=α\) to \(θ=β\) is:</li>
+				<MathStuff>$$ {"L = \\int^β_α \\sqrt{[f(θ)]^2 + [f'(θ)]^2} dθ = = \\int^β_α \\sqrt{r^2 + [\\frac{dr}{dθ}]^2} dθ"} $$</MathStuff>
+			</SubList></li>
+		</ul>
+		<ul data-source={65} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
+			<li>Conic sections:<SubList>
+				<li>A cone has two identically shaped parts called <b>nappes</b>. A right circular cone can be generated by revolving a line passing through the origin around the y-axis as shown.</li>
+				<ImgComp src={require("./calculus_pics/19.jfif")} width="70%" />
+				<li><b>Conic sections</b> are generated by the intersection of a plane with a cone.</li>
+				<li>If the plane intersects both nappes, then the conic section is a <b>hyperbola</b>.</li>
+				<li>If the plane is parallel to the generating line, the conic section is a <b>parabola</b>.</li>
+				<li>If the plane is perpendicular to the axis of revolution, the conic section is a <b>circle</b>.</li>
+				<li>If the plane intersects one nappe at an angle to the axis (other than 90°), then the conic section is an <b>ellipse</b>.</li>
+				<ImgComp src={require("./calculus_pics/27.jfif")} width="100%" />
+			</SubList></li>
+			<li>Parabola:<SubList>
+				<li>A <b>parabola</b> is the set of all points whose distance from a fixed point, called the <b>focus</b>, is equal to the distance from a fixed line, called the <b>directrix</b>. The point halfway between the focus and the directrix is called the <b>vertex</b> of the parabola.</li>
+				<li>Given a parabola opening upward with vertex located at \((h,k)\) and focus located at \((h,k+p)\), where \(p\) is a constant, the <b>standard form</b> equation for the parabola is given by:</li>
+				<MathStuff>$$ y = {"\\frac{(x-h)^2}{4p} + k"} $$</MathStuff>
+				<li>The axis of symmetry of a vertical (opening up or down) parabola is a vertical line passing through the vertex.</li>
+				<li>The parabola has an interesting reflective property. Suppose we have a satellite dish with a parabolic cross section. If a beam of electromagnetic waves, such as light or radio waves, comes into the dish in a straight line from a satellite (parallel to the axis of symmetry), then the waves reflect off the dish and collect at the focus of the parabola as shown.</li>
+				<li>The general form of a parabola that opens either up or down is written as: \(ax^2 +bx+cy+d=0\).</li>
+				<li>The general form of a parabola that opens either to the left or to the right is written as: \(ay^2 +bx+cy+d=0\).</li>
+			</SubList></li>
+			<li>Ellipses:<SubList>
+				<li>An <b>ellipse</b> is the set of all points for which the sum of their distances from two fixed points (the <b>foci</b>) is constant.</li>
+				<ImgComp src={require("./calculus_pics/29.jfif")} width="100%" />
+				<li>The points \(P\) and \(P'\) are located at the ends of the <b>major axis</b> of the ellipse, and have coordinates \((a,0)\) and \((-a,0)\), respectively. The major axis is always the longest distance across the ellipse, and can be horizontal or vertical. Thus, the length of the major axis in this ellipse is \(2a\).</li>
+				<li>The points \(Q\) and \(Q'\) are located at the ends of the minor axis of the ellipse, and have coordinates \((0,b)\) and \((0,-b)\), respectively. The <b>minor axis</b> is the shortest distance across the ellipse. The minor axis is perpendicular to the major axis.</li>
+				<li>Consider the ellipse with center \((h,k)\), a horizontal major axis with length \(2a\), and a vertical minor axis with length \(2b\). Then the equation of this ellipse in standard form is:</li>
+				<MathStuff>$$ {"\\frac{(x-h)^2}{a^2} + \\frac{(y-k)^2}{b^2}"} = 1$$</MathStuff>
+				<li>The foci are located at \((h±c,k)\), where \(c^2 = a^2 - b^2\) and the equations of the directrices are \(x=h± \frac{"{a^2}{c}"}\).</li>
+				<li>If the major axis is vertical, then the equation of the ellipse becomes</li>
+				<MathStuff>$$ {"\\frac{(x-h)^2}{b^2} + \\frac{(y-k)^2}{a^2}"} = 1$$</MathStuff>
+				<li>The foci are located at \((h,k±c)\), where \(c^2 = b^2 - a^2\) and the equations of the directrices are \(y=k± \frac{"{a^2}{c}"}\).</li>
+				<li>The equation of an ellipse is in general form if it is in the form \(Ax^2 + By^2 + Cx+Dy+E=0\), where \(A\) and \(B\) are either both positive or both negative.</li>
+			</SubList></li>
+			<li>Hyperbola:<SubList>
+				<li>A <b>hyperbola</b> is the set of all points where the difference between their distances from two fixed points (the foci) is constant.</li>
+				<ImgComp src={require("./calculus_pics/30.jfif")} width="70%" />
+				<li>If the major axis (transverse axis) is horizontal, then the hyperbola is called <b>horizontal</b>, and if the major axis is vertical then the hyperbola is called <b>vertical</b>.</li>
+				<li>Consider a horizontal hyperbola with center \((h,k)\). Then the equation of this ellipse is:</li>
+				<MathStuff>$$ {"\\frac{(x-h)^2}{a^2} - \\frac{(y-k)^2}{b^2} = 1"} $$</MathStuff>
+				<li>The foci are located at \((h±c,k)\), where \(c^2=a^2+b^2\). The equations of the asymptotes are given by \(y=k±ba(x-h)\). The equations of the directrices are:</li>
+				<MathStuff>$$ {"x = h ±\\frac{a^2}{c}"} $$</MathStuff>
+				<li>If the major axis is vertical, then the equation of the hyperbola becomes:</li>
+				<MathStuff>$$ {"\\frac{\\frac{(y-k)^2}{a^2} - (x-h)^2}{b^2} = 1"} $$</MathStuff>
+				<li>The foci are located at \((h,k±c)\), where \(c^2=a^2+b^2\). The equations of the asymptotes are given by \(y=k±ab(x-h)\). The equations of the directrices are:</li>
+				<MathStuff>$$ {"y = k ±\\frac{a^2}{c}"} $$</MathStuff>
+				<li>The equation of a hyperbola is in general form if it is in the form \(Ax^2+By^2+Cx+Dy+E=0\), where \(A\) and \(B\) have opposite signs.</li>
+				<li>A ray directed toward one focus of a hyperbola is reflected by a hyperbolic mirror toward the other focus.</li>
+			</SubList></li>
+			<li>Eccentricity and directrix:<SubList>
+				<li>The <b>eccentricity</b> \(e\) of a conic section is defined to be the distance from any point on the conic section to its focus, divided by the perpendicular distance from that point to the nearest directrix. This value is constant for any conic section, and can define the conic section as well.</li>
+				<li>If \(e=1\), the conic is a parabola.</li>
+				<li>If \(e \lt 1\), it is an ellipse.</li>
+				<li>If \(e \gt 1\), it is a hyperbola.</li>
+				<li>The eccentricity of a circle is zero.</li>
+				<li>The directrix of a conic section is the line that, together with the point known as the focus, serves to define a conic section. Hyperbolas and noncircular ellipses have two foci and two associated directrices. Parabolas have one focus and one directrix.</li>
+				<li>The equations of the directrices of a horizontal ellipse and a horizontal hperbola are \(x=± \frac{"{a^2}{c}"}\).</li>
+			</SubList></li>
+			<li>Polar equations of conic sections:<SubList>
+				<li>The <b>focal parameter</b> of a conic section p is defined as the distance from a focus to the nearest directrix.</li>
+				<li>The polar equation of a conic section with focal parameter \(p\) is given by:</li>
+				<MathStuff>$$ {"{r= \\frac{ep}{1±e \\cos θ} \\text{ or } r= \\frac{ep}{1±e \\sinθ} }"} $$</MathStuff>
+			</SubList></li>
+			<li>General equations of degree two for conic sections:<SubList>
+				<li>A general equation of degree two can be written in the form \(Ax^2+Bxy+Cy^2+Dx+Ey+F=0\). The graph of an equation of this form is a conic section. If \(B≠0\) then the coordinate axes are rotated.</li>
+				<li>To identify the conic section, we use the discriminant of the conic section \(4AC-B^2\). One of the following cases must be true:<SubList opened>
+					<li>\(4AC-B^2 \gt 0\): the graph is an ellipse.</li>
+					<li>\(4AC-B^2=0\): the graph is a parabola.</li>
+					<li>\(4AC-B^2 \lt 0\): the graph is a hyperbola.</li>
+				</SubList></li>
+				<li>The method for graphing a conic section with rotated axes involves determining the coefficients of the conic in the rotated coordinate system. The new coefficients are labeled \(A'\), \(B'\), \(C'\), \(D'\), \(E'\) and \(F'\), and are given by the formulas:</li>
+				<MathStuff>$$ {"\\begin{align} A' &= A \\cos^2 θ+ B \\cos θ \\sin θ + C \\sin^2 θ \\\\ B' &= 0 \\\\ C' &= A \\sin^2 θ-B \\sin θ \\cos θ + C cos^2 θ \\\\ D' &= &= D \\cos θ + E \\sin θ \\\\ E' &= - D \\sin θ + E \\cos θ \\\\ F' &= F \\end{align}"} $$</MathStuff>
+				<li>The procedure for graphing a rotated conic is the following:<SubList opened>
+					<li>Identify the conic section using the discriminant  \(4AC-B^2\)</li>
+					<li>Determine \(θ\) using the formula \(\cot (2θ) = \frac{"{A-C}{B}"}\)</li>
+					<li>Calculate \(A'\), \(B'\), \(C'\), \(D'\), \(E'\) and \(F'\)</li>
+					<li>Rewrite the original equation using  \(A'\), \(B'\), \(C'\), \(D'\), \(E'\) and \(F'\)</li>
+					<li>Draw a graph using the rotated equation</li>
+				</SubList></li>
+			</SubList></li>
+		</ul>
 	</div>
 </>
