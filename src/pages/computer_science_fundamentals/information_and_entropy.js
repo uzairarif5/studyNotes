@@ -1,4 +1,3 @@
-import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import SubList from "../../articleRelatedStuff/SubList";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 import { Questions } from "../../articleRelatedStuff/Questions";
@@ -8,9 +7,7 @@ import { TableLI } from "../../articleRelatedStuff/tableManager";
 export const title = "Information And Entropy Notes";
 export const sourcesColor = {40: null};
 export const content = <>
-
   <h1>Information And Entropy Notes</h1>
-  {getSourcesOL(sourcesColor)}
 	<h2 id="bits">Bits</h2>
   <div className="content">
 		<div data-source={40} style={{width: "49%",marginLeft: "0.5%",float: "left"}}>

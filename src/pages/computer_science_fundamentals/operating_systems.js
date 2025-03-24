@@ -1,7 +1,6 @@
 import SubList from "../../articleRelatedStuff/SubList";
 import { CodePre } from "../../articleRelatedStuff/Code";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
-import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 
 export const title = "Operating Systems Notes";
 export const sourcesColor = {20: null};
@@ -9,7 +8,6 @@ export const sourcesColor = {20: null};
 export const content = 
 <>
 	<h1>Operating Systems Notes</h1>
-	{getSourcesOL(sourcesColor)}
 
 	<h2 id="file_processing">File Processing</h2>
 	<div className="content" data-source={20}>

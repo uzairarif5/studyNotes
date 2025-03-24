@@ -1,5 +1,4 @@
 import SubList from "../../articleRelatedStuff/SubList";
-import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 import { TableLI, TableDiv } from "../../articleRelatedStuff/tableManager";
 
@@ -7,7 +6,6 @@ export const title = "My Korean notes";
 export const sourcesColor = {4:null, 10:"#48a7d3", 11:null, 12:null, 13:"#4f94ac"};
 export const content = <>
 <h1>My Korean Notes</h1> 
-{getSourcesOL(sourcesColor)}
 <ol id="additionalResources">
 	<li><a href='https://www.verbix.com/languages/korean'>Korean verb conjugator</a></li>
 </ol>

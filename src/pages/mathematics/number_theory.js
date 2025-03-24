@@ -1,16 +1,14 @@
-import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import { MathStuff } from "../../articleRelatedStuff/MathStuff"; 
 import { TableLI } from "../../articleRelatedStuff/tableManager";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 import SubList from "../../articleRelatedStuff/SubList";
 
-//Elementary number theory: pg 18
+//Elementary number theory: pg 77
 
 export const title = "Number Theory Notes";
 export const sourcesColor = {35: null, 54: null, 4: null};
 export const content = <>
   <h1>Number Theory</h1>
-  {getSourcesOL(sourcesColor)}
 
   <h2 id="introduction_and_divisibility">Introduction And Divisibility</h2>
   <div className="content">
@@ -169,7 +167,7 @@ export const content = <>
         <li data-source={35}>Take any complete residue system mod \(m\) and take the subset consisting of all the integers in it which are coprime to \(m\) - these will form a <b>reduced residue system</b>.</li>
         <li data-source={35}>If \(m = 12\), then \({"\\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 \\}"}\) would be a complete residue system and the reduced residue system would be \({"\\{1, 5, 7, 11\\}"}\).</li>
         <li data-source={54}>The set \({"\\{ 0, 1, 2, \\ldots, m-1 \\} "}\) is said to be the <b>set of least nonnegative residues modulo m</b>.</li>
-        <li data-source={4}>If \((a, m) = 1\) and if \({"\\{r^1, \ldots, r^{φ(m)} \\}"}\) is a reduced residue system (modulo \(m\)), then \({"\\{ ar^1, \ldots, ar^{φ(m)} \\}"}\) is also a reduced residue system.</li>
+        <li data-source={4}>If \((a, m) = 1\) and if \({"\\{r^1, \\ldots, r^{φ(m)} \\}"}\) is a reduced residue system (modulo \(m\)), then \({"\\{ ar^1, \\ldots, ar^{φ(m)} \\}"}\) is also a reduced residue system.</li>
         <li data-source={35}>The number of elements in a reduced residue system mod \(m\) is called <b>Euler's totient function</b>: \(\phi(m)\).</li>
         <li data-source={4}>A <b>totative</b> of a given positive integer \(m\) is an integer \(k\) such that \(0 \lt k \le m\) and \(k\) is coprime to \(m\). Euler's totient function \(\phi(m)\) counts the number of totatives of \(m\).</li>
         <li data-source={35}><b>Euler's Theorem:</b> If \((a, m) = 1\), then \({"a^{\\phi(m)} ≡ 1 \\bmod m"}\).</li>
@@ -212,6 +210,26 @@ export const content = <>
         <li>Let \(M = m_1m_2 \ldots m_k\) and \(M_i = \frac{"{M}{m_i}"}\), then the solution is \(M_1M_1^{"{-1}"} b_1 + M_2M_2^{"{-1}"} b_2 + M_3M_3^{"{-1}"} b_3 + \ldots + M_kM_k^{"{-1}"} b_k\).</li>
         <MathStuff>$$ M_1M_1^{"{-1}"} b_1 + M_2M_2^{"{-1}"} b_2 + M_3M_3^{"{-1}"} b_3 + \ldots + M_kM_k^{"{-1}"} b_k $$</MathStuff>
       </SubList></li>
+    </ul>
+  </div>
+
+  <h2 id="arithmetic_functions">Arithmetic Functions</h2>
+  <div className="content">
+    <ul style={{width: "49%",float: "left",marginLeft: "0.5%", marginRight: "0.5%"}} data-source={54}>
+      <li>Arithmetic functions and multiplicativity:<SubList>
+        <li>An <b>arithmetic function</b> is a function whose domain is the set of positive integers. For example, the Euler phi-function: \(\phi(n)\).</li>
+        <li>An arithmetic function \(f\) is said to be <b>multiplicative</b> if \(f(mn)=f(m)f(n)\) whenever \(m\) and \(n\) are relatively prime positive integers.</li>
+        <li>An arithmetic function \(f\) is said to be <b>completely multiplicative</b> if \(f(mn)=f(m)f(n)\) for all positive integers \(m\) and \(n\).</li>
+        <li>Let \(f\) be a multiplicative arithmetic function. If \(n\) is a positive integer, then by the fundamental theorem of arithmetic:</li>
+        <MathStuff>{"n = p_1^{a_1} + p_2^{a_2} + \\cdots + p_r^{a_r}"}</MathStuff>
+        <li>Since \(({"p_i^{a_i}, p_j^{a_j}"})=1\) whenever \(i \ne j\), we have:</li>
+        <MathStuff>{"f(n) = f(p_1^{a_1} + p_2^{a_2} + \\cdots + p_r^{a_r}) = f(p_1^{a_1})f(p_2^{a_2}) \\cdots f(p_r^{a_r})"}</MathStuff>
+      </SubList></li>
+      <li>The notation \(\sum_{"{d|n, d \\gt 0}"}\) means "the summation over all distinct positive divisors \(d\) of \(n\)".</li>
+      <li>Let \(f\) be an arithmetic function and, for \(n \in \mathbb{"{Z}"}\) with \(n \gt 0\), let \(F(n)= \sum_{"{d|n, d \\gt>0}"} f(d)\). If \(f\) is multiplicative, then \(F\) is multiplicative.</li>
+    </ul>
+    <ul style={{width: "49%",float: "right",marginLeft: "0.5%", marginRight: "0.5%"}}>
+      <li></li>
     </ul>
   </div>
 </>

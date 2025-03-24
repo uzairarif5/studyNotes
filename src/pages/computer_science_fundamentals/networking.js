@@ -1,5 +1,3 @@
-
-import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 import { TableLI } from "../../articleRelatedStuff/tableManager";
 import { CodePre } from "../../articleRelatedStuff/Code";
@@ -9,7 +7,6 @@ export const title = "Networking Notes";
 export const sourcesColor = {59: null};
 export const content = <>
   <h1>Networking</h1>
-  {getSourcesOL(sourcesColor)}
 
   <h2 id="introduction">Introduction</h2>
   <div className="content">
@@ -96,27 +93,13 @@ into small fragments and send each fragment individually.</li>
 in the 1960s, but it was not widely used until the 1980s because it
 required more computing power and more sophisticated networking
 software.</li>
-          <li>When messages are broken into packets and each packet is sent
-separately, if a short message was sent after a large message
-had begun, the short message did not have to wait until the entire
-long message was finished. The first packet of the short message
-only had to wait for the current packet of the large message to be
-finished.</li>
+          <li>When messages are broken into packets and each packet is sent separately, if a short message was sent after a large message had begun, the short message did not have to wait until the entire long message was finished. The first packet of the short message only had to wait for the current packet of the large message to be finished.</li>
           <li>The system alternated sending packets from the long
 and short messages until after a while the short message was
 completely sent and the long message resumed making full use
 of the network connection.</li>
-          <li>Breaking the message into packets also greatly reduced the
-amount of storage needed in the intermediate computers because
-instead of needing to store an entire message for as long
-as a few hours, the intermediate computer only needed to store
-a few packets for a few seconds while the packets waited for
-their turns on the outbound link.</li>
-          <li>As networks moved away from the store-and-forward approach,
-they started to include special-purpose computers that specialized
-in moving packets. These were initially called <b>"Interface Message
-Processors</b> or <b>IMPs</b> because they acted as the interface
-between general-purpose computers and the rest of the network.</li>
+          <li>Breaking the message into packets also greatly reduced the amount of storage needed in the intermediate computers because instead of needing to store an entire message for as long as a few hours, the intermediate computer only needed to store a few packets for a few seconds while the packets waited for their turns on the outbound link.</li>
+          <li>As networks moved away from the store-and-forward approach, they started to include special-purpose computers that specialized in moving packets. These were initially called <b>Interface Message Processors</b> or <b>IMPs</b> because they acted as the interface between general-purpose computers and the rest of the network.</li>
           <li>Later these computers dedicated to communications were called <b>routers</b> because their purpose was to route the packets they
 received towards their ultimate destination.</li>
           <li>When multiple computers at one location were connected together

@@ -1,14 +1,13 @@
-import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 import SubList from "../../articleRelatedStuff/SubList";
 import { MathStuff } from "../../articleRelatedStuff/MathStuff";
 
 export const title = "Electricity, Magnetism and Circuits Notes";
-const sourcesOrder = [5, 6, 4];
 export const sourcesColor = {5:null, 6:null, 4:null};
+export const sourcesOrder = [5, 6, 4];
+
 export const content = <>
 	<h1>Electricity, Magnetism and Circuits Notes</h1>
-	{getSourcesOL(sourcesColor, sourcesOrder)}
 
 	<h2 id="electric_charges_and_fields">Electric Charges and Fields</h2>
 	<div className="content">

@@ -1,4 +1,3 @@
-import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import SubList from "../../articleRelatedStuff/SubList";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 import { TableDiv, TableLI } from "../../articleRelatedStuff/tableManager";
@@ -7,7 +6,6 @@ export const title = "Semantics Notes";
 export const sourcesColor = {27: null};
 export const content = <>
 <h1>Semantics</h1>
-{getSourcesOL(sourcesColor)}
 
 <h2 id="tom">Introduction/Theory of Meaning</h2>
 <div className="content">

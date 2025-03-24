@@ -1,4 +1,3 @@
-import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import SubList from "../../articleRelatedStuff/SubList";
 import { drawLine, drawBar, drawHis } from "../../articleRelatedStuff/drawCharts";
 import { TableLI } from "../../articleRelatedStuff/tableManager";
@@ -9,7 +8,6 @@ export const title = "Probability And Statistics Notes" ;
 export const sourcesColor = {7: null, 41: "#c45645"};
 export const content = <>
 	<h1>Probability And Statistics Notes</h1>
-	{getSourcesOL(sourcesColor)}
 
 	<h2 id="sampling_and_data">Sampling and Data</h2>
 	<div className="content">

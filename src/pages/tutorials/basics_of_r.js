@@ -1,5 +1,4 @@
 import SubList from "../../articleRelatedStuff/SubList";
-import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import { CodePre } from "../../articleRelatedStuff/Code";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 
@@ -7,7 +6,6 @@ export const title = "Data Mining With R";
 export const sourcesColor = {38: null, 39: null};
 export const content = <>
   <h1>Data Mining With R</h1>
-	{getSourcesOL(sourcesColor)}
 	<h2 id="introduction">Introduction</h2>
 	<div className="content">
 		<div style={{width: "49%",marginLeft: "0.5%",float: "left"}}>
@@ -642,7 +640,7 @@ data = SleepData)
 predictions <- predict(model1, testData)
 print(sum(testData$Stress.Level - predictions) / 50)
           `}</CodePre></li>
-          <li>Running this code, the last result I got was 0.09643459.</li>
+          <li>Running this code, the last result I got was <code>0.09643459</code>.</li>
         </SubList></li>
       </ul>
     </div>

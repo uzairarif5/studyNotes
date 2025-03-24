@@ -1,6 +1,5 @@
 import SubList from "../../articleRelatedStuff/SubList";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
-import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import { TableLI } from "../../articleRelatedStuff/tableManager";
 
 //Chapter 2.5 The Periodic Table
@@ -9,7 +8,6 @@ export const title = "Chemistry notes";
 export const sourcesColor = {56:null};
 export const content = <>
 <h1>Chemistry</h1>
-{getSourcesOL(sourcesColor)}
 <h2 id="essentialIdeas">Essential Ideas</h2>
 <div className="content">
 	<div style={{width: "49%",float: "left",marginLeft: "0.5%"}} data-source={56}>

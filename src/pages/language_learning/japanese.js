@@ -1,12 +1,10 @@
 import SubList from "../../articleRelatedStuff/SubList";
-import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import { TableLI, TableDiv } from "../../articleRelatedStuff/tableManager";
 
 export const title = "My Japanese notes";
 export const sourcesColor = {4:null, 16:"#3a3"};
 export const content = <>
 <h1>My Japanese Notes</h1>
-{getSourcesOL(sourcesColor)}
 <ol id="additionalResources">
 	<li><a href='https://www.renshuu.org'>Renshuu</a></li>
 </ol>

@@ -1,6 +1,5 @@
 import SubList from "../../articleRelatedStuff/SubList";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
-import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import { MathStuff } from "../../articleRelatedStuff/MathStuff";
 import { TableLI } from "../../articleRelatedStuff/tableManager";
 
@@ -8,7 +7,6 @@ export const title = "Meteorology Notes";
 export const sourcesColor = {30:null};
 export const content = <>
 <h1>Meteorology Notes</h1>
-{getSourcesOL(sourcesColor)}
 <h2>Atmospheric Basics</h2>
 <div className="content">
 	<div style={{width: "49%",float: "left",marginLeft: "0.5%"}}>

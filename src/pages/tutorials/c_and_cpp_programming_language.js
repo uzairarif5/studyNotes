@@ -1,5 +1,4 @@
 import SubList from "../../articleRelatedStuff/SubList";
-import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import { CodePre } from "../../articleRelatedStuff/Code";
 
 export const title = "C++ Programming Language notes";
@@ -7,7 +6,6 @@ export const sourcesColor = {64: null};
 
 export const content = <>
 <h1>C++ Programming Language</h1>
-{getSourcesOL(sourcesColor)}
 
 <h2 id="c-only">C-only stuff</h2>
 <div className="content" data-source={64}>

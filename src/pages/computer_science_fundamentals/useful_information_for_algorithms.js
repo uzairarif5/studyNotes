@@ -1,4 +1,3 @@
-import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import SubList from "../../articleRelatedStuff/SubList";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 import { CodePre } from "../../articleRelatedStuff/Code";
@@ -8,7 +7,6 @@ export const title = "Useful Information For Algorithms";
 export const sourcesColor = {19: null, 20: null};
 export const content = <>
 <h1>Useful Information For Algorithms</h1>
-{getSourcesOL(sourcesColor)}
 <ol id="additionalResources">
 	<li><a href='https://coursera.org/share/d8124fd791622db91dba4e4bd9c612fd'>Algorithms, Part 1</a> course on coursera</li>
 </ol>

@@ -1,14 +1,12 @@
 import SubList from "../../articleRelatedStuff/SubList";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
-import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import { MathStuff } from "../../articleRelatedStuff/MathStuff";
 import { TableLI } from "../../articleRelatedStuff/tableManager";
 
-export const title = "History And Philosophy Of Science Notes";
+export const title = "Philosophy Of Science Notes";
 export const sourcesColor = {32:null};
 export const content = <>
-<h1>History And Philosophy Of Science Notes</h1>
-{getSourcesOL(sourcesColor)}
+<h1>Philosophy Of Science Notes</h1>
 <h2 id="absK">Absolute Knowledge</h2>
 <div className="content">
 	<div style={{width: "48%", marginLeft: "1%", float: "left"}}>

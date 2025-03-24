@@ -1,4 +1,3 @@
-import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 import SubList from "../../articleRelatedStuff/SubList";
 import { MathStuff } from "../../articleRelatedStuff/MathStuff";
@@ -9,7 +8,6 @@ export const title = "Deep Learning Notes";
 export const sourcesColor = {8: "#c45645", 9: "#4f94ac"};
 export const content = <>
 	<h1>Deep Learning Notes</h1>
-	{getSourcesOL(sourcesColor)}
 	<ol id="additionalResources">
 		<li><a href='https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf'>Pattern Recognition and Machine Learning</a> by Christopher M. Bishop</li>
 	</ol>

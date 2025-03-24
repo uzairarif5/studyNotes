@@ -11,8 +11,6 @@ import styles from "../variables.module.scss";
 import { useNavigate } from "react-router-dom";
 import store from "../store";
 import { FORM_COUNTER, Q_COUNTER, CLOSING_LIST_PROCESS } from "../actions";
-import { sourceList } from './sourceList.js';
-import { onlyText } from 'react-children-utilities';
 import { QuestionsBox } from './Questions.js';
 
 const ERROR_VAL = "ERROR";
@@ -34,16 +32,10 @@ class Article extends React.Component {
 			type: CLOSING_LIST_PROCESS,
 			payload: false
 		});
-		this.sourcesColor = [];
 		this.mainEl = document.getElementById("main");
 		this.pathnameToUse = window.location.pathname;
-		this.state = {wholeContent: null, footerEl: null};
-	}
-
-	getReferenceEl(h2s){
-		return <><h4>Contents:</h4><ol id='reference'>{h2s.map((el, index)=>
-			<li key={index}><a href={"#" + el.props.id}>{el.props.children}</a></li>
-		)}</ol></>;
+		this.allowCleanUp = false;
+		this.state = {sourcesList: null, wholeContent: null, footerEl: null};
 	}
 
 	setFooterEl(){
@@ -78,23 +70,35 @@ class Article extends React.Component {
 
 	setWholeContent(){
 		import("../pages"+this.pathnameToUse+".js")
-		.then(res => {this.setState({wholeContent: {
-			"title": res.title,
-			"content": res.content,
-			"sc": res.sourcesColor
-		}})})
+		.then(res => this.setState({
+			wholeContent: {"title": res.title, "content": res.content, "sourcesColor": res.sourcesColor}
+		}))
 		.catch(()=>this.setState({wholeContent: ERROR_VAL}));
 	}
 
+	setSourcesList(){
+		fetch("https://django-apps-38uv.onrender.com/study_notes_backend/",{
+			method:"post",
+			body: JSON.stringify({
+				"sourcesColor": this.state.wholeContent["sourcesColor"],
+				"sourcesOrder": this.state.wholeContent["sourcesOrder"]
+			}),
+		})
+		.then(res=>res.text())
+		.then(res=>this.setState({sourcesList: res}))
+		.catch(()=>this.setState({sourcesList: ERROR_VAL}));
+	}
+
 	getElementToRender(){
+		this.allowCleanUp = true;
 		let mainContent = this.state.wholeContent["content"].props.children;
-		let h2s = mainContent.reduce(function(arr, curEl) {
-			if (curEl.type === "h2") arr.push(curEl);
-			return arr;
-		},[]);
-		this.sourcesColor = this.state.wholeContent["sc"];
-		let additionalResourcesHeader = 
-		(mainContent[2].props.id === "additionalResources") ? <h4>Additional Resources:</h4> : null;
+		let additionalReferencesSection = null;
+		let mainPart;
+		if (mainContent[1].props.id === "additionalResources") {
+			additionalReferencesSection = <section><h4>Additional Resources:</h4>{mainContent[1]}</section>;
+			mainPart = <main>{mainContent.slice(2)}</main>
+		}
+		else mainPart = <main>{mainContent.slice(1)}</main>;
 		return <HelmetProvider>
 			<Helmet>
 				<title>{this.state.wholeContent["title"]}</title>
@@ -102,10 +106,19 @@ class Article extends React.Component {
 			<div id='article'>
 				<div id="notFooter">
 					{mainContent[0]}
-					{this.getReferenceEl(h2s)}
-					{mainContent[1]}
-					{additionalResourcesHeader}
-					{mainContent.slice(2)}
+					
+					<section>
+					<h4>Contents:</h4>
+					<ol id='reference'></ol>
+					</section>
+					
+					<section dangerouslySetInnerHTML={{__html:
+						"<h4>Main Sources:</h4>" +
+						this.state.sourcesList
+					}}></section>
+					
+					{additionalReferencesSection}
+					{mainPart}
 				</div>
 				{this.state.footerEl}
 				<ImgView/>
@@ -131,33 +144,36 @@ class Article extends React.Component {
 	render() {
 		if (!this.state.footerEl) this.setFooterEl();
 		else if (!this.state.wholeContent) this.setWholeContent();
-		else if (this.state.wholeContent !== ERROR_VAL) return this.getElementToRender();
+		else if (this.state.wholeContent === ERROR_VAL) return null;
+		else if (!this.state.sourcesList) this.setSourcesList();
+		else if (this.state.sourcesList !== ERROR_VAL) return this.getElementToRender();
 		return null;
 	}
 
 	componentDidUpdate() {
-		if(this.state.wholeContent)
-			document.fonts.ready.then(()=>this.cleanUp());
-	}
-
-	cleanUp(){
-		if(this.state.wholeContent === ERROR_VAL){
+		if(this.state.wholeContent === ERROR_VAL || this.state.sourcesList === ERROR_VAL){
 			alert("Article not found");
 			changeLoadingText("Going To Home Page");
 			this.props.changeAR(false);
 		}
-		else {
-			changeLoadingText("Gathering Notes"); 
-			this.addDateEl();
-			document.documentElement.style.backgroundColor = "#832";
-			this.addTogglesToH()
-			$(".content a, #sources a").attr("target","_blank");
-			this.mainEl.addEventListener("scroll", this.scrollFunc);
-			this.addColors();
-			window.MathJax.typesetPromise();
-			this.addKeyBinds();
-			window.setTimeout(fadeLoadingToInsv, 1);
+		if(this.allowCleanUp){
+			this.allowCleanUp = false;
+			document.fonts.ready.then(()=>this.cleanUp());
 		}
+	}
+
+	cleanUp(){
+		changeLoadingText("Formatting Notes"); 
+		this.addDateEl();
+		this.setReferenceEl();
+		document.documentElement.style.backgroundColor = "#832";
+		this.addTogglesToH()
+		$(".content a, #sources a").attr("target","_blank");
+		this.mainEl.addEventListener("scroll", this.scrollFunc);
+		this.addColors();
+		this.addKeyBinds();
+		window.MathJax.typesetPromise();
+		window.setTimeout(fadeLoadingToInsv, 1);
 	}
 
 	addDateEl(){
@@ -178,6 +194,16 @@ class Article extends React.Component {
 			console.log("Adding the date element gave this error: ", err);
 		});
 	}
+
+	setReferenceEl(){
+		let h2s = document.getElementsByTagName("H2");
+		let referenceHTML = "";
+		for(let el of h2s){
+			if(!el.id) el.id = el.textContent.replaceAll(" ","_");
+			referenceHTML += "<li><a href=\"#" + el.id + "\">" + el.textContent + "</a></li>";
+		}
+		document.getElementById("reference").innerHTML = referenceHTML;
+	}
 	
 	addTogglesToH(){
 		$('h2').on("click",(el)=> $(el.target).next().slideToggle());
@@ -192,7 +218,7 @@ class Article extends React.Component {
 	}
 
 	addColors(){
-		let sc = this.sourcesColor;
+		let sc = this.state.wholeContent.sourcesColor;
 		$('[data-source]').each(function(){
 			let curList = $(this);
 			let num = parseInt(curList.attr("data-source"));
@@ -204,11 +230,11 @@ class Article extends React.Component {
 		document.onkeyup = (e) => {
 			if (e.key === "s"){
 				$('[data-source]').each(function() {
-					if (this.hasAttribute("title"))
-						this.removeAttribute("title");
+					if (this.hasAttribute("title")) this.removeAttribute("title");
 					else{
 						let sourceNum = this.getAttribute("data-source");
-						this.setAttribute("title","Source: " + onlyText(sourceList[sourceNum]));
+						let text = document.querySelector(`#sources li[data-num="${sourceNum}"]`).textContent
+						this.setAttribute("title","Source: " + text);
 					}
 				})
 			}

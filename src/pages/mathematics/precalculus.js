@@ -1,4 +1,3 @@
-import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import { MathStuff } from "../../articleRelatedStuff/MathStuff"; 
 import SubList from "../../articleRelatedStuff/SubList";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
@@ -8,9 +7,7 @@ export const title = "Precalculus Notes";
 
 export const sourcesColor = {36: "rgb(80, 130, 160)"};
 export const content = <>
-
 	<h1>Precalculus Notes</h1>
-  {getSourcesOL(sourcesColor)}
 
 	<h2 id="functionsAndModels">Functions Review</h2>
   <div className="content">

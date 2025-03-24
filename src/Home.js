@@ -69,12 +69,13 @@ const HomeCompMemo = memo(()=>{
 		<h2>Mathematics</h2>
 		<Link to="mathematics/precalculus">Precalculus</Link>
 		<Link to="mathematics/number_theory">Number Theory</Link>
-		<Link to="mathematics/probability_and_statistics">Probability And Statistics</Link>
 		<Link to="mathematics/calculus">Calculus</Link>
+		<Link to="mathematics/calculus_advanced">Calculus (advanced)</Link>
+		<Link to="mathematics/probability_and_statistics">Probability And Statistics</Link>
 		<h2>Natural Sciences</h2>
 		<Link to="natural_sciences/philosophy_of_science">Philosophy Of Science</Link>
-		<Link to="natural_sciences/chemistry">Chemistry</Link>
 		<Link to="natural_sciences/physics">Physics</Link>
+		<Link to="natural_sciences/chemistry">Chemistry</Link>
 		<Link to="natural_sciences/meteorology">Meteorology</Link>
 		<Link to="natural_sciences/geology">Geology</Link>
 		<h2>Computer Science Fundamentals</h2>
@@ -86,11 +87,11 @@ const HomeCompMemo = memo(()=>{
 		<h2>Electrical Engineering</h2>
 		<Link to="electrical_engineering/electricity_magnetism_and_circuits">Electricity, Magnetism And Circuits</Link>
 		<Link to="electrical_engineering/signals_and_systems">Signal And Systems</Link>
-		<h2>Computer Science (Advance Topics)</h2>
-		<Link to="computer_science_advance_topics/cryptography">Cryptography</Link>
-		<Link to="computer_science_advance_topics/deep_learning">Deep Learning</Link>
+		<h2>Computer Science (Advanced Topics)</h2>
+		<Link to="computer_science_advanced_topics/cryptography">Cryptography</Link>
+		<Link to="computer_science_advanced_topics/deep_learning">Deep Learning</Link>
 		<h2>Tutorials/Guides</h2>
-    <Link to="tutorials/cpp_programming_language">C++ programming language</Link>
+    <Link to="tutorials/c_and_cpp_programming_language">C/C++ programming language</Link>
 		<Link to="tutorials/basics_of_r">Basics Of R</Link>
     <Link to="tutorials/manim">Manim Basics</Link>
 		<h2>Blog</h2>

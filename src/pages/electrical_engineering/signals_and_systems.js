@@ -1,4 +1,3 @@
-import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 import { analogSignalProcessing } from "./analog_signal_processing";
 import { fourierAnalysis } from "./fourier_analysis";
@@ -9,7 +8,6 @@ export const title = "Signal And Systems Notes";
 export const sourcesColor = {2:"#4f94ac", 1:null,3:null, 4:null};
 export const content = <>
 	<h1>Signal And Systems Notes</h1>
-	{getSourcesOL(sourcesColor)}
 	<ol id="additionalResources">
 		<li><a href='https://www.ece.uvic.ca/~frodo/sigsysbook/downloads/signals_and_systems-5.0.pdf'>Signals and Systems</a> (Michael D. Adams)</li>
 	</ol>

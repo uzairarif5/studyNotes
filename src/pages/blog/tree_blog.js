@@ -7,29 +7,29 @@ export const content = <>
 	<div className="content">
 		<div style={{width: "24%", marginLeft: "0.5%", marginRight: "0.5%", float: "left"}}>
 			<figure>
-				<ImgComp src={require("./blogImages/1.jpg")} style={{width: "90%"}}/>
+				<ImgComp src={require("./tree_blog_pics/1.jpg")} style={{width: "90%"}}/>
 				<figcaption></figcaption>
 			</figure>
 			<figure>
-				<ImgComp src={require("./blogImages/4.jpg")} style={{width: "90%"}}/>
-				<figcaption></figcaption>
-			</figure>
-		</div>    
-		<div style={{width: "24%", marginLeft: "0.5%", marginRight: "0.5%", float: "left"}}>
-			<figure>
-				<ImgComp src={require("./blogImages/3.jpg")} style={{width: "90%"}}/>
+				<ImgComp src={require("./tree_blog_pics/4.jpg")} style={{width: "90%"}}/>
 				<figcaption></figcaption>
 			</figure>
 		</div>    
 		<div style={{width: "24%", marginLeft: "0.5%", marginRight: "0.5%", float: "left"}}>
 			<figure>
-				<ImgComp src={require("./blogImages/5.jpg")} style={{width: "90%"}}/>
+				<ImgComp src={require("./tree_blog_pics/3.jpg")} style={{width: "90%"}}/>
+				<figcaption></figcaption>
+			</figure>
+		</div>    
+		<div style={{width: "24%", marginLeft: "0.5%", marginRight: "0.5%", float: "left"}}>
+			<figure>
+				<ImgComp src={require("./tree_blog_pics/5.jpg")} style={{width: "90%"}}/>
 				<figcaption></figcaption>
 			</figure>
 		</div>   
 		<div style={{width: "24%", marginLeft: "0.5%", marginRight: "0.5%", float: "left"}}>
 			<figure>
-				<ImgComp src={require("./blogImages/2.jpg")} style={{width: "90%"}}/>
+				<ImgComp src={require("./tree_blog_pics/2.jpg")} style={{width: "90%"}}/>
 				<figcaption></figcaption>
 			</figure>
 		</div>  

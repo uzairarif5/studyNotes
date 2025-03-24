@@ -3,182 +3,249 @@ import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 import { CodePre } from "../../articleRelatedStuff/Code";
 
 export const title = "Manim Tutorial notes";
-
+export const sourcesColor = {53: null};
 export const content = <>
 <h1>Manim Tutorial</h1>
 
-<h2 id="officialTutorial1">docs.manim.community/en/stable/tutorials/</h2>
+<h2 id="officialTutorial1">Tutorials</h2>
 <div className="content">
 	<div style={{width: "49%",float: "left",marginLeft: "0.5%"}}>
 		<h3>Quickstart</h3>
 		<ul>
-			<li><code>Scene</code>: the class through which Manim generates videos</li>
-			<li>Animating a circle using <code>Scene</code> in the file "first.py":</li>
-			<li><CodePre language="python">{`
+			<li>Animating a circle:<SubList>
+				<li><code>Scene</code>: the class through which Manim generates videos</li>
+				<li>Animating a circle using <code>Scene</code> in the file <code>first.py</code>:</li>
+				<li><CodePre language="python">{`
 from manim import *
 
 class CreateCircle(Scene):
 	def construct(self):
-		circle = Circle()  # create a circle
-		circle.set_fill(PINK, opacity=0.5)  # set the color and transparency
-		self.play(Create(circle))  # show the circle on screen
-			`}</CodePre></li>
-			<li>Most of the time, the code for scripting an animation is entirely contained within the <code>construct()</code> method of a <code>Scene</code> class. Inside <code>construct()</code>, you can create objects, display them on screen, and animate them.</li>
-			<li><code>self.play(Create(circle))</code> uses the animation <code>Create</code> to display the circle on your screen.</li>
-			<li>Open the command line, navigate to your project folder, and execute the following command: <code>manim -pql first.py CreateCircle</code>. Manim will output rendering information, then create an MP4 file. Your default movie player will play the MP4 file, displaying the following animation:</li>
-			<li><ImgComp  src={require("./manimPics/1.gif")}style={{width: "60%"}}/></li>
-
-			<li>In first.py, and add the following code snippet below the <code>SquareToCircle</code> method:</li>
-			<li><CodePre language="python">{`
+		circle = Circle()
+		circle.set_fill(PINK, opacity=0.5)
+		self.play(Create(circle))
+				`}</CodePre></li>
+				<li>Open the command line, navigate to your project folder, and execute the following command: <code>manim -pql first.py CreateCircle</code>. Manim will output rendering information, then create an MP4 file. Your default movie player will play the MP4 file, displaying the following animation:</li>
+				<li><ImgComp  src={require("./manimPics/1.gif")}style={{width: "60%"}}/></li>
+				<li>Most of the time, the code for scripting an animation is entirely contained within the <code>construct()</code> method of a <code>Scene</code> class. Inside <code>construct()</code>, you can create objects, display them on screen, and animate them.</li>
+				<li><code>self.play(Create(circle))</code> uses the animation <code>Create</code> to display the circle on your screen.</li>
+				
+				<li>We can also animate a square. Add a <code>CreateSquare</code> scene right below the <code>CreateCircle</code> scene:</li>
+				<li><CodePre language="python">{`
+class CreateSquare(Scene):
+  def construct(self):
+    sq = Square()
+    sq.set_fill(BLUE, opacity=0.5)
+    self.play(Create(sq))
+				`}</CodePre></li>
+				<li>Open the command line, navigate to your project folder, and execute the following command: <code>manim -pql first.py CreateSquare</code>. Manim will output rendering information, then create an MP4 file. Your default movie player will play the MP4 file, displaying the following animation:</li>
+				<li><ImgComp  src={require("./manimPics/15.gif")}style={{width: "60%"}}/></li>
+										
+				<li>Now let's animate a square and circle together. In <code>first.py</code>, and add the following code snippet:</li>
+				<li><CodePre language="python">{`
 class SquareAndCircle(Scene):
 	def construct(self):
 		circle = Circle()  # create a circle
-		circle.set_fill(PINK, opacity=0.5)  # set the color and transparency
+		circle.set_fill(PINK, opacity=0.5) 
 
 		square = Square()  # create a square
-		square.set_fill(BLUE, opacity=0.5)  # set the color and transparency
+		square.set_fill(BLUE, opacity=0.5)
 
-		square.next_to(circle, RIGHT, buff=0.5)  # set the position
-		self.play(Create(circle), Create(square))  # show the shapes on screen
-			`}</CodePre></li>
-			<li>Render <code>SquareAndCircle</code> by running the following command in the command line: <code>manim -pql scene.py SquareAndCircle</code>.</li>
-			<li><ImgComp  src={require("./manimPics/2.gif")}style={{width: "60%"}}/></li>
-			<li>We first specified the pink circle as the square's reference point by passing circle as <code>next_to</code>'s first argument. The second argument is used to specify the direction. In this case, we set the direction to RIGHT, telling Manim to position the square to the right of the circle. Finally, <code>buff=0.5</code> applied a small distance buffer between the two objects. If <code>square.next_to(circle, DOWN, buff=0)</code> is used instead:</li>
-			<li><ImgComp  src={require("./manimPics/3.gif")}style={{width: "60%"}}/></li>
+		square.next_to(circle, RIGHT, buff=0.5)
+		self.play(Create(circle), Create(square))
+				`}</CodePre></li>
+				<li>Render <code>SquareAndCircle</code> by running the following command in the command line: <code>manim -pql scene.py SquareAndCircle</code>.</li>
+				<li><ImgComp  src={require("./manimPics/2.gif")}style={{width: "60%"}}/></li>
+				<li>We first specified the pink circle as the square's reference point by passing circle as <code>next_to</code>'s first argument. The second argument is used to specify the direction. In this case, we set the direction to RIGHT, telling Manim to position the square to the right of the circle. Finally, <code>buff=0.5</code> applied a small distance buffer between the two objects. If <code>square.next_to(circle, DOWN, buff=0)</code> is used instead:</li>
+				<li><ImgComp  src={require("./manimPics/3.gif")}style={{width: "60%"}}/></li>
+				<li>You can use the <code>run_time</code> parameter for <code>.play</code> where you can specify how many seconds you want the animation to run in. There is also <code>self.wait()</code>, where you can specify how long you want to wait between animations.</li>
+				<li><CodePre language="python">{`
+class SquareAndCircle(Scene):
+	def construct(self):
+		circle = Circle()  # create a circle
+		circle.set_fill(PINK, opacity=0.5) 
 
-			<li>Transforming a square into a circle:</li>
-			<li><CodePre language="python">{`
+		square = Square()  # create a square
+		square.set_fill(BLUE, opacity=0.5)
+
+		square.next_to(circle, RIGHT, buff=0)
+		self.play(Create(circle), run_time=3)
+		self.wait(1)
+		self.play(Create(square), run_time=0.5)
+				`}</CodePre></li>
+				<li><ImgComp  src={require("./manimPics/17.gif")}style={{width: "60%"}}/></li>
+			</SubList></li>
+			<li>Transforming a square into a circle:<SubList>
+				<li><CodePre language="python">{`
 class SquareToCircle(Scene):
 	def construct(self):
-		circle = Circle()  # create a circle
-		circle.set_fill(PINK, opacity=0.5)  # set color and transparency
+		circle = Circle() 
+		circle.set_fill(PINK, opacity=0.5)
 
-		square = Square()  # create a square
-		square.rotate(PI / 4)  # rotate a certain amount
+		square = Square()
+		square.rotate(PI / 4) 
 
-		self.play(Create(square))  # animate the creation of the square
-		self.play(Transform(square, circle))  # interpolate the square into circle
-		self.play(FadeOut(square))  # fade out animation
-			`}</CodePre></li>
-			<li>Render <code>SquareToCircle</code> by running the following command in the command line: <code>manim -pql scene.py SquareToCircle</code>.</li>
-			<li><ImgComp  src={require("./manimPics/4.gif")}style={{width: "60%"}}/></li>
-			<li>When you CodePrepend <code>.animate</code> to any method call that modifies the square, the method becomes an animation which can be played using <code>self.play</code>. For example:</li>
-			<li><CodePre language="python">{`
+		self.play(Create(square)) 
+		self.play(Transform(square, circle))
+		self.play(FadeOut(square))
+				`}</CodePre></li>
+				<li>Render <code>SquareToCircle</code> by running the following command in the command line: <code>manim -pql scene.py SquareToCircle</code>.</li>
+				<li><ImgComp  src={require("./manimPics/4.gif")}style={{width: "60%"}}/></li>
+				<li>Let's say we want to create the square first, and then show it getting rotated:</li>
+				<li><CodePre language="python">{`
+class SquareToCircle(Scene):
+	def construct(self):
+		circle = Circle() 
+		circle.set_fill(PINK, opacity=0.5)
+
+		square = Square()
+		#square.rotate(PI / 4) 
+
+		self.play(Create(square)) 
+		#animate a rotation here
+		self.play(Transform(square, circle))
+		self.play(FadeOut(square))
+				`}</CodePre></li>
+				<li>You can call <code>.animate</code> to any method that modifies the square, the method becomes an animation which can be played using <code>self.play</code>. For example:</li>
+				<li><CodePre language="python">{`
 class AnimatedSquareToCircle(Scene):
 	def construct(self):
-		circle = Circle()  # create a circle
-		square = Square()  # create a square
+		circle = Circle() 
+		circle.set_fill(PINK, opacity=0.5)
 
-		self.play(Create(square))  # show the square on screen
-		self.play(square.animate.rotate(PI / 4))  # rotate the square
-		self.play(ReplacementTransform(square, circle))  # transform into a circle
-		self.play(circle.animate.set_fill(PINK, opacity=0.5))  # color the circle
-			`}</CodePre></li>
-			<li>We change <code>square.rotate(PI / 4)</code> to <code>self.play(square.animate.rotate(PI / 4))</code>. This will render:</li>
-			<li><ImgComp  src={require("./manimPics/5.gif")}style={{width: "60%"}}/></li>
+		square = Square()  
+
+		self.play(Create(square))
+		self.play(square.animate.rotate(PI / 4))
+		self.play(Transform(square, circle))
+				`}</CodePre></li>
+				<li>This will render:</li>
+				<li><ImgComp  src={require("./manimPics/5.gif")}style={{width: "60%"}}/></li>
+				<li><code>Transform(mob1, mob2)</code> transforms the points (as well as other attributes like color) of <code>mob1</code> into the points/attributes of <code>mob2</code>. <code>ReplacementTransform(mob1, mob2)</code> on the other hand literally replaces <code>mob1</code> on the scene with <code>mob2</code>.</li>
+				<li>Here is the difference between <code>.animate.rotate</code> (left) and <code>Rotate</code> (right):</li>
+				<li><figure>
+					<ImgComp  src={require("./manimPics/16.gif")}style={{width: "60%"}}/>
+					<figcaption>Notice the slight shrinking and expanding on the left.</figcaption>
+				</figure></li>
+			</SubList></li>
 		</ul>
-	</div>
-	<div style={{width: "49%",float: "right",marginRight: "0.5%"}}>
 		<h3>Output Settings</h3>
 		<ul>
-		<li>When you execute <code>manim -pql first.py SquareToCircle</code>, manim to play the scene once it's rendered because of the <code>-p</code> flag.</li>
-		<li>The <code>-ql</code> flag tells manim to render the scene in low quality. For high quality, use <code>-qh</code>.</li>
-		<li>If you run all the animation in quickstart, you will have a project structure like this:</li>
-		<li><CodePre>{`
+			<li>Command line flags:<SubList>
+				<li>When you execute <code>manim -pql first.py SquareToCircle</code>, manim plays the scene once it's rendered because of the <code>-p</code> flag.</li>
+				<li>The <code>-ql</code> renders the animation in low quality (854x480 15FPS). The other options that specify render quality are <code>-qm</code>, <code>-qh</code>, <code>-qp</code> and <code>-qk</code> for medium (1280x720 30FPS), high (1920x1080 60FPS), 2k (2560x1440 60FPS) and 4k quality (3840x2160 60FPS), respectively.</li>
+				<li>If you run <code>CreateCircle</code>, <code>SquareAndCircle</code> and <code>SquareToCircle</code> from quickstart, your  project structure would look like this:</li>
+				<li><CodePre>{`
 first.py
 media
 └─videos
-   └─first
-	  └─480p15
-		 ├─AnimatedSquareToCircle.mp4
-		 ├─CreateCircle.mp4
-		 ├─SquareAndCircle.mp4
-		 ├─SquareToCircle.mp4
-		 └─partial_movie_files
-		`}</CodePre></li>
-		<li>If you execute <code>manim -pqh first.py SquareToCircle</code></li>
-		<li><CodePre>{`
+  └─first
+    └─480p15
+      ├─CreateCircle.mp4
+      ├─SquareAndCircle.mp4
+      ├─SquareToCircle.mp4
+      └─partial_movie_files
+				`}</CodePre></li>
+				<li>If you execute <code>manim -pqh first.py SquareToCircle</code></li>
+				<li><CodePre>{`
 first.py
 media
 └─videos
-   └─first
-	  ├─480p15
-	  |  ├─AnimatedSquareToCircle.mp4
-	  |  ├─CreateCircle.mp4
-	  |  ├─SquareAndCircle.mp4
-	  |  ├─SquareToCircle.mp4
-	  |  └─partial_movie_files
-	  └─1080p60
-		 ├─SquareToCircle.mp4
-		 └─partial_movie_files
-		`}</CodePre></li>
-		<li>Manim has the option to output the last frame of a scene, when adding the flag <code>-s</code>. The frame will be saved in the <code>images</code> folder in the <code>media</code> folder.</li>
-		<li><CodePre>{`
+  └─first
+    ├─480p15
+    |  ├─CreateCircle.mp4
+    |  ├─SquareAndCircle.mp4
+    |  ├─SquareToCircle.mp4
+    |  └─partial_movie_files
+    └─1080p60
+      ├─SquareToCircle.mp4
+      └─partial_movie_files
+				`}</CodePre></li>
+				<li>Manim has the option to output the last frame of a scene, when adding the flag <code>-s</code>. The frame will be saved in the <code>images</code> folder in the <code>media</code> folder.</li>
+				<li><CodePre>{`
 first.py
 media
 ├─images
 |  └─first
 └─videos
-   └─first
-	  ├─480p15
-	  |  ├─AnimatedSquareToCircle.mp4
-	  |  ├─CreateCircle.mp4
-	  |  ├─SquareAndCircle.mp4
-	  |  ├─SquareToCircle.mp4
-	  |  └─partial_movie_files
-	  └─1080p60
-		 ├─SquareToCircle.mp4
-		 └─partial_movie_files
-		`}</CodePre></li>
-		<li>In addition to the movie output file one can use <b>sections</b>. Each section produces its own output video. The cuts between two sections can be set like this:</li>
-		<li><CodePre language="python">{`
+  └─first
+    ├─480p15
+    |  ├─CreateCircle.mp4
+    |  ├─SquareAndCircle.mp4
+    |  ├─SquareToCircle.mp4
+    |  └─partial_movie_files
+    └─1080p60
+      ├─SquareToCircle.mp4
+      └─partial_movie_files
+				`}</CodePre></li>
+				<li>If you want your animations in <code>.gif</code> format instead, use the <code>--format gif</code> flag. The gifs will be saved in your videos.</li>
+			</SubList></li>
+			<li>Sections:<SubList>
+				<li>In addition to the movie output file one can use <b>sections</b>. Each section produces its own output video. The cuts between two sections can be set like this:</li>
+				<li><CodePre language="python">{`
 class showSections(Scene):
 	def construct(self):
 		# play the first animations...
-		# you don't need a section in the very beginning as it gets created automatically
+		# you don't need a section in the very beginning
+		#as it gets created automatically
 		circle = Circle()
 		square = Square()
 		self.play(Create(circle), Create(square))
-		self.next_section("this is an optional name that doesn't have to be unique")
+		self.next_section("section 2")
 		# play more animations...
 		self.play(square.animate.rotate(PI / 4))
 		self.next_section("this is a section without any animations, it will be removed")
-		`}</CodePre></li>
-		<li>All the animations between two of these cuts get concatenated into a single output video file, but if I execute <code>manim -ql --save_sections first.py showSections</code>, I will get the <code>sections</code> folder in the <code>480p15</code> folder.</li>
-		<li><CodePre>{`
+				`}</CodePre></li>
+				<li>All the animations between two of these cuts get concatenated into a single output video file, but if I execute <code>manim -ql --save_sections first.py showSections</code>, I will get the <code>sections</code> folder in the <code>480p15</code> folder.</li>
+				<li><CodePre>{`
 first.py
 media
 ├─images
 |  └─first
 └─videos
-   └─first
-	  ├─480p15
-	  |  ├─sections
-	  |  |   ├─showSections.json
-	  |  |   ├─showSections_0000.mp4
-	  |  |   └─showSections_0001.mp4
-	  |  ├─AnimatedSquareToCircle.mp4
-	  |  ├─CreateCircle.mp4
-	  |  ├─SquareAndCircle.mp4
-	  |  ├─SquareToCircle.mp4
-	  |  └─partial_movie_files
-	  └─1080p60
-		 ├─SquareToCircle.mp4
-		 └─partial_movie_files
-		`}</CodePre></li>
-		<li>The <code>showSections_0000.mp4</code> file and the <code>showSections_0001.mp4</code> file have these animations:</li>
-		<li style={{listStyleType: "none"}}><div>
-			<ImgComp  src={require("./manimPics/6.gif")}style={{width: "50%", float: "left"}}/>
-			<ImgComp  src={require("./manimPics/7.gif")}style={{width: "50%", float: "right"}}/>
-		</div></li>
-		<li>The JSON file in here contains some useful information for each section. This data can be used by third party applications, like a CodePresentation system or automated video editing tool.</li>
+  └─first
+    ├─480p15
+    |  ├─sections
+    |  |   ├─showSections.json
+    |  |   ├─showSections_0000.mp4
+    |  |   └─showSections_0001.mp4
+    |  ├─CreateCircle.mp4
+    |  ├─SquareAndCircle.mp4
+    |  ├─SquareToCircle.mp4
+    |  └─partial_movie_files
+    └─1080p60
+      ├─SquareToCircle.mp4
+      └─partial_movie_files
+				`}</CodePre></li>
+				<li>The <code>showSections_0000.mp4</code> file and the <code>showSections_0001.mp4</code> file have these animations:</li>
+				<li style={{listStyleType: "none"}}><div>
+					<ImgComp  src={require("./manimPics/6.gif")}style={{width: "50%", float: "left"}}/>
+					<ImgComp  src={require("./manimPics/7.gif")}style={{width: "50%", float: "right"}}/>
+				</div></li>
+				<li>The JSON file in here contains some useful information for each section. This data can be used by third party applications.</li>
+				<li>You can also skip rendering all animations belonging to a section like this:</li>
+				<li><CodePre language="python">{`
+def construct(self):
+  self.next_section(skip_animations=True)
+  # play some animations that shall be skipped...
+  self.next_section()
+  # play some animations that won't get skipped...
+				`}</CodePre></li>
+		</SubList></li>
 		</ul>
+	</div>
+	<div style={{width: "49%",float: "right",marginRight: "0.5%"}}>
 		<h3>Manim's building blocks</h3>
 		<ul>
-			<li><b>Mobjects</b> are the basic building blocks for all manim animations. Each class that derives from Mobject reCodePresents an object that can be displayed on the screen. For example, simple shapes such as <b>Circle</b> are mobjects.</li>
-			<li>If you try to display an instance of Mobject on the screen, you will only see an empty frame. The reason is that the Mobject class is an abstract base class. It is only the skeleton of a thing that could be displayed. Therefore, you will rarely need to use plain instances of Mobject; instead, you will most likely create instances of its derived classes. One of these derived classes is <b>VMobject</b>. The V stands for Vectorized Mobject. It is a mobject that uses vector graphics to be displayed.</li>
-			<li>Usually all of the code in a manim script is put inside the <code>construct()</code> method of a <code>Scene</code> class. Call the <code>add()</code> to display a mobject on the screen when it is not being animated. To remove a mobject from the screen, simply call the <code>remove()</code> method. By default, mobjects are placed at the center of coordinates, or origin, when they are first created. They are also given some default colors.</li>
-			<li><CodePre language="python">{`
+			<li>Mobjects:<SubList>
+				<li><b>Mobjects</b> are the basic building blocks for all manim animations. Each class that derives from <code>Mobject</code> represents an object that can be displayed on the screen. For example, simple shapes such as <b>Circle</b> are mobjects.</li>
+				<li>If you try to display an instance of <code>Mobject</code> on the screen, you will only see an empty frame. The reason is that the <code>Mobject</code> class is an abstract base class. It is only the skeleton of a thing that could be displayed. Therefore, you will rarely need to use plain instances of <code>Mobject</code>; instead, you will most likely create instances of its derived classes.</li>
+				<li>One of derived <code>Mobject</code> classes is <b>VMobject</b>. The V stands for Vectorized Mobject. It is a mobject that uses vector graphics to be displayed.</li>
+			</SubList></li>
+			<li>Displaying mobjects:<SubList>
+				<li>Usually all of the code in a manim script is put inside the <code>construct()</code> method of a <code>Scene</code> class.</li>
+				<li>Call the <code>add()</code> to display a mobject on the screen when it is not being animated. To remove a mobject from the screen, simply call the <code>remove()</code> method.</li>
+				<li>By default, mobjects are placed at the center of coordinates, or origin, when they are first created. They are also given some default colors.</li>
+				<li><CodePre language="python">{`
 class Shapes(Scene):
 	def construct(self):
 		circle = Circle()
@@ -191,21 +258,25 @@ class Shapes(Scene):
 
 		self.add(circle, square, triangle)
 		self.wait(1)
-			`}</CodePre></li>
-			<li>The <code>Shapes</code> scene places the mobjects by using the <code>shift()</code> method.</li>
-			<li><ImgComp  src={require("./manimPics/8.png")}style={{width: "60%"}}/></li>
-			<li>By default, any animation passed to <code>play()</code> lasts for exactly one second. Use the <code>run_time</code> argument to control the duration.</li>
-			<li><CodePre language="python">{`
+				`}</CodePre></li>
+				<li>The <code>Shapes</code> scene places the mobjects by using the <code>shift()</code> method.</li>
+				<li><ImgComp  src={require("./manimPics/8.png")}style={{width: "60%"}}/></li>
+				<li>Notice that the on-screen order of the shapes is the same as the order of their mentioning in <code>.add</code>. So <code>.add(circle, square, triangle)</code> displays the circle first, then the square on top, and then the triangle on top of that. For the reverse order, you can use <code>.add(circle, square, triangle)</code>.</li>
+			</SubList></li>
+			<li>Animations:<SubList>
+				<li>Animations are procedures that interpolate between two mobjects.</li>
+				<li>By default, any animation passed to <code>play()</code> lasts for exactly one second. Use the <code>run_time</code> argument to control the duration.</li>
+				<li><CodePre language="python">{`
 class RunTime(Scene):
 	def construct(self):
 		square = Square()
 		self.add(square)
 		self.play(square.animate.shift(UP), run_time=3)
 		self.wait(1)
-			`}</CodePre></li>
-			<li><ImgComp  src={require("./manimPics/9.gif")}style={{width: "60%"}}/></li>
-			<li>To define your own custom animation, you can start by extending the Animation class and overriding its <code>interpolate_mobject()</code>. The method receives <code>alpha</code> as a parameter that starts at 0 and changes throughout the animation. So, you just have to manipulate <code>self.mobject</code> inside <code>Animation</code> according to the <code>alpha</code> value in its <code>interpolate_mobject</code> method. Then you get all the benefits of <code>Animation</code> such as playing it for different run times.</li>
-			<li><CodePre language="python">{`
+				`}</CodePre></li>
+				<li><ImgComp  src={require("./manimPics/9.gif")}style={{width: "60%"}}/></li>
+				<li>To define your own custom animation, you can start by extending the <code>Animation</code> class and overriding its <code>interpolate_mobject()</code>. The method receives <code>alpha</code> as a parameter that starts at 0 and changes throughout the animation, and ends at 1. So, you just have to manipulate <code>self.mobject</code> inside <code>Animation</code> according to the <code>alpha</code> value in its <code>interpolate_mobject</code> method.</li>
+				<li><CodePre language="python">{`
 class Count(Animation):
 	def __init__(self, number: DecimalNumber, start: float, end: float):
 		# Pass number as the mobject of the animation
@@ -229,11 +300,11 @@ class CountingScene(Scene):
 		# Play the Count Animation to count from 0 to 100 in 4 seconds
 		self.play(Count(number, 0, 100), run_time=4)
 		self.wait(1)
-			`}</CodePre></li>
-			<li>The <code>Count</code> class extends <code>Animation</code>. The class can have a constructor with three arguments, a <code>DecimalNumber</code> Mobject, start, and end. The constructor will pass the <code>DecimalNumber</code> Mobject to the super constructor (in this case, the <code>Animation</code> constructor) and will set start and end.</li>
-			<li><ImgComp  src={require("./manimPics/10.gif")}style={{width: "60%"}}/></li>
-			<li>If you use <code>number.add_updater(lambda number: number.move_to(ORIGIN))</code> like shown, then the <code>DecimalNumber</code> stays centered.</li>
-			<li><CodePre language="python">{`
+				`}</CodePre></li>
+				<li>The <code>Count</code> class extends <code>Animation</code>. The class can have a constructor with three arguments, a <code>DecimalNumber</code> Mobject, start, and end. The constructor will pass the <code>DecimalNumber</code> Mobject to the super constructor (in this case, the <code>Animation</code> constructor) and will set start and end.</li>
+				<li><ImgComp  src={require("./manimPics/10.gif")}style={{width: "60%"}}/></li>
+				<li>If you use <code>number.add_updater(lambda number: number.move_to(ORIGIN))</code> like shown, then the <code>DecimalNumber</code> stays centered.</li>
+				<li><CodePre language="python">{`
 class CountingScene(Scene):
 	def construct(self):
 		number = DecimalNumber().set_color(WHITE).scale(5)
@@ -242,13 +313,14 @@ class CountingScene(Scene):
 		self.wait(1)
 		self.play(Count(number, 0, 100), run_time=4)
 		self.wait(1)
-			`}</CodePre></li>
-			<li><ImgComp  src={require("./manimPics/11.gif")}style={{width: "60%"}}/></li>
+				`}</CodePre></li>
+				<li><ImgComp  src={require("./manimPics/11.gif")}style={{width: "60%"}}/></li>
+			</SubList></li>
 		</ul>
 	</div>
 </div>
 
-<h2 id="officialTutorial2">docs.manim.community/en/stable/guides/</h2>
+<h2 id="officialTutorial2">Thematic Guides</h2>
 <div className="content">
 	<div style={{width: "49%",float: "left",marginLeft: "0.5%"}}>
 		<h3>Configuration</h3>
@@ -319,6 +391,22 @@ with tempconfig({"quality": "medium_quality", "CodePreview": True}):
 		</ul>
 		<div style={{width: "49%",float: "right",marginRight: "0.5%"}}>
 		</div>
+	</div>
+</div>
+
+
+<h2 id="ownAnimations">My Own Animations</h2>
+<div className="content">
+	<div style={{width: "49%",float: "left",marginLeft: "0.5%"}}>
+		<ul>
+			<li>Derivation of the area of a trapezium:<SubList>
+				<li>Code is available <a href='https://github.com/uzairarif5/oneFilePython/blob/master/trapezium.py'>at GitHub</a>.</li>
+				<li><ImgComp  src={require("./manimPics/trapezium_1.gif")}style={{width: "60%"}}/></li>
+				<li><ImgComp  src={require("./manimPics/trapezium_2.gif")}style={{width: "60%"}}/></li>
+			</SubList></li>
+		</ul>
+	</div>
+	<div style={{width: "49%",float: "right",marginRight: "0.5%"}}>
 	</div>
 </div>
 </>

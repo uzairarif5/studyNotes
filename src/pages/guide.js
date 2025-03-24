@@ -1,7 +1,6 @@
 import SubList from "../articleRelatedStuff/SubList";
 import { TableLI } from "../articleRelatedStuff/tableManager";
 import { MathStuff } from "../articleRelatedStuff/MathStuff"; 
-import { getSourcesOL } from "../articleRelatedStuff/sourcesManager";
 import { CodePre } from "../articleRelatedStuff/Code";
 import { drawLine, drawBar, drawHis } from "../articleRelatedStuff/drawCharts";
 import { Questions } from "../articleRelatedStuff/Questions";
@@ -11,7 +10,6 @@ export const sourcesColor = {50:null, 51: "#3a3", 52:"#c45645"};
 
 export const content = <>
 	<h1><u>My Study Notes:</u> Guide Page</h1>
-  {getSourcesOL(sourcesColor)}
 	<ol id="additionalResources">
 		<li>Additional Resource 1</li>
 		<li>Additional Resource 2</li>
@@ -127,3 +125,10 @@ if (showExample):
 	</div>
 
 </>
+
+/*
+File for pages naming convention:
+- Use snake case if the file contains the whole article.
+- Use pascal case if the file contains only one topic that is to be imported to articles.
+- Use snake case for all pics folder. The name of the pics folder should be the same as the component or article name with a "_pics" suffix.
+*/

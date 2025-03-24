@@ -1,4 +1,3 @@
-import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import SubList from "../../articleRelatedStuff/SubList";
 import { TableLI } from "../../articleRelatedStuff/tableManager";
 
@@ -6,7 +5,6 @@ export const title = "Madinah Arabic Book 2 Notes";
 export const sourcesColor = {26: null};
 export const content = <>
 <h1>Madinah Arabic Book 2 Notes</h1>
-{getSourcesOL(sourcesColor)}
 
 <h2 id="1-10">Lessons 1 - 10</h2>
 <div className="content">

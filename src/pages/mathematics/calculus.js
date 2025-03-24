@@ -1,16 +1,16 @@
-import { getSourcesOL } from "../../articleRelatedStuff/sourcesManager";
 import { MathStuff } from "../../articleRelatedStuff/MathStuff"; 
 import SubList from "../../articleRelatedStuff/SubList";
 import { TableLI } from "../../articleRelatedStuff/tableManager";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
+import SequencesAndSeries from "./SequencesAndSeries";
 
 export const title = "Calculus Notes";
 
 export const sourcesColor = {36: "rgb(80, 130, 160)", 65: "rgb(110, 110, 140)"};
+export const sourcesOrder = [36, 65];
 export const content = <>
 
 	<h1>Calculus Notes</h1>
-  {getSourcesOL(sourcesColor)}
 
 	<h2 id="limits">Limits</h2>
 	<div className="content">
@@ -192,7 +192,7 @@ export const content = <>
 		</div>
 	</div>
 
-	<h2>Derivatives</h2>
+	<h2 id="derivatives">Derivatives</h2>
 	<div className="content">
 		<div data-source={36} style={{width:" 49%",marginLeft: "0.5%",float: "left"}}>
 			<ul>
@@ -233,9 +233,9 @@ export const content = <>
 				</SubList></li>
 				<li><b>Chain Rule:</b><SubList>
 					<li>Let \(f\) and \(g\) be functions. For all \(x\) in the domain of \(g\) for which \(g\) is differentiable at \(x\) and \(f\) is differentiable at \(g(x)\), the derivative of the composite function \(h(x)=(f∘g)(x)=f(g(x))\) is given by:</li>
-					<li class={"mathStuff"}>$$h'(x)=f'(g(x))g'(x)$$</li>
+					<li className={"mathStuff"}>$$h'(x)=f'(g(x))g'(x)$$</li>
 					<li>Alternatively, if \(y\) is a function of \(u\), and \(u\) is a function of \(x\), then:</li>
-					<li class={"mathStuff"}>$$ {"\\frac{dy}{dx} = \\frac{dy}{du} \\frac{du}{dx}"} $$</li>
+					<li className={"mathStuff"}>$$ {"\\frac{dy}{dx} = \\frac{dy}{du} \\frac{du}{dx}"} $$</li>
 				</SubList></li>
 				<li>If \(f(x)\) is both invertible and differentiable. Let \(g\) be the inverse of \(f\):</li>
 				<MathStuff>\[ g'(x) = \frac{"{1}{f'(g(x))}"} \]</MathStuff>
@@ -573,7 +573,7 @@ export const content = <>
 		</div>  
 	</div>
 
-	<h2>Integration</h2>
+	<h2 id="integration">Integration</h2>
 	<div className="content">
 		<div data-source={65} style={{width:" 49%",marginLeft: "0.5%",float: "left"}}>
 			<ul>
@@ -813,7 +813,7 @@ export const content = <>
 		</div>
 	</div>
 
-	<h2>Differential Equations</h2>
+	<h2 id="differential_equations">Differential Equations</h2>
 	<div className="content">
 		<div data-source={65} style={{width:" 49%",marginLeft: "0.5%",float: "left"}}>
 			<ul>
@@ -941,337 +941,6 @@ export const content = <>
 		</div>
 	</div>
 	
-	<h2>Sequences And Series</h2>
-	<div className="content">
-		<div data-source={65} style={{width:" 49%",marginLeft: "0.5%",float: "left"}}>
-			<ul>
-				<li>Terminology of sequences:<SubList>
-					<li>An infinite sequence (denoted as \({"\\{ a_n \\}"}\) or \({"\\{ a_n \\}^\\infty_{n=1}"}\)) is an ordered list of numbers of the form:</li>
-					<MathStuff>$$a_1,a_2, \ldots , a_n, \ldots $$</MathStuff>
-					<li>The subscript \(n\) is called the <b>index variable</b> of the sequence. Each number \(a_n\) is a term of the sequence.</li>
-					<li>Sometimes sequences are defined by <b>explicit formulas</b>, in which case \(a_n=f(n)\) for some function \(f(n)\) defined over the positive integers.</li>
-					<li>In a <b>recurrence relation</b>, one term (or more) of the sequence is given explicitly, and subsequent terms are defined in terms of earlier terms in the sequence.</li>
-					<li>Note that the index does not have to start at \(n=1\) but could start with other integers. For example:</li>
-					<MathStuff>$$a_0, a_1,a_2, \ldots $$</MathStuff>
-					<li>Consider the ordered list \((2,4,8,16,32, \ldots)\). We can write the \(n\)th term by an explicit formula: \(a_n = 2^n\) or by the recurrence relation: \(a_n = 2 a_{"{n-1}"}\). We can write the sequence like this: \({"\\{ 2^n \\}_{n=1}^\\infty"}\).</li>
-				</SubList></li>
-				<li><b>Arithmetic sequence:</b><SubList>
-					<li>In an <b>arithmetic sequence</b>, the difference between every pair of consecutive terms is the same.</li>
-					<li>Consider the sequence \((3,7,11,15,19, \ldots)\). The terms can be described by the recurrence relation:</li>
-					<MathStuff>$$a_n = {"{\\begin{cases} a_1 = 3 \\\\ a_n = a_{n-1} + 4 \\end{cases}}"}$$</MathStuff>
-					<li>The terms can be described by the explicit formula \(a_n = 4n-1\).</li>
-					<li className="ownExplanation">The general explicit formula is: \(a_n = a_0 + (n-1)d\) where \(d\) is the difference.</li>
-				</SubList></li>
-				<li><b>Geometric sequence:</b><SubList>
-					<li>In a geometric sequence, the ratio of every pair of consecutive terms is the same. For example, consider the sequence:</li>
-					<MathStuff>$$ 2, -\frac{"{2}{3}"},  \frac{"{2}{9}"}, \frac{"{2}{27}"}, - \frac{"{2}{81}"}, \ldots $$</MathStuff>
-					<li>We see that the ratio of any term to the preceding term is \(-\frac{"{1}{3}"}\). Assuming this pattern continues, this sequence is a geometric sequence. It can be defined recursively as:</li>
-					<MathStuff>$$ a_n = {"{\\begin{cases} a_1 = 2 \\\\ a_n = - \\frac{a_{n-1}}{3} \\end{cases}}"} $$</MathStuff>
-					<li>We can also use the explicit formula:</li>
-					<MathStuff>$$ a_n = 2 \left( -\frac{"{1}{3}"} \right)^{"{n-1}"} $$</MathStuff>
-					<li className="ownExplanation">The general explicit formula is: \(a_n = a_0 r^{"{n-1}"}\) where \(r\) is the ratio.</li>
-				</SubList></li>
-				<li>Limit of a sequence:<SubList>
-					<li>Given a sequence \({"\\{a_n\\}"}\), if the terms \(a_n\) become arbitrarily close to a finite number \(L\) as \(n\) becomes sufficiently large, we say \({"\\{a_n\\}"}\) is a <b>convergent sequence</b> and \(L\) is the limit of the sequence. In this case, we write: \(\lim_{"{n \\to \\infty}"} a_n = L\)</li>
-					<li>If a sequence \({"\\{a_n\\}"}\) is not convergent, we say it is a <b>divergent sequence</b>.</li>
-					<TableLI>
-						<caption>Definition</caption>
-						<tbody>
-							<tr><td>A sequence \({"\\{a_n\\}"}\) converges to a real number \(L\) if for all \(ε \gt 0\), there exists an integer \(N\) such that \(|a_n-L| \lt ε\) if \(n≥N\). The number \(L\) is the limit of the sequence and we write: \[\lim_{"{n \\to \\infty}"} a_n = L\]</td></tr>
-						</tbody>
-					</TableLI>
-					<li>Consider a sequence \({"\\{a_n\\}"}\) and suppose there exists a real number \(L\) such that the sequence \({"\\{a_n\\}"}\) converges to \(L\). Suppose \(f\) is a continuous function at \(L\). The sequence \({"\\{f(a_n) \\}"}\) converges to \(f(L)\). If \({"\\{ f(a_n) \\}"}\) is not defined for all \(a_n\), there should exist an integer \(N\) such that \(f\) is defined at all values \(a_n\) for \(n≥N\).</li>
-					<TableLI>
-						<caption>Squeeze theorem for sequences</caption>
-						<tbody>
-							<tr><td>
-								Consider sequences \({"\\{a_n\\}"}\), \({"\\{b_n \\}"}\), and \({"\\{ c_n \\}"}\). Suppose there exists an integer \(N\) such that:
-								\[a_n≤b_n≤c_n \text{"{ for all }"} n≥N\]
-								If there exists a real number \(L\) such that:
-								\[ \lim_{"{n \\to \\infty}"} a_n =L= \lim_{"{n \\to \\infty}"} c_n\]
-								then \({"\\{ b_n \\}"}\) converges and \(\lim_{"{n \\to \\infty}"} b_n=L\).
-							</td></tr>
-						</tbody>
-					</TableLI>
-					<li>A sequence \({" \\{a_n \\}"}\) is bounded above if there exists a real number \(M\) such that \(a_n \le M \) for all positive integers \(n\).</li>
-					<li>A sequence \({" \\{a_n \\}"}\) is bounded below if there exists a real number \(M\) such that \(a_n \ge M \) for all positive integers \(n\).</li>
-					<li>A sequence \({" \\{a_n \\}"}\) is a <b>bounded sequence</b> if it is bounded above and bounded below. Otherwise it is an <b>unbounded sequence</b>.</li>
-					<li>A sequence \({" \\{a_n \\}"}\) is increasing for all \(n≥n_0\) if \({"a_{n+1} \\ge a_n"}\) for all \(n≥n_0\).</li>
-					<li>A sequence \({" \\{a_n \\}"}\) is decreasing for all \(n≥n_0\) if \({"a_{n+1} \\le a_n"}\) for all \(n≥n_0\).</li>
-					<li>A sequence \({" \\{a_n \\}"}\) is a <b>monotone sequence</b> for all \(n≥n_0\) if it is increasing for all \(n≥n_0\) or decreasing for all \(n≥n_0\).</li>
-					<li><u><b>Monotone convergence theorem:</b></u> If \({" \\{a_n \\}"}\) is a bounded sequence and there exists a positive integer \(n_0\) such that \({" \\{a_n \\}"}\) is monotone for all \(n≥n_0\), then \({" \\{a_n \\}"}\) converges.</li>
-				</SubList></li>
-				<li>Sums and series:<SubList>
-					<li>We have seen that a sequence is an ordered set of terms. If you add these terms together, you get a <b>series</b>.</li>
-					<li>An <b>infinite series</b> is a sum of infinitely many terms and is written in the form:</li>
-					<MathStuff>$$ \sum^\infty_{"{n=1}"} a_n = a_1 + a_2 + a_3 + \dots $$</MathStuff>
-					<li>A \(k\)th <b>partial sum</b> of an infinite series is a finite sum of the form:</li>
-					<MathStuff>$$ \sum^k_{"{n=1}"} a_n = a_1 + a_2 + a_3 + \dots + a_k $$</MathStuff>
-					<li>Let \(S_k\) be the \(k\)th partial sum, and let \({"\\{S_k\\}"}\) be sequence of partial sums. If \({"\\{S_k\\}"}\) converges (i.e. \(S_k\) approaches a real number when \(k\) goes to infinity), then the infinite series converges.</li>
-					<li>If \({"\\{S_k\\}"}\) diverges, then the infinite series diverges.</li>
-					<li className="ownExplanation">An <b>arithmetic series</b> is the sum of an arithmetic sequence. A general formula for it is \(S_k = \frac{"{k}{2}(2 a_0 + (k-1)d)"}\).</li>
-				</SubList></li>
-				<li>Algebraic properties of convergent series:<SubList>
-					<li>Let \(\sum^\infty_{"{n=1}"} a_n\) and \(\sum^\infty_{"{n=1}"} b_n\) be convergent series.</li>
-					<li>\(\sum^\infty_{"{n=1}"} a_n + b_n\) = \(\sum^\infty_{"{n=1}"} a_n\) + \(\sum^\infty_{"{n=1}"} b_n\)</li>
-					<li>\(\sum^\infty_{"{n=1}"} a_n - b_n\) = \(\sum^\infty_{"{n=1}"} a_n\) - \(\sum^\infty_{"{n=1}"} b_n\)</li>
-					<li>c\(\sum^\infty_{"{n=1}"} a_n\) = \(\sum^\infty_{"{n=1}"} ca_n\)</li>
-				</SubList></li>
-				<li><b>Geometric series:</b><SubList>
-					<li>A <b>geometric series</b> is any series that we can write in the form:</li>
-					<MathStuff>$$ a + ar + ar^2 + ar^3 + \ldots = \sum^\infty_{"{n=1}"} ar^{"{n-1}"} $$</MathStuff>
-					<li>The sum for a partial series is:</li>
-					<MathStuff>$$ S_k = \frac{"{a(1-r^k)}{1-r}"} $$</MathStuff>
-					<li>If \(|r| \lt 1\), \(S_k → a/(1-r)\) (i.e. the series converges), and if \(|r| \ge 1\), \(S_k\) diverges.</li>
-				</SubList></li>
-				<li>Telescoping series:<SubList>
-					<li>A <b>telescoping series</b> is a series in which most of the terms cancel in each of the partial sums, leaving only some of the first terms and some of the last terms.</li>
-					<li>For example, any series of the form:</li>
-					<MathStuff>$$\begin{"{aligned}"} \sum^k_{"{n=1}"} [b_n - b_{"{n+1}"}] &= b_1 - b_2 + b_2 - b_3 + \dots + b_k - b_{"{k+1}"} \\ &= b_1 - b_{"{k+1}"} \end{"{aligned}"}$$</MathStuff>
-					<li>If \(b_n\) converegs to \(B\) when \(n \to \infty\):</li>
-					<MathStuff>$$ \sum^\infty_{"{n=1}"} [b_n - b_{"{n+1}"}] = b_1 - B $$</MathStuff>
-					</SubList></li>
-			</ul>
-			<ul className={"ownExplanation"}>
-				<li><b>Divergence test:</b><SubList>
-					<li>If \(\lim_{"{n \\to \\infty}"} a_n = L\) where \(L\) is a non-zero constant or if \(\lim_{"{n \\to \\infty}"} a_n \) does not exist, then \(\sum^∞_{"{n=1}"} a_n\) diverges.</li>
-					<li>If \(\lim_{"{n \\to \\infty}"} a_n = 0\), then \(\sum^∞_{"{n=1}"} a_n\) may or may not converge.</li>
-					<li>A <b>harmonic series</b> \(\left( 1 + {"\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4}"} + \ldots \right)\) does not converge.</li>
-				</SubList></li>
-				<li><b>Integral test:</b><SubList>
-					<li>Consider a series \(\sum_{"{n=1}"}^∞ a_n\) with only positive terms.</li>
-					<li>Let there be an integer \(N\) and a monotone decreasing function \(f\), such that \(f\) is defined on \([N, ∞)\) and \(f(n) = a_n\) for \(n \ge N\), then both the integral and the series below either converge or they both diverge:</li>
-					<MathStuff>$$ \sum_{"{n=1}"}^\infty a_n \quad \int_N^\infty f(x) dx $$</MathStuff>
-					<li>We can find an approximation of \(\sum_{"{n=N}"}^∞ a_n\) using this:</li>
-					<MathStuff>$$ \int^\infty_N f(x) dx \le \sum_{"{n=N}"}^\infty a_n \le a_N + \int_N^\infty f(x) dx $$</MathStuff>
-				</SubList></li>
-			</ul>
-		</div>
-		<div style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
-			<ul data-source={65}>
-				<li><b>The p-Series:</b><SubList>
-					<li>For any real number \(p\), the series \(\sum^\infty_{"{n=1}"}\frac{"{1}{n^p}"}\) is called a <b>p-series</b>.</li>
-					<li>The p-series diverges if \(p \le 1\).</li>
-					<li>If \(p \gt 1\), then \(\sum^\infty_{"{n=1}"}\frac{"{1}{n^p}"}\) converges because\(\int^\infty_1 \frac{"{1}{x^p}"} dx\) converges.</li>
-					<MathStuff>$$ \int^\infty_1 \frac{"{1}{x^p}"} dx = \frac{"{1}{p-1}"} \text{"{ if }"} p \gt 1$$</MathStuff>
-				</SubList></li>
-				<li>Remainder estimate for the integral test:<SubList>
-					<li>Suppose \(\sum_{"{n=1}"}^∞ a_n\) is a convergent series with positive terms.</li>
-					<li>Let \(S_N\) be the \(N\)th partial sum of \(\sum_{"{n=1}"}^∞ a_n\).</li>
-					<li>Let \(R_N\) be defined as:</li>
-					<MathStuff>$$ R_N = \sum_{"{n=N}"}^∞ a_n - S_N = \sum_{"{n=N+1}"}^∞ a_n$$</MathStuff>
-					<li>This means:</li>
-					<li>The <b>remainder estimate</b>.</li>
-				</SubList></li>
-				<li><b>Comparison Test:</b><SubList>
-					<li>Suppose there exists an integer \(N\) such that \(0≤ a_n ≤ b_n\) for all \(n≥N\). If \(\sum^∞_{"{n=1}"} b_n\) converges, then \(\sum^∞_{"{n=1}"} a_n\) converges.</li>
-					<li>Suppose there exists an integer \(N\) such that \(a_n \ge b_n \ge 0\) for all \(n≥N\). If \( \sum^∞_{"{n=1}"} b_n \) diverges, then \(\sum^∞_{"{n=1}"} a_n\) diverges.</li>
-				</SubList></li>
-				<li><b>Limit Comparison Test:</b><SubList>
-					<li>Let \(a_n, b_n≥ 0\) for all \(n≥1\):<SubList opened>
-						<li>If \(\lim_{"{n→∞}"} \frac{"{a_n}{b_n}"} = L ≠ 0\), then \(\sum^∞_{"{n=1}"} a_n\) and \(\sum^∞_{"{n=1}"} b_n\) both converge or both diverge.</li>
-						<li>If \(\lim_{"{n→∞}"} \frac{"{a_n}{b_n}"} = 0\) and \(\sum^∞_{"{n=1}"} b_n\) converges, then \(\sum^∞_{"{n=1}"} a_n\) converges.</li>
-						<li>If \(\lim_{"{n→∞}"} \frac{"{a_n}{b_n}"} = \infty\) and \(\sum^∞_{"{n=1}"} b_n\) diverges, then \(\sum^∞_{"{n=1}"} a_n\) diverges.</li>
-					</SubList></li>
-				</SubList></li>
-				<li><b>Alternating Series:</b><SubList>
-					<li>Any series whose terms alternate between positive and negative values is called an <b>alternating series</b>. An alternating series can be written in one of these forms:</li>
-					<MathStuff>$$\begin{"{gather}"} \sum^{"{\\infty}"}_{"{n=1}"} (-1)^{"{n+1}"} b_n = b_1 - b_2 + b_3 - b_4 + b_5 - \cdots \\ \sum^{"{\\infty}"}_{"{n=1}"} (-1)^n b_n = - b_1 + b_2 - b_3 + b_4 - b_5 + \cdots \end{"{gather}"}$$</MathStuff>
-					<li>Where \(b_n \gt 0\).</li>
-					<li>If there exists \(N\) such that \(0 \lt b_{"{n+1}"} \le b_n\) for all \(n \ge N\) and if \(\lim_{"{n \\to \\infty}"} b_n = 0\), then it converges. This is known as the <b>alternating series test</b>.</li>
-				</SubList></li>
-				<li>Absolute convergence and conditional convergence:<SubList>
-					<li>A series \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) exhibits <b>absolute convergence</b> if \(\sum^{"{\\infty}"}_{"{n=1}"} |a_n|\) converges. A series \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) exhibits <b>conditional convergence</b> if \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) converges but \(\sum^{"{\\infty}"}_{"{n=1}"} |a_n|\) diverges.</li>
-					<li><u>Absolute Convergence Implies Convergence:</u> If \(\sum^{"{\\infty}"}_{"{n=1}"} |a_n|\) converges, then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) converges.</li>
-				</SubList></li>
-				<li><b>Ratio test:</b><SubList>
-					<li>Let \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) be a series with nonzero terms, and let \(p = \lim_{"{n \\to \\infty}"} | \frac{"{a_{n+1}}{a_n}"} |\).</li>
-					<li>If \(p \lt 1\), then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) converges absolutely.</li>
-					<li>If \(p \gt 1\) or \(p=\infty\), then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) diverges.</li>
-					<li>If \(p=1\), the test does not provide any information.</li>
-				</SubList></li>
-				<li><b>Root test:</b><SubList>
-					<li>Let \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) be a series with nonzero terms, and let \(p = \sqrt[n]{"{|a_n|}"}\).</li>
-					<li>If \(p \lt 1\), then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) converges absolutely.</li>
-					<li>If \(p \gt 1\) or \(p=\infty\), then \(\sum^{"{\\infty}"}_{"{n=1}"} a_n\) diverges.</li>
-					<li>If \(p=1\), the test does not provide any information.</li>
-				</SubList></li>
-				<li><b>Power series:</b><SubList>
-					<li>A series of the form:</li>
-					<MathStuff>$$ \sum^{"{\\infty}_{n=0}"} c_n (x-a)^n = c_0 + c_1 (x-a) + c_2(x-a)^2 + c_3 (x-a)^3 + c_4 (x-a)^4 + \cdots $$</MathStuff>
-					<li>is a <b>power series</b> centered at \(x=a\).</li>
-					<li>The set of values \(x\) for which the series converges is known as the <b>interval of convergence</b>. The value \(R\) is called the <b>radius of convergence</b>.</li>
-				</SubList></li>
-				<li>Properties of a power series:<SubList>
-					<li>Suppose that the two power series \(\sum_{"{n=0}"}^{"{\\infty}"} c_n x^n\) and \(\sum_{"{n=0}"}^{"{\\infty}"} d_n x^n\) converge to the functions \(f\) and \(g\), respectively, on a common interval \(I\).</li>
-					<li>The power series \(\sum_{"{n=0}"}^{"{\\infty}"} (c_n x^n ± d_nx^n)\) converges to \(f±g\) on \(I\).</li>
-					<li>Let \(m \ge 0\) be an integer and \(b\) be a real number:<SubList opened>
-						<li>The series \(\sum_{"{n=0}"}^{"{\\infty}"} b x^m c_n x^n\) converges to \(b x^m f(x)\) on \(I\).</li>
-						<li>The series \(\sum_{"{n=0}"}^{"{\\infty}"} c_n (bx^m)^n\) converges to \(f(bx^m)\) for all x such that \(bx^m\) is in \(I\).</li>
-					</SubList></li>
-					<li>Let \(e^n\) be defined as:</li>
-					<MathStuff>$${"\\begin{align} e_n &= c_0 d^n + c_1d^{n-1} + c_2 d^{n-2} + \\cdots +c_{n-1}d^1 + c_n d^0 \\\\ &= \\sum_{k=0}^n c_k d^{n-k} \\end{align}"}$$</MathStuff>
-					<li>Then:</li>
-					<MathStuff>$${" \\left( \\sum_{n=0}^{\\infty} c_n x^n \\right) \\left( \\sum_{n=0}^{\\infty} d_n x^n \\right) = \\sum_{n=0}^{\\infty} e_n x^n "}$$</MathStuff>
-					<li>Where \(\sum{"_{n=0}^{\\infty}"} e_n x^n\) is known as the <b>Cauchy product</b> and it converges to \(f(x) * g(x)\) on \(I\).</li>
-				</SubList></li>
-				<li><b>Taylor/Maclaurin Series:</b><SubList>
-					<li>If \(f\) has derivatives of all orders at \(x=a\), then the <b>Taylor series</b> for the function \(f\) at \(a\) is:</li>
-					<MathStuff>$${" f(x) = \\sum^{\\infty}_{n=0} \\frac{f^{(n)}(a)}{n!}(x-a)^n "}$$</MathStuff>
-					<li>The Taylor series for \(f\) at 0 is known as the <b>Maclaurin series</b> for \(f\).</li>
-					<li>The \(n\)th partial sum is known as the \(n\)th <b>Taylor polynomials</b>. If \(a=0\), then they are known as <b>Maclaurin polynomials</b>.</li>
-					<li><a href='https://en.wikipedia.org/wiki/Taylor_series'>A function is <b>analytic</b> at a point \(a\) if it is equal to the sum of its Taylor series in some open interval containing \(a\). A function may differ from the sum of its Taylor series, even if its Taylor series is convergent.</a></li>
-					<li><a href='https://en.wikipedia.org/wiki/Non-analytic_smooth_function'>Consider the function below defined for every real number \(x\):</a></li>
-					<MathStuff>$$ f(x) = {"\\begin{cases} e^{-1/x} &\\text{ if } x \\gt 0 \\\\ 0 &\\text{ if } x \\le 0 \\end{cases}"} $$</MathStuff>
-					<li><a href='https://en.wikipedia.org/wiki/Non-analytic_smooth_function'>The function \(f\) is smooth, and all its derivatives at the origin are 0. Therefore, the Taylor series of \(f\) at the origin converges everywhere to the zero function, and so the Taylor series does not equal \(f(x)\) for \(x \gt 0\). Consequently, \(f\) is not analytic at the origin.</a></li>
-					<li><b>Taylor's Theorem with Remainder:</b><SubList>
-						<li>Let \(f\) be a function that can be differentiated \(n+1\) times on an interval \(I\) containing the real number \(a\). Let \(p_n\) be the \(n\)th Taylor polynomial of \(f\) at \(a\) and let \(R_n (x)\) be the \(n\)th remainder:</li>
-						<MathStuff>$${" R_n(x) = f(x) - p_n(x) "}$$</MathStuff>
-						<li>then for each \(x\) in the interval \(I\), there exists a real number \(c\) between \(a\) and \(x\) such that:</li>
-						<MathStuff>$${" R_n(x) = \\frac{f^{(n+1)} (c)}{(n+1)!} (x-a)^{n+1} "}$$</MathStuff>
-						<li>If there exists a real number \(M\) such that \(| f^{"{(n+1)}"}(x) | \le M\) for all \(x∈I\), then:</li>
-						<MathStuff>$${" | R_n(x) | \\le \\frac{M }{(n+1)!} |x-a|^{n+1} "}$$</MathStuff>
-						<li>for all \(x∈I\).</li>
-						<li>If \(f\) has derivatives of all orders on an interval \(I\) containing \(a\), then the Taylor series converges to \(f(x)\) for all \(x\) in \(I\) if and only if \(\lim_{"{n \\to \\infty}"} R_n(x) = 0\) for all \(x\) in \(I\).</li>
-					</SubList></li>
-					<li>Convergence of Taylor Series:<SubList>
-						<li>Suppose that \(f\) has derivatives of all orders on an interval \(I\) containing \(a\). Then the Taylor series:</li>
-						<MathStuff>$${" \\sum_{n=0}^{\\infty} \\frac{f^{(n)}(a)}{n!} (x-a)^n "}$$</MathStuff>
-						<li>converges to \(f(x)\) for all \(x\) in \(I\) if and only if \(\lim_{"{n→\\infty}"} R_n (x)=0\) for all \(x\) in \(I\).</li>
-					</SubList></li>
-					<ImgComp src={require("./calculus_pics/29.png")} width="90%" />
-				</SubList></li>
-			</ul>
-		</div>
-	</div>
-
-	<h2>Parametric Equations and Polar Coordinates</h2>
-	<div className="content">
-		<ul data-source={65} style={{width:" 49%",marginLeft: "0.5%",float: "left"}}>
-			<li>Parametric equations:<SubList>
-				<li>If \(x\) and \(y\) are continuous functions of \(t\) on an interval \(I\), then the equations \(x= x(t)\) and \(y = y(t)\) are called <b>parametric equations</b> and \(t\) is called the parameter.</li>
-				<li>The set of points \((x,y)\) obtained as \(t\) varies over the interval \(I\) is called <i>the graph of the parametric equations</i>. The graph of parametric equations is called a <b>parametric curve</b> or <b>plane curve</b>, and is denoted by \(C\).</li>
-			</SubList></li>
-			<li>Calculus of parametric curves:<SubList>
-				<li>Consider the plane curve defined by the parametric equations \(x=x(t)\) and \(y=y(t)\). Suppose that \(x'(t)\) and \(y'(t)\) exist, and assume that \(x'(t)≠0\). Then the derivative \(\frac{"{dy}{dx}"}\) is given by:</li>
-				<MathStuff>$${" \\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{y'(t)}{x'(t)}"}$$</MathStuff>
-				<li>The second derivative is:</li>
-				<MathStuff>$${" \\frac{d^2 y}{dx^2} = \\frac{d}{dx} \\left[ \\frac{dy}{dx} \\right] = \\frac{d/dt}{dx/dt} \\left[ \\frac{dy}{dx} \\right]"}$$</MathStuff>
-				<li>The area under the parametric curve from \(t=a\) to \(t=b\) would be:</li>
-				<MathStuff>$${" A= \\int_a^b y(t) x'(t)\\ dt"}$$</MathStuff>
-				<li>The arc from from \(t=a\) to \(t=b\) would be:</li>
-				<MathStuff>$${"L = \\int_a^b \\sqrt{\\left( \\frac{dx}{dt} \\right)^2 + \\left( \\frac{dy}{dt} \\right)^2} dt"}$$</MathStuff>
-			</SubList></li>
-			<li>Polar coordinates:<SubList>
-				<li>Consider point \(P\) with the Cartesian coordinates \((x,y)\). The line segment connecting the origin to the point \(P\) measures the distance from the origin to \(P\) and has length \(r\). The angle between the positive \(x\)-axis and the line segment has measure \(θ\).</li>
-				<ImgComp src={require("./calculus_pics/23.png")} width="40%"/>
-				<li>This observation suggests a natural correspondence between the coordinate pair \((x,y)\) and the values \(r\) and \(θ\). This correspondence is the basis of the <b>polar coordinate system</b>.</li>
-				<li>Using right-triangle trigonometry:</li>
-				<MathStuff>$${"\\begin{align} \\cos(θ) &= \\frac{x}{r} \\implies x = r \\cos(θ) \\\\ \\sin(θ) &= \\frac{y}{r} \\implies y = r \\sin(θ) \\end{align}"}$$</MathStuff>
-				<li>Furthermore:</li>
-				<MathStuff>$${"\\begin{gather} r^2 = x^2 + y^2 \\\\ \\tan(θ) = \\frac{y}{x}\\end{gather}"}$$</MathStuff>
-				<li>Each point \((x,y)\) in the Cartesian coordinate system can therefore be represented as an ordered pair \((r,θ)\) in the polar coordinate system. The first coordinate is called the <b>radial coordinate</b> and the second coordinate is called the <b>angular coordinate</b>.</li>
-				<li>The line segment starting from the center of the graph going to the right (called the positive x-axis in the Cartesian system) is the <b>polar axis</b>. The center point is the <b>pole</b>, or origin, of the coordinate system, and corresponds to \(r=0\).</li>
-			</SubList></li>
-			<li>Curves defined by polar equations:<SubList>
-				<ImgComp src={require("./calculus_pics/24.png")} width="90%"/>
-				<ImgComp src={require("./calculus_pics/25.png")} width="90%"/>
-				<li>A cardioid is a special case of a limaçon.</li>
-			</SubList></li>
-			<li>Symmetry in Polar Curves and Equations:<SubList>
-				<li>The curve is symmetric about the polar axis if \(r=f(θ)\) is unchanged by replacing \(θ\) with \(−θ\).</li>
-				<li>The curve is symmetric about the pole if \(r=f(θ)\) is unchanged when replacing \(r\) with \(-r\), or \(θ\) with \(π+θ\).</li>
-				<li>The curve is symmetric about the vertical line \(θ=\frac{"{π}{2}"}\) if \(r=f(θ)\) is unchanged when \(θ\) is replaced by \(π−θ\).</li>
-				<ImgComp src={require("./calculus_pics/26.png")}  width="90%"/>
-			</SubList></li>
-			<li>Calculus in polar coordinates:<SubList>
-				<li>Suppose \(f\) is continuous and nonnegative on the interval \(α \le θ \le β\) with \(0 \lt β−α \le 2π\). The area of the region bounded by the graph of \(r=f(θ)\) between the radial lines \(θ=α\) and \(θ=β\) is:</li>
-				<MathStuff>$$ {"A = \\int^β_α \\frac{1}{2} [f(θ)]^2 dθ = \\int^β_α \\frac{1}{2} r^2 dθ"} $$</MathStuff>
-				<li>The length of the graph of \(r=f(θ)\) from \(θ=α\) to \(θ=β\) is:</li>
-				<MathStuff>$$ {"L = \\int^β_α \\sqrt{[f(θ)]^2 + [f'(θ)]^2} dθ = = \\int^β_α \\sqrt{r^2 + \\left[ \\frac{dr}{dθ} \\right]^2} dθ"} $$</MathStuff>
-			</SubList></li>
-		</ul>
-		<ul data-source={65} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
-			<li>Conic sections:<SubList>
-				<li>A cone has two identically shaped parts called <b>nappes</b>. A right circular cone can be generated by revolving a line passing through the origin around the y-axis as shown.</li>
-				<ImgComp src={require("./calculus_pics/19.jfif")} width="50%" />
-				<li><b>Conic sections</b> are generated by the intersection of a plane with a cone.</li>
-				<li>If the plane intersects both nappes, then the conic section is a <b>hyperbola</b>.</li>
-				<li>If the plane is parallel to the generating line, the conic section is a <b>parabola</b>.</li>
-				<li>If the plane is perpendicular to the axis of revolution, the conic section is a <b>circle</b>.</li>
-				<li>If the plane intersects one nappe at an angle to the axis (other than 90°), then the conic section is an <b>ellipse</b>.</li>
-				<ImgComp src={require("./calculus_pics/27.jfif")} width="90%" />
-			</SubList></li>
-			<li>Parabola:<SubList>
-				<li>A <b>parabola</b> is the set of all points whose distance from a fixed point, called the <b>focus</b>, is equal to the distance from a fixed line, called the <b>directrix</b>. The point halfway between the focus and the directrix is called the <b>vertex</b> of the parabola.</li>
-				<ImgComp src={require("./calculus_pics/28.jfif")} width="90%" />
-				<li>Given a parabola opening upward with vertex located at \((h,k)\) and focus located at \((h,k+p)\), where \(p\) is a constant, the <b>standard form</b> equation for the parabola is given by:</li>
-				<MathStuff>$$ y = {"\\frac{(x-h)^2}{4p} + k"} $$</MathStuff>
-				<li>The axis of symmetry of a vertical (opening up or down) parabola is a vertical line passing through the vertex.</li>
-				<li>The parabola has an interesting reflective property. Suppose we have a satellite dish with a parabolic cross section. If a beam of electromagnetic waves, such as light or radio waves, comes into the dish in a straight line from a satellite (parallel to the axis of symmetry), then the waves reflect off the dish and collect at the focus of the parabola as shown.</li>
-				<li>The general form of a parabola that opens either up or down is written as: \(ax^2 +bx+cy+d=0\).</li>
-				<li>The general form of a parabola that opens either to the left or to the right is written as: \(ay^2 +bx+cy+d=0\).</li>
-			</SubList></li>
-			<li>Ellipses:<SubList>
-				<li>An <b>ellipse</b> is the set of all points for which the sum of their distances from two fixed points (the <b>foci</b>) is constant.</li>
-				<ImgComp src={require("./calculus_pics/29.jfif")} />
-				<li>The points \(P\) and \(P'\) are located at the ends of the <b>major axis</b> of the ellipse, and have coordinates \((a,0)\) and \((-a,0)\), respectively. The major axis is always the longest distance across the ellipse, and can be horizontal or vertical. Thus, the length of the major axis in this ellipse is \(2a\).</li>
-				<li>The points \(Q\) and \(Q'\) are located at the ends of the minor axis of the ellipse, and have coordinates \((0,b)\) and \((0,-b)\), respectively. The <b>minor axis</b> is the shortest distance across the ellipse. The minor axis is perpendicular to the major axis.</li>
-				<li>Consider the ellipse with center \((h,k)\), a horizontal major axis with length \(2a\), and a vertical minor axis with length \(2b\). Then the equation of this ellipse in standard form is:</li>
-				<MathStuff>$$ {"\\frac{(x-h)^2}{a^2} + \\frac{(y-k)^2}{b^2}"} = 1$$</MathStuff>
-				<li>The foci are located at \((h±c,k)\), where \(c^2 = a^2 - b^2\) and the equations of the directrices are \(x=h± \frac{"{a^2}{c}"}\).</li>
-				<li>If the major axis is vertical, then the equation of the ellipse becomes</li>
-				<MathStuff>$$ {"\\frac{(x-h)^2}{b^2} + \\frac{(y-k)^2}{a^2}"} = 1$$</MathStuff>
-				<li>The foci are located at \((h,k±c)\), where \(c^2 = b^2 - a^2\) and the equations of the directrices are \(y=k± \frac{"{a^2}{c}"}\).</li>
-				<li>The equation of an ellipse is in general form if it is in the form \(Ax^2 + By^2 + Cx+Dy+E=0\), where \(A\) and \(B\) are either both positive or both negative.</li>
-			</SubList></li>
-			<li>Hyperbola:<SubList>
-				<li>A <b>hyperbola</b> is the set of all points where the difference between their distances from two fixed points (the foci) is constant.</li>
-				<ImgComp src={require("./calculus_pics/30.jfif")} width="70%" />
-				<li>If the major axis (transverse axis) is horizontal, then the hyperbola is called <b>horizontal</b>, and if the major axis is vertical then the hyperbola is called <b>vertical</b>.</li>
-				<li>Consider a horizontal hyperbola with center \((h,k)\). Then the equation of this ellipse is:</li>
-				<MathStuff>$$ {"\\frac{(x-h)^2}{a^2} - \\frac{(y-k)^2}{b^2} = 1"} $$</MathStuff>
-				<li>The foci are located at \((h±c,k)\), where \(c^2=a^2+b^2\). The equations of the asymptotes are given by \(y=k±ba(x-h)\). The equations of the directrices are:</li>
-				<MathStuff>$$ {"x = h ±\\frac{a^2}{c}"} $$</MathStuff>
-				<li>If the major axis is vertical, then the equation of the hyperbola becomes:</li>
-				<MathStuff>$$ {"\\frac{\\frac{(y-k)^2}{a^2} - (x-h)^2}{b^2} = 1"} $$</MathStuff>
-				<li>The foci are located at \((h,k±c)\), where \(c^2=a^2+b^2\). The equations of the asymptotes are given by \(y=k±ab(x-h)\). The equations of the directrices are:</li>
-				<MathStuff>$$ {"y = k ±\\frac{a^2}{c}"} $$</MathStuff>
-				<li>The equation of a hyperbola is in general form if it is in the form \(Ax^2+By^2+Cx+Dy+E=0\), where \(A\) and \(B\) have opposite signs.</li>
-				<li>A ray directed toward one focus of a hyperbola is reflected by a hyperbolic mirror toward the other focus.</li>
-			</SubList></li>
-			<li>Eccentricity and directrix:<SubList>
-				<li>The <b>eccentricity</b> \(e\) of a conic section is defined to be the distance from any point on the conic section to its focus, divided by the perpendicular distance from that point to the nearest directrix. This value is constant for any conic section, and can define the conic section as well.</li>
-				<li>If \(e=1\), the conic is a parabola.</li>
-				<li>If \(e \lt 1\), it is an ellipse.</li>
-				<li>If \(e \gt 1\), it is a hyperbola.</li>
-				<li>The eccentricity of a circle is zero.</li>
-				<li>The directrix of a conic section is the line that, together with the point known as the focus, serves to define a conic section.</li>
-				<li>Hyperbolas and noncircular ellipses have two foci and two associated directrices. Parabolas have one focus and one directrix.</li>
-				<li>The equations of the directrices of a horizontal ellipse and a horizontal hperbola are \(x=± \frac{"{a^2}{c}"}\).</li>
-			</SubList></li>
-			<li>Polar equations of conic sections:<SubList>
-				<li>The <b>focal parameter</b> of a conic section p is defined as the distance from a focus to the nearest directrix.</li>
-				<li>The polar equation of a conic section with focal parameter \(p\) is given by:</li>
-				<MathStuff>$$ {"{r= \\frac{ep}{1±e \\cos θ} \\text{ or } r= \\frac{ep}{1±e \\sinθ} }"} $$</MathStuff>
-			</SubList></li>
-			<li>General equations of degree two for conic sections:<SubList>
-				<li>A general equation of degree two can be written in the form \(Ax^2+Bxy+Cy^2+Dx+Ey+F=0\). The graph of an equation of this form is a conic section. If \(B≠0\) then the coordinate axes are rotated.</li>
-				<li>To identify the conic section, we use the discriminant of the conic section \(4AC-B^2\). One of the following cases must be true:<SubList opened>
-					<li>\(4AC-B^2 \gt 0\): the graph is an ellipse.</li>
-					<li>\(4AC-B^2=0\): the graph is a parabola.</li>
-					<li>\(4AC-B^2 \lt 0\): the graph is a hyperbola.</li>
-				</SubList></li>
-				<li>The method for graphing a conic section with rotated axes involves determining the coefficients of the conic in the rotated coordinate system. The new coefficients are labeled \(A'\), \(B'\), \(C'\), \(D'\), \(E'\) and \(F'\), and are given by the formulas:</li>
-				<MathStuff>$$ {"\\begin{align} A' &= A \\cos^2 θ+ B \\cos θ \\sin θ + C \\sin^2 θ \\\\ B' &= 0 \\\\ C' &= A \\sin^2 θ-B \\sin θ \\cos θ + C cos^2 θ \\\\ D' &= D \\cos θ + E \\sin θ \\\\ E' &= - D \\sin θ + E \\cos θ \\\\ F' &= F \\end{align}"} $$</MathStuff>
-				<li>The procedure for graphing a rotated conic is the following:<SubList opened>
-					<li>Identify the conic section using the discriminant  \(4AC-B^2\)</li>
-					<li>Determine \(θ\) using the formula \(\cot (2θ) = \frac{"{A-C}{B}"}\)</li>
-					<li>Calculate \(A'\), \(B'\), \(C'\), \(D'\), \(E'\) and \(F'\)</li>
-					<li>Rewrite the original equation using  \(A'\), \(B'\), \(C'\), \(D'\), \(E'\) and \(F'\)</li>
-					<li>Draw a graph using the rotated equation</li>
-				</SubList></li>
-			</SubList></li>
-		</ul>
-	</div>
+	{ SequencesAndSeries() }
+	
 </>
