@@ -2,3 +2,4 @@
 node_modules
 private_links.js
 private_pages
+private_fetch.js

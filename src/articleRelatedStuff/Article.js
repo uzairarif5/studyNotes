@@ -14,6 +14,7 @@ import { FORM_COUNTER, Q_COUNTER, CLOSING_LIST_PROCESS } from "../actions";
 import { QuestionsBox } from './Questions.js';
 
 const ERROR_VAL = "ERROR";
+const NO_SOURCES = "RENDER_WITHOUT_SOURCES";
 
 class Article extends React.Component {
 
@@ -77,28 +78,48 @@ class Article extends React.Component {
 	}
 
 	setSourcesList(){
-		fetch("https://django-apps-38uv.onrender.com/study_notes_backend/",{
-			method:"post",
-			body: JSON.stringify({
+		if(this.pathnameToUse.substring(0,6) === "/blog/")
+			window.setTimeout(()=>this.setState({sourcesList: NO_SOURCES}),1);
+		else {
+			let inputObj = {
 				"sourcesColor": this.state.wholeContent["sourcesColor"],
-				"sourcesOrder": this.state.wholeContent["sourcesOrder"]
-			}),
-		})
-		.then(res=>res.text())
-		.then(res=>this.setState({sourcesList: res}))
-		.catch(()=>this.setState({sourcesList: ERROR_VAL}));
+				"sourcesOrder": this.state.wholeContent["sourcesOrder"],
+			};
+			if(!process.env.NODE_ENV || process.env.NODE_ENV === 'development')
+				require("./private_fetch.js").default(inputObj)
+				.then(res=>this.setState({sourcesList: res}))
+				.catch(()=>this.setState({sourcesList: ERROR_VAL}));
+			else
+				fetch("https://django-apps-38uv.onrender.com/study_notes_backend/getList", {
+					method:"post", 
+					body: JSON.stringify(inputObj)
+				})
+				.then(res=>this.setState({sourcesList: res}))
+				.catch(()=>this.setState({sourcesList: ERROR_VAL}));
+		}
 	}
 
 	getElementToRender(){
 		this.allowCleanUp = true;
-		let mainContent = this.state.wholeContent["content"].props.children;
+
+		let SourcesSection = null;
+		if(this.state.sourcesList !== NO_SOURCES){
+			SourcesSection = <section dangerouslySetInnerHTML={{__html:
+				"<h4>Main Sources:</h4>" +
+				this.state.sourcesList
+			}}></section>;
+		}
+		
 		let additionalReferencesSection = null;
+
+		let mainContent = this.state.wholeContent["content"].props.children;
 		let mainPart;
 		if (mainContent[1].props.id === "additionalResources") {
 			additionalReferencesSection = <section><h4>Additional Resources:</h4>{mainContent[1]}</section>;
 			mainPart = <main>{mainContent.slice(2)}</main>
 		}
 		else mainPart = <main>{mainContent.slice(1)}</main>;
+		
 		return <HelmetProvider>
 			<Helmet>
 				<title>{this.state.wholeContent["title"]}</title>
@@ -112,11 +133,7 @@ class Article extends React.Component {
 					<ol id='reference'></ol>
 					</section>
 					
-					<section dangerouslySetInnerHTML={{__html:
-						"<h4>Main Sources:</h4>" +
-						this.state.sourcesList
-					}}></section>
-					
+					{SourcesSection}
 					{additionalReferencesSection}
 					{mainPart}
 				</div>

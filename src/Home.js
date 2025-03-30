@@ -44,18 +44,17 @@ const Home = () => {
 	</HelmetProvider>);
 };
 
+function getSVG(){
+	if(window.screen.width <= parseInt(styles.maxWidthForMobile)){ return (
+		<div id='svgContainer'><svg height="30px" width="100%" viewBox="0 0 100 100"  preserveAspectRatio="none">
+			<path d="M0,0 L0,50 Q25,100 50,50 75,0 100,50 L 100,0" vectorEffect="non-scaling-stroke" strokeWidth="3" stroke="#913213" fill="#913213" />
+			<path d="M0,50 Q25,100 50,50 75,0 100,50 " vectorEffect="non-scaling-stroke" strokeWidth="3" stroke="#692112" fill="none"/>
+		</svg></div>
+	);}
+	else{return null;}
+}
+
 const HomeCompMemo = memo(()=>{
-
-	function getSVG(){
-		if(window.screen.width <= parseInt(styles.maxWidthForMobile)){ return (
-			<div id='svgContainer'><svg height="30px" width="100%" viewBox="0 0 100 100"  preserveAspectRatio="none">
-				<path d="M0,0 L0,50 Q25,100 50,50 75,0 100,50 L 100,0" vectorEffect="non-scaling-stroke" strokeWidth="3" stroke="#913213" fill="#913213" />
-				<path d="M0,50 Q25,100 50,50 75,0 100,50 " vectorEffect="non-scaling-stroke" strokeWidth="3" stroke="#692112" fill="none"/>
-			</svg></div>
-		);}
-		else{return null;}
-	}
-
 	return <div id="home">
 		<h1>My Study Notes</h1>
 		{getSVG()}

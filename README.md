@@ -46,12 +46,20 @@ This is my first big project that uses React.js and Redux
 
 Versioning is done using "npm version [new-version] --git-tag-version false"
 
+update 20.2:
+- Added content to `calculus_advanced.js`.
+- `saved_resources.js` now works properly.
+- Added code to handle the case where fetching sources may not work.
+- Fixed the bug where using the "close lists" button wasn't working the second time.
+
 update 20.1:
 - Sources are now stored in a postgres database.
 - Made change to all of the articles to reflect the changes.
 - Reordered some of the links in the home page.
 - Renamed `computer_science_advance_topics` to `computer_science_advanced_topics`.
-- Added content to `calculus.js`.
+- Made changes to `calculus.js`.
+- Added `calculus_advanced.js`.
+- Deleted the content of `saved_resources.js`.
 
 update 19.75 - 19.78:
 - Added more content and made changes to `calculus.js`.

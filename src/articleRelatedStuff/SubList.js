@@ -6,12 +6,9 @@ import iconRight from '../fontsAndPics/chevron-circle-right.svg';
 import iconLeft from '../fontsAndPics/chevron-circle-left.svg';
 import PropTypes from 'prop-types';
 import { useSelector } from "react-redux";
-import { CLOSING_LIST_PROCESS } from '../actions';
-import store from "../store";
 
 class SubListInner extends React.Component {
 	static globalNum = 0;
-	static globalCounter = 0;
 
 	constructor(props) {
 		super(props);
@@ -95,16 +92,6 @@ class SubListInner extends React.Component {
 			let curImage = "down";
 			this.imgFunc(curImage, document.getElementById("icon"+this.curNum));
 			this.prevImage = curImage;
-		}
-		SubListInner.globalCounter += 1;
-		if (SubListInner.globalCounter === SubListInner.globalNum){
-			window.setTimeout(()=>{
-				store.dispatch({
-					type: CLOSING_LIST_PROCESS,
-					payload: false
-				});
-				SubListInner.globalCounter = 0;
-			});
 		}
 	}
 }

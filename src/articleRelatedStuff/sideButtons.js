@@ -27,6 +27,12 @@ export function CloseListsButton(){
 					type: CLOSING_LIST_PROCESS,
 					payload: true
 				});
+				window.setTimeout(()=>{
+					store.dispatch({
+						type: CLOSING_LIST_PROCESS,
+						payload: false
+					});
+				});
 			}
 		}}>
 		<img src={process.env.PUBLIC_URL+'/webPics/arrows-up-to-line-solid.svg'} alt='' title="Close all sublists"/>

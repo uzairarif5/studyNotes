@@ -3,6 +3,7 @@ import SubList from "../../articleRelatedStuff/SubList";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 import Vectors from "./Vectors";
 import ConicSectionAndQuadraticSurfaces from "./ConicSectionAndQuadraticSurfaces";
+import VectorValuedFunction from "./VectorValuedFunctions";
 
 export const title = "Calculus (Advanced) Notes";
 
@@ -85,4 +86,5 @@ export const content = <>
 
 { Vectors() }
 { ConicSectionAndQuadraticSurfaces() }
+{VectorValuedFunction()}
 </>
