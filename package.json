@@ -1,10 +1,9 @@
 {
   "name": "study_notes",
-  "version": "20.2.0",
+  "version": "20.4.0",
   "private": true,
   "dependencies": {
     "-": "^0.0.1",
-    "@formspree/react": "^2.5.1",
     "caniuse-lite": "^1.0.30001706",
     "eslint-config-react-app": "^7.0.1",
     "jquery": "^3.7.1",

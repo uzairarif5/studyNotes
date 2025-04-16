@@ -46,6 +46,9 @@ This is my first big project that uses React.js and Redux
 
 Versioning is done using "npm version [new-version] --git-tag-version false"
 
+update 20.4:
+- The sources where not rendering. That is fixed now.
+
 update 20.3:
 - Made coding changes with `Contact.js` because the backend was changed.
 - At `Home.js`, made ordering changes with the links.

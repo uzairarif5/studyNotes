@@ -86,17 +86,21 @@ class Article extends React.Component {
 				"sourcesOrder": this.state.wholeContent["sourcesOrder"],
 			};
 			if (!inputObj["sourcesColor"]) this.setState({sourcesList: NO_SOURCES});
-			else if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development')
-				require("./private_fetch.js").default(inputObj)
-				.then(res=>this.setState({sourcesList: res}))
-				.catch(()=>this.setState({sourcesList: ERROR_VAL}));
-			else
+			else {
+				let strInput;
+				if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development'){
+					let newJSON = require("./private_json_input.js").default(inputObj);
+					strInput = JSON.stringify(newJSON);
+				}
+				else strInput = JSON.stringify(inputObj);
 				fetch("https://django-apps-38uv.onrender.com/study_notes_backend/getList", {
 					method:"post", 
-					body: JSON.stringify(inputObj)
+					body: strInput
 				})
+				.then(res=>res.text())
 				.then(res=>this.setState({sourcesList: res}))
 				.catch(()=>this.setState({sourcesList: ERROR_VAL}));
+			}
 		}
 	}
 
