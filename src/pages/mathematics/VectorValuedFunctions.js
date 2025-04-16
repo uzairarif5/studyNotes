@@ -1,6 +1,7 @@
 import { MathStuff } from "../../articleRelatedStuff/MathStuff"; 
 import SubList from "../../articleRelatedStuff/SubList";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
+import { TableLI } from "../../articleRelatedStuff/tableManager";
 
 export default function VectorValuedFunction(){
   return <>
@@ -74,6 +75,31 @@ export default function VectorValuedFunction(){
         <li>If we differentiate both sides:</li>
         <MathStuff>\[s'(t)=\Vert \textbf{"{r}"}'(t) \Vert\]</MathStuff>
       </SubList></li>
+      <li>Arc-length parameterization:<SubList>
+        <li>Suppose that we find the arc-length function \(s(t)\) and are able to solve this function for \(t\) as a function of \(s\).</li>
+        <li>We can then reparameterize the original function \(\textbf{"{r}"}(t)\) by substituting the expression for \(t\) back into \(\textbf{"{r}"}(t)\). The vector-valued function is now written in terms of the parameter \(s\). Since the variable \(s\) represents the arc length, we call this an <b>arc-length parameterization</b> of the original function \(\textbf{"{r}"}(t)\).</li>
+        <TableLI>
+          <thead>
+            <tr><th>Arc-length parameterization of \(\textbf{"{r}"}(t)=4\cos(t)\textbf{"{i}"} + 4\sin(t)\textbf{"{j}"}\) for \(t \ge 0\)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>
+              First we find the arc-length function:
+              \[{`\\begin{align}
+                s(t) &= \\int^t_0 \\Vert \\textbf{r}'(u) \\Vert \\ du
+                \\\\ &= \\int^t_0 \\Vert \\langle -4\\sin(u), 4\\cos(u)\\rangle \\Vert \\ du
+                \\\\ &= \\int^t_0 \\sqrt{(-4\\sin(u))^2 + (4\\cos(u))^2} \\ du
+                \\\\ &= \\int^t_0 \\sqrt{16\\sin^2(u) + 16\\cos^2(u)} \\ du
+                \\\\ &= \\int^t_0 4 \\ du
+                \\\\ &= 4t
+              \\end{align}`}\]
+              This means \(t=s/4\). Thus, replace \(t\) in \({"\\textbf{r}(t) = 4\\cos(t)\\textbf{i}+4\\sin(t)\\textbf{j}"}\) with \(s/4\), we get:
+              \[{"\\textbf{r}(\\frac{s}{4}) = 4\\cos(\\frac{s}{4})\\textbf{i}+4\\sin(\\frac{s}{4})\\textbf{j}"}\]
+              Since the original restriciton on \(t\) was \(t \\ge 0\), then the restriction on \(s\) becomes \(s/4 \ge 0\) or \(s \ge 0\).
+            </td></tr>
+          </tbody>
+        </TableLI>
+      </SubList></li>
       <li>Curvature:<SubList>
         <li>Let \(C\) be a smooth curve in the plane or in space given by \(\textbf{"{r}"}(s)\), where \(s\) is the arc-length parameter. The curvature \(k\) at \(s\) is:</li>
         <MathStuff>\[k={"{\\left \\Vert \\frac{d\\textbf{T}}{ds} \\right\\Vert}"}\]</MathStuff>
@@ -88,10 +114,12 @@ export default function VectorValuedFunction(){
       <li>The normal and binormal Vectors:<SubList>
         <li>Let C be a three-dimensional smooth curve represented by \(\textbf{"{r}"}\) over an open interval \(I\). If \(\textbf{"{T}"}'(t)≠0\), then the <b>principal unit normal vector</b> at \(t\) is defined to be:</li>
         <MathStuff>\[ {"\\textbf{N} = \\frac{\\textbf{T}'(t)}{\\Vert \\textbf{T}'(t) \\Vert}"}\]</MathStuff>
+        <li className="ownExplanation">Since the magnitude of vector \(\textbf{"{T}"}(t)\) is always 1, then the path is traces is a circle of radius 1, which means \(\textbf{"{T}"}'(t)\) is orthogonal to \(\textbf{"{T}"}(t)\). This also means \(\textbf{"{T}"}(t)\) and \(\textbf{"{N}"}(t)\) are orthogonal.</li>
         <li>The <b>binormal vector</b> at \(t\) is defined as:</li>
         <MathStuff>\[{"\\textbf{B}(t) = \\textbf{T}(t) \\times \\textbf{N}(t)"}\]</MathStuff>
+        <li>The binomial vector is also a unit vector.</li>
         <li>The unit normal vector and the binormal vector form a plane that is perpendicular to the curve at any point on the curve, called the <b>normal plane</b>.</li>
-        <li>The plane determined by the vectors \(\textbf{"{T}"}\) and \(\textbf{"{N}"}\) forms the osculating plane of \(C\) at any point \(P\) on the curve.</li>
+        <li>The plane determined by the vectors \(\textbf{"{T}"}\) and \(\textbf{"{N}"}\) forms the <b>osculating plane</b> of \(C\) at any point \(P\) on the curve.</li>
         <li>These three vectors form a frame of reference in three-dimensional space called the <b>Frenet frame of reference</b> (also called the <b>TNB</b> frame).</li>
         <figure>
           <ImgComp src={require("./vector_valued_functions_pics/2.jpeg")} width="70%" />

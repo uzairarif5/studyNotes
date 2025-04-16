@@ -1,22 +1,12 @@
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
 import SubList from "../../articleRelatedStuff/SubList";
 
 export const title = "My Saved Resources";
 
 function Content(){
   const [content, ChangeResult] = useState(null);
-  const fetched = useRef(false); // Prevents duplicate fetch (for React strict mode)
   
-  useEffect(()=>{
-    if(fetched.current) return;
-    fetched.current = true;
-
-    fetch("https://django-apps-38uv.onrender.com/study_notes_backend/allList")
-    .then(res=> res.json())
-    .then(res=> ChangeResult(res));
-  }, [])
-
-  if(content){
+  if(content){ 
     const keyList = Object.keys(content);
     const cutoff = Math.floor(keyList.length/2) - 1;
     const keyList1 = keyList.slice(0, cutoff);
@@ -48,7 +38,16 @@ function Content(){
       </ul>
     </div>
   }
-  return null;
+  else {
+    fetch("https://django-apps-38uv.onrender.com/study_notes_backend/allList")
+    .then(res=> res.json())
+    .then(res=> ChangeResult(res))
+    .catch(err=> {
+      console.error(err);
+      console.log("This page won't work in localhost.")
+    });
+    return null;
+  }
 }
 
 export const content = 

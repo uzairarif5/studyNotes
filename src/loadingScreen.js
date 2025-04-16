@@ -1,4 +1,3 @@
-
 var delayHolder;
 export function showLoadingScreen(){
     window.clearTimeout(delayHolder);

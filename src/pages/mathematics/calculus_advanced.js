@@ -86,5 +86,5 @@ export const content = <>
 
 { Vectors() }
 { ConicSectionAndQuadraticSurfaces() }
-{VectorValuedFunction()}
+{ VectorValuedFunction() }
 </>

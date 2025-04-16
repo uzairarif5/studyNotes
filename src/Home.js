@@ -69,8 +69,8 @@ const HomeCompMemo = memo(()=>{
 		<Link to="mathematics/precalculus">Precalculus</Link>
 		<Link to="mathematics/number_theory">Number Theory</Link>
 		<Link to="mathematics/calculus">Calculus</Link>
-		<Link to="mathematics/calculus_advanced">Calculus (advanced)</Link>
 		<Link to="mathematics/probability_and_statistics">Probability And Statistics</Link>
+		<Link to="mathematics/calculus_advanced">Calculus (advanced)</Link>
 		<h2>Natural Sciences</h2>
 		<Link to="natural_sciences/philosophy_of_science">Philosophy Of Science</Link>
 		<Link to="natural_sciences/physics">Physics</Link>

@@ -93,13 +93,20 @@ export default function Vectors(){
 					<MathStuff>\[ {"\\begin{gather} \\Vert \\operatorname{proj}_{\\textbf{u}} \\textbf{v} \\Vert = \\Vert \\textbf{v} \\Vert \\cos(\\theta) \\\\ \\operatorname{proj}_{\\textbf{u}} \\textbf{v} = \\frac{\\textbf{u} \\cdot \\textbf{v}}{\\Vert \\textbf{u}\\Vert} \\end{gather}"}\]</MathStuff>
 				</SubList></li>
 				<li>Cross product:<SubList>
-					<li>Consider vectors \({"\\textbf{u} = \\langle u_1, u_2, u_3 \\rangle"}\), \({"\\textbf{v} = \\langle v_1, v_2, v_3 \\rangle"}\) and \({"\\textbf{w} = \\langle w_1, w_2, w_3 \\rangle"}\) such that \({"\\textbf{w} \\cdot \\textbf{u}=0"}\) and \({"\\textbf{w} \\cdot \\textbf{v}=0"}\):</li>
-					<MathStuff>\[{"\\begin{gather} u_1w_1 + u_2w_2 + u_2w_2 =0 \\\\ v_1w_1 + v_2w_2 + v_2w_2 =0 \\end{gather}"} \]</MathStuff>
-					<li>Possible solution:</li>
-					<MathStuff>\[{"\\textbf{w} = \\langle u_2v_3-u_3v_2,-(u_1v_3-u_3v_1),u_1v_2-u_2v_1 \\rangle"}\]</MathStuff>
+					<li>Let \({"\\textbf{u} = \\langle u_1, u_2, u_3 \\rangle"}\) and \({"\\textbf{v} = \\langle v_1, v_2, v_3 \\rangle"}\), then the <b>cross product</b> \({"\\textbf{u} \\times \\textbf{v}"}\) is:</li>
+					<MathStuff>\[{"\\langle u_2v_3-u_3v_2,-(u_1v_3-u_3v_1),u_1v_2-u_2v_1 \\rangle"}\]</MathStuff>
+					<li>The cross product vector is orthogonal to both \({"\\textbf{u}"}\) and \({"\\textbf{v}"}\).</li>
 					<li>Use right hand rule to find the direction of the cross poduct vector:</li>
 					<li><ImgComp src={require("./vectors_pics/40.jpeg")} width="70%" /></li>
-					<li>The cross product gives the area of the product formed by two vectors \({"\\textbf{u}"}\) and \({"\\textbf{v}"}\):</li>
+					<li>Properties of the cross product:<SubList>
+						<li>\({"\\textbf{u} \\times \\textbf{v}=-(\\textbf{v} \\times \\textbf{u})"}\)</li>
+						<li>\({"\\textbf{u} \\times (\\textbf{v}+\\textbf{w}) = (\\textbf{u} \\times \\textbf{v}) +(\\textbf{u}\\times \\textbf{w})"}\)</li>
+						<li>\({"c(\\textbf{u} \\times \\textbf{v})=(c\\textbf{u}) \\times \\textbf{v} = \\textbf{u}\\times (c\\textbf{v})"}\)</li>
+						<li>\({"0 \\times \\textbf{u}= \\textbf{u} \\times 0 = 0"}\)</li>
+						<li>\({"\\textbf{u} \\times \\textbf{u}= 0"}\)</li>
+						<li>\({"\\textbf{u} \\cdot (\\textbf{v} \\times \\textbf{w})= (\\textbf{u} \\times \\textbf{v})\\cdot \\textbf{w}"}\)</li>
+					</SubList></li>
+					<li><u>Magnitude of the cross product:</u> \(∥u \times v∥= ∥u∥ \ ∥v∥ (\sin θ)\).</li>
 					<MathStuff>\[{"\\Vert \\textbf{u} \\times \\textbf{v} \\Vert = \\Vert \\textbf{u} \\cdot \\textbf{v} \\Vert \\cdot \\sin(\\theta)"}\]</MathStuff>
 					<li>A 2x2 determinant is defined by:</li>
 					<MathStuff>\[{"\\begin{vmatrix} a_1 & a_2 \\\\ b_1 & b_2 \\end{vmatrix} = a_1b_2-b_1a_2"}\]</MathStuff>
@@ -107,6 +114,8 @@ export default function Vectors(){
 					<MathStuff>\[{"\\begin{vmatrix} a_1 & a_2 & a_3 \\\\ b_1 & b_2 &b_3 \\\\ c_1 & c_2 &c_3 \\end{vmatrix} = a_1\\begin{vmatrix} b_2 & b_3 \\\\ c_2 & c_3 \\end{vmatrix} - a_2\\begin{vmatrix} b_1 & b_3 \\\\ c_1 & c_3 \\end{vmatrix} + a_3\\begin{vmatrix} b_1 & b_2 \\\\ c_1 & c_2 \\end{vmatrix}"}\]</MathStuff>
 					<li>Let \({"\\textbf{b} = \\langle b_1, b_2, b_3 \\rangle"}\) and \({"\\textbf{c} = \\langle c_1, c_2, c_3 \\rangle"}\). We can use the determinant to find the cross product \(\textbf{"{b}"} \times \textbf{"{c}"}\):</li>
 					<MathStuff>\[{"\\begin{vmatrix} \\textbf{i} & \\textbf{j} & \\textbf{k} \\\\ b_1 & b_2 &b_3 \\\\ c_1 & c_2 &c_3 \\end{vmatrix} = \\textbf{i}\\begin{vmatrix} b_2 & b_3 \\\\ c_2 & c_3 \\end{vmatrix} - \\textbf{j}\\begin{vmatrix} b_1 & b_3 \\\\ c_1 & c_3 \\end{vmatrix} + \\textbf{k}\\begin{vmatrix} b_1 & b_2 \\\\ c_1 & c_2 \\end{vmatrix}"}\]</MathStuff>
+					<li>The cross product gives the area of a parallelogram formed by two vectors \({"\\textbf{u}"}\) and \({"\\textbf{v}"}\):</li>
+					<li><ImgComp src={require("./vectors_pics/1.jpeg")} width="70%" /></li>
 					<li>Triple scalar product:</li>
 					<MathStuff>\[{"\\textbf{a} \\cdot (\\textbf{b} \\times \\textbf{c}) = \\begin{vmatrix} a_1 & a_2 & a_3 \\\\ b_1 & b_2 &b_3 \\\\ c_1 & c_2 &c_3 \\end{vmatrix}"}\]</MathStuff>
 					<li>Volume of a parallelepiped formed by vectors \({"\\textbf{u}"}\), \({"\\textbf{w}"}\) and \({"\\textbf{v}"}\):</li>

@@ -46,6 +46,13 @@ This is my first big project that uses React.js and Redux
 
 Versioning is done using "npm version [new-version] --git-tag-version false"
 
+update 20.3:
+- Made coding changes with `Contact.js` because the backend was changed.
+- At `Home.js`, made ordering changes with the links.
+- For `Article.js`, added an 'offline' mode which (if true) prevents fetching the sources and loading Mathjax.
+- For articles, the css for mobile is now changed to "css for small width".
+- Made changes to the `calculus` article.
+
 update 20.2:
 - Added content to `calculus_advanced.js`.
 - `saved_resources.js` now works properly.

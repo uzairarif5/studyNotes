@@ -15,6 +15,7 @@ import { QuestionsBox } from './Questions.js';
 
 const ERROR_VAL = "ERROR";
 const NO_SOURCES = "RENDER_WITHOUT_SOURCES";
+const OFFLINE_MODE = false;
 
 class Article extends React.Component {
 
@@ -78,14 +79,14 @@ class Article extends React.Component {
 	}
 
 	setSourcesList(){
-		if(this.pathnameToUse.substring(0,6) === "/blog/")
-			window.setTimeout(()=>this.setState({sourcesList: NO_SOURCES}),1);
+		if (OFFLINE_MODE) this.setState({sourcesList: NO_SOURCES});
 		else {
 			let inputObj = {
 				"sourcesColor": this.state.wholeContent["sourcesColor"],
 				"sourcesOrder": this.state.wholeContent["sourcesOrder"],
 			};
-			if(!process.env.NODE_ENV || process.env.NODE_ENV === 'development')
+			if (!inputObj["sourcesColor"]) this.setState({sourcesList: NO_SOURCES});
+			else if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development')
 				require("./private_fetch.js").default(inputObj)
 				.then(res=>this.setState({sourcesList: res}))
 				.catch(()=>this.setState({sourcesList: ERROR_VAL}));
@@ -173,7 +174,7 @@ class Article extends React.Component {
 			changeLoadingText("Going To Home Page");
 			this.props.changeAR(false);
 		}
-		if(this.allowCleanUp){
+		else if(this.allowCleanUp){
 			this.allowCleanUp = false;
 			document.fonts.ready.then(()=>this.cleanUp());
 		}
@@ -189,7 +190,7 @@ class Article extends React.Component {
 		this.mainEl.addEventListener("scroll", this.scrollFunc);
 		this.addColors();
 		this.addKeyBinds();
-		window.MathJax.typesetPromise();
+		if (!OFFLINE_MODE) window.MathJax.typesetPromise();
 		window.setTimeout(fadeLoadingToInsv, 1);
 	}
 
