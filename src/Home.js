@@ -78,6 +78,7 @@ const HomeCompMemo = memo(()=>{
 		<Link to="natural_sciences/meteorology">Meteorology</Link>
 		<Link to="natural_sciences/geology">Geology</Link>
 		<h2>Computer Science Fundamentals</h2>
+    <Link to="computer_science_fundamentals/c_and_cpp_programming_language">C/C++ programming language</Link>
 		<Link to="computer_science_fundamentals/data_structures_and_algorithms">Data Structures And Algorithms</Link>
 		<Link to="computer_science_fundamentals/useful_information_for_algorithms">Useful Information For Algorithms</Link>
 		<Link to="computer_science_fundamentals/information_and_entropy">Information And Entropy</Link>
@@ -90,7 +91,6 @@ const HomeCompMemo = memo(()=>{
 		<Link to="computer_science_advanced_topics/cryptography">Cryptography</Link>
 		<Link to="computer_science_advanced_topics/deep_learning">Deep Learning</Link>
 		<h2>Tutorials/Guides</h2>
-    <Link to="tutorials/c_and_cpp_programming_language">C/C++ programming language</Link>
 		<Link to="tutorials/basics_of_r">Basics Of R</Link>
     <Link to="tutorials/manim">Manim Basics</Link>
 		<h2>Blog</h2>

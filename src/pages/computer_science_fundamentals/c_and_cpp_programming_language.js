@@ -2,7 +2,7 @@ import SubList from "../../articleRelatedStuff/SubList";
 import { CodePre } from "../../articleRelatedStuff/Code";
 
 export const title = "C++ Programming Language notes";
-export const sourcesColor = {64: null};
+export const sourcesColor = {64: null, 15: null};
 
 export const content = <>
 <h1>C++ Programming Language</h1>
@@ -504,8 +504,8 @@ void main(void) {
 </div>
 
 <h2 id="more_c_only">More C-Only Stuff</h2>
-<div className="content" data-source={64}>
-	<div style={{width: "49%",float: "left",marginLeft: "0.5%"}}>
+<div className="content">
+	<div style={{width: "49%",float: "left",marginLeft: "0.5%"}} data-source={64}>
 		<ul>
 			<li>Strict definition of <code>main</code>:<SubList>
 				<li>The strict definition of <code>main</code> looks like this:</li>
@@ -641,7 +641,7 @@ void main(void) {
 			</SubList></li>
 		</ul>
 	</div>
-	<div style={{width: "49%",float: "right",marginRight: "0.5%"}}>
+	<div style={{width: "49%",float: "right",marginRight: "0.5%"}} data-source={64}>
 		<ul>
 			<li>More on types:<SubList>
 				<li>C allows you to define your own types, with what is known as a <b>typedef</b>.</li>
@@ -694,6 +694,15 @@ void main(void) {
 				<li>A structure can contain other new types (plain types, enums, or indeed other structures); just make sure the typedefs for them occur before the typedef of the structure in which you want to include them.</li>
 				<li>In the main function, we declare an instance of the structure as a variable called <code>data</code> of type <code>MY_DATA</code>. We then access the individual elements of the structure by giving the name of the structure variable (<code>data</code>), a full stop (.), and the name of the specific element. So the line <code>data.inval1 = 5</code> sets the value of the element <code>inval1</code> of <code>data</code> to 5.</li>
 				<li>To access the elements of a structure from a pointer to it, we replace the full stop with an arrow {"(->)"}.</li>
+				<li data-source={15}><b>Unions</b> are like structs, but the member occupy the same memory.</li>
+				<li data-source={15}><CodePre language="c">{`
+union {
+	int i;
+	double d;
+} u;
+				`}</CodePre></li>
+				<li data-source={15}>The programmer can access either <code>u.i</code> or <code>u.d</code>, but not both at the same time. Since <code>u.i</code> and <code>u.d</code> occupy the same area of memory, modifying one modifies the value of the other.</li>
+				<li data-source={15}>The size of a union is the size of its largest member.</li>
 			</SubList></li>
 			<li>Header files:<SubList>
 				<li><code>gcc</code> actually does two things: first, it compiles your C source file into what's called an <b>object file</b>, and then it links the object file with all the library functions to create the executable. This second step is performed by a program called a <b>linker</b>; <code>gcc</code> actually does both jobs.</li>

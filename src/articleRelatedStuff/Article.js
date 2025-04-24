@@ -71,11 +71,15 @@ class Article extends React.Component {
 	}
 
 	setWholeContent(){
-		import("../pages"+this.pathnameToUse+".js")
-		.then(res => this.setState({
-			wholeContent: {"title": res.title, "content": res.content, "sourcesColor": res.sourcesColor}
-		}))
-		.catch(()=>this.setState({wholeContent: ERROR_VAL}));
+		import("https://cdn.jsdelivr.net/gh/uzairarif5/studyNotes/src/pages/mathematics/calculus.js")
+		.then(module =>
+			console.log(module)
+			//this.setState({wholeContent: {"title": res.title, "content": res.content, "sourcesColor": res.sourcesColor}})
+		)
+		.catch((err)=>
+			console.error(err)
+			//this.setState({wholeContent: ERROR_VAL});
+		);
 	}
 
 	setSourcesList(){

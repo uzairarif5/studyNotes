@@ -46,6 +46,9 @@ This is my first big project that uses React.js and Redux
 
 Versioning is done using "npm version [new-version] --git-tag-version false"
 
+update 20.5:
+- `c_and_cpp_programming_language.js` is now in `computer_science_fundamentals`.
+
 update 20.4:
 - The sources where not rendering. That is fixed now.
 
