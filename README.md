@@ -46,6 +46,9 @@ This is my first big project that uses React.js and Redux
 
 Versioning is done using "npm version [new-version] --git-tag-version false"
 
+update 21.3:
+- Modified `number_theory.js`.
+
 update 21.2:
 - Made some coding changes.
 

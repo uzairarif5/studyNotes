@@ -221,9 +221,9 @@ export const content = <>
         <li>An arithmetic function \(f\) is said to be <b>multiplicative</b> if \(f(mn)=f(m)f(n)\) whenever \(m\) and \(n\) are relatively prime positive integers.</li>
         <li>An arithmetic function \(f\) is said to be <b>completely multiplicative</b> if \(f(mn)=f(m)f(n)\) for all positive integers \(m\) and \(n\).</li>
         <li>Let \(f\) be a multiplicative arithmetic function. If \(n\) is a positive integer, then by the fundamental theorem of arithmetic:</li>
-        <MathStuff>{"n = p_1^{a_1} + p_2^{a_2} + \\cdots + p_r^{a_r}"}</MathStuff>
+        <MathStuff>{"\\[n = p_1^{a_1} + p_2^{a_2} + \\cdots + p_r^{a_r}\\]"}</MathStuff>
         <li>Since \(({"p_i^{a_i}, p_j^{a_j}"})=1\) whenever \(i \ne j\), we have:</li>
-        <MathStuff>{"f(n) = f(p_1^{a_1} + p_2^{a_2} + \\cdots + p_r^{a_r}) = f(p_1^{a_1})f(p_2^{a_2}) \\cdots f(p_r^{a_r})"}</MathStuff>
+        <MathStuff>{"\\[f(n) = f(p_1^{a_1} + p_2^{a_2} + \\cdots + p_r^{a_r}) = f(p_1^{a_1})f(p_2^{a_2}) \\cdots f(p_r^{a_r})\\]"}</MathStuff>
       </SubList></li>
       <li>The notation \(\sum_{"{d|n, d \\gt 0}"}\) means "the summation over all distinct positive divisors \(d\) of \(n\)".</li>
       <li>Let \(f\) be an arithmetic function and, for \(n \in \mathbb{"{Z}"}\) with \(n \gt 0\), let \(F(n)= \sum_{"{d|n, d \\gt>0}"} f(d)\). If \(f\) is multiplicative, then \(F\) is multiplicative.</li>
