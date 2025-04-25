@@ -16,7 +16,6 @@ import { QuestionsBox } from './Questions.js';
 const ERROR_VAL = "ERROR";
 const NO_SOURCES = "RENDER_WITHOUT_SOURCES";
 const OFFLINE_MODE = false;
-const DEV_MODE = (!process.env.NODE_ENV || process.env.NODE_ENV === 'development');
 
 class Article extends React.Component {
 
@@ -53,7 +52,7 @@ class Article extends React.Component {
 			}
 		}))
 		.catch(()=>{
-			if (DEV_MODE) {
+			if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
 				import("../private_stuff"+this.pathnameToUse+".js")
 				.then(res => this.setState({
 					wholeContent: {
@@ -81,7 +80,7 @@ class Article extends React.Component {
 			if (!inputObj["sourcesColor"]) this.setState({sourcesList: NO_SOURCES});
 			else {
 				let strInput;
-				if (DEV_MODE)
+				if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development')
 					strInput = require("../private_stuff/private_json_input.js").default(inputObj);
 				else strInput = JSON.stringify(inputObj);
 				//fetch("http://127.0.0.1:8000/study_notes_backend/getList", {
