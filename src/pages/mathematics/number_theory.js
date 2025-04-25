@@ -226,7 +226,7 @@ export const content = <>
         <li>An arithmetic function \(f\) is said to be <b>completely multiplicative</b> if \(f(mn)=f(m)f(n)\) for ALL positive integers \(m\) and \(n\).</li>
       </SubList></li>
       <li>The notation \(\sum_{"{d|n, d \\gt 0}"}\) means "the summation over all distinct positive divisors \(d\) of \(n\)".</li>
-      <li>Let \(f\) be an arithmetic function and, for \(n \in \mathbb{"{Z}"}\) with \(n \gt 0\), let \(F(n)= \sum_{"{d|n, d \\gt 0}"} f(d)\). If \(f\) is multiplicative, then \(F\) is multiplicative.</li>
+      <li>Let \(f\) be an arithmetic function and, for \(n \in \mathbb{"{Z}"}^+\), let \(F(n)= \sum_{"{d|n, d \\gt 0}"} f(d)\). If \(f\) is multiplicative, then \(F\) is multiplicative.</li>
     </ul>
     <ul style={{width: "49%",float: "right",marginLeft: "0.5%", marginRight: "0.5%"}}>
       <li></li>
