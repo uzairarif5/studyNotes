@@ -16,6 +16,7 @@ import { QuestionsBox } from './Questions.js';
 const ERROR_VAL = "ERROR";
 const NO_SOURCES = "RENDER_WITHOUT_SOURCES";
 const OFFLINE_MODE = false;
+const DEV_MODE = (!process.env.NODE_ENV || process.env.NODE_ENV === 'development');
 
 class Article extends React.Component {
 
@@ -40,7 +41,123 @@ class Article extends React.Component {
 		this.state = {sourcesList: null, wholeContent: null, footerEl: null};
 	}
 
-	setFooterEl(){
+	setWholeContent(){
+		import("../pages"+this.pathnameToUse+".js")
+		.then(res => this.setState({
+			wholeContent: {
+				"title": res.title,
+				"content": res.content,
+				"sourcesColor": res.sourcesColor,
+				"sourcesOrder": res.sourcesOrder,
+				"additionalResources": res.additionalResources
+			}
+		}))
+		.catch(()=>{
+			if (DEV_MODE) {
+				import("../private_stuff"+this.pathnameToUse+".js")
+				.then(res => this.setState({
+					wholeContent: {
+						"title": res.title,
+						"content": res.content,
+						"sourcesColor": res.sourcesColor,
+						"sourcesOrder": res.sourcesOrder,
+						"additionalResources": res.additionalResources
+					}
+				}))
+				.catch(()=>{this.setState({wholeContent: ERROR_VAL})});
+			}
+			else this.setState({wholeContent: ERROR_VAL})
+		});
+	}
+
+	setSourcesList(){
+		if (OFFLINE_MODE) this.setState({sourcesList: NO_SOURCES});
+		else {
+			let inputObj = {
+				"sourcesColor": this.state.wholeContent["sourcesColor"],
+				"sourcesOrder": this.state.wholeContent["sourcesOrder"],
+				"additionalResources": this.state.wholeContent["additionalResources"]
+			};
+			if (!inputObj["sourcesColor"]) this.setState({sourcesList: NO_SOURCES});
+			else {
+				let strInput;
+				if (DEV_MODE)
+					strInput = require("../private_stuff/private_json_input.js").default(inputObj);
+				else strInput = JSON.stringify(inputObj);
+				//fetch("http://127.0.0.1:8000/study_notes_backend/getList", {
+				fetch("https://django-apps-38uv.onrender.com/study_notes_backend/getList", {
+					method:"post", 
+					body: strInput
+				})
+				.then(res=>res.text())
+				.then(res=>this.setState({sourcesList: res}))
+				.catch(()=>this.setState({sourcesList: ERROR_VAL}));
+			}
+		}
+	}
+
+	renderMainContent(){
+
+		let references = <section>
+			<h4>Contents:</h4>
+			<ol id='reference'></ol>
+		</section>;
+
+		let SourcesSection = null;
+		if(this.state.sourcesList !== NO_SOURCES){
+			SourcesSection = <section dangerouslySetInnerHTML={{__html:
+				this.state.sourcesList
+			}}></section>;
+		}
+		
+		let mainContent = this.state.wholeContent["content"].props.children;
+		let heading = mainContent[0];
+		let main = <main>{mainContent.slice(1)}</main>;
+		
+		return <HelmetProvider>
+			<Helmet>
+				<title>{this.state.wholeContent["title"]}</title>
+			</Helmet>
+			<div id='article'>
+				<div id="notFooter">
+					{heading}
+					{references}
+					{SourcesSection}
+					{main}
+				</div>
+				{this.state.footerEl}
+				<ImgView/>
+				<QuestionsBox/>
+				<CloseListsButton/>
+				<SideB
+					name={"upButton"}
+					clickFunc={() => {this.mainEl.scrollTo(0,0);}}
+					imageSrc={process.env.PUBLIC_URL+'/webPics/caret-up-solid.svg'}
+					title={"Go Up"}
+				/>
+				<SideB
+					name={"downButton"}
+					clickFunc={()=>{this.mainEl.scrollTo(0, this.mainEl.scrollHeight);}}
+					imageSrc={process.env.PUBLIC_URL+'/webPics/caret-down-solid.svg'}
+					title={"Go Down"}
+				/>
+			</div>
+			<ContactComp/>
+		</HelmetProvider>;
+	}
+
+	render() {
+		let wholeContentValid = this.state.wholeContent && this.state.wholeContent !== ERROR_VAL;
+		let sourcesValid = this.state.sourcesList && this.state.sourcesList !== ERROR_VAL;
+		if (wholeContentValid && sourcesValid){
+			this.allowCleanUp = true;
+			return this.renderMainContent();
+		}
+		return null;
+	}
+
+	//set footer first
+	componentDidMount(){
 		const noWSFooter = <footer>
 			<Link to="/">Home Page</Link>
 			<button onClick={ () => store.dispatch({
@@ -70,114 +187,10 @@ class Article extends React.Component {
 		}
 	}
 
-	setWholeContent(){
-		import("https://cdn.jsdelivr.net/gh/uzairarif5/studyNotes/src/pages/mathematics/calculus.js")
-		.then(module =>
-			console.log(module)
-			//this.setState({wholeContent: {"title": res.title, "content": res.content, "sourcesColor": res.sourcesColor}})
-		)
-		.catch((err)=>
-			console.error(err)
-			//this.setState({wholeContent: ERROR_VAL});
-		);
-	}
-
-	setSourcesList(){
-		if (OFFLINE_MODE) this.setState({sourcesList: NO_SOURCES});
-		else {
-			let inputObj = {
-				"sourcesColor": this.state.wholeContent["sourcesColor"],
-				"sourcesOrder": this.state.wholeContent["sourcesOrder"],
-			};
-			if (!inputObj["sourcesColor"]) this.setState({sourcesList: NO_SOURCES});
-			else {
-				let strInput;
-				if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development'){
-					let newJSON = require("./private_json_input.js").default(inputObj);
-					strInput = JSON.stringify(newJSON);
-				}
-				else strInput = JSON.stringify(inputObj);
-				fetch("https://django-apps-38uv.onrender.com/study_notes_backend/getList", {
-					method:"post", 
-					body: strInput
-				})
-				.then(res=>res.text())
-				.then(res=>this.setState({sourcesList: res}))
-				.catch(()=>this.setState({sourcesList: ERROR_VAL}));
-			}
-		}
-	}
-
-	getElementToRender(){
-		this.allowCleanUp = true;
-
-		let SourcesSection = null;
-		if(this.state.sourcesList !== NO_SOURCES){
-			SourcesSection = <section dangerouslySetInnerHTML={{__html:
-				"<h4>Main Sources:</h4>" +
-				this.state.sourcesList
-			}}></section>;
-		}
-		
-		let additionalReferencesSection = null;
-
-		let mainContent = this.state.wholeContent["content"].props.children;
-		let mainPart;
-		if (mainContent[1].props.id === "additionalResources") {
-			additionalReferencesSection = <section><h4>Additional Resources:</h4>{mainContent[1]}</section>;
-			mainPart = <main>{mainContent.slice(2)}</main>
-		}
-		else mainPart = <main>{mainContent.slice(1)}</main>;
-		
-		return <HelmetProvider>
-			<Helmet>
-				<title>{this.state.wholeContent["title"]}</title>
-			</Helmet>
-			<div id='article'>
-				<div id="notFooter">
-					{mainContent[0]}
-					
-					<section>
-					<h4>Contents:</h4>
-					<ol id='reference'></ol>
-					</section>
-					
-					{SourcesSection}
-					{additionalReferencesSection}
-					{mainPart}
-				</div>
-				{this.state.footerEl}
-				<ImgView/>
-				<QuestionsBox/>
-				<CloseListsButton/>
-				<SideB
-					name={"upButton"}
-					clickFunc={() => {this.mainEl.scrollTo(0,0);}}
-					imageSrc={process.env.PUBLIC_URL+'/webPics/caret-up-solid.svg'}
-					title={"Go Up"}
-				/>
-				<SideB
-					name={"downButton"}
-					clickFunc={()=>{this.mainEl.scrollTo(0, this.mainEl.scrollHeight);}}
-					imageSrc={process.env.PUBLIC_URL+'/webPics/caret-down-solid.svg'}
-					title={"Go Down"}
-				/>
-			</div>
-			<ContactComp/>
-		</HelmetProvider>;
-	}
-
-	render() {
-		if (!this.state.footerEl) this.setFooterEl();
-		else if (!this.state.wholeContent) this.setWholeContent();
-		else if (this.state.wholeContent === ERROR_VAL) return null;
-		else if (!this.state.sourcesList) this.setSourcesList();
-		else if (this.state.sourcesList !== ERROR_VAL) return this.getElementToRender();
-		return null;
-	}
-
 	componentDidUpdate() {
-		if(this.state.wholeContent === ERROR_VAL || this.state.sourcesList === ERROR_VAL){
+		if (!this.state.wholeContent) this.setWholeContent();
+		else if (!this.state.sourcesList) this.setSourcesList();
+		else if(this.state.wholeContent === ERROR_VAL || this.state.sourcesList === ERROR_VAL){
 			alert("Article not found");
 			changeLoadingText("Going To Home Page");
 			this.props.changeAR(false);

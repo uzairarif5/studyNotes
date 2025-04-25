@@ -62,7 +62,6 @@ const HomeCompMemo = memo(()=>{
 		<Link to="language_learning/semantics">Semantics</Link>
 		<Link to="language_learning/madinah_arabic_book_2">Madinah Arabic Book 2</Link>
 		<Link to="language_learning/madinah_arabic_book_3">Madinah Arabic Book 3</Link>
-		<Link to="language_learning/french">French</Link>
 		<Link to="language_learning/korean">Korean</Link>
 		<Link to="language_learning/japanese">Japanese</Link>
 		<h2>Mathematics</h2>
@@ -98,7 +97,7 @@ const HomeCompMemo = memo(()=>{
 		<Link to="blog/saved_resources">Saved Resources</Link>
 		{
 			(!process.env.NODE_ENV || process.env.NODE_ENV === 'development') ?
-			require("./private_links.js").default() :
+			require("./private_stuff/private_links.js").default() :
 			null
 		}
 	</div>

@@ -6,11 +6,9 @@ import { CodePre } from "../../articleRelatedStuff/Code";
 
 export const title = "Deep Learning Notes";
 export const sourcesColor = {8: "#c45645", 9: "#4f94ac"};
+export const additionalResources = [76];
 export const content = <>
 	<h1>Deep Learning Notes</h1>
-	<ol id="additionalResources">
-		<li><a href='https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf'>Pattern Recognition and Machine Learning</a> by Christopher M. Bishop</li>
-	</ol>
 	<h2 id="introduction">Introduction</h2>
 	<div className="content">
 		<div style={{width: "49%",marginLeft: "0.5%",float: "left"}}>

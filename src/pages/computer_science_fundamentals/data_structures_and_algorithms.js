@@ -5,13 +5,11 @@ import { MathStuff } from "../../articleRelatedStuff/MathStuff";
 
 export const title = "Data Structures And Algorithms Notes";
 export const sourcesColor = {19: null, 20: null, 4: "#4f94ac", 21: "rgb(204, 119, 153)", 22: "rgb(0, 129, 0)"};
-export const sourcesOrder = [19, 20, 4, 21, 22]
+export const sourcesOrder = [19, 20, 4, 21, 22];
+export const additionalResources = [73];
 
 export const content = <>
 <h1>Data Structures And Algorithms Notes</h1>
-<ol id="additionalResources">
-	<li><a href='https://coursera.org/share/d8124fd791622db91dba4e4bd9c612fd'>Algorithms, Part 1</a> course on coursera</li>
-</ol>
 
 <h2 id="intro">Introduction</h2>
 <div className="content">

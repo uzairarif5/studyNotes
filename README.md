@@ -46,6 +46,12 @@ This is my first big project that uses React.js and Redux
 
 Versioning is done using "npm version [new-version] --git-tag-version false"
 
+update 21.1:
+- Removed some of my notes.
+- Changed how private data is handled.
+- Changed how to handle additional resources.
+- In `article.js`, changed when the state setting is done.
+
 update 20.5:
 - `c_and_cpp_programming_language.js` is now in `computer_science_fundamentals`.
 

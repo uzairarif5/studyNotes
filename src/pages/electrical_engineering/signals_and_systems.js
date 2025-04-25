@@ -6,11 +6,9 @@ import { MathStuff } from "../../articleRelatedStuff/MathStuff";
 
 export const title = "Signal And Systems Notes";
 export const sourcesColor = {2:"#4f94ac", 1:null,3:null, 4:null};
+export const additionalResources = [77];
 export const content = <>
 	<h1>Signal And Systems Notes</h1>
-	<ol id="additionalResources">
-		<li><a href='https://www.ece.uvic.ca/~frodo/sigsysbook/downloads/signals_and_systems-5.0.pdf'>Signals and Systems</a> (Michael D. Adams)</li>
-	</ol>
 
 	<h2 id="introduction">Introduction</h2>
 	<div className="content">

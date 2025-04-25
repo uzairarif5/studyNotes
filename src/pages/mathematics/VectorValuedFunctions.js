@@ -121,15 +121,16 @@ export default function VectorValuedFunction(){
         <li>The unit normal vector and the binormal vector form a plane that is perpendicular to the curve at any point on the curve, called the <b>normal plane</b>.</li>
         <li>The plane determined by the vectors \(\textbf{"{T}"}\) and \(\textbf{"{N}"}\) forms the <b>osculating plane</b> of \(C\) at any point \(P\) on the curve.</li>
         <li>These three vectors form a frame of reference in three-dimensional space called the <b>Frenet frame of reference</b> (also called the <b>TNB</b> frame).</li>
-        <figure>
-          <ImgComp src={require("./vector_valued_functions_pics/2.jpeg")} width="70%" />
-          <figcaption>This figure depicts a Frenet frame of reference. At every point \(P\) on a three-dimensional curve, the unit tangent, unit normal, and binormal vectors form a three-dimensional frame of reference.</figcaption>
-        </figure>
       </SubList></li>
       <li><b>Osculating circle:</b><SubList>
-        <li><b><u>Osculating circle:</u></b> a circle that is tangent to a curve \(C\) at a point \(P\) and that shares the same curvature.</li>
+        <li><b><u>Osculating circle:</u></b> (of curve \(C\) at point \(P\))<SubList opened>
+          <li>Lies on the osculating plane of \(C\) at \(P\).</li>
+          <li>Has the same curvature as \(C\) at \(P\).</li>
+          <li>Is on the concave side of \(C\).</li>
+          <li>Is tangent to \(C\) at \(P\).</li>
+        </SubList></li>
+        <li>The radius of curvature of the curve is the reciprocal of the curvature (\(r = 1/k\)).</li>
         <li><ImgComp src={require("./vector_valued_functions_pics/3.jpeg")} width="70%" /></li>
-        <li>The curvature of the circle is given by \(1/r\). We call \(r\) the radius of curvature of the curve.</li>
       </SubList></li>
     </ul>
   </div>

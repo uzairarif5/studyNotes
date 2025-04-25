@@ -10,10 +10,6 @@ export const sourcesColor = {50:null, 51: "#3a3", 52:"#c45645"};
 
 export const content = <>
 	<h1><u>My Study Notes:</u> Guide Page</h1>
-	<ol id="additionalResources">
-		<li>Additional Resource 1</li>
-		<li>Additional Resource 2</li>
-	</ol>
 
 	<h2 id="bla">Understanding The Layout Of This Website</h2>
 	<div className="content">

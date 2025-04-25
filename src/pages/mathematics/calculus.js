@@ -1,4 +1,3 @@
-import React from "react";
 import { MathStuff } from "../../articleRelatedStuff/MathStuff"; 
 import SubList from "../../articleRelatedStuff/SubList";
 import { TableLI } from "../../articleRelatedStuff/tableManager";

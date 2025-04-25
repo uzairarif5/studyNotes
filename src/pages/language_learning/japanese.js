@@ -1,13 +1,10 @@
 import SubList from "../../articleRelatedStuff/SubList";
-import { TableLI, TableDiv } from "../../articleRelatedStuff/tableManager";
+import { TableDiv } from "../../articleRelatedStuff/tableManager";
 
 export const title = "My Japanese notes";
-export const sourcesColor = {4:null, 16:"#3a3"};
+export const sourcesColor = {4:null};
 export const content = <>
 <h1>My Japanese Notes</h1>
-<ol id="additionalResources">
-	<li><a href='https://www.renshuu.org'>Renshuu</a></li>
-</ol>
 
 <h2 id="reading">Reading</h2>
 <div className="content">
@@ -548,51 +545,6 @@ export const content = <>
 				</td></tr>
 			</tbody></TableDiv>
 		</div>
-	</div>
-</div>
-
-<h2 id="basics">Basics</h2>
-<div className="content">
-	<div style={{width: "49%", marginLeft: "0.5%", float: "left"}} data-source={16}>
-		<ul>
-			<li>In Japanese, verbs go at the end. Also, Japanese does not have words like "a" or "the":<SubList>
-				<TableLI><tbody>
-					<tr><td>すしです。</td><td>It's sushi.</td></tr>
-					<tr><td>おちゃとすしです。</td><td>It's green tea and sushi.</td></tr>
-					<tr><td>ごはんとおちゃです。</td><td>It's rice and green tea.</td></tr>
-					<tr><td>べんごしです。</td><td>She's a lawyer.</td></tr>
-					<tr><td>かっこいいせんせいです。</td><td>He's a cool teacher.</td></tr>
-					<tr><td>やさしいひとです。</td><td>He's a nice person.</td></tr>
-				</tbody></TableLI>
-			</SubList></li>
-			<li>Use さん after somebody's name to show respect.</li>
-				<li>Greetings like hello and bye comes after the name:<SubList>
-				<TableLI><tbody>
-					<tr><td>けんさん、こんにちは。</td><td>Hello, Ken</td></tr>
-					<tr><td>けんさん、じゃあね。</td><td>Bye, Ken</td></tr>
-					<tr><td>けんさん、どうぞよろしく。</td><td>Nice to meet you, Naomi</td></tr>
-					<tr><td>はなさん、またあした。</td><td>See you tomorrow, Hana</td></tr>
-				</tbody></TableLI>
-			</SubList></li>
-			<li>The は after a word makes it the topic of the sentence:<SubList>
-				<TableLI><tbody>
-					<tr><td>カレーはおいしいです。</td><td>Curry is tasty.</td></tr>
-					<tr><td>これはラーメンです。</td><td>This is ramen.</td></tr>
-					<tr><td>ラーメンはおいしいです。</td><td>Ramen is tasty.</td></tr>
-					<tr><td>それはおちゃです。</td><td>That is green tea.</td></tr>
-				</tbody></TableLI>
-			</SubList></li>
-			<li>To form a question:<SubList>
-				<li>Putting か at the end of a sentence turns a statement into a question. A period is still used.</li>
-				<li>Most questions words come right before ですか.</li>
-				<TableLI><tbody>
-					<tr><td>ホテルは<b>ここ</b>ですか。</td><td>Is the hotel here?</td></tr>
-					<tr><td>ホテルは<b>どこ</b>ですか。</td><td>Where's the hotel?</td></tr>
-				</tbody></TableLI>
-			</SubList></li>
-		</ul>
-	</div>
-	<div style={{width: "49%", marginRight: "0.5%", float: "right"}}>
 	</div>
 </div>
 
