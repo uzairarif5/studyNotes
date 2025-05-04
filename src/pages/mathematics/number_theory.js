@@ -18,11 +18,15 @@ export const content = <>
         <li><a href='https://en.wikipedia.org/wiki/Diophantine_equation'>A <b>Diophantine equation</b> is an equation, typically a polynomial equation in two or more unknowns with integer coefficients, for which only integer solutions are of interest.</a></li>
         <li><u>Example:</u> The Pythagorean Theorem results in triples (3, 4, 5), (5, 12, 13), (7, 24, 25), (8, 15, 17), etc.</li>
       </SubList></li>
+      <li>Divisibility:<SubList>
+        <li><a href='https://en.wikipedia.org/wiki/Divisor'>An integer \(n\) is divisible by a nonzero integer \(m\) if there exists an integer \(k\) such that \(n=km\). This is written as \(m | n\).</a></li>
+        <li data-source={35}>\({"a|b, a|c \\implies a|(bx + cy) \\ \\forall x, y"}\) where \({"a, b, c, x, y \\in \\mathbb{Z}"}\) .</li>
+      </SubList></li>
       <li data-source={54}><b>Prime Numbers:</b><SubList>
         <li data-source={35}>A <b>prime number</b> is an integer \({"p > 1"}\) such that it cannot be written as \(p = ab\) with \({"a, b > 1"}\).</li>
-        <li data-source={35}>If \(p\) is prime and \(p|ab\), then \(p|a\) or \(p|b\) (<a href='https://www.deriveit.net/discrete_mathematics/divisibility_and_gcd/gcdLemma7'>proof</a>).</li>
+        <li data-source={35}>If \(p\) is prime and \(p|ab\), then \(p|a\) or \(p|b\).</li>
         <li data-source={35}><b>Fundamental Theorem of Arithmetic:</b> Every positive integer can be written as a product of primes (possibly with repetition).</li>
-        <li>Let \(n\) be a composite number, then \(n\) has a prime divisor \(p\) with \(p \le \sqrt{"{n}"}\) (<a href='https://www.deriveit.net/discrete_mathematics/prime_numbers/nCompositeSoPrimeDivisorLessThanRootN'>proof</a>).</li>
+        <li>Let \(n\) be a composite number, then \(n\) has a prime divisor \(p\) with \(p \le \sqrt{"{n}"}\).</li>
         <li><u>Sieve of Eratosthenes:</u><SubList>
           <li>Suppose we wish to find all prime numbers less than or equal to 50. Any composite less than or equal to 50 must have a prime divisor less than or equal to \(\sqrt{"{50}"}\), which is around 7.07.</li>
           <li>The prime numbers less than 7.07 are 2, 3, 5 and 7. In a list of integers from 2 to 50, we can delete all multiples of 2, 3, 5 and 7.</li>
@@ -46,7 +50,7 @@ export const content = <>
           </TableLI>
           <li>Any number remaining in the list is not divisible by 2, 3, 5 or 7, and cannot be composite.</li>
         </SubList></li>
-        <li>For any positive integer \(n\), there are at least \(n\) consecutive composite positive integers (<a href='https://www.deriveit.net/discrete_mathematics/prime_numbers/nConsecutiveCompositeInteger'>proof</a>).</li>
+        <li>For any positive integer \(n\), there are at least \(n\) consecutive composite positive integers.</li>
         <li><b>Twin Prime Conjecture:</b> There are infinitely many prime numbers \(p\) for which \(p+2\) is also a prime number.</li>
         <li><b>Prime Number Theorem:</b><SubList>
           <li>Let \(\pi (x)\) be a function that outputs the number of prime numbers less than or equal to \(x\).</li>
@@ -62,26 +66,26 @@ export const content = <>
         <li>There are infinite primes expressible in the form \(4n+3\) (<a href='https://www.deriveit.net/discrete_mathematics/prime_numbers/infinite_primes_4k_plus_3'>proof</a>).</li>
         <li>If \(n \gt 1\), then \(n\) is said to be <b>powerful</b> if all exponents in it's prime factorization are at least 2. A powerful number is a product of a square number and a cube number (<a href='https://www.deriveit.net/discrete_mathematics/prime_numbers/powerful_from_square_and_cube'>proof</a>).</li>
       </SubList></li>
-      <li data-source={35}><b>Binomial Coefficient</b>:<SubList>
-        <li>\(n(n - 1)(n - 2). . . 1 = n!\) is number of ways to order \(n\) objects.</li>
-        <li>The <b>Binomial Coefficient</b> is number of ways to pick \(k\) of \(n\) objects.</li>
-        <MathStuff>$${"\\binom{n}{k}=\\frac{n!}{(n-k)!k!}"}$$</MathStuff>
-        <li>This is used in the <b>binomial theorem</b>:</li>
-        <MathStuff>$${"(x+y)^n=\\sum^n_{k=0}\\binom{n}{k}x^{k}y^{n-k}"}$$</MathStuff>
-        <li>See <a href='https://www.youtube.com/watch?v=2pYzly7jLqs'>this video</a> to understand the binomial theorem.</li>
-      </SubList></li>
     </ul>
     <div style={{width: "49%",float: "right",marginLeft: "0.5%", marginRight: "0.5%"}} data-source={35}>
       <ul>
-        <li data-source={54}>Divisors and multiples:<SubList>
-          <li data-source={35}>\({"a|b, a|c \\implies a|(bx + cy) \\ \\forall x, y"}\) where \({"a, b, c, x, y \\in \\mathbb{Z}"}\) (<a href='https://www.deriveit.net/discrete_mathematics/divisibility_and_gcd/divisibility1'>proof</a>).</li>
+        <li data-source={35}><b>Binomial Coefficient</b>:<SubList>
+          <li>\(n(n - 1)(n - 2). . . 1 = n!\) is number of ways to order \(n\) objects.</li>
+          <li>The <b>Binomial Coefficient</b> is number of ways to pick \(k\) of \(n\) objects.</li>
+          <MathStuff>$${"\\binom{n}{k}=\\frac{n!}{(n-k)!k!}"}$$</MathStuff>
+          <li>This is used in the <b>binomial theorem</b>:</li>
+          <MathStuff>$${"(x+y)^n=\\sum^n_{k=0}\\binom{n}{k}x^{k}y^{n-k}"}$$</MathStuff>
+          <li>See <a href='https://www.youtube.com/watch?v=2pYzly7jLqs'>this video</a> to understand the binomial theorem.</li>
+        </SubList></li>
+        <li data-source={54}>gcd and lcm:<SubList>
           <li data-source={35}>\({"\\gcd(a, b)"}\) is the greatest common divisor of \({"a"}\) and \({"b"}\). It can also be represented as \({"(a, b)"}\). <a href='https://math.libretexts.org/Bookshelves/Combinatorics_and_Discrete_Mathematics/A_Spiral_Workbook_for_Discrete_Mathematics_(Kwong)/05%3A_Basic_Number_Theory/5.05%3A_More_on_GCD'>Every linear combination of \({"a"}\) and \({"b"}\) is a multiple of \({"\\gcd(a,b)"}\)</a>.</li>
           <li data-source={35}>If \((a, b) = 1\), then \(a\) and \(b\) are <b>coprime</b> <span data-source={54}>or <b>relatively prime</b></span>.</li>
-          <li>Let \((a, b) = d\), then \((a/d, b/d) = 1\) (<a href='https://www.deriveit.net/discrete_mathematics/divisibility/gcdLemma8'>proof</a>).</li>
-          <li> Smallest possible linear combination of \(a\) and \(b\) is \((a, b)\) (<a href='https://www.deriveit.net/discrete_mathematics/divisibility/linear_combination_smallest_gcd'>proof</a>).</li>
-          <li data-source={35}>If \((a, m) = 1\) and \((b, m) = 1\), then \((ab, m) = 1\) (<a href='https://www.deriveit.net/discrete_mathematics/divisibility_and_gcd/multiplicative'>proof</a>).</li>
-          <li data-source={35}>If \(c|ab\) and \((c, a) = 1\), then \(c|b\) (<a href='https://www.deriveit.net/discrete_mathematics/divisibility_and_gcd/other'>proof</a>).</li>
+          <li>Let \((a, b) = d\), then \((a/d, b/d) = 1\).</li>
+          <li> Smallest possible linear combination of \(a\) and \(b\) is \((a, b)\).</li>
+          <li data-source={35}>If \((a, m) = 1\) and \((b, m) = 1\), then \((ab, m) = 1\).</li>
+          <li data-source={35}>If \(c|ab\) and \((c, a) = 1\), then \(c|b\).</li>
           <li>Let \((a_1,a_2,\ldots,a_n)=1\), then \(a_1,a_2,\ldots,a_n\) are said to be <b>relatively prime</b>. If \((a_i,a_j)=1\) for all pairs \(i\) and \(j\) with \(i \ne j\), then \(a_1,a_2,\ldots,a_n\) are said to be <b>pairwise relatively prime</b>.</li>
+          <li className="ownExplanation">If \((a,b)=1\), then \((a,b+ka)=1\) where \(k\) is any integer.</li>
           <li>The <b>least common multiple</b> of \(a\) and \(b\), denoted \([a,b]\), is the least positive integer \(m\) such that \(a|m\) and \(b|m\).</li>
           <li>Let \({"a={p_1}^{a_1}{p_2}^{a_2}\\ldots{p_n}^{a_n}"}\) and let \({"b={p_1}^{b_1}{p_2}^{b_2}\\ldots{p_n}^{b_n}"}\), then:</li>
           <MathStuff>$${`\\begin{align}
@@ -169,7 +173,7 @@ export const content = <>
         <li data-source={54}>The set \({"\\{ 0, 1, 2, \\ldots, m-1 \\} "}\) is said to be the <b>set of least nonnegative residues modulo m</b>.</li>
         <li data-source={4}>If \((a, m) = 1\) and if \({"\\{r^1, \\ldots, r^{φ(m)} \\}"}\) is a reduced residue system (modulo \(m\)), then \({"\\{ ar^1, \\ldots, ar^{φ(m)} \\}"}\) is also a reduced residue system.</li>
         <li data-source={35}>The number of elements in a reduced residue system mod \(m\) is called <b>Euler's totient function</b>: \(\phi(m)\).</li>
-        <li data-source={4}>A <b>totative</b> of a given positive integer \(m\) is an integer \(k\) such that \(0 \lt k \le m\) and \(k\) is coprime to \(m\). Euler's totient function \(\phi(m)\) counts the number of totatives of \(m\).</li>
+        <li data-source={4}>A <b>totative</b> of a given positive integer \(m\) is an integer \(k\) such that \(1 \le k \le m\) and \(k\) is coprime to \(m\). Euler's totient function \(\phi(m)\) counts the number of totatives of \(m\).</li>
         <li data-source={35}><b>Euler's Theorem:</b> If \((a, m) = 1\), then \({"a^{\\phi(m)} ≡ 1 \\bmod m"}\).</li>
       </SubList></li>
       <li>If \(p\) is prime and \((a^2 ≡ a \bmod p)\), then \((a ≡ 0)\) or \((a ≡ 1)\).</li>
@@ -200,7 +204,6 @@ export const content = <>
         <li>If \(n\) is a composite integer and let \(b\) be a postive integer. If \(b^n ≡ b \bmod n\), then \(n\) is a pseudoprime to the base \(b\). If the base is not specified, then it is assumed that the base is 2.</li>
         <li>If \(n\) is a pseudoprime, then \(2^n - 1\) is also a pseudoprime.</li>
         <li>If \(n\) is a composite integer, and \(b^n ≡ b \bmod n\) for all integers \(b\), then \(n\) is an <b>absolute pseudoprime</b> or <b>Carmichael number</b>. If \((b, n) = 1\), then \(b^{"{n-1}"} ≡ 1 \bmod n\).</li>
-        <li></li>
       </SubList></li>
       <li data-source={35}><b>Freshman's dream:</b> \((x + y)^p ≡ x^p + y^p (\bmod p)\) where \(x\) and \(y\) are integers and \(p\) is prime.</li>
       <li data-source={54}><b>Chinese Remainder Theorem:</b><SubList>
@@ -227,6 +230,8 @@ export const content = <>
       </SubList></li>
       <li>The notation \(\sum_{"{d|n, d \\gt 0}"}\) means "the summation over all distinct positive divisors \(d\) of \(n\)".</li>
       <li>Let \(f\) be an arithmetic function and, for \(n \in \mathbb{"{Z}"}^+\), let \(F(n)= \sum_{"{d|n, d \\gt 0}"} f(d)\). If \(f\) is multiplicative, then \(F\) is multiplicative.</li>
+      <li>The Euler phi function (\(\phi(n)\)) is multiplicative.</li>
+      <li>If \(p\) is prime, then \(\phi(p^a) = p^a -p^{"{a-1}"}\).</li>
     </ul>
     <ul style={{width: "49%",float: "right",marginLeft: "0.5%", marginRight: "0.5%"}}>
       <li></li>
