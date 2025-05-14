@@ -1,4 +1,6 @@
-@import "src/variables.css";
+:root{
+  --maxWidthForMobile: 700px;
+}
 
 @font-face {
   font-family: 'main';
@@ -130,6 +132,6 @@
   }
 }
 
-@media screen and (max-device-width: var(--maxWidthForMobile)){
+@media screen and (max-device-width: 700px){
   #loadingText{font-size: 28px;width: 350px;}
 }

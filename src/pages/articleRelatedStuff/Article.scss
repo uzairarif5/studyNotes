@@ -1,4 +1,4 @@
-@import "../../variables.css";
+@use "../../variables.scss";
 
 #article{
 	word-break: keep-all;
@@ -498,7 +498,7 @@
 	}
 }
 
-@media screen and (max-width: var(--maxWidthForMobile)){
+@media screen and (max-width: variables.$maxWidthForMobile){
 	#article{
 		border-right: none;
 		#notFooter{

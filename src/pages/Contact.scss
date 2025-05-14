@@ -1,4 +1,4 @@
-@import "../variables.css";
+@use "../variables.scss";
 
 #contactDialog{
   border-radius: 15px;
@@ -48,11 +48,9 @@
     background-color: rgba($color: #000000, $alpha: 0);
     color: black;
   }
-
 }
 
-
-@media screen and (max-device-width: var(--maxWidthForMobile)){
+@media screen and (max-device-width: variables.$maxWidthForMobile){
   #contactDialog{
     #fieldContainer{
       grid-template-columns: 100%;

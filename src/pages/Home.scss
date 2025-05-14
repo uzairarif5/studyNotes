@@ -1,4 +1,4 @@
-@import "../variables.css";
+@use "../variables.scss";
 
 #homeWrapper{
 	border-right: solid 3px #612;
@@ -126,7 +126,7 @@
 	}
 }
 
-@media screen and (max-device-width: var(--maxWidthForMobile)){
+@media screen and (max-device-width: variables.$maxWidthForMobile){
 	#homeWrapper{
 		border: none;
 
