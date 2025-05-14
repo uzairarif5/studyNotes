@@ -133,5 +133,8 @@
 }
 
 @media screen and (max-device-width: 700px){
-  #loadingText{font-size: 28px;width: 350px;}
+  #loadingText{
+    font-size: 28px !important;
+    width: 350px !important;
+  }
 }
