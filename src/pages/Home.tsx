@@ -9,6 +9,8 @@ import ContactComp from "./ContactComp.tsx";
 //@ts-ignore
 import store from "../reduxStuff/store";
 
+const developmentMode = import.meta.env.MODE === 'development';
+
 export default function Home(){
   const [licenseCompDisVal, setLCD] = useState('none');
   
@@ -40,20 +42,28 @@ export default function Home(){
   </div>;
 }
 
-type PrivatePagesType = JSX.Element | null;
+type StateType = JSX.Element | null;
 const HomeMain = ()=>{
-  const [privatePages, changePP]: [PrivatePagesType, Dispatch<SetStateAction<PrivatePagesType>>] = useState<PrivatePagesType>(null);
+  const [privatePages, changePP]: [StateType, Dispatch<SetStateAction<StateType>>] = useState<StateType>(null);
+  const [phoneHeader, changePH]: [StateType, Dispatch<SetStateAction<StateType>>] = useState<StateType>(null);
 
   useEffect(()=> {
-		if(!process.env.NODE_ENV || process.env.NODE_ENV === 'development'){
-			import("../privateFuncs/private_links").then((res)=>{
-        changePP(res.default());
-      })
+		if(developmentMode){
+      /*@vite-ignore */
+			import("../privateFuncs/private_links")
+      .then((res)=>{changePP(res.default());})
     }
+
+    if(window.screen.width <= 700)
+      changePH(<div id='svgContainer'><svg height="30px" width="100%" viewBox="0 0 100 100"  preserveAspectRatio="none">
+        <path d="M0,0 L0,50 Q25,100 50,50 75,0 100,50 L 100,0" vectorEffect="non-scaling-stroke" strokeWidth="3" stroke="#913213" fill="#913213" />
+        <path d="M0,50 Q25,100 50,50 75,0 100,50 " vectorEffect="non-scaling-stroke" strokeWidth="3" stroke="#692112" fill="none"/>
+      </svg></div>);
 	},[]);
 
   return <div id="home">
     <h1>My Study Notes</h1>
+    {phoneHeader}
     <h2>Language Learning</h2>
     <Link to="language_learning/semantics">Semantics</Link>
     <Link to="language_learning/madinah_arabic_book_2">Madinah Arabic Book 2</Link>

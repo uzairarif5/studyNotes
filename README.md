@@ -2,7 +2,7 @@
 
 This is my first big project that uses React.js and Redux
 
-![Vite](https://img.shields.io/badge/vite-white?style=for-the-badge&logo=vite)  ![React JS](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB")  ![Redux](https://img.shields.io/badge/Redux-252525?style=for-the-badge&logo=redux&logoColor=7f51cb)  ![Django](https://img.shields.io/badge/django-113527?style=for-the-badge&logo=django&logoColor=white)
+![Vite](https://img.shields.io/badge/vite-white?style=for-the-badge&logo=vite)  ![React JS](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB")  ![Redux](https://img.shields.io/badge/Redux-252525?style=for-the-badge&logo=redux&logoColor=7f51cb)  ![PostgreSQL](https://img.shields.io/badge/postgresql-white?style=for-the-badge&logo=postgresql)
 
 ## Basic Use Guide:
 - First page (from Home.js [1]) will show all the topics
@@ -45,6 +45,10 @@ This is my first big project that uses React.js and Redux
 ## Updates:
 
 Versioning is done using "npm version [new-version] --git-tag-version false".
+
+update 22.2:
+- Made some build error fixes.
+- Some things from the `CRA` version was not added, so that is done now.
 
 update 22.1:
 - Changed from `CRA` to `vite`. This changed a lot of structural changes.
