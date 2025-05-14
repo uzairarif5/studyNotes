@@ -1,0 +1,135 @@
+@import "src/variables.css";
+
+@font-face {
+  font-family: 'main';
+  src: url('/fonts/Gabriela-Regular.ttf');
+}
+@font-face {
+  font-family: 'defaultTextF';
+  src: url('/fonts/Livvic-Medium.ttf');
+}
+@font-face {
+  font-family: 'defaultTextFBold';
+  src: url('/fonts/Livvic-Black.ttf');
+}
+@font-face {
+  font-family: 'defaultArabicF';
+  src: url('/fonts/ScheherazadeNew-Regular.ttf');
+  unicode-range: U+0600-06FF;
+}
+@font-face {
+  font-family: 'defaultKoreanF';
+  src: url('/fonts/NanumSquareNeoOTF-Rg.otf');
+}
+
+@keyframes reveal{
+  from{opacity: 100%;}
+  to{opacity: 0%;}
+}
+
+@keyframes goHigh{
+  0% {height: 40px;}
+  25% {height: 46px;}
+  50% {height: 40px;}
+  100% {height: 40px;}
+}
+
+*{
+	box-sizing: border-box;
+	
+	&[dir='rtl']{
+		text-align: right;
+	}
+
+	&::-webkit-scrollbar {
+		width: 10px;
+	}
+	&::-webkit-scrollbar-track {
+		background: #832;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: #b65;
+	}
+	&::-webkit-scrollbar-thumb:hover {
+		background: #b75;
+	}
+	&::-webkit-scrollbar-corner {
+		background: #832;
+	}
+
+  .MJX_ToolTip, .MJX_LiveRegion, .MJX_HoverRegion{
+    background-color: transparent !important;
+  }
+
+  body{
+    box-sizing: border-box;
+    margin:0;
+    overflow: hidden;
+    -webkit-text-size-adjust: 100%;
+
+    .removeLoading{
+      animation-name: reveal;
+      animation-fill-mode: forwards;
+      animation-duration: 1s;
+    }
+
+    #loading{
+      position:fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+      height: calc(100% + 100px);
+      width: 100%;
+      background-color: #deb887;
+      top: -50px;
+      left: 0;
+      user-select: none;
+
+      #loadingText{
+        display: none;
+        font-family: 'main';
+        font-size: 35px;
+        border-top-style: solid;
+        border-bottom-style: solid;
+        border-width: 2px;
+        padding: 0px 30px;
+        align-items: center;
+        margin-bottom: 10px;
+        justify-content: center;
+        height: 60px;
+        overflow: hidden;
+        width: 440px;
+
+        #loadingMainText{
+          line-height: 56px;
+          padding-right: 1px;
+        }
+        #dot1{
+          animation: goHigh 1s linear 0s infinite normal;
+        }
+        #dot2{
+          animation: goHigh 1s linear 0.25s infinite normal;
+        }
+        #dot3{
+          animation: goHigh 1s linear 0.5s infinite normal;
+        }
+      }
+    }
+
+    #root{
+      scroll-behavior: smooth;
+      min-height: 100vh;
+      width: 100%;
+      height: 100vh;
+      position: absolute;
+      overflow:auto;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+
+@media screen and (max-device-width: var(--maxWidthForMobile)){
+  #loadingText{font-size: 28px;width: 350px;}
+}

@@ -1,0 +1,411 @@
+
+@font-face {
+	font-family: 'questionTextF';
+	src: url('/fonts/Capriola-Regular.ttf');
+}
+@font-face {
+	font-family: 'ansTextF';
+	src: url('/fonts/Itim-Regular.ttf');
+}
+@font-face {
+	font-family: 'ansKoreanF';
+	src: url('/fonts/SourceHanSerifK-Medium.otf');
+}
+
+#worksheetWrap{
+	border-right: solid 3px #612;
+	padding-bottom: 20px;
+
+	#settings{
+		font-family: "questionTextF";
+		width: 100%;
+		height: 45px;
+		background-color: rgb(52, 22, 12);
+		margin: 0px;
+		color: rgb(189, 115, 82);
+		border-bottom: rgb(35, 15, 5) solid 5px;
+		box-sizing: content-box;
+		position: sticky;
+		position: -webkit-sticky;
+		top: 0;
+		z-index: 1;
+		user-select: none;
+		label{
+			padding-left: 40px;
+			padding-right: 10px;
+			font-size: 20px;
+			line-height: 45px;
+			vertical-align: middle;
+		}
+		#optionSelected{
+			background-color: rgb(35, 15, 5);
+			border: rgb(189, 115, 82) 2px solid;
+			border-radius: 10px;
+			padding: 0px;
+			outline: none;
+			color: rgb(189, 115, 82);
+			font-size: 14px;
+			line-height: 25px;
+			height: 25px;
+			padding-left: 5px;
+			vertical-align: middle;
+			box-sizing: content-box;
+			display: inline-block;
+			cursor: pointer;
+			position: relative;
+
+			span{
+				width: 160px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: inline-block;
+				white-space: nowrap;
+			}
+
+			img{
+				fill: rgb(189, 115, 82);
+				display: inline-block;
+				vertical-align: top;
+				padding-left: 2px;
+				height: 22px;
+				padding-right: 5px;
+			}
+		}
+		#optionsContainer{
+			background-color: rgb(35, 15, 5);
+			border: rgb(189, 115, 82) 2px solid;
+			border-radius: 10px;
+			outline: none;
+			width: 150px;
+			color: rgb(189, 115, 82);
+			font-size: 14px;
+			line-height: 25px;
+			box-sizing: content-box;
+			height: fit-content;
+			padding: 0px 5px;
+			display: none;
+			position: absolute;
+			left:120px;
+			div{
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				cursor: pointer;
+			}
+			div:hover{
+				padding-left: 6px;
+			}
+		}
+		#ansCheckBox{
+			border: rgb(189, 115, 82) solid 2px;
+			height: 25px;
+			width: 25px;
+			display: inline-block;
+			vertical-align: middle;
+			cursor: pointer;
+			border-radius: 4px;
+		}
+	}
+
+	#sideButtons{
+		div{
+			border: #612 solid 5px;
+			background-color: #832;
+			border-radius: 10px;
+			position: fixed;
+			opacity: 0.8;
+			width: 50px;
+			height: 50px;
+			cursor: pointer;
+			user-select: none;
+			box-sizing: border-box;
+			&:hover{
+				opacity: 1;
+			}
+			a{
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+			}
+			img{
+				position: absolute;
+				margin: 5px;
+				max-height: 30px;
+				max-width: 30px;
+			}
+		}
+		#bookButton{
+			top: 60px;
+			left: 25px;
+			z-index: 1;
+		}
+		#homeButton{
+			top: 120px;
+			left: 25px;
+			z-index: 1;
+		}
+	}
+
+	#pageButtons{
+		div{
+			border-radius: 10px;
+			position: fixed;
+			top: 220px;
+			opacity: 0.8;
+			cursor: pointer;
+			user-select: none;
+			width: 50px;
+			justify-content: center;
+			box-sizing: content-box;
+			&:hover{
+				opacity: 1;
+			}
+			img{
+				height: 50px;
+				margin: 80px 10px;
+			}
+		}
+		#goLeft{
+			left: 25px;
+			border-left: #612 solid 5px;
+			background-image: linear-gradient(to right, #832, transparent);
+			text-align: right;
+			z-index: 1;
+		}
+		#goRight{
+			right: 25px;
+			border-right: #612 solid 5px;
+			background-image: linear-gradient(to left, #832, transparent);
+			z-index: 1;
+		}
+	}
+
+	#workSheet{
+		margin: auto;
+		margin-top: 20px;
+		background-color: #deb887;
+		position: flex;
+		flex-direction: column;                
+		width: 850px;
+		height: 1202px;
+
+		#topicDiv{
+			font-family: "questionTextF";
+			display: none;
+			line-height: 50px;
+			font-size: 20px;
+			width: 100%;
+			padding: 0px 15px;
+			vertical-align: middle;
+			color: rgb(200, 150, 100);
+			font-weight: bold;
+			border-top: 3px rgb(80, 40, 20) solid;
+			text-overflow: ellipsis;
+			overflow: hidden;
+
+			span{
+				font-style: italic;
+			}
+		}
+
+		#workSheetInner{
+			border: 3px rgb(200, 150, 100) solid;
+			overflow: hidden;
+			padding-bottom: 1143px;
+			height: 1202px;
+
+			h1{
+				font-family: "main";
+				font-size: 46px;
+				margin: 160px 20px 30px 20px;
+				text-align: center;
+				text-transform:capitalize;
+				padding: 0px;
+			}
+			#userInfo{
+				padding: 0px 15px;
+				text-align: left;
+				display:grid;
+				grid-template-columns: 24% 24% 24% 24%;
+				justify-content: space-around;
+				margin-top: 50px;
+
+				p{
+					font-family: "questionTextF";
+					margin: 0;
+					padding: 0;
+					font-size: 16px;
+				}
+			}
+			h2{
+				font-family: "main";
+				font-size: 28px;
+				text-align: left;
+				padding: 0px 15px;
+				margin: 30px 0px 0px 0px;
+				text-decoration:underline;
+				counter-reset: qNum;
+			}
+			br{
+				line-height: 20px;
+				height: 20px;
+				display: block;
+				content: " ";
+			}
+			table{
+				margin: 20px auto 10px auto;
+				border-collapse: collapse;
+				width: 50%;
+				caption{
+					font-family: "questionTextF";
+					background-color: rgb(100, 50, 30);
+					line-height: 22px;
+					font-size: 16px;
+					color: #ddaa77;
+					border: rgb(100, 50, 30) solid 2px;
+				}
+				th{
+					font-family: "questionTextF";
+					font-size: 18px;
+					line-height: 22px;
+					background-color: #cc945c;
+					border: rgb(100, 50, 30) solid 2px;
+		
+				}
+				td{
+					font-family: "questionTextF";
+					font-size: 18px;
+					padding-left: 2px;
+					line-height: 22px;
+					background-color: #ddaa77;
+					border: rgb(100, 50, 30) solid 2px;
+				}
+				td[ansType="true"]{
+					font-family: "ansTextF","ansKoreanF";
+					font-size: 19px;
+					overflow: hidden;
+				}
+			}
+			p, ol, ul, div.question{
+				font-family: "questionTextF","defaultKoreanF";
+				line-height: 24px;
+				letter-spacing: 0;
+				position: relative;
+			}
+			p{
+				padding: 0px 40px;
+				margin: 20px 0px 0px 0px;
+				font-size: 18px;
+			}
+			.question::before{
+				counter-increment: qNum;
+				position: absolute;
+				width: 38px;
+				left: 0px;
+				font-size: 16px;
+				letter-spacing: 0px;
+				text-align: right;
+				content: counter(qNum) ")";
+			}
+			.question br{
+				line-height: 5px;
+				height: 5px;
+				display: block;
+				content: " ";
+			}
+			ol, ul{
+				padding: 0px 0px 0px 40px;
+				margin:0px 60px 0px 20px;
+				font-size: 16px;
+				counter-reset: olCounter;
+
+				li{
+					margin: 0px;
+					padding: 0;
+					padding-top: 4px;
+				}
+			}
+			ol[type="a"] li{
+				list-style-type: none;
+				counter-increment: olCounter;
+			}
+			ol[type="a"] li::before{
+				content: counter(olCounter, lower-alpha) ")";
+				left: 18px;
+				position: absolute;
+			}
+			.fillInTheBlank{
+				border-bottom: black 1px solid;
+				font-family: "ansTextF","ansKoreanF";
+				padding: 0px 4px;
+				font-size: 20px;
+				line-height: 24px;
+				overflow: hidden;
+			}
+			.questionForFullWidthBlank{
+				padding-top: 12px;
+				display: block;
+			}
+			.fullWidthBlank{
+				font-family: "ansTextF","ansKoreanF";
+				font-size: 20px;
+				line-height: 26px;
+				display: inline-block;
+				vertical-align: top;
+				width: 100%;
+				background-size: 100% 26px;
+				background-image: linear-gradient(transparent 95%,black 100%);
+			}
+			.conversation{
+				list-style-type: none;
+				font-style: italic;
+			}
+			.boxAnswer{
+				font-family: "ansTextF","ansKoreanF";
+				font-size: 19px;
+				line-height: 22px;
+				margin: 0px 4%;
+				padding: 2px;
+				border: 2px solid rgba(0,0,0,0.3);
+				background-color: #f0d4a0;
+				margin-top: 15px;
+				overflow: hidden;
+				
+				img{
+					-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+					filter: grayscale(100%);
+					margin: 6px auto;
+					display: block;
+					height: 220px;
+					max-width: 90%;
+					object-fit: contain;
+				}
+				br{
+					height: 4px;
+					line-height: 4px;
+				}
+				sub{
+					vertical-align: bottom;
+					position: relative;
+					bottom: -0.3em;
+				}
+			}
+			div::after{
+				clear: both;
+				content: " ";
+				width: 100%;
+				display: block;
+			}
+			#testingDiv{
+				position: absolute;
+				height: 50px;
+				width: 200px;
+				background-color: red;
+				top: 1175px;
+				left: 100px;
+			}
+		} 
+	}
+}

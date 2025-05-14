@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="/logo.png" rel="icon"/>
+    <link rel="stylesheet" href="./index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A collection of my study notes (by Uzair Arif)"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax = {
+        options: {
+          menuOptions: {
+            settings: {
+              assistiveMml: false
+            }
+          }
+        }
+      };
+    </script>
+    <script>
+      document.fonts.ready.then(()=>document.getElementById("loadingText").style.display="flex");
+    </script>
+  </head>
+  <body>
+    <div style="display: none;">
+      \(\require{braket}\)
+      \(\newcommand\mycolv[1]{\begin{bmatrix}#1\end{bmatrix}}\)
+    </div>
+    <div id="loading">
+      <div id="loadingText">
+        <span id="loadingMainText">Loading</span>
+        <span id="dot1">.</span>
+        <span id="dot2">.</span>
+        <span id="dot3">.</span>
+      </div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
