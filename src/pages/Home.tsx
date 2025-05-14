@@ -9,8 +9,6 @@ import ContactComp from "./ContactComp.tsx";
 //@ts-ignore
 import store from "../reduxStuff/store";
 
-const developmentMode = import.meta.env.MODE === 'development';
-
 export default function Home(){
   const [licenseCompDisVal, setLCD] = useState('none');
   
@@ -48,8 +46,7 @@ const HomeMain = ()=>{
   const [phoneHeader, changePH]: [StateType, Dispatch<SetStateAction<StateType>>] = useState<StateType>(null);
 
   useEffect(()=> {
-		if(developmentMode){
-      /*@vite-ignore */
+		if(import.meta.env.DEV){
 			import("../privateFuncs/private_links")
       .then((res)=>{changePP(res.default());})
     }

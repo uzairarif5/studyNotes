@@ -13,7 +13,6 @@ import { ImgView } from './ImgView';
 //@ts-ignore
 import store from "../../reduxStuff/store.js";
 
-const developmentMode = import.meta.env.MODE === 'development';
 const modules = import.meta.glob(['../articlePages/*/*.tsx','../articlePages/guide.tsx','../privatePages/*/*.tsx']);
 const ERROR_VAL = "ERROR";
 const NO_SOURCES = "RENDER_WITHOUT_SOURCES";
@@ -119,7 +118,7 @@ class Article extends React.Component<PropsType> {
       };
       if (!inputObj["sourcesColor"]) this.setState({sourcesList: NO_SOURCES});
       else {
-        if (developmentMode)
+        if (import.meta.env.DEV)
           import("../../privateFuncs/private_json_input.ts")
           .then(res => setSourcesListInner(res.default(inputObj)));
         else {
