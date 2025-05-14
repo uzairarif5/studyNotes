@@ -41,7 +41,6 @@ class Article extends React.Component<PropsType> {
   pathnameToUse: string = "";
   allowCleanUp: boolean = false;
   state: ArticleState = {sourcesList: null, wholeContent: null, footerEl: null};
-  isMobile: boolean = false;
 
   constructor(props: PropsType) {
     super(props);
@@ -119,6 +118,7 @@ class Article extends React.Component<PropsType> {
       if (!inputObj["sourcesColor"]) this.setState({sourcesList: NO_SOURCES});
       else {
         if (import.meta.env.DEV)
+          //@ts-ignore
           import("../../privateFuncs/private_json_input.ts")
           .then(res => setSourcesListInner(res.default(inputObj)));
         else {
@@ -206,8 +206,8 @@ class Article extends React.Component<PropsType> {
       })}>Contact Us</button>
     </footer>;
 
-    this.isMobile = window.screen.width <= parseInt(getComputedStyle(document.documentElement).getPropertyValue("--maxWidthForMobile"));
-    if(this.isMobile)
+    let isMobile: boolean = window.screen.width <= parseInt(getComputedStyle(document.documentElement).getPropertyValue("--maxWidthForMobile"));
+    if(isMobile)
       this.setState({footerEl: noWSFooter});
     else{
       let pathName = `../articlePages${this.pathnameToUse}_worksheet.tsx`;

@@ -46,7 +46,7 @@ This is my first big project that uses React.js and Redux
 
 Versioning is done using "npm version [new-version] --git-tag-version false".
 
-update 22.3:
+update 22.3 - 22.4:
 - Fixed build errors.
 
 update 22.2:

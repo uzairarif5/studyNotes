@@ -47,11 +47,13 @@ const HomeMain = ()=>{
 
   useEffect(()=> {
 		if(import.meta.env.DEV){
+      //@ts-ignore
 			import("../privateFuncs/private_links")
       .then((res)=>{changePP(res.default());})
     }
 
-    if(window.screen.width <= 700)
+    let isMobile: boolean = window.screen.width <= parseInt(getComputedStyle(document.documentElement).getPropertyValue("--maxWidthForMobile"));
+    if(isMobile)
       changePH(<div id='svgContainer'><svg height="30px" width="100%" viewBox="0 0 100 100"  preserveAspectRatio="none">
         <path d="M0,0 L0,50 Q25,100 50,50 75,0 100,50 L 100,0" vectorEffect="non-scaling-stroke" strokeWidth="3" stroke="#913213" fill="#913213" />
         <path d="M0,50 Q25,100 50,50 75,0 100,50 " vectorEffect="non-scaling-stroke" strokeWidth="3" stroke="#692112" fill="none"/>
