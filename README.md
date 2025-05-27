@@ -1,6 +1,6 @@
 # My Study Notes
 
-This is my first big project that uses React.js and Redux
+This is my first big project that uses React.js and Redux.
 
 ![Vite](https://img.shields.io/badge/vite-white?style=for-the-badge&logo=vite)  ![React JS](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB")  ![Redux](https://img.shields.io/badge/Redux-252525?style=for-the-badge&logo=redux&logoColor=7f51cb)  ![PostgreSQL](https://img.shields.io/badge/postgresql-white?style=for-the-badge&logo=postgresql)
 
@@ -46,6 +46,9 @@ This is my first big project that uses React.js and Redux
 
 Versioning is done using "npm version [new-version] --git-tag-version false".
 
+update 22.7:
+- Added "break-word" word wrap to sources list.
+
 update 22.5 - 22.6:
 - Made some css and scss changes, like `@used` used instead of `@import`.
 
@@ -57,7 +60,7 @@ update 22.2:
 - Some things from the `CRA` version was not added, so that is done now.
 
 update 22.1:
-- Changed from `CRA` to `vite`. This changed a lot of structural changes.
+- Changed from `CRA` to `vite`. This led to a lot of structural changes.
 
 update 21.3 - 21.7:
 - Modified `number_theory.js`.

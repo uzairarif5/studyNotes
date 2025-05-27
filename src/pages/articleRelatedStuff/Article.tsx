@@ -210,6 +210,7 @@ class Article extends React.Component<PropsType> {
     if(isMobile)
       this.setState({footerEl: noWSFooter});
     else{
+      /* @vite-ignore */
       let pathName = `../articlePages${this.pathnameToUse}_worksheet.tsx`;
       if (pathName in modules) this.setState({footerEl: WSFooter})
       else this.setState({footerEl: noWSFooter});
