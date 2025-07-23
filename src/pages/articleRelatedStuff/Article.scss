@@ -447,8 +447,9 @@
 		border-radius: 10px;
 		opacity: 0.7;
 		cursor: pointer;
-		user-select: none;
 		right: 30px;
+		-webkit-user-select: none;
+		user-select: none;
 
 		img{
 			height: 30px;

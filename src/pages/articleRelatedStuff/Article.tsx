@@ -14,9 +14,13 @@ import { ImgView } from './ImgView';
 import store from "../../reduxStuff/store.js";
 
 const modules = import.meta.glob(['../articlePages/*/*.tsx','../articlePages/guide.tsx','../privatePages/*/*.tsx']);
-const ERROR_VAL = "ERROR";
+const ERROR_NO_ARTICLE = "ERROR_NO_ARTICLE";
+const ERROR_NO_SOURCES = "ERROR_NO_SOURCES";
 const NO_SOURCES = "RENDER_WITHOUT_SOURCES";
 const OFFLINE_MODE = false;
+const GET_SOURCES_LIST_LINK = 1 ? //Change this to 0 if you want to use other link
+  "https://django-apps-dncy.onrender.com/study_notes_backend/getList":
+  "http://127.0.0.1:8000/study_notes_backend/getList";
 
 type ContentType = {
   title: string | null,
@@ -76,7 +80,7 @@ class Article extends React.Component<PropsType> {
 
     const evalErr = (err: any) => {
       console.error(err);
-      this.setState({wholeContent: ERROR_VAL});
+      this.setState({wholeContent: ERROR_NO_ARTICLE});
     }
 
     let pathName = `../articlePages${this.pathnameToUse}.tsx`;
@@ -92,19 +96,22 @@ class Article extends React.Component<PropsType> {
       .then(evalRes)
       .catch(evalErr);
     }
-    else this.setState({wholeContent: ERROR_VAL});
+    else this.setState({wholeContent: ERROR_NO_ARTICLE});
   }
 
   setSourcesList(){
     const setSourcesListInner = (strInput: string) => {
-      //fetch("http://127.0.0.1:8000/study_notes_backend/getList", {
-      fetch("https://django-apps-38uv.onrender.com/study_notes_backend/getList", {
+      fetch(GET_SOURCES_LIST_LINK, {
         method:"post", 
         body: strInput
       })
       .then(res=>res.text())
       .then(res=> this.setState({sourcesList: res}))
-      .catch(()=> this.setState({sourcesList: ERROR_VAL}));
+      .catch((err)=> {
+        console.log("There was an error getting the sources:");
+        console.error(err);
+        this.setState({sourcesList: ERROR_NO_SOURCES});
+      });
     }
 
     if (OFFLINE_MODE) this.setState({sourcesList: NO_SOURCES});
@@ -177,15 +184,17 @@ class Article extends React.Component<PropsType> {
     </div>;
   }
 
-  goBackToHomePageCauseError(){
-    alert("Article not found");
+  goBackToHomePageCauseError(error: string){
+    if (error === ERROR_NO_ARTICLE) alert("Article not found");
+    else if (error === ERROR_NO_SOURCES) alert("Sources not found");
+    else alert("Unknown error! Please report this in the feedback form.");
     changeLoadingText("Going To Home Page");
     this.props.changeAR(false);
   }
 
   render() {
-    let wholeContentValid = this.state.wholeContent && (this.state.wholeContent!) !== ERROR_VAL;
-    let sourcesValid = this.state.sourcesList && this.state.sourcesList !== ERROR_VAL;
+    let wholeContentValid = this.state.wholeContent && (this.state.wholeContent!) !== ERROR_NO_ARTICLE;
+    let sourcesValid = this.state.sourcesList && this.state.sourcesList !== ERROR_NO_SOURCES;
     if (wholeContentValid && sourcesValid){
       this.allowCleanUp = true;
       return this.renderMainContent();
@@ -224,9 +233,9 @@ class Article extends React.Component<PropsType> {
 
   componentDidUpdate() {
     if (!this.state.wholeContent) this.setWholeContent();
-    else if(this.state.wholeContent === ERROR_VAL) this.goBackToHomePageCauseError();
+    else if(this.state.wholeContent === ERROR_NO_ARTICLE) this.goBackToHomePageCauseError(ERROR_NO_ARTICLE);
     else if (!this.state.sourcesList) this.setSourcesList();
-    else if(this.state.sourcesList === ERROR_VAL) this.goBackToHomePageCauseError();
+    else if(this.state.sourcesList === ERROR_NO_SOURCES) this.goBackToHomePageCauseError(ERROR_NO_SOURCES);
     else if(this.allowCleanUp) document.fonts.ready.then(()=>this.cleanUp());
   }
 

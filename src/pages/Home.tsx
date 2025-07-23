@@ -77,7 +77,7 @@ const HomeMain = ()=>{
     <Link to="mathematics/calculus_advanced">Calculus (advanced)</Link>
     <h2>Natural Sciences</h2>
     <Link to="natural_sciences/philosophy_of_science">Philosophy Of Science</Link>
-    <Link to="natural_sciences/physics">Physics</Link>
+    <Link to="natural_sciences/physics_1">Physics (part 1)</Link>
     <Link to="natural_sciences/chemistry">Chemistry</Link>
     <Link to="natural_sciences/meteorology">Meteorology</Link>
     <Link to="natural_sciences/geology">Geology</Link>
@@ -111,7 +111,7 @@ function LicenseComp(props: {dis: string, setFunc: React.Dispatch<React.SetState
       <span>
         The <b>text content</b> of<br/><a property="dct:title" rel="cc:attributionURL" href="/">My Study Notes</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.linkedin.com/in/uzair0845/">Uzair Arif</a><br/>is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style={{display:"inline-block"}}>CC BY-NC-SA 4.0</a>
       </span>
-      <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style={{display:"flex", justifyContent:"center"}}>
+      <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style={{display:"flex", justifyContent:"center"}} title="check website">
         <img style={{height:"40px",verticalAlign:"text-bottom"}} src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""/>
         <img style={{height:"40px",verticalAlign:"text-bottom"}} src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""/>
         <img style={{height:"40px",verticalAlign:"text-bottom"}} src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""/>

@@ -1,7 +1,6 @@
 import SubList from "../../articleRelatedStuff/SubList";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 import { MathStuff } from "../../articleRelatedStuff/MathStuff";
-import { Questions } from "../../articleRelatedStuff/Questions";
 
 export default function DifferentiationOfFunctionsOfSeveralVariables(){
   return <>
@@ -93,28 +92,11 @@ export default function DifferentiationOfFunctionsOfSeveralVariables(){
           <MathStuff>\[z = f(x_0 ,y_0) + f_x(x_0 ,y_0) (x-x_0) + f_y(x_0 ,y_0) (y - y_0)\]</MathStuff>
           <li><b><u>Linear approximation:</u></b> if there is a point \((x_0,y_0)\) at which the precise value of \(f(x,y)\) is known, then for values of \((x,y)\) reasonably close to \((x_0,y_0)\), the linear approximation (i.e., tangent plane) yields a value that is also reasonably close to the exact value of \(f(x,y)\).</li>
         </SubList></li>
-        <li>Differentiability<Questions>
-          <li>The definition of differentiability is still unclear to me.</li>
-        </Questions>.:<SubList>
-          <li className="ownExplanation">For two variables:<SubList>
-            <li>Suppose for a function \(f(x,y)\), a partial differentive with respect to \(x\) and with respect to \(y\) at point \(P(x_0,y_0)\) exist.</li>
-            <li>Define the linear approximation of \(f(x,y)\) at \(P\) as:</li>
-            <MathStuff>\[{" L(x,y)=  f(x_0 ,y_0) + f_x(x_0 ,y_0) (x-x_0) + f_y(x_0 ,y_0) (y - y_0)"}\]</MathStuff>
-            <li>For points \((x,y)\) in a disk around \(P\), defined \(E(x,y)\) as:</li>
-            <MathStuff>\[{"E(x,y) = |f(x,y) - L(x,y)|"}\]</MathStuff>
-            <li>For points \((x,y)\) in a disk around \(P\), the error term \(E(x,y)\) gives the difference between the actual \(f(x,y)\) and the approximate value.</li>
-            <li>Some surface might not have smooth turns at \(P\). It could be the in the \(x\) and \(y\) direction the partial derivatives exists so the surface changes smoothly, but there could be a vertical trace where the turns are very "pointy".</li>
-            <li>A function \(f(x,y)\) is <b>differentiable</b> at a point \(P\) if the error term \(E\) satisfies:</li>
-            <MathStuff>\[{"\\lim_{(x,y) \\to (x_0,y_0)} \\frac{E(x,y)}{\\sqrt{(x-x_0)^2 + (y-y_0)^2}}"}=0\]</MathStuff>
-            <li>The above means: "the error term approaches 0 faster than the distance from \((x,y)\) to \(P\)".</li>
-            <li>It also means: "the error is very small near \(P\) even relative to very small distances from P"</li>
-          </SubList></li>
+        <li>Differentiability:<SubList>
+          <li>A function \(f(x,y)\) is differentiable at a point \(P(x_0,y_0)\) if, for all points \((x,y)\) in a \(δ\) disk around  \(P\), we can write:</li>
+          <MathStuff>\[{"\\lim_{(x,y) \\to (x_0,y_0)} \\frac{f(x,y) - (f_x(x_0 ,y_0) (x-x_0) + f_y(x_0 ,y_0) (y - y_0))}{\\sqrt{(x-x_0)^2 + (y-y_0)^2}}"}=0\]</MathStuff>
           <li>If \(f(x,y)\) is differentiable at \((x_0,y_0)\), then \(f(x,y)\) is continuous at \((x_0,y_0)\).</li>
           <li>If \(f(x,y)\), \(f_x(x,y)\), and \(f_y(x,y)\) all exist in a neighborhood of \((x_0,y_0)\) and are continuous at \((x_0,y_0)\), then \(f(x,y)\) is differentiable there.</li>
-          <li>A function \(f(x,y,z)\) is differentiable at a point \(P(x_0,y_0,z_0)\) if, for all points \((x,y)\) in a \(\delta \) disk around \(P\), we can write:</li>
-          <MathStuff>\[{"\\begin{align} f(x,y) = &f(x_0 ,y_0, z_0) + \\\\ &f_x(x_0 ,y_0,z_0) (x-x_0) + f_y(x_0 ,y_0,z_0) (y - y_0) + f_z(x_0 ,y_0,z_0) (z - z_0) + \\\\ &E(x,y) \\end{align}"}\]</MathStuff>
-          <li>where the error term \(E\) satisfies:</li>
-          <MathStuff>\[{"\\lim_{(x,y,z) \\to (x_0,y_0,z_0)} = \\frac{E(x,y,z)}{\\sqrt{(x-x_0)^2 + (y-y_0)^2 + (z-z_0)^2}}"}=0\]</MathStuff>
         </SubList></li>
         <li><b>Differentials:</b><SubList>
           <li>Let \(z=f(x,y)\) be a function of two variables with \((x_0,y_0)\) in the domain of \(f\), and let \(\Delta x\) and \(\Delta y\) be chosen so that \((x_0+\Delta x,y_0+\Delta y)\) is also in the domain of \(f\).</li>
@@ -154,6 +136,89 @@ export default function DifferentiationOfFunctionsOfSeveralVariables(){
           <li>If the equation \(f(x,y,z)=0\) defines \(z\) implicitly as a differentiable function of \(x\) and \(y\), then:</li>
           <MathStuff>\[{"\\frac{\\partial z}{\\partial x} = - \\frac{\\partial f / \\partial x}{\\partial f / \\partial z} \\\\ \\frac{\\partial z}{\\partial y} = - \\frac{\\partial f / \\partial y}{\\partial f / \\partial z}"}\]</MathStuff>
           <li>As long  as \(f_z(x,y,z)=0\).</li>
+        </SubList></li>
+        <li>Directional Derivatives:<SubList>
+          <li>Suppose \(z=f(x,y)\) is a function of two variables with a domain of \(D\). Given a point \((a,b)\) in the domain of \(f\), we choose a direction to travel from that point.</li>
+          <li>We measure the direction using an angle \(θ\), which is measured counterclockwise in the \(x\), \(y\)-plane, starting at zero from the positive \(x\)-axis.</li>
+          <li>The distance we travel is \(h\) (<span className="ownExplanation">where \(h\) is parallel to the \(x\), \(y\)-plane</span>) and the direction we travel is given by the unit vector \(\textbf{"{u}"}=(\cos θ)\textbf{"{i}"}+(\sin θ)\textbf{"{j}"}\).</li>
+          <li>Therefore, the \(z\)-coordinate of the second point on the graph is given by \(z=f(a+h \cos θ,b+h \sin θ)\).</li>
+          <li>The directional derivative of \(f\) in the direction of \(u\) is given by:</li>
+          <MathStuff>\[ {"D_\\textbf{u} f(a,b) = \\lim_{h→0} \\frac{f(a+h \\cos θ,b+h \\sin θ) - f(a,b)}{h}"} \]</MathStuff>
+          <li>Provided that the limit exists. Another way of defining \({"\\textbf{D}_\\textbf{u}"}\) is:</li>
+          <MathStuff>\[ {"D_\\textbf{u} f(a,b) = f_x(x,y) \\cos θ + f_y(x,y) \\sin θ"} \]</MathStuff>
+        </SubList></li>
+        <li>Gradient:<SubList>         
+          <li>Let \(z=f(x,y)\) be a function of \(x\) and \(y\) such that \(f_x\) and \(f_y\) exist. The vector \(∇f(x,y)\) is called the <b>gradient</b> of \(f\) and is defined as \(∇f(x,y)=f_x(x,y) \textbf{"{i}"}+f_y(x,y) \textbf{"{j}"}\).</li>
+          <li>The vector \(∇f(x,y)\) is also written as "grad \(f\)".</li>
+          <li>Since \(\textbf{"{u}"}=(\cos θ)\textbf{"{i}"}+(\sin θ)\textbf{"{j}"}\):</li>
+          <MathStuff>\[ {"D_\\textbf{u} f(a,b) = ∇f(x,y) \\cdot \\textbf{u}"} \]</MathStuff>
+          <li>Properties of the gradient:<SubList>
+            <li>If \(∇f(x_0,y_0)=0\), then \(D_\textbf{"{u}"} f(x_0,y_0)=0\) for any unit vector \(\textbf{"{u}"}\).</li>
+            <li>If \(∇f(x_0,y_0)≠0\), then \(D_\textbf{"{u}"} f(x_0,y_0)\) is maximized when \(u\) points in the same direction as \(∇f(x_0,y_0)\). The maximum value of \(D_\textbf{"{u}"} f(x_0,y_0)\) is \(∥∇f(x_0,y_0)∥\).</li>
+            <li>If \(∇f(x0,y0)≠0\), then \(D_\textbf{"{u}"} f(x_0,y_0)\) is minimized when \(u\) points in the opposite direction from \(∇f(x_0,y_0)\). The minimum value of \(D_\textbf{"{u}"} f(x_0,y_0)\) is  \(-∥∇f(x_0,y_0)∥\).</li>
+				    <ImgComp src={"/articlePics/differentiation_of_funcions_of_several_variables_pics/8.png"} width="90%" />
+          </SubList></li>
+          <li>Suppose the function \(z=f(x,y)\) has continuous first-order partial derivatives in an open disk centered at a point \((x_0,y_0)\). If \(∇f(x_0,y_0)≠0\), then \(∇f(x_0,y_0)\) is normal to the level curve of \(f\) at \((x_0,y_0)\).</li>
+          <li>Let \(w=f(x,y,z)\) be a function of three variables such that \(f_x\), \(f_y\) and \(f_z\) exist. The vector \(∇f(x,y,z)\) is called the gradient of \(f\) and is defined as:</li>
+          <MathStuff>\[ {"∇f(x,y,z)=f_x(x,y,z)\\textbf{i}+f_y(x,y,z)\\textbf{j}+f_z(x,y,z)\\textbf{k}"} \]</MathStuff>
+          <li>Let \(f(x,y,z)\) be a differentiable function of three variables and let \(\textbf{"{u}"}=\cos α \textbf{"{i}"}+ \cos β \textbf{"{j}"} + \cos γ \textbf{"{k}"}\) be a unit vector. Then, the directional derivative of \(f\) in the direction of \(\textbf{"{u}"}\) is given by:</li>
+          <MathStuff>\[ {"\\begin{align} D_\\textbf{u} f(x,y,z) &= ∇f(x,y,z) \\cdot \\textbf{u} \\\\ &= f_x (x,y,z)\\cos α + f_y (x,y,z) \\cos β + f_z (x,y,z)\\cos γ \\end{align}"} \]</MathStuff>
+        </SubList></li>
+        <li>Critical points:<SubList>
+          <li>Let \(z=f(x,y)\) be a function of two variables that is defined on an open set containing the point \((x_0,y_0)\).The point \((x_0,y_0)\) is called a <b>critical point</b> of a function of two variables \(f\) if one of the two following conditions holds: \(f_x(x_0,y_0)=f_y(x_0,y_0)=0\) and either \(f_x(x_0,y_0)\) or \(f_y(x_0,y_0)\) does not exist.</li>
+          <li>Local/global maximum:<SubList>
+            <li>\(f\) has a <b>local maximum</b> at \((x_0, y_0)\) if \(f(x_0,y_0) \ge f(x,y)\) for all points \((x,y)\) within some disk centered at \((x_0,y_0)\). The number \(f(x_0,y_0)\) is called a <b>local maximum value</b>.</li>
+            <li>If the preceding inequality holds for every point \((x,y)\) in the domain of \(f\), then \(f\) has a <b>global maximum</b> (also called an absolute maximum) at \((x_0,y_0)\).</li>
+          </SubList></li>
+          <li>Local/global minimum:<SubList>
+            <li>\(f\) has a <b>local minimum</b> at \((x_0, y_0)\) if \(f(x_0,y_0) \le f(x,y)\) for all points \((x,y)\) within some disk centered at \((x_0,y_0)\). The number \(f(x_0,y_0)\) is called a <b>local maximum value</b>.</li>
+            <li>If the preceding inequality holds for every point \((x,y)\) in the domain of \(f\), then \(f\) has a <b>global minimum</b> (also called an absolute minimum) at \((x_0,y_0)\).</li>
+          </SubList></li>
+          <li>If \(f(x_0,y_0)\) is either a local maximum or local minimum value, then it is called a <b>local extremum</b>.</li>
+          <li><b>Fermat's Theorem for Functions of Two Variables:</b><SubList>
+            <li>Let \(z=f(x,y)\) be a function of two variables that is defined and continuous on an open set containing the point \((x_0,y_0)\). Suppose \(f_x\) and \(f_y\) each exists at \((x_0,y_0)\). If \(f\) has a local extremum at \((x_0,y_0)\), then \((x_0,y_0)\) is a critical point of \(f\).</li>
+          </SubList></li>
+          <li><b>Saddle point:</b><SubList>
+            <li>Given the function \(z=f(x,y)\), the point \((x_0,y_0,f(x_0,y_0))\) is a <b>saddle point</b> if both \(f_x(x_0,y_0)=0\) and \(f_y(x_0,y_0)=0\), but \(f\) does not have a local extremum at \((x_0,y_0)\).</li>
+          </SubList></li>
+          <li><b>Second derivative test:</b><SubList>
+            <li>Suppose \(f_x(x_0,y_0)=0\) and \(f_y(x_0,y_0)=0\). Define \(D\):</li>
+            <MathStuff>\[ D = {"f_{xx}(x_0,y_0) f_{yy}(x_0,y_0) - (f_{xy}(x_0,y_0))^2"} \]</MathStuff>
+            <li>If \(D \gt 0\) and \({"f_{xx}(x_0,y_0)>0"}\), then \(f\) has a local minimum at \((x_0,y_0)\).</li>
+            <li>If \(D \gt 0\) and \({"f_{xx}(x_0,y_0)<0"}\), then \(f\) has a local maximum at \((x_0,y_0)\).</li>        
+            <li>If \(D \lt 0\), then \(f\) has a saddle point at \((x_0,y_0)\).</li>
+            <li>If \(D=0\), then the test is inconclusive.</li>
+          </SubList></li>
+          <li><b>Extreme Value Theorem:</b><SubList>
+            <li>A continuous function \(f(x,y)\) on a closed and bounded set \(D\) in the plane attains an absolute maximum value at some point of \(D\) and an absolute minimum value at some point of \(D\).</li>
+          </SubList></li>
+        </SubList></li>
+        <li>Lagrange multipliers:<SubList>
+          <li>Suppose we want to maximize or minimize a continuous function \(f(x,y) = 48x + 96y - x^2 - 2xy - 9y^2\) subject to a constraint of the form \(20x+4y \le 216\).</li>
+          <li><figure>
+				    <ImgComp src={"/articlePics/differentiation_of_funcions_of_several_variables_pics/9.webp"} width="70%" />
+            <figcaption>Level curves of \(f(x,y)\).</figcaption>
+          </figure></li>
+          <li><figure>
+				    <ImgComp src={"/articlePics/differentiation_of_funcions_of_several_variables_pics/10.webp"} width="70%" />
+            <figcaption>Level curves of \(f(x,y)\) with \(20x + 4y = 216\).</figcaption>
+          </figure></li>
+          <li>Let \(g(x,y) = 20x + 4y - 216\).</li>
+          <li className="ownExplanation">Think of \(f(x,y)\) and \(g(x,y)\) in a 3d graph, where only the values of \(x\), \(y\) and \(f(x,y)\) that are within the constraints are shown.</li>
+          <li className="ownExplanation">The maximum or minimum value of \(f(x,y)\) is the in the level curve where only one unique value \(x\) and \(y\) are in the constaint.</li>
+          <li><figure>
+				    <ImgComp src={"/articlePics/differentiation_of_funcions_of_several_variables_pics/11.jpeg"} width="70%" />
+            <figcaption>\(f(x,y)\) within the \(g(x,y)\) constraint.</figcaption>
+          </figure></li>
+          <li className="ownExplanation">In other words, a maximum or minimum value can be found if the gradient vector of \(g(x,y)\) is parallel to the gradient vector of \(f(x,y)\).</li>
+          <MathStuff>\[∇ f(x,y) = \lambda ∇g(x,y)\]</MathStuff>
+          <li>The number \(\lambda\) is called the <b>Langrange multiplier</b>.</li>
+          <li>The method of Lagrange multipliers can be applied to problems with more than one constraint. In this case the optimization function, is a function of three variables:</li>
+          <MathStuff>\[w = f(x,y,z)\]</MathStuff>
+          <li>There are two constraints:</li>
+          <MathStuff>\[g(x,y,z) = 0 \quad h(x,y,z) = 0\]</MathStuff>
+          <li>There are two Lagrange multipliers, \(\lambda_1\) and \(\lambda_2\):</li>
+          <MathStuff>\[∇ f(x_0,y_0,z_0) = \lambda_1 ∇g(x_0,y_0,z_0) + \lambda_2 ∇h(x_0,y_0,z_0)\]</MathStuff>
         </SubList></li>
       </ul>
     </div>

@@ -113,7 +113,7 @@ export default function VectorValuedFunction(){
       </SubList></li>
       <li>The normal and binormal Vectors:<SubList>
         <li>Let C be a three-dimensional smooth curve represented by \(\textbf{"{r}"}\) over an open interval \(I\). If \(\textbf{"{T}"}'(t)≠0\), then the <b>principal unit normal vector</b> at \(t\) is defined to be:</li>
-        <MathStuff>\[ {"\\textbf{N} = \\frac{\\textbf{T}'(t)}{\\Vert \\textbf{T}'(t) \\Vert}"}\]</MathStuff>
+        <MathStuff>\[ {"\\textbf{N}(t) = \\frac{\\textbf{T}'(t)}{\\Vert \\textbf{T}'(t) \\Vert}"}\]</MathStuff>
         <li className="ownExplanation">Since the magnitude of vector \(\textbf{"{T}"}(t)\) is always 1, then the path is traces is a circle of radius 1, which means \(\textbf{"{T}"}'(t)\) is orthogonal to \(\textbf{"{T}"}(t)\). This also means \(\textbf{"{T}"}(t)\) and \(\textbf{"{N}"}(t)\) are orthogonal.</li>
         <li>The <b>binormal vector</b> at \(t\) is defined as:</li>
         <MathStuff>\[{"\\textbf{B}(t) = \\textbf{T}(t) \\times \\textbf{N}(t)"}\]</MathStuff>

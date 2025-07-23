@@ -68,6 +68,11 @@
     margin:0;
     overflow: hidden;
     -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+
+    #mathjaxCustomFunc{
+      display: none;
+    }
 
     .removeLoading{
       animation-name: reveal;
@@ -86,6 +91,7 @@
       background-color: #deb887;
       top: -50px;
       left: 0;
+      -webkit-user-select: none;
       user-select: none;
 
       #loadingText{

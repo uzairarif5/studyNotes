@@ -25,11 +25,13 @@
 		color: rgb(189, 115, 82);
 		border-bottom: rgb(35, 15, 5) solid 5px;
 		box-sizing: content-box;
-		position: sticky;
 		position: -webkit-sticky;
+		position: sticky;
 		top: 0;
 		z-index: 1;
+		-webkit-user-select: none;
 		user-select: none;
+
 		label{
 			padding-left: 40px;
 			padding-right: 10px;
@@ -117,8 +119,10 @@
 			width: 50px;
 			height: 50px;
 			cursor: pointer;
-			user-select: none;
 			box-sizing: border-box;
+			-webkit-user-select: none;
+			user-select: none;
+
 			&:hover{
 				opacity: 1;
 			}
@@ -155,10 +159,12 @@
 			top: 220px;
 			opacity: 0.8;
 			cursor: pointer;
-			user-select: none;
 			width: 50px;
 			justify-content: center;
 			box-sizing: content-box;
+			-webkit-user-select: none;
+			user-select: none;
+			
 			&:hover{
 				opacity: 1;
 			}

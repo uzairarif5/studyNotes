@@ -66,9 +66,9 @@ export default function ContactComp() {
       <div id="fieldContainer">
         <div>
           <label htmlFor="name">Name</label>
-          <input id="name" type="name" name="name" required autoFocus/>
+          <input id="name" type="name" name="name" required autoFocus autoComplete="given-name"/>
           <label htmlFor="email">Email Address</label>
-          <input id="email" type="email" name="email" required/>
+          <input id="email" type="email" name="email" required autoComplete='email'/>
         </div>
         <div>
           <label htmlFor="message">Message</label>

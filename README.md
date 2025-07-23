@@ -46,6 +46,12 @@ This is my first big project that uses React.js and Redux.
 
 Versioning is done using "npm version [new-version] --git-tag-version false".
 
+update 22.8:
+- Added content to `DifferentiationOfFunctionsOfSeveralVaraibles`.
+- Added `physics_1.tsx`.
+- Made small changes to several other articles.
+- Forms elements now have an autocomplete attribute.
+
 update 22.7:
 - Added "break-word" word wrap to sources list.
 
