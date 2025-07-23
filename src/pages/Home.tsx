@@ -23,7 +23,7 @@ export default function Home(){
   },[]);
 
   return <div id="homeWrapper">
-		<title>Uzair's Study Notes</title>
+		<title>My Study Notes</title>
 		<HomeMain/>
 		<footer>
 			<Link to="guide">Website Guide</Link>

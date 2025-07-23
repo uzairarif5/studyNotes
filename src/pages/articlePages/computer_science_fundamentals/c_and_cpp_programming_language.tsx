@@ -2,7 +2,8 @@ import SubList from "../../articleRelatedStuff/SubList";
 import { CodePre } from "../../articleRelatedStuff/Code";
 
 export const title = "C++ Programming Language notes";
-export const sourcesColor = {64: null, 15: null};
+export const sourcesColor = {64: null, 15: null, 4: null};
+export const sourcesOrder = [64, 15, 4];
 
 export const content = <>
 <h1>C++ Programming Language</h1>
@@ -779,9 +780,39 @@ void main(void) {
 					<li><a href='https://stackoverflow.com/questions/16438721/if-and-if-which-one-is-better-to-use'>If you use the preprocessor's <code>#if</code>, the condition is evaluated at compile-time, and the code for the false branch is not included in the compiled program.</a></li>
 				</SubList></li>
 			</SubList></li>
+			<li data-source={4}>Volatile keyword:<SubList>
+				<li>In computer programming, a <b>variable</b> is said to be volatile if its value can be read or modified asynchronously by something other than the current thread of execution.</li>
+				<li>In C and C++, <code>volatile</code> is a type qualifier.</li>
+				<li>In this example, the code sets the value stored in <code>foo</code> to 0. It then starts to poll that value repeatedly until it changes to 255:</li>
+				<li><CodePre language="c">{`
+	static int foo;
+
+	void bar(void) {
+		foo = 0;
+		while (foo != 255);
+	}
+				`}</CodePre></li>
+				<li>An optimizing compiler will notice that no other code can possibly change the value stored in <code>foo</code>, and will assume that it will remain equal to 0 at all times. The compiler will therefore replace the function body with an infinite loop similar to this:</li>
+				<li><CodePre language="c">{`
+	void bar_optimized(void) {
+		foo = 0;
+
+		while (true);
+	}
+				`}</CodePre></li>
+				<li>However, the programmer may make <code>foo</code> refer to another element of the computer system such as a hardware register of a device connected to the CPU which may change the value of foo while this code is running. To prevent the compiler from doing this optimization, the volatile keyword can be used:</li>
+				<li><CodePre language="c">{`
+	static volatile int foo;
+
+	void bar (void) {
+		foo = 0;
+
+		while (foo != 255);
+	}
+				`}</CodePre></li>
+			</SubList></li>
 		</ul>
 	</div>
 </div>
-
 
 </>

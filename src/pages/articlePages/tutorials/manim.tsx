@@ -399,8 +399,8 @@ with tempconfig({"quality": "medium_quality", "CodePreview": True}):
 <div className="content">
 	<div style={{width: "49%",float: "left",marginLeft: "0.5%"}}>
 		<ul>
-			<li>Derivation of the area of a trapezium:<SubList>
-				<li>Code is available <a href='https://github.com/uzairarif5/oneFilePython/blob/master/trapezium.py'>at GitHub</a>.</li>
+			<li>Deriving the area of a trapezium:<SubList>
+				<li>Code is available at <a href='https://github.com/uzairarif5/oneFilePython/blob/master/trapezium.py'>GitHub</a>.</li>
 				<li><ImgComp  src={"/articlePics/manim_pics/trapezium_1.gif"}style={{width: "60%"}}/></li>
 				<li><ImgComp  src={"/articlePics/manim_pics/trapezium_2.gif"}style={{width: "60%"}}/></li>
 			</SubList></li>

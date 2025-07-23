@@ -177,6 +177,12 @@ class Article extends React.Component<PropsType> {
     </div>;
   }
 
+  goBackToHomePageCauseError(){
+    alert("Article not found");
+    changeLoadingText("Going To Home Page");
+    this.props.changeAR(false);
+  }
+
   render() {
     let wholeContentValid = this.state.wholeContent && (this.state.wholeContent!) !== ERROR_VAL;
     let sourcesValid = this.state.sourcesList && this.state.sourcesList !== ERROR_VAL;
@@ -187,8 +193,8 @@ class Article extends React.Component<PropsType> {
     return null;
   }
 
-  //set footer first
   componentDidMount(){
+    //set footer first
     const noWSFooter = <footer>
       <Link to="/">Home Page</Link>
       <button onClick={ () => store.dispatch({
@@ -197,19 +203,19 @@ class Article extends React.Component<PropsType> {
       })}>Contact Us</button>
     </footer>;
 
-    const WSFooter = <footer style={{gridTemplateColumns:"33% 33% 33%"}}>
-      <Link to="/" onClick={showLoadingScreen}>Home Page</Link>
-      <Link to={"/worksheet?topic=" + this.pathnameToUse.slice(1)}>Worksheet</Link>
-      <button onClick={ () => store.dispatch({
-        type: FORM_COUNTER,
-        payload: -1
-      })}>Contact Us</button>
-    </footer>;
-
     let isMobile: boolean = window.screen.width <= parseInt(getComputedStyle(document.documentElement).getPropertyValue("--maxWidthForMobile"));
-    if(isMobile)
-      this.setState({footerEl: noWSFooter});
-    else{
+    if(isMobile) this.setState({footerEl: noWSFooter});
+    else {
+      const WSFooter = <footer style={{gridTemplateColumns:"33% 33% 33%"}}>
+        <Link to="/" onClick={showLoadingScreen}>Home Page</Link>
+        <Link to={"/worksheet?topic=" + this.pathnameToUse.slice(1)}>Worksheet</Link>
+        <button onClick={ () => store.dispatch({
+          type: FORM_COUNTER,
+          payload: -1
+        })}>Contact Us</button>
+      </footer>;
+
+      /* @vite-ignore */
       let pathName = `../articlePages${this.pathnameToUse}_worksheet.tsx`;
       if (pathName in modules) this.setState({footerEl: WSFooter})
       else this.setState({footerEl: noWSFooter});
@@ -218,24 +224,19 @@ class Article extends React.Component<PropsType> {
 
   componentDidUpdate() {
     if (!this.state.wholeContent) this.setWholeContent();
+    else if(this.state.wholeContent === ERROR_VAL) this.goBackToHomePageCauseError();
     else if (!this.state.sourcesList) this.setSourcesList();
-    else if(this.state.wholeContent === ERROR_VAL || this.state.sourcesList === ERROR_VAL){
-      alert("Article not found");
-      changeLoadingText("Going To Home Page");
-      this.props.changeAR(false);
-    }
-    else if(this.allowCleanUp){
-      this.allowCleanUp = false;
-      document.fonts.ready.then(()=>this.cleanUp());
-    }
+    else if(this.state.sourcesList === ERROR_VAL) this.goBackToHomePageCauseError();
+    else if(this.allowCleanUp) document.fonts.ready.then(()=>this.cleanUp());
   }
 
   cleanUp(){
+    this.allowCleanUp = false;
     changeLoadingText("Formatting Notes"); 
     this.addDateEl();
     this.setReferenceEl();
     document.documentElement.style.backgroundColor = "#832";
-    this.addTogglesToH()
+    this.addTogglesToH();
     $(".content a, #sources a").attr("target","_blank");
     this.rootEl!.addEventListener("scroll", this.scrollFunc);
     this.addColors();

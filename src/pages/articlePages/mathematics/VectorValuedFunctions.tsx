@@ -58,8 +58,6 @@ export default function VectorValuedFunction(){
         <MathStuff>\[{"\\textbf{T}(t) = \\frac{\\textbf{r}'(t)}{\\Vert \\textbf{r}'(t) \\Vert}"}\]</MathStuff>
         <li>Provided \({"{\\Vert \\textbf{r}'(t) \\Vert} \\ne 0"}\).</li>
       </SubList></li>
-    </ul>
-    <ul data-source={45} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
       <li>Integrals of vector-valued functions:<SubList>
         <li>Consider \({"\\textbf{r}(t)=f(t)\\textbf{i}+g(t)\\textbf{j}+h(t)\\textbf{k}"}\).</li>
         <li>The <b>indefinite integral</b> of a vector-valued function:</li>
@@ -67,6 +65,8 @@ export default function VectorValuedFunction(){
         <li>The <b>definite integral</b> of a vector-valued function:</li>
         <MathStuff>\[{"{\\int_a^b \\textbf{r}(t) \\ dt= \\left[\\int_a^b f(t) \\ dt \\right] \\textbf{i}+  \\left[\\int_a^b g(t) \\ dt \\right]\\textbf{j}+  \\left[\\int_a^b h(t) \\ dt \\right]\\textbf{k}}"}\]</MathStuff>
       </SubList></li>
+    </ul>
+    <ul data-source={45} style={{width:" 49%",marginRight: "0.5%",float: "right"}}>
       <li>Arc-Length:<SubList>
         <li>Given a smooth curve \(C\) defined by the function \({"\\textbf{r}(t)=f(t)\\textbf{i}+g(t)\\textbf{j}+h(t)\\textbf{k}"}\), where \(t\) lies within the interval \([a,b]\), the arc length of \(C\) over the interval is:</li>
         <MathStuff>\[{"\\begin{align} s &= \\int^b_a \\sqrt{[f'(t)]^2 + [g'(t)]^2 + [h'(t)]^2} \\ dt \\\\ &= \\int^b_a \\Vert \\textbf{r}'(t) \\Vert \\ dt\\end{align}"}\]</MathStuff>
@@ -131,6 +131,16 @@ export default function VectorValuedFunction(){
         </SubList></li>
         <li>The radius of curvature of the curve is the reciprocal of the curvature (\(r = 1/k\)).</li>
         <li><ImgComp src={"/articlePics/vector_valued_functions_pics/3.jpeg"} width="70%" /></li>
+      </SubList></li>
+      <li>Motion vectors in the plane and in space:<SubList>
+        <li>Let \(r(t)\) be a twice-differentiable vector-valued function of the parameter t that represents the position of an object as a function of time. The <b>velocity vector</b> \({"\\textbf{v}(t)"}\) of the object is given by: \({"\\textbf{v}(t) = \\textbf{r}'(t)"}\).</li>
+        <li>The <b>acceleration vector</b> \({"\\textbf{a}(t)"}\) is defined to be: \({"\\textbf{a}(t) = \\textbf{v}'(t) = \\textbf{r}''(t)"}\).</li>
+        <li>The <b>speed</b> is \({"v(t)=\\Vert \\textbf{v}(t) \\Vert"}\).</li>
+        <li>Let \({"\\textbf{T}(t)"}\) be the unit tangent vector to \(C\) and let \({"\\textbf{N}(t)"}\) be the principle unit normal vector to \(C\). Then:</li>
+        <MathStuff>\[{"\\textbf{a}(t) = v'(t)\\textbf{T}(t) + [v(t)]^2 k(t)\\textbf{N}(t)"}\]</MathStuff>
+        <li>The coefficients of \({"\\textbf{T}(t)"}\) and \({"\\textbf{N}(t)"}\) are referred to as the <b>tangential component</b> of acceleration and the <b>normal component</b> of acceleration, respectively.</li>
+        <li>We write \({"a_\\textbf{T}"}\) to denote the tangential component and \({"a_\\textbf{N}"}\) to denote the normal component.</li>
+        <MathStuff>\[{"\\begin{align} a_\\textbf{T} &= \\textbf{a} \\cdot \\textbf{T} = \\frac{\\textbf{v} \\cdot \\textbf{a}}{\\Vert \\textbf{v} \\Vert} \\\\ a_\\textbf{N} &= \\textbf{a} \\cdot \\textbf{N} = \\frac{\\Vert \\textbf{v} \\times \\textbf{a} \\Vert}{\\Vert \\textbf{v} \\Vert} = \\sqrt{\\Vert \\textbf{a} \\Vert^2- a_\\textbf{T}^2} \\end{align}"}\]</MathStuff>
       </SubList></li>
     </ul>
   </div>
