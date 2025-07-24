@@ -224,6 +224,10 @@ class Article extends React.Component<PropsType> {
         })}>Contact Us</button>
       </footer>;
 
+    let isMobile: boolean = window.screen.width <= parseInt(getComputedStyle(document.documentElement).getPropertyValue("--maxWidthForMobile"));
+    if(isMobile)
+      this.setState({footerEl: noWSFooter});
+    else{
       /* @vite-ignore */
       let pathName = `../articlePages${this.pathnameToUse}_worksheet.tsx`;
       if (pathName in modules) this.setState({footerEl: WSFooter})
