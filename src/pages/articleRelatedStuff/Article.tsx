@@ -203,36 +203,23 @@ class Article extends React.Component<PropsType> {
   }
 
   componentDidMount(){
-    //set footer first
-    const noWSFooter = <footer>
-      <Link to="/">Home Page</Link>
+    // check mobile
+    let isMobile: boolean = window.screen.width <= parseInt(getComputedStyle(document.documentElement).getPropertyValue("--maxWidthForMobile"));
+
+    const footer = <footer>
+      <Link to="/" onClick={showLoadingScreen}>Home Page</Link>
+      {
+        (isMobile && (`../articlePages${this.pathnameToUse}_worksheet.tsx` in modules)) ? 
+        <Link to={"/worksheet?topic=" + this.pathnameToUse.slice(1)}>Worksheet</Link> : 
+        null
+      }
       <button onClick={ () => store.dispatch({
         type: FORM_COUNTER,
         payload: -1
       })}>Contact Us</button>
     </footer>;
 
-    let isMobile: boolean = window.screen.width <= parseInt(getComputedStyle(document.documentElement).getPropertyValue("--maxWidthForMobile"));
-    if(isMobile) this.setState({footerEl: noWSFooter});
-    else {
-      const WSFooter = <footer style={{gridTemplateColumns:"33% 33% 33%"}}>
-        <Link to="/" onClick={showLoadingScreen}>Home Page</Link>
-        <Link to={"/worksheet?topic=" + this.pathnameToUse.slice(1)}>Worksheet</Link>
-        <button onClick={ () => store.dispatch({
-          type: FORM_COUNTER,
-          payload: -1
-        })}>Contact Us</button>
-      </footer>;
-
-    let isMobile: boolean = window.screen.width <= parseInt(getComputedStyle(document.documentElement).getPropertyValue("--maxWidthForMobile"));
-    if(isMobile)
-      this.setState({footerEl: noWSFooter});
-    else{
-      /* @vite-ignore */
-      let pathName = `../articlePages${this.pathnameToUse}_worksheet.tsx`;
-      if (pathName in modules) this.setState({footerEl: WSFooter})
-      else this.setState({footerEl: noWSFooter});
-    }
+    this.setState({footerEl: footer});
   }
 
   componentDidUpdate() {

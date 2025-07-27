@@ -8,71 +8,71 @@ export const title = "Physics Notes (Part 1)";
 export const sourcesColor = {28: null, 6: null, 45: "rgb(110, 110, 140)"};
 export const sourcesOrder = [45, 28, 6];
 export const content = <>
-	<h1>Physics Notes</h1>
-	
-	<h2>Units And Measurements</h2>
-	<div className="content" data-source={28}>
-	<ul style={{width: "48%", marginLeft: "1%", float: "left"}}>
-		<li><b>Model:</b><SubList>
-			<li>A model is a representation of something that is often too difficult (or impossible) to display directly.</li>
-			<li>An example is the Bohr model of single-electron atoms, in which the electron is pictured as orbiting the nucleus, analogous to the way planets orbit the Sun.</li>
-		</SubList></li>
-		<li><b>Theories</b> and <b>laws</b>:<SubList>
-			<li>To a scientist, a <b>theory</b> is a testable explanation for patterns in nature supported by scientific evidence and verified multiple times by various groups of researchers.</li>
-			<li>Any experimentally testable implication of a theory should be verified. If an experiment ever shows an implication of a theory to be false, then the theory is either thrown out or modified suitably.</li>
-			<li>A <b>law</b> uses concise language to describe a generalized pattern in nature supported by scientific evidence and repeated experiments. Often, a law can be expressed in the form of a single mathematical equation.</li>
-			<li>The designation law is usually reserved for a concise and very general statement that describes phenomena in nature, such as the law that energy is conserved during any process, or Newton's second law of motion.</li>
-			<li>A theory, in contrast, is a less concise statement of observed behavior. For example, the theory of evolution and the theory of relativity cannot be expressed concisely enough to be considered laws.</li>
-			<li>Less broadly applicable statements are usually called <b>principles</b> (such as Pascal's principle, which is applicable only in fluids), but the distinction between laws and principles often is not made carefully.</li>
-		</SubList></li>
-		<li>Physical quantities and units:<SubList>
-			<li>We define a <b>physical quantity</b> either by specifying how it is measured or by stating how it is calculated from other measurements.</li>
-			<li>For example, we might define distance and time by specifying methods for measuring them, such as using a meter stick and a stopwatch. Then, we could define average speed by stating that it is calculated as the total distance traveled divided by time of travel.</li>
-			<li>Measurements of physical quantities are expressed in terms of <b>units</b>, which are standardized values.</li>
-			<li>For example, the length of a race, which is a physical quantity, can be expressed in units of meters or kilometers.</li>
-			<li>In any system of units, the units for some physical quantities must be defined through a measurement process. These are called the <b>base quantities</b> for that system and their units are the system's <b>base units</b>.</li>
-			<li>All other physical quantities can then be expressed as algebraic combinations of the base quantities. Each of these physical quantities is then known as a <b>derived quantity</b> and each unit is called a <b>derived unit</b>.</li>
-			<TableLI>
-				<thead>
-				<tr>
-				<th scope="col">ISQ Base Quantity</th>
-				<th scope="col">SI Base Unit</th>
-				</tr>
-				</thead><tbody>
-				<tr>
-				<td>Length</td>
-				<td>meter (m)</td>
-				</tr>
-				<tr>
-				<td>Mass</td>
-				<td>kilogram (kg)</td>
-				</tr>
-				<tr>
-				<td>Time</td>
-				<td>second (s)</td>
-				</tr>
-				<tr>
-				<td>Electrical current</td>
-				<td>ampere (A)</td>
-				</tr>
-				<tr>
-				<td>Thermodynamic temperature</td>
-				<td>kelvin (K)</td>
-				</tr>
-				<tr>
-				<td>Amount of substance</td>
-				<td>mole (mol)</td>
-				</tr>
-				<tr>
-				<td>Luminous intensity</td>
-				<td>candela (cd)</td>
-				</tr>
-				</tbody>
-			</TableLI>
-			<li><u>Definition of a second:</u> Cesium atoms can be made to vibrate in a very steady way, and these vibrations can be readily observed and counted. In 1967, the second was redefined as the time required for 9,192,631,770 of these vibrations to occur</li>
-			<li><u>Definition of a meter:</u> In 1983, the meter was given its definition as the distance light travels in a vacuum in 1/299,792,458 of a second.</li>
-		</SubList></li>
-		<li>Metric prefixes:<SubList>
+<h1>Physics Notes</h1>
+
+<h2>Units And Measurements</h2>
+<div className="content" data-source={28}>
+<ul style={{width: "48%", marginLeft: "1%", float: "left"}}>
+	<li><b>Model:</b><SubList>
+		<li>A model is a representation of something that is often too difficult (or impossible) to display directly.</li>
+		<li>An example is the Bohr model of single-electron atoms, in which the electron is pictured as orbiting the nucleus, analogous to the way planets orbit the Sun.</li>
+	</SubList></li>
+	<li><b>Theories</b> and <b>laws</b>:<SubList>
+		<li>To a scientist, a <b>theory</b> is a testable explanation for patterns in nature supported by scientific evidence and verified multiple times by various groups of researchers.</li>
+		<li>Any experimentally testable implication of a theory should be verified. If an experiment ever shows an implication of a theory to be false, then the theory is either thrown out or modified suitably.</li>
+		<li>A <b>law</b> uses concise language to describe a generalized pattern in nature supported by scientific evidence and repeated experiments. Often, a law can be expressed in the form of a single mathematical equation.</li>
+		<li>The designation law is usually reserved for a concise and very general statement that describes phenomena in nature, such as the law that energy is conserved during any process, or Newton's second law of motion.</li>
+		<li>A theory, in contrast, is a less concise statement of observed behavior. For example, the theory of evolution and the theory of relativity cannot be expressed concisely enough to be considered laws.</li>
+		<li>Less broadly applicable statements are usually called <b>principles</b> (such as Pascal's principle, which is applicable only in fluids), but the distinction between laws and principles often is not made carefully.</li>
+	</SubList></li>
+	<li>Physical quantities and units:<SubList>
+		<li>We define a <b>physical quantity</b> either by specifying how it is measured or by stating how it is calculated from other measurements.</li>
+		<li>For example, we might define distance and time by specifying methods for measuring them, such as using a meter stick and a stopwatch. Then, we could define average speed by stating that it is calculated as the total distance traveled divided by time of travel.</li>
+		<li>Measurements of physical quantities are expressed in terms of <b>units</b>, which are standardized values.</li>
+		<li>For example, the length of a race, which is a physical quantity, can be expressed in units of meters or kilometers.</li>
+		<li>In any system of units, the units for some physical quantities must be defined through a measurement process. These are called the <b>base quantities</b> for that system and their units are the system's <b>base units</b>.</li>
+		<li>All other physical quantities can then be expressed as algebraic combinations of the base quantities. Each of these physical quantities is then known as a <b>derived quantity</b> and each unit is called a <b>derived unit</b>.</li>
+		<TableLI>
+			<thead>
+			<tr>
+			<th scope="col">ISQ Base Quantity</th>
+			<th scope="col">SI Base Unit</th>
+			</tr>
+			</thead><tbody>
+			<tr>
+			<td>Length</td>
+			<td>meter (m)</td>
+			</tr>
+			<tr>
+			<td>Mass</td>
+			<td>kilogram (kg)</td>
+			</tr>
+			<tr>
+			<td>Time</td>
+			<td>second (s)</td>
+			</tr>
+			<tr>
+			<td>Electrical current</td>
+			<td>ampere (A)</td>
+			</tr>
+			<tr>
+			<td>Thermodynamic temperature</td>
+			<td>kelvin (K)</td>
+			</tr>
+			<tr>
+			<td>Amount of substance</td>
+			<td>mole (mol)</td>
+			</tr>
+			<tr>
+			<td>Luminous intensity</td>
+			<td>candela (cd)</td>
+			</tr>
+			</tbody>
+		</TableLI>
+		<li><u>Definition of a second:</u> Cesium atoms can be made to vibrate in a very steady way, and these vibrations can be readily observed and counted. In 1967, the second was redefined as the time required for 9,192,631,770 of these vibrations to occur</li>
+		<li><u>Definition of a meter:</u> In 1983, the meter was given its definition as the distance light travels in a vacuum in 1/299,792,458 of a second.</li>
+	</SubList></li>
+	<li>Metric prefixes:<SubList>
 <TableLI><thead>
 <tr>
 <th scope="col">Prefix</th>
@@ -165,93 +165,93 @@ export const content = <>
 </tr>
 </tbody>
 </TableLI>
+	</SubList></li>
+</ul>
+<ul style={{width: "48%", marginRight: "1%", float: "right"}}>
+	<li>Dimensional analysis:<SubList>	
+	<li>The <b>dimension</b> of any physical quantity expresses its dependence on the base quantities as a product of symbols (or powers of symbols) representing the base quantities.</li>
+	<li>A measurement of length is said to have dimension \(L\) or \(L^1\).</li>
+	<li>Area is the product of two lengths and so has dimension \(L^2\).</li>
+	<li>A measurement of mass has dimension \(M\) or \(M^1\).</li>
+	<li>A measurement of time has dimension \(T\) or \(T^1\)</li>
+	<li>Speed has dimension length over time, \(L/T\) or \(LT^{"{-1}"}\).</li>
+	<TableLI>
+	<thead>
+	<tr>
+	<th scope="col"><strong>Base Quantity</strong></th>
+	<th scope="col"><strong>Symbol for Dimension</strong></th>
+	</tr>
+	</thead><tbody>
+	<tr>
+	<td>Length</td>
+	<td>L</td>
+	</tr>
+	<tr>
+	<td>Mass</td>
+	<td>M</td>
+	</tr>
+	<tr>
+	<td>Time</td>
+	<td>T</td>
+	</tr>
+	<tr>
+	<td>Current</td>
+	<td>I</td>
+	</tr>
+	<tr>
+	<td>Thermodynamic temperature</td>
+	<td>Θ</td>
+	</tr>
+	<tr>
+	<td>Amount of substance</td>
+	<td>N</td>
+	</tr>
+	<tr>
+	<td>Luminous intensity</td>
+	<td>J</td>
+	</tr>
+	</tbody>
+	</TableLI>
+	<li>Physicists often use square brackets around the symbol for a physical quantity to represent the dimensions of that quantity. For example, if \(r\) is the radius of a cylinder and \(h\) is its height, then we write \([r]=L\) and \([h]=L\).</li>
+	<li>The expressions on each side of the equality in an equation must have the same dimensions.</li>
+	<li>Every term in an expression must have the same dimensions; it does not make sense to add or subtract quantities of differing dimension.</li>
+	</SubList></li>
+	<li>Accuracy and precision of a measurement:<SubList>
+		<li><b>Accuracy</b> is how close a measurement is to the accepted reference value for that measurement.</li>
+		<li>The <b>precision</b> of measurements refers to how close the agreement is between repeated independent measurements.</li>
+		<li><ImgComp src={"/articlePics/physics_1_pics/1.webp"} style={{width:"80%"}}/></li>
+		<li>The precision of a measuring system is related to the <b>uncertainty</b> in the measurements whereas the accuracy is related to the <b>discrepancy</b> from the accepted reference value.</li>
+		<li>The uncertainty in a measurement, \(A\), is often denoted as \(\Delta A\) (read "delta \(A\)"), so the measurement result would be recorded as \(A ± \Delta A\).</li>
+		<li>Suppose we measure paper length; we obtained measurements of 11.1 in., 11.2 in., and 10.9 in., and the accepted value was 11.0 in. Our discrepancy is 0.1 in.</li>
+		<li>We might calculate the uncertainty in our best guess by using half of the range of our measured values: 0.15 in.</li>
+		<li>The measured length of the paper could be expressed as 11.1 ± 0.15 in.</li>
+	</SubList></li>
+	<li>Percent uncertainty:<SubList>
+		<li>Another method of expressing uncertainty is as a percent of the measured value:</li>
+		<MathStuff>\[ {"\\text{Percent uncertainty } = \\frac{\\delta A}{A} \\times 100%"} \]</MathStuff>
+		<li>If the measurements going into the calculation have small uncertainties (a few percent or less), then the percent uncertainty in a quantity calculated by multiplication or division is the sum of the percent uncertainties in the items used to make the calculation.</li>
+	</SubList></li>
+	<li>Significant Figures:<SubList>
+		<li>A person measuring the length of a stick with a ruler notices the stick length seems to be somewhere in between 36.6 cm and 36.7 cm, and he or she must estimate the value of the last digit.</li>
+		<li><u>Method of <b>significant figures</b>:</u> the last digit written down in a measurement is the first digit with some uncertainty.</li>
+		<li>The measured value 36.7 cm has three significant figures.</li>
+		<li>Special consideration is given to zeros when counting significant figures:<SubList>
+			<li>The zeros in 0.053 are not significant because they are placeholders that locate the decimal point. There are two significant figures in 0.053.</li>
+			<li>The zeros in 10.053 are not placeholders; they are significant. This number has five significant figures.</li>
+			<li>The zeros in 1300 may or may not be significant, depending on the style of writing numbers.</li>
+			<li>To avoid this ambiguity, we should write 1300 in scientific notation as \(1.3 \times 10^3\), \(1.30 \times 10^3\), or \(1.300 \times 10^3\), depending on whether it has two, three, or four significant figures.</li>
 		</SubList></li>
-	</ul>
-	<ul style={{width: "48%", marginRight: "1%", float: "right"}}>
-		<li>Dimensional analysis:<SubList>	
-		<li>The <b>dimension</b> of any physical quantity expresses its dependence on the base quantities as a product of symbols (or powers of symbols) representing the base quantities.</li>
-		<li>A measurement of length is said to have dimension \(L\) or \(L^1\).</li>
-		<li>Area is the product of two lengths and so has dimension \(L^2\).</li>
-		<li>A measurement of mass has dimension \(M\) or \(M^1\).</li>
-		<li>A measurement of time has dimension \(T\) or \(T^1\)</li>
-		<li>Speed has dimension length over time, \(L/T\) or \(LT^{"{-1}"}\).</li>
-		<TableLI>
-		<thead>
-		<tr>
-		<th scope="col"><strong>Base Quantity</strong></th>
-		<th scope="col"><strong>Symbol for Dimension</strong></th>
-		</tr>
-		</thead><tbody>
-		<tr>
-		<td>Length</td>
-		<td>L</td>
-		</tr>
-		<tr>
-		<td>Mass</td>
-		<td>M</td>
-		</tr>
-		<tr>
-		<td>Time</td>
-		<td>T</td>
-		</tr>
-		<tr>
-		<td>Current</td>
-		<td>I</td>
-		</tr>
-		<tr>
-		<td>Thermodynamic temperature</td>
-		<td>Θ</td>
-		</tr>
-		<tr>
-		<td>Amount of substance</td>
-		<td>N</td>
-		</tr>
-		<tr>
-		<td>Luminous intensity</td>
-		<td>J</td>
-		</tr>
-		</tbody>
-		</TableLI>
-		<li>Physicists often use square brackets around the symbol for a physical quantity to represent the dimensions of that quantity. For example, if \(r\) is the radius of a cylinder and \(h\) is its height, then we write \([r]=L\) and \([h]=L\).</li>
-		<li>The expressions on each side of the equality in an equation must have the same dimensions.</li>
-		<li>Every term in an expression must have the same dimensions; it does not make sense to add or subtract quantities of differing dimension.</li>
-		</SubList></li>
-		<li>Accuracy and precision of a measurement:<SubList>
-			<li><b>Accuracy</b> is how close a measurement is to the accepted reference value for that measurement.</li>
-			<li>The <b>precision</b> of measurements refers to how close the agreement is between repeated independent measurements.</li>
-			<li><ImgComp src={"/articlePics/physics_1_pics/1.webp"} style={{width:"80%"}}/></li>
-			<li>The precision of a measuring system is related to the <b>uncertainty</b> in the measurements whereas the accuracy is related to the <b>discrepancy</b> from the accepted reference value.</li>
-			<li>The uncertainty in a measurement, \(A\), is often denoted as \(\Delta A\) (read "delta \(A\)"), so the measurement result would be recorded as \(A ± \Delta A\).</li>
-			<li>Suppose we measure paper length; we obtained measurements of 11.1 in., 11.2 in., and 10.9 in., and the accepted value was 11.0 in. Our discrepancy is 0.1 in.</li>
-			<li>We might calculate the uncertainty in our best guess by using half of the range of our measured values: 0.15 in.</li>
-			<li>The measured length of the paper could be expressed as 11.1 ± 0.15 in.</li>
-		</SubList></li>
-		<li>Percent uncertainty:<SubList>
-			<li>Another method of expressing uncertainty is as a percent of the measured value:</li>
-			<MathStuff>\[ {"\\text{Percent uncertainty } = \\frac{\\delta A}{A} \\times 100%"} \]</MathStuff>
-			<li>If the measurements going into the calculation have small uncertainties (a few percent or less), then the percent uncertainty in a quantity calculated by multiplication or division is the sum of the percent uncertainties in the items used to make the calculation.</li>
-		</SubList></li>
-		<li>Significant Figures:<SubList>
-			<li>A person measuring the length of a stick with a ruler notices the stick length seems to be somewhere in between 36.6 cm and 36.7 cm, and he or she must estimate the value of the last digit.</li>
-			<li><u>Method of <b>significant figures</b>:</u> the last digit written down in a measurement is the first digit with some uncertainty.</li>
-			<li>The measured value 36.7 cm has three significant figures.</li>
-			<li>Special consideration is given to zeros when counting significant figures:<SubList>
-				<li>The zeros in 0.053 are not significant because they are placeholders that locate the decimal point. There are two significant figures in 0.053.</li>
-				<li>The zeros in 10.053 are not placeholders; they are significant. This number has five significant figures.</li>
-				<li>The zeros in 1300 may or may not be significant, depending on the style of writing numbers.</li>
-				<li>To avoid this ambiguity, we should write 1300 in scientific notation as \(1.3 \times 10^3\), \(1.30 \times 10^3\), or \(1.300 \times 10^3\), depending on whether it has two, three, or four significant figures.</li>
-			</SubList></li>
-			<li>When combining measurements with different degrees of precision with the mathematical operations of addition, subtraction, multiplication, or division, then the number of significant digits in the final answer can be no greater than the number of significant digits in the least-precise measured value.</li>
-			<li>For multiplication and division, the result should have the same number of significant figures as the quantity with the least number of significant figures entering into the calculation.</li>
-			<li>For addition and subtraction, the answer can contain no more decimal places than the least-precise measurement.</li>
-		</SubList></li>
-	</ul>
-	</div>
+		<li>When combining measurements with different degrees of precision with the mathematical operations of addition, subtraction, multiplication, or division, then the number of significant digits in the final answer can be no greater than the number of significant digits in the least-precise measured value.</li>
+		<li>For multiplication and division, the result should have the same number of significant figures as the quantity with the least number of significant figures entering into the calculation.</li>
+		<li>For addition and subtraction, the answer can contain no more decimal places than the least-precise measurement.</li>
+	</SubList></li>
+</ul>
+</div>
 
-	<Vectors/>
+<Vectors/>
 
-	<h2>Motion Basics</h2>
-	<div className="content" data-source={28}>
+<h2>Motion Basics</h2>
+<div className="content" data-source={28}>
 	<div style={{width: "48%", marginLeft: "1%", float: "left"}}>
 		<h3>Along A Straight Line</h3>
 		<ul>
@@ -307,11 +307,6 @@ export const content = <>
 			<li><b>Free fall</b> describes the motion of an object falling in a gravitational field.</li>
 			<li>Acceleration due to gravity, \(g\), has the average value of 9.81 m/s<sup>2</sup> varies from 9.78 m/s<sup>2</sup> to 9.83 m/s<sup>2</sup>, depending on latitude, altitude, underlying geological formations, and local topography.</li>
 		</SubList></li>
-		</ul>
-	</div>
-	<div style={{width: "48%", marginRight: "1%", float: "right"}}>
-		<h3>In Two And Three Dimensions</h3>
-		<ul>
 		<li>Displacement Vector:<SubList>
 			<li>We generally use the coordinates \(x\), \(y\), and \(z\) to locate a particle at point \(P(x, y, z)\) in three dimensions.</li>
 			<li>The position vector from the origin of the coordinate system to point \(P\) is \({"\\vec{\\textbf{r}}(t)"}\). In unit vector notation:</li>
@@ -328,6 +323,9 @@ export const content = <>
 			<MathStuff>\[{"v_x (t) = \\frac{d}{dt} x(t), \\ v_y (t) = \\frac{d}{dt} y(t), \\ v_z (t) = \\frac{d}{dt} z(t)"}\]</MathStuff>
 			<MathStuff>\[{"\\vec{\\textbf{v}}_{\\text{avg}} = \\frac{\\vec{\\textbf{r}}(t_2) - \\vec{\\textbf{r}}(t_1)}{t_2 - t_1}"}\]</MathStuff>
 		</SubList></li>
+		</ul>
+		<h3>In Two And Three Dimensions</h3>
+		<ul>
 		<li>Acceleration vector:<SubList>
 			<li><b>Acceleration vector:</b></li>
 			<MathStuff>\[{"\\vec{\\textbf{a}}(t) = \\lim_{\\Delta t \\to 0} \\frac{\\vec{\\textbf{v}}(t + \\Delta t) - \\vec{\\textbf{v}}(t)}{\\Delta t} = \\frac{d \\vec{\\textbf{v}}}{dt}"}\]</MathStuff>
@@ -377,5 +375,77 @@ export const content = <>
 		</SubList></li>
 		</ul>
 	</div>
+	<div style={{width: "48%", marginRight: "1%", float: "right"}}>
+		<h3>Dynamics</h3>
+		<ul>
+		<li>The study of motion is called <b>kinematics</b>, but kinematics only describes the way objects move—their velocity and their acceleration. <b>Dynamics</b> is the study of how forces affect the motion of objects and systems.</li>
+		<li><b>Newton's First law:</b><SubList>
+			<li>A body at rest remains at rest or, if in motion, remains in motion at constant velocity unless acted on by a net external force.</li>
+			<li><b>Mass</b> is also related to inertia, the ability of an object to resist changes in its motion - in other words, to resist acceleration. Newton's first law is often called the <b>law of inertia</b>.</li>
+		</SubList></li>
+		<li><b>Newton's Second law:</b><SubList>
+			<li>The acceleration of a system is directly proportional to and in the same direction as the net external force acting on the system and is inversely proportional to its mass. In equation form:</li>
+			<MathStuff>\[ {"\\vec{\\textbf{a}} = \\frac{\\vec{\\textbf{F}}_\\text{net}}{m}"} \]</MathStuff>
+			<li>Newton actually stated his second law in terms of momentum: <i>"The instantaneous rate at which a body's momentum changes is equal to the net force acting on the body."</i></li>
+			<MathStuff>\[{"\\vec{\\textbf{F}}_\\text{net} = \\frac{d}{dt} \\vec{\\textbf{p}}"} \]</MathStuff>
+			<li>The <b>momentum</b> \({"\\vec{\\textbf{p}}"}\) is defined as: \({"\\vec{\\textbf{p}} = m \\vec{\\textbf{v}}"}\).</li>
+		</SubList></li>
+		<li><b>Newton's Third law:</b><SubList>
+			<li>Whenever one body exerts a force on a second body, the first body experiences a force that is equal in magnitude and opposite in direction to the force that it exerts.</li>
+			<li>Mathematically, if a body A exerts a force \({"\\vec{\\textbf{F}}"}\) on body \(B\), then \(B\) simultaneously exerts a force \({"-\\vec{\\textbf{F}}"}\) on \(A\), or in vector equation form: \({"\\vec{\\textbf{F}}_\\text{AB} - \\vec{\\textbf{F}}_\\text{BA}"}\).</li>
+		</SubList></li>
+		<li>Common forces:<SubList>
+			<li><b>Normal force:</b> The force supporting the weight of an object, or a load, and is perpendicular to the surface of contact between the load and its support.</li>
+			<li><b>Tension:</b> A force along the length of a medium; in particular, it is a pulling force that acts along a stretched flexible connector, such as a rope or cable.</li>
+			<li><b>Friction:</b> A resistive force opposing motion or its tendency.</li>
+			<li><b>Spring Force:</b> A spring is a special medium with a specific atomic structure that has the ability to restore its shape, if deformed.</li>
+		</SubList></li>
+		<li>Drawing free-body diagrams:<SubList>
+			<li>Draw the object under consideration; it does not have to be artistic. At first, you may want to draw a circle around the object of interest to be sure you focus on labeling the forces acting on the object. If you are treating the object as a particle (no size or shape and no rotation), represent the object as a point. We often place this point at the origin of an \(xy\)-coordinate system.</li>
+			<li>Include all forces that act on the object, representing these forces as vectors. Forces that the object exerts on its environment must not be included.</li>
+			<li>Convert the free-body diagram into a more detailed diagram showing the \(x\)- and \(y\)-components of a given force.</li>
+			<li>If there are two or more objects, or bodies, in the problem, draw a separate free-body diagram for each object.</li>
+		</SubList></li>
+		</ul>
+		<h3>Application Of Newton's Laws</h3>
+		<ul>
+			<li>Static and Kinetic Friction:<SubList>
+				<li>If two systems are in contact and stationary relative to one another, then the friction between them is called <b>static friction</b>. If two systems are in contact and moving relative to one another, then the friction between them is called <b>kinetic friction</b>.</li>
+				<li>The magnitude of static friction \(f_s\) is \(f_s \le μ_s N\), where \(μ_s\) is the <b>coefficient of static friction</b>.</li>
+				<li>One the applied force exceeds \(f_x (\text{"{max}"})\), the object moves.</li>
+				<li>The magnitude of static friction \(f_k\) is \(f_k = μ_k N\), where \(μ_k\) is the <b>coefficient of kinetic friction</b>.</li>
+				<li><u>Atomic-scale explanations of friction:</u> When two rough surfaces are in contact, the actual contact area is a tiny fraction of the total area because only high spots touch. When a greater normal force is exerted, the actual contact area increases, and we find that the friction is proportional to this area.</li>
+				<li><ImgComp src={"/articlePics/physics_1_pics/4.webp"} style={{width:"90%"}}/></li>
+			</SubList></li>
+			<li>Centripetal force:<SubList>
+				<li>Centripetal acceleration:</li>
+				<MathStuff>\[{"a_c = \\frac{v^2}{r} = r \\omega^2"}\]</MathStuff>
+				<li>Centripetal force:</li>
+				<MathStuff>\[{"F_c = m \\frac{v^2}{r} = m r \\omega^2"}\]</MathStuff>
+				<li><a href='https://en.wikipedia.org/wiki/Banked_turn'>A <b>banked turn</b> is a turn or change of direction in which the vehicle banks or inclines, usually towards the inside of the turn.</a></li>
+				<li><b>Ideal banking</b>: the net external force equals the horizontal centripetal force in the absence of friction. This is when:</li>
+				<MathStuff>\[{"\\theta = \\tan ^ {-1} \\left( \\frac{v^2}{rg} \\right)"}\]</MathStuff>
+			</SubList></li>
+			<li>Drag forces:<SubList>
+				<li>Another interesting force in everyday life is the force of drag on an object when it is moving in a fluid (either a gas or a liquid).</li>
+				<li>Like friction, the <b>drag force</b> always opposes the motion of an object. Unlike simple friction, the drag force is proportional to some function of the velocity of the object in that fluid.</li>
+				<li>For most large objects not moving too slowly, the magnitude of the drag force \(F_D\) is proportional to the square of the speed of the object:</li>
+				<MathStuff>\[{"F_D = \\frac{1}{2} C \\rho A v^2"}\]</MathStuff>
+				<li>where \(C\) is the <b>drag coefficient</b>, \(A\) is the area of the object facing the fluid and \(\rho\) is the density of the fluid.</li>
+				<li>For a spherical object falling in a medium, the drag force is:</li>
+				<MathStuff>\[{"F_s = 6 \\pi r \\eta v"}\]</MathStuff>
+				<li>where \(r\) is the radius of the object and \(η\) is the viscosity of the fluid.</li>
+				<li>For a body moving in a straight line at moderate speeds through a liquid such as water, the frictional force can often be approximated by:</li>
+				<MathStuff>\[f_R = - bv\]</MathStuff>
+				<li>According to Newton's second law:</li>
+				<MathStuff>\[mg - bv = m \frac{"{dv}{dt}"}\]</MathStuff>
+				<li>As \(v\) increases, the frictional force, \(-bv\), increases until it matches \(mg\). At this point, the velocity remains constant:</li>
+				<MathStuff>\[mg - bv_T = 0\]</MathStuff>
+				<li>Otherwise:</li>
+				<MathStuff>\[y = {"\\frac{mg}{b}t + \\frac{m^2 g}{b^2} (e^{-bt/m}-1)"}\]</MathStuff>
+			</SubList></li>
+		</ul>
 	</div>
+</div>
+
 </>

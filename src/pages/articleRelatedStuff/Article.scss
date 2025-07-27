@@ -100,6 +100,7 @@
 				margin-left: 0px;
 				position: relative;
 				word-wrap: break-word;
+
 				.colorContainer{
 					display: inline-block;
 					margin-right: 2px;
@@ -163,6 +164,34 @@
 						list-style-type:circle;
 					}
 				}
+
+				:not(.mathStuff) > .MathJax{
+					font-size: 17px !important;
+					line-height: 25px !important;
+				}
+
+				.mathStuff{
+					display: block;
+					border: #883322 ridge 6px;
+					margin: 10px auto 20px auto;
+					background-color: white;
+					width: fit-content;
+					overflow-x: auto;
+					overflow-y: hidden;
+					cursor: pointer;
+					list-style-type: none;
+					padding: 0px 5px;
+					max-width: 95%;
+
+					&::-webkit-scrollbar {
+						height: 8px;
+					}
+
+					.MathJax{
+						font-size: 22px !important;
+						line-height: 26px !important;
+					}
+				}
 			}
 			ol>li:not(.tableContainer):not(.mathStuff):not(.chartContainer):not(:has(> .contentImg)):not(:has(> figure)){
 				counter-increment: listCounter;
@@ -193,24 +222,6 @@
 				vertical-align: bottom;
 				font-size: 0.6em;
 				top: 6px;
-			}
-			.mathStuff{
-				display: block;
-				border: #883322 ridge 6px;
-				margin: 10px auto 20px auto;
-				background-color: white;
-				font-size: 20px;
-				width: fit-content;
-				overflow-x: auto;
-				overflow-y: hidden;
-				cursor: pointer;
-				list-style-type: none;
-				padding: 0px 5px;
-				max-width: 95%;
-
-				&::-webkit-scrollbar {
-					height: 8px;
-				}
 			}
 			.tableContainer{
 				overflow-x: auto;

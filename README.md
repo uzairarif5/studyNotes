@@ -47,6 +47,9 @@ This is my first big project that uses React.js and Redux.
 
 Versioning is done using "npm version [new-version] --git-tag-version false".
 
+update 22.9:
+- Updated `physics_1.tsx`.
+
 update 22.8:
 - Added content to `DifferentiationOfFunctionsOfSeveralVaraibles`.
 - Added `physics_1.tsx`.
