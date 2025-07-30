@@ -41,14 +41,18 @@ function Content(){
     </div>
   }
   else {
-    fetch("https://django-apps-38uv.onrender.com/study_notes_backend/allList")
+    fetch("https://django-apps-dncy.onrender.com/study_notes_backend/allList")
     .then(res=> res.json())
     .then(res=> ChangeResult(res))
     .catch(err=> {
       console.error(err);
       console.log("This page won't work in localhost.")
     });
-    return null;
+    return <div className="content">
+      <ul>
+        <li>Receiving content from backend...</li>
+      </ul>
+    </div>;
   }
 }
 

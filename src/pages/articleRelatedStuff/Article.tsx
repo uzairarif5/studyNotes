@@ -67,6 +67,7 @@ class Article extends React.Component<PropsType> {
 
   setWholeContent(){
     const evalRes = (val: any) => {
+      console.log("Module found!");
       this.setState({
         wholeContent: {
           "title": val.title,
@@ -184,7 +185,7 @@ class Article extends React.Component<PropsType> {
     </div>;
   }
 
-  goBackToHomePageCauseError(error: string){
+  goBackToHomePageBecauseError(error: string){
     if (error === ERROR_NO_ARTICLE) alert("Article not found");
     else if (error === ERROR_NO_SOURCES) alert("Sources not found");
     else alert("Unknown error! Please report this in the feedback form.");
@@ -224,9 +225,9 @@ class Article extends React.Component<PropsType> {
 
   componentDidUpdate() {
     if (!this.state.wholeContent) this.setWholeContent();
-    else if(this.state.wholeContent === ERROR_NO_ARTICLE) this.goBackToHomePageCauseError(ERROR_NO_ARTICLE);
+    else if(this.state.wholeContent === ERROR_NO_ARTICLE) this.goBackToHomePageBecauseError(ERROR_NO_ARTICLE);
     else if (!this.state.sourcesList) this.setSourcesList();
-    else if(this.state.sourcesList === ERROR_NO_SOURCES) this.goBackToHomePageCauseError(ERROR_NO_SOURCES);
+    else if(this.state.sourcesList === ERROR_NO_SOURCES) this.goBackToHomePageBecauseError(ERROR_NO_SOURCES);
     else if(this.allowCleanUp) document.fonts.ready.then(()=>this.cleanUp());
   }
 

@@ -1,7 +1,6 @@
 # My Study Notes
 
 This is my first big project that uses React.js and Redux.
-This is my first big project that uses React.js and Redux.
 
 ![Vite](https://img.shields.io/badge/vite-white?style=for-the-badge&logo=vite)  ![React JS](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB")  ![Redux](https://img.shields.io/badge/Redux-252525?style=for-the-badge&logo=redux&logoColor=7f51cb)  ![PostgreSQL](https://img.shields.io/badge/postgresql-white?style=for-the-badge&logo=postgresql)
 
@@ -46,6 +45,10 @@ This is my first big project that uses React.js and Redux.
 ## Updates:
 
 Versioning is done using "npm version [new-version] --git-tag-version false".
+
+update 22.10:
+- Made changes to `saved_resources.tsx` and `Article.tsx`.
+- Changed home title to `Uzair's Study Notes`.
 
 update 22.9:
 - Updated `physics_1.tsx`.
