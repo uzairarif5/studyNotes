@@ -46,6 +46,9 @@ This is my first big project that uses React.js and Redux.
 
 Versioning is done using "npm version [new-version] --git-tag-version false".
 
+update 22.11:
+- Added content about double integration.
+
 update 22.10:
 - Made changes to `saved_resources.tsx` and `Article.tsx`.
 - Changed home title to `Uzair's Study Notes`.
