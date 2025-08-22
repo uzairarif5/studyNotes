@@ -46,6 +46,9 @@ This is my first big project that uses React.js and Redux.
 
 Versioning is done using "npm version [new-version] --git-tag-version false".
 
+update 22.12:
+- Added content to `physics_1.tsx`.
+
 update 22.11:
 - Added content about double integration.
 
