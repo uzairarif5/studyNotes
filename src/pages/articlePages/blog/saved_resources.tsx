@@ -12,6 +12,8 @@ function Content(){
     const topicList1 = topics.slice(0, cutoff);
     const topicList2 = topics.slice(cutoff);
 
+    console.log(content);
+
     return <div className="content">
 	    <ul style={{width: "49%",float: "left",marginLeft: "0.5%", marginRight: "0.5%"}}>
         <li>This is a list of sources I saved. All resources I make notes of, as well as resources I use(d) privately are saved here.</li>
@@ -42,8 +44,8 @@ function Content(){
   }
   else {
     fetch("https://django-apps-dncy.onrender.com/study_notes_backend/allList")
-    .then(res=> res.json())
-    .then(res=> ChangeResult(res))
+    .then(res => res.json())
+    .then(ChangeResult)
     .catch(err=> {
       console.error(err);
       console.log("This page won't work in localhost.")

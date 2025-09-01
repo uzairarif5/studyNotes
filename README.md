@@ -46,6 +46,9 @@ This is my first big project that uses React.js and Redux.
 
 Versioning is done using "npm version [new-version] --git-tag-version false".
 
+update 23.2:
+- Fixing the bug in `saved_resources`.
+
 update 23.1:
 - Seperated the sources section in the article page.
 - Added a transition to article buttons.
