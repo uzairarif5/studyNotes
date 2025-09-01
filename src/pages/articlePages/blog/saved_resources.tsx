@@ -17,28 +17,36 @@ function Content(){
     return <div className="content">
 	    <ul style={{width: "49%",float: "left",marginLeft: "0.5%", marginRight: "0.5%"}}>
         <li>This is a list of sources I saved. All resources I make notes of, as well as resources I use(d) privately are saved here.</li>
-        {topicList1.map((topic, i)=> <li key={i} style={{textTransform:"capitalize"}}>
-          {topic.replaceAll("_"," ")}:<SubList>
-            {/*@ts-ignore */}
-            {content[topic].map((source, j) => <li
-              key={j}
-              dangerouslySetInnerHTML={{__html: source}}
-              style={{textTransform:"none"}}
-            ></li>)}
-          </SubList>
-        </li>)}
+        {topicList1.map((topic, i) => 
+          content[topic] ? 
+          <li key={i} style={{textTransform:"capitalize"}}>
+            {topic.replaceAll("_"," ")}:<SubList>
+              {/*@ts-ignore */}
+              {content[topic].map((source, j) => <li
+                key={j}
+                dangerouslySetInnerHTML={{__html: source}}
+                style={{textTransform:"none"}}
+              ></li>)}
+            </SubList>
+          </li> : 
+          null
+        )}
       </ul>
 	    <ul style={{width: "49%",float: "right",marginLeft: "0.5%", marginRight: "0.5%"}}>
-        {topicList2.map((topic, i)=> <li key={i} style={{textTransform:"capitalize"}}>
-          {topic.replaceAll("_"," ")}: <SubList>
-            {/*@ts-ignore */}
-            {content[topic].map((source, j) => <li
-              key={j}
-              dangerouslySetInnerHTML={{__html: source}}
-              style={{textTransform:"none"}}
-            ></li>)}
-          </SubList>
-        </li>)}
+        {topicList2.map((topic, i) => 
+          content[topic] ? 
+          <li key={i} style={{textTransform:"capitalize"}}>
+            {topic.replaceAll("_"," ")}: <SubList>
+              {/*@ts-ignore */}
+              {content[topic].map((source, j) => <li
+                key={j}
+                dangerouslySetInnerHTML={{__html: source}}
+                style={{textTransform:"none"}}
+              ></li>)}
+            </SubList>
+          </li> : 
+          null
+        )}
       </ul>
     </div>
   }

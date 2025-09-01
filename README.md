@@ -46,7 +46,7 @@ This is my first big project that uses React.js and Redux.
 
 Versioning is done using "npm version [new-version] --git-tag-version false".
 
-update 23.2:
+update 23.2 - 23.3:
 - Fixing the bug in `saved_resources`.
 
 update 23.1:
