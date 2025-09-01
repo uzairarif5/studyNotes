@@ -7,16 +7,16 @@ function Content(){
   const [content, ChangeResult] = useState(null);
   
   if(content){ 
-    const keyList = Object.keys(content);
-    const cutoff = Math.floor(keyList.length/2) - 1;
-    const keyList1 = keyList.slice(0, cutoff);
-    const keyList2 = keyList.slice(cutoff);
+    const topics = ['language_learning','mathematics', 'statistics', 'natural_sciences', 'computer_science_fundamentals','electrical_engineering', 'computer_science_(advanced_topics)', 'tutorials', 'blog','miscellaneous'];
+    const cutoff = Math.floor(topics.length/2) - 1;
+    const topicList1 = topics.slice(0, cutoff);
+    const topicList2 = topics.slice(cutoff);
 
     return <div className="content">
 	    <ul style={{width: "49%",float: "left",marginLeft: "0.5%", marginRight: "0.5%"}}>
         <li>This is a list of sources I saved. All resources I make notes of, as well as resources I use(d) privately are saved here.</li>
-        {keyList1.map((topic, i)=> <li key={i} style={{textTransform:"capitalize"}}>
-          {topic.replaceAll("_"," ")}: <SubList>
+        {topicList1.map((topic, i)=> <li key={i} style={{textTransform:"capitalize"}}>
+          {topic.replaceAll("_"," ")}:<SubList>
             {/*@ts-ignore */}
             {content[topic].map((source, j) => <li
               key={j}
@@ -27,7 +27,7 @@ function Content(){
         </li>)}
       </ul>
 	    <ul style={{width: "49%",float: "right",marginLeft: "0.5%", marginRight: "0.5%"}}>
-        {keyList2.map((topic, i)=> <li key={i} style={{textTransform:"capitalize"}}>
+        {topicList2.map((topic, i)=> <li key={i} style={{textTransform:"capitalize"}}>
           {topic.replaceAll("_"," ")}: <SubList>
             {/*@ts-ignore */}
             {content[topic].map((source, j) => <li

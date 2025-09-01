@@ -6,6 +6,7 @@ import { fadeLoadingToInsv , changeLoadingText, showLoadingScreen} from "../../l
 import { Link } from 'react-router';
 import { useNavigate } from "react-router";
 import { FORM_COUNTER, Q_COUNTER, CLOSING_LIST_PROCESS } from "../../reduxStuff/actions";
+import SourcesSection from './SourcesSection.js';
 import { SideB, showSideB, hideSideB, CloseListsButton } from './sideButtons';
 import { QuestionsBox } from './Questions';
 import { ImgView } from './ImgView';
@@ -15,10 +16,8 @@ import store from "../../reduxStuff/store.js";
 
 const modules = import.meta.glob(['../articlePages/*/*.tsx','../articlePages/guide.tsx','../privatePages/*/*.tsx']);
 const ERROR_NO_ARTICLE = "ERROR_NO_ARTICLE";
-const ERROR_NO_SOURCES = "ERROR_NO_SOURCES";
-const NO_SOURCES = "RENDER_WITHOUT_SOURCES";
-const OFFLINE_MODE = false;
-const GET_SOURCES_LIST_LINK = 1 ? //Change this to 0 if you want to use other link
+export const OFFLINE_MODE = false;
+export const GET_SOURCES_LIST_LINK = 1 ? //Change this to 0 if you want to use other link
   "https://django-apps-dncy.onrender.com/study_notes_backend/getList":
   "http://127.0.0.1:8000/study_notes_backend/getList";
 
@@ -31,22 +30,21 @@ type ContentType = {
 } 
 
 type ArticleState = {
-  sourcesList: string | null,
   wholeContent: ContentType | string | null,
   footerEl: null,
 }
 
-type PropsType = {
+type ArticlePropsType = {
   changeAR: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-class Article extends React.Component<PropsType> {
+class Article extends React.Component<ArticlePropsType> {
   rootEl: HTMLElement | null = null;
   pathnameToUse: string = "";
-  allowCleanUp: boolean = false;
-  state: ArticleState = {sourcesList: null, wholeContent: null, footerEl: null};
+  allowCleanUp: boolean = true;
+  state: ArticleState = {wholeContent: null, footerEl: null};
 
-  constructor(props: PropsType) {
+  constructor(props: ArticlePropsType) {
     super(props);
     showLoadingScreen();
     store.dispatch({
@@ -100,59 +98,21 @@ class Article extends React.Component<PropsType> {
     else this.setState({wholeContent: ERROR_NO_ARTICLE});
   }
 
-  setSourcesList(){
-    const setSourcesListInner = (strInput: string) => {
-      fetch(GET_SOURCES_LIST_LINK, {
-        method:"post", 
-        body: strInput
-      })
-      .then(res=>res.text())
-      .then(res=> this.setState({sourcesList: res}))
-      .catch((err)=> {
-        console.log("There was an error getting the sources:");
-        console.error(err);
-        this.setState({sourcesList: ERROR_NO_SOURCES});
-      });
-    }
-
-    if (OFFLINE_MODE) this.setState({sourcesList: NO_SOURCES});
-    else {
-      let content = this.state.wholeContent as ContentType;
-      let inputObj = {
-        "sourcesColor": content["sourcesColor"],
-        "sourcesOrder": content["sourcesOrder"],
-        "additionalResources": content["additionalResources"]
-      };
-      if (!inputObj["sourcesColor"]) this.setState({sourcesList: NO_SOURCES});
-      else {
-        if (import.meta.env.DEV)
-          //@ts-ignore
-          import("../../privateFuncs/private_json_input.ts")
-          .then(res => setSourcesListInner(res.default(inputObj)));
-        else {
-          let strInput = JSON.stringify(inputObj);
-          setSourcesListInner(strInput);
-        }
-      }
-    }
-  }
-
   renderMainContent(){
     let references = <section>
       <h4>Contents:</h4>
       <ol id='reference'></ol>
     </section>;
 
-    let SourcesSection = null;
-    if(this.state.sourcesList !== NO_SOURCES){
-      SourcesSection = <section dangerouslySetInnerHTML={{__html:
-        this.state.sourcesList!
-      }}></section>;
-    }
-    
-    let content = this.state.wholeContent as ContentType;
+    let content = this.state.wholeContent as ContentType;    
     let mainContent = content["content"].props.children;
     let heading = mainContent[0];
+    let sourcesSection = content["sourcesColor"] ? 
+      <SourcesSection 
+        sourcesColor={content["sourcesColor"]} 
+        sourcesOrder={content["sourcesOrder"]} 
+        additionalResources={content["additionalResources"]}
+      /> : null;
     let main = <main>{mainContent.slice(1)}</main>;
     
     return <div>
@@ -161,7 +121,7 @@ class Article extends React.Component<PropsType> {
         <div id="notFooter">
           {heading}
           {references}
-          {SourcesSection}
+          {sourcesSection}
           {main}
         </div>
         {this.state.footerEl}
@@ -187,19 +147,13 @@ class Article extends React.Component<PropsType> {
 
   goBackToHomePageBecauseError(error: string){
     if (error === ERROR_NO_ARTICLE) alert("Article not found");
-    else if (error === ERROR_NO_SOURCES) alert("Sources not found");
     else alert("Unknown error! Please report this in the feedback form.");
     changeLoadingText("Going To Home Page");
     this.props.changeAR(false);
   }
 
   render() {
-    let wholeContentValid = this.state.wholeContent && (this.state.wholeContent!) !== ERROR_NO_ARTICLE;
-    let sourcesValid = this.state.sourcesList && this.state.sourcesList !== ERROR_NO_SOURCES;
-    if (wholeContentValid && sourcesValid){
-      this.allowCleanUp = true;
-      return this.renderMainContent();
-    }
+    if (this.state.wholeContent && (this.state.wholeContent!) !== ERROR_NO_ARTICLE) return this.renderMainContent();
     return null;
   }
 
@@ -210,7 +164,7 @@ class Article extends React.Component<PropsType> {
     const footer = <footer>
       <Link to="/" onClick={showLoadingScreen}>Home Page</Link>
       {
-        (isMobile && (`../articlePages${this.pathnameToUse}_worksheet.tsx` in modules)) ? 
+        ((!isMobile) && (`../articlePages${this.pathnameToUse}_worksheet.tsx` in modules)) ? 
         <Link to={"/worksheet?topic=" + this.pathnameToUse.slice(1)}>Worksheet</Link> : 
         null
       }
@@ -225,20 +179,20 @@ class Article extends React.Component<PropsType> {
 
   componentDidUpdate() {
     if (!this.state.wholeContent) this.setWholeContent();
-    else if(this.state.wholeContent === ERROR_NO_ARTICLE) this.goBackToHomePageBecauseError(ERROR_NO_ARTICLE);
-    else if (!this.state.sourcesList) this.setSourcesList();
-    else if(this.state.sourcesList === ERROR_NO_SOURCES) this.goBackToHomePageBecauseError(ERROR_NO_SOURCES);
-    else if(this.allowCleanUp) document.fonts.ready.then(()=>this.cleanUp());
+    else if (this.state.wholeContent === ERROR_NO_ARTICLE) this.goBackToHomePageBecauseError(ERROR_NO_ARTICLE);
+    else if (this.allowCleanUp) {
+      this.allowCleanUp = false;
+      document.fonts.ready.then(()=>this.cleanUp());
+    }
   }
 
   cleanUp(){
-    this.allowCleanUp = false;
     changeLoadingText("Formatting Notes"); 
     this.addDateEl();
     this.setReferenceEl();
     document.documentElement.style.backgroundColor = "#832";
     this.addTogglesToH();
-    $(".content a, #sources a").attr("target","_blank");
+    $(".content a").attr("target","_blank");
     this.rootEl!.addEventListener("scroll", this.scrollFunc);
     this.addColors();
     this.addKeyBinds();
@@ -305,7 +259,7 @@ class Article extends React.Component<PropsType> {
           if (this.hasAttribute("title")) this.removeAttribute("title");
           else{
             let sourceNum = this.getAttribute("data-source");
-            let text = document.querySelector(`#sources li[data-num="${sourceNum}"]`)!.textContent
+            let text = document.querySelector(`#sources li[data-num="${sourceNum}"]`)!.textContent;
             this.setAttribute("title","Source: " + text);
           }
         })
@@ -331,3 +285,5 @@ function ArticleWrapper(){
 }
 
 export default ArticleWrapper;
+
+

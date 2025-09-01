@@ -46,6 +46,13 @@ This is my first big project that uses React.js and Redux.
 
 Versioning is done using "npm version [new-version] --git-tag-version false".
 
+update 23.1:
+- Seperated the sources section in the article page.
+- Added a transition to article buttons.
+- Topics in `saved_resources` are now in a particular order.
+- Added content to `calculus_advanced.tsx`.
+- Added `discrete_mathematics.tsx`.
+
 update 22.12:
 - Added content to `physics_1.tsx`.
 

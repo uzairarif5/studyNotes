@@ -5,7 +5,7 @@ import Vectors from "./Vectors";
 import ConicSectionAndQuadraticSurfaces from "./ConicSectionAndQuadraticSurfaces";
 import VectorValuedFunction from "./VectorValuedFunctions";
 import DifferentiationOfFunctionsOfSeveralVariables from "./DifferentiationOfFunctionsOfSeveralVariables";
-import MultipleIntegrals from "./multiple_integrals";
+import MultipleIntegrals from "./MultipleIntegrals";
 
 export const title = "Calculus (Advanced) Notes";
 

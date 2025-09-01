@@ -4,9 +4,8 @@ import { CodePre } from "../../articleRelatedStuff/Code";
 import { MathStuff } from "../../articleRelatedStuff/MathStuff";
 
 export const title = "Data Structures And Algorithms Notes";
-export const sourcesColor = {19: null, 20: null, 4: "#4f94ac", 21: "rgb(204, 119, 153)", 22: "rgb(0, 129, 0)"};
-export const sourcesOrder = [19, 20, 4, 21, 22];
-export const additionalResources = [73];
+export const sourcesColor = {19: null, 20: null, 4: "#4f94ac", 21: "rgb(204, 119, 153)"};
+export const sourcesOrder = [19, 20, 4, 21];
 
 export const content = <>
 <h1>Data Structures And Algorithms Notes</h1>
@@ -19,23 +18,21 @@ export const content = <>
 			<li>A <b>data item</b> is a piece of information or a record whose value is drawn from a type. A data item is said to be a member of a type.</li>
 			<li>A <b>data type</b> is a type together with a collection of operations to manipulate the type.</li>
 		</ul>
-		<div data-source="4">
-			<ul>
-				<li><b>Primitive data types</b> are a set of basic data types from which all other data types are constructed.</li>
-				<li>Primitive data types in Java:<SubList>
-					<li><u>Integer types with a variety of ranges:</u> <b>byte</b>, <b>short</b>, <b>int</b>, <b>long</b> and <b>char</b></li>
-					<li><u>Floating-point numbers with single and double precisions:</u> <b>float</b> and <b>double</b></li>
-					<li><u>True and false:</u> <b>boolean</b></li>
-				</SubList></li>
-				<li><a href='https://en.wikipedia.org/wiki/C_data_types'>C data types:</a> Minimally, there are four types, <b>char</b>, <b>int</b>, <b>float</b> and <b>double</b>, but the qualifiers <b>short</b>, <b>long</b>, <b>signed</b>, and <b>unsigned</b> mean that C contains numerous target-dependent integer and floating-point primitive types.</li>
-				<li>A <b>composite data type</b> or <b>compound data type</b> is any data type which can be constructed in a program using the programming language's primitive data types and other composite types. It is sometimes called a <b>structure</b> or <b>aggregate type</b>. <u>Examples:</u><SubList>
-					<li><b>Array:</b> a sequence of elements of the same type stored contiguously in memory.</li>
-					<li>A <b>record</b> is a collection of <b>fields</b> (piece of data encapsulated within a class or object). Records are distinguished from arrays by the fact that not all of the fields must contain the same type of data.</li>
-					<li><b>String:</b> a sequence of characters representing text.</li>
-					<li>A <b>union</b> is a value that may have any of several representations or formats within the same position in memory</li>
-				</SubList></li>
-			</ul>
-		</div>
+		<ul data-source="4">
+			<li><b>Primitive data types</b> are a set of basic data types from which all other data types are constructed.</li>
+			<li>Primitive data types in Java:<SubList>
+				<li><u>Integer types with a variety of ranges:</u> <b>byte</b>, <b>short</b>, <b>int</b>, <b>long</b> and <b>char</b></li>
+				<li><u>Floating-point numbers with single and double precisions:</u> <b>float</b> and <b>double</b></li>
+				<li><u>True and false:</u> <b>boolean</b></li>
+			</SubList></li>
+			<li><a href='https://en.wikipedia.org/wiki/C_data_types'>C data types:</a> Minimally, there are four types, <b>char</b>, <b>int</b>, <b>float</b> and <b>double</b>, but the qualifiers <b>short</b>, <b>long</b>, <b>signed</b>, and <b>unsigned</b> mean that C contains numerous target-dependent integer and floating-point primitive types.</li>
+			<li>A <b>composite data type</b> or <b>compound data type</b> is any data type which can be constructed in a program using the programming language's primitive data types and other composite types. It is sometimes called a <b>structure</b> or <b>aggregate type</b>. <u>Examples:</u><SubList>
+				<li><b>Array:</b> a sequence of elements of the same type stored contiguously in memory.</li>
+				<li>A <b>record</b> is a collection of <b>fields</b> (piece of data encapsulated within a class or object). Records are distinguished from arrays by the fact that not all of the fields must contain the same type of data.</li>
+				<li><b>String:</b> a sequence of characters representing text.</li>
+				<li>A <b>union</b> is a value that may have any of several representations or formats within the same position in memory</li>
+			</SubList></li>
+		</ul>
 		<ul>
 			<li>In the most general sense, a <b>data structure</b> is any data representation and its associated operations.</li>
 			<li>More commonly, people use the term "data structure" to mean an organization or structuring for a collection of data items. A sorted list of integers stored in an array is an example of such a structuring.</li>
@@ -43,20 +40,15 @@ export const content = <>
 			<li>The <b>cost</b> of a solution is the amount of resources that the solution consumes.</li>
 		</ul>
 	</div>
-	<div style={{width: "49%", marginRight: "0.5%", float: "right"}}>
-		<ul>
-			<li>An <b>interface</b> is a class-like structure that only contains method signatures and fields. An interface does not contain an implementation of the methods or any data members.</li>
-			<li><a href='https://www.javatpoint.com/abstract-data-type-in-data-structure'>An <b>abstract data type</b> is an abstraction of a data structure that provides only the interface to which the data structure must adhere. In other words, we can say that abstract data types are the entities that are definitions of data and operations but do not have implementation details.</a></li>
-		</ul>
-		<div data-source="22"><ul><li>ADTs are more abstract and theoretical, while interfaces are concrete programming constructs for defining contracts and ensuring code compatibility.</li></ul></div>
-		<ul>  
-			<li>A <b>data structure</b> is the implementation for an ADT. The term "data structure" often refers to data stored in a computer's main memory.</li>
-			<li>Data types have both a logical and a physical form. The definition of the data type in terms of an ADT is its logical form. The implementation of the data type as a data structure is its physical form.</li>
-			<li>A distinction should be made between the logical concept of a data type and its physical implementation in a computer program. As an example, the term "array" could refer either to a data type or an implementation.</li>
-			<li>"Array" is commonly used in computer programming to mean a contiguous block of memory locations, where each memory location stores one fixed-length data item. By this meaning, an array is a physical data structure.</li>
-			<li>However, array can also mean a logical data type composed of a (typically homogeneous) collection of data items, with each data item identified by an index number.</li>
-		</ul>
-	</div>
+	<ul style={{width: "49%", marginRight: "0.5%", float: "right"}}>
+		<li>An <b>interface</b> is a class-like structure that only contains method signatures and fields. An interface does not contain an implementation of the methods or any data members.</li>
+		<li><a href='https://www.javatpoint.com/abstract-data-type-in-data-structure'>An <b>abstract data type</b> is an abstraction of a data structure that provides only the interface to which the data structure must adhere. In other words, we can say that abstract data types are the entities that are definitions of data and operations but do not have implementation details.</a></li>
+		<li>A <b>data structure</b> is the implementation for an ADT. The term "data structure" often refers to data stored in a computer's main memory.</li>
+		<li>Data types have both a logical and a physical form. The definition of the data type in terms of an ADT is its logical form. The implementation of the data type as a data structure is its physical form.</li>
+		<li>A distinction should be made between the logical concept of a data type and its physical implementation in a computer program. As an example, the term "array" could refer either to a data type or an implementation.</li>
+		<li>"Array" is commonly used in computer programming to mean a contiguous block of memory locations, where each memory location stores one fixed-length data item. By this meaning, an array is a physical data structure.</li>
+		<li>However, array can also mean a logical data type composed of a (typically homogeneous) collection of data items, with each data item identified by an index number.</li>
+	</ul>
 </div>
 
 <h2 id="algorithmComplexity">Algorithm Complexity</h2>
