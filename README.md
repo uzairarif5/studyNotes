@@ -46,6 +46,10 @@ This is my first big project that uses React.js and Redux.
 
 Versioning is done using "npm version [new-version] --git-tag-version false".
 
+update 23.4:
+- Made changes to `SourcesSection.tsx` and `calculus_advanced.tsx`.
+- Added `VectorCalculus.tsx`.
+
 update 23.2 - 23.3:
 - Fixing the bug in `saved_resources`.
 

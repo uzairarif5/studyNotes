@@ -8,19 +8,17 @@ type SourcesSectionProps = {
 }
 
 export default function SourcesSection(props: SourcesSectionProps) {
-  const [sourcesContent, changeSC] = useState("<h4>Main Sources:</h4><ol id='sources'><li>Loading sources...</li></ol>");
+  const [sourcesContent, changeSC] = useState("");
 
   useEffect(()=>{
-    if (!OFFLINE_MODE) {
-      if (props.sourcesColor) {
-        if (import.meta.env.DEV)
-          //@ts-ignore
-          import("../../privateFuncs/private_json_input.ts")
-          .then(res => setSourcesListInner(res.default({...props, password: ""}), changeSC));
-        else {
-          let strInput = JSON.stringify(props);
-          setSourcesListInner(strInput, changeSC);
-        }
+    if ((!OFFLINE_MODE) && props.sourcesColor) {
+      if (import.meta.env.DEV)
+        //@ts-ignore
+        import("../../privateFuncs/private_json_input.ts")
+        .then(res => setSourcesListInner(res.default({...props, password: ""}), changeSC));
+      else {
+        let strInput = JSON.stringify(props);
+        setSourcesListInner(strInput, changeSC);
       }
     }
   },[]);
@@ -34,7 +32,7 @@ function setSourcesListInner(strInput: string, changeSC: React.Dispatch<React.Se
     body: strInput
   })
   .then(res=>res.text())
-  .then(res=> changeSC(res))
+  .then(changeSC)
   .catch((err)=> {
     console.log("There was an error getting the sources:");
     console.error(err);

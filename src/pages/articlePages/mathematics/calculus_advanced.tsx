@@ -6,6 +6,7 @@ import ConicSectionAndQuadraticSurfaces from "./ConicSectionAndQuadraticSurfaces
 import VectorValuedFunction from "./VectorValuedFunctions";
 import DifferentiationOfFunctionsOfSeveralVariables from "./DifferentiationOfFunctionsOfSeveralVariables";
 import MultipleIntegrals from "./MultipleIntegrals";
+import VectorCalculus from "./VectorCalculus";
 
 export const title = "Calculus (Advanced) Notes";
 
@@ -91,5 +92,7 @@ export const content = <>
 { VectorValuedFunction() }
 { DifferentiationOfFunctionsOfSeveralVariables() }
 { MultipleIntegrals() }
+{ VectorCalculus() }
+
 
 </>
