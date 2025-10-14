@@ -46,6 +46,12 @@ This is my first big project that uses React.js and Redux.
 
 Versioning is done using "npm version [new-version] --git-tag-version false".
 
+update 23.5:
+- Added `SecondOrderDifferentialEquations.tsx`.
+- Made changes to some articles.
+- Added line height to h2 in articles.
+- Made coding changes to `articles.tsx`.
+
 update 23.4:
 - Made changes to `SourcesSection.tsx` and `calculus_advanced.tsx`.
 - Added `VectorCalculus.tsx`.

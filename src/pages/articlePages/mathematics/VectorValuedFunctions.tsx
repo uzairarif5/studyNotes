@@ -94,8 +94,8 @@ export default function VectorValuedFunction(){
                 \\\\ &= 4t
               \\end{align}`}\]
               This means \(t=s/4\). Thus, replace \(t\) in \({"\\textbf{r}(t) = 4\\cos(t)\\textbf{i}+4\\sin(t)\\textbf{j}"}\) with \(s/4\), we get:
-              \[{"\\textbf{r}(\\frac{s}{4}) = 4\\cos(\\frac{s}{4})\\textbf{i}+4\\sin(\\frac{s}{4})\\textbf{j}"}\]
-              Since the original restriciton on \(t\) was \(t \\ge 0\), then the restriction on \(s\) becomes \(s/4 \ge 0\) or \(s \ge 0\).
+              \[{"\\textbf{r}(\\frac{s}{4}) = 4\\cos \\left( \\frac{s}{4} \\right) \\textbf{i}+4 \\sin \\left( \\frac{s}{4} \\right) \\textbf{j}"}\]
+              Since the original restriciton on \(t\) was \(t \ge 0\), then the restriction on \(s\) becomes \(s/4 \ge 0\) or \(s \ge 0\).
             </td></tr>
           </tbody>
         </TableLI>
@@ -111,7 +111,7 @@ export default function VectorValuedFunction(){
         <li>If \(C\) is the graph of a function \(y=f(x)\) and both \(y'\) and \(y''\) exist, then the curvature \(k\) at point \((x,y)\) is given by:</li>
         <MathStuff>\[k={"\\frac{|y''|}{\\left[ 1+(y')^2 \\right]^{3/2}}"}\]</MathStuff>
       </SubList></li>
-      <li>The normal and binormal Vectors:<SubList>
+      <li>The normal and binormal vectors:<SubList>
         <li>Let C be a three-dimensional smooth curve represented by \(\textbf{"{r}"}\) over an open interval \(I\). If \(\textbf{"{T}"}'(t)≠0\), then the <b>principal unit normal vector</b> at \(t\) is defined to be:</li>
         <MathStuff>\[ {"\\textbf{N}(t) = \\frac{\\textbf{T}'(t)}{\\Vert \\textbf{T}'(t) \\Vert}"}\]</MathStuff>
         <li className="ownExplanation">Since the magnitude of vector \(\textbf{"{T}"}(t)\) is always 1, then the path is traces is a circle of radius 1, which means \(\textbf{"{T}"}'(t)\) is orthogonal to \(\textbf{"{T}"}(t)\). This also means \(\textbf{"{T}"}(t)\) and \(\textbf{"{N}"}(t)\) are orthogonal.</li>

@@ -63,39 +63,9 @@ class Article extends React.Component<ArticlePropsType> {
     this.pathnameToUse = window.location.pathname;
   }
 
-  setWholeContent(){
-    const evalRes = (val: any) => {
-      console.log("Module found!");
-      this.setState({
-        wholeContent: {
-          "title": val.title,
-          "content": val.content,
-          "sourcesColor": val.sourcesColor,
-          "sourcesOrder": val.sourcesOrder,
-          "additionalResources": val.additionalResources
-        }
-      });
-    };
-
-    const evalErr = (err: any) => {
-      console.error(err);
-      this.setState({wholeContent: ERROR_NO_ARTICLE});
-    }
-
-    let pathName = `../articlePages${this.pathnameToUse}.tsx`;
-    let pathName2 = `../privatePages${this.pathnameToUse}.tsx`;
-
-    if (modules[pathName]){
-      modules[pathName]()
-      .then(evalRes)
-      .catch(evalErr);
-    }
-    else if (modules[pathName2]){
-      modules[pathName2]()
-      .then(evalRes)
-      .catch(evalErr);
-    }
-    else this.setState({wholeContent: ERROR_NO_ARTICLE});
+  render() {
+    if (this.state.wholeContent && (this.state.wholeContent !== ERROR_NO_ARTICLE)) return this.renderMainContent();
+    return null;
   }
 
   renderMainContent(){
@@ -145,18 +115,6 @@ class Article extends React.Component<ArticlePropsType> {
     </div>;
   }
 
-  goBackToHomePageBecauseError(error: string){
-    if (error === ERROR_NO_ARTICLE) alert("Article not found");
-    else alert("Unknown error! Please report this in the feedback form.");
-    changeLoadingText("Going To Home Page");
-    this.props.changeAR(false);
-  }
-
-  render() {
-    if (this.state.wholeContent && (this.state.wholeContent!) !== ERROR_NO_ARTICLE) return this.renderMainContent();
-    return null;
-  }
-
   componentDidMount(){
     // check mobile
     let isMobile: boolean = window.screen.width <= parseInt(getComputedStyle(document.documentElement).getPropertyValue("--maxWidthForMobile"));
@@ -184,6 +142,48 @@ class Article extends React.Component<ArticlePropsType> {
       this.allowCleanUp = false;
       document.fonts.ready.then(()=>this.cleanUp());
     }
+  }
+
+  setWholeContent(){
+    const evalRes = (val: any) => {
+      console.log("Module found!");
+      this.setState({
+        wholeContent: {
+          "title": val.title,
+          "content": val.content,
+          "sourcesColor": val.sourcesColor,
+          "sourcesOrder": val.sourcesOrder,
+          "additionalResources": val.additionalResources
+        }
+      });
+    };
+
+    const evalErr = (err: any) => {
+      console.error(err);
+      this.setState({wholeContent: ERROR_NO_ARTICLE});
+    }
+
+    let pathName = `../articlePages${this.pathnameToUse}.tsx`;
+    let pathName2 = `../privatePages${this.pathnameToUse}.tsx`;
+
+    if (modules[pathName]){
+      modules[pathName]()
+      .then(evalRes)
+      .catch(evalErr);
+    }
+    else if (modules[pathName2]){
+      modules[pathName2]()
+      .then(evalRes)
+      .catch(evalErr);
+    }
+    else this.setState({wholeContent: ERROR_NO_ARTICLE});
+  }
+
+  goBackToHomePageBecauseError(error: string){
+    if (error === ERROR_NO_ARTICLE) alert("Article not found");
+    else alert("Unknown error! Please report this in the feedback form.");
+    changeLoadingText("Going To Home Page");
+    this.props.changeAR(false);
   }
 
   cleanUp(){
