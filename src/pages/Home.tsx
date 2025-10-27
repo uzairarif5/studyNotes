@@ -85,7 +85,7 @@ const HomeMain = ()=>{
     <h2>Computer Science Fundamentals</h2>
     <Link to="computer_science_fundamentals/c_and_cpp_programming_language">C/C++ programming language</Link>
     <Link to="computer_science_fundamentals/data_structures_and_algorithms">Data Structures And Algorithms</Link>
-    <Link to="computer_science_fundamentals/useful_information_for_algorithms">Useful Information For Algorithms</Link>
+    <Link to="computer_science_fundamentals/data_structures_and_algorithms_(part_2)">Data Structures And Algorithms (Part 2)</Link>
     <Link to="computer_science_fundamentals/information_and_entropy">Information And Entropy</Link>
     <Link to="computer_science_fundamentals/operating_systems">Operating Systems</Link>
     <Link to="computer_science_fundamentals/networking">Networking</Link>

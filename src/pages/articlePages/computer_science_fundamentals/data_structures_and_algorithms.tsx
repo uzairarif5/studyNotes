@@ -4,8 +4,7 @@ import { CodePre } from "../../articleRelatedStuff/Code";
 import { MathStuff } from "../../articleRelatedStuff/MathStuff";
 
 export const title = "Data Structures And Algorithms Notes";
-export const sourcesColor = {20: null, 4: "#4f94ac", 21: "rgb(204, 119, 153)"};
-export const sourcesOrder = [20, 4, 21];
+export const sourcesColor = {20: null, 4: "#4f94ac"};
 
 export const content = <>
 <h1>Data Structures And Algorithms Notes</h1>
@@ -41,7 +40,8 @@ export const content = <>
 		</ul>
 	</div>
 	<ul style={{width: "49%", marginRight: "0.5%", float: "right"}} data-source="20">
-		<li><a href='https://www.javatpoint.com/abstract-data-type-in-data-structure'>An <b>abstract data type</b> is an abstraction of a data structure that provides only the interface to which the data structure must adhere. In other words, we can say that abstract data types are the entities that are definitions of data and operations but do not have implementation details.</a></li>
+		<li>An <b>abstract data type</b> is the specification of a data type within some language, independent of an implementation.</li>
+		<li>The interface for the ADT is defined in terms of a type and a set of operations on that type. An ADT does not specify how the data type is implemented.</li>
 		<li>A <b>data structure</b> is the implementation for an ADT.</li>
 		<li>Data types have both a logical and a physical form. The definition of the data type in terms of an ADT is its logical form. The implementation of the data type as a data structure is its physical form.</li>
 		<li>"Array" is commonly used in computer programming to mean a contiguous block of memory locations, where each memory location stores one fixed-length data item. By this meaning, an array is a physical data structure.</li>
@@ -52,135 +52,254 @@ export const content = <>
 	</ul>
 </div>
 
-<h2 id="algorithmComplexity">Algorithm Complexity</h2>
-<div className="content">
-	<div style={{width: "49%", marginLeft: "0.5%", float: "left"}}>
-		<div data-source="21">
-		<h3>Big-O Notation</h3>
-		<ul>
-			<li>When we speak about a "\(O(n^2)\) algorithm", this says that our algorithm is
-				approximately as fast as, or faster, an algorithm that would do a number of operations equal to the square of the size of its
-				input. The "or faster" part is there because Big-O is used instead of Big-Theta.</li>
-			<li>If \(f(n) = 100n^2 + 10n + 1\) and \(g(n) = n^2\), then \(f = O(g)\), and also \(f = O(n^3)\), and \(f = O(n^4)\).</li>
-			<li>If \(f = O(g)\) and \(g = O(h)\), then \(f = O(h)\).</li>
-			<li>We are also sometimes interested in the space complexity of our algorithm. For this we consider the number of
-				bytes in memory occupied by the algorithm as a function of the size of the input, and use Big-O the same way.</li>
-			<li><u>Examples:</u><SubList>
-				<li>This loop's time complexity is \(O(n)\):</li>
-				<li><CodePre language="c">{`
-int find_max(const int *array, int len) {
-	int max = INT_MIN;
-	for (int i = 0; i &lt; len; i++) {
-		if (max &lt; array[i]) {
-			max = array[i];
-		}
-	}
-	return max;
-}
-				`}</CodePre></li>
-				<li>The following function checks if an array has any duplicates by taking each element, then iterating over the whole
-					array to see if the element is there:</li>
-				<li><CodePre language="c">{`
-int contains_duplicates(const int *array, size_t len) {
-	for (int i = 0; i &lt; len - 1; i++) {
-		for (int j = 0; j &lt; len; j++) {
-			if (i != j && array[i] == array[j]) {
-			return 1;
-			}
-		}
-	}
-	return 0;
-}
-				`}</CodePre></li>
-				<li>The inner loop performs at each iteration a number of operations that is constant with \(n\). The outer loop also does
-					a few constant operations, and runs the inner loop \(n\) times. The outer loop itself is run \(n\) times. So the operations
-					inside the inner loop are run \(n^2\) times. Thus, the complexity will be something like \(an^2 + bn + c\), and since the highest term is \(n^2\), the O
-					notation is \(O(n^2)\).
-					</li>
+<h2>Algorithm Analysis</h2>
+<div className="content" data-source="20">
+	<ul style={{width: "49%", marginLeft: "0.5%", float: "left"}}>
+		<li>Problems and algorithms:<SubList>
+			<li>A <b>problem</b> is a task to be performed. Problems can be viewed as functions in the mathematical sense.</li>
+			<li>A <b>function</b> is a matching between inputs (the <b>domain</b>) and outputs (the <b>range</b>).</li>
+			<li>The values making up an input are called the parameters of the function. A specific selection of values for the parameters is called an instance of the problem.</li>
+			<li>The limits to what functions can be implemented by programs is part of the domain of <b>computability</b>.</li>
+			<li>An <b>algorithm</b> is a method or a process followed to solve a problem. If the problem is viewed as a function, then an algorithm is an implementation for the function that transforms an input to the corresponding output. It must have three properties:<SubList>
+				<li>It must be correct.</li>
+				<li>It is composed of a series of concrete steps. Concrete means that the action described by that step is completely understood - and doable - by the person or machine that must perform the algorithm.</li>
+				<li>There can be no ambiguity as to which step will be performed next.</li>
+				<li>It must be composed of a finite number of steps.</li>
+				<li>It must terminate (no infinite loop).</li>
 			</SubList></li>
-		</ul></div>
-		<div data-source="21">
-			<h3>Big-Omega Notation</h3>
-			<ul style={{paddingBottom: "1px"}}>
-				<li>Let \(f(n)\) and \(g(n)\) be two functions defined on the set of the positive real numbers. We write \(f(n) = \Omega(g(n))\) if there are positive constants \(c\) and \(n_0\) such that: \(0 ≤ c g(n) ≤ f(n)\) for all \(n ≥ n_0\).</li>
-				<li>For example lets we have \(f(n) = 3n^2 + 5n - 4\). Then \(f(n) = \Omega(n^2)\). It is also correct \(f(n) = \Omega(n)\), or even \(f(n) = \Omega(1)\).</li>
-				<li>We should also define
-					\(f(n)=\Omega(g(n))\) by saying for some constant \(c \gt 0\), \(f(n)≥ c g(n)\) for infinitely many \(n\). This gives a nice
-					correspondence between upper and lower bounds:</li>
-				<MathStuff>$$f(n)=\Omega(g(n)) \iff f(n) \ne O(g(n))$$</MathStuff>
-			</ul>
-		</div>
-	</div>
-	<div style={{width: "49%", marginRight: "0.5%", float: "right"}}>
-		<ul>
-			<li>Because the most important factor affecting running time is normally size of the input, for a given input size n we often express the time \(\mathbf{"{T}"}\) to run the algorithm as a function of \(n\), written as \(\mathbf{"{T}"}(n)\). We will always assume \(\mathbf{"{T}"}(n)\) is a  non-negative value.</li>
-			<li>Let us call \(c\) the amount of time required to compare two integers, \(\mathbf{"{T}"}(n)=cn\) describes the growth rate for the running time of the largestvalue sequential search algorithm.</li>
-		</ul>
-		<div data-source="21">
-			<h3>Big-Theta Notation</h3>
-			<ul>
-				<li>Unlike Big-O notation, which represents only upper bound of the running time for some algorithm, Big-Theta is a
-					tight bound; both upper and lower bound. Tight bound is more precise, but also more difficult to compute.</li>
-				<li>We write \(f(x) = \Theta(g(x))\) as
-					\(x\to \infty\) if and only if there are positive constants \(K\) and \(L\) and a real number \(x0\) such that \(K|g(x)| \le f(x) \le L|g(x)|\) for all \(x \ge x0\). The definition is equal to: \(f(x) = O(g(x))\) and \(f(x) = \Omega(g(x))\).</li>
-			<li>Because \(\Theta(g(x))\) is a set, we could write \(f(x) ∈ \Theta(g(x))\) to indicate that \(f(x)\) is a member of \(\Theta(g(x))\). Instead, we
-				will usually write \(f(x) = \Theta(g(x))\) to express the same notion - that's the common way.</li>
-			<li>Whenever \(\Theta(g(x))\) appears in a formula, we interpret it as standing for some anonymous function that we do not care to name. For example the equation \(T(n) = T(n/2) + \Theta(n)\), means \(T(n) = T(n/2) + f(n)\) where \(f(n)\) is a
-				function in the set \(\Theta(n)\).</li>
-			</ul>
-		</div>
-		<br/>
-		<ul>
-			<li>Determining the execution time of a recursive subroutine:<SubList>
-				<li>The recursive factorial function fact of calls itself with a value one less than its input value:</li>
+			<li>A computer <b>program</b> is an instantiation of an algorithm in a programming language.</li>
+		</SubList></li>	
+		<li>Comparing algorithms:<SubList>
+			<li><b>Asymptotic algorithm analysis</b>, <b>asymptotic analysis</b> or <b>algorithm analysis</b> is a method for estimating the efficiency of an algorithm or computer program by identifying its growth rate.</li>
+			<li>Asymptotic analysis attempts to estimate the resource consumption of an algorithm.</li>
+			<li>Typically you will analyze the time required for an algorithm (or the instantiation of an algorithm in the form of a program), and the space required for a data structure.</li>
+			<li>A <b>basic operation</b> must have the property that its time to complete does not depend on the particular values of its operands.</li>
+			<li>For a given input size \(n\) we often express the time \({"\\textbf{T}"}\) to run the algorithm as a function of \(n\), written as \({"\\textbf{T}"}(n)\).</li>
+			<li><u>Example:</u><SubList>
+				<li>Considert the following function:</li>
 				<li><CodePre language="java">{`
+// Return position of largest value in integer array A
+static int largest(int[] A) {
+int currlarge = 0;             // Position of largest element seen
+for (int i=1; i<A.length; i++) // For each element
+	if (A[currlarge] < A[i])     //   if A[i] is larger
+			currlarge = i;            //     remember its position
+return currlarge;              // Return largest position
+}
+				`}</CodePre></li>
+				<li>Let us call \(c\) the amount of time required to compare two integers.</li>
+				<li>The running time of making \(n\) comparisons is \({"\\textbf{T}"}(n) =cn\).</li>
+				<li>The running time of a statement that assigns the first value of an integer array to a variable is simply the time required to copy the value of the first array value. Call this \(c_1\).</li>
+				<li>The time to copy the value from the first position of the array is always \(c_1\), no matter how large the array. Therefore, \({"\\textbf{T}"}(n) =c_1\).</li>
+				<li>Now consider the following snippet:</li>
+				<li><CodePre language="java">{`
+for (i=1; i<=n; i++) {
+for (j=1; j<=n; j++) {
+	sum++;
+}
+}
+				`}</CodePre></li>
+				<li>We can assume that incrementing takes constant time; call this time \(c_2\).</li>
+				<li>The total number of increment operations is \(n^2\). Thus, we say that the running time is \({"\\textbf{T}"}(n)=c_2n^2\).</li>
+			</SubList></li>
+		</SubList></li>
+		<li>Growth rate:<SubList>
+			<li>If the size of the input has no effect on the running time, then this is called a <b>constant running time</b>.</li>
+			<li><b>Growth rate:</b> The rate at which the cost of the algorithm grows as the size of its input grows.</li>
+			<li><b>Upper bound:</b> a growth rate that is always greater than or equal to the growth rate of the algorithm in question.</li>
+			<li><b>Lower bound:</b> a growth rate that is always less than or equal to the growth rate of the algorithm in question.</li>
+			<li>Since the upper bound and lower bound for the algorithm can be very different for different situations (such as the best case or worst case), we typically have to specify which situation we are referring to.</li>
+			<li> A growth rate of \(cn\) is often referred to as a <b>linear growth rate</b>.</li>
+			<li>An algorithm whose running-time equation has a highest-order term containing a factor of \(n^2\) is said to have a <b>quadratic growth rate</b>.</li>
+			<li>\(2^n\) represents <b>exponential growth rate</b>.</li>
+		</SubList></li>
+		<li>Big-Oh notation:<SubList>
+			<li>Because the phrase "has an upper bound to its growth rate of \(f(n)\)" is long and often used when discussing algorithms, we adopt a special notation, called <b>big-Oh notation</b>.</li>
+			<li>If the upper bound for an algorithm's growth rate (for, say, the worst case) is (\(f(n)\)), then we would write that this algorithm is "in the set \(O(f(n))\) in the worst case".</li>
+			<li><u>Precise definition:</u> For \({"\\textbf{T}"}(n)\) a non-negatively valued function, \({"\\textbf{T}"}(n)\) is in set \(O(f(n))\) if there exist two positive constants \(c\) and \(n_0\) such that \({"\\textbf{T}"}(n) \le cf(n)\) for all \(n \gt n_0\).</li>
+			<li>If \(f = O(g(n))\) and \(g = O(h(n))\), then \(f = O(h(n))\).</li>
+			<li>If \(f = O(kg(n))\) where \(k \gt 0\), \(f(n)\) is in \(O(g(n))\).</li>
+			<li>If \(f_1 = O(g_1(n))\) and \(f_2 = O(g_2(n))\), then \(f_1(n) + f_2(n)\) is in \(O(\max(g_1(n),g_2(n)))\).</li>
+			<li>If \(f_1 = O(g_1(n))\) and \(f_2 = O(g_2(n))\), then \(f_1(n) f_2(n)\) is in \(O(g_1(n),g_2(n))\).</li>
+		</SubList></li>
+		<li>Big-Omega and theta notation:<SubList>
+			<li>The lower bound for an algorithm is denoted by the symbol \(Ω\).</li>
+			<li><u>Precise definition:</u> For \({"\\textbf{T}"}(n)\) a non-negatively valued function, \({"\\textbf{T}"}(n)\) is in set \(\Omega(g(n))\) if there exist two positive constants \(c\) and \(n_0\) such that \({"\\textbf{T}"}(n) \ge cg(n)\) for all \(n \gt n_0\).</li>
+			<li>When the upper and lower bounds are the same within a constant factor, we indicate this by using \(\Theta\).</li>
+			<li> An algorithm is said to be \(\Theta(h(n))\) if it is in \(O(h(n))\) and it is in \(Ω(h(n))\).</li>
+		</SubList></li>
+		<li>Amortized analysis:<SubList>
+			<li><b>Amortized analysis:</b> The analysis for a series of operations taken as a whole.</li>
+			<li>Rather than focusing on the individual cost of each operation independently and summing them, amortized analysis looks at the cost of the entire series and "charges" (amortizes) each individual operation with a share of the total cost.</li>
+			<li>Amortized analysis in the case of a series of sequential searches in an unsorted array:<SubList>
+				<li>For \(n\) random searches, the average-case cost for each search is \(n/2\), and so the expected total cost for the series is \(n^2/2\).</li>
+				<li>Unfortunately, in the worst case all of the searches would be to the last item in the array. In this case, each search costs n for a total worst-case cost of \(n^2\).</li>
+				<li>Compare this to the cost for a series of \(n\) searches such that each item in the array is searched for precisely once. The total number of searches, in the best, average, and worst case, for this problem must be \(\sum^n_{"{i=i}"} i ≈ n^2/2\).</li>
+			</SubList></li>
+			<li>A useful concept for amortized analysis is illustrated by a simple variation on the stack data structure:<SubList>
+				<li>The <code>pop</code> function is slightly modified to take a second parameter \(k\) indicating that \(k\) pop operations are to be performed. This revised <code>pop</code> function is called <code>multipop</code>.</li>
+				<li>The key to an amortized analysis of this problem lies in the concept of <b>potential</b>.</li>
+				<li>At any given time, a certain number of items may be on the stack. The cost for <code>multipop</code> can be no more than this number of items.</li>
+				<li>Each call to <code>push</code> places another item on the stack, which can be removed by only a single <code>multipop</code> operation. Thus, each call to <code>push</code> raises the potential of the stack by one item.</li>
+				<li>The sum of costs for all calls to <code>multipop</code> can never be more than the total <b>potential</b> of the stack (aside from a constant time cost associated with each call to multipop itself).</li>
+				<li>The amortized cost for any series of <code>push</code> and <code>multipop</code> operations is the sum of three costs: each of the <code>push</code> operations takes constant time; each <code>multipop</code> operation takes a constant time in overhead (regardless of the number of items popped on that call); the sum of the potentials expended by all <code>multipop</code> operations, which is at most \(m_1\), the number of <code>push</code> operations.</li>
+				<MathStuff>{`
+					$$m_1+(m_2+m_1) = \\Theta(m_1+m_2)$$
+					$$
+					\\begin{align}
+					& m_1: \\text{ number of calls to push}\\\\
+					& m_2: \\text{ number of calls to multipop}
+					\\end{align}
+					$$
+				`}</MathStuff>
+			</SubList></li>
+		</SubList></li>
+	</ul>
+	<ul style={{width: "49%", marginRight: "0.5%", float: "right"}}>
+		<li>Determining the execution time of a recursive subroutine:<SubList>
+			<li>The recursive factorial function fact of calls itself with a value one less than its input value:</li>
+			<li><CodePre language="java">{`
 /** Recursively compute and return n! */
 static long fact(int n) {
-	// fact(20) is the largest value that fits in a long
-	assert (n >= 0) && (n >= 20) : "n out of range";
-	if (n >= 1) return 1; // Base case: return base solution
-	return n * fact(n-1); // Recursive call for n > 1
+// fact(20) is the largest value that fits in a long
+assert (n >= 0) && (n >= 20) : "n out of range";
+if (n >= 1) return 1; // Base case: return base solution
+return n * fact(n-1); // Recursive call for n > 1
 }
-				`}</CodePre></li>
-				<li>The running time for this function can be expressed as:</li>
-				<MathStuff>$${"T(n) = T(n - 1) + 1 \\text{ for } n > 1; T(1) = 0"}$$</MathStuff>
-				<li>The closed-form solution for this recurrence relation is \(\Theta(n)\).</li>
-				<li><b>Binary search</b> is a standard recursive algorithm for finding the record with a given search key value within a sorted list. <u>Implementation:</u></li>
-				<li><CodePre language="java">{`
+			`}</CodePre></li>
+			<li>The running time for this function can be expressed as:</li>
+			<MathStuff>$${"\\textbf{T}(n) = \\textbf{T}(n - 1) + 1 \\text{ for } n > 1; T(1) = 0"}$$</MathStuff>
+			<li>The closed-form solution for this recurrence relation is \(\Theta(n)\).</li>
+			<li><b>Binary search</b> is a standard recursive algorithm for finding the record with a given search key value within a sorted list. <u>Implementation:</u></li>
+			<li><CodePre language="java">{`
 /** @return The position of an element in sorted array A
 with value k. If k is not in A, return A.length. */
 static int binary(int[] A, int k) {
-	int l = -1;
-	int r = A.length; // l and r are beyond array bounds
-	while (l+1 != r) { // Stop when l and r meet
-		int i = (l+r)/2; // Check middle of remaining subarray
-		if (k &lt; A[i]) r = i; // In left half
-		if (k == A[i]) return i; // Found it
-		if (k > A[i]) l = i; // In right half
-	}
-	return A.length; // Search value not in A
+int l = -1;
+int r = A.length; // l and r are beyond array bounds
+while (l+1 != r) { // Stop when l and r meet
+	int i = (l+r)/2; // Check middle of remaining subarray
+	if (k < A[i]) r = i; // In left half
+	if (k == A[i]) return i; // Found it
+	if (k > A[i]) l = i; // In right half
 }
-				`}</CodePre></li>
-				<li>Each recursive call to binary cuts the size of the array approximately in half, so we can model the worst-case cost as follows, assuming for simplicity that n is a power of two:</li>
-				<MathStuff>$${"T(n) = T(n/2) + 1 \\text{ for } n > 1; T(1) = 1"}$$</MathStuff>
-				<li>If we expand the recurrence, we find that we can do so only log n times before
-					we reach the base case, and each expansion adds one to the cost. Thus, the closedform solution for the recurrence is \(T(n) = log n\).</li>
+return A.length; // Search value not in A
+}
+			`}</CodePre></li>
+			<li>Each recursive call to binary cuts the size of the array approximately in half, so we can model the worst-case cost as follows, assuming for simplicity that n is a power of two:</li>
+			<MathStuff>$${"\\textbf{T}(n) = \\textbf{T}(n/2) + 1 \\text{ for } n > 1; T(1) = 1"}$$</MathStuff>
+			<li>If we expand the recurrence, we find that we can do so only \(\log n\) times before we reach the base case, and each expansion adds one to the cost. Thus, the closedform solution for the recurrence is \(\textbf{"{T}"}(n) = \log n\).</li>
+		</SubList></li>
+		<li>Space bounds:<SubList>
+			<li>Imagine that we want to keep track of friendships between \(n\) people. We can do this with an array of size \(n \times n\). Each row of the array represents the friends of an individual, with the columns indicating who has that individual as a friend.</li>
+			<li>For \(n\) people, the total size of the array is \(\Theta(n^2)\).</li>
+			<li>A data structure's primary purpose is to store data in a way that allows efficient access to those data. All information stored in addition to the actual data values is referred to as <b>overhead</b>.</li>
+			<li>The <b>space/time tradeoff principle</b> says that one can often achieve a reduction in time if one is willing to sacrifice space or vice versa.</li>
+			<li>A second principle for the relationship between a program's space and time requirements applies to programs that process information stored on disk:<SubList>
+				<li>The disk-based space/time tradeoff principle is almost the reverse of the space/time tradeoff principle for programs using main memory.</li>
+				<li>The <b>disk-based space/time tradeoff principle</b> states that the smaller you can make your disk storage requirements, the faster your program will run.</li>
+				<li>This is because the time to read information from disk is enormous compared to computation time, so almost any amount of additional computation needed to unpack the data is going to be less than the disk-reading time saved by reducing the storage requirements.</li>
 			</SubList></li>
-		</ul>
-	</div>
+		</SubList></li>
+		<li>Recurrence relations:<SubList>
+			<li>Recurrence relations are often used to model the cost of recursive functions.</li>
+			<li>The first approach to solving recurrences is to guess the answer and then attempt to prove it correct. If a correct upper or lower bound estimate is given, an easy induction proof will verify this fact. If the proof is successful, then try to tighten the bound. If the induction proof fails, then loosen the bound and try again.</li>
+			<li><u>Example:</u><SubList>
+				<li>The running time for <u>Mergesort</u> is described by the equation:</li>
+				<MathStuff>$$
+					T(n) = 2T(n/2) + n; T(2) = 1
+				$$</MathStuff>
+				<li>We begin by guessing that this recurrence has an upper bound in \(O(n^2)\). To be more precise, assume that \(T(n) \le n^2 \).</li>
+				<li>For the base case, \(T(2) = 1 ≤ 2^2\).</li>
+				<li>The induction hypothesis is \(T(i) ≤ i^2\), for all \(i ≤ n\).</li>
+				<li>It follows that:</li>
+				<MathStuff>$${`\\begin{align}
+					T(2n) &= 2T(n) + 2n \\\\
+					&≤ 2n^2 + 2n\\\\
+					&≤ 4n^2\\\\
+					&≤ (2n)^2
+				\\end{align}`}$$</MathStuff>
+				<li>Thus, \(T(n)\) is in \(O(n^2)\).</li>
+				<li>Is \(O(n^2)\) a good estimate?If we guess something smaller, such as \(T(n) ≤ cn\) for some constant \(c\), it should be clear that this cannot work because \(c2n = 2cn\) and there is no room for
+					the extra n cost to join the two pieces together.</li>
+				<li>Let us now try \(T(n) ≤ n \log n\).</li>
+				<li>For the base case, the definition of the recurrence sets \(T(2) = 2\).</li>
+				<li>Assume (induction hypothesis) that \(T(n) ≤ n \log n\). Then:</li>
+				<MathStuff>$${`\\begin{align}
+					T(2n) &= 2T(n) + 2n \\\\
+					&≤ 2n \\log n  + 2n\\\\
+					&≤ 2n(\\log n + 1)\\\\
+					&≤ 2n \\log 2n
+				\\end{align}`}$$</MathStuff>
+				<li>This is what we seek to prove.</li>
+				<li>In similar fashion, we can prove that \(T(n)\) is in \(Ω(n \log n)\). </li>
+				<li>Thus, \(T(n)\) is also \(\Theta(n \log n)\).</li>
+			</SubList></li>
+		</SubList></li>
+		<li>Expanding the recurrence:<SubList>
+			<li>Estimating bounds is effective if you only need an approximation to the answer. More precise techniques are required to find an exact solution. One approach is called <b>expanding the recurrence</b>.</li>
+			<li>In this method, the smaller terms on the right side of the equation are in turn replaced by their definition. This is the expanding step.</li>
+			<li>These terms are again expanded, and so on, until a full series with no recurrence results. This yields a summation, and techniques for solving summations can then be used.</li>
+			<li>To the solution for:</li>
+			<MathStuff>$$
+				T(n) = 2T(n/2) + 5n^2; T(1) = 7    
+			$$</MathStuff>
+			<li>We assume that \(n\) is a power of two, so we will rewrite it as \(n = 2^k\). This recurrence can be expanded as follows:</li>
+			<MathStuff>$${`\\begin{align}
+				T(n) &= 2T(n/2) + 5n^2\\\\
+				&= 4T(n/4) + 2\\cdot 5(n/2)^2 + 5n^2\\\\
+				&= 8T(n/8) + 4\\cdot 5(n/4)^2 + 2\\cdot 5(n/2)^2 + 5n^2\\\\
+				&= 2^kT(1) + 2^{k-1} \\cdot 5
+				{\\left( \\frac{n}{2^{k-1}} \\right)} ^2
+				+ \\ldots + 2 \\cdot 5 {\\left( \\frac{n}{2} \\right)}^2+ 5n^2
+			\\end{align}`}$$</MathStuff>
+			<li>This last expression can best be represented by a summation: \(7n + 5n^2 \sum^{"{k-1}_{i=0}\\frac{1}{2^i}"}\).</li>
+			<li>Which can be simplified to\( 10n^2 - 3n\). This is the exact solution to the recurrence for n a power of two.</li>
+		</SubList></li>
+		<li><b>Divide and conquer recurrences:</b><SubList>
+			<li><b>Divide and conquer recurrences</b> have the form:</li>
+			<MathStuff>$$T(n) = aT(n/b) + cn^k; T(1) = c$$</MathStuff>
+			<li>where \(a\), \(b\), \(c\), and \(k\) are constants.</li>
+			<li>In general, this recurrence describes a problem of size \(n\) divided into a subproblems of size \(n/b\), while \(cn^k\) is the amount of work necessary to combine the partial solutions.</li>
+			<li>Assume that \(n = b^m\):</li>
+			<MathStuff>$${`\\begin{align}
+				T(n) &= aT \\left( \\frac{n}{b} \\right) + cn^k\\\\
+				&= a \\left( aT \\left( \\frac{n}{b^2}\\right) + c \\left( \\frac{n}{b}\\right)^k \\right) + cn^k\\\\
+				&= a \\left( a \\left[ a T \\left( \\frac{n}{b^3} \\right) + c \\left( \\frac{n}{b^2} \\right)^k  \\right] + c \\left( \\frac{n}{b} \\right) ^k \\right) + cn^k\\\\
+				&= a^3T\\left( \\frac{n}{b^3} \\right) + a^2 c\\left( \\frac{n}{b^2} \\right)^k + ac\\left( \\frac{n}{b} \\right)^k +cn^k\\\\
+				&= a^mT(1) + a^{m-1}c \\left( \\frac{n}{b^{m-1}} \\right)^k + \\ldots + ac \\left( \\frac{n}{b} \\right) ^k + cn^k\\\\
+				&=c \\sum^m_{i=0} a^{m-i}b^{ik}\\\\
+				&=ca^m\\sum^m_{i=0} \\left( \\frac{b^k}{a} \\right)^i
+			\\end{align}`}$$</MathStuff>
+			<li>The summation is a geometric series whose sum depends on the ratio \(r=b^k/a\). There are three cases:<SubList>
+				<li>If \(r \lt 1\), then \(\sum r^i\) is a constant. Thus \(T(n)=\Theta(a^m)\) or \(\Theta(n^{"{\\log_ba}"})\), since \(a^m = a^{"{\\log_bn} = n^{\\log_ba}"}\).</li>
+				<li>If \(r=1\), then \(\sum r = m + 1 = \log_bn+1\). Thus, \(T(n) = \Theta(a^m\log n) = \Theta(n^{"{\\log_ba}"}\log n)=\Theta(n^k\log n)\)</li>
+				<li>If \(r \gt 1\), then \(\sum r = \Theta(r^m)\). Thus, \(T(n) = \Theta(a^mr^m) \) or \(\Theta(b^{"{km}"}) = \Theta(n^k)\).</li>
+			</SubList></li>
+			<li>We can summarize the above derivation as the following theorem, sometimes
+				referred to as the <b>Master Theorem</b>:</li>
+			<MathStuff>$${`
+				T(n) =
+				\\begin{cases}
+				\\Theta(n^{\\log_ba})  & \\text{if }a > b^k \\\\
+				\\Theta(n^k\\log n) & \\text{if } a=b^k\\\\
+				\\Theta(n^k) & \\text{if }a \\lt b^k
+				\\end{cases}
+			`}$$</MathStuff>
+		</SubList></li>
+	</ul>
 </div>
 
 <h2 id="basicADTs">Basic ADTs</h2>
-<div className="content">
+<div className="content" data-source="20">
 	<div style={{width: "49%", marginLeft: "0.5%", float: "left"}}>
 		<h3>List</h3>
 		<ul>
-			<li>We define a <b>list</b> to be a finite, ordered sequence of data items known as elements. "Ordered" in this definition means that each element has a position in the
-				list, it doesn't mean that they are sorted by value.</li>
-			<li>The ADT for a list:<SubList>
+			<li>Lists:<SubList>
+				<li>We define a <b>list</b> to be a finite, ordered sequence of data items known as elements. "Ordered" in this definition means that each element has a position in the list, it doesn't mean that they are sorted by value.</li>
 				<li><CodePre language="java">{`
 /** List ADT */
-public interface List&lt;E> {
+public interface List<E> {
 	/** Remove all contents from the list, so it is once again
 	empty. Client is responsible for reclaiming storage
 	used by the list elements. */
@@ -221,10 +340,10 @@ public interface List&lt;E> {
 					named <code>E</code> for "element",  serves as a placeholder for whatever element type the
 					user would like to store in a list.</li>
 			</SubList></li>
-			<li>Array-Based List Implementation:<SubList>
+			<li>Array-Based list implementation:<SubList>
 				<li><CodePre language="java">{`
 /** Array-based list implementation */
-class AList&lt;E> implements List&lt;E> {
+class AList<E> implements List<E> {
 	private static final int defaultSize = 10; // Default size
 	private int maxSize; // Maximum size of list
 	private int listSize; // Current # of list items
@@ -245,7 +364,7 @@ class AList&lt;E> implements List&lt;E> {
 	{ listSize = curr = 0; } // Simply reinitialize values
 	/** Insert "it" at current position */
 	public void insert(E it) {
-		assert listSize &lt; maxSize : "List capacity exceeded";
+		assert listSize < maxSize : "List capacity exceeded";
 		for (int i=listSize; i>curr; i--) // Shift elements up
 		listArray[i] = listArray[i-1]; // to make room
 		listArray[curr] = it;
@@ -253,15 +372,15 @@ class AList&lt;E> implements List&lt;E> {
 	}
 	/** Append "it" to list */
 	public void append(E it) {
-		assert listSize &lt; maxSize : "List capacity exceeded";
+		assert listSize < maxSize : "List capacity exceeded";
 		listArray[listSize++] = it;
 	}
 	/** Remove and return the current element */
 	public E remove() {
-		if ((curr&lt;0) || (curr>=listSize)) // No current element
+		if ((curr<0) || (curr>=listSize)) // No current element
 		return null;
 		E it = listArray[curr]; // Copy the element
-		for(int i=curr; i&lt;listSize-1; i++) // Shift them down
+		for(int i=curr; i<listSize-1; i++) // Shift them down
 		listArray[i] = listArray[i+1];
 		listSize--; // Decrement size
 		return it;
@@ -269,19 +388,19 @@ class AList&lt;E> implements List&lt;E> {
 	public void moveToStart() { curr = 0; } // Set to front
 	public void moveToEnd() { curr = listSize; } // Set at end
 	public void prev() { if (curr != 0) curr--; } // Back up
-	public void next() { if (curr &lt; listSize) curr++; }
+	public void next() { if (curr < listSize) curr++; }
 	/** @return List size */
 	public int length() { return listSize; }
 	/** @return Current position */
 	public int currPos() { return curr; }
 	/** Set current list position to "pos" */
 	public void moveToPos(int pos) {
-		assert (pos>=0) && (pos&lt;=listSize) : "Pos out of range";
+		assert (pos>=0) && (pos<=listSize) : "Pos out of range";
 		curr = pos;
 	}
 	/** @return Current element */
 	public E getValue() {
-		assert (curr>=0) && (curr&lt;listSize) : "No current element";
+		assert (curr>=0) && (curr<listSize) : "No current element";
 		return listArray[curr];
 	}
 }
@@ -291,67 +410,60 @@ class AList&lt;E> implements List&lt;E> {
 				<li>Inserting an element at the head of an array-based list requires shifting all existing elements in the array by one position toward the tail.</li>
 				<li>Inserting or removing elements at the tail takes \(\Theta(1)\) time.</li>
 				<li>In the average case, insertion or removal requires moving half of the elements, which is \(\Theta(n)\).</li>
+				<li>The other methods for class <code>AList</code> simply access the current list element or move the current position. They all require \(\Theta(1)\) time.</li>
 			</SubList></li>
-			<li><b>Linked list</b> uses <b>dynamic memory allocation</b>, that
-				is, it allocates memory for new list elements as needed.</li>
-			<li>A linked list is made up of a series of objects, called the <b>nodes</b> of the list. Because a list node is a distinct object (as opposed to simply a cell in an array), it is
-				good practice to make a separate list node class.</li>
+			<li>Linked list:<SubList>
+				<li><b>Linked list</b> uses <b>dynamic memory allocation</b>, that is, it allocates memory for new list elements as needed.</li>
+				<li>A linked list is made up of a series of objects, called the <b>nodes</b> of the list. Because a list node is a distinct object (as opposed to simply a cell in an array), it is good practice to make a separate list node class.</li>
+			</SubList></li>
 			<li><b>Singly Linked list :</b><SubList>
 				<li><CodePre language="java">{`
 /** linked list node */
-class Link&lt;E> {
+class Link<E> {
 	private E element; // Value for this node
-	private Link&lt;E> next; // Pointer to next node in list
+	private Link<E> next; // Pointer to next node in list
 	// Constructors
-	Link(E it, Link&lt;E> nextval)
+	Link(E it, Link<E> nextval)
 	{ element = it; next = nextval; }
-	Link(Link&lt;E> nextval) { next = nextval; }
-	Link&lt;E> next() { return next; } // Return next field
-	Link&lt;E> setNext(Link&lt;E> nextval) // Set next field
+	Link(Link<E> nextval) { next = nextval; }
+	Link<E> next() { return next; } // Return next field
+	Link<E> setNext(Link<E> nextval) // Set next field
 	{ return next = nextval; } // Return element field
 	E element() { return element; } // Set element field
 	E setElement(E it) { return element = it; }
 }
 				`}</CodePre></li>
-				<li>Objects in the <code>Link</code> class
-					contain an element field to store the element value, and a <code>next</code> field to store a
-					pointer to the next node on the list. The list built is called a <b>singly
-					linked list</b>, or a <b>one-way list</b>, because each list node has a single pointer to the next
-					node on the list.</li>
-				<li>The list's first node is accessed from a pointer named <code>head</code>. To speed access
-					to the end of the list, and to allow the append method to be performed in constant
-					time, a pointer named <code>tail</code> is also kept to the last link of the list. The position of
-					the current element is indicated by another pointer, named <code>curr</code>.</li>
-				<li>Because there is no simple way to compute the length of the list simply from these three
-					pointers, the list length must be stored explicitly.</li>
+				<li>Objects in the <code>Link</code> class contain an element field to store the element value, and a <code>next</code> field to store a pointer to the next node on the list. The list built is called a <b>singly linked list</b>, or a <b>one-way list</b>, because each list node has a single pointer to the next node on the list.</li>
+				<li>The list's first node is accessed from a pointer named <code>head</code>. To speed access to the end of the list, and to allow the append method to be performed in constant time, a pointer named <code>tail</code> is also kept to the last link of the list. The position of the current element is indicated by another pointer, named <code>curr</code>.</li>
+				<li>Because there is no simple way to compute the length of the list simply from these three pointers, the list length must be stored explicitly.</li>
 				<li><CodePre language="java">{`
 /** Linked list implementation */
-class LList&lt;E> implements List&lt;E> {
-	private Link&lt;E> head; // Pointer to list header
-	private Link&lt;E> tail; // Pointer to last element
-	protected Link&lt;E> curr; // Access to current element
+class LList<E> implements List<E> {
+	private Link<E> head; // Pointer to list header
+	private Link<E> tail; // Pointer to last element
+	protected Link<E> curr; // Access to current element
 	private int cnt; // Size of list
 	/** Constructors */
 	LList(int size) { this(); } // Constructor -- Ignore size
 	LList() {
-		curr = tail = head = new Link&lt;E>(null); // Create header
+		curr = tail = head = new Link<E>(null); // Create header
 		cnt = 0;
 	}
 	/** Remove all elements */
 	public void clear() {
 		head.setNext(null); // Drop access to links
-		curr = tail = head = new Link&lt;E>(null); // Create header
+		curr = tail = head = new Link<E>(null); // Create header
 		cnt = 0;
 	}
 	/** Insert "it" at current position */
 	public void insert(E it) {
-		curr.setNext(new Link&lt;E>(it, curr.next()));
+		curr.setNext(new Link<E>(it, curr.next()));
 		if (tail == curr) tail = curr.next(); // New tail
 		cnt++;
 	}
 	/** Append "it" to list */
 	public void append(E it) {
-		tail = tail.setNext(new Link&lt;E>(it, null));
+		tail = tail.setNext(new Link<E>(it, null));
 		cnt++;
 	}
 	/** Remove and return current element */
@@ -370,7 +482,7 @@ class LList&lt;E> implements List&lt;E> {
 	/** Move curr one step left; no change if now at front */
 	public void prev() {
 		if (curr == head) return; // No previous element
-		Link&lt;E> temp = head;
+		Link<E> temp = head;
 		// March down list until we find the previous element
 		while (temp.next() != curr) temp = temp.next();
 		curr = temp;
@@ -381,7 +493,7 @@ class LList&lt;E> implements List&lt;E> {
 	public int length() { return cnt; }
 	/** @return The position of the current element */
 	public int currPos() {
-		Link&lt;E> temp = head;
+		Link<E> temp = head;
 		int i;
 		for (i=0; curr != temp; i++)
 		temp = temp.next();
@@ -389,9 +501,9 @@ class LList&lt;E> implements List&lt;E> {
 	}
 	/** Move down list to "pos" position */
 	public void moveToPos(int pos) {
-		assert (pos>=0) && (pos&lt;=cnt) : "Position out of range";
+		assert (pos>=0) && (pos<=cnt) : "Position out of range";
 		curr = head;
-		for(int i=0; i&lt;pos; i++) curr = curr.next();
+		for(int i=0; i<pos; i++) curr = curr.next();
 	}
 	/** @return Current element value */
 	public E getValue() {
@@ -412,77 +524,6 @@ class LList&lt;E> implements List&lt;E> {
 				<li>Removing a node from the linked list requires only that the appropriate pointer
 					be redirected around the node to be deleted.</li>
 				<li>Method <code>prev</code> takes \(\Theta(n)\) time, while <code>insert</code>, <code>remove</code> and <code>next</code> take \(\Theta(1)\) time.</li>
-				<li>Using a <b>freelist</b> (<a href='https://opendsa-server.cs.vt.edu/ODSA/Books/CS3/html/Freelist.html'>useful page</a>):<SubList>
-					<li>The <code>new</code> operator is relatively expensive to use. Garbage collection is also expensive.</li>
-					<li>Instead of making repeated calls to <code>new</code>, the <code>Link</code> class
-						can handle its own <b>freelist</b>.</li>
-					<li>A freelist holds those list nodes that are not currently
-						being used. When a node is deleted from a linked list, it is placed at the head of the
-						freelist. When a new element is to be added to a linked list, the freelist is checked
-						to see if a list node is available. If so, the node is taken from the freelist.</li>
-					<li>The freelist will never grow larger than the largest size yet reached by the
-						linked list.</li>
-					<li>In the implementation shown here, the link class is augmented with methods
-						<code>get</code> and <code>release</code>:</li>
-					<li><CodePre language="java">{`
-/** Singly linked list node with freelist support */
-class Link&lt;E> {
-	private E element; // Value for this node
-	private Link&lt;E> next; // Point to next node in list
-	/** Constructors */
-	Link(E it, Link&lt;E> nextval) { element = it; next = nextval; }
-	Link(Link&lt;E> nextval) { next = nextval; }
-	/** Get and set methods */
-	Link&lt;E> next() { return next; }
-	Link&lt;E> setNext(Link&lt;E> nxtval) { return next = nxtval; }
-	E element() { return element; }
-	E setElement(E it) { return element = it; }
-
-	/** Extensions to support freelists */
-	static Link freelist = null; // Freelist for the class
-	/** @return A new link */
-	static &lt;E> Link&lt;E> get(E it, Link&lt;E> nextval) {
-		if (freelist == null) return new Link&lt;E>(it, nextval);
-		Link&lt;E> temp = freelist; // Get from freelist
-		freelist = freelist.next();
-		temp.setElement(it);
-		temp.setNext(nextval);
-		return temp;
-	}
-	/** Release a link to the freelist */
-	void release() {
-		element = null; // Drop reference to the element
-		next = freelist;
-		freelist = this;
-	}
-}                        
-					`}</CodePre></li>
-					<li>Linked-list class members can be modified to use the freelist version of the link class:</li>
-					<li><CodePre language="java">{`
-/** Insert "it" at current position */
-public void insert(E it) {
-	curr.setNext(Link.get(it, curr.next())); // Get link
-	if (tail == curr) tail = curr.next(); // New tail
-	cnt++;
-}
-/** Append "it" to list */
-public void append(E it) {
-	tail = tail.setNext(Link.get(it, null));
-	cnt++;
-}
-/** Remove and return current element */
-public E remove() {
-	if (curr.next() == null) return null; // Nothing to remove
-	E it = curr.next().element(); // Remember value
-	if (tail == curr.next()) tail = curr; // Removed last
-	Link&lt;E> tempptr = curr.next(); // Remember link
-	curr.setNext(curr.next().next()); // Remove from list
-	tempptr.release(); // Release link
-	cnt--; // Decrement count
-	return it; // Return removed
-}
-					`}</CodePre></li>
-				</SubList></li>
 			</SubList></li>
 			<li>Array-based lists vs Linked lists:<SubList>
 				<li>Array-based lists have the disadvantage that their size must be predetermined
@@ -519,9 +560,68 @@ public E remove() {
 					to double the size of the array when it becomes full, and to cut the array size in
 					half when it becomes one quarter full.</li>
 			</SubList></li>
+			<li><b>Doubly Linked Lists:</b><SubList>
+				<li>A <b>doubly linked list</b> allows convenient
+					access from a list node to the next node and also to the preceding node on the list</li>
+				<li><ImgComp src={"/articlePics/data_structures_and_algorithms_pics/10.PNG"} style={{width:"70%"}}/></li>
+				<li> Data member <code>head</code> points to the header node, and <code>tail</code> points to
+					the tailer node. The purpose of these nodes is to simplify the <code>insert</code>, <code>append</code>,
+					and <code>remove</code> methods.</li>
+				<li><CodePre language="java">{`
+/** Doubly linked list node */
+class DLink<E> {
+	private E element; // Value for this node
+	private DLink<E> next; // Pointer to next node in list
+	private DLink<E> prev; // Pointer to previous node
+	/** Constructors */
+	DLink(E it, DLink<E> p, DLink<E> n)
+	{ element = it; prev = p; next = n; }
+	DLink(DLink<E> p, DLink<E> n) { prev = p; next = n; }
+	/** Get and set methods for the data members */
+	DLink<E> next() { return next; }
+	DLink<E> setNext(DLink<E> nextval)
+	{ return next = nextval; }
+	DLink<E> prev() { return prev; }
+	DLink<E> setPrev(DLink<E> prevval)
+	{ return prev = prevval; }
+	E element() { return element; }
+	E setElement(E it) { return element = it; }
+}
+				`}</CodePre></li>
+				<li>The only disadvantage of the doubly linked list as compared to the singly linked
+					list is the additional space used.</li>
+				<li>Implementations for doubly linked list <code>insert</code>, <code>append</code>,
+					<code>remove</code>, and <code>prev</code> methods:</li>
+				<li><CodePre language="java">{`
+/** Insert "it" at current position */
+public void insert(E it) {
+	curr.setNext(new DLink<E>(it, curr, curr.next()));
+	curr.next().next().setPrev(curr.next());
+	cnt++;
+}
+/** Append "it" to list */
+public void append(E it) {
+	tail.setPrev(new DLink<E>(it, tail.prev(), tail));
+	tail.prev().prev().setNext(tail.prev());
+	cnt++;
+}
+/** Remove and return current element */
+public E remove() {
+	if (curr.next() == tail) return null; // Nothing to remove
+	E it = curr.next().element(); // Remember value
+	curr.next().next().setPrev(curr);
+	curr.setNext(curr.next().next()); // Remove from list
+	cnt--; // Decrement the count
+	return it; // Return value removed
+}
+/** Move curr one step left; no change if at front */
+public void prev() {
+	if (curr != head) // Can't back up from list head
+	curr = curr.prev();
+}
+				`}</CodePre></li>
+			</SubList></li>
 			<li>Element Implementations:<SubList>
-				<li>List users must decide whether they wish to store a copy of any given element
-					on each list that contains it.</li>
 				<li>If the elements are payroll records, it might be desirable for the list node
 					to store a reference to the record rather than store a copy of the record itself. This
 					change would allow multiple list nodes (or other data structures) to point to the
@@ -542,87 +642,87 @@ public E remove() {
 					program or not. Thus, the user of the list must be responsible for deleting these
 					objects when that is appropriate.</li>
 			</SubList></li>
-			<li><b>Doubly Linked Lists:</b><SubList>
-				<li>A <b>doubly linked list</b> allows convenient
-					access from a list node to the next node and also to the preceding node on the list</li>
-				<li><ImgComp src={"/articlePics/data_structures_and_algorithms_pics/10.PNG"} style={{width:"70%"}}/></li>
-				<li> Data member <code>head</code> points to the header node, and <code>tail</code> points to
-					the tailer node. The purpose of these nodes is to simplify the <code>insert</code>, <code>append</code>,
-					and <code>remove</code> methods.</li>
+			<li><b>Freelist</b>:<SubList>
+				<li>The <code>new</code> operator is relatively expensive to use. Garbage collection is also expensive.</li>
+				<li>Instead of making repeated calls to <code>new</code>, the <code>Link</code> class
+					can handle its own <b>freelist</b>.</li>
+				<li>A freelist holds those list nodes that are not currently
+					being used. When a node is deleted from a linked list, it is placed at the head of the
+					freelist. When a new element is to be added to a linked list, the freelist is checked
+					to see if a list node is available. If so, the node is taken from the freelist.</li>
+				<li>The freelist will never grow larger than the largest size yet reached by the
+					linked list.</li>
+				<li>In the implementation shown here, the link class is augmented with methods
+					<code>get</code> and <code>release</code>:</li>
 				<li><CodePre language="java">{`
-/** Doubly linked list node */
-class DLink&lt;E> {
-	private E element; // Value for this node
-	private DLink&lt;E> next; // Pointer to next node in list
-	private DLink&lt;E> prev; // Pointer to previous node
-	/** Constructors */
-	DLink(E it, DLink&lt;E> p, DLink&lt;E> n)
-	{ element = it; prev = p; next = n; }
-	DLink(DLink&lt;E> p, DLink&lt;E> n) { prev = p; next = n; }
-	/** Get and set methods for the data members */
-	DLink&lt;E> next() { return next; }
-	DLink&lt;E> setNext(DLink&lt;E> nextval)
-	{ return next = nextval; }
-	DLink&lt;E> prev() { return prev; }
-	DLink&lt;E> setPrev(DLink&lt;E> prevval)
-	{ return prev = prevval; }
-	E element() { return element; }
-	E setElement(E it) { return element = it; }
+/** Singly linked list node with freelist support */
+class Link<E> {
+private E element; // Value for this node
+private Link<E> next; // Point to next node in list
+/** Constructors */
+Link(E it, Link<E> nextval) { element = it; next = nextval; }
+Link(Link<E> nextval) { next = nextval; }
+/** Get and set methods */
+Link<E> next() { return next; }
+Link<E> setNext(Link<E> nxtval) { return next = nxtval; }
+E element() { return element; }
+E setElement(E it) { return element = it; }
+
+/** Extensions to support freelists */
+static Link freelist = null; // Freelist for the class
+/** @return A new link */
+static <E> Link<E> get(E it, Link<E> nextval) {
+	if (freelist == null) return new Link<E>(it, nextval);
+	Link<E> temp = freelist; // Get from freelist
+	freelist = freelist.next();
+	temp.setElement(it);
+	temp.setNext(nextval);
+	return temp;
 }
+/** Release a link to the freelist */
+void release() {
+	element = null; // Drop reference to the element
+	next = freelist;
+	freelist = this;
+}
+}                        
 				`}</CodePre></li>
-				<li>The only disadvantage of the doubly linked list as compared to the singly linked
-					list is the additional space used.</li>
-				<li>Implementations for doubly linked list <code>insert</code>, <code>append</code>,
-					<code>remove</code>, and <code>prev</code> methods:</li>
+				<li>Linked-list class members can be modified to use the freelist version of the link class:</li>
 				<li><CodePre language="java">{`
 /** Insert "it" at current position */
 public void insert(E it) {
-	curr.setNext(new DLink&lt;E>(it, curr, curr.next()));
-	curr.next().next().setPrev(curr.next());
-	cnt++;
+curr.setNext(Link.get(it, curr.next())); // Get link
+if (tail == curr) tail = curr.next(); // New tail
+cnt++;
 }
 /** Append "it" to list */
 public void append(E it) {
-	tail.setPrev(new DLink&lt;E>(it, tail.prev(), tail));
-	tail.prev().prev().setNext(tail.prev());
-	cnt++;
+tail = tail.setNext(Link.get(it, null));
+cnt++;
 }
 /** Remove and return current element */
 public E remove() {
-	if (curr.next() == tail) return null; // Nothing to remove
-	E it = curr.next().element(); // Remember value
-	curr.next().next().setPrev(curr);
-	curr.setNext(curr.next().next()); // Remove from list
-	cnt--; // Decrement the count
-	return it; // Return value removed
-}
-/** Move curr one step left; no change if at front */
-public void prev() {
-	if (curr != head) // Can't back up from list head
-	curr = curr.prev();
+if (curr.next() == null) return null; // Nothing to remove
+E it = curr.next().element(); // Remember value
+if (tail == curr.next()) tail = curr; // Removed last
+Link<E> tempptr = curr.next(); // Remember link
+curr.setNext(curr.next().next()); // Remove from list
+tempptr.release(); // Release link
+cnt--; // Decrement count
+return it; // Return removed
 }
 				`}</CodePre></li>
-				<li>For singly linked lists we set <code>curr</code> to point to the node preceding the node that
-					contained the actual current element, due to lack of access to the previous node. Since we do have access to the previous node in a
-					doubly linked list, this is no longer necessary. We could set <code>curr</code> to point directly
-					to the node containing the current element. However, we can keep the
-					same convention for the <code>curr</code> pointer as we set up for singly linked lists, purely
-					for the sake of consistency.</li>
 			</SubList></li>
 		</ul>
 		<h3>Stack</h3>
 		<ul>
-			<li>The <b>stack</b> is a list-like structure in which elements may be inserted or removed
-				from only one end.</li>
-			<li>While this restriction makes stacks less flexible than lists, it
-				also makes stacks both efficient (for those operations they can do) and easy to implement.</li>
-			<li>Stack ADT:<SubList>
-				<li>The accessible element of the stack is called the <b>top</b> element. Elements are not
-					said to be inserted, they are <b>pushed</b> onto the stack. When removed, an element is
-					said to be <b>popped</b> from the stack.</li>
+			<li><b>Stacks:</b><SubList>
+				<li>The <b>stack</b> is a list-like structure in which elements may be inserted or removed from only one end.</li>
+				<li>While this restriction makes stacks less flexible than lists, it also makes stacks both efficient (for those operations they can do) and easy to implement.</li>
+				<li>The accessible element of the stack is called the <b>top</b> element. Elements are not said to be inserted, they are <b>pushed</b> onto the stack. When removed, an element is said to be <b>popped</b> from the stack.</li>
 				<li><CodePre language="java">{`
 					/** Stack ADT */
-public interface Stack&lt;E> {
+public interface Stack<E> {
 	/** Reinitialize the stack. The user is responsible for
 	reclaiming the storage used by the stack elements. */
 	public void clear();
@@ -651,7 +751,7 @@ public interface Stack&lt;E> {
 					the stack, they are appended to the tail of the list. In this case, the cost for each <code>push</code> or <code>pop</code> operation is only \(\Theta(1)\).</li>
 				<li><CodePre language="java">{`
 /** Array-based stack implementation */
-class AStack&lt;E> implements Stack&lt;E> {
+class AStack<E> implements Stack<E> {
 	private static final int defaultSize = 10;
 	private int maxSize; // Maximum size of stack
 	private int top; // Index for top Object
@@ -689,8 +789,8 @@ class AStack&lt;E> implements Stack&lt;E> {
 			<li><b>Linked Stacks:</b><SubList>
 				<li><CodePre language="java">{`
 /** Linked stack implementation */
-class LStack&lt;E> implements Stack&lt;E> {
-	private Link&lt;E> top; // Pointer to first element
+class LStack<E> implements Stack<E> {
+	private Link<E> top; // Pointer to first element
 	private int size; // Number of elements
 	/** Constructors */
 	public LStack() { top = null; size = 0; }
@@ -699,7 +799,7 @@ class LStack&lt;E> implements Stack&lt;E> {
 	public void clear() { top = null; size = 0; }
 	/** Put "it" on stack */
 	public void push(E it) {
-		top = new Link&lt;E>(it, top);
+		top = new Link<E>(it, top);
 		size++;
 	}
 	/** Remove "it" from stack */
@@ -722,28 +822,25 @@ class LStack&lt;E> implements Stack&lt;E> {
 				<li>The freelist of shown in the "Singly Linked List" section is
 					an example of a linked stack.</li>
 			</SubList></li>
-			<li>All operations for the array-based and linked stack implementations take constant
-					time, so from a time efficiency perspective, neither has a significant advantage.</li>
-			<li>Implementing Recursion:<SubList>
-				<li>A subroutine call is normally implemented by
-					placing necessary information about the subroutine (including the return address,
-					parameters, and local variables) onto a stack. This information is called an <b>activation record</b>.</li>
-				<li>Because an activation record must be created and placed onto the stack for
-					each subroutine call, making subroutine calls is a relatively expensive operation.</li>
+			<li>Comparison of array-based and linked stacks:<SubList>
+				<li>All operations for the array-based and linked stack implementations take constant time, so from a time efficiency perspective, neither has a significant advantage.</li>
+				<li>The array-based stack must declare a fixed-size array initially, and some of that space is wasted whenever the stack is not full.</li>
+				<li>The linked stack can shrink and grow but requires the overhead of a link field for every element.</li>
+				<li>When implementing multiple stacks, sometimes you can take advantage of the one-way growth of the array-based stack by using a single array to store two stacks. One stack grows inward from each end.</li>
+				<li>In other words, ideally when one stack grows, the other will shrink. This is particularly effective when elements are taken from one stack and given to the other.</li>
+				<li><ImgComp src={"/articlePics/data_structures_and_algorithms_pics/11.PNG"} style={{width:"50%"}}/></li>
 			</SubList></li>
 		</ul>
 	</div>
 	<div style={{width: "49%", marginRight: "0.5%", float: "right"}}>
 		<h3>Queues</h3>
 		<ul>
-			<li>Like the stack, the <b>queue</b> is a list-like structure that provides restricted access to
-				its elements.</li>
-			<li>Queue elements may only be inserted at the back (called an <b>enqueue</b>
-				operation) and removed from the front (called a <b>dequeue</b> operation).</li>
-			<li>Queue ADT:<SubList>
+			<li><b>Queues:</b><SubList>
+				<li>Like the stack, the <b>queue</b> is a list-like structure that provides restricted access to its elements.</li>
+				<li>Queue elements may only be inserted at the back (called an <b>enqueue</b> operation) and removed from the front (called a <b>dequeue</b> operation).</li>
 				<li><CodePre language="java">{`
 /** Queue ADT */
-public interface Queue&lt;E> {
+public interface Queue<E> {
 	/** Reinitialize the queue. The user is responsible for
 	reclaiming the storage used by the queue elements. */
 	public void clear();
@@ -761,20 +858,16 @@ public interface Queue&lt;E> {
 				`}</CodePre></li>
 			</SubList></li>
 			<li><b>Array-Based Queues:</b><SubList>
-				<li>If we relax the requirement that all elements of the queue must be in the first \(n\)  positions of the array, then both the <code>enqueue</code> and the <code>dequeue</code> operations can be
-					performed in \(\Theta(1)\) time because the elements won't have to be shifted.</li>
+				<li>If we relax the requirement that all elements of the queue must be in the first \(n\) positions of the array, then both the <code>enqueue</code> and the <code>dequeue</code> operations can be performed in \(\Theta(1)\) time because the elements won't have to be shifted.</li>
 				<li>This means when elements are removed from the queue, the front index increases.</li>
-				<li>
-				<figure><ImgComp src={"/articlePics/data_structures_and_algorithms_pics/11.PNG"} style={{width:"50%"}}/>
-					<figcaption>After repeated use, elements in the array-based queue will drift to
-						the back of the array.</figcaption>
+				<li><figure>
+					<ImgComp src={"/articlePics/data_structures_and_algorithms_pics/11.PNG"} style={{width:"60%"}}/>
+					<figcaption>After repeated use, elements in the array-based queue will drift to the back of the array.</figcaption>
 				</figure></li>
-				<li>The "drifting queue" problem can be solved by pretending that the array is
-					circular and so allow the queue to continue directly from the highest-numbered position in the array to the lowest-numbered position. This is easily implemented
-					through use of the modulus operator (denoted by % in Java).</li>
+				<li>The "drifting queue" problem can be solved by pretending that the array is circular and so allow the queue to continue directly from the highest-numbered position in the array to the lowest-numbered position. This is easily implemented through use of the modulus operator (denoted by % in Java).</li>
 				<li><CodePre language="java">{`
 /** Array-based queue implementation */
-class AQueue&lt;E> implements Queue&lt;E> {
+class AQueue<E> implements Queue<E> {
 	private static final int defaultSize = 10;
 	private int maxSize; // Maximum size of queue
 	private int front; // Index of front element
@@ -822,23 +915,23 @@ class AQueue&lt;E> implements Queue&lt;E> {
 			<li><b>Linked Queue:</b><SubList>
 				<li><CodePre language="java">{`
 /** Linked queue implementation */
-class LQueue&lt;E> implements Queue&lt;E> {
-	private Link&lt;E> front; // Pointer to front queue node
-	private Link&lt;E> rear; // Pointer to rear queuenode
+class LQueue<E> implements Queue<E> {
+	private Link<E> front; // Pointer to front queue node
+	private Link<E> rear; // Pointer to rear queuenode
 	private int size; // Number of elements in queue
 	/** Constructors */
 	public LQueue() { init(); }
 	public LQueue(int size) { init(); } // Ignore size
 	/** Initialize queue */
 	private void init() {
-		front = rear = new Link&lt;E>(null);
+		front = rear = new Link<E>(null);
 		size = 0;
 	}
 	/** Reinitialize queue */
 	public void clear() { init(); }
 	/** Put element on rear */
 	public void enqueue(E it) {
-		rear.setNext(new Link&lt;E>(it, null));
+		rear.setNext(new Link<E>(it, null));
 		rear = rear.next();
 		size++;
 	}
@@ -860,13 +953,10 @@ class LQueue&lt;E> implements Queue&lt;E> {
 	public int length() { return size; }
 }
 				`}</CodePre></li>
-				<li>A header
-					link node is used, which allows for a simpler implementation of the <code>enqueue</code> operation by
-					avoiding any special cases when the queue is empty.</li>
+				<li>A header link node is used, which allows for a simpler implementation of the <code>enqueue</code> operation by avoiding any special cases when the queue is empty.</li>
+				<li>All member functions for both the array-based and linked queue implementations require constant time.</li>
+				<li>The space comparison issues are the same as for the equivalent stack implementations.</li>
 			</SubList></li>
-			<li>All member functions for both the array-based and linked queue implementations
-				require constant time.</li>
-			<li>The space comparison issues are the same as for the equivalent stack implementations.</li>
 		</ul>
 		<div data-source="4">
 		<h3>Dictionaries</h3>
@@ -877,20 +967,7 @@ class LQueue&lt;E> implements Queue&lt;E> {
 				<li><code>Remove</code> or <code>delete</code>: remove a (key,value) pair from the collection.</li>
 				<li><code>Lookup</code>, <code>find</code>, or <code>get</code>: find the value (if any) that is bound to a given key. If no value is found, some lookup functions raise an exception, while others return a default value (zero, null, specific value passed to the constructor, ...).</li>
 			</SubList></li>
-			<li>The most frequently used general-purpose implementation is with a <b>hash table</b>:<SubList>
-				<li>A hash table uses a <b>hash function</b> to compute an index, also called a <b>hash code</b>, into an array of buckets or slots, from which the desired value can be found.</li>
-				<li>During lookup, the key is hashed and the resulting hash indicates where the corresponding value is stored.</li>
-				<li>Ideally, the hash function will assign each key to a unique bucket, but most hash table designs employ an imperfect hash function, which might cause <i>hash collisions</i> where the hash function generates the same index for more than one key. <u>Collision Resolution:</u><SubList>
-					<li>In <b>separate chaining</b>, the process involves building a linked list with key-value pair for each search array index. The collided items are chained together through a single linked list, which can be traversed to access the item with a unique search key.</li>
-					<li><ImgComp src={"/articlePics/data_structures_and_algorithms_pics/13.png"} style={{width:"80%"}}/></li>
-					<li><b>Open addressing:</b> when a new entry has to be inserted, the buckets are examined, starting with the hashed-to slot and proceeding in some probe sequence, until an unoccupied slot is found. <u>Well-known probe sequences:</u><SubList>
-						<li><b>Linear probing</b>, in which the interval between probes is fixed.</li>
-						<li><b>Quadratic probing</b> operates by taking the original hash index and adding successive values of an arbitrary quadratic polynomial until an open slot is found.</li>
-						<li><b>Double hashing</b>, in which the interval between probes is computed by a secondary hash function.</li>
-					</SubList></li>
-					<li><ImgComp src={"/articlePics/data_structures_and_algorithms_pics/14.png"} style={{width:"80%"}}/></li>
-				</SubList></li>
-			</SubList></li>
+			<li>The most frequently used general-purpose implementation is with a <b>hash table</b>.</li>
 		</ul>
 		</div>
 		<div data-source="4">
@@ -911,186 +988,261 @@ class LQueue&lt;E> implements Queue&lt;E> {
 	</div>
 </div>
 
-<h2 id="trees">Trees</h2>
-<div className="content">
+<h2>Trees</h2>
+<div className="content" data-source="20">
 	<div style={{width: "49%", marginLeft: "0.5%", float: "left"}}>
-		<div data-source="4" >
-			<ul>
-				<li>
-					A <b>graph</b> data structure consists of a finite (and possibly mutable) set of <b>vertices</b> (also called <b>nodes</b>), together with a set of unordered pairs of these vertices for an undirected graph or a set of ordered pairs for a directed graph. These pairs are known as <b>edges</b>, and for a directed graph are also known as edges but also sometimes <b>arrows</b>.
-				</li>
-				<li>
-					<figure style={{width:"45%"}}>
-						<ImgComp src={"/articlePics/data_structures_and_algorithms_pics/6.png"}/>
-						<figcaption>A directed graph with three vertices (blue circles) and three edges (black arrows).</figcaption>
-					</figure>
-				</li>
-			</ul>
-		</div>
-		<div data-source="21" >
-			<ul>
-				<li><b>Trees</b> are a sub-type of the graph data structure. To be a tree, a graph must satisfy two requirements:<SubList>
-					<li><u>It is acyclic:</u> It contains no cycles (or "loops")</li>
-					<li><u>It is connected:</u> All nodes are reachable through
-						one path in the graph.</li>
-				</SubList></li>
-				<li>A <b>binary tree</b> is a tree that each node in it has maximum of two children.</li>
-				<li><b>Binary search tree (BST)</b> is a binary tree
-					which all the values in left sub tree are less than values in
-					right sub tree. <u>Implementation:</u><SubList>
-					<li><CodePre language="python">{`
-class Node:
-	def __init__(self, val):
-		self.l_child = None
-		self.r_child = None
-		self.data = val
-
-def insert(root, node):
-	if root is None:
-		root = node
-	else:
-		if root.data > node.data:
-			if root.l_child is None:
-				root.l_child = node
-			else:
-				insert(root.l_child, node)
-		else:
-			if root.r_child is None:
-				root.r_child = node
-			else:
-				insert(root.r_child, node)
-
-def in_order_print(root):
-	if not root: #True is root is None
-		return
-	in_order_print(root.l_child)
-	print root.data
-	in_order_print(root.r_child)
-			   
-def pre_order_print(root):
-	if not root:
-		return
-	print root.data
-	pre_order_print(root.l_child)
-	pre_order_print(root.r_child) 
-					`}</CodePre></li>
-				</SubList></li>
-				<li>There are three cases to be considered while deleting a BST node:<SubList>
-					<li><ImgComp src={"/articlePics/data_structures_and_algorithms_pics/8.jpg"} width="80%"/></li>
-					<li><u>Case 1:</u> Node to be deleted is the leaf node.</li>
-					<li><u>Case 2:</u> Node to be deleted has one child.</li>
-					<li><u>Case 3:</u> Node to be deleted has both children.</li>
-					<li><CodePre language="cpp">{`
-struct node
-{
-	int data;
-	node *left, *right;
-};
-
-node* delete_node(node *root, int data)
-{
-	if(root == nullptr) return root;
-	else if(data &lt; root->data) root->left = delete_node(root->left, data);
-	else if(data > root->data) root->right = delete_node(root->right, data);
-	else
-	{
-		if(root->left == nullptr && root->right == nullptr) // Case 1
-		{
-			free(root);
-			root = nullptr;
-		}
-		else if(root->left == nullptr) // Case 2
-		{
-			node* temp = root;
-			root = root->right;
-			free(temp);
-		}
-		else if(root->right == nullptr) // Case 2
-		{
-			node* temp = root;
-			root = root->left;
-			free(temp);
-		}
-		else // Case 3
-		{
-			node* temp = root->right;
-			while(temp->left != nullptr) temp = temp->left;
-			root->data = temp->data;
-			root->right = delete_node(root->right, temp->data);
-		}
-	}
-	return root;
-}       
-					`}</CodePre></li>
-				</SubList></li>
-				<li>To check if a given binary tree is BST:<SubList>
-					<li>One way to do this is to remember the min and max possible values of
-						the keys in the subtree we are visiting. For example, if the root of the tree has the range [K_MIN,K_MAX], then the range of the left subtree is [K_MIN,x) and the range of the right subtree is (x,K_MAX].</li>
-					<li><CodePre language="javascript">{`
-is_BST(root, min, max):
-	if root == null:
-		return true
-	// is the current node key out of range?
-	if root->key &lt; min || root->key > max:
-		return false
-	// check if left and right subtree is BST
-	return is_BST(root->left,min,root->key-1) && is_BST(root->right,root->key+1,max)   
-					`}</CodePre></li>
-				</SubList></li>
-				<li>Visiting a node of a binary tree in some order is called <b>traversals</b>:<SubList>
-					<li><ImgComp src={"/articlePics/data_structures_and_algorithms_pics/7.PNG"} style={{width:"50%"}}/></li>
-					<li><b>Level order traversal:</b> Printing node data level by level, 1 2 3 4 5 6 7</li>
-					<li><b>Pre-order traversal:</b> is traversing the node then left sub-tree of the node and then the right sub-tree of the node, 1 2 4 5 3 6 7</li>
-					<li><b>In-order traversal:</b> is traversing the left sub-tree of the node then the node and then right sub-tree of the node, 4 2 5 1 6 3 7</li>
-					<li><b>Post-order traversal:</b> is traversing the left sub-tree of the node then the right sub-tree and then the node, 4 5 2 6 7 3 1</li>
-				</SubList></li>
-				<li>The <b>lowest common ancestor</b> between two nodes <code>n1</code> and <code>n2</code> is defined as the lowest node in the tree that has both <code>n1</code> and <code>n2</code> as descendants.</li>
-			</ul>
-		</div>
-		<ul style={{paddingBottom: "1px"}}>
-			<li>Some definitions:<SubList>
+		<ul>
+			<li><u>Definitions:</u><SubList>
+				<li>A <b>binary tree</b> is made up of a finite set of elements called <b>nodes</b>.</li>
+				<li>This set either is empty or consists of a node called the <b>root</b> together with two binary trees, called the left and right subtrees, which are disjoint from each other and from the root.</li>
+				<li>The roots of these subtrees are <b>children</b> of the root.</li>
+				<li>There is an <b>edge</b> from a node to each of its children, and a node is said to be the <b>parent</b> of its children.</li>
+				<li>If \(n_1, n_2, \ldots ,n_k\) is a sequence of nodes in the tree such that \(n_i\) is the parent of \(n_{"{i+1}"}\) for \(1 \le i \lt k\), then this sequence is called a <b>path</b> from \(n_1\) to \(n_k\).</li>
+				<li>The <b>length</b> of the path is \(k-1\).</li>
+				<li>f there is a path from node \(R\) to node \(M\), then \(R\) is an <b>ancestor</b> of \(M\), and \(M\) is a <b>descendant</b> of \(R\).</li>
 				<li>The <b>depth</b> of a node \(M\) in the tree is the length of the path from the root of the tree to M.</li>
 				<li>The <b>height</b> of a tree is one more than the depth of the deepest node in the tree.</li>
 				<li>All nodes of depth \(d\) are at <b>level</b> \(d\) in the tree.</li>
 				<li>The <b>root</b> is the only node at level 0, and its depth is 0.</li>
 				<li>A <b>leaf</b> node is any node that has two empty children.</li>
 				<li>An <b>internal</b> node is any node that has at least one non-empty child.</li>
-				<li>Each node in a <b>full</b> binary tree is either an internal node with exactly
-					two non-empty children or a leaf.</li>
-				<li>A <b>complete</b> binary tree has a restricted shape
-					obtained by starting at the root and filling the tree by levels from left to right. In the
-					complete binary tree of height \(d\), all levels except possibly level \(d-1\) are completely
-					full. The bottom level has its nodes filled in from the left side.</li>
+			</SubList></li>
+			<li>Full and complete binary trees:<SubList>
+				<li>Each node in a <b>full</b> binary tree is either an internal node with exactly two non-empty children or a leaf.</li>
+				<li>A <b>complete</b> binary tree has a restricted shape obtained by starting at the root and filling the tree by levels from left to right. In the complete binary tree of height \(d\), all levels except possibly level \(d-1\) are completely full. The bottom level has its nodes filled in from the left side.</li>
 				<li><figure style={{width:"70%"}}>
 					<ImgComp src={"/articlePics/data_structures_and_algorithms_pics/15.PNG"}/>
 					<figcaption>(a) This tree is full (but
 						not complete). (b) This tree is complete (but not full).
 						</figcaption>
 				</figure></li>
+				<li>Some binary tree implementations store data only at the leaf nodes, using the internal nodes to provide structure to the tree.</li>
+				<li><b>Full Binary Tree Theorem:</b> The number of leaves in a non-empty full binary tree is one more than the number of internal nodes.</li>
+				<li>The number of empty subtrees in a non-empty binary tree is one more than the number of nodes in the tree.</li>
+				<li>Any process for visiting all of the nodes in some order is called a <b>traversal</b>.</li>
 			</SubList></li>
-		</ul>
-	</div>
-	<div style={{width: "49%", marginRight: "0.5%", float: "right"}}>
-		<h3>Array Implementation for Complete Binary Trees</h3>
-		<ul>
-			<li>An array can store the tree's data values efficiently, placing each data value in the array position
-			corresponding to that node's position within the tree:<SubList>
+			<li>Traversals:<SubList>
+				<li><ImgComp src={"/articlePics/data_structures_and_algorithms_pics/6.jpeg"}/></li>
+				<li><b>Preorder traversal:</b> we visit any given node before we visit its children.</li>
+				<li>The preorder enumeration for the tree is <b>A B D C E G F H I</b>.</li>
+				<li><b>Postorder traversal:</b>We visit each node only after we visit its children (and their subtrees).</li>
+				<li>The postorder enumeration for the tree is <b>D B G E H I F C A</b>.</li>
+				<li>An <b>inorder traversal</b> first visits the left child (including its entire subtree), then visits the node, and finally visits the right child (including its entire subtree).</li>
+				<li>The inorder enumeration for the tree is <b>B D A G E C H F I</b>.</li>
+			</SubList></li>
+			<li>Information flow in recursive functions:<SubList>
+				<li>Handling information flow in a recursive function can be a challenge. In any given function, we might need to be concerned with either or both of:<SubList opened>
+					<li>Passing down the correct information needed by the function to do its work,</li>
+					<li>Returning (passing up) information to the recursive function's caller.</li>
+				</SubList></li>
+				<li>Local:<SubList>
+					<li><b>Local traversal</b> involves going to each node in the tree to do some operation. Such functions need no information from the parent (other than a pointer to the current node), and pass no information back.</li>
+					<li>Examples include preorder traversal and incrementing the value of every node by one.</li>
+				</SubList></li>
+				<li>Passing Down Information:<SubList>
+					<li>Slightly more complicated is the situation where every node needs the same piece of information to be passed to it.</li>
+					<li>An example would be incrementing the value for all nodes by some amount. In this case, the value parameter is simply passed on unchanged in all recursive calls.</li>
+					<li>Many functions need information that changes from node to node. A simple example is a function to set the value for each node of the tree to be its depth.</li>
+					<li>In this case, the depth is passed as a parameter to the function, and each recursive call must adjust that value.</li>
+				</SubList></li>
+				<li><b>Collect-and-return:</b><SubList>
+					<li>Collect-and-return requires that we communicate information back up the tree to the caller.</li>
+					<li>Simple examples are to count the number of nodes in a tree, or to sum the values of all the nodes.</li>
+				</SubList></li>
+			</SubList></li>
+			<li>Binary tree node implementations:<SubList>
+				<li>Here is an ADT for binary tree nodes, called <code>BinNode</code>:</li>
+				<li><CodePre language="java">{`
+interface BinNode<E> { // Binary tree node ADT
+  // Get and set the element value
+  public E value();
+  public void setValue(E v);
+
+  // return the children
+  public BinNode<E> left();
+  public BinNode<E> right();
+
+  // return TRUE if a leaf node, FALSE otherwise
+  public boolean isLeaf();
+}
+				`}</CodePre></li>
+				<li>Here is a simple implementation for the <code>BinNode</code> interface, which we will name <code>BSTNode</code>:</li>
+				<li>Every <code>BSTNode</code> object also has two pointers, one to its left child and another to its right child.</li>
+				<li><CodePre language="java">{`
+// Binary tree node implementation: supports comparable objects
+class BSTNode<E extends Comparable<? super E>> implements BinNode<E> {
+  private E element;           // Element for this node
+  private BSTNode<E> left;     // Pointer to left child
+  private BSTNode<E> right;    // Pointer to right child
+
+  // Constructors
+  BSTNode() { left = right = null; }
+  BSTNode(E val) { left = right = null; element = val; }
+  BSTNode(E val, BSTNode<E> l, BSTNode<E> r)
+    { left = l; right = r; element = val; }
+
+  // Get and set the element value
+  public E value() { return element; }
+  public void setValue(E v) { element = v; }
+
+  // Get and set the left child
+  public BSTNode<E> left() { return left; }
+  public void setLeft(BSTNode<E> p) { left = p; }
+
+  // Get and set the right child
+  public BSTNode<E> right() { return right; }
+  public void setRight(BSTNode<E> p) { right = p; }
+
+  // return TRUE if a leaf node, FALSE otherwise
+  public boolean isLeaf() { return (left == null) && (right == null); }
+}
+				`}</CodePre></li>
+				<li>Using the same class for leave nodes and internal nodes will simplify the implementation, but might be an inefficient use of space. Some applications require data values only for the leaves.</li>
+				<li>A <b>base class</b> provides a general definition for an object, and a <b>subclass</b> modifies a base class to add more detail. The base class in the following code is named <code>VarBinNode</code>:</li>
+				<li><CodePre language="java">{`
+// Base class for expression tree nodes
+public interface VarBinNode {
+  public boolean isLeaf(); // All subclasses must implement
+}
+
+/** Leaf node */
+public class VarLeafNode implements VarBinNode {
+  private String operand;                 // Operand value
+
+  VarLeafNode(String val) { operand = val; }
+  public boolean isLeaf() { return true; }
+  public String value() { return operand; }
+}
+
+// Internal node
+public class VarIntlNode implements VarBinNode {
+  private VarBinNode left;                // Left child
+  private VarBinNode right;               // Right child
+  private Character operator;             // Operator value
+
+  VarIntlNode(Character op, VarBinNode l, VarBinNode r)
+    { operator = op; left = l; right = r; }
+  public boolean isLeaf() { return false; }
+  public VarBinNode leftchild() { return left; }
+  public VarBinNode rightchild() { return right; }
+  public Character value() { return operator; }
+}
+
+// Preorder traversal
+public static void traverse(VarBinNode rt) {
+  if (rt == null) { return; }         // Nothing to visit
+  if (rt.isLeaf()) {                 // Process leaf node
+    Visit.VisitLeafNode(((VarLeafNode)rt).value());
+  }
+  else {                           // Process internal node
+    Visit.VisitInternalNode(((VarIntlNode)rt).value());
+    traverse(((VarIntlNode)rt).leftchild());
+    traverse(((VarIntlNode)rt).rightchild());
+  }
+}
+				`}</CodePre></li>
+			</SubList></li>
+			<li>Binary tree space requirements:<SubList>
+				<li>Let \(P\) stands for the amount of space required by a pointer, and \(D\) stands for the amount of space required by a data value.</li>
+				<li>In a simple pointer-based implementation for binary tree nodes, every node has two pointers to its children (even when the children are NULL):<SubList>
+					<li>This implementation requires total space amounting to \(n(2P+D)\) for a tree of \(n\) nodes.</li>
+					<li>The total overhead space will be \(2Pn\) for the entire tree. Thus, the overhead fraction will be \(2P/(2P+D)\).</li>
+					<li>If we assume that \(P=D\), then a binary tree has about two thirds of its total space taken up in overhead.</li>
+					<li>The Full Binary Tree Theorem tells us that about half of the pointers are NULL values that serve only to indicate tree structure, but which do not provide access to new data.</li>
+					<li>In many languages (such as Java or JavaScript), the most typical implementation is not to store any actual data in a node, but rather a pointer to the data record. In this case, each node will typically store three pointers, all of which are overhead, resulting in an overhead fraction of \(3P/(3P+D)\).</li>
+				</SubList></li>
+				<li>If only leaves store data values:<SubList>
+					<li>The fraction of total space devoted to overhead depends on whether the tree is full.</li>
+					<li>If the tree is not full, then the overhead can be an arbitrarily high percentage.</li>
+					<li>The overhead fraction drops as the tree becomes closer to full, being lowest when the tree is truly full. In this case, about one half of the nodes are internal.</li>
+					<li>Great savings can be had by eliminating the pointers from leaf nodes in full binary trees:</li>
+					<MathStuff>\[{"\\frac{\\frac{n}{2} 2P}{\\frac{n}{2} (2P) + Dn}= \\frac{P}{P+D}"}\]</MathStuff>
+					<li>If \(P=D\), the overhead drops to about one half of the total space.</li>
+				</SubList></li>
+				<li>If the internal nodes store two pointers and no data field while the leaf nodes store only a pointer to the data field:<SubList>
+					<li>This implementation requires:</li>
+					<MathStuff>{"\\frac{n}{2} 2P + \\frac{n}{2} (P+D)"}</MathStuff>
+					<li>If \(P=D\), then the overhead is \(3P/(3P+D)=3/4\).</li>
+					<li>It might seem counter-intuitive that the overhead ratio has gone up while the total amount of space has gone down. The reason is because we have changed our definition of "data" to refer only to what is stored in the leaf nodes, so while the overhead fraction is higher, it is from a total storage requirement that is lower.</li>
+				</SubList></li>
+				<li>When using separate implementations for internal and leaf nodes, there must be a way to distinguish between the node types.</li>
+				<li>When separate node types are implemented via Java subclasses, the runtime environment stores information with each object allowing it to determine, for example, the correct subclass to use when the <code>isLeaf</code> virtual function is called. Thus, each node requires additional space.</li>
+				<li>Only one bit is truly necessary to distinguish the two possibilities. In rare applications where space is a critical resource, implementors can often find a spare bit within the node's value field (or pointer) in which to store the node type indicator.</li>
+			</SubList></li>
+			<li><b>Binary search trees:</b><SubList>
+				<li>A <b>binary search tree (BST)</b> is a binary tree that conforms to the following condition:<SubList opened>
+					<li>All nodes stored in the left subtree of a node whose key value is \(K\) have key values less than or equal to \(K\).</li>
+					<li>All nodes stored in the right subtree of a node whose key value is \(K\) have key values greater than \(K\).</li>
+				</SubList></li>
+				<li>There are various ways to deal with keys and comparing records. Three typical approaches are <b>key-value pairs</b>, a special comparison method such as using the <code>Comparator</code> class, and passing in a <b>comparator function</b>.</li>
+				<li><CodePre language="java">{`
+// Binary Search Tree implementation
+class BST<E extends Comparable<E>> {
+  private BSTNode<E> root; // Root of the BST
+  private int nodecount; // Number of nodes in the BST
+
+  // constructor
+  BST() { root = null; nodecount = 0; }
+
+  // Reinitialize tree
+  public void clear() { root = null; nodecount = 0; }
+
+  // Insert a record into the tree.
+  // Records can be anything, but they must be Comparable
+  // e: The record to insert.
+  public void insert(E e) {
+    root = inserthelp(root, e);
+    nodecount++;
+  }
+
+  // Remove a record from the tree
+  // key: The key value of record to remove
+  // Returns the record removed, null if there is none.
+  public E remove(E key) {
+    E temp = findhelp(root, key); // First find it
+    if (temp != null) {
+      root = removehelp(root, key); // Now remove it
+      nodecount--;
+    }
+    return temp;
+  }
+
+  // Return the record with key value k, null if none exists
+  // key: The key value to find
+  public E find(E key) { return findhelp(root, key); }
+
+  // Return the number of records in the dictionary
+  public int size() { return nodecount; }
+				`}</CodePre></li>
+				<li>Removing a node:<SubList>
+					<li>Removing a node with given key value \(R\) from the BST requires that we first find \(R\) and then remove it from the tree.</li>
+					<li>The first part of the remove operation is a search to find \(R\). Once \(R\) is found, there are several possibilities. If \(R\) has no children, then \(R\)'s parent has its pointer set to NULL. If \(R\) has one child, then \(R\)'s parent has its pointer set to \(R\)'s child.</li>
+					<li>The problem comes if \(R\) has two children. One approach is to find a value in one of the subtrees that can replace the value in \(R\).</li>
+					<li>Which value can substitute for the one being removed? The least key value greater than the one being removed, or else the greatest key value less than (or equal to) the one being removed. If either of these values replace the one being removed, then the BST property is maintained.</li>
+					<li>The cost for <code>removehelp</code> is the depth of the node being removed, or in the case when this node has two children, the depth of the node with smallest value in its right subtree.</li>
+				</SubList></li>
+				<li>The cost for <code>findhelp</code> and <code>inserthelp</code> is the depth of the node found or inserted.</li>
+			</SubList></li>
+			<li><b>Guided traversal:</b><SubList>
+				<li><b>Guided traversal</b> refers to a problem that does not require visiting every node in the tree, though it typically requires looking at more than one path through the tree.</li>
+				<li>For finding the minimum value in a BST, we need to only visit the left subtree until we reach a leaf node.</li>
+			</SubList></li>
+			<li>Array implementation for complete binary trees:<SubList>
+				<li>A complete binary tree of \(n\) nodes has only one possible shape. An array can store the data values efficiently.</li>
+				<li>We begin by assigning numbers to the node positions in the complete binary tree, level by level, from left to right:</li>
 				<li><figure style={{width:"75%"}}><ImgComp src={"/articlePics/data_structures_and_algorithms_pics/16.PNG"}/>
-					<figcaption>A complete binary tree and its array implementation. (a) The complete binary tree with twelve nodes. Each node has been labeled with its position
-						in the tree. (b) The positions for the relatives of each node.</figcaption>
+					<figcaption>A complete binary tree and its array implementation. (a) The complete binary tree with twelve nodes. Each node has been labeled with its position in the tree. (b) The positions for the relatives of each node.</figcaption>
 				</figure></li>
-				<li>If the total number of nodes in the tree is \(n\), and index of the node in
-					question is \(r\), which must fall in the range 0 to \(n - 1\):
-					</li>
+				<li>If the total number of nodes in the tree is \(n\), and index of the node in question is \(r\), which must fall in the range 0 to \(n - 1\):</li>
 				<MathStuff>$${`\\begin{aligned}
-					Parent(r) = b(r - 1)/2c &\\text{  if r 6 = 0} \\\\
-					Left child(r) = 2r + 1 &\\text{  if 2r + 1 &lt; n} \\\\
-					Right child(r) = 2r + 2 &\\text{  if 2r + 2 &lt; n} \\\\
-					Left sibling(r) = r - 1 &\\text{  if r is even}
+					\\text{Parent}(r) &= \\lfloor (r - 1)/2 \\rfloor &&\\text{if } r \\ne 0 \\\\
+					\\text{Left child}(r) &= 2r + 1 &&\\text{if } 2r + 1 < n \\\\
+					\\text{Right child}(r) &= 2r + 2 &&\\text{if } 2r + 2 < n \\\\
+					\\text{Left sibling}(r) &= r - 1 &&\\text{if } r \\text{ is even and } r \\ne 0 \\\\
+					\\text{Right sibling}(r) &= r + 1 &&\\text{if } r \\text{ is odd and } r \\lt n \\\\
 				\\end{aligned}`}$$</MathStuff>
 			</SubList></li>
-			<li>When a collection of objects is organized by importance or priority, we call
-				this a <b>priority queue</b>.</li>
+			<li>When a collection of objects is organized by importance or priority, we call this a <b>priority queue</b>.</li>
 			<li><b>Heaps:</b><SubList>
 				<li>A <b>heap</b> is defined by two properties:<SubList>
 					<li>It is a complete binary tree, so heaps are nearly always implemented
@@ -1098,132 +1250,175 @@ is_BST(root, min, max):
 					<li>The values stored in a heap are partially ordered. This means that there is
 					a relationship between the value stored at any node and the values of its children.</li>
 				</SubList></li>
-				<li>The logical view of the heap is actually a tree structure, while
-					the typical physical implementation uses an array.</li>
-				<li>A <b>max-heap</b> has the property that every node stores a value that is greater than
-					or equal to the value of either of its children, so, the root stores the maximum of all values in the tree:<SubList>
+				<li>The logical view of the heap is actually a tree structure, while the typical physical implementation uses an array.</li>
+				<li>A <b>max-heap</b> has the property that every node stores a value that is greater than or equal to the value of either of its children, so, the root stores the maximum of all values in the tree:<SubList>
 					<li><CodePre language="java">{`
-/** Max-heap implementation */
-public class MaxHeap&lt;E extends Comparable&lt;? super E>> {
-	private E[] Heap; // Pointer to the heap array
-	private int size; // Maximum size of the heap
-	private int n; // Number of things in heap
-	/** Constructor supporting preloading of heap contents */
-	public MaxHeap(E[] h, int num, int max)
-	{ Heap = h; n = num; size = max; buildheap(); }
-	/** @return Current size of the heap */
-	public int heapsize() { return n; }
-	/** @return True if pos a leaf position, false otherwise */
-	public boolean isLeaf(int pos)
-	{ return (pos >= n/2) && (pos &lt; n); }
-	/** @return Position for left child of pos */
-	public int leftchild(int pos) {
-		assert pos &lt; n/2 : "Position has no left child";
-		return 2*pos + 1;
-	}
-	/** @return Position for right child of pos */
-	public int rightchild(int pos) {
-		assert pos &lt; (n-1)/2 : "Position has no right child";
-		return 2*pos + 2;
-	}
-	/** @return Position for parent */
-	public int parent(int pos) {
-		assert pos > 0 : "Position has no parent";
-		return (pos-1)/2;
-	}
-	/** Insert val into heap */
-	public void insert(E val) {
-		assert n &lt; size : "Heap is full";
-		int curr = n++;
-		Heap[curr] = val; // Start at end of heap
-		// Now sift up until curr's parent's key > curr's key
-		while ((curr != 0) &&
-		(Heap[curr].compareTo(Heap[parent(curr)]) > 0)) {
-			DSutil.swap(Heap, curr, parent(curr));
-			curr = parent(curr);
-		}
-	}
-	/** Heapify contents of Heap */
-	public void buildheap()
-	{ for (int i=n/2-1; i>=0; i--) siftdown(i); }
-	/** Put element in its correct place */
-	private void siftdown(int pos) {
-		assert (pos >= 0) && (pos &lt; n) : "Illegal heap position";
-		while (!isLeaf(pos)) {
-			int j = leftchild(pos);
-			if ((j&lt;(n-1)) && (Heap[j].compareTo(Heap[j+1]) &lt; 0))
-			j++; // j is now index of child with greater value
-			if (Heap[pos].compareTo(Heap[j]) >= 0) return;
-			DSutil.swap(Heap, pos, j);
-			pos = j; // Move down
-		}
-	}
-	/** Remove and return maximum value */
-	public E removemax() {
-		assert n > 0 : "Removing from empty heap";
-		DSutil.swap(Heap, 0, --n); // Swap maximum with last value
-		if (n != 0) // Not on last element
-		siftdown(0); // Put new heap root val in correct place
-		return Heap[n];
-	}
-	/** Remove and return element at specified position */
-	public E remove(int pos) {
-		assert (pos >= 0) && (pos &lt; n) : "Illegal heap position";
-		if (pos == (n-1)) n--; // Last element, no work to be done
-		else {
-			DSutil.swap(Heap, pos, --n); // Swap with last value
-			// If we just swapped in a big value, push it up
-			while ((pos > 0) &&
-			(Heap[pos].compareTo(Heap[parent(pos)]) > 0)) {
-				DSutil.swap(Heap, pos, parent(pos));
-				pos = parent(pos);
-			}
-			if (n != 0) siftdown(pos); // If it is little, push down
-		}
-		return Heap[n];
-	}
-}    
+// Max-heap implementation
+// use 'java -ea' to enable assertions that check valid heap positions
+class MaxHeap {
+  private Comparable[] heap; // Pointer to the heap array
+  private int maxSize; // Maximum size of the heap
+  private int n; // Number of things now in heap
+
+  // Constructor supporting preloading of heap contents
+  MaxHeap(Comparable[] h, int heapSize, int max) {
+    heap = h;
+    n = heapSize;
+    maxSize = max;
+    buildHeap();
+  }
+
+  // Return current size of the heap
+  public int heapSize() { return n; }
+
+  // Return true if pos a leaf position, false otherwise
+  public boolean isLeaf(int pos) 
+  { return (n / 2 <= pos ) && (pos < n); }
+
+  // Return position for left child of pos
+  public static int leftChild(int pos) 
+  { return 2 * pos + 1; }
+
+  // Return position for right child of pos
+  public static int rightChild(int pos) 
+  { return 2 * pos + 2; }
+
+  // Return position for parent
+  public static int parent(int pos) 
+  { return (pos - 1) / 2; }
+
+  // Insert val into heap
+  public void insert(Comparable key) {
+    assert n < maxSize : "Heap is full; cannot insert";
+    heap[n] = key;
+    n++;
+    shiftUp(n - 1);
+  }
+
+  // Heapify contents of Heap
+  private void buildHeap() {
+    for (int i = parent(n - 1); i >= 0; i--) {
+      shiftDown(i);
+    }
+  }
+
+  // Moves an element down to its correct place
+  private void shiftDown(int pos) {
+    assert (0 <= pos && pos < n) : "Invalid heap position";
+    while (!isLeaf(pos)) {
+      int child = leftChild(pos);
+      if ((child + 1 < n) && isGreaterThan(child + 1, child)) {
+        child = child + 1; // child is now index with the greater value
+      }
+      if (!isGreaterThan(child, pos)) {
+        return; // stop early
+      }
+      swap(pos, child);
+      pos = child; // keep shifting down
+    }
+  }
+
+  // Moves an element up to its correct place
+  private void shiftUp(int pos) {
+    assert (0 <= pos && pos < n) : "Invalid heap position";
+    while (pos > 0) {
+      int parent = parent(pos);
+      if (isGreaterThan(parent, pos)) {
+        return; // stop early
+      }
+      swap(pos, parent);
+      pos = parent; // keep shifting up
+    }
+  }
+
+  // Remove and return maximum value
+  public Comparable removeMax() {
+    assert n > 0 : "Heap is empty; cannot remove";
+    n--;
+    swap(0, n);  // Swap maximum with last value
+    shiftDown(0); // Put new heap root val in correct place
+    return heap[n];
+  }
+
+  // Remove and return element at specified position
+  public Comparable remove(int pos) {
+    assert (0 <= pos && pos < n) : "Invalid heap position";
+    n--;
+    swap(pos, n); // Swap with last value
+    update(pos);  // Move other value to correct position
+    return heap[n];
+  }
+
+  // Modify the value at the given position
+  public void modify(int pos, Comparable newVal) {
+    assert (0 <= pos && pos < n) : "Invalid heap position";
+    heap[pos] = newVal;
+    update(pos);
+  }
+
+  // The value at pos has been changed, restore the heap property
+  private void update(int pos) {
+    shiftUp(pos);   // priority goes up
+    shiftDown(pos); // unimportant goes down
+  }
+
+  // swaps the elements at two positions
+  private void swap(int pos1, int pos2) {
+    Comparable temp = heap[pos1];
+    heap[pos1] = heap[pos2];
+    heap[pos2] = temp;
+  }
+
+  // does comparison used for checking heap validity
+  private boolean isGreaterThan(int pos1, int pos2) {
+    return heap[pos1].compareTo(heap[pos2]) > 0;
+  }
+}  
 					`}</CodePre></li>
-					<li>The heap is a natural implementation for the priority queue discussed at the
-						beginning of this section. Jobs can be added to the heap (using their priority value
-						as the ordering key) when needed. Method <code>removemax</code> can be called whenever a
-						new job is to be executed.</li>
+					<li>Insertion:<SubList>
+						<li>We put the new value at the end of the array, then move upward.</li>
+						<li>Each call to <code>insert</code> takes \(\Theta (\log n)\) time in the worst case, because the value being inserted can move at most the distance from the bottom of the tree to the top of the tree.</li>
+					</SubList></li>
+					<li>Removing:<SubList>
+						<li>We swap the first and last positions, decrement the heap by one (removing the last element), then push the top element down as appropriate.</li>
+						<li>The cost of deleting the maximum element is \(\Theta(\log n)\) in the average and worst cases.</li>
+					</SubList></li>
+					<li>The heap is a natural implementation for the priority queue. Jobs can be added to the heap (using their priority value as the ordering key) when needed. Method <code>removemax</code> can be called whenever a new job is to be executed.</li>
 				</SubList></li>
-				<li>A <b>min-heap</b> has the property that every node stores a value that is less than
-					or equal to that of its children.</li>
+				<li>A <b>min-heap</b> has the property that every node stores a value that is less than or equal to that of its children.</li>
 			</SubList></li>
+			<li><b>Trie:</b> A form of search tree where an internal node represents a split in the key space at a predetermined location, rather than split based on the actual key values seen.</li>
+		</ul>
+		<h3>Huffman Coding Trees</h3>
+		<ul>
 			<li><b>Huffman Coding Trees:</b><SubList>
-				<li><figure style={{width:"55%"}}>
-					<ImgComp src={"/articlePics/data_structures_and_algorithms_pics/17.PNG"}/>
+				<li><b>Huffman coding</b> assigns codes to characters such that the length of the code depends on the relative frequency or weight of the corresponding character. The codes can be of variable length, such that the letters which are expected to appear most frequently are shorter.</li>
+				<li><figure>
+					<ImgComp src={"/articlePics/data_structures_and_algorithms_pics/17.PNG"} style={{width: "55%"}}/>
 					<figcaption>Relative frequencies for the 26 letters of the alphabet as they appear in a selected set of English documents. "Frequency" represents the expected frequency of occurrence per 1000 letters.</figcaption>
 				</figure></li>
-				<li><b>Huffman coding</b> assigns codes to characters such that the length of the code depends on the relative frequency or weight of the corresponding character.</li>
-				<li>The Huffman code for each letter is derived from a full binary tree called the <b>Huffman coding tree</b>, or simply the <b>Huffman tree</b>. </li>
-				<li>Each leaf of the Huffman tree corresponds to a letter.</li>
-				<li>The process of building the Huffman tree for \(n\) letters:<SubList>
-					<li>The <b>weighted path length</b> of a leaf is its weight times its depth. The binary tree with <i>minimum external path weight</i> is the one with the minimum sum of weighted path lengths for the given set of leaves.</li>
-					<li>The goal is to build a tree with the minimum external path weight.</li>
-					<li><ImgComp src={"/articlePics/data_structures_and_algorithms_pics/18.PNG"} style={{width: "65%"}}/></li>
-					<li>Create a collection of \(n\) initial Huffman trees, each of which is a single leaf node containing one of the letters. Put the \(n\) partial trees onto a priority queue organized by
-						weight (frequency).</li>
-					<li>Next, remove the first two trees (the ones with lowest weight)
-						from the priority queue. Join these two trees together to create a new tree whose
-						root has the two trees as children, and whose weight is the sum of the weights of the
-						two trees. Put this new tree back into the priority queue.</li>
-					<li>The process is repeated
-						until all of the partial Huffman trees have been combined into one.</li>
-				</SubList></li>
+				<li>Huffman coding is optimal whenever the true frequencies are known, and the frequency of a letter is independent of the context of that letter in the message.</li>
+				<li>The Huffman code for each letter is derived from a full binary tree called the <b>Huffman coding tree</b>.</li>
+			</SubList></li>
+			<li>Building a Huffman tree for \(n\) letters:<SubList>
+				<li>Each leaf of the Huffman tree corresponds to a letter, and we define the weight of the leaf node to be the weight (frequency) of its associated letter.</li>
+				<li>The <b>weighted path length</b> of a leaf is its weight times its depth. The binary tree with <b>minimum external path weight</b> is the one with the minimum sum of weighted path lengths for the given set of leaves.</li>
+				<li>The goal is to build a tree with the minimum external path weight.</li>
+				<li>A letter with high weight should have low depth, so that it will count the least against the total path length.</li>
+				<li>Create a collection of \(n\) initial Huffman trees, each of which is a single leaf node containing one of the letters. Put the \(n\) partial trees onto a priority queue organized by weight (frequency).</li>
+				<li>Next, remove the first two trees (the ones with lowest weight) from the priority queue. Join these two trees together to create a new tree whose root has the two trees as children, and whose weight is the sum of the weights of the two trees. Put this new tree back into the priority queue.</li>
+				<li>The process is repeated until all of the partial Huffman trees have been combined into one.</li>
+				<li><ImgComp src={"/articlePics/data_structures_and_algorithms_pics/18.PNG"} style={{width: "65%"}}/></li>
 				<li><u>Implementation:</u><SubList>
-					<li>Internal nodes and leaf
-						nodes are represented by separate classes, each derived from an abstract base class:</li>
+					<li>Internal nodes and leaf nodes are represented by separate classes, each derived from an abstract base class:</li>
 					<li><CodePre language="java">{`
 /** Huffman tree node implementation: Base class */
-public interface HuffBaseNode&lt;E> {
+public interface HuffBaseNode<E> {
 	public boolean isLeaf();
 	public int weight();
 }
 /** Huffman tree node: Leaf class */
-class HuffLeafNode&lt;E> implements HuffBaseNode&lt;E> {
+class HuffLeafNode<E> implements HuffBaseNode<E> {
 	private E element; // Element for this node
 	private int weight; // Weight for this node
 	/** Constructor */
@@ -1237,18 +1432,18 @@ class HuffLeafNode&lt;E> implements HuffBaseNode&lt;E> {
 	public boolean isLeaf() { return true; }
 }
 /** Huffman tree node: Internal class */
-class HuffInternalNode&lt;E> implements HuffBaseNode&lt;E> {
+class HuffInternalNode<E> implements HuffBaseNode<E> {
 	private int weight; // Weight (sum of children)
-	private HuffBaseNode&lt;E> left; // Pointer to left child
-	private HuffBaseNode&lt;E> right; // Pointer to right child
+	private HuffBaseNode<E> left; // Pointer to left child
+	private HuffBaseNode<E> right; // Pointer to right child
 	/** Constructor */
-	public HuffInternalNode(HuffBaseNode&lt;E> l,
-	HuffBaseNode&lt;E> r, int wt)
+	public HuffInternalNode(HuffBaseNode<E> l,
+	HuffBaseNode<E> r, int wt)
 	{ left = l; right = r; weight = wt; }
 	/** @return The left child */
-	public HuffBaseNode&lt;E> left() { return left; }
+	public HuffBaseNode<E> left() { return left; }
 	/** @return The right child */
-	public HuffBaseNode&lt;E> right() { return right; }
+	public HuffBaseNode<E> right() { return right; }
 	/** @return The weight */
 	public int weight() { return weight; }
 	/** Return false */
@@ -1256,19 +1451,19 @@ class HuffInternalNode&lt;E> implements HuffBaseNode&lt;E> {
 					`}</CodePre></li>
 					<li>Class declarations for the Huffman tree:</li>
 					<li><CodePre language="java">{`
-class HuffTree&lt;E> implements Comparable<HuffTree&lt;E>>{
-	private HuffBaseNode&lt;E> root; // Root of the tree
+class HuffTree<E> implements Comparable<HuffTree<E>>{
+	private HuffBaseNode<E> root; // Root of the tree
 	/** Constructors */
 	public HuffTree(E el, int wt)
-	{ root = new HuffLeafNode&lt;E>(el, wt); }
-	public HuffTree(HuffBaseNode&lt;E> l,
-	HuffBaseNode&lt;E> r, int wt)
-	{ root = new HuffInternalNode&lt;E>(l, r, wt); }
-	public HuffBaseNode&lt;E> root() { return root; }
+	{ root = new HuffLeafNode<E>(el, wt); }
+	public HuffTree(HuffBaseNode<E> l,
+	HuffBaseNode<E> r, int wt)
+	{ root = new HuffInternalNode<E>(l, r, wt); }
+	public HuffBaseNode<E> root() { return root; }
 	public int weight() // Weight of tree is weight of root
 	{ return root.weight(); }
-	public int compareTo(HuffTree&lt;E> that) {
-		if (root.weight() &lt; that.weight()) return -1;
+	public int compareTo(HuffTree<E> that) {
+		if (root.weight() < that.weight()) return -1;
 		else if (root.weight() == that.weight()) return 0;
 		else return 1;
 	}
@@ -1290,102 +1485,85 @@ static HuffTree<Character> buildTree() {
 }
 					`}</CodePre></li>
 				</SubList></li>
-				<li>Using Huffman Codes:<SubList>
-					<li>'0' is assigned to edges connecting a node with its left child, and
-						'1' to edges connecting a node with its right child</li>
-					<li><figure style={{width:"50%"}}><ImgComp src={"/articlePics/data_structures_and_algorithms_pics/19.PNG"}/>
-						<figcaption> The code for K is '111101'.</figcaption>
-					</figure></li>
-				</SubList></li>
-				<li>A set of codes is said to meet the <b>prefix property</b> if no code in the set is the
-					prefix of another. The prefix property guarantees that there will be no ambiguity in
-					how a bit string is decoded.</li>
-				<li>The code
-						for M is '11111'. Taking five right branches in the Huffman tree. We can be sure that no letter can have code
-						'111' because this corresponds to an internal node of the tree, and the tree-building
-						process places letters only at the leaf nodes.</li>
-				<li>The frequencies of
-					letters in an English text document do change depending on context. For example,
-					while E is the most commonly used letter of the alphabet in English documents,
-					T is more common as the first letter of a word. This is why most commercial compression utilities do not use Huffman coding as their primary coding method.</li>
-				<li>Some frequency patterns will save no space as
-					compared to fixed-length codes. In general,
-					Huffman coding does better when there is large variation in the frequencies of
-					letters.</li>
+				<li>ASCII coding actually uses 8 bits per character. Seven bits are used to represent the 128 codes of the ASCII character set. The eigth bit as a parity bit, that can be used to check if there is a transmission error for the character.</li>
+			</SubList></li>
+			<li>Using Huffman Codes:<SubList>
+				<li>A set of codes is said to meet the <b>prefix property</b> if no code in the set is the prefix of another. The prefix property guarantees that there will be no ambiguity in how a bit string is decoded.</li>
+				<li>'0' is assigned to edges connecting a node with its left child, and '1' to edges connecting a node with its right child</li>
+				<li><figure>
+					<ImgComp style={{width:"50%"}} src={"/articlePics/data_structures_and_algorithms_pics/19.PNG"}/>
+					<figcaption>The code for K is '111101'.</figcaption>
+				</figure></li>
+				<li>The code for M is '11111'. Taking five right branches in the Huffman tree. We can be sure that no letter can have code '111' because this corresponds to an internal node of the tree, and the tree-building process places letters only at the leaf nodes.</li>
+				<li>The frequencies of letters in an English text document do change depending on context. For example, while E is the most commonly used letter of the alphabet in English documents, T is more common as the first letter of a word. This is why most commercial compression utilities do not use Huffman coding as their primary coding method.</li>
+				<li>Some frequency patterns will save no space as compared to fixed-length codes. In general, Huffman coding does better when there is large variation in the frequencies of letters.</li>
 			</SubList></li>
 		</ul>
-		<h3>Non-Binary Trees</h3>
+	</div>
+	<div style={{width: "49%", marginRight: "0.5%", float: "right"}}>
+		<h3>General Trees</h3>
 		<ul>
-			<li>When we permit trees to have nodes with an arbitrary number of children, they become much harder to implement than binary trees. To distinguish them from binary trees, we use the term <b>general tree</b>. <u>Definitions and Terminology:</u><SubList>
-				<li>A <b>tree \(\pmb{"{\\textit{T}}"}\)</b> is a finite set of one or more nodes such that there is one designated node \(R\), called the root of \(T\). If the set \((T - {"{R}"})\) is not empty, these nodes are partitioned into \(n \gt 0\) disjoint subsets \(T_0, T_1, ..., T_{"{n-1}"}\), each of which is a tree, and whose roots \(R_1, R_2, ..., R_n\), respectively, are children of \(R\).</li>
-				<li>The subsets \(T_i \ (0 ≤ i &lt; n)\) are
-					said to be subtrees of \(T\). These subtrees are ordered in that \(T_i\)
-					is said to come before \(T_j\) if \(i &lt; j\)</li>
-				<li>By convention, the subtrees are arranged from left to right with subtree \(T_0\) called the leftmost child of \(R\). A node's out degree is the number of children for
-					that node. A <b>forest</b> is a collection of one or more trees.</li>
+			<li><u>Definitions:</u><SubList>
+				<li>When we permit trees to have nodes with an arbitrary number of children, they become much harder to implement than binary trees. To distinguish them from binary trees, we use the term <b>general tree</b>.</li>
+				<li>A <b>tree \({"\\textbf{T}"}\)</b> is a finite set of one or more nodes such that there is one designated node \(R\), called the <b>root</b> of \({"\\textbf{T}"}\). If the set \(({"{\\textbf{T} - {R}}"})\) is not empty, these nodes are partitioned into \(n \gt 0\) disjoint subsets \({"\\textbf{T}_0, \\textbf{T}_1, \\ldots, \\textbf{T}_{n-1}"}\), each of which is a tree, and whose roots \(R_1, R_2, \ldots, R_n\), respectively, are children of \(R\).</li>
+				<li>The subsets \({"\\textbf{T}"}_i \ (0 ≤ i &lt; n)\) are said to be <b>subtrees</b> of \({"\\textbf{T}"}\). These subtrees are ordered in that \({"\\textbf{T}"}_i\) is said to come before \({"\\textbf{T}"}_j\) if \(i &lt; j\)</li>
+				<li>By convention, the subtrees are arranged from left to right with subtree \({"\\textbf{T}"}_0\) called the leftmost child of \(R\).</li>
+				<li>A node's <b>out degree</b> is the number of children for that node. A <b>forest</b> is a collection of one or more trees.</li>
 			</SubList></li>
 			<li>ADT for General Tree Nodes:<SubList>
-				<li>Because we do not know
-					in advance how many children a given node will have in the general tree, we cannot give explicit functions to access each child. An alternative must be found that works
-					for an unknown number of children. </li>
-				<li>One choice would be to provide a function that takes as its parameter the index
-					for the desired child. That combined with a function that returns the number of
-					children for a given node would support the ability to access any node or process
-					all children of a node.</li>
-				<li>An alternative is to provide access to the leftmost child of a node, and
-					to provide access to the right sibling of a node:</li>
+				<li>Because we do not know in advance how many children a given node will have in the general tree, we cannot give explicit functions to access each child. An alternative must be found that works for an unknown number of children. </li>
+				<li>One choice would be to provide a function that takes as its parameter the index for the desired child. That combined with a function that returns the number of children for a given node would support the ability to access any node or process all children of a node.</li>
+				<li>An alternative is to provide access to the leftmost child of a node, and to provide access to the right sibling of a node:</li>
 				<li><CodePre language="java">{`
 /** General tree node ADT */
-interface GTNode&lt;E> {
+interface GTNode<E> {
 	public E value();
 	public boolean isLeaf();
-	public GTNode&lt;E> parent();
-	public GTNode&lt;E> leftmostChild();
-	public GTNode&lt;E> rightSibling();
+	public GTNode<E> parent();
+	public GTNode<E> leftmostChild();
+	public GTNode<E> rightSibling();
 	public void setValue(E value);
-	public void setParent(GTNode&lt;E> par);
-	public void insertFirst(GTNode&lt;E> n);
-	public void insertNext(GTNode&lt;E> n);
+	public void setParent(GTNode<E> par);
+	public void insertFirst(GTNode<E> n);
+	public void insertNext(GTNode<E> n);
 	public void removeFirst();
 	public void removeNext();
 }
 /** General tree ADT */
-interface GenTree&lt;E> {
+interface GenTree<E> {
 	public void clear(); // Clear the tree
-	public GTNode&lt;E> root(); // Return the root
+	public GTNode<E> root(); // Return the root
 	// Make the tree have a new root, give first child and sib
-	public void newroot(E value, GTNode&lt;E> first,
-	GTNode&lt;E> sib);
+	public void newroot(E value, GTNode<E> first,
+	GTNode<E> sib);
 	public void newleftchild(E value); // Add left child
 }
 				`}</CodePre></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
+			</SubList></li>
+			<li>Tree traversals:<SubList>
+				<li>For general trees, preorder and postorder traversals are defined with meanings similar to their binary tree counterparts.</li>
+				<li><b>Preorder traversal</b> of a general tree first visits the root of the tree, then performs a preorder traversal of each subtree from left to right.</li>
+				<li>A <b>postorder traversal</b> of a general tree performs a postorder traversal of the root's subtrees from left to right, then visits the root.</li>
+				<li><b>Inorder traversal</b> does not have a natural definition for the general tree, because there is no particular number of children for an internal node. An arbitrary definition - such as visit the leftmost subtree in inorder, then the root, then visit the remaining subtrees in inorder - can be invented.</li>
 			</SubList></li>
 			<li>The <b>Parent Pointer</b> Implementation:<SubList>
-				<li>Storing for each node only a
-					pointer to that node's parent is called  the <b>parent pointer</b> implementation.</li>
+				<li>Storing for each node only a pointer to that node's parent is called the <b>parent pointer</b> implementation.</li>
 				<li><ImgComp src={"/articlePics/data_structures_and_algorithms_pics/20.PNG"} style={{width:"60%"}}/></li>
 				<li>The parent pointer implementation is useful for this question: "Given two nodes, are they in the same tree?"</li>
-				<li>If both nodes reach the same root,
-					then they must be in the same tree. If the roots are different, then the two nodes are
-					not in the same tree.</li>
-				<li>The parent pointer representation is most often used to maintain a collection of
-					disjoint sets. Two disjoint sets share no members in common (their intersection is
-					empty).</li>
-				<li> There are two basic operations that we wish to support:<ol>
-						<li>determine if two objects are in the same set</li>
-						<li>merge two sets together</li>
-					</ol></li>
+				<li>If both nodes reach the same root, then they must be in the same tree. If the roots are different, then the two nodes are not in the same tree.</li>
+				<li>The parent pointer representation is most often used to maintain a collection of disjoint sets.</li>
+				<li>There are two basic operations that we wish to support:<SubList opened>
+					<li>determine if two objects are in the same set (FIND operation)</li>
+					<li>merge two sets together (UNION operation)</li>
+				</SubList></li>
+				<li>Here is an implementation for parent pointer trees and the UNION/FIND process:</li>
 				<li><CodePre language="java">{`
 /** General Tree class implementation for UNION/FIND */
 class ParPtrTree {
 	private Integer [] array; // Node array
 	public ParPtrTree(int size) {
 		array = new Integer[size]; // Create node array
-		for (int i=0; i&lt;size; i++)
+		for (int i=0; i<size; i++)
 		array[i] = null;
 	}
 	/** Determine if nodes are in different trees */
@@ -1408,707 +1586,446 @@ class ParPtrTree {
 	}
 }                
 				`}</CodePre></li>
-				<li>A low-cost approach to reducing the height is to be smart about how two trees
-					are joined together:<SubList>
-						<li>One simple technique, called the <b>weighted union rule</b>, joins
-							the tree with fewer nodes to the tree with more nodes by making the smaller tree's
-							root point to the root of the bigger tree.</li>
-						<li><b>Path compression</b> is a method that tends to create extremely shallow trees. Path compression takes place while finding the root for a given node \(X\).
-							It resets the parent of every node on the path from
-							\(X\) to root \(R\) to point directly to \(R\).</li>
-						<li><CodePre language="java">{`
+				<li>A low-cost approach to reducing the height is to be smart about how two trees are joined together:<SubList>
+					<li>One simple technique, called the <b>weighted union rule</b>, joins the tree with fewer nodes to the tree with more nodes by making the smaller tree's root point to the root of the bigger tree.</li>
+					<li>This will limit the total depth of the tree to \(O(\log n)\), because the depth of nodes only in the smaller tree will now increase by one, and the depth of the deepest node in the combined tree can only be at most one deeper than the deepest node before the trees were combined.</li>
+					<li><b>Path compression</b> is a method that tends to create extremely shallow trees. Path compression takes place while finding the root for a given node \(X\). It resets the parent of every node on the path from \(X\) to root \(R\) to point directly to \(R\).</li>
+					<li><CodePre language="java">{`
 public Integer FIND(Integer curr) {
 	if (array[curr] == null) return curr; // At root
 	array[curr] = FIND(array[curr]);
 	return array[curr];
 }
-						`}</CodePre></li>
+					`}</CodePre></li>
 				</SubList></li>
 			</SubList></li>
 			<li>The <b>list of children</b> implementation:<SubList>
-				<li>Each
-					node contains a value, a pointer (or index) to its parent, and a pointer to a linked list
-					of the node's children, stored in order from left to right.</li>
+				<li>The "list of children" implementation stores the tree nodes in an array.</li>
+				<li>Each node contains a value, a pointer (or index) to its parent, and a pointer to a linked list of the node's children, stored in order from left to right.</li>
 				<li><ImgComp src={"/articlePics/data_structures_and_algorithms_pics/21.PNG"} style={{width:"70%"}}/></li>
-				<li>The leftmost child of a node can be found
-					directly because it is the first element in the linked list. However, finding the right sibling requires that all children parent.</li>
+				<li>The leftmost child of a node can be found directly because it is the first element in the linked list.</li>
 			</SubList></li>
 			<li>The <b>Left-Child/Right-Sibling</b> Implementation:<SubList>
-				<li>Each node stores its value
-					and pointers to its parent, leftmost child, and right sibling.</li>
+				<li>Each node stores its value and pointers to its parent, leftmost child, and right sibling.</li>
 				<li><ImgComp src={"/articlePics/data_structures_and_algorithms_pics/22.PNG"} style={{width:"70%"}}/></li>
-				<li>If two trees are stored within the same node array, then adding one as the subtree
-					of the other simply requires setting three pointers.</li>
+				<li>If two trees are stored within the same node array, then adding one as the subtree of the other simply requires setting three pointers.</li>
 				<li><ImgComp src={"/articlePics/data_structures_and_algorithms_pics/23.PNG"} style={{width:"70%"}}/></li>
-				<li>This implementation is more space efficient than the
-					"list of children" implementation, and each node requires a fixed amount of space
-					in the node array.
-					</li>
+				<li>This implementation is more space efficient than the "list of children" implementation, and each node requires a fixed amount of space in the node array.</li>
 			</SubList></li>
-			<li>Dynamic Node Implementations (approach 1):<SubList>
+			<li>Dynamic Node Implementations:<SubList>
 				<li>One Approach is to allocate an array of child pointers as part of the node. </li>
 				<li>This approach assumes that the number of children is known when the node is created. </li>
 				<li>If the number of children does change, then some special recovery mechanism must be provided to support a change in the size of the child pointer array.</li>
 				<li>One possibility is to allocate a new node of the correct size from free store and return the old copy of the node to free store for later reuse.</li>
-				<li><figure style={{width:"70%"}}><ImgComp src={"/articlePics/data_structures_and_algorithms_pics/24.PNG"}/><figcaption> For each node,
-					the first field stores the node value while the second field stores the size of the
-					child pointer array.</figcaption></figure></li>
-			</SubList></li>
-			<li>Dynamic Node Implementations (approach 2):<SubList>
-				<li>Store a linked list of child pointers with each node.</li>
-				<li>This is more flexible, but which requires more space.</li>
+				<li><figure style={{width:"70%"}}><ImgComp src={"/articlePics/data_structures_and_algorithms_pics/24.PNG"}/><figcaption> For each node, the first field stores the node value while the second field stores the size of the child pointer array.</figcaption></figure></li>
+				<li>Another approach is to store a linked list of child pointers with each node. This is more flexible, but which requires more space.</li>
 				<li><ImgComp src={"/articlePics/data_structures_and_algorithms_pics/25.PNG"} style={{width:"70%"}}/></li>
+			</SubList></li>
+			<li>Dynamic left-child/right-sibling implementation:<SubList>
+				<li>Each node of the "left-child/right-sibling" implementation points to two "children" in a new binary tree structure.</li>
+				<li>We can easily extend this conversion to a forest of general trees, because the roots of the trees can be considered siblings. We simply include links from each node to its right sibling and remove links to all children except the leftmost child.</li>
+				<li><figure>
+					<ImgComp style={{width:"80%"}} src={"/articlePics/data_structures_and_algorithms_pics/34.png"}/>
+					<figcaption></figcaption>
+				</figure></li>
 			</SubList></li>
 			<li><b>K-ary Trees:</b><SubList>
 				<li><b>K-ary trees</b> are trees whose internal nodes all have exactly K children. Thus, a full binary tree is a 2-ary tree.</li>
-				<li><b>Full</b> and <b>complete</b> K-ary trees are analogous to full and complete binary trees.</li>
+				<li><b>Full</b> and <b>complete</b> K-ary trees are analogous to full and complete binary trees, respectively.</li>
 			</SubList></li>
-			<li><b>Sequential Tree Representations:</b><SubList>
-				<li>The goal is to store a series of node values with the minimum information needed to
-					reconstruct the tree structure.  This approach, known as a <b>sequential tree representation</b>, this has the advantage of saving space because no pointers are stored.</li>
-				<li>It has
-					the disadvantage that accessing any node in the tree requires sequentially processing all nodes that appear before it in the node list.</li>
-				<li>Sequential tree implementations can be used to <b>serialize</b> a tree structure. Serialization is the process of storing an object as a series of bytes, typically so that the
-					data structure can be transmitted between computers.</li>
-				<li>A sequential tree implementation typically stores the node values as they would
-					be enumerated by a preorder traversal, along with sufficient information to describe
-					the tree's shape.</li>
+		</ul>
+		<h3>Sequential Tree Representations</h3>
+		<ul>
+			<li>What are they:<SubList>
+				<li>The goal is to store a series of node values with the minimum information needed to reconstruct the tree structure. This approach, known as a <b>sequential tree representation</b>, this has the advantage of saving space because no pointers are stored.</li>
+				<li>It has the disadvantage that accessing any node in the tree requires sequentially processing all nodes that appear before it in the node list.</li>
+				<li>Sequential tree implementations can be used to <b>serialize</b> a tree structure. Serialization is the process of storing an object as a series of bytes, typically so that the data structure can be transmitted between computers.</li>
+				<li>A sequential tree implementation typically stores the node values as they would be enumerated by a preorder traversal, along with sufficient information to describe the tree's shape.</li>
+			</SubList></li>
+			<li>Full binary tree representation:<SubList>
+				<li>If the tree is a full binary tree, then less information about structure typically needs to be stored.</li>
+				<li>Because every node of a binary tree is either a leaf or has two (possibly empty) children, we can take advantage of this fact to implicitly represent the tree's structure.</li>
+				<li>As we read the series of node values, we do not know when a leaf node has been reached. However, we can treat all non-empty nodes as internal nodes with two (possibly empty) children.</li>
+				<li>Only NULL values will be interpreted as leaf nodes, and these can be listed explicitly.</li>
 				<li><ImgComp src={"/articlePics/data_structures_and_algorithms_pics/26.PNG"} style={{width:"40%"}}/></li>
-				<li>We can represent the above binary tree like this: \(A'B'/DC'E'G/F'HI\). The slashes represent empty children, and the mark (') represents that the node is internal.</li>
+				<li>We can represent the above binary tree like this: [A, B, /,D, C, E, G, /, /, /, F, H, /, /, I, /, /].</li>
+				<li>From the Full Binary Tree Theorem, we know that the size of the node list will be about twice the number of nodes (i.e., the overhead fraction is 1/2).</li>
+				<li>Storing \(n\) extra bits can be a considerable savings over storing \(n\) <code>null</code> values.</li>
+				<li>We should be able to store the node list more compactly. However, any sequential implementation must recognize when a leaf node has been reached, that is, a leaf node indicates the end of a subtree.</li>
+				<li>One way to do this is to explicitly list with each node whether it is an internal node or a leaf. If a node \(X\) is an internal node, then we know that its two children (which may be subtrees) immediately follow \(X\) in the node list.</li>
+				<li>Let "/" represent empty children, and a mark (') represents that the node is internal.</li>
+				<li>The above tree can be stored as [A', B', /, D, C', E', G, /, F', H, I].</li>
+				<li>Each node was shown with a mark if it is internal, or no mark if it is a leaf. This requires that each node value has space to store the mark bit.</li>
+			</SubList></li>
+			<li>Bit vector representation:<SubList>
 				<li>Another approach is to store a separate bit vector to represent the status of each node, where '1' would indicate internal.</li>
-				<li>For other general trees, we can use ')'  to indicate the end of a child list.  All leaf nodes are followed by a ')' symbol because they have no children. A leaf node that is also the
-					last child for its parent would indicate this by two or more successive ')' symbols.</li>
-				<li>In this example: \(RAC)D)E))BF)))\), F is followed by three ')' marks, because it is a leaf, the last node of B's rightmost subtree, and the last node of R's rightmost subtree.</li>
+				<li><figure>
+					<ImgComp src={"/articlePics/data_structures_and_algorithms_pics/34.jpeg"} style={{width:"50%"}}/>
+					<figcaption>Ignore the "rt"</figcaption>
+				</figure></li>
+			</SubList></li>
+			<li>General tree representation:<SubList>
+				<li>We can use ")"  to indicate the end of a child list.  All leaf nodes are followed by a ")" symbol because they have no children. A leaf node that is also the last child for its parent would indicate this by two or more successive ")" symbols.</li>
+				<li>In this example: [R, A, C, ), D, ), E, ), ), B, F, ), ), )]. "F" is followed by three ")" marks, because it is a leaf, the last node of B's rightmost subtree, and the last node of R's rightmost subtree.</li>
 				<li><ImgComp src={"/articlePics/data_structures_and_algorithms_pics/27.PNG"} style={{width:"40%"}}/></li>
-				<li>Note that this representation for serializing general trees cannot be used for binary trees. Every binary tree node has a left and a right child, the above example doesn't tell us whether D is a left or right child.</li>
 			</SubList></li>
 		</ul>
 	</div>
 </div>
 
-<h2 id="graphs">Graphs</h2>
-<div className="content">
-	<div style={{width: "49%", marginLeft: "0.5%", float: "left"}}>
+<h2 id="Sorting">Sorting</h2>
+<div className="content" data-source="20">
+	<div style={{width:"49%", marginLeft:"0.5%", float: "left"}}>
 		<ul>
-			<li><u>Terminologies:</u><SubList>
-				<li>A graph \(G = (V, E)\) consists of a set of vertices \(V\) and a set of edges \(E\), such that each edge in \(E\) is a connection between a pair of vertices in \(V\).</li>
-				<li>The number
-				of vertices is written \(|V|\), and the number of edges is written \(|E|\). \(|E|\) can range from zero to a maximum of \(|V|^2 - |V|\). </li>
-				<li>A graph with relatively few edges is called <b>sparse</b>, while a graph with many edges is called dense. A graph containing all possible edges is said to be <b>complete</b>.</li>
-				<li>A graph with edges directed from one vertex to another is called a <b>directed graph</b> or <b>digraph</b>. A graph whose edges are not directed is called an <b>undirected graph</b>.</li>
-				<li>A graph with labels associated with its vertices is called a <b>labeled graph</b>.</li>
-				<li>Two vertices are adjacent if they are joined by an <b>edge</b>. Such vertices are also called <b>neighbors</b>.</li>
-				<li>An edge connecting Vertices \(U\) and \(V\) is written \((U, V)\). Such an edge is said to be incident on Vertices \(U\) and \(V\). Associated with each edge may be a cost or <b>weight</b>. Graphs whose edges have weights are said to be <b>weighted</b>.</li>
-				<li><figure style={{width:"70%"}}><ImgComp src={"/articlePics/data_structures_and_algorithms_pics/28.PNG"}/><figcaption> (a) A graph. (b) A directed graph (digraph). (c) A labeled (directed) graph with weights associated with the edges.</figcaption></figure></li>
-				<li>In a directed graph, the <b>out degree</b> for a vertex is the number of neighbors adjacent from it (or the number of edges going out from it), while the <b>in degree</b> is the number of neighbors adjacent to it (or the number of edges coming in to it).</li>
-				<li>A sequence of vertices \(v_1, v_2, \ldots, v_n\) forms a <b>path</b> of length \(n - 1\) if there exist edges from \(v_i\) to \(v_i+1\) for \(1 ≤ i &lt; n\). A path is <b>simple</b> if all vertices on the path are distinct. The <b>length</b> of a path is the number of edges it contains.</li>
-				<li>A <b>cycle</b> is a path of length three or more that connects some vertex \(v_1\) to itself. A cycle is <b>simple</b> if the path is simple, except for the first and last vertices being the same.</li>
-				<li>A <b>subgraph \(S\)</b> is formed from graph \(G\) by selecting a subset \(V_s\) of \(G\)'s vertices and a subset \(E_s\) of \(G\)'s edges such that for every edge \(e ∈ E_s\), both vertices of \(e\) are in \(V_s\). Any subgraph of \(V\) where all vertices in the graph connect to all other vertices in the subgraph is called a <b>clique</b>.</li>
-				<li>An undirected graph is <b>connected</b> if there is at least one path from any vertex
-					to any other.</li>
-				<li><figure style={{width:"50%"}}>
-					<ImgComp src={"/articlePics/data_structures_and_algorithms_pics/29.PNG"}/>
-					<figcaption> An undirected graph with three connected components. Vertices 0, 1, 2, 3, and 4 form one connected component. Vertices 5 and 6 form a second connected component. Vertex 7 by itself forms a third connected component.</figcaption>
-				</figure></li>
-				<li>The maximally connected subgraphs of an undirected graph are called <b>connected components</b>.</li>
-				<li>A graph without cycles is called an <b>acyclic graph</b>.</li>
-				<li className="research">A <b>free tree</b> is a connected, undirected graph with no simple cycles. An equivalent definition is that a free tree is connected and has \(|V| - 1\) edges.</li>
-			</SubList></li>
-			<li>Representating graphs:<SubList>
-				<li>The <b>adjacency matrix</b> for a graph is a \(|V| \times |V|\) array.</li>
-				<li>Assume that |V| = n and that the vertices are labeled from \(v0\) through \(v_{"{n-1}"}\). Row \(i\) of the adjacency matrix contains entries for Vertex \(v_i\).</li>
-				<li>Column \(j\) in row \(i\) is marked if there is an edge from \(v_i\) to \(v_j\) and is not marked otherwise.  Thus, the adjacency matrix requires one bit at each position.</li>
-				<li>Alternatively, if we wish to associate a number with each edge, such as the weight or distance between two vertices, then each matrix position must store that number.</li>
-				<li>In either case, the space requirements for the adjacency matrix are \(\Theta(|V|^2)\).</li>
-				<li>The second common representation for graphs is the <b>adjacency list</b>. The adjacency list is an array of linked lists. The array is \(|V|\) items long, with position \(i\) storing a pointer to the linked list of edges for Vertex \(v_i\). </li>
+			<li>A sorting algorithm is said to be <b>stable</b> if it does not change the relative ordering of records with identical key values.</li>
+			<li>When comparing two sorting algorithms, the simplest approach would be to program both and measure their running times. This is an example of <b>empirical comparison</b>. However, doing fair empirical comparisons can be tricky because the running time for many sorting algorithms depends on specifics of the input values.</li>
+			<li>When analyzing sorting algorithms, it is traditional to measure the cost by counting the number of comparisons made between keys.</li>
+			<li><a href='https://en.wikipedia.org/wiki/Sorting_algorithm#Exchange_sort'><b>Exchange sort</b> works by comparing the first element with all elements above it, swapping where needed, thereby guaranteeing that the first element is correct for the final sort order; it then proceeds to do the same for the second element, and so on.</a></li>
+			<li><b>Insertion Sort:</b><SubList>
+				<li>Imagine that you have a stack of phone bills from the past two years and that you wish to organize them by date. A fairly natural way to do this might be to look at the first two bills and put them in order. Then take the third bill and put it into the right order with respect to the first two, and so on. As you take each bill, you would add it to the sorted pile that you have already made. This naturally intuitive process is the inspiration for our first sorting algorithm, called <b>Insertion Sort</b>.</li>
 				<li><figure>
-					<ImgComp src={"/articlePics/data_structures_and_algorithms_pics/30.PNG"}/>
-					<figcaption>(a) A directed graph. (b) The adjacency matrix for the graph of (a). (c) The adjacency list for the graph of (a).</figcaption>
+					<ImgComp src={"/articlePics/theory_of_algorithms_pics/1.PNG"} style={{width: "60%"}}/>
+					<figcaption>An illustration of Insertion Sort</figcaption>
 				</figure></li>
-				<li>The storage requirements for the adjacency list depend on both the number of
-					edges and the number of vertices in the graph. There must be an array entry for
-					each vertex (even if the vertex is not adjacent to any other vertex and thus has no
-					elements on its linked list), and each edge must appear on one of the lists. Thus,
-					the cost is \(\Theta(|V| + |E|)\).</li>
-				<li>The adjacency list stores information only for those edges that actually appear in the graph, while the adjacency matrix requires space for each potential edge, whether it exists or not.</li>
-				<li>However, the adjacency matrix requires no overhead for pointers, which can be a substantial cost, especially if the only information stored for an edge is one bit to indicate its existence.</li>
-				<li>As the graph becomes denser, the adjacency matrix becomes relatively more space efficient. Sparse graphs are likely to have their adjacency list representation be more space efficient.</li>
+				<li>Insertion
+					Sort iterates through a list of records. Each record is inserted in turn at the correct
+					position within a sorted list composed of those records already processed.</li>
+				<li><CodePre language="java">{`
+static &lt;E extends Comparable&lt;? super E>>
+void inssort(E[] A) {
+	for (int i=1; i&lt;A.length; i++) // Insert i'th record
+		for (int j=i; (j>0) && (A[j].compareTo(A[j-1])&lt;0); j--)
+			DSutil.swap(A, j, j-1);
+}
+				`}</CodePre></li>
+				<li>The number of comparisons (through the <code>for</code> loop) is one the first time , two the second time, and so on:</li>
+				<MathStuff>$${"\\sum^n_{i=2} i \\approx \\frac{n^2}{2} = \\Theta(n^2)"}$$</MathStuff>
+				<li>The average case should be about half the cost of the worst case, or around \(n^2/4\), which is still \(\Theta(n^2)\).</li>
+				<li>The cost for Insertion Sort in the best case is \(\Theta(n)\).</li>
 			</SubList></li>
-			<li>Graph ADT:<SubList>
-				<li>Before showing the adjacency matrix and the adjacency list implementations. We will begin with an interface defining an ADT for graphs that a given implementation must meet:</li>
+			<li><b>Bubble Sort:</b><SubList>
+				<li>Bubble Sort consists of a simple double for loop.</li>
 				<li><CodePre language="java">{`
-interface Graph { // Graph class ADT
-	// Initialize the graph with some number of vertices
-	void init(int n);
-	// Return the number of vertices
-	int nodeCount();
-	// Return the current number of edges
-	int edgeCount();
-	// Get the value of node with index v
-	Object getValue(int v);
-	// Set the value of node with index v
-	void setValue(int v, Object val);
-	// Adds a new edge from node v to node w with weight wgt
-	void addEdge(int v, int w, int wgt);
-	// Get the weight value for an edge
-	int weight(int v, int w);
-	// Removes the edge from the graph.
-	void removeEdge(int v, int w);
-	// Returns true iff the graph has the edge
-	boolean hasEdge(int v, int w);
-	// Returns an array containing the indicies of the neighbors of v
-	int[] neighbors(int v);
+static &lt;E extends Comparable&lt;? super E>>
+void bubblesort(E[] A) {
+	for (int i=0; i&lt;A.length-1; i++) // Bubble up i'th record
+		for (int j=A.length-1; j>i; j--)
+			if ((A[j].compareTo(A[j-1]) &lt; 0))
+				DSutil.swap(A, j, j-1);
 }
 				`}</CodePre></li>
-				<li>This ADT assumes that the number of vertices is fixed when the graph is created, but that edges can be added and removed. The <code>init</code> method sets (or resets) the number of nodes in the graph, and creates necessary space for the adjacency matrix or adjacency list.</li>
-				<li>Vertices are defined by an integer index value. In other words, there is a Vertex \(0\), Vertex \(1\), and so on through Vertex \(n-1\).</li>
-				<li>Nearly every graph algorithm presented in this chapter will require visits to all neighbors of a given vertex. The neighbors method returns an array containing the indices for the neighboring vertices, in ascending order. The following lines appear in many graph algorithms:</li>
-				<li><CodePre language="java">{`
-int[] nList = G.neighbors(v);
-for (int i=0; i &lt; nList.length; i++) {
-	if (G.getValue(nList[i]) != VISITED) {
-		DoSomething();
-	}
-}
-				`}</CodePre></li>
+				<li>The first iteration of the
+					inner for loop moves through the record array from bottom to top, comparing
+					adjacent keys. If the lower-indexed key's value is greater than its higher-indexedneighbor, then the two values are swapped. Once the smallest value is encountered, this process will cause it to "bubble" up to the top of the array.</li>
+				<li><figure>
+					<ImgComp src={"/articlePics/theory_of_algorithms_pics/2.PNG"} style={{width: "70%"}}/>
+					<figcaption>An illustration of Bubble Sort. Each column shows the array after
+						the iteration with the indicated value of \(i\) in the outer for loop.</figcaption>
+				</figure></li>
+				<li>Bubble Sort's running time is roughly the same in the best, average, and worst
+					cases (\(\Theta(n^2)\)).</li>
 			</SubList></li>
-			<li>Adjacency matrix <u>implementation</u>:<SubList>
+			<li><b>Selection Sort:</b><SubList>
+				<li>Selection Sort first finds the smallest key in an unsorted list, then the second
+					smallest, and so on. Its unique feature is that there are few record swaps.</li>
+				<li>To find
+					the next smallest key value requires searching through the entire unsorted portion
+					of the array, but only one swap is required to put the record in place. . Thus, the total
+					number of swaps required will be \(n - 1\) (we get the last record in place).</li>
 				<li><CodePre language="java">{`
-class GraphM implements Graph {
-	private int[][] matrix;
-	private Object[] nodeValues;
-	private int numEdge;
-	
-	// No real constructor needed
-	GraphM() { }
-	
-	public void init(int n) {
-		matrix = new int[n][n];
-		nodeValues = new Object[n];
-		numEdge = 0;
-	}
-	
-	public int nodeCount() { return nodeValues.length; }
-	public int edgeCount() { return numEdge; }
-	public Object getValue(int v) { return nodeValues[v]; }
-	public void setValue(int v, Object val) { nodeValues[v] = val; }
-
-	// Adds a new edge from node v to node w
-	public void addEdge(int v, int w, int wgt) {
-		if (wgt == 0) { return; } // Can't store weight of 0
-		if (matrix[v][w] == 0) {
-			numEdge++;
-		}
-		matrix[v][w] = wgt;
-	}
-	public void removeEdge(int v, int w) {
-		if (matrix[v][w] != 0) {
-			matrix[v][w] = 0;
-			numEdge--;
-		}
-	}
-	public boolean hasEdge(int v, int w) { return matrix[v][w] != 0; }
-	public int weight(int v, int w) { return matrix[v][w]; }
-	
-	
-	// Returns an array containing the indicies of the neighbors of v
-	public int[] neighbors(int v) {
-		int i;
-		int count = 0;
-		int[] temp;
-		for (i=0; i&lt;nodeValues.length; i++) {
-			if (matrix[v][i] != 0) { count++; }
-		}
-		temp = new int[count];
-		for (i=0, count=0; i&lt;nodeValues.length; i++) {
-			if (matrix[v][i] != 0) { temp[count++] = i; }
-		}
-		return temp;
+static &lt;E extends Comparable&lt;? super E>>
+void selectsort(E[] A) {
+	for (int i=0; i&lt;A.length-1; i++) { // Select i'th record
+		int lowindex = i; // Remember its index
+		for (int j=A.length-1; j>i; j--) // Find the least value
+			if (A[j].compareTo(A[lowindex]) &lt; 0)
+				lowindex = j; // Put it in place
+		DSutil.swap(A, i, lowindex);
 	}
 }
 				`}</CodePre></li>
+				<li>Selection Sort (as written here) is essentially a Bubble Sort, except that rather
+					than repeatedly swapping adjacent values to get the next smallest record into place,
+					we instead remember the position of the element to be selected and do one swap
+					at the end.</li>
+				<li>The number of comparisons is still \(\Theta(n^2)\), but the number of swaps is much less than that required by bubble sort.</li>
 			</SubList></li>
-			<li>Adjacency list <u>implementation</u>:<SubList>
-				<li><CodePre language="java">{`
-public class GraphL implements Graph {
-
-	// Doubly linked list node
-	private class Edge {
-		int vertex, weight;
-		Edge prev, next;
-		Edge(int v, int w, Edge p, Edge n) {
-			vertex = v;
-			weight = w;
-			prev = p;
-			next = n;
-		}
-	}
-	
-	private Edge[] nodeArray;
-	private Object[] nodeValues;
-	private int numEdge;
-	
-	// No real constructor needed
-	GraphL() {}
-	
-	// Initialize the graph with n vertices
-	public void init(int n) {
-		nodeArray = new Edge[n];
-		// List headers;
-		for (int i=0; i&lt;n; i++) {
-			nodeArray[i] = new Edge(-1, -1, null, null);
-		}
-		nodeValues = new Object[n];
-		numEdge = 0;
-	}
-	
-	public int nodeCount() { return nodeArray.length; }
-	public int edgeCount() { return numEdge; }
-	public Object getValue(int v) { return nodeValues[v]; }
-	public void setValue(int v, Object val) { nodeValues[v] = val; }
-	
-	// Return the link in v's neighbor list that preceeds the
-	// one with w (or where it would be)
-	private Edge find (int v, int w) {
-		Edge curr = nodeArray[v];
-		while ((curr.next != null) && (curr.next.vertex &lt; w)) {
-			curr = curr.next;
-		}
-		return curr;
-	}
-	
-	// Adds a new edge from node v to node w with weight wgt
-	public void addEdge(int v, int w, int wgt) {
-		if (wgt == 0) { return; } // Can't store weight of 0
-		Edge curr = find(v, w);
-		if ((curr.next != null) && (curr.next.vertex == w)) {
-			curr.next.weight = wgt;
-		}
-		else {
-			curr.next = new Edge(w, wgt, curr, curr.next);
-			numEdge++;
-			if (curr.next.next != null) {
-				curr.next.next.prev = curr.next;
-			}
-		}
-	}
-	
-	// Get the weight value for an edge
-	public int weight(int v, int w) {
-		Edge curr = find(v, w);
-		if ((curr.next == null) || (curr.next.vertex != w)) { return 0; }
-		else { return curr.next.weight; }
-	}
-	
-	// Removes the edge from the graph.
-	public void removeEdge(int v, int w) {
-		Edge curr = find(v, w);
-		if ((curr.next == null) || curr.next.vertex != w) { return; }
-		else {
-			curr.next = curr.next.next;
-			if (curr.next != null) { curr.next.prev = curr; }
-		}
-		numEdge--;
-	}
-	
-	// Returns true iff the graph has the edge
-	public boolean hasEdge(int v, int w) { return weight(v, w) != 0; }
-	
-	// Returns an array containing the indicies of the neighbors of v
-	public int[] neighbors(int v) {
-		int cnt = 0;
-		Edge curr;
-		for (curr = nodeArray[v].next; curr != null; curr = curr.next) {
-			cnt++;
-		}
-		int[] temp = new int[cnt];
-		cnt = 0;
-		for (curr = nodeArray[v].next; curr != null; curr = curr.next) {
-			temp[cnt++] = curr.vertex;
-		}
-		return temp;
-	}
-}
-				`}</CodePre></li>
-			</SubList></li>
-			<li>Graph Traversals:<SubList>
-				<li>Many graph applications need to visit the vertices of a graph in some specific order based on the graph's topology. This is known as a graph <b>traversal</b>.</li>
-				<li>Graph traversal algorithms typically begin with a start vertex and attempt to visit the remaining vertices from there. Graph traversals must deal with a number of troublesome cases. First, it might not be possible to reach all vertices from the start vertex. This occurs when the graph is not connected. Second, the graph might contain cycles, and we must make sure that cycles do not cause the algorithm to go into an infinite loop.</li>
-				<li>Graph traversal algorithms can solve both of these problems by flagging vertices as <code>VISITED</code> when appropriate.</li>
-				<li>Once the traversal algorithm completes, we can check to see if all vertices have been processed by checking whether they have the VISITED flag set. If not all vertices are flagged, we can continue the traversal from another unvisited vertex.</li>
-				<li>Note that this process works regardless of whether the graph is directed or undirected. To ensure visiting all vertices, <code>graphTraverse</code> could be called as follows on a graph \(G\):</li>
-				<li><CodePre language="java">{`
-static void graphTraverse(Graph G) {
-	int v;
-	for (v=0; v&lt;G.nodeCount(); v++) {
-		G.setValue(v, null); // Initialize
-	}
-	for (v=0; v&lt;G.nodeCount(); v++) {
-		if (G.getValue(v) != VISITED) {
-			doTraversal(G, v);
-		}
-	}
-}
-				`}</CodePre></li>
-				<li>Our first method for organized graph traversal is called <b>depth-first search (DFS)</b>.</li>
-				<li>Whenever a vertex \(v\) is visited during the search, DFS will recursively visit all of \(v\)'s unvisited neighbors.</li>
-				<li>Equivalently, DFS will add all edges leading out of \(v\) to a stack. The next vertex to be visited is determined by popping the stack and following that edge.</li>
-				<li><CodePre language="java">{`
-static void DFS(Graph G, int v) {
-	PreVisit(G, v);
-	G.setValue(v, VISITED);
-	int[] nList = G.neighbors(v);
-	for (int i=0; i &lt; nList.length; i++) {
-		if (G.getValue(nList[i]) != VISITED) {
-			DFS(G, nList[i]);
-		}
-	}
-	PostVisit(G, v);
-}
-				`}</CodePre></li>
-				<li>This implementation contains calls to functions <code>PreVisit</code> and <code>PostVisit</code>. These functions specify what activity should take place during the search.</li>
-				<li>DFS processes each edge once in a directed graph. In an undirected graph, DFS processes each edge from both directions. Each vertex must be visited, but only once, so the total cost is \(\Theta(|V|+|E|)\).</li>
-				<li>Our second graph traversal algorithm is known as a <b>breadth-first search (BFS)</b>.</li>
-				<li>BFS examines all vertices connected to the start vertex before visiting vertices further away.</li>
-				<li><CodePre language="java">{`
-static void BFS(Graph G, int v) {
-	LQueue Q = new LQueue(G.nodeCount());
-	Q.enqueue(v);
-	G.setValue(v, VISITED);
-	while (Q.length() > 0) { // Process each vertex on Q
-		v = (Integer)Q.dequeue();
-		PreVisit(G, v);
-		int[] nList = G.neighbors(v);
-		for (int i=0; i &lt; nList.length; i++) {
-			if (G.getValue(nList[i]) != VISITED) { // Put neighbors on Q
-				G.setValue(nList[i], VISITED);
-				Q.enqueue(nList[i]);
-			}
-		}
-		PostVisit(G, v);
-	}
-}
-				`}</CodePre></li>
-			</SubList></li>
+			<li>One way to keep the cost of swapping records low is to have each element of the array store a pointer to a record rather than store the record itself.</li>
 		</ul>
 	</div>
-
 	<div style={{width: "49%", marginRight: "0.5%", float: "right"}}>
 		<ul>
-			<li><b>Topological Sort:</b><SubList>
-				<li>Assume that we need to schedule a series of tasks, such as classes or construction jobs, where we cannot start one task until after its prerequisites are completed. We wish to organize the tasks into a linear order that allows us to complete them one at a time without violating any prerequisites. We can model the problem using a <i>direct acyclic graph</i> (DAG).</li>
-				<li><b>Topological sort</b> is the process of laying out the vertices of a DAG in a linear order such that no vertex \(A\) in the order is preceded by a vertex that can be reached by a (directed) path from \(A\).</li>
-				<li><figure>
-					<ImgComp src={"/articlePics/data_structures_and_algorithms_pics/31.PNG"}/>
-					<figcaption>Seven tasks have dependencies as shown by the directed graph.</figcaption>
-				</figure></li>
-				<li>A topological sort may be found by performing a DFS on the graph. When a vertex is visited, no action is taken (i.e., function <code>PreVisit</code> does nothing). When the recursion pops back to that vertex, function <code>PostVisit</code> prints the vertex. This yields a topological sort in reverse order.</li>
+			<li><ImgComp src={"/articlePics/theory_of_algorithms_pics/3.PNG"} style={{width: "50%"}}/></li>
+			<li><b>Shellsort:</b><SubList>
+				<li>It is also sometimes called the <b>diminishing increment</b> sort.</li>
+				<li>Shellsort breaks the array of elements into "virtual" sublists. Each sublist is sorted using an Insertion Sort.</li>
+				<li>Shellsort breaks the list into disjoint sublists, where a sublist is defined by an "increment", \(I\). Each record in a given sublist is \(I\) positions apart.</li>
 				<li><CodePre language="java">{`
-static void topsortDFS(Graph G) {
-	int v;
-	for (v=0; v&lt;G.nodeCount(); v++) {
-		G.setValue(v, null); // Initialize
-	}
-	for (v=0; v&lt;G.nodeCount(); v++) {
-		if (G.getValue(v) != VISITED) {
-			tophelp(G, v);
+static void shellsort(int[] A) {
+	for (int i=A.length/2; i>2; i/=2) { // For each increment
+		for (int j=0; j&lt;i; j++) {         // Sort each sublist
+			inssort2(A, j, i);
 		}
 	}
+	inssort2(A, 0, 1);     // Could call regular inssort here
 }
 	
-static void tophelp(Graph G, int v) {
-	G.setValue(v, VISITED);
-	int[] nList = G.neighbors(v);
-	for (int i=0; i &lt; nList.length; i++) {
-		if (G.getValue(nList[i]) != VISITED) {
-			tophelp(G, nList[i]);
-		}
-	}
-	printout(v);
+/** Modified Insertion Sort for varying increments */
+static void inssort2(int[] A, int start, int incr) {
+	for (int i=start+incr; i&lt;A.length; i+=incr)
+		for (int j=i; (j>=incr) && (A[j] &lt; A[j-incr]); j-=incr)
+			Swap.swap(A, j, j-incr);
 }
 				`}</CodePre></li>
-				<li>We can implement topological sort using a queue instead of recursion.</li>
-				<li>First visit all edges, counting the number of edges that lead to each vertex (i.e., count the number of prerequisites for each vertex). All vertices with no prerequisites are placed on the queue.</li>
-				<li>We then begin processing the queue. When Vertex \(v\) is taken off of the queue, it is printed, and all neighbors of \(v\) (that is, all vertices that have \(v\) as a prerequisite) have their counts decremented by one.</li>
-				<li>Place on the queue any neighbor whose count becomes zero. If the queue becomes empty without printing all of the vertices, then the graph contains a cycle.</li>
-				<li><CodePre language="java">{`
-static void topsortBFS(Graph G) {   // Topological sort: Queue
-	Queue Q = new LQueue(G.nodeCount());
-	int[] Count = new int[G.nodeCount()];
-	int[] nList;
-	int v;
-	for (v=0; v&lt;G.nodeCount(); v++) { Count[v] = 0; } // Initialize
-	for (v=0; v&lt;G.nodeCount(); v++) { // Process every edge
-		nList = G.neighbors(v);
-		for (int i=0; i &lt; nList.length; i++) {
-			Count[nList[i]]++;  // Add to v's prereq count
-		}
-	}
-	for (v=0; v&lt;G.nodeCount(); v++) {   // Initialize Queue
-		if (Count[v] == 0) {    // V has no prerequisites
-			Q.enqueue(v);
-		}
-	}
-	while (Q.length() > 0) {    // Process the vertices
-		v = (Integer)Q.dequeue();
-		printout(v);    // PreVisit for Vertex V
-		nList = G.neighbors(v);
-		for (int i=0; i&lt;nList.length; i++) {
-			Count[nList[i]]--;  // One less prerequisite
-			if (Count[nList[i]] == 0) { // This vertex is now free
-				Q.enqueue(nList[i]);
-			}
-		}
-	}
-}
-				`}</CodePre></li>
-			</SubList></li>
-			<li>Shortest-Paths Problems:<SubList>
-				<li>On a road map, a road connecting two towns is typically labeled with its distance. We can model a road network as a directed graph whose edges are labeled with real numbers. These labels may be called <b>weights</b>, <b>costs</b>, or <b>distances</b>, depending on the application.</li>
-				<li><b>Single-source shortest paths problem:</b> Given a graph with weights (or distances) on the edges, and a designated start vertex \(s\), find the shortest path from \(s\) to every other vertex in the graph.</li>
-				<li>For unweighted graphs (or whenever all edges have the same cost), the single-source shortest paths can be found using a simple breadth-first search.</li>
-				<li>One approach to solving this problem when the edges have differing weights might be to process the vertices in a fixed order. </li>
-				<li>Label the vertices \(v_0\) to \(v_{"{n-1}"}\), with \(S=v_0\). When processing Vertex \(v_1\), we take the edge connecting \(v_0\) and \(v_1\). When processing \(v_2\), we consider the shortest distance from \(v_0\) to \(v_2\) and compare that to the shortest distance from \(v_0\) to \(v_1\) to \(v_2\).</li>
-				<li>When processing Vertex \(v_i\), we consider the shortest path for Vertices \(v_0\) through \(v_{"{i-1}"}\) that have already been processed.</li>
-				<li>A shortest path from \(S\) to \(X\) must have its next-to-last vertex in \(S\):</li>
-				<MathStuff>$${"d(S,X)=\\min_{U∈S} \\ (d(S,U)+\\textbf{w}(U,X))"}$$</MathStuff>
-				<li>In other words, the shortest path from \(S\) to \(X\) is the minimum over all paths that go from \(S\) to \(U\), then have an edge from \(U\) to \(X\), where \(U\) is some vertex in \(S\).</li>
-				<li>This solution is usually referred to as <b>Dijkstra's algorithm</b>. It works by maintaining a distance estimate \(D(X)\) for all vertices \(X\) in \(V\). The elements of \(D\) are initialized to the value <code>INFINITE</code>. Vertices are processed in order of distance from \(S\). Whenever a vertex \(v\) is processed, \(D(X)\) is updated for every neighbor \(X\) of \(V\).</li>
-				<li><CodePre language="java">{`
-// Compute shortest path distances from s, store them in D
-static void Dijkstra(Graph G, int s, int[] D) {
-	for (int i=0; i&lt;G.nodeCount(); i++) {    // Initialize
-		D[i] = INFINITY;
-	}
-	D[s] = 0;
-	for (int i=0; i&lt;G.nodeCount(); i++) {  // Process the vertices
-		int v = minVertex(G, D);     // Find next-closest vertex
-		G.setValue(v, VISITED);
-		if (D[v] == INFINITY) { return; } // Unreachable
-		int[] nList = G.neighbors(v);
-		for (int j=0; j&lt;nList.length; j++) {
-			int w = nList[j];
-			if (D[w] > (D[v] + G.weight(v, w))) {
-				D[w] = D[v] + G.weight(v, w);
-			}
-		}
-	}
-}
-				`}</CodePre></li>
-				<li>There are two reasonable solutions to the key issue of finding the unvisited vertex with minimum distance value during each pass through the main for loop. The first method is simply to scan through the list of \(|V|\) vertices searching for the minimum value, as follows:</li>
-				<li><CodePre language="java">{`
-// Find the unvisited vertex with the smalled distance
-static int minVertex(Graph G, int[] D) {
-	int v = 0;  // Initialize v to any unvisited vertex;
-	for (int i=0; i&lt;G.nodeCount(); i++) {
-		if (G.getValue(i) != VISITED) { v = i; break; }
-	}
-	for (int i=0; i&lt;G.nodeCount(); i++) {  // Now find smallest value
-		if ((G.getValue(i) != VISITED) && (D[i] &lt; D[v])) {
-			v = i;
-		}
-	}
-	return v;
-}
-				`}</CodePre></li>
-				<li>Because this scan is done \(|V|\) times, and because each edge requires a constant-time update to \(D\), the total cost for this approach is \(\Theta(|V|^2+|E|)=\Theta(|V|^2)\), because \(|E|\)
-					is in \(O(|V|^2)\).</li>
-				<li>An alternative approach is to store unprocessed vertices in a min-heap ordered by their distance from the processed vertices. The next-closest vertex can be found in the heap in \(Θ(\log|V|)\) time.</li>
-				<li>Every time we modify \(D(X)\), we could reorder \(X\) in the heap by deleting and reinserting it. This is an example of a <b>priority queue with priority update</b>.</li>
-				<li>To implement true priority updating, we would need to store with each vertex its position within the heap so that we can remove its old distances whenever it is updated by processing new edges.</li>
-				<li>The time complexity is \(\Theta((|V|+|E|)\log|E|)\), because for each edge that we process we must reorder the heap.</li>
-				<li>We use the <code>KVPair</code> class to store key-value pairs in the heap, with the edge weight as the key and the target vertex as the value.</li>
-				<li><CodePre language="java">{`
-// Dijkstra's shortest-paths: priority queue version
-static void DijkstraPQ(Graph G, int s, int[] D) {
-	int v;    // The current vertex
-	KVPair[] E = new KVPair[G.edgeCount()];   // Heap for edges
-	E[0] = new KVPair(0, s);  // Initial vertex
-	MinHeap H = new MinHeap(E, 1, G.edgeCount());
-	for (int i=0; i&lt;G.nodeCount(); i++) { // Initialize distance
-		D[i] = INFINITY;
-	}
-	D[s] = 0;
-	for (int i=0; i&lt;G.nodeCount(); i++) { // For each vertex
-
-		KVPair temp = (KVPair)(H.removemin());
-		if (temp == null) { return; }   // Unreachable nodes exist
-		v = (Integer)temp.value();
-
-		while (G.getValue(v) == VISITED) {
-			temp = (KVPair)(H.removemin());
-			if (temp == null) { return; } // Unreachable nodes exist
-			v = (Integer)temp.value();
-		}
-
-		G.setValue(v, VISITED);
-		if (D[v] == INFINITY) { return; }   // Unreachable
-		int[] nList = G.neighbors(v);
-		for (int j=0; j&lt;nList.length; j++) {
-			int w = nList[j];
-			if (D[w] > (D[v] + G.weight(v, w))) { // Update D
-				D[w] = D[v] + G.weight(v, w);
-				H.insert(new KVPair(D[w], w));
-			}
-		}
-	}
-}
-				`}</CodePre></li>
-			</SubList></li>
-			<li><b>Minimal Cost Spanning Trees:</b><SubList>
-				<li>The <b>minimal-cost spanning tree (MCST)</b> problem takes as input a connected, undirected graph \(G\), where each edge has a distance or weight measure attached.</li>
-				<li className="Opened">The MCST is the graph containing the vertices of \(G\) along with the subset of \(G\)'s edges that:<ol>
-					<li>has minimum total cost as measured by summing the values for all of the edges in the subset</li>
-					<li>keeps the vertices connected</li>
-				</ol></li>
-				<li>The MCST is a free tree with \(|V|-1\) edges. The name "minimum-cost spanning tree" comes from the fact that the required set of edges forms a tree, it spans the vertices (i.e., it connects them together), and it has minimum cost.</li>
+				<li>One possible implementation for Shellsort is to use increments that are all powers of two. We start by picking as \(I\) the largest power of two less than \(n\).</li>
+				<li>This will generate \(I\) sublists of 2 records each. If there were 16 records in the array indexed from 0 to 15, the first sublist would be the records in positions 0 and 8, the second is in positions 1 and 9, and so on.</li>
 				<li><figure>
-					<ImgComp src={"/articlePics/data_structures_and_algorithms_pics/32.PNG"}/>
-					<figcaption>All edges appear in the original graph. Those edges drawn with heavy lines indicate the subset making up the MCST. Note that edge \((C,F)\) could be replaced with edge \((D,F)\) to form a different MCST with equal cost.</figcaption>
+					<ImgComp src={"/articlePics/theory_of_algorithms_pics/4.PNG"} style={{width: "80%"}}/>
+					<figcaption>Here, the increment is 8, so there are 8 sublists of size 2.</figcaption>
 				</figure></li>
-			</SubList></li>
-			<li><b>Prim's algorithm:</b><SubList>
-				<li><b>Prim's Algorithm</b> is a greedy algorithm for computing the MCST of a graph.</li>
-				<li>Prim's algorithm is very simple. Start with any Vertex \(N\) in the graph, setting the MCST to be \(N\) initially. Pick the least-cost edge connected to \(N\).</li>
-				<li>This edge connects \(N\) to another vertex; call this \(M\). Add Vertex \(M\) and Edge \((N,M)\) to the MCST. Next, pick the least-cost edge coming from either \(N\) or \(M\) to any other vertex in the graph. Add this edge and the new vertex it reaches to the MCST.</li>
-				<li>This process continues, at each step expanding the MCST by selecting the least-cost edge from a vertex currently in the MCST to a vertex not currently in the MCST.</li>
-				<li>Prim's algorithm is quite similar to Dijkstra's algorithm for finding the single-source shortest paths. The primary difference is that we are seeking not the next closest vertex to the start vertex, but rather the next closest vertex to any vertex currently in the MCST. Thus we replace the lines:</li>
-				<li><CodePre language="java">{`
-if (D[w] > (D[v] + G.weight(v, w)))
-	D[w] = D[v] + G.weight(v, w);
-				`}</CodePre></li>
-				<li>in Djikstra's algorithm with the lines:</li>
-				<li><CodePre language="java">{`
-if (D[w] > G.weight(v, w))
-	D[w] = G.weight(v, w);
-				`}</CodePre></li>
-				<li>The following code shows an implementation for Prim's algorithm:</li>
-				<li><CodePre language="java">{`
-// Compute shortest distances to the MCST, store them in D.
-// V[i] will hold the index for the vertex that is i's parent in the MCST
-void Prim(Graph G, int s, int[] D, int[] V) {
-	for (int i=0; i&lt;G.nodeCount(); i++) {    // Initialize
-		D[i] = INFINITY;
-	}
-	D[s] = 0;
-	for (int i=0; i&lt;G.nodeCount(); i++) {   // Process the vertices
-		int v = minVertex(G, D);    // Find next-closest vertex
-		G.setValue(v, VISITED);
-		if (D[v] == INFINITY) { return; } // Unreachable
-		if (v != s) { AddEdgetoMST(V[v], v); }
-		int[] nList = G.neighbors(v);
-		for (int j=0; j&lt;nList.length; j++) {
-			int w = nList[j];
-			if (D[w] > G.weight(v, w)) {
-				D[w] = G.weight(v, w);
-				V[w] = v;
-			}
-		}
-	}
-}
-				`}</CodePre></li>
-				<li>Array <code>V[I]</code> stores the previously visited vertex that is closest to Vertex \(I\). This information lets us know which edge goes into the MCST when Vertex \(I\) is processed.</li>
-				<li>Alternatively, we can implement Prim's algorithm using a <i>priority queue</i> to find the next closest vertex:</li>
-				<li><CodePre language="java">{`
-// Prims MCST algorithm: priority queue version
-void PrimPQ(Graph G, int s, int[] D, int[] V) {
-	int v;  // The current vertex
-	KVPair[] E = new KVPair[G.edgeCount()]; // Heap for edges
-	E[0] = new KVPair(0, s);    // Initial vertex
-	MinHeap H = new MinHeap(E, 1, G.edgeCount());
-	for (int i=0; i&lt;G.nodeCount(); i++) {   // Initialize distance
-		D[i] = INFINITY;
-	}
-	D[s] = 0;
-	for (int i=0; i&lt;G.nodeCount(); i++) {    // For each vertex
-		KVPair temp = H.removemin();
-		if (temp == null) { return; }      // Unreachable nodes exist
-		v = (Integer)temp.value();
-			while (G.getValue(v) == VISITED) {
-				KVPair temp = H.removemin();
-				if (temp == null) { return; }   // Unreachable nodes exist
-				v = (Integer)temp.value();
-			}
-		G.setValue(v, VISITED);
-		if (D[v] == INFINITY) { return; }  // Unreachable
-		if (v != s) { AddEdgetoMST(V[v], v); } // Add edge to MST
-		int[] nList = G.neighbors(v);
-		for (int j=0; j&lt;nList.length; j++) {
-			int w = nList[j];
-			if (D[w] > G.weight(v, w)) { // Update D
-				D[w] = G.weight(v, w);
-				V[w] = v;   // Where it came from
-				H.insert(D[w], w);
-			}
-		}
-	}
-}
-				`}</CodePre></li>
-			</SubList></li>
-			<li><b>Kruskal's Algorithm:</b><SubList>
-				<li>Kruskal's algorithm is also a simple, greedy algorithm.</li>
-				<li>First partition the set of vertices into \(|V|\) disjoint sets, each consisting of one vertex. Then process the edges in order of weight. An edge is added to the MCST, and two disjoint sets combine if the edge connects two vertices in different disjoint sets. This process is repeated until only one disjoint set remains.</li>
-				<li>The edges can be processed in order of weight by using a <i>min-heap</i>. This is generally faster than sorting the edges first, because in practice we need only visit a small fraction of the edges before completing the MCST.</li>
-				<li><CodePre language="java">{`
-void Kruskal(Graph G) {
-	ParPtrTree A = new ParPtrTree(G.nodeCount());   // Equivalence array
-	KVPair[] E = new KVPair[G.edgeCount()]; // Minheap array
-	int edgecnt = 0; // Count of edges
-
-	for (int i=0; i&lt;G.nodeCount(); i++) {    // Put edges in the array
-		int[] nList = G.neighbors(i);
-		for (int w=0; w&lt;nList.length; w++) {
-			E[edgecnt++] = new KVPair(G.weight(i, nList[w]), new int[]{ i,nList[w] } );
-		}
-	}
-	MinHeap H = new MinHeap(E, edgecnt, edgecnt);
-	int numMST = G.nodeCount(); // Initially n disjoint classes
-	for (int i=0; numMST>1; i++) {  // Combine equivalence classes
-		KVPair temp = H.removemin();    // Next cheapest edge
-		if (temp == null) { return; }   // Must have disconnected vertices
-		int v = ((int[])temp.value())[0];
-		int u = ((int[])temp.value())[1];
-		if (A.differ(v, u)) {   // If in different classes
-			A.UNION(v, u);  // Combine equiv classes
-			AddEdgetoMST(v, u); // Add this edge to MST
-			numMST--;   // One less MST
-		}
-	}
-}
-				`}</CodePre></li>
-				<li>The total cost of the algorithm is \(\Theta(|E|\log|E|)\) in the worst case, when nearly all edges must be processed before all the edges of the spanning tree are found and the algorithm can stop.</li>
-				<li>More often the edges of the spanning tree are the shorter ones,and only about \(|V|\) edges must be processed. If so, the cost is often close to \(\Theta(|V|\log|E|)\) in the average case.</li>
-			</SubList></li>
-			<li>All-Pairs Shortest Paths:<SubList>
-				<li>Define a \(k\)-path from vertex v to vertex \(u\) to be any path whose intermediate vertices (aside from \(v\) and \(u\)) all have indices less than \(k\). A \(0\)-path is defined to be a direct edge from \(v\) to \(u\).</li>
+				<li>At the end of the first pass, the resulting array is "a little better sorted".</li>
+				<li>The second pass of Shellsort looks at fewer, bigger sublists. In our example, the second pass will have an increment of size 4.</li>
 				<li><figure>
-					<ImgComp src={"/articlePics/data_structures_and_algorithms_pics/33.PNG"}/>
-					<figcaption>Path 1-3 is a \(0\)-path by definition. Path 3-0-2 is not a \(0\)-path, but it is a \(1\)-path (as well as a \(2\)-path, a \(3\)-path, and a \(4\)-path) because the largest intermediate vertex is 0. Path 1-3-2 is a \(4\)-path, but not a \(3\)-path because the intermediate vertex is 3. All paths in this graph are \(4\)-paths.</figcaption>
+					<ImgComp src={"/articlePics/theory_of_algorithms_pics/5.PNG"} style={{width: "80%"}}/>
+					<figcaption>The second pass sorts 4 sublists of size 4 and increment 4.</figcaption>
 				</figure></li>
-				<li>Define \(D_k(v,u)\) to be the length of the shortest \(k\)-path from vertex \(v\) to vertex \(u\). Assume that we already know the shortest \(k\)-path from \(v\) to \(u\). The shortest \((k+1)\)-path either goes through vertex \(k\) or it does not. If it does go through \(k\), then the best path is the best \(k\)-path from \(v\) to \(k\) followed by the best \(k\)-path from \(k\) to \(u\). Otherwise, we should keep the best \(k\)-path seen before.</li>
-				<li><b>Floyd's algorithm</b> simply checks all of the possibilities in a triple loop.</li>
+				<li>At the end of processing sublists with increment 4, the array is "even more sorted".</li>
+				<li><figure>
+					<ImgComp src={"/articlePics/theory_of_algorithms_pics/6.PNG"} style={{width: "80%"}}/>
+					<figcaption>The third pass sorts 2 sublists of size 8 and increment 2. The fourth pass sorts 1 list of size 16 and increment 1 (a regular Insertion Sort).</figcaption>
+				</figure></li>
+				<li>Shellsort's final pass will always use an increment of 1, but the list is far closer to sorted than it was at the start, so this final call to Insertion Sort runs far faster than if we had run Insertion Sort on the original array.</li>
+			</SubList></li>
+			<li><b>Mergesort:</b><SubList>
+				<li>Mergesort is one of the simplest sorting algorithms conceptually, and has good
+					performance both in the asymptotic sense and in empirical running time.</li>
+				<li>Even though it is based on a simple concept, it is relatively difficult to implement in practice.</li>
+				<li><figure>
+					<ImgComp src={"/articlePics/theory_of_algorithms_pics/7.PNG"} style={{width: "55%"}}/>
+					<figcaption>An illustration of Mergesort;  mergesort will recursively subdivide the list into sublists of one
+						element each, then recombine the sublists. </figcaption>
+				</figure></li>
+				<li>A pseudocode sketch of Mergesort is as follows:</li>
+				<li><CodePre language="plaintext">{`
+List mergesort(List inlist) {
+	if (inlist.length() &lt;= 1) return inlist;;
+	List L1 = half of the items from inlist;
+	List L2 = other half of the items from inlist;
+	return merge(mergesort(L1), mergesort(L2));
+}
+				`}</CodePre></li>
+				<li>The hardest step to understand about Mergesort is the <code>merge</code> function. The <code>merge</code> function starts by examining the first record of each sublist and picks the smaller value as the smallest record overall. This smaller value is removed from its sublist and placed into the output list.</li>
 				<li><CodePre language="java">{`
-/** Compute all-pairs shortest paths */
-static void Floyd(Graph G, int[][] D) {
-	for (int i=0; i&lt;G.n(); i++) { // Initialize D with weights
-		for (int j=0; j&lt;G.n(); j++) {
-			if (G.weight(i, j) != 0) { D[i][j] = G.weight(i, j); }
+static &lt;E extends Comparable&lt;? super E>>
+void mergesort(E[] A, E[] temp, int l, int r) {
+	int mid = (l+r)/2; // Select midpoint
+	if (l == r) return; // List has one element
+	mergesort(A, temp, l, mid); // Mergesort first half
+	mergesort(A, temp, mid+1, r); // Mergesort second half
+	for (int i=l; i&lt;=r; i++) // Copy subarray to temp
+	temp[i] = A[i];
+	// Do the merge operation back to A
+	int i1 = l; int i2 = mid + 1;
+	for (int curr=l; curr&lt;=r; curr++) {
+		if (i1 == mid+1) // Left sublist exhausted
+		A[curr] = temp[i2++];
+		else if (i2 > r) // Right sublist exhausted
+		A[curr] = temp[i1++];
+		else if (temp[i1].compareTo(temp[i2])&lt;0) // Get smaller
+		A[curr] = temp[i1++];
+		else A[curr] = temp[i2++];
+	}
+}                    
+				`}</CodePre></li>
+				<li>Note that this approach requires twice the amount of space
+					as any of the sorting methods presented so far, which is a serious disadvantage for
+					Mergesort.</li>
+				<li>Mergesort is recursively called until subarrays of size 1 have
+					been created, requiring \(log n\) levels of recursion.</li>
+				<li>An optimized Mergesort  reverses the order of the second subarray during the initial copy. Now the current positions of the two subarrays work inwards from the ends, allowing the end of each subarray to act as a sentinel for the other (see visualization <a href='https://opendsa-server.cs.vt.edu/ODSA/Books/CS3/html/MergesortImpl.html'>here</a>).</li>
+				<li><CodePre language="java">{`
+static void mergesortOpt(Comparable[] A, Comparable[] temp, int left, int right) {
+	int i, j, k, mid = (left+right)/2;  // Select the midpoint
+	if (left == right) { return; }          // List has one record
+	if ((mid-left) >= THRESHOLD) { mergesortOpt(A, temp, left, mid); }
+	else { inssort(A, left, mid); }
+	if ((right-mid) > THRESHOLD) { mergesortOpt(A, temp, mid+1, right); }
+	else { inssort(A, mid+1, right); }
+	// Do the merge operation.  First, copy 2 halves to temp.
+	for (i=left; i&lt;=mid; i++) { temp[i] = A[i]; }
+	for (j=right; j>mid; j--) { temp[i++] = A[j]; }
+	// Merge sublists back to array
+	for (i=left,j=right,k=left; k&lt;=right; k++) {
+		if (temp[i].compareTo(temp[j]) &lt;= 0) { A[k] = temp[i++]; }
+		else { 
+		A[k] = temp[j--];
 		}
 	}
-	for (int k=0; k&lt;G.n(); k++) { // Compute all k paths
-		for (int i=0; i&lt;G.n(); i++) {
-			for (int j=0; j&lt;G.n(); j++) {
-				if ((D[i][k] != Integer.MAX_VALUE) &&
-				(D[k][j] != Integer.MAX_VALUE) &&
-				(D[i][j] > (D[i][k] + D[k][j])))
-				{D[i][j] = D[i][k] + D[k][j];}
-			}
-		}
+}               
+				`}</CodePre></li>
+				<li>This version also has a second optimization: It uses Insertion Sort to sort small subarrays whenever the size of the array is smaller than a value defined by <code>THRESHOLD</code>.</li>
+				<li>At each of the \(\log n\) levels of recursion, \(\Theta(n)\) work is done, for a total cost of \(\Theta(n \log n)\).</li>
+			</SubList></li>
+			<li>The practicality of using a Binary Search Tree for sorting:<SubList>
+				<li>You could insert all of the values to be sorted into
+					the BST one by one, then traverse the completed tree using an inorder traversal.
+					The output would form a sorted list. </li>
+				<li>This approach has a number of drawbacks,
+					including the extra space required by BST pointers and the amount of time required
+					to insert nodes into the tree.</li>
+				<li>The left subtree contains those values in the list less than the root value
+					while the right subtree contains those values in the list greater than or equal to the
+					root value. Thus, the BST implicitly implements a "divide and conquer" approach
+					to sorting the left and right subtrees. Quicksort implements this concept in a much
+					more efficient way.</li>
+			</SubList></li>
+			<li><b>Quicksort:</b><SubList>
+				<li><b>Quicksort</b>, when properly implemented, is the fastest
+					known general-purpose in-memory sorting algorithm in the average case.</li>
+				<li>Quicksort is hampered by exceedingly poor worst-case performance, thus making it inappropriate
+					for certain applications.</li>
+				<li>Quicksort first selects a value called the pivot. This is conceptually like the
+					root node's value in the BST. Assume that the input array contains \(k\) values less
+					than the pivot. The records are then rearranged in such a way that the \(k\) values
+					less than the pivot are placed in the first, or leftmost, \(k\) positions in the array, and
+					the values greater than or equal to the pivot are placed in the last, or rightmost,
+					\(n-k\) positions. This is called a <b>partition</b> of the array. </li>
+				<li>The values placed in a given
+					partition need not (and typically will not) be sorted with respect to each other. All
+					that is required is that all values end up in the correct partition.</li>
+				<li><CodePre language="java">{`
+static &lt;E extends Comparable&lt;? super E>>
+void qsort(E[] A, int i, int j) { // Quicksort
+	int pivotindex = findpivot(A, i, j); // Pick a pivot
+	DSutil.swap(A, pivotindex, j); // Stick pivot at end
+	// k will be the first position in the right subarray
+	int k = partition(A, i, j-1, A[j]);
+	DSutil.swap(A, k, j); // Put pivot in place
+	if ((k-i) > 1) qsort(A, i, k-1); // Sort left partition
+	if ((j-k) > 1) qsort(A, k+1, j); // Sort right partition
+}                        
+				`}</CodePre></li>
+				<li>Parameters <code>i</code> and <code>j</code> define the left and right indices, respectively, for the subarray being sorted. The initial call to <code>quicksort</code> would be <code>quicksort(array, 0, n-1)</code>.</li>
+				<li>Function <code>partition</code> will move records to the appropriate partition and then return <code>k</code>. Note that the pivot value is initially placed at the end of the array (position <code>j</code>).</li>
+				<li>Selecting a pivot can be done in many ways. Here is a simple <code>findpivot</code> function:</li>
+				<li><CodePre language="java">{`
+static int findpivot(Comparable[] A, int i, int j)
+{ return (i+j)/2; }
+				`}</CodePre></li>
+				<li>We now turn to function <code>partition</code>. Because we do not know in advance how many keys are less than the pivot, we use a clever algorithm that moves indices inwards from the ends of the subarray, swapping values as necessary until the two indices meet.</li>
+				<li><CodePre language="java">{`
+static int partition(Comparable[] A, int left, int right, Comparable pivot) {
+	while (left &lt;= right) { // Move bounds inward until they meet
+		while (A[left].compareTo(pivot) &lt; 0) { left++; }
+		while ((right >= left) && (A[right].compareTo(pivot) >= 0))
+		{ right--; }
+		if (left &lt; right) { Swap.swap(A, left, right); }
+	}
+	return left; // Return first position in right partition
+}                      
+				`}</CodePre></li>
+				<li>For a good visualization, <a href='https://opendsa-server.cs.vt.edu/ODSA/Books/CS3/html/Quicksort.html'>click here</a>, and for a good video, <a href='https://www.youtube.com/watch?v=Hoixgm4-P4M'>click here</a>.</li>
+				<li>Note the check that <code>right {String.fromCharCode(62)}= left</code> in the second inner <code>while</code> loop. This ensures that right does not run off the low end of the partition in the case where the pivot is the least value in that partition.</li>
+				<li>Function <code>partition</code> returns the first index of the right partition (the place where <code>left</code> ends at) so that the subarray bound for the recursive calls to qsort can be determined.</li>
+				<li><ImgComp src={"/articlePics/theory_of_algorithms_pics/9.PNG"} style={{width: "70%"}}/></li>
+				<li>In the worst case, Quicksort is \(\Theta(n^2)\). If the pivot values are selected at random, then this is extremely unlikely to happen. When selecting the middle position of the current subarray, it is still unlikely to happen.</li>
+				<li>Quicksort's best case occurs when findpivot always breaks the array into two equal halves. In the best case, the result will be \(\log n\) levels of partitions. At each level, all partition steps for that level do a total of \(n\) work, for an overall cost of \(n \log n\) work when Quicksort finds perfect pivots.</li>
+				<li>Quicksort has average-case cost \(\Theta(n \log n)\).</li>
+			</SubList></li>
+			<li><b>Heapsort:</b><SubList>
+				<li><b>Heapsort</b> is based on the heap data structure.</li>
+				<li>The complete binary tree is balanced, its array representation is space efficient, and we can load all values into the tree at once,
+					taking advantage of the efficient <code>buildheap</code> function.</li>
+				<li>The asymptotic performance of Heapsort is \(\Theta(n \log n)\) in the best, average, and worst cases.</li>
+				<li><CodePre language="java">{`
+static void heapsort(Comparable[] A) {
+	// The heap constructor invokes the buildheap method
+	MaxHeap H = new MaxHeap(A, A.length, A.length);
+	for (int i=0; i&lt;A.length; i++) {  // Now sort
+		H.removemax(); // Removemax places max at end of heap
 	}
 }
 				`}</CodePre></li>
-				<li>At the end of the algorithm, array \(D\) stores the all-pairs shortest distances.</li>
-				<li>This algorithm requires \(\Theta(|V|^3)\) running time.</li>
+				<li>Heapsort has one special advantage over the other sorts studied so far. Building the heap is relatively cheap, requiring \(\Theta(n)\) time. Removing the maximum-valued record from the heap requires \(\Theta(\log n)\)
+					time in the worst case. Thus, if we wish to find the \(k\) records with the largest key values in an array, we can do so in time \(\Theta(n+k \log n)\).</li>
+				<li>A disadvantage is that it is not stable (i.e., records with equal keys might not remain in the same order after sorting).</li>
+				<li>A sorting algorithm based on max-heaps is quite straightforward. First we use the heap building algorithm to convert the array into max-heap order. Then we repeatedly remove the maximum value from the heap, restoring the heap property each time that we do so, until the heap is empty.</li>
+				<li>Note that each time
+					we remove the maximum element from the heap, it is placed at the end of the
+					array.</li>
+				<li><ImgComp src={"/articlePics/theory_of_algorithms_pics/8.PNG"} style={{width: "55%"}}/></li>
+			</SubList></li>
+			<li><b>Binsort:</b><SubList>
+				<li>A sort that works by taking each record and placing it into a bin based on its value. The bins are then gathered up in order to sort the list.</li>
+				<li>Consider the following code:</li>
+				<li><CodePre language="java">{`
+for (i=0; i&lt;A.length; i++)
+	B[A[i]] = A[i];
+				`}</CodePre></li>
+				<li>We can extend this simple version of the Binsort algorithm to be more useful.</li>
+				<li>The simplest extension is to allow for duplicate values among the keys. This can be done by turning array slots into arbitrary-length bins by turning array <code>B</code> into an array of linked lists.</li>
+				<li>A second extension allows for a key range greater than \(n\). For example, a set of \(n\) records might have keys in the range \(1\) to \(2n\). The only requirement is that each possible key value have a corresponding bin in <code>B</code>.</li>
+				<li><CodePre language="java">{`
+static void binsort(int[] A) {
+	List[] B = new LinkedList[MaxKeyValue+1];
+	int item;
+	for (int i=0; i&lt;=MaxKeyValue; i++)
+		B[i] = new LinkedList();
+	for (int i=0; i&lt;A.length; i++) B[A[i]].append(A[i]);
+	int pos = 0;
+	for (int i=0; i&lt;=MaxKeyValue; i++)
+		for (B[i].moveToStart(); (item = B[i].getValue()) != -1; B[i].next())
+			A[pos++] = item;
+}
+				`}</CodePre></li>
+				<li>This version of Binsort can sort any collection of records whose key values fall in the range from 0 to <code>MaxKeyValue</code>.</li>
+				<li>Taking all of the records out of the bins requires Binsort to look at every bin to see if it contains a record. Thus, the algorithm must process <code>MaxKeyValue</code> bins, regardless of how many of them actually hold records.</li>
+				<li> Suppose that <code>MaxKeyValue</code> \(=n^2\). In this case, the total amount of work done will be \(\Theta(n+n^2)=\Theta(n^2)\). This results in a poor sorting algorithm.</li>
+				<li>A further generalization to Binsort would yield a <b>bucket sort</b>. Here, each bin (now called a bucket) is associated with not just one key, but rather a range of key values.</li>
+			</SubList></li>
+			<li><b>Radix Sort:</b><SubList>
+				<li>Consider a sequence of records with keys in the range 0 to 99. If we have ten bins available, we can first assign records to bins by taking their key value modulo 10. Thus, every key will be assigned to the bin matching its rightmost decimal digit.</li>
+				<li>We can then take these records from the bins <b>in order</b>, and reassign them to the bins on the basis of their leftmost (10's place) digit.</li>
+				<li>This is an example of a <b>Radix Sort</b>, so called because the bin computations are based on the <b>radix</b> or the <b>base</b> of the key values.</li>
+				<li>This sorting algorithm can be extended to any number of keys in any key range. We simply assign records to bins based on the keys' digit values working from the rightmost digit to the leftmost. If there are \(k\) digits, then this requires that we assign keys to bins \(k\) times.</li>
+				<li>We would prefer to sort an array of values and avoid processing linked lists. If we knew how many values would be in each bin, then an auxiliary array of size \(r\)
+					can be used to define these lengths and guide us to were each one starts in the output array.</li>
+				<li><CodePre language="java">{`
+static void radix(Integer[] A, int k, int r) {
+	Integer[] B = new Integer[A.length];
+	int[] count = new int[r];
+	// Count[i] stores number of records with digit value i
+	int i, j, rtok;
+	
+	for (i=0, rtok=1; i&lt;k; i++, rtok*=r) { // For k digits
+		for (j=0; j&lt;r; j++) { count[j] = 0; }    // Initialize count
+	
+		// Count the number of records for each bin on this pass
+		for (j=0; j&lt;A.length; j++) { count[(A[j]/rtok)%r]++; }
+	
+		// count[j] will be index in B for last slot of bin j.
+		// First, reduce count[0] because indexing starts at 0, not 1
+		count[0] = count[0] - 1;
+		for (j=1; j&lt;r; j++) { count[j] = count[j-1] + count[j]; }
+	
+		// Put records into bins, working from bottom of bin
+		// Since bins fill from bottom, j counts downwards
+		for (j=A.length-1; j>=0; j--) {
+			B[count[(A[j]/rtok)%r]] = A[j];
+			count[(A[j]/rtok)%r] = count[(A[j]/rtok)%r] - 1;
+		}
+		for (j=0; j&lt;A.length; j++) { A[j] = B[j]; } // Copy B back
+	}
+}
+				`}</CodePre></li>
+				<li>The first inner for loop initializes array count.</li>
+				<li> Variable <code>rtok</code> stores \(r^i\) for use in bin computation on the \(i\)'th iteration. </li>
+				<li>The second loop counts the number of records to be assigned to each bin.</li>
+				<li>The third loop sets the values in count to their proper indices within array \(B\).</li>
+				<li><ImgComp src={"/articlePics/theory_of_algorithms_pics/10.PNG"} style={{width: "70%"}}/></li>
+				<li>Note that the index stored in <code>count[j]</code> is the last index for bin j.</li>
+				<li>The fourth loop assigns the records to the bins (within array \(B\)).</li>
+				<li>The final loop simply copies the records back to array \(A\) to be ready for the next pass.</li>
 			</SubList></li>
 		</ul>
 	</div>
