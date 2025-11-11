@@ -2,6 +2,7 @@ import SubList from "../../articleRelatedStuff/SubList";
 import { ImgComp } from "../../articleRelatedStuff/ImgComp";
 import { CodePre } from "../../articleRelatedStuff/Code";
 import { MathStuff } from "../../articleRelatedStuff/MathStuff";
+import { TableLI } from "../../articleRelatedStuff/tableManager";
 
 export const title = "Data Structures And Algorithms Notes (Part 2)";
 export const sourcesColor = {19: null, 20: null};
@@ -9,358 +10,51 @@ export const sourcesColor = {19: null, 20: null};
 export const content = <>
 <h1>Data Structures And Algorithms Notes (Part 2)</h1>
 
-<h2 id="hashing">Hashing</h2>
-<div className="content" data-source="20">
-	<div style={{width:"49%", marginLeft:"0.5%", float: "left"}}>
-		<ul>
-			<li><u>Definition:</u><SubList>
-				<li><b>Hashing</b> is a method for storing and retrieving records from a database.</li>
-				<li>It lets you insert, delete, and search for records based on a search key value. When properly implemented, these operations can be performed in constant time.</li>
-				<li>A properly tuned hash system typically looks at only one or two records for each search, insert, or delete operation.</li>
-				<li>A hash system stores records in an array called a <b>hash table</b> (called <code>HT</code>).</li>
-				<li>A position in the hash table is also known as a <b>slot</b>.</li>
-			</SubList></li>
-			<li>Basic understanding of how it works:<SubList>
-				<li>Hashing works by performing a computation on a search key \(K\) in a way that is intended to identify the position in <code>HT</code> that contains the record with key \(K\).</li>
-				<li>The function that does this calculation is called the <b>hash function</b>. Since hashing schemes place records in the table in whatever order satisfies the needs of the address calculation, records are not ordered by value.</li>
-				<li>The number of slots in hash table <code>HT</code> will be denoted by the variable \(M\) with slots numbered from \(0\) to \(M-1\).</li>
-				<li>The goal for a hashing system is to arrange things such that, for any key value \(K\) and some hash function \(h\), \(i=h(K)\) is a slot in the table such that \(0 \le i \lt M\), and we have the key of the record stored at <code>HT[i]</code> equal to \(K\).</li>
-			</SubList></li>
-			<li>Hashing is not good for applications where multiple records with the same key value are permitted and also not a good method for answering range searches.</li>
-			<li>Hashing is most appropriate for answering the question: <i>"What record, if any, has key value \(K\)?"</i>.</li>
-			<li>In most applications, there are many more values in the key range than there are slots in the hash table.</li>
-			<li>In most applications, there are many more values in the key range than there are slots in the hash table:<SubList>
-				<li>Suppose the key can take any value in the range 0 to 65,535, and that we expect to store approximately 1000 records at any given time.</li>
-				<li>It is impractical in this situation to use a hash table with 65,536 slots, because then the vast majority of the slots would be left empty. We must devise a hash function that allows us to store the records in a much smaller table.</li>
-				<li>Because the key range is larger than the size of the table, at least some of the slots must be mapped to from multiple key values.</li>
-				<li>Given a hash function h and two keys \(k1\) and \(k2\), if \(h(k1)=β=h(k2)\) where \(β\) is a slot in the table, then we say that \(k1\) and \(k2\) have a <b>collision</b> at slot \(β\) under hash function \(h\).</li>
-			</SubList></li>
-			<li>Finding a record with key value K in a database organized by hashing follows a two-step procedure:<SubList numbered={true}>
-				<li>Compute the table location \(h(K)\).</li>
-				<li>Starting with slot \(h(K)\), locate the record containing key \(K\) using (if necessary) a <b>collision resolution policy</b>.</li>
-			</SubList></li>
-			<li>We would like to pick a hash function that maps keys to slots in a way that makes each slot in the hash table have equal probablility of being filled for the actual set keys being used. Unfortunately, we normally have no control over the distribution of key values for the actual records in a given database or collection.</li>
-		</ul>
-		<h3>Sample Hash Function</h3>
-		<ul>
-			<li><b>Simple Mod Function:</b><SubList>
-				<li>Consider the following hash function used to hash integers to a table of sixteen slots:</li>
-				<li><CodePre language="java">{`
-int h(int x) {
-	return x % 16;
-}
-				`}</CodePre></li>
-				<li>Recall that the values 0 to 15 can be represented with four bits (i.e., 0000 to 1111). The value returned by this hash function depends solely on the least significant four bits of the key.</li>
-				<li>This example shows that the size of the table \(M\) can have a big effect on the performance of a hash system because the table size is typically used as the modulus to ensure that the hash function produces a number in the range \(0\) to \(M-1\).</li>
-			</SubList></li>
-			<li><b>Binning:</b><SubList>
-				<li>Say we are given keys in the range 0 to 999, and have a hash table of size 10. In this case, a possible hash function might simply divide the key value by 100 so hash function "bins" the first 100 keys to the first slot, the next 100 keys to the second slot, and so on.</li>
-				<li>In general with binning we store the record with key value \(i\) at array position \(\frac{"{i}{X}"}\) for some value \(X\) (using integer division). A problem with Binning is that we have to know the key range so that we can figure out what value to use for \(X\).</li>
-				<li>If we pick too big a value for the key range and the actual key values are all relatively small, then most records will hash to slot 0.</li>
-				<li>We could take the result of any binning computation and then mod by the table size to be safe. So if we have keys that are bigger than 999 when dividing by 100, we can still make sure that the result is in the range 0 to 9 with a mod by 10 step at the end.</li>
-				<li>The mod function, for a power of two, looks at the low-order bits, while binning looks at the high-order bits.</li>
-			</SubList></li>
-			<li><b>The Mid-Square Method:</b><SubList>
-				<li><b>Mid-square method:</b> The key value is squared, and some number of bits from the middle of the resulting value are extracted as the hash code.</li>
-				<li>The mid-square method squares the key value, and then takes out the middle \(r\) bits of the result, giving a value in the range \(0\) to \(2^{"{r-1}"}\).</li>
-				<li>Consider records whose keys are 4-digit numbers in base 10. The goal is to hash these key values to a table of size 100 (i.e., a range of 0 to 99). This range is equivalent to two digits in base 10. That is, \(r=2\).</li>
-				<li>If the input is the number 4567, squaring yields an 8-digit number, 20857489. The middle two digits of this result are 57. All digits of the original key value (equivalently, all bits when the number is viewed in binary) contribute to the middle two digits of the squared value.</li>
-				<li>Thus, the result is not dominated by the distribution of the bottom digit or the top digit of the original key value.</li>
-				<li>Of course, if the key values all tend to be small numbers, then their squares will only affect the low-order digits of the hash value.</li>
-			</SubList></li>
-			<li>A Simple Hash Function for Strings:<SubList>
-				<li>We start with a simple summation function:</li>
-				<li><CodePre language="java">{`
-int sascii(String x, int M) {
-	char ch[];
-	ch = x.toCharArray();
-
-	int i, sum;
-	for (sum=0, i=0; i &lt; x.length(); i++) {
-		sum += ch[i];
-	}
-	return sum % M;
-}
-				`}</CodePre></li>
-				<li>If the hash table size \(M\) is small compared to the resulting summations, then this hash function should do a good job of distributing strings evenly among the hash table slots, because it gives equal weight to all characters in the string.</li>
-				<li>This is an example of the <b>folding method</b>, a method that  breaks the string into pieces, converts the letter(s) to an integer value, and summing up the pieces.</li>
-				<li>If the sum is not sufficiently large, then the modulus operator will yield a poor distribution. <u>Example:</u><SubList>
-					<li>The ASCII value for 'A' is 65 and 'Z' is 90, sum will always be in the range 650 to 900 for a string of ten upper case letters.</li>
-					<li>For a hash table of size 100 or less, a reasonable distribution results.</li>
-					<li>For a hash table of size 1000, the distribution is terrible because only slots 650 to 900 can possibly be the home slot for some key value, and the values are not evenly distributed even within those slots.</li>
-				</SubList></li>
-			</SubList></li>
-			<li><b>String Folding:</b><SubList>
-				<li>This function processes the string four bytes at a time, and interprets each of the four-byte chunks as a single long integer value:</li>
-				<li><CodePre language="java">{`
-// Use folding on a string, summed 4 bytes at a time
-int sfold(String s, int M) {
-  long sum = 0, mul = 1;
-  for (int i = 0; i &lt; s.length(); i++) {
-	mul = (i % 4 == 0) ? 1 : mul * 256;
-	sum += s.charAt(i) * mul;
-  }
-  //"aaaa" in integer form:
-  //97 + (97*256) + (97*256*256) + (97*256*256*256)
-  return (int)(Math.abs(sum) % M);
-}
-				`}</CodePre></li>
-				<li>The integer values for the four-byte chunks are added together. In the end, the resulting sum is converted to the range \(0\) to \(M-1\) using the modulus operator.</li>
-				<li>If the string "aaaabbbb" is passed to <code>sfold</code>, then the first four bytes ("aaaa") will be interpreted as the integer value 1,633,771,873, and the next four bytes ("bbbb") will be interpreted as the integer value 1,650,614,882. Their sum is 3,284,386,755 (when treated as an unsigned integer).</li>
-				<li>For any sufficiently long string, the sum for the integer quantities will typically cause a 32-bit integer to overflow (thus losing some of the high-order bits) because the resulting values are so large. But this causes no problems when the goal is to compute a hash function.</li>
-				<li>The reason that hashing by summing the integer representation of four letters at a time is superior to summing one letter at a time is because the resulting values being summed have a bigger range. This still only works well for strings long enough (say at least 7-12 letters), but the original method would not work well for short strings either.</li>
-			</SubList></li>
-		</ul>
-	</div>
-	<div style={{width: "49%", marginRight: "0.5%", float: "right"}}>
-		<h3>Collision Resolution Techniques</h3>
-		<ul>
-			<li>Collision resolution techniques can be broken into two classes: <b>open hashing</b> (also called <b>separate chaining</b>) and <b>closed hashing</b> (also called <b>open addressing</b>).</li>
-			<li>The difference between the two has to do with whether collisions are stored outside the table (open hashing), or whether collisions result in storing one of the records at another slot in the table (closed hashing).</li>
-			<li><b>Open hashing:</b><SubList>
-				<li>The simplest form of open hashing defines each slot in the hash table to be the head of a linked list.</li>
-				<li>All records that hash to a particular slot are placed on that slot's linked list.</li>
-				<li>Ordering the list by key value provides an advantage in the case of an unsuccessful search, because we know to stop searching the list once we encounter a key that is greater than the one being searched for.</li>
-				<li>Given a table of size \(M\) storing \(N\) records, the hash function will (ideally) spread the records evenly among the \(M\) positions in the table, yielding on average \(N/M\) records for each list.</li>
-				<li>The average cost for hashing should be \(\Theta(1)\). However, if clustering causes many records to hash to only a few of the slots, then the cost to access a record will be much higher because many elements on the linked list must be searched.</li>
-			</SubList></li>
-			<li><b>Bucket Hashing:</b><SubList>
-				<li>One implementation for closed hashing groups hash table slots into <b>buckets</b>. The \(M\) slots of the hash table are divided into \(B\) buckets, with each bucket consisting of \(M/B\) slots.</li>
-				<li>If a bucket is entirely full, then the record is stored in an <i>overflow bucket</i> of infinite capacity at the end of the table. All buckets share the same overflow bucket.</li>
-				<li>A good implementation will use a hash function that distributes the records evenly among the buckets so that as few records as possible go into the overflow bucket.</li>
-				<li>When searching for a record, the first step is to hash the key to determine which bucket should contain the record. The records in this bucket are then searched. If the desired key value is not found and the bucket still has free slots, then the search is complete. If the bucket is full, then it is possible that the desired record is stored in the overflow bucket.</li>
-				<li>A simple variation on bucket hashing is to hash a key value to some slot in the hash table as though bucketing were not being used. If the home position is full, then we search through the rest of the bucket to find an empty slot. If all slots in this bucket are full, then the record is assigned to the overflow bucket.</li>
-			</SubList></li>
-			<li><b>Simple linear probing:</b><SubList>
-				<li>We can view any collision resolution method as generating a sequence of hash table slots that can potentially hold the record. The first slot in the sequence will be the home position for the key. If the home position is occupied, then the collision resolution policy goes to the next slot in the sequence. If this is occupied as well, then another slot must be found, and so on. This sequence of slots is known as the <b>probe sequence</b>, and it is generated by some <b>probe function</b>.</li>
-				<li><CodePre language="java">{`
-// Insert e into hash table HT
-void hashInsert(Key k, Elem e) {
-	int home;                     // Home position for e
-	int pos = home = h(k);        // Init probe sequence
-	for (int i=1; EMPTYKEY != (HT[pos]).key(); i++) {
-		if (k == HT[pos].key()) {
-			println("Duplicates not allowed");
-			return;
-		}
-		pos = (home + p(k, i)) % M; // probe
-	}
-	HT[pos] = e;
-}
-				`}</CodePre></li>
-				<li>Function <code>p</code> has two parameters, the key \(k\) and a count \(i\) of where in the probe sequence we wish to be. That is, to get the first position in the probe sequence after the home slot for key \(K\), we call \(p(K,1)\). For the next slot in the probe sequence, call \(p(K,2)\).</li>
-				<li>The simplest approach to collision resolution is simply to move down the table from the home slot until a free slot is found. This is known as <b>linear probing</b>. The probe function for simple linear probing is \(p(K,i)=i\). That is, the \(i\)th offset on the probe sequence is just \(i\), meaning that the \(i\)th step is simply to move down \(i\) slots in the table.</li>
-				<li>The ideal behavior for a collision resolution mechanism is that each empty slot in the table will have equal probability of receiving the next record inserted (assuming that every slot in the table has equal probability of being hashed to initially).</li>
-				<li>Linear probing is one of the worst collision resolution methods. The tendency of linear probing to cluster items together is known as <b>primary clustering</b>. Small clusters tend to merge into big clusters, making the problem worse</li>
-			</SubList></li>
-			<li><b>Linear Probing by Steps:</b><SubList>
-				<li>How can we avoid primary clustering? One possible improvement might be to use linear probing, but to skip slots by some constant \(c\) (other than 1). This would make the probe function \(p(K,i)=ci\), and so the ith slot in the probe sequence will be \((h(K)+ic) \mod M\).</li>
-				<li>Constant \(c\) must be relatively prime to \(M\) to generate a linear probing sequence that visits all slots in the table (that is, \(c\) and \(M\) must share no factors). For a hash table of size \(M=10\), if \(c\) is any one of 1, 3, 7, or 9, then the probe sequence will visit all slots for any key.</li>
-				<li>Consider the situation where \(c=2\) and we wish to insert a record with key \(k1\) such that \(h(k1)=3\). The probe sequence for \(k1\) is 3, 5, 7, 9, and so on. If another key \(k2\) has home position at slot 5, then its probe sequence will be 5, 7, 9, and so on. The probe sequences of \(k1\) and \(k2\) are linked together in a manner that contributes to clustering. In other words, linear probing with a value of \(c \gt 1\) does not solve the problem of primary clustering.</li>
-			</SubList></li>
-			<li><b>Pseudo-Random Probing:</b><SubList>
-				<li>In <b>pseudo-random probing</b>, the \(i\)th slot in the probe sequence is \((h(K)+r_i) \mod M\) where \(r_i\) is the \(i\)th value in a random permutation of the numbers from 1 to \(M-1\).</li>
-				<li>All inserts and searches must use the same sequence of random numbers. The probe function would be \(p(K,i)=Permutation[i]\).</li>
-			</SubList></li>
-			<li><b>Quadratic Probing:</b><SubList>
-				<li>The probe function is some quadratic function \(p(K,i)=c_1i^2+c_2i+c_3\) for some choice of constants \(c_1\), \(c_2\), and \(c_3\).</li>
-				<li>For many hash table sizes, this probe function will cycle through a relatively small number of slots.</li>
-				<li>Fortunately, it is possible to get good results from quadratic probing at low cost. The right combination of probe function and table size will visit many slots in the table.</li>
-			</SubList></li>
-			<li><b>Double Hashing:</b><SubList>
-				<li>The probe sequences generated by pseudo-random and quadratic probing (for example) are entirely a function of the home position, not the original key value.</li>
-				<li>If two keys hash to the same home position, however, then they will always follow the same probe sequence for every collision resolution method that we have seen so far.</li>
-				<li>If the hash function generates a cluster at a particular home position, then the cluster remains under pseudo-random and quadratic probing. This problem is called <b>secondary clustering</b>.</li>
-				<li>To avoid secondary clustering, we need to have the probe sequence make use of the original key value. A simple technique for doing this is to return to linear probing by a constant step size for the probe function, but to have that constant be determined by a second hash function, \(h_2\). Thus, the probe sequence would be of the form \(p(K,i)=i \times h_2(K)\). This method is called <b>double hashing</b>.</li>
-				<li>A good implementation should ensure that all of the probe sequence constants are relatively prime to the table size \(M\).</li>
-			</SubList></li>
-			<li>Analysis of Closed Hashing:<SubList>
-				<li>Define the <b>load factor</b> for the table as \(α=N/M\), where \(N\) is the number of records currently in the table.</li>
-				<li>An estimate of the expected cost for an insertion (or an unsuccessful search) can be derived analytically as a function of \(α\) in the case where we assume that the probe sequence follows a random permutation of the slots in the hash table.</li>
-				<li>Assuming that every slot in the table has equal probability of being the home slot for the next record, the probability of finding the home position occupied is \(α\).</li>
-				<li>The probability of finding both the home position occupied and the next slot on the probe sequence occupied is \(\frac{"{N}"}{"{M}"} \times \frac{"{N-1}"}{"{M-1}"}\).</li>
-				<li>The probability of \(i\) collisions is \(\frac{"{N}"}{"{M}"} \times \frac{"{N-1}"}{"{M-1}"} \times \frac{"{N-i+1}"}{"{M-i+1}"}\). If \(N\) and \(M\) are large, then this is approximately \((N/M)^i\).</li>
-				<li>The expected number of probes:</li>
-				<MathStuff>$${`
-					1+\\sum^\\infty_{i=1} \\left( \\frac{N}{M} \\right)^i = \\frac{1}{1-\\alpha}
-				`}$$</MathStuff>
-			</SubList></li>
-		</ul>
-		<h3>Deletion</h3>
-		<ul>
-			<li>When deleting records from a hash table, there are two important considerations:<SubList>
-				<li>Deleting a record must not hinder later searches. In other words, the search process must still pass through the newly emptied slot to reach records whose probe sequence passed through this slot. Thus, the delete process cannot simply mark the slot as empty, because this will isolate records further down the probe sequence.</li>
-				<li>We do not want to make positions in the hash table unusable because of deletion. The freed slot should be available to a future insertion.</li>
-			</SubList></li>
-			<li>Both of these problems can be resolved by placing a special mark in place of the deleted record, called a <b>tombstone</b>:<SubList>
-				<li>The <b>tombstone</b> indicates that a record once occupied the slot but does so no longer.</li>
-				<li>If a tombstone is encountered when searching along a probe sequence, the search procedure continues with the search.</li>
-				<li>When a tombstone is encountered during insertion, that slot can be used to store the new record. However, to avoid inserting duplicate keys, it will still be necessary for the search procedure to follow the probe sequence until a truly empty position has been found, simply to verify that a duplicate is not in the table.</li>
-			</SubList></li>
-			<li>After a series of intermixed insertion and deletion operations, some slots will contain tombstones. This will tend to lengthen the average distance from a record's home position to the record. Two possible solutions are:<SubList>
-				<li>Do a local reorganization upon deletion to try to shorten the average path length.</li>
-				<li>Periodically rehash the table by reinserting all records into a new hash table. Not only will this remove the tombstones, but it also provides an opportunity to place the most frequently accessed records into their home positions.</li>
-			</SubList></li>
-		</ul>
-	</div>
-</div>
-
-<h2 id="memory_management">Memory Management</h2>
-<div className="content" data-source={20}>
-	<div style={{width: "49%",marginLeft: "0.5%",float: "left"}}>
-		<ul>
-				<li>Memory manager:<SubList>
-						<li><b>Memory pool:</b> Memory that is logically viewed as an array of memory positions. Memory requests are issued for some amount of space in the pool.</li>
-						<li>A <b>memory manager</b> has the job of finding a contiguous block of locations of at least the requested size from somewhere within the memory pool. Honoring such a request is called <b>memory allocation</b>.</li>
-						<li>The memory manager will typically return some piece of information that the requestor can hold on to so that later it can recover the data that were just stored by the memory manager. This piece of information is called a <b>handle</b>.</li>
-						<li>At some point, space that has been requested might no longer be needed, and this space can be returned to the memory manager so that it can be reused. This is called a <b>memory deallocation</b>.</li>
-						<li><CodePre language="java">{"\
-// Memory Manager abstract class\n\
-public interface MemManager {\n\
-// Store a record and return a handle to it\n\
-public MemHandle insert(byte[] info);\n\
-\n\
-// Release the space associated with a record\n\
-public void release(MemHandle h);\n\
-\n\
-// Get back a copy of a stored record\n\
-public byte[] getRecord(MemHandle h);\n\
-}\n\
-						"}</CodePre></li>
-						<li>The user of the <code>MemManager</code> ADT provides a pointer (in parameter info) to space that holds some message to be stored or retrieved.</li>
-						<li>The fundamental idea is that the client gives messages to the memory manager for safe keeping. The memory manager returns a receipt for the message in the form of a <code>MemHandle</code> object. The client holds the <code>MemHandle</code> until it wishes to get the message back.</li>
-				</SubList></li>
-				<li>Dynamic Storage Allocation:<SubList>
-						<li>For the purpose of <b>dynamic storage allocation</b>, we view memory as a single array broken into a series of variable-size blocks, where some of the blocks are <i>free blocks</i> and some are <i>reserved blocks</i> (already allocated).</li>
-						<li>The free blocks are linked together to form a freelist used for servicing future memory requests.</li>
-						<li>When a memory request is received by the memory manager, some block on the freelist must be found that is large enough to service the request. If no such block is found, then the memory manager must resort to a <b>failure policy</b> (which may include expanding the memory pool, reorganizing the memory pool, etc.).</li>
-				</SubList></li>
-				<li><a href='https://www.geeksforgeeks.org/difference-between-static-and-dynamic-memory-allocation-in-c/'>In the <b>static memory allocation</b>, variables get allocated permanently, till the program executes or function call finishes. Static Memory Allocation is done before program execution.</a></li>
-				<li>Two types of fragmentation:<SubList>
-						<li>External fragmentation occurs when a series of memory requests result in lots of small free blocks, no one of which is useful for servicing typical requests.</li>
-						<li>Internal fragmentation occurs when more than \(m\) words are allocated to a request for \(m\) words, wasting free storage.</li>
-						<li><ImgComp src={"/articlePics/operating_systems/4.PNG"} style={{width: "80%"}}/></li>
-				</SubList></li>
-				<li><b>Sequential-Fit Methods:</b><SubList>
-						<li>Sequential-fit methods attempt to find a "good" block to service a storage request. Let's assume that the free blocks are organized into a doubly linked list.</li>
-						<li>A simple linked-list implementation can be used, where each node of the linked list contains a pointer to a single free block in the memory pool. This is fine if there is space available for the linked list itself, separate from the memory pool.</li>
-						<li>Another approach to storing the freelist is more complicated but saves space. Because the free space is free, it can be used by the memory manager to help it do its job; that is, the memory manager temporarily "borrows" space within the free blocks to maintain its doubly linked list.</li>
-						<li>To do so, each unallocated block must be large enough to hold these pointers. In addition, it is usually worthwhile to let the memory manager add a few bytes of space to each reserved block for its own purposes.</li>
-						<li><figure>
-								<ImgComp src={"/articlePics/operating_systems/5.png"} style={{width: "80%"}}/>
-								<figcaption>(a) A <b>free block</b> contains the tag bit field, the block size field, and two pointers for the freelist. The end of the block contains a second tag field and a second block size field.<br/>(b) A <b>reserved block</b> with a tag bit field and a block size field at the beginning of the block, and a second tag field at the end of the block.</figcaption>
-						</figure></li>
-						<li>When a block \(F\) is freed, it must be merged into the freelist. The memory manager first checks the unit of memory immediately preceding block \(F\) to see if the preceding block (call it \(P\)) is also free. If it is, then the memory unit before \(P\)'s tag bit stores the size of \(P\), thus indicating the position for the beginning of the block in memory. \(P\) can then simply have its size extended to include block \(F\).</li>
-						<li>We also check the bit following the end of block \(F\). If this bit indicates that the following block (call it \(S\)) is free, then \(S\) is removed from the freelist and the size of \(F\) is extended appropriately.</li>
-				</SubList></li>
-				<li><u>Selecting a suitable free block:</u><SubList>
-						<li>Assume that we have a memory pool with 200 units of storage. After some series of allocation requests and releases, we have reached a point where there are four free blocks on the freelist of sizes 25, 35, 32, and 45 (in that order). Assume that a request is made for 30 units of storage.</li>
-						<li>The simplest method for selecting a block would be to move down the free block list until a block of size at least 30 is found.</li>
-						<li>Any remaining space in this block is left on the freelist. If we begin at the beginning of the list and work down to the first free block at least as large as 30, we select the block of size 35. 30 units of storage will be allocated, leaving a free block with 5 units of space. Because this approach selects the first block with enough space, it is called <b>first fit</b>.</li>
-						<li>On the next search, instead of always beginning at the head of the freelist, remember the last position reached in the previous search and start from there. When the end of the freelist is reached, search begins again at the head of the freelist.</li>
-						<li>This modification reduces the number of unnecessary searches through small blocks that were passed over by previous requests.</li>
-						<li>A strategy that avoids using large blocks unnecessarily is called <b>best fit</b>. Best fit looks at the entire list and picks the smallest block that is at least as large as the request .</li>
-						<li>In our example, the best fit for a request of 30 units is the block of size 32, leaving a remainder of size 2.</li>
-						<li>A strategy contrary to best fit might make sense because it tends to minimize the effects of external fragmentation. This is called <b>worst fit</b>, which always allocates the largest block on the list hoping that the remainder of the block will be useful for servicing a future request.</li>
-						<li>In our example, the worst fit is the block of size 45, leaving a remainder of size 15.</li>
-						<li>If the requests are of widely ranging size, best fit might work well. If the requests tend to be of similar size, with rare large and small requests, first or worst fit might work well.</li>
-				</SubList></li>
-		</ul>
-	</div>
-	<div style={{width: "49%",marginRight: "0.5%",float: "right"}}>
-		<ul>
-				<li><b>Buddy Methods:</b><SubList>
-						<li>Sequential-fit methods rely on a linked list of free blocks, which must be searched for a suitable block at each memory request. Thus, the time to find a suitable free block would be \(\Theta(n)\) in the worst case for a freelist containing \(n\) blocks.</li>
-						<li>We must either use additional space for the linked list, or use space within the memory pool to support the memory manager operations. In the second option, both free and reserved blocks require tag and size fields. Fields in free blocks do not cost any space (because they are stored in memory that is not otherwise being used), but fields in reserved blocks create additional overhead.</li>
-						<li>The <b>buddy system</b> assumes that memory is of size \(2^N\) for some integer \(N\). Both free and reserved blocks will always be of size \(2^k\) for \(k \lt N\). At any given time, there might be both free and reserved blocks of various sizes.</li>
-						<li>When a request comes in for \(m\) words, we first determine the smallest value of \(k\) such that \(2^k\ge m\). A block of size \(2k\) is selected from the free list for that block size if one exists. The buddy system does not worry about internal fragmentation: The entire block of size \(2k\) is allocated.</li>
-						<li>If no block of size \(2^k\) exists, the next larger block is located. This block is split in half (repeatedly if necessary) until the desired block of size \(2^k\) is created. Any other blocks generated as a by-product of this splitting process are placed on the appropriate freelists.</li>
-						<li><a href='https://en.wikipedia.org/wiki/Buddy_memory_allocation'>If memory is to be freed:</a><SubList numbered={true}>
-								<li>Free the block of memory</li>
-								<li>Look at the neighboring block - is it free too?</li>
-								<li>If it is, combine the two, and go back to step 2 and repeat this process until either the upper limit is reached (all memory is freed), or until a non-free neighbour block is encountered.</li>
-						</SubList></li>
-				</SubList></li>
-				<li>If the application is sufficiently complex, it might be desirable to break available memory into several memory "zones", where each zone has a different memory management scheme.</li>
-				<li>Another approach to memory management is to impose a standard size on all memory requests.</li>
-				<li>In some situations, there might be nothing that can be done: There simply might not be enough free memory to service the request, and the application may require that the request be serviced immediately:<SubList>
-						<li>In many cases there are alternatives to simply returning an error. The possible options are referred to collectively as <b>failure policies</b>.</li>
-						<li>In some cases, there might be sufficient free memory to satisfy the request, but it is scattered among small blocks. In this case, it might be possible to compact memory by moving the reserved blocks around so that the free space is collected into a single block.</li>
-						<li>A problem with this approach is that the application must somehow be able to deal with the fact that all of its data have now been moved to different locations. If the application program relies on the absolute positions of the data in any way, this would be disastrous. One approach for dealing with this problem is the use of <b>handles</b>.</li>
-						<li>A handle is a second level of indirection to a memory location. The memory allocation routine does not return a pointer to the block of storage, but rather a pointer to a variable that in turn points to the storage. This variable is the handle. The handle never moves its position, but the position of the block might be moved and the value of the handle updated.</li>
-						<li>Another failure policy that might work in some applications is to defer the memory request until sufficient memory becomes available. While such a delay might be annoying to the user, it is better than halting the entire system. The assumption here is that other processes will eventually terminate, freeing memory.</li>
-						<li>Another option might be to allocate more memory to the memory manager. In a C++ program that implements its own memory manager, it might be possible to get more memory from the system-level <code>new</code> operator.</li>
-						<li>The last failure policy that we will consider is <b>garbage collection</b>:<SubList>
-								<li><CodePre language="cpp">
-Integer p = new Integer[5];
-Integer q = new Integer[10];
-p = q;
-								</CodePre></li>
-								<li>This would be considered bad form because the original space allocated to p is lost as a result of the third assignment. This space cannot be used again by the program. Such lost memory is referred to as <b>garbage</b>, also known as a <b>memory leak</b>.</li>
-								<li>In LISP, Garbage collection consists of examining the managed memory pool to determine which parts are still being used and which parts are garbage. In particular, a list is kept of all program variables, and any memory locations not reachable from one of these variables are considered to be garbage. When the garbage collector executes, all unused memory locations are placed in free store for future access.</li>
-								<li>It has the disadvantage, from a user's point of view, that every so often the system must halt while it performs garbage collection.</li>
-								<li>As in LISP, it is common practice in Java to allocate dynamic memory as needed, and to later drop all references to that memory. The garbage collector is responsible for reclaiming such unused space as necessary. This might require extra time when running the program.</li>
-								<li><b>Reference count algorithm:</b> Here, every dynamically allocated memory block includes space for a count field. Whenever a pointer is directed to a memory block, the reference count is increased. Whenever a pointer is directed away from a memory block, the reference count is decreased. If the count ever becomes zero, then the memory block is considered garbage and is immediately placed in free store.</li>
-								<li>This approach has the advantage that it does not require an explicit garbage collection phase, because information is put in free store immediately when it becomes garbage. The disadvantage is when garbage contains cycles.</li>
-								<li><b>Mark/sweep algorithm:</b> Each memory object needs only a single mark bit rather than a reference counter field. When free store is exhausted, a separate garbage collection phase takes place as follows:<SubList numbered={true}>
-										<li>Clear all mark bits</li>
-										<li>Perform depth-first search (DFS) following pointers from each variable on the system's list of variables. Each memory element encountered during the DFS has its mark bit turned on.</li>
-										<li>A "sweep" is made through the memory pool, visiting all elements. Unmarked elements are considered garbage and placed in free store.</li>
-								</SubList></li>
-								<li>DFS is a recursive algorithm: Either it must be implemented recursively, in which case the compiler's runtime system maintains a stack, or else the memory manager can maintain its own stack.</li>
-								<li>A clever technique allows DFS to be performed without requiring additional space for a stack.  At each step deeper into the traversal, instead of storing a pointer on the stack, we "borrow" the pointer being followed. This pointer is set to point back to the node we just came from in the previous step.</li>
-								<li>Each borrowed pointer stores an additional bit to tell us whether we came down the left branch or the right branch of the link node being pointed to. At any given instant we have passed down only one path from the root, and we can follow the trail of pointers back up.</li>
-								<li>As we return (equivalent to popping the recursion stack), we set the pointer back to its original position so as to return the structure to its original condition. This is known as the <b>Deutsch-Schorr-Waite garbage collection algorithm</b>.</li>
-						</SubList></li>
-				</SubList></li>
-		</ul>
-	</div>
-</div>
-
 <h2 id="graphs">Graphs</h2>
 <div className="content" data-source="20">
 	<div style={{width: "49%", marginLeft: "0.5%", float: "left"}}>
 		<ul>
 			<li><u>Terminologies:</u><SubList>
-				<li>A graph \(G = (V, E)\) consists of a set of vertices \(V\) and a set of edges \(E\), such that each edge in \(E\) is a connection between a pair of vertices in \(V\).</li>
-				<li>The number
-				of vertices is written \(|V|\), and the number of edges is written \(|E|\). \(|E|\) can range from zero to a maximum of \(|V|^2 - |V|\). </li>
-				<li>A graph with relatively few edges is called <b>sparse</b>, while a graph with many edges is called dense. A graph containing all possible edges is said to be <b>complete</b>.</li>
+				<li>A <b>graph</b> \(G = (V, E)\) consists of a set of <b>vertices</b> \(V\) and a set of <b>edges</b> \(E\), such that each edge in \(E\) is a connection between a pair of vertices in \(V\).</li>
+				<li>The number  of vertices is written \(|V|\), and the number of edges is written \(|E|\).</li>
 				<li>A graph with edges directed from one vertex to another is called a <b>directed graph</b> or <b>digraph</b>. A graph whose edges are not directed is called an <b>undirected graph</b>.</li>
 				<li>A graph with labels associated with its vertices is called a <b>labeled graph</b>.</li>
-				<li>Two vertices are adjacent if they are joined by an <b>edge</b>. Such vertices are also called <b>neighbors</b>.</li>
-				<li>An edge connecting Vertices \(U\) and \(V\) is written \((U, V)\). Such an edge is said to be incident on Vertices \(U\) and \(V\). Associated with each edge may be a cost or <b>weight</b>. Graphs whose edges have weights are said to be <b>weighted</b>.</li>
-				<li><figure style={{width:"70%"}}><ImgComp src={"/articlePics/data_structures_and_algorithms_pics/28.PNG"}/><figcaption> (a) A graph. (b) A directed graph (digraph). (c) A labeled (directed) graph with weights associated with the edges.</figcaption></figure></li>
-				<li>In a directed graph, the <b>out degree</b> for a vertex is the number of neighbors adjacent from it (or the number of edges going out from it), while the <b>in degree</b> is the number of neighbors adjacent to it (or the number of edges coming in to it).</li>
-				<li>A sequence of vertices \(v_1, v_2, \ldots, v_n\) forms a <b>path</b> of length \(n - 1\) if there exist edges from \(v_i\) to \(v_i+1\) for \(1 ≤ i &lt; n\). A path is <b>simple</b> if all vertices on the path are distinct. The <b>length</b> of a path is the number of edges it contains.</li>
-				<li>A <b>cycle</b> is a path of length three or more that connects some vertex \(v_1\) to itself. A cycle is <b>simple</b> if the path is simple, except for the first and last vertices being the same.</li>
-				<li>A <b>subgraph \(S\)</b> is formed from graph \(G\) by selecting a subset \(V_s\) of \(G\)'s vertices and a subset \(E_s\) of \(G\)'s edges such that for every edge \(e ∈ E_s\), both vertices of \(e\) are in \(V_s\). Any subgraph of \(V\) where all vertices in the graph connect to all other vertices in the subgraph is called a <b>clique</b>.</li>
-				<li>An undirected graph is <b>connected</b> if there is at least one path from any vertex
-					to any other.</li>
-				<li><figure style={{width:"50%"}}>
-					<ImgComp src={"/articlePics/data_structures_and_algorithms_pics/29.PNG"}/>
-					<figcaption> An undirected graph with three connected components. Vertices 0, 1, 2, 3, and 4 form one connected component. Vertices 5 and 6 form a second connected component. Vertex 7 by itself forms a third connected component.</figcaption>
+				<li>Associated with each edge may be a cost or <b>weight</b>. Graphs whose edges have weights are said to be <b>weighted</b>.</li>
+				<li><figure>
+					<ImgComp style={{width:"70%"}} src={"/articlePics/data_structures_and_algorithms_(part_2)_pics/6.PNG"}/>
+					<figcaption>(a) A graph. (b) A directed graph (digraph). (c) A labeled (directed) graph with weights associated with the edges.</figcaption>
 				</figure></li>
-				<li>The maximally connected subgraphs of an undirected graph are called <b>connected components</b>.</li>
-				<li>A graph without cycles is called an <b>acyclic graph</b>.</li>
+				<li>An edge connecting vertices \(U\) and \(V\) is written \((U, V)\). Such an edge is said to be <b>incident</b> on vertices \(U\) and \(V\).</li>
+				<li>Two vertices are <b>adjacent</b> if they are joined by an edge. Such vertices are also called <b>neighbors</b>.</li>
+				<li>The <b>degree</b> of a vertex is the number of edges it is adjacent with.</li>
+				<li>In a directed graph, the <b>out degree</b> for a vertex is the number of neighbors adjacent from it (or the number of edges going out from it), while the <b>in degree</b> is the number of neighbors adjacent to it (or the number of edges coming in to it).</li>
+				<li>A sequence of vertices \(v_1, v_2, \ldots, v_n\) forms a <b>path</b> of length \(n - 1\) if there exist edges from \(v_i\) to \(v_i+1\) for \(1 ≤ i &lt; n\).</li>
+				<li>A path is <b>simple</b> if all vertices on the path are distinct. The <b>length</b> of a path is the number of edges it contains.</li>
+				<li>A <b>cycle</b> is a path of length three or more that connects some vertex \(v_1\) to itself. A cycle is <b>simple</b> if the path is simple, except for the first and last vertices being the same.</li>
+				<li>An undirected graph is <b>connected</b> if there is at least one path from any vertex to any other.</li>
+				<li>The maximally connected subgraphs of an undirected grraph are called <b>connected components</b>.</li>
+				<li>A graph with relatively few edges is called <b>sparse</b>, while a graph with many edges is called <b>dense</b>. A graph containing all possible edges is said to be <b>complete</b>.</li>
+				<li>A <b>subgraph \(S\)</b> is formed from graph \(G\) by selecting a subset \(V_s\) of \(G\)'s vertices and a subset \(E_s\) of \(G\)'s edges such that for every edge \(e ∈ E_s\), both vertices of \(e\) are in \(V_s\).</li>
+				<li>Any subgraph of \(V\) where all vertices in the graph connect to all other vertices in the subgraph is called a <b>clique</b>.</li>
+				<li><figure>
+					<ImgComp style={{width:"60%"}} src={"/articlePics/data_structures_and_algorithms_(part_2)_pics/7.PNG"}/>
+					<figcaption>An undirected graph with three connected components. Vertices 0, 1, 2, 3, and 4 form one connected component. Vertices 5 and 6 form a second connected component. Vertex 7 by itself forms a third connected component.</figcaption>
+				</figure></li>
+				<li>A graph without cycles is called an <b>acyclic graph</b>. A directed graph without cycles is called a <b>directed acyclic graph</b> or <b>DAG</b>.</li>
 				<li className="research">A <b>free tree</b> is a connected, undirected graph with no simple cycles. An equivalent definition is that a free tree is connected and has \(|V| - 1\) edges.</li>
 			</SubList></li>
 			<li>Representating graphs:<SubList>
 				<li>The <b>adjacency matrix</b> for a graph is a \(|V| \times |V|\) array.</li>
-				<li>Assume that |V| = n and that the vertices are labeled from \(v0\) through \(v_{"{n-1}"}\). Row \(i\) of the adjacency matrix contains entries for Vertex \(v_i\).</li>
-				<li>Column \(j\) in row \(i\) is marked if there is an edge from \(v_i\) to \(v_j\) and is not marked otherwise.  Thus, the adjacency matrix requires one bit at each position.</li>
+				<li>Assume that \(|V| = n\) and that the vertices are labeled from \(v_0\) through \(v_{"{n-1}"}\). Row \(i\) of the adjacency matrix contains entries for vertex \(v_i\).</li>
+				<li>Column \(j\) in row \(i\) is marked if there is an edge from \(v_i\) to \(v_j\) and is not marked otherwise. Thus, the adjacency matrix requires one bit at each position.</li>
 				<li>Alternatively, if we wish to associate a number with each edge, such as the weight or distance between two vertices, then each matrix position must store that number.</li>
 				<li>In either case, the space requirements for the adjacency matrix are \(\Theta(|V|^2)\).</li>
 				<li>The second common representation for graphs is the <b>adjacency list</b>. The adjacency list is an array of linked lists. The array is \(|V|\) items long, with position \(i\) storing a pointer to the linked list of edges for Vertex \(v_i\). </li>
 				<li><figure>
-					<ImgComp src={"/articlePics/data_structures_and_algorithms_pics/30.PNG"}/>
+					<ImgComp style={{width: "60%"}} src={"/articlePics/data_structures_and_algorithms_(part_2)_pics/8.PNG"}/>
 					<figcaption>(a) A directed graph. (b) The adjacency matrix for the graph of (a). (c) The adjacency list for the graph of (a).</figcaption>
 				</figure></li>
-				<li>The storage requirements for the adjacency list depend on both the number of
-					edges and the number of vertices in the graph. There must be an array entry for
-					each vertex (even if the vertex is not adjacent to any other vertex and thus has no
-					elements on its linked list), and each edge must appear on one of the lists. Thus,
-					the cost is \(\Theta(|V| + |E|)\).</li>
+				<li>The storage requirements for the adjacency list depend on both the number of edges and the number of vertices in the graph. There must be an array entry for each vertex (even if the vertex is not adjacent to any other vertex and thus has no elements on its linked list), and each edge must appear on one of the lists. Thus, the cost is \(\Theta(|V| + |E|)\).</li>
 				<li>The adjacency list stores information only for those edges that actually appear in the graph, while the adjacency matrix requires space for each potential edge, whether it exists or not.</li>
 				<li>However, the adjacency matrix requires no overhead for pointers, which can be a substantial cost, especially if the only information stored for an edge is one bit to indicate its existence.</li>
 				<li>As the graph becomes denser, the adjacency matrix becomes relatively more space efficient. Sparse graphs are likely to have their adjacency list representation be more space efficient.</li>
@@ -392,7 +86,7 @@ interface Graph { // Graph class ADT
 }
 				`}</CodePre></li>
 				<li>This ADT assumes that the number of vertices is fixed when the graph is created, but that edges can be added and removed. The <code>init</code> method sets (or resets) the number of nodes in the graph, and creates necessary space for the adjacency matrix or adjacency list.</li>
-				<li>Vertices are defined by an integer index value. In other words, there is a Vertex \(0\), Vertex \(1\), and so on through Vertex \(n-1\).</li>
+				<li>Vertices are defined by an integer index value. In other words, there is a vertex \(0\), Vertex \(1\), and so on through Vertex \(n-1\).</li>
 				<li>Nearly every graph algorithm presented in this chapter will require visits to all neighbors of a given vertex. The neighbors method returns an array containing the indices for the neighboring vertices, in ascending order. The following lines appear in many graph algorithms:</li>
 				<li><CodePre language="java">{`
 int[] nList = G.neighbors(v);
@@ -564,7 +258,11 @@ public class GraphL implements Graph {
 			</SubList></li>
 			<li>Graph Traversals:<SubList>
 				<li>Many graph applications need to visit the vertices of a graph in some specific order based on the graph's topology. This is known as a graph <b>traversal</b>.</li>
-				<li>Graph traversal algorithms typically begin with a start vertex and attempt to visit the remaining vertices from there. Graph traversals must deal with a number of troublesome cases. First, it might not be possible to reach all vertices from the start vertex. This occurs when the graph is not connected. Second, the graph might contain cycles, and we must make sure that cycles do not cause the algorithm to go into an infinite loop.</li>
+				<li>Graph traversal algorithms typically begin with a start vertex and attempt to visit the remaining vertices from there. </li>
+				<li>Graph traversals must deal with a number of troublesome cases:<SubList opened>
+					<li>First, it might not be possible to reach all vertices from the start vertex. This occurs when the graph is not connected.</li>
+					<li>Second, the graph might contain cycles, and we must make sure that cycles do not cause the algorithm to go into an infinite loop.</li>
+				</SubList></li>
 				<li>Graph traversal algorithms can solve both of these problems by flagging vertices as <code>VISITED</code> when appropriate.</li>
 				<li>Once the traversal algorithm completes, we can check to see if all vertices have been processed by checking whether they have the VISITED flag set. If not all vertices are flagged, we can continue the traversal from another unvisited vertex.</li>
 				<li>Note that this process works regardless of whether the graph is directed or undirected. To ensure visiting all vertices, <code>graphTraverse</code> could be called as follows on a graph \(G\):</li>
@@ -581,6 +279,8 @@ static void graphTraverse(Graph G) {
 	}
 }
 				`}</CodePre></li>
+			</SubList></li>
+			<li><b>Depth-first search:</b><SubList>
 				<li>Our first method for organized graph traversal is called <b>depth-first search (DFS)</b>.</li>
 				<li>Whenever a vertex \(v\) is visited during the search, DFS will recursively visit all of \(v\)'s unvisited neighbors.</li>
 				<li>Equivalently, DFS will add all edges leading out of \(v\) to a stack. The next vertex to be visited is determined by popping the stack and following that edge.</li>
@@ -599,6 +299,8 @@ static void DFS(Graph G, int v) {
 				`}</CodePre></li>
 				<li>This implementation contains calls to functions <code>PreVisit</code> and <code>PostVisit</code>. These functions specify what activity should take place during the search.</li>
 				<li>DFS processes each edge once in a directed graph. In an undirected graph, DFS processes each edge from both directions. Each vertex must be visited, but only once, so the total cost is \(\Theta(|V|+|E|)\).</li>
+			</SubList></li>
+			<li><b>Breadth-first search:</b><SubList>
 				<li>Our second graph traversal algorithm is known as a <b>breadth-first search (BFS)</b>.</li>
 				<li>BFS examines all vertices connected to the start vertex before visiting vertices further away.</li>
 				<li><CodePre language="java">{`
@@ -623,18 +325,18 @@ static void BFS(Graph G, int v) {
 			</SubList></li>
 		</ul>
 	</div>
-
 	<div style={{width: "49%", marginRight: "0.5%", float: "right"}}>
 		<ul>
 			<li><b>Topological Sort:</b><SubList>
 				<li>Assume that we need to schedule a series of tasks, such as classes or construction jobs, where we cannot start one task until after its prerequisites are completed. We wish to organize the tasks into a linear order that allows us to complete them one at a time without violating any prerequisites. We can model the problem using a <i>direct acyclic graph</i> (DAG).</li>
 				<li><b>Topological sort</b> is the process of laying out the vertices of a DAG in a linear order such that no vertex \(A\) in the order is preceded by a vertex that can be reached by a (directed) path from \(A\).</li>
 				<li><figure>
-					<ImgComp src={"/articlePics/data_structures_and_algorithms_pics/31.PNG"}/>
+					<ImgComp style={{width:"90%"}} src={"/articlePics/data_structures_and_algorithms_(part_2)_pics/9.PNG"}/>
 					<figcaption>Seven tasks have dependencies as shown by the directed graph.</figcaption>
 				</figure></li>
-				<li>A topological sort may be found by performing a DFS on the graph. When a vertex is visited, no action is taken (i.e., function <code>PreVisit</code> does nothing). When the recursion pops back to that vertex, function <code>PostVisit</code> prints the vertex. This yields a topological sort in reverse order.</li>
-				<li><CodePre language="java">{`
+				<li>Using a DFS:<SubList>
+					<li>A topological sort may be found by performing a DFS on the graph. When a vertex is visited, no action is taken (i.e., function <code>PreVisit</code> does nothing). When the recursion pops back to that vertex, function <code>PostVisit</code> prints the vertex. This yields a topological sort in reverse order.</li>
+					<li><CodePre language="java">{`
 static void topsortDFS(Graph G) {
 	int v;
 	for (v=0; v<G.nodeCount(); v++) {
@@ -657,12 +359,15 @@ static void tophelp(Graph G, int v) {
 	}
 	printout(v);
 }
-				`}</CodePre></li>
-				<li>We can implement topological sort using a queue instead of recursion.</li>
-				<li>First visit all edges, counting the number of edges that lead to each vertex (i.e., count the number of prerequisites for each vertex). All vertices with no prerequisites are placed on the queue.</li>
-				<li>We then begin processing the queue. When Vertex \(v\) is taken off of the queue, it is printed, and all neighbors of \(v\) (that is, all vertices that have \(v\) as a prerequisite) have their counts decremented by one.</li>
-				<li>Place on the queue any neighbor whose count becomes zero. If the queue becomes empty without printing all of the vertices, then the graph contains a cycle.</li>
-				<li><CodePre language="java">{`
+					`}</CodePre></li>
+					<li>Using this algorithm starting at J1 and visiting adjacent neighbors in alphabetic order, vertices of the graph are printed out in the order J7, J5, J4, J6, J2, J3, J1. Reversing this yields the topological sort J1, J3, J2, J6, J4, J5, J7.</li>
+				</SubList></li>
+				<li>Using a queue:<SubList>
+					<li>We can implement topological sort using a queue instead of recursion.</li>
+					<li>First visit all edges, counting the number of edges that lead to each vertex (i.e., count the number of prerequisites for each vertex). All vertices with no prerequisites are placed on the queue.</li>
+					<li>We then begin processing the queue. When vertex \(v\) is taken off of the queue, it is printed, and all neighbors of \(v\) (that is, all vertices that have \(v\) as a prerequisite) have their counts decremented by one.</li>
+					<li>Place on the queue any neighbor whose count becomes zero. If the queue becomes empty without printing all of the vertices, then the graph contains a cycle.</li>
+					<li><CodePre language="java">{`
 static void topsortBFS(Graph G) {   // Topological sort: Queue
 	Queue Q = new LQueue(G.nodeCount());
 	int[] Count = new int[G.nodeCount()];
@@ -692,19 +397,25 @@ static void topsortBFS(Graph G) {   // Topological sort: Queue
 		}
 	}
 }
-				`}</CodePre></li>
+					`}</CodePre></li>
+				</SubList></li>
+				<li>The inverse problem of determining whether a proposed node ordering is a valid topological sort of the graph can be solved with an algorithm nearly identical to the queue-based topological sort algorithm:<SubList>
+					<li>First process the graph to generate the count array with the incoming degree of each node.</li>
+					<li>Assuming that the proposed ordering has a length of \(n\), move through the nodes of the proposed ordering in order from the beginning. For each node \(v\), check that it's count is zero. Then decrement the count by one for each neighbor reachable by \(v\).</li>
+					<li>If all nodes have a count of zero when they are visited in this order, then this is a valid topological sort.</li>
+				</SubList></li>
 			</SubList></li>
 			<li>Shortest-Paths Problems:<SubList>
 				<li>On a road map, a road connecting two towns is typically labeled with its distance. We can model a road network as a directed graph whose edges are labeled with real numbers. These labels may be called <b>weights</b>, <b>costs</b>, or <b>distances</b>, depending on the application.</li>
 				<li><b>Single-source shortest paths problem:</b> Given a graph with weights (or distances) on the edges, and a designated start vertex \(s\), find the shortest path from \(s\) to every other vertex in the graph.</li>
 				<li>For unweighted graphs (or whenever all edges have the same cost), the single-source shortest paths can be found using a simple breadth-first search.</li>
-				<li>One approach to solving this problem when the edges have differing weights might be to process the vertices in a fixed order. </li>
+				<li>One approach to solving this problem when the edges have differing weights might be to process the vertices in a fixed order.</li>
 				<li>Label the vertices \(v_0\) to \(v_{"{n-1}"}\), with \(S=v_0\). When processing Vertex \(v_1\), we take the edge connecting \(v_0\) and \(v_1\). When processing \(v_2\), we consider the shortest distance from \(v_0\) to \(v_2\) and compare that to the shortest distance from \(v_0\) to \(v_1\) to \(v_2\).</li>
 				<li>When processing Vertex \(v_i\), we consider the shortest path for Vertices \(v_0\) through \(v_{"{i-1}"}\) that have already been processed.</li>
 				<li>A shortest path from \(S\) to \(X\) must have its next-to-last vertex in \(S\):</li>
-				<MathStuff>$${"d(S,X)=\\min_{U∈S} \\ (d(S,U)+\\textbf{w}(U,X))"}$$</MathStuff>
-				<li>In other words, the shortest path from \(S\) to \(X\) is the minimum over all paths that go from \(S\) to \(U\), then have an edge from \(U\) to \(X\), where \(U\) is some vertex in \(S\).</li>
-				<li>This solution is usually referred to as <b>Dijkstra's algorithm</b>. It works by maintaining a distance estimate \(D(X)\) for all vertices \(X\) in \(V\). The elements of \(D\) are initialized to the value <code>INFINITE</code>. Vertices are processed in order of distance from \(S\). Whenever a vertex \(v\) is processed, \(D(X)\) is updated for every neighbor \(X\) of \(V\).</li>
+				<MathStuff>{"d(S,X)=\\min_{U∈S} \\ (d(S,U)+\\textbf{w}(U,X))"}</MathStuff>
+				<li>In other words, the shortest path from \(S\) to \(X\) is the minimum over all paths that go from \(S\) to \(U\), then have an edge from \(U\) to \(X\).</li>
+				<li>This solution is usually referred to as <b>Dijkstra's algorithm</b>. It works by maintaining a distance estimate \({"\\textbf{D}"}(X)\) for all vertices \(X\) in \(V\). The elements of \({"\\textbf{D}"}\) are initialized to the value <code>INFINITE</code>. Vertices are processed in order of distance from \(S\). Whenever a vertex \(v\) is processed, \(D(X)\) is updated for every neighbor \(X\) of \(V\).</li>
 				<li><CodePre language="java">{`
 // Compute shortest path distances from s, store them in D
 static void Dijkstra(Graph G, int s, int[] D) {
@@ -742,11 +453,11 @@ static int minVertex(Graph G, int[] D) {
 	return v;
 }
 				`}</CodePre></li>
-				<li>Because this scan is done \(|V|\) times, and because each edge requires a constant-time update to \(D\), the total cost for this approach is \(\Theta(|V|^2+|E|)=\Theta(|V|^2)\), because \(|E|\)
-					is in \(O(|V|^2)\).</li>
-				<li>An alternative approach is to store unprocessed vertices in a min-heap ordered by their distance from the processed vertices. The next-closest vertex can be found in the heap in \(Θ(\log|V|)\) time.</li>
-				<li>Every time we modify \(D(X)\), we could reorder \(X\) in the heap by deleting and reinserting it. This is an example of a <b>priority queue with priority update</b>.</li>
+				<li>Because this scan is done \(|V|\) times, and because each edge requires a constant-time update to <code>D</code>, the total cost for this approach is \(\Theta(|V|^2+|E|)=\Theta(|V|^2)\), because \(|E|\) is in \(O(|V|^2)\).</li>
+				<li>An alternative approach is to store unprocessed vertices in a min-heap ordered by their distance from the processed vertices. The next-closest vertex can be found in the heap in \(\Theta(\log|V|)\) time.</li>
+				<li>Every time we modify \({"\\textbf{D}"}(X)\), we could reorder \(X\) in the heap by deleting and reinserting it. This is an example of a <b>priority queue with priority update</b>.</li>
 				<li>To implement true priority updating, we would need to store with each vertex its position within the heap so that we can remove its old distances whenever it is updated by processing new edges.</li>
+				<li>A simpler approach is to add the new (always smaller) distance value for a given vertex as a new record in the heap. The smallest value for a given vertex currently in the heap will be found first, and greater distance values found later will be ignored because the vertex will already be marked as <code>VISITED</code>.</li>
 				<li>The time complexity is \(\Theta((|V|+|E|)\log|E|)\), because for each edge that we process we must reorder the heap.</li>
 				<li>We use the <code>KVPair</code> class to store key-value pairs in the heap, with the edge weight as the key and the target vertex as the value.</li>
 				<li><CodePre language="java">{`
@@ -787,21 +498,22 @@ static void DijkstraPQ(Graph G, int s, int[] D) {
 				`}</CodePre></li>
 			</SubList></li>
 			<li><b>Minimal Cost Spanning Trees:</b><SubList>
-				<li>The <b>minimal-cost spanning tree (MCST)</b> problem takes as input a connected, undirected graph \(G\), where each edge has a distance or weight measure attached.</li>
-				<li className="Opened">The MCST is the graph containing the vertices of \(G\) along with the subset of \(G\)'s edges that:<ol>
+				<li>The <b>minimal-cost spanning tree (MCST)</b> problem takes as input a connected, undirected graph \({"\\textbf{G}"}\), where each edge has a distance or weight measure attached.</li>
+				<li>The MCST is the graph containing the vertices of \(G\) along with the subset of \(G\)'s edges that:<SubList opened>
 					<li>has minimum total cost as measured by summing the values for all of the edges in the subset</li>
 					<li>keeps the vertices connected</li>
-				</ol></li>
+				</SubList></li>
 				<li>The MCST is a free tree with \(|V|-1\) edges. The name "minimum-cost spanning tree" comes from the fact that the required set of edges forms a tree, it spans the vertices (i.e., it connects them together), and it has minimum cost.</li>
 				<li><figure>
-					<ImgComp src={"/articlePics/data_structures_and_algorithms_pics/32.PNG"}/>
+					<ImgComp src={"/articlePics/data_structures_and_algorithms_(part_2)_pics/10.PNG"}/>
 					<figcaption>All edges appear in the original graph. Those edges drawn with heavy lines indicate the subset making up the MCST. Note that edge \((C,F)\) could be replaced with edge \((D,F)\) to form a different MCST with equal cost.</figcaption>
 				</figure></li>
 			</SubList></li>
 			<li><b>Prim's algorithm:</b><SubList>
 				<li><b>Prim's Algorithm</b> is a greedy algorithm for computing the MCST of a graph.</li>
-				<li>Prim's algorithm is very simple. Start with any Vertex \(N\) in the graph, setting the MCST to be \(N\) initially. Pick the least-cost edge connected to \(N\).</li>
-				<li>This edge connects \(N\) to another vertex; call this \(M\). Add Vertex \(M\) and Edge \((N,M)\) to the MCST. Next, pick the least-cost edge coming from either \(N\) or \(M\) to any other vertex in the graph. Add this edge and the new vertex it reaches to the MCST.</li>
+				<li>Start with any vertex \(N\) in the graph, setting the MCST to be \(N\) initially. Pick the least-cost edge connected to \(N\).</li>
+				<li>This edge connects \(N\) to another vertex; call this \(M\). Add Vertex \(M\) and Edge \((N,M)\) to the MCST.</li>
+				<li>Next, pick the least-cost edge coming from either \(N\) or \(M\) to any other vertex in the graph. Add this edge and the new vertex it reaches to the MCST.</li>
 				<li>This process continues, at each step expanding the MCST by selecting the least-cost edge from a vertex currently in the MCST to a vertex not currently in the MCST.</li>
 				<li>Prim's algorithm is quite similar to Dijkstra's algorithm for finding the single-source shortest paths. The primary difference is that we are seeking not the next closest vertex to the start vertex, but rather the next closest vertex to any vertex currently in the MCST. Thus we replace the lines:</li>
 				<li><CodePre language="java">{`
@@ -838,7 +550,7 @@ void Prim(Graph G, int s, int[] D, int[] V) {
 	}
 }
 				`}</CodePre></li>
-				<li>Array <code>V[I]</code> stores the previously visited vertex that is closest to Vertex \(I\). This information lets us know which edge goes into the MCST when Vertex \(I\) is processed.</li>
+				<li>Array <code>V[I]</code> stores the previously visited vertex that is closest to vertex \(I\). This information lets us know which edge goes into the MCST when vertex \(I\) is processed.</li>
 				<li>Alternatively, we can implement Prim's algorithm using a <i>priority queue</i> to find the next closest vertex:</li>
 				<li><CodePre language="java">{`
 // Prims MCST algorithm: priority queue version
@@ -879,7 +591,7 @@ void PrimPQ(Graph G, int s, int[] D, int[] V) {
 			<li><b>Kruskal's Algorithm:</b><SubList>
 				<li>Kruskal's algorithm is also a simple, greedy algorithm.</li>
 				<li>First partition the set of vertices into \(|V|\) disjoint sets, each consisting of one vertex. Then process the edges in order of weight. An edge is added to the MCST, and two disjoint sets combine if the edge connects two vertices in different disjoint sets. This process is repeated until only one disjoint set remains.</li>
-				<li>The edges can be processed in order of weight by using a <i>min-heap</i>. This is generally faster than sorting the edges first, because in practice we need only visit a small fraction of the edges before completing the MCST.</li>
+				<li>The edges can be processed in order of weight by using a min-heap. This is generally faster than sorting the edges first, because in practice we need only visit a small fraction of the edges before completing the MCST.</li>
 				<li><CodePre language="java">{`
 void Kruskal(Graph G) {
 	ParPtrTree A = new ParPtrTree(G.nodeCount());   // Equivalence array
@@ -911,12 +623,13 @@ void Kruskal(Graph G) {
 				<li>More often the edges of the spanning tree are the shorter ones,and only about \(|V|\) edges must be processed. If so, the cost is often close to \(\Theta(|V|\log|E|)\) in the average case.</li>
 			</SubList></li>
 			<li>All-Pairs Shortest Paths:<SubList>
-				<li>Define a \(k\)-path from vertex v to vertex \(u\) to be any path whose intermediate vertices (aside from \(v\) and \(u\)) all have indices less than \(k\). A \(0\)-path is defined to be a direct edge from \(v\) to \(u\).</li>
+				<li>Define a \(k\)-path from vertex \(v\) to vertex \(u\) to be any path whose intermediate vertices (aside from \(v\) and \(u\)) all have indices less than \(k\). A 0-path is defined to be a direct edge from \(v\) to \(u\).</li>
 				<li><figure>
-					<ImgComp src={"/articlePics/data_structures_and_algorithms_pics/33.PNG"}/>
-					<figcaption>Path 1-3 is a \(0\)-path by definition. Path 3-0-2 is not a \(0\)-path, but it is a \(1\)-path (as well as a \(2\)-path, a \(3\)-path, and a \(4\)-path) because the largest intermediate vertex is 0. Path 1-3-2 is a \(4\)-path, but not a \(3\)-path because the intermediate vertex is 3. All paths in this graph are \(4\)-paths.</figcaption>
+					<ImgComp style={{width:"75%"}} src={"/articlePics/data_structures_and_algorithms_(part_2)_pics/11.PNG"}/>
+					<figcaption>Path 1-3 is a 0-path by definition.<br/>Path 3-0-2 is not a 0-path, but it is a 1-path (as well as a 2-path, a 3-path, and a 4-path) because the largest intermediate vertex is 0.<br/>Path 1-3-2 is a 4-path, but not a 3-path because the intermediate vertex is 3.<br/>All paths in this graph are 4-paths.</figcaption>
 				</figure></li>
-				<li>Define \(D_k(v,u)\) to be the length of the shortest \(k\)-path from vertex \(v\) to vertex \(u\). Assume that we already know the shortest \(k\)-path from \(v\) to \(u\). The shortest \((k+1)\)-path either goes through vertex \(k\) or it does not. If it does go through \(k\), then the best path is the best \(k\)-path from \(v\) to \(k\) followed by the best \(k\)-path from \(k\) to \(u\). Otherwise, we should keep the best \(k\)-path seen before.</li>
+				<li>Define \(D_k(v,u)\) to be the length of the shortest \(k\)-path from vertex \(v\) to vertex \(u\). Assume that we already know the shortest \(k\)-path from \(v\) to \(u\).</li>
+				<li>The shortest \((k+1)\)-path either goes through vertex \(k\) or it does not. If it does go through \(k\), then the best path is the best \(k\)-path from \(v\) to \(k\) followed by the best \(k\)-path from \(k\) to \(u\). Otherwise, we should keep the best \(k\)-path seen before.</li>
 				<li><b>Floyd's algorithm</b> simply checks all of the possibilities in a triple loop.</li>
 				<li><CodePre language="java">{`
 /** Compute all-pairs shortest paths */
@@ -944,4 +657,611 @@ static void Floyd(Graph G, int[][] D) {
 		</ul>
 	</div>
 </div>
+
+<h2>Spatial Data Structures</h2>
+<div className="content" data-source="20">
+	<div style={{width: "49%", marginLeft: "0.5%", float: "left"}}>
+		<ul>
+			<li>Spatial data structures:<SubList>
+				<li><b>Spatial attribute:</b> An attribute of a record that has a position in space, such as the coordinate. This is typically in two or more dimensions.</li>
+				<li>Multidimensional range queries are the defining feature of a spatial application.</li>
+				<li><b>Spatial data structure:</b> A data structure designed to support efficient processing when a spatial attribute is used as the key.</li>
+			</SubList></li>
+			<li><b>Sparse matrix:</b><SubList>
+				<li>Sometimes we need to represent a large, two-dimensional matrix where many of the elements have a value of zero.</li>
+				<li>A difficult situation arises when the vast majority of values stored in an \(n \times m\) matrix are zero, but there is no restriction on which positions are zero and which are non-zero. This is known as a <b>sparse matrix</b>.</li>
+				<li>Consider the following sparse matrix:</li>
+				<li><ImgComp style={{width: "40%"}} src={"/articlePics/data_structures_and_algorithms_(part_2)_pics/4.jpeg"}/></li>
+				<li>One approach is to implement the matrix as an orthogonal list.</li>
+				<li>The corresponding orthogonal array is shown in the Figure. Here we have a list of row headers, each of which contains a pointer to a list of matrix records.</li>
+				<li>A second list of column headers also contains pointers to matrix records.</li>
+				<li><ImgComp style={{width: "60%"}} src={"/articlePics/data_structures_and_algorithms_(part_2)_pics/5.png"}/></li>
+				<li>Each non-zero element stores its own value, its position within the matrix, and four pointers (for its neighbors).</li>
+				<li>Another representation for sparse matrices is sometimes called the <b>Yale representation</b>. Matlab uses a similar representation, with a primary difference being that the Matlab representation uses column-major order.</li>
+				<li>The Matlab representation stores the sparse matrix using three lists. The first is simply all of the non-zero element values, in column-major order. The second list stores the start position within the first list for each column. The third list stores the row positions for each of the corresponding non-zero values.</li>
+			</SubList></li>
+			<li><b>PR Quadtree:</b><SubList>
+				<li>In the <b>Point-Region quadtree</b> each node either has exactly four children or is a leaf (i.e. a full four-way branching tree).</li>
+				<li>The PR quadtree represents a collection of data points in two dimensions by decomposing the region containing the data points into four equal quadrants, subquadrants, and so on, until no leaf node contains more than a single point.</li>
+				<li>Each internal node of a PR quadtree represents a single split of the two-dimensional region.</li>
+				<li>The four quadrants of the region (or equivalently, the corresponding subtrees) are designated (in order) NW, NE, SW, and SE.</li>
+				<li><ImgComp src={"/articlePics/data_structures_and_algorithms_(part_2)_pics/1.png"}/></li>
+				<li>The PR quadtree is actually a trie.</li>
+				<li>Region search is easily performed with the PR quadtree:<SubList>
+					<li>To locate all points within radius \(r\) of query point \(Q\), begin at the root.</li>
+					<li>If the root is an empty leaf node, then no data points are found.</li>
+					<li>If the root is a leaf containing a data record, then the location of the data point is examined to determine if it falls within the circle.</li>
+					<li>If the root is an internal node, then the process is performed recursively, but only on those subtrees containing some part of the search circle.</li>
+				</SubList></li>
+			</SubList></li>
+		</ul>
+	</div>
+	<div style={{width: "49%", marginRight: "0.5%", float: "right"}}>
+		<ul>
+			<li><b>KD trees:</b><SubList>
+				<li>The <b>kd tree</b> is a modification to the BST that allows for efficient processing of multi-dimensional search keys.</li>
+				<li>The kd tree differs from the BST in that each level of the kd tree makes branching decisions based on a particular search key associated with that level, called the <b>discriminator</b>.</li>
+				<li>We define the discriminator at level \(i\) to be \(i \mod k\) for \(k\) dimensions:<SubList>
+					<li>For example, assume that we store data organized by \(xy\)-coordinates. </li>
+					<li>In this case, \(k\) is 2 (there are two coordinates), with the \(x\)-coordinate field arbitrarily designated key 0, and the \(y\)-coordinate field designated key 1.</li>
+					<li>At each level, the discriminator alternates between \(x\) and \(y\).</li>
+				</SubList></li>
+				<li><ImgComp src={"/articlePics/data_structures_and_algorithms_(part_2)_pics/2.png"}/></li>
+				<li>Deleting a node from a kd tree is similar to deleting from a BST, but slightly harder:<SubList>
+					<li>As with deleting from a BST, the first step is to find the node (call it \(N\)) to be deleted.</li>
+					<li>If \(N\) has no children, then \(N\) is replaced with a <code>NULL</code> pointer.</li>
+					<li>If \(N\) has children, the record stored in \(N\) should be replaced either by the record in \(N\)'s right subtree with the least value of \(N\)'s discriminator, or by the record in \(N\)'s left subtree with the greatest value for this discriminator.</li>
+					<li>Assume that \(N\) was at an odd level and therefore \(y\) is the discriminator. \(N\) could then be replaced by the record in its right subtree with the least \(y\) value (call it \(Y_{"{min}"}\)). The problem is that \(Y_{"{min}"}\) is not necessarily the leftmost node.</li>
+					<li>A modified search procedure to find the least \(y\) value in the left subtree must be used to find it instead.</li>
+					<li>A recursive call to the delete routine will then remove \(Y_{"{min}"}\) from the tree. Finally, \(Y_{"{min}"}\)'s record is substituted for the record in node \(N\).</li>
+				</SubList></li>
+			</SubList></li>
+			<li><b>Bintree:</b><SubList>
+				<li>The Bintree differs from the BST in two important ways:<SubList>
+					<li>First, being a data structure for multiple dimensions, at each level of the tree the Bintree makes branching decisions based on a particular search key associated with that level, called the <b>discriminator</b>. Its splitting decisions alternate among the key dimensions.</li>
+					<li>Another difference is that the Bintree uses what is known as <b>image-space decomposition</b>, and so is a form of trie.</li>
+					<li>An image-space decomposition splits the key space into equal halves, rather than splitting at the key value of the object being stored.</li>
+					<li>Splitting in one dimension at a time distinguishes the Bintree from the PR Quadtree, and using the image-space decomposition is what distinguishes the Bintree from the kd tree.</li>
+				</SubList></li>
+				<li><ImgComp src={"/articlePics/data_structures_and_algorithms_(part_2)_pics/3.jpeg"}/></li>
+			</SubList></li>
+			<li>Other spatial data structures:<SubList>
+				<li>The three-dimensional equivalent of the PR quadtree would be a tree with \(2^3\) or eight branches. Such a tree is called an <b>octree</b>.</li>
+				<li>We can use a four-way decomposition of space centered on the data points. The tree resulting from such a decomposition is called a <b>point quadtree</b>.</li>
+			</SubList></li>
+		</ul>
+	</div>
+</div>
+
+<h2>Searching</h2>
+<div className="content" data-source="20">
+	<ul style={{width: "49%", marginLeft: "0.5%", float: "left"}}>
+		<li><b>Sequential search:</b><SubList>
+			<li>If you want to find the position in an unsorted array of \(n\) integers that stores a particular value, you cannot really do better than simply looking through the array from the beginning and move toward the end until you find what you are looking for. This algorithm is called <b>sequential search</b>.</li>
+			<li>If you do find it, we call this a <b>successful search</b>.</li>
+			<li>If the value is not in the array, eventually you will reach the end. We will call this an <b>unsuccessful search</b>.</li>
+		</SubList></li>
+		<li><b>Binary search:</b><SubList>
+			<li>Binary search begins by examining the value in the middle position of the array; call this position \({"\\text{mid}"}\) and the corresponding value \(k_{"\\text{mid}"}\).</li>
+			<li>If \(K=k_{"\\text{mid}"}\), then processing can stop immediately.</li>
+			<li>if \(K \lt k_{"\\text{mid}"}\), then you know that the value \(K\) cannot appear in the array at any position greater than \({"\\text{mid}"}\). Thus, you can eliminate future search in the upper half of the array.</li>
+			<li>If \(K \gt k_{"\\text{mid}"}\), then you know that you can ignore all positions in the array less than \({"\\text{mid}"}\).</li>
+			<li>Binary search next looks at the middle position in that part of the array where value \(K\) may exist.</li>
+			<li>The value at this position again allows us to eliminate half of the remaining positions from consideration.</li>
+			<li>This process repeats until either the desired value is found, or there are no positions remaining in the array that might contain the value \(K\).</li>
+		</SubList></li>
+		<li>Analyzing search in unsorted lists:<SubList>
+			<li>Sequential search on an unsorted list requires \(\Theta(n)\) time in the worst, average, and best cases.</li>
+			<li>We have \(n+1\) distinct possible events: That \(K\) is in one of positions 0 to \(n-1\) in \({"\\textbf{P}"}\) (each position having its own probability), or that it is not in \({"\\textbf{P}"}\) at all.</li>
+			<MathStuff>{"\\textbf{P}(K \\not \\in \\textbf{L}) = 1-\\textbf{P}(K = \\textbf{L}[i])"}</MathStuff>
+			<li>Let \(p_i\) be the probability that \(K\) is in position \(i\) of \({"\\textbf{L}"}\) (indexed from 0 to \(n-1\)).</li>
+			<li>For any position \(i\) in the list, standard sequential search will look at \(i+1\) records. So we say that the cost when \(K\) is in position \(i\) is \(i+1\).</li>
+			<li>When \(K\) is not in \({"\\textbf{L}"}\), sequential search will require \(n\) comparisons. Let \(p_n\) be the probability that \(K\) is not in \({"\\textbf{L}"}\).</li>
+			<li>Then the average cost \({"\\textbf{T}"}(n)\) will be:</li>
+			<MathStuff>{"\\textbf{T}(n) = np_n + \\sum_{i=0}^{n-1} (i+1)p_i"}</MathStuff>
+			<li className="ownExplanation">There is \(p_n\) probability of searching all \(n\) slots, and \(p_i\) probability of doing \(i+1\) searches.</li>
+			<li>What happens to the equation if we assume all the \(p_i\)'s are equal (except \(p_n\))?</li>
+			<MathStuff>{"\\begin{align} \\textbf{T}(n) &= np_n + \\sum_{i=0}^{n-1} (i+1)p \\\\ &= np_n + p\\sum_{i=1}^n (i+1) \\\\ &= np_n + p\\frac{n(n+1)}{2} \\\\ &= np_n + \\frac{1-p_n}{n}\\frac{n(n+1)}{2} \\\\ &= \\frac{n+1+p_n(n-1)}{2}\\end{align}"}</MathStuff>
+		</SubList></li>
+		<li><b>Jump search:</b><SubList>
+			<li><b>Jump search:</b> The idea is to keep jumping by some fixed number of positions until a value is found that is bigger than search key \(K\), then do a sequential search over the subarray that is now known to contain the search key.</li>
+			<li>For some value \(j\), we check every \(j\)'th element in \({"\\textbf{L}"}\), that is, we check elements \({"\\textbf{L}"}[j]\), \({"\\textbf{L}"}[2j]\), and so on. So long as \(K\) is greater than the values we are checking, we continue on.</li>
+			<li>If we define \(m\) such that \(mj \le n \lt (m+1)j\), then the total cost of this algorithm is at most \(m+j-1\) 3-way comparisons.</li>
+			<li>They are 3-way because at each comparison of \(K\) with some \({"\\textbf{L}"}[i]\) we need to know if \(K\) is less than, equal to, or greater than \({"\\textbf{L}"}[i]\).</li>
+			<li>Therefore, the cost to run the algorithm on \(n\) items with a jump of size \(j\) is:</li>
+			<MathStuff>{"\\textbf{T}(n,j) = m + j - 1 = \\left\\lfloor \\frac{n}{j} \\right\\rfloor +j - 1"}</MathStuff>
+			<li>What is the best value that we can pick for \(j\)? We want to minimize the cost:</li>
+			<MathStuff>{"\\min_{1 \\le j \\le n} \\left \\{ \\left\\lfloor \\frac{n}{j} \\right\\rfloor +j - 1 \\right \\}"}</MathStuff>
+			<li>Take the derivative and solve for \(f'(j)=0\) to find the minimum, which is \(j={"\\sqrt{n}"}\). In this case, the worst case cost will be roughly \(2{"\\sqrt{n}"}\).</li>
+		</SubList></li>
+		<li>Cost of binary search in the worst case:<SubList>
+			<li>We can reason that we look at one element (for a cost of one), and then repeat the process on half of the array.</li>
+			<li>This would give us a recurrence that looks like \(f(n)=1+f(n/2)\).</li>
+			<li>If we want to be more precise about our worst case, we should notice that we are doing a little more than cutting the array in half. We never look again at a particular position that we test.</li>
+			<li>We can use the floor function, to get an exact worst case model as follows:</li>
+			<MathStuff>f(n) = {"\\begin{cases} 1 & n = 1 \\\\ f(\\lfloor n/2 \\rfloor) + 1 & n \\gt 1 \\end{cases}"}</MathStuff>
+			<li>Since \(n/2 \ge \lfloor n/2 \rfloor\), and since \(f(n)\) is assumed to be non-decreasing, we can estimate the upper bound with the simplification \(f(n)=f(n/2)+1\).</li>
+			<li>We can prove with induction that \(f(n) = \log n + 1\).</li>
+			<MathStuff>{"\\begin{align} f(n/2)+1 &= (\\log(n/2) +1)+1 \\\\ &= (\\log(n)-1 +1)+1 \\\\ &= \\log(n)+1 \\\\ &= f(n) \\end{align}"}</MathStuff>
+		</SubList></li>
+		<li>Cost of binary search in the average case:<SubList>
+			<li>Assumptions: \(X\) is in \({"\\textbf{L}"}\), \(X\) is equally likely to be in any position and \(n = 2^k - 1\) for some non-negative integer \(k\).</li>
+			<li>There are \(2^i\) chances to hit in \(i\) pieces.</li>
+			<li className="ownExplanation">One slot can be reached in one probe, two slots can be reached in two probes, four slots can be reached in three probes, and so on. There are at max \(\log n\) probes.</li>
+			<li>The cost is:</li>
+			<MathStuff>{"\\begin{gather}\\frac{1(1) + 2(2) + 3(4) + \\ldots + \\log n \\ 2^{(\\log n) -1}}{n} \\\\ =\\frac{1}{n} \\sum^{\\log n}_{i=1}i 2^{i-1} \\\\ \\approx \\log n - 1\\end{gather}"}</MathStuff>
+			<li>So the average cost is only about one or two comparisons less than the worst cost.</li>
+		</SubList></li>
+	</ul>
+	<div style={{width: "49%", marginRight: "0.5%", float: "right"}}>
+		<h3>Search Structures</h3>
+		<ul>
+			<li><b>Self-organizing list:</b><SubList>
+				<li><b>Self-organizing list:</b> A list that, over a series of search operations, will make use of some heuristic to re-order its elements in an effort to improve search times.</li>
+				<li>There are three traditional heuristics for managing self-organizing lists: Frequency count, move to front and transpose.</li>
+				<li>Frequency count:<SubList>
+					<li>The most obvious way to keep a list ordered by frequency would be to store a count of accesses to each record and always maintain records in this order.</li>
+					<li>Whenever a record is accessed, it might move toward the front of the list if its number of accesses becomes greater than a record preceding it.</li>
+					<li>Besides requiring space for the access counts, count does not react well to changing frequency of access over time.</li>
+					<li>Once a record has been accessed a large number of times under the frequency count system, it will remain near the front of the list regardless of further access history.</li>
+				</SubList></li>
+				<li>Move to front:<SubList>
+					<li>Bring a record to the front of the list when it is found, pushing all the other records back one position.</li>
+					<li>This heuristic is easy to implement if the records are stored using a linked list.</li>
+					<li>When records are stored in an array, bringing a record forward from near the end of the array will result in a large number of records changing position.</li>
+				</SubList></li>
+				<li>Transpose:<SubList>
+					<li>Swap any record found with the record immediately preceding it in the list.</li>
+					<li>Frequently used records will, over time, move to the front of the list. Records that were once frequently accessed but are no longer used will slowly drift toward the back.</li>
+					<li>Consider the case where the last record of the list (call it \(X\)) is accessed. This record is then swapped with the next-to-last record (call it \(Y\)), making \(Y\) the last record. If \(Y\) is now accessed, it swaps with \(X\).</li>
+					<li>A repeated series of accesses alternating between \(X\) and \(Y\) will continually search to the end of the list, because neither record will ever make progress toward the front. However, such pathological cases are unusual in practice.</li>
+					<li>A variation on transpose would be to move the accessed record forward in the list by some fixed number of steps.</li>
+				</SubList></li>
+			</SubList></li>
+			<li><b>Bit vectors:</b><SubList>
+				<li><b>Bit vectors</b> or a <b>bitmap</b> is an array that stores a single bit at each position.</li>
+				<li>Typically these bits represent Boolean variables associated with a collection of objects, such that the \(i\)th bit is the Boolean value for the \(i\)th object.</li>
+			</SubList></li>
+			<li><b>AVL tree:</b><SubList>
+				<li>The AVL tree (named for its inventors Adelson-Velskii and Landis) should be viewed as a BST with the following additional property: For every node, the heights of its left and right subtrees differ by at most 1.</li>
+				<li>As long as the tree maintains this property, if the tree contains \(n\) nodes, then it has a depth of at most \(O(\log n)\).</li>
+				<li>The key to making the AVL tree work is to alter the insert and delete routines so as to maintain the balance property.</li>
+				<li>After inserting a new node, nodes in the new tree can only be unbalanced by a difference of at most 2 in the subtrees.</li>
+				<li>For the bottommost unbalanced node, call it \(S\), there are 4 cases:<SubList opened numbered>
+					<li>The extra node is in the left child of the left child of \(S\).</li>
+					<li>The extra node is in the right child of the left child of \(S\).</li>
+					<li>The extra node is in the left child of the right child of \(S\).</li>
+					<li>The extra node is in the right child of the right child of \(S\).</li>
+				</SubList></li>
+				<li>Cases 1 and 4 are symmetrical, as are cases 2 and 3.</li>
+				<li>It turns out that we can do this using a series of local operations known as <b>rotations</b>. Cases 1 and 4 can be fixed using a <b>single rotation</b>. Cases 2 and 3 can be fixed using a <b>double rotation</b>.</li>
+				<li><figure>
+					<ImgComp style={{width:"80%"}} src={"/articlePics/data_structures_and_algorithms_(part_2)_pics/12.png"}/>
+					<figcaption>A single rotation in an AVL tree.</figcaption>
+				</figure></li>
+				<li><figure>
+					<ImgComp style={{width:"80%"}} src={"/articlePics/data_structures_and_algorithms_(part_2)_pics/13.png"}/>
+					<figcaption>A double rotation in an AVL tree.</figcaption>
+				</figure></li>
+			</SubList></li>
+			<li><b>Splay tree:</b><SubList>
+				<li>Like the AVL tree, the splay tree is not actually a distinct data structure, but rather reimplements the BST insert, delete, and search methods to improve the performance of a BST.</li>
+				<li>The splay tree access rules guarantee that a series of \(m\) operations will take \(O(m \log n)\) time for a tree of \(n\) nodes whenever \(m \ge n\), for an average cost of \(O(\log n)\) per access operation.</li>
+				<li>Unlike the AVL tree, the splay tree is not guaranteed to be height balanced. What is guaranteed is that the total cost of the entire series of accesses will be cheap.</li>
+				<li>The splay tree access functions operate in a manner reminiscent of the move-to-front rule for self-organizing lists, and of the path compression technique for managing a series of Union/Find operations.</li>
+				<li>These access functions tend to make the tree more balanced, but an individual access will not necessarily result in a more balanced tree.</li>
+				<li>Whenever a node \(S\) is accessed (e.g., when \(S\) is inserted, deleted, or is the goal of a search), the splay tree performs a process called <b>splaying</b>.</li>
+				<li>Splaying moves \(S\) to the root of the BST. When \(S\) is being deleted, splaying moves the parent of \(S\) to the root.</li>
+				<li>As in the AVL tree, a splay of node \(S\) consists of a series of rotations. A rotation moves \(S\) higher in the tree by adjusting its position with respect to its parent and grandparent.</li>
+				<li>A single rotation is performed only if \(S\) is a child of the root node.</li>
+				<li>It basically switches \(S\) with its parent in a way that retains the BST property.</li>
+				<li><figure>
+					<ImgComp style={{width:"80%"}} src={"/articlePics/data_structures_and_algorithms_(part_2)_pics/14.png"}/>
+					<figcaption>Splay tree single rotation.</figcaption>
+				</figure></li>
+				<li>Unlike the AVL tree, the splay tree requires two types of double rotation.</li>
+				<li>The first double rotation is called a <b>zigzag rotation</b>:<SubList>
+					<li>It takes place when either of the following two conditions are met:<SubList opened>
+						<li>\(S\) is the left child of \(P\), and \(P\) is the right child of \(G\).</li>
+						<li>\(S\) is the right child of \(P\), and \(P\) is the left child of \(G\).</li>
+					</SubList></li>
+					<li><ImgComp style={{width:"80%"}} src={"/articlePics/data_structures_and_algorithms_(part_2)_pics/15.png"}/></li>
+				</SubList></li>
+				<li>The other double rotation is known as a <b>zigzig rotation</b>:<SubList>
+					<li>A zigzig rotation takes place when either of the following two conditions are met:<SubList opened>
+						<li>\(S\) is the left child of \(P\), and \(P\) is the left child of \(G\).</li>
+						<li>\(S\) is the right child of \(P\), and \(P\) is the right child of \(G\).</li>
+					</SubList></li>
+					<li><ImgComp style={{width:"80%"}} src={"/articlePics/data_structures_and_algorithms_(part_2)_pics/16.png"}/></li>
+				</SubList></li>
+			</SubList></li>
+			<li><b>Red-black tree:</b><SubList>
+				<li>A node is either red or black.</li>
+				<li>The root is black.</li>
+				<li>A red node's child nodes are black.</li>
+				<li>each path from the root to an empty subtree contain the same number of black nodes.</li>
+			</SubList></li>
+			<li><b>Skip list:</b><SubList>
+				<li>The AVL tree and the splay tree are also guaranteed to provide good performance, but at the cost of added complexity as compared to the BST.</li>
+				<li>The skip list is not guaranteed to provide good performance, but it will provide good performance with extremely high probability.</li>
+				<li>A skip list can be viewed as a sorted linked list with some extra pointers</li>
+				<li><ImgComp style={{width:"90%"}} src={"/articlePics/data_structures_and_algorithms_(part_2)_pics/17.jpeg"}/></li>
+				<li>We give a third pointer to every fourth node, give a fourth pointer to every eighth node, and so on—until we reach the ultimate of \(\log n\) pointers in the first and middle nodes for a list of \(n\) nodes.</li>
+				<li>To search, start with the bottom row of pointers, going as far as possible and skipping many nodes at a time. Then, shift up to shorter and shorter steps as required. With this arrangement, the worst-case number of accesses is \(\Theta(\log n)\).</li>
+				<li>The ideal skip list is organized so that (if the head node is not counted) half of the nodes have only one pointer, one quarter have two, one eighth have three, and so on.</li>
+				<li><CodePre language="java">{`
+class SkipNode<K extends Comparable<K>, E> {
+	private KVPair<K, E> rec;
+	private SkipNode<K, E>[] forward;
+
+	public E element() {
+		return rec.value();
+	}
+
+	public K key() {
+		return rec.key();
+	}
+
+	@SuppressWarnings("unchecked")
+	public SkipNode(K key, E elem, int level) {
+		rec = new KVPair<K, E>(key, elem);
+		forward = new SkipNode[level + 1];
+		for (int i = 0; i < level; i++)
+			forward[i] = null;
+	}
+
+	public String toString() {
+		return rec.toString();
+	}
+}
+
+class SkipList<K extends Comparable<K>, E> implements Dictionary<K, E> {
+  private SkipNode<K, E> head;
+  private int level;
+  private int size;
+  static private Random ran = new Random(); // Hold the Random class object
+
+  public SkipList() {
+    head = new SkipNode<K, E>(null, null, 0);
+    level = -1;
+    size = 0;
+  }
+	
+	// Return the (first) matching matching element if one exists, null otherwise
+  public E find(K key) {
+    SkipNode<K, E> x = head; // Dummy header node
+    for (int i = level; i >= 0; i--) // For each level...
+      while ((x.forward[i] != null) && (x.forward[i].key().compareTo(key) < 0)) // go forward
+        x = x.forward[i]; // Go one last step
+    x = x.forward[0]; // Move to actual record, if it exists
+    if ((x != null) && (x.key().compareTo(key) == 0)) return x.element(); // Got it
+    else return null; // Its not there
+  }
+	
+	// Pick a level using a geometric distribution
+  int randomLevel() {
+    int lev;
+    for (lev = 0; Math.abs(ran.nextInt()) % 2 == 0; lev++) // ran is random generator
+      ; // Do nothing
+    return lev;
+  }
+
+	 /** Insert a key, element pair into the skip list */
+  public void insert(K key, E elem) {
+    int newLevel = randomLevel(); // New node's level
+    if (newLevel > level) // If new node is deeper
+      adjustHead(newLevel); // adjust the header
+    // Track end of level
+    SkipNode<K, E>[] update = new SkipNode[level + 1];
+    SkipNode<K, E> x = head; // Start at header node
+    for (int i = level; i >= 0; i--) { // Find insert position
+      while ((x.forward[i] != null) && (x.forward[i].key().compareTo(key) < 0))
+        x = x.forward[i];
+      update[i] = x; // Track end at level i
+    }
+    x = new SkipNode<K, E>(key, elem, newLevel);
+    for (int i = 0; i <= newLevel; i++) { // Splice into list
+      x.forward[i] = update[i].forward[i]; // Who x points to
+      update[i].forward[i] = x; // Who points to x
+    }
+    size++; // Increment dictionary size
+  }
+	
+	private void adjustHead(int newLevel) {
+    SkipNode<K, E> temp = head;
+    head = new SkipNode<K, E>(null, null, newLevel);
+    for (int i = 0; i <= level; i++)
+      head.forward[i] = temp.forward[i];
+    level = newLevel;
+  }
+}
+				`}</CodePre></li>
+				<li>Whenever inserting a node, we assign it a level (i.e., some number of pointers). The assignment is random, using a geometric distribution yielding a 50% probability that the node will have one pointer, a 25% probability that it will have two, and so on.</li>
+				<li>Once the proper level for the node has been determined, the next step is to find where the node should be inserted and link it in as appropriate at all of its levels.</li>
+				<li>Maintaining such balance would be expensive during the normal process of insertions and deletions. The key to skip lists is that we do not worry about any of this.</li>
+			</SubList></li>
+		</ul>
+	</div>
+</div>
+
+<h2>Dynamic Programming</h2>
+<div className="content" data-source="20">
+	<ul style={{width: "49%", marginLeft: "0.5%", float: "left"}}>
+		<li><b>Dynamic programming:</b><SubList>
+			<li><b>Dynamic programming</b> is an algorithm design technique that can improve the efficiency of any inherently recursive algorithm that repeatedly re-solves the same subproblems.</li>
+			<li>Using dynamic programming requires two steps:<SubList opened>
+				<li>You find a recursive solution to a problem where subproblems are redundantly solved many times.</li>
+				<li>Optimize the recursive algorithm to eliminate re-solving subproblems. The resulting algorithm may be recursive or iterative. The iterative form is commonly referred to by the term dynamic programming.</li>
+			</SubList></li>
+		</SubList></li>
+		<li>Computing fibonacci numbers:<SubList>
+			<li>The Fibonacci sequence is typically defined as follows:</li>
+			<MathStuff>{"f(n) = f(n+1) + f(n-2) \\text{ for } n \\ge 2; f(0) = f(1) = 1"}</MathStuff>
+			<li>Here is the "natural" recursive implementation for computing the \(n\)'th Fibonacci number.</li>
+			<li><CodePre language="java">{`
+/* Recursively generate and return the n'th Fibonacci number */
+static long fibr(int n) {
+  // fibr(91) is the largest value that fits in a long
+  if ((n <= 0) || (n > 91)) { return -1; }
+  if ((n == 1) || (n == 2)) { return 1; }    // Base case
+  return fibr(n-1) + fibr(n-2);      // Recursive call
+}
+			`}</CodePre></li>
+			<li>The growth rate is exponential: \(f(n) ≈ (1.618)^n\).</li>
+			<li className="ownExplanation">We can store the values of the subproblems so we don't have to recalculate them again, this technique is called <b>memoization</b>.</li>
+			<li><CodePre language="java">{`
+static int fibrt(int n) {
+  // Assume Values has at least n slots, and all
+  // slots are initialized to 0
+  if ((n <= 0) || (n > 91)) { return -1; }
+  if (n <= 2) { return 1; }             // Base case
+  if (Values[n] == 0) {
+    Values[n] = fibrt(n-1) + fibrt(n-2);
+  }
+  return Values[n];
+}
+			`}</CodePre></li>
+			<li>A second technique is called <b>tabulation</b>:<SubList>
+				<li>The dependency graph must be analyzed to infer an alternative computation order for the subproblems. The only restriction is that a subproblem can only be computed when the subproblems it depends on have been computed.</li>
+				<li>In addition, the value of each subproblem must be stored in the table.</li>
+				<li>In the case of computing a value in the Fibonacci series, we reverse the order to calculate the series from the starting point, and implement this by a simple loop.</li>
+				<li>Unfortunately, since it does not have any similarity to the original recursive algorithm, there is no mechanical way to get from the original recursive form to the dynamic programming form.</li>
+			</SubList></li>
+			<li className="ownExplanation">Memoization is top-down while tabulation is bottom-up.</li>
+			<li>An additional optimization can be made. Of course, we didn't actually need to use a table storing all of the values, since future computations do not need access to all prior subproblems.</li>
+			<li>Instead, we could build the value by working from 0 and 1 up to \(n\) rather than backwards from \(n\) down to 0 and 1.</li>
+			<li><CodePre language="java">{`
+/* Iteratively generate and return the n'th Fibonacci number */
+static long fibi(int n) {
+  // fibr(91) is the largest value that fits in a long
+  if ((n <= 0) || (n > 91)) { return -1; }
+  long curr, prev, past;
+  if ((n == 1) || (n == 2)) { return 1; }
+  curr = prev = 1;     // curr holds current Fib value
+  for (int i=3; i<=n; i++) { // Compute next value
+    past = prev;             // past holds fibi(i-2)
+    prev = curr;             // prev holds fibi(i-1)
+    curr = past + prev;      // curr now holds fibi(i)
+  }
+  return curr;
+}
+			`}</CodePre></li>
+		</SubList></li>
+		<li>The knapsack problem:<SubList>
+			<li>Assume that we have a knapsack with a certain amount of space that we will define using integer value \(K\). We also have \(n\) items each with a certain size such that that item \(i\) has integer size \(k_i\).</li>
+			<li>The problem is to find a subset of the \(n\) items whose sizes exactly sum to \(K\), if one exists. We can define the problem more formally as: Find \({"S ⊂ \\{1,2,\\ldots,n\\}"}\) such that:</li>
+			<MathStuff>{"\\sum_{i \\in S} k_i = K"}</MathStuff>
+			<li>We can say that \(P(n,K)\) has a solution if and only if there exists a solution for either \(P(n-1,K)\) or \(P(n-1,K-k_n)\). We can solve \(P(n,K)\) only if we can solve one of the sub problems where we use or do not use the \(n\)th item.</li>
+			<li><CodePre language="plaintext">{`
+if P(n-1,K) has a solution,
+	then P(n,K) has a solution
+	else if P(n-1,K-kn) has a solution
+		then P(n,K) has a solution
+		else P(n,K) has no solution.
+			`}</CodePre></li>
+			<li>Although this algorithm is correct, it naturally leads to a cost expressed by the recurrence relation \(T(n)=2T(n-1)+c=\Theta (2n)\). That can be pretty expensive!</li>
+			<li>There are two approaches to actually solving the problem: memoization and tabulation.</li>
+			<li><u>Memoization:</u> to start with our problem of size \(P(n,K)\) and make recursive calls to solve the subproblems, each time checking the array to see if a subproblem has been solved, and filling in the corresponding cell in the array whenever we get a new subproblem solution.</li>
+		</SubList></li>
+	</ul>
+	<ul style={{width: "49%", marginRight: "0.5%", float: "right"}}>
+		<li>Chained matrix multiplication:<SubList>
+			<li>given a sequences of matrices, our goal is to find the most efficient wat to multiply these matrices.</li>
+			<li>It matters whether we multiply \(A \times B\) or \(B \times A\).</li>
+			<li>Suppose there are \(n\) matrices labeled 1 to \(n\). we can use a table of size \(n \times n\).</li>
+			<li>In this table, the entry at \([i,j]\) is the cost for the best solution of multiplying matrices \(i\) to \(j\).</li>
+			<li><ImgComp style={{width:"70%"}} src={"/articlePics/data_structures_and_algorithms_(part_2)_pics/10.jpeg"}/></li>
+			<li>So, the upper left corner (entry \([1,n]\)) is the full solution.</li>
+			<li>Entries on the main diagonal are simply a single matrix (no multiplication).</li>
+		</SubList></li>
+		<li>0/1 Knapsack Problem:<SubList>
+			<li>The 0/1 Knapsack problem can be defined in terms of a thief who enters the place they will rob with a single knapsack to carry away their spoils.</li>
+			<li>This knapsack has a specified limit on the weight it can support without tearing. This weight capacity will be refered to as CAP.</li>
+			<li>After cracking open a safe, the theif finds that the safe contains N items, each with a specific weight and value (both are integers).</li>
+			<li>The thief's goal is to maximize the total value of set of items they take without going over the weight limit, CAP.</li>
+			<li>The "0/1" binary qualifier in the name of this problem denotes that each item must be entirely accepted or rejected, that is, the theif can't subdivide an item.</li>
+			<TableLI>
+				<thead>
+					<tr><th>Symbol</th><th>Definition</th></tr>
+				</thead>
+				<tbody>
+					<tr><td>N</td><td>the number of items in the safe</td></tr>
+					<tr><td>CAP</td><td>the weight capacity of the knapsack</td></tr>
+					<tr><td>WT(i)</td><td>the weight of the \(i\)th item</td></tr>
+					<tr><td>VALUE(i)</td><td>the value of the \(i\)th item</td></tr>
+					<tr><td>V(i, c)</td><td>\(i \le n, c \le \text{"{cap}"}\) denotes the total value of the optimal solution to a version of the problem in which c is the capacity of the knapsack and only items \(1, 2, 3, \ldots , i\) are considered.</td></tr>
+				</tbody>
+			</TableLI>
+			<li>To create a solution for this problem, it would be best to start simple. Consider the how \(V(i, c)\) can be defined when \(i = 1\). In this case, we are asking for the total value of an optimal solution when only the first item is involved and the knapsack has a capacity of \(c\). \(V(1, c) = \operatorname{"{VALUE}"}(i)\) if \(\operatorname{"{WT}"}(i) \le c\) and \(V(1, c) = 0\) otherwise.</li>
+			<li>Another simple case to consider would be if \(i = 0\) or \(c = 0\). If \(i = 0\), there are no items to consider so \(V(0, c) = 0\). If \(c = 0\), the knapsack can not hold anything else, so \(V(i ,0) = 0\).</li>
+			<li>If \({"\\operatorname{WT}(i)"} \gt c\) then \(V(i, c)\) must be the same as \(V(i-1, c)\) since the knapsack is capacity is not large enough to contain the item \(i\).</li>
+			<li>Otherwise to determine whether of not the solution contains item \(i\), we must compare:<SubList>
+				<li>The optimal solution to the capaciy \(c\) version when only items \(1,2,3, \ldots, i-1\) are used, that is, \(V(i-1, c)\)</li>
+				<li>The optimal solution to \({"V(i-1, c- \\operatorname{WT}(i)) + \\operatorname{VALUE}(i)"}\).</li>
+				<li>If an item i is included in the knapsack, the remaining capacity of the knapsack drops by \(\operatorname{"WT"}(i)\). So ({"V(i-1, c- \\operatorname{WT}(i))"}\) represents the best vale that can be obtained from the remaining items with this new capacity.</li>
+				<li>Since we are including item i in the knapsack, \(\operatorname{"VALUE"}(i)\) is added. hence \({"V(i-1, c- \\operatorname{WT}(i)) + \\operatorname{VALUE}(i)"}\) represents the optimal value if the ith item is taken.</li>
+				<li>Whichever is the larger of above two represents the solution to the capacity \(c\) problem for items chosen from among \(1, 2, 3, \dots, i\).</li>
+				<li>If the two are equal, then don't include the item in the knapsack.</li>
+			</SubList></li>
+			<li>An implementation of this algorithm:</li>
+			<li><CodePre language="java">{`
+//this function behaves like the V(i,c) method defined previously
+//in this chapter
+int V(int i, int c){
+	//base cases
+	if(i == 0 || c == 0){
+		return 0;
+	}
+	//item does not fit case
+	if(wt(i) > c){
+		return V(i-1, c);
+	}
+	//compare best case if item i is taken or left behind.
+	//and return the larger number.
+	int B = V(i-1, c-wt(i)) + value(i);
+	int A = V(i-1, c);
+	if(A >= B){
+		return A;
+	}
+	else{
+		return B;
+	}
+}
+			`}</CodePre></li>
+			<li>This algorithm is of exponential efficiency \(O(2^N)\), where \(N\) is the number of items.</li>
+			<li>The value returned by our \(V(i, c)\) are simple integers,that could easily be stored in a two dimensional array.</li>
+			<li>One important thing to notice is, although this algorithm finds the optimal value, it does not find the item set that produced the value.</li>
+			<li>The optimal solution set can be recovered from a complete table of optimal values for the set of items.</li>
+			<li>Recall that the two function calls are \(V(i-1, c)\) and \({"V(i-1, c- \\operatorname{WT}(i))"}\). As it turns out, each row in the table only depends on the row above it. With this fact known, it is simple to see that the table can be filled in with an iterative approach.</li>
+			<li><CodePre language="java">{`
+int v(int n, int cap){
+	int table[][] = new int[n+1][cap+1];
+	for(int i = 0; i <= n; i++){
+		for(int j = 0; j <= cap; j++){
+			//base case
+			if(i == 0 || j == 0)
+				table[i][j] = 0;
+			else{
+				//item wont fit case
+				if(wt(i) > j)
+					table[i][j] = table[i-1][j];
+				else{
+					int A,B;
+					B = table[i-1][j-wt(i)] + value(i);
+					A = table[i-1][j];
+					if(A >= B)
+						table[i][j] = A;
+					else
+						table[i][j] = B;
+				}
+			}
+		}
+	}
+	//some code could go here to recover the solution set.
+
+	//return the optimal value
+	return table[i][j];
+}
+			`}</CodePre></li>
+			<li>The efficency of the algorithm above is \(O(N * \operatorname{"{CAP}"})\), because each cell in the table requires constant work to fill.</li>
+		</SubList></li>
+		<li>Edit distance:<SubList>
+			<li><b>Edit Distance</b> is a measure for the minimum number of changes required to convert one string into another.</li>
+			<TableLI>
+				<thead>
+					<tr><th>Symbol</th><th>Definition</th></tr>
+				</thead>
+				<tbody>
+					<tr><td>\(S\)</td><td>starting string</td></tr>
+					<tr><td>\(T\)</td><td>ending string</td></tr>
+					<tr><td>\(m\)</td><td>the length of S</td></tr>
+					<tr><td>\(n\)</td><td>the length of T</td></tr>
+					<tr><td>\(S(i)\)</td><td>the \(i\)th character in \(S\)</td></tr>
+					<tr><td>\(T(j)\)</td><td>the \(j\)th character at \(T\)</td></tr>
+					<tr><td>\(ED(S, T, i, j)\)</td><td>\(i:[1..m], j:[1..n]\), the minimum number of changes when comparing \(S(i)\) with \(T(j)\).</td></tr>
+				</tbody>
+			</TableLI>
+			<li>The recursive algorithm is as follows:<SubList>
+				<li>Base case check:<SubList>
+					<li>The base case for this algorithm is simply when you run out of characters to compare in either \(S\) or \(T\).</li>
+					<li>If you run out of characters for both, the number that is returned will be zero.</li>
+					<li>If you run out of characters of one but not the other, the value returned is the remaining number of characters in the non-zero length string.</li>
+				</SubList></li>
+				<li>Check to see if <code>S(i) == T(j)</code>.</li>
+				<li>If they match, recurse to <code>ED(S, T, i-1, j-1)</code>.</li>
+				<li>If they don't match, three recursive calls are necessary. In order:<SubList opened numbered>
+					<li><u>Substitution:</u> recurse to <code>ED(S, T, i-1, j-1)</code> and add one.</li>
+					<li><u>Insertion:</u> recurse to <code>ED(S, T, i, j-1)</code> and add one.</li>
+					<li><u>Deletion:</u> recurse to <code>ED(S,T,i-1,j)</code> and add one.</li>
+				</SubList></li>
+				<li>Find the operation that yields the minimum number of changes (operation counts). If there is a tie, follow the order of precedence established by the ordering of recursive calls: Substition, Insertion, Deletion.</li>
+			</SubList></li>
+			<li><CodePre language="java">{`
+int editDistance(String S, String T, int i, int j){
+	//base cases
+	if (i === 0)
+		return j;
+	if (j === 0)
+		return i;
+
+	//recursive call, start with match check
+	if (S.charAt(i) == T.charAt(j))
+		return editDistance(S, T, i-1, j-1);
+	else{ //no match, recurse three times
+		int sub = editDistance(S, T, i-1, j-1) + 1;
+		int ins = editDistance(S, T, i, j-1) + 1;
+		int del = editDistance(S, T, i-1, j) + 1;
+		return Math.min(Math.min(sub, ins), del);
+	}
+}
+			`}</CodePre></li>
+			<li>At any given character comparision, there might be as many as three recursive calls, so \(O(3^{"{\\max(m,n)}"})\).</li>
+			<li>The following is the same Edit Distance algorithm as above, but implemented dynamically.</li>
+			<li><CodePre language="java">{`
+int editDistance(String start, String end){
+	int startMax = start.length;
+	int endMax = end.length;
+	int array[][] = new int[startMax + 1][endMax + 1]
+
+	//initialize all array values to zero
+	for (int i = 0; i <= startMax; i++) {
+		for (int j = 0; j <= endMax; j++) {
+			array[i][j] = 0;
+		}
+	}
+
+	//initialize the base cases
+	for (int i = 1; i <= startMax; i++) {
+		array[i][0] = i;
+	}
+
+	for (int j = 1; j <= endMax; j++) {
+		array[0][j] = j;
+	}
+
+	//fill in the grid
+	for (int i = 1; i <= startMax; i++) {
+		for(int j = 1; j <= endMax; j++) {
+			//match check
+			if (start.charAt(i-1) == end.charAt(j-1))
+				array[i][j] = array[i-1][j-1];
+			else {
+				int sub = array[i-1][j-1] + 1;
+				int ins = array[i][j-1] + 1;
+				int del = array[i-1][j] + 1;
+
+				array[i][j] = Math.min(Math.min(sub, ins), del);
+			}
+		}
+	}
+
+	return array[startMax][endMax];
+}
+			`}</CodePre></li>
+			<li>The efficiency of this dynamic approach is \(O(m*n)\).</li>
+		</SubList></li>
+	</ul>
+</div>
+
+
 </>

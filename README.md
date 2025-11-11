@@ -46,10 +46,9 @@ This is my first big project that uses React.js and Redux.
 
 Versioning is done using "npm version [new-version] --git-tag-version false".
 
-update 23.6:
-- Added content to `data_structures_and_algorithms.tsx`.
+update 23.6 - 23.7:
+- Added content to `data_structures_and_algorithms.tsx` and `operating_systems.tsx`.
 - Changed and edited `data_structures_and_algorithms_(part_2).tsx` (renamed from `useful_information_for_algorithm.tsx`).
-- Edited `operating_systems.tsx`.
 
 update 23.5:
 - Added `SecondOrderDifferentialEquations.tsx`.
