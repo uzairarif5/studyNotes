@@ -145,6 +145,9 @@ class Article extends React.Component<ArticlePropsType> {
   }
 
   setWholeContent(){
+    let pathName = `../articlePages${this.pathnameToUse}.tsx`;
+    let pathName2 = `../privatePages${this.pathnameToUse}.tsx`;
+
     const evalRes = (val: any) => {
       console.log("Module found!");
       this.setState({
@@ -162,9 +165,6 @@ class Article extends React.Component<ArticlePropsType> {
       console.error(err);
       this.setState({wholeContent: ERROR_NO_ARTICLE});
     }
-
-    let pathName = `../articlePages${this.pathnameToUse}.tsx`;
-    let pathName2 = `../privatePages${this.pathnameToUse}.tsx`;
 
     if (modules[pathName]){
       modules[pathName]()

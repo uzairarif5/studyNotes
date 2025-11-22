@@ -45,6 +45,11 @@ This is my first big project that uses React.js and Redux.
 ## Updates:
 
 Versioning is done using "npm version [new-version] --git-tag-version false".
+Updates follow this format: `[major change].[minor change]`.
+
+update 23.8:
+- Worksheet now loads properly.
+- Made some coding changes in `Article.tsx`.
 
 update 23.6 - 23.7:
 - Added content to `data_structures_and_algorithms.tsx` and `operating_systems.tsx`.

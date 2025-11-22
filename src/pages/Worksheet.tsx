@@ -9,7 +9,8 @@ import $ from 'jquery';
 //@ts-ignore
 import store from "../reduxStuff/store.js";
 
-import.meta.glob('../articlePages/*/*_worksheet.tsx');
+const modules = import.meta.glob('./articlePages/*/*_worksheet.tsx');
+const pageH = 1143;
 
 function TitlePage(props: {topic: string}){
 	return(<>
@@ -30,17 +31,17 @@ function Worksheet () {
 	const worksheetJsTitle: React.RefObject<string[] | null> = useRef(null);
 	const topicsArr = worksheetJsContent ?
 	[<TitlePage topic={searchParams.get("topic")!}/>, ...worksheetJsContent] : null;
-	const [curLoc,changeLoc] = useState({scroll:0,topic:0});
+	const [curLoc,changeLoc] = useState({scroll:0, topic:0});
 	const stateChanged = useRef(false);
-	const [allowNextScroll,changeAllowNextScroll] = useState(false);
+	const [allowNextScroll, changeAllowNextScroll] = useState(false);
 	const [optionsContainerDisplay, changeOptionsConDis] = useState(false);
 	const optionsSelectedText = useRef("Title Page");
 
 	useEffect(()=>{
 		if(stateChanged.current){
 			stateChanged.current = false;
-			document.getElementById("root")!.scrollTo(0,0);
-			document.getElementById("workSheetInner")!.scrollTo(0,curLoc.scroll);
+			document.getElementById("root")!.scrollTo(0, 0);
+			document.getElementById("workSheetInner")!.scrollTo(0, curLoc.scroll);
       //@ts-ignore
 			window.MathJax.typesetPromise();
 			//Format the Page
@@ -49,12 +50,11 @@ function Worksheet () {
 				{
 					let totalHeight = -curLoc.scroll;
 					let selectedEl;
-					let pageH = document.getElementById("workSheetInner")!.clientHeight - 45;
-					let nextScrollPossible = false
+					let nextScrollPossible = false;
 					$("#workSheetInner").children().each(function(){
-						let curH = totalHeight+$(this).outerHeight(true)!;
+						let curH = totalHeight + $(this).outerHeight(true)!;
 						if(curH > pageH){
-							if(this.tagName === "OL"|| this.tagName === "UL") {
+							if (this.tagName === "OL" || this.tagName === "UL") {
 								$(this).children().each(function(){
 									let curLiH = totalHeight + $(this).outerHeight(true)!;
 									if(curLiH > pageH) {
@@ -62,7 +62,7 @@ function Worksheet () {
 										return false;
 									}
 									else totalHeight = curLiH;
-								})
+								});
 							}
 							else selectedEl = this;
 							nextScrollPossible = true;
@@ -71,7 +71,9 @@ function Worksheet () {
 						else totalHeight = curH;
 					});
 					changeAllowNextScroll(nextScrollPossible);
-					$(selectedEl!).css("margin-top", (pageH - totalHeight + 60)+"px");
+					let bottomEl = $(selectedEl!);
+					let topPaddingInNextPage = 60;
+					bottomEl.css("margin-top", pageH - totalHeight + topPaddingInNextPage + "px");
 				}
 
 				//set all tables
@@ -105,16 +107,13 @@ function Worksheet () {
 				payload: defaultBC
 			});
 		};
-	},[curLoc, navigate, worksheetJsContent]);
+	}, [curLoc, worksheetJsContent]);
 
 	function toggleAns(){
 		let tickImg: HTMLImageElement = document.querySelector("#ansCheckBox img")!;
-		if(tickImg.style.display === "block"){
+		if(tickImg.style.display === "block") 
 			tickImg.style.display = "none";
-		}
-		else{
-			tickImg.style.display = "block";
-		}
+		else tickImg.style.display = "block";
 		reformatAns();
 	}
 
@@ -158,14 +157,14 @@ function Worksheet () {
 	function goNextPage(){
 		if(allowNextScroll){
 			stateChanged.current = true;
-			changeLoc({scroll: curLoc.scroll + 1143, topic:curLoc.topic});
+			changeLoc({scroll: curLoc.scroll + pageH, topic:curLoc.topic});
 		}
 	}
 
 	function goPrevPage(){
 		if(curLoc.scroll > 0){
 			stateChanged.current = true;
-			changeLoc({scroll: curLoc.scroll - 1143, topic:curLoc.topic});
+			changeLoc({scroll: curLoc.scroll - pageH, topic:curLoc.topic});
 		}
 	}
 
@@ -232,19 +231,19 @@ function Worksheet () {
 					<div id="workSheet">
 						<div id="topicDiv" style={
 							curLoc.topic ?
-							((curLoc.scroll/1143)%2 ? tdStyle1 : tdStyle2) :
+							((curLoc.scroll/pageH)%2 ? tdStyle1 : tdStyle2) :
 							{display: "none"}
 						}>{
 							curLoc.topic ? (
-								((curLoc.scroll/1143) % 2) ?
-								<><span>{optionsSelectedText.current}</span> | {(curLoc.scroll/1143)+1}</>:
-								<>{(curLoc.scroll/1143)+1} | <span>{optionsSelectedText.current}</span></>
+								((curLoc.scroll/pageH) % 2) ?
+								<><span>{optionsSelectedText.current}</span> | {(curLoc.scroll/pageH)+1}</>:
+								<>{(curLoc.scroll/pageH)+1} | <span>{optionsSelectedText.current}</span></>
 							) : null
 						}</div>
 						<div id="workSheetInner" style={
 							curLoc.topic ?
 							(
-								(curLoc.scroll/1143)%2 ?
+								(curLoc.scroll/pageH)%2 ?
 								{
 									height: "1149px",
 									borderTopStyle:"solid",
@@ -267,16 +266,28 @@ function Worksheet () {
   }
 	else{
 		showLoadingScreen();
-		import("./articlePages/"+searchParams.get("topic")+"_worksheet.tsx")
-		.then(res => {
-			worksheetJsTitle.current = res.titles;
-			setWSJSC(res.content);
-		})
-		.catch(() => {
-			alert("worksheet not found");
+    let pathName = "./articlePages/"+searchParams.get("topic")+"_worksheet.tsx";
+
+		const errorFunc = (text: string) => {
+			alert(text);
 			changeLoadingText("Going To Home Page");
 			navigate("/");
-		});
+		}
+
+		if (modules[pathName]) {
+			modules[pathName]()
+			.then(res => {
+				try{
+					//@ts-ignore
+					worksheetJsTitle.current = res.titles;
+					//@ts-ignore
+					setWSJSC(res.content);
+				}
+				catch { errorFunc("worksheet Loading Error"); }
+			})
+			.catch(() => errorFunc("worksheet Loading Error"));
+		}
+		else errorFunc("worksheet not found");
 		return null;
 	}
 }
