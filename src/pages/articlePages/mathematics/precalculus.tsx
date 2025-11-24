@@ -141,6 +141,67 @@ export const content = <>
 		</div>
   </div>
 
+	<h2>Defining Exponents</h2>
+  <div className="content">
+		<ul className="ownExplanation" style={{width: "49%",marginLeft: "0.5%",float: "left"}}>
+			<li>Basic definition:<SubList>
+				<li>Let \(n\) be an integer greater than or equal to 1, and let \(b\) be any number. Then \(b^n\) is the result of nultiplying \(b\) \(n\) times:</li>
+				<MathStuff>\[b^n = \overbrace{"{b \\times b \\times \\cdots \\times b}^{n}"}\]</MathStuff>
+				<li><u>Example:</u> \(5^2 = 25\), \(3^3 = 27\), and \(2^1 = 2\).</li>
+				<li>In the notation \(b^n\), \(b\) is called the <b>base</b> and \(n\) is called the <b>exponent</b>. This is read as "\(b\) to the power of \(n\)".</li>
+				<li>1 to the power of any integer is still 1.</li>
+				<li>If our base was a fraction, for example \({"\\left( \\frac{x}{y} \\right)^n"}\), then by we multiply this fraction \(n\) times and we get \({"\\frac{x^n}{y^n}"}\).</li>
+			</SubList></li>
+			<li>Some properties of exponents:<SubList>
+				<li><u>Product Rule:</u> \(b^{"{n+m}"} = b^n \times b^m\).</li>
+				<li><u>Quotient Rule:</u> \({"\\frac{b^n}{b^m}"} = b^{"{n-m}"}\) (assume \(n \ge m\) for now).</li>
+				<li><u>Power of power Rule:</u> \((b^n)^m = b^{"{nm}"}\).</li>
+				<li><u>Power of product:</u> \((bc)^n = b^n \times c^n\).</li>
+			</SubList></li>
+			<li>Extending the definition to include zero:<SubList>
+				<li>We need to define \(b^0\) such that the above properties still hold.</li>
+				<li>If \(b^{"{0+m}"} = b^m\) and \(b^{"{0+m}"} = b^0 \times b^m\) (product rule), then it would make sense to define \(b^0\) as 1.</li>
+				<li>If \({"\\frac{b^n}{b^0}"} = b^n\) (quotient rule), then again, it would make sense to define \(b^0\) as 1.</li>
+				<li>If \((b^0)^m = b^0\) (power of power rule), then by defining \(b^0\) as 1, we get \(1^m = 1\), which is true.</li>
+				<li>Defining \(b^0\) as 1 doesn't break the power of product rule.</li>
+				<li>It seems like \(b^0 = 1\) is a good definition.</li>
+				<li>There is a problem however, when \(b=0\). Consider \({"\\frac{0^1}{0^1} = 0^0"}\) (the qoutient rule). Since \(0^1 =0\), then we are essentially divding by 0, and this is undefined.</li>
+				<li>Let's refine our definition: \(b^0 = 1\) as long as \(b \ne 0\), in which case it's undefined.</li>
+			</SubList></li>
+			<li>Extending the definition to include negative integers:<SubList>
+				<li>We need to define \(b^{"{-n}"}\) such that the above properties still hold.</li>
+				<li>If \(b^{"{n+(-n)}"} = b^n \times b^{"{-n}"}\) (product rule) and \(b^{"{n+(-n)}"} = b^0 = 1\), then \(1 = b^n \times b^{"{-n}"}\). It would make sense to define \(b^{"{-n}"}\) as \(\frac{"{1}{b^n}"}\).</li>
+				<li>Let's remove the condition from the quotient rule that \(n \ge m\). Then, according to the quotient rule \({"\\frac{b^0}{b^{-n}}"} = b^{"{-n}"} = {"\\frac{1}{b^n}"}\), which is consistent with our previous point.</li>
+				<li>Also, if \({"\\frac{b^n}{b^m}"} = b^{"{n-m}"}\), then according to the product rule \(b^{"{n-m}"} = b^n \times b^{"{-m}"}\). It would make sense to define \(b^{"{-m}"}\) as \({"\\frac{1}{b^{-m}}"}\) so \(b^{"{n-m}"} = {"\\frac{b^n}{b^m}"}\).</li>
+				<li>If \((b^{"{-n}"})^n = b^{"{-n \\times n}"}\) and \((b^n)^{"{-n}"} = b^{"{-n \\times n}"}\) (power of power rule), then defining \(b^{"{-n}"}\) as \({"\\frac{1}{b^n}"}\) won't cause any issues.</li>
+				<li>According to the power of product rule \({"(bc)^{-n} = b^{-n} \\times c^{-n}"}\). If we define \({"b^{-n}"}\) as \({"\\frac{1}{b^n}"}\) and \({"c^{-n}"}\) as \({"\\frac{1}{c^n}"}\), then the property doesn't break.</li>
+			</SubList></li>
+		</ul>
+		<ul className="ownExplanation" style={{width: "49%",marginRight: "0.5%",float: "right"}}>
+			<li>Extending the definition to include unit fractions:<SubList>
+				<li>According to the power of power rule, \((b^{"\\frac{1}{m}"})^m = b^{"{\\frac{1}{m} \\times m}"} = b^1 = b\). This implies that \(b^{"{1/m}"}\) is an inverse operation of \(b^m\). In other words, \(b^{"{1/m}"} = \sqrt[m] b\).</li>
+				<li>According to the power of product rule, \((bc)^{"{1/n}"} = b^{"{1/n}"} \times c^{"{1/n}"}\). If \(x^{"{1/n}"} = \sqrt[n] x\), then \(\sqrt[n] {"{bc}"} = \sqrt[n] {"{b}"} \times \sqrt[n]{"{c}"}\), which is true. This means the power of product rule holds.</li>
+				<li>Since we are dealing with a base that can be any real number, how would unit fraction exponents work when the base is negative? We know that it is true that \({"{(\\sqrt{5})^2} = 5"}\), but what about \({"{(\\sqrt{-5})^2}"}\)? We don't have any real number that is \({"\\sqrt{-5}"}\).</li>
+				<li>For now, let our definition of \(b^{"{1/m}"}\) be \({"\\sqrt[m] b"}\) only when \({"\\sqrt[m] b"}\) is well defined.</li>
+			</SubList></li>
+			<li>Extending the definition to include all rational numbers:<SubList>
+				<li>According to the power of power rule \((b^n)^{"{1/m}"} = b^{"{n/m}"}\), but since \(b^{"{1/m}"} = \sqrt[m]b\), then \((b^n)^{"{1/m}"} = \sqrt[m]{"{b^n}"}\). This implies that \(b^{"{n/m}"} = {"\\sqrt[m]{b^n}"}\). In the last section we said that taking the square root may cause issues for some bases.</li>
+				<li>Also, according to the power of power rule \((b^{"{1/m}"})^n = b^{"{n/m}"}\), but since \(b^{"{1/m}"} = \sqrt[m]b\), then \((b^{"{1/m}"})^n = ({"\\sqrt[m]{b}"})^n\). This implies that \(b^{"{n/m}"} = ({"\\sqrt[m]{b}"})^n\).</li>
+				<li>We will define \(b^{"{n/m}"}\) as both \(({"\\sqrt[m]{b}"})^n\) and \({"\\sqrt[m]{b^n}"}\), as long as both of them are well defined and equal.</li>
+				<li>Does the power of product rule hold?</li>
+				<MathStuff>\[{"\\begin{align} (bc)^{n/m} &= ({\\sqrt[m]{bc}})^n \\\\ &= ({\\sqrt[m]{b} \\times \\sqrt[m]{c}})^n \\\\ &= \\sqrt[m]{b}^n \\times \\sqrt[m]{c}^n \\quad \\text{(power of product with integer exponents)} \\\\ &= b^{n/m} \\times c^{n/m}\\end{align}"}\]</MathStuff>
+			</SubList></li>
+			<li>Extending the definition to include irrational numbers:<SubList>
+				<li>What is \(2^\pi\)? We haven't defined \(2^\pi\) yet, but we have defined \({"2^{3.14}"}\) and \({"2^{3.142}"}\), since 3.14 and 3.142 are rational numbers (\({"3.14 = \\frac{314}{100}"}\) and \({"3.142 = \\frac{3142}{1000}"}\)).</li>
+				<li>Since \(3.14 \lt \pi \lt 3.142\), then \(2^{"3.14"} \lt 2^\pi \lt 2^{"3.142"}\). We may not know \(2^\pi\), but we can find it's lower and upper bounds.</li>
+				<li>Similarly, we can find \({"2^{3.1415926535}"}\) and \({"2^{3.1415926536}"}\), and since \(2^\pi\) is sandwiched between these two. This means we have an even closer lower and upper bound for \(2^\pi\).</li>
+				<li>Let \(x\) be a rational number below \(\pi\), and \(y\) be a rational number above \(\pi\), then we can bring \(x\) and \(y\) infinitely close to \(\pi\) while still keeping them rational. Whatever value \(2^x\) and \(2^y\) converge to will be defined as \(2^\pi\).</li>
+				<li>A similar argument can be for other bases and other irrational exponents. Of course, sometimes the value may be undefined when the base is negative.</li>
+			</SubList></li>
+		</ul>
+	</div>
+
+
 	<h2>Trigonometric Identities</h2>
   <div className="content">
 		<div className="ownExplanation" style={{width: "49%",marginLeft: "0.5%",float: "left"}}>

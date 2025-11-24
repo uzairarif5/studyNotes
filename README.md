@@ -47,6 +47,9 @@ This is my first big project that uses React.js and Redux.
 Versioning is done using "npm version [new-version] --git-tag-version false".
 Updates follow this format: `[major change].[minor change]`.
 
+update 23.9:
+- Added content to `precalculus.tsx`.
+
 update 23.8:
 - Worksheet now loads properly.
 - Made some coding changes in `Article.tsx`.
