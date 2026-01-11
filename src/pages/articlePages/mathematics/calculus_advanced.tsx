@@ -11,8 +11,8 @@ import SecondOrderDifferentialEquations from "./SecondOrderDifferentialEquations
 
 export const title = "Calculus (Advanced) Notes";
 
-export const sourcesColor = {65: "rgb(110, 110, 140)", 45: "rgb(100, 90, 120)"};
-export const sourcesOrder = [65, 45];
+export const sourcesColor = {45: "rgb(110, 110, 140)", 65: "rgb(100, 90, 120)"};
+export const sourcesOrder = [45, 65];
 export const content = <>
 
 <h1>Calculus (Advances) Notes</h1>

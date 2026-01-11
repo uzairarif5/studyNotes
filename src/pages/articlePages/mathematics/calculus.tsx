@@ -6,8 +6,8 @@ import SequencesAndSeries from "./SequencesAndSeries";
 
 export const title = "Calculus Notes";
 
-export const sourcesColor = {36: "rgb(80, 130, 160)", 65: "rgb(110, 110, 140)"};
-export const sourcesOrder = [36, 65];
+export const sourcesColor = {36: "rgb(80, 130, 160)", 45: "rgb(110, 110, 140)"};
+export const sourcesOrder = [36, 45];
 export const content = <>
 
 	<h1>Calculus Notes</h1>
