@@ -47,6 +47,11 @@ This is my first big project that uses React.js and Redux.
 Versioning is done using "npm version [new-version] --git-tag-version false".
 Updates follow this format: `[major change].[minor change]`.
 
+update 23.11:
+- Added a `404.html` in `/public` which justs redirects you to the home page.
+- Added a new topic (Art), but this only affects "saved resources" for now.
+- Updated the license text.
+
 update 23.10:
 - Code changes with the sources.
 

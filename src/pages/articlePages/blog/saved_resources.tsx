@@ -7,7 +7,7 @@ function Content(){
   const [content, ChangeResult] = useState(null);
   
   if(content){ 
-    const topics = ['language_learning','mathematics', 'statistics', 'natural_sciences', 'computer_science_fundamentals','electrical_engineering', 'computer_science_(advanced_topics)', 'tutorials', 'blog','miscellaneous'];
+    const topics = ['language_learning','mathematics', 'statistics', 'natural_sciences', 'art', 'computer_science_fundamentals','electrical_engineering', 'computer_science_(advanced_topics)', 'tutorials', 'blog','miscellaneous'];
     const cutoff = Math.floor(topics.length/2) - 1;
     const topicList1 = topics.slice(0, cutoff);
     const topicList2 = topics.slice(cutoff);

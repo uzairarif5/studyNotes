@@ -110,7 +110,10 @@ function LicenseComp(props: {dis: string, setFunc: React.Dispatch<React.SetState
     <p {...{"xmlns:cc":"http://creativecommons.org/ns#", "xmlns:dct":"http://purl.org/dc/terms/"}} style={{backgroundColor: defaultBC}}>
       <button style={{color:"black"}} onClick={()=>{props.setFunc("none")}}>X</button>
       <span>
-        The <b>text content</b> of<br/><a property="dct:title" rel="cc:attributionURL" href="/">My Study Notes</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.linkedin.com/in/uzair0845/">Uzair Arif</a><br/>is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style={{display:"inline-block"}}>CC BY-NC-SA 4.0</a>
+        The <b>text content</b> of<br/>
+        <a property="dct:title" rel="cc:attributionURL" href="/">My Study Notes</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.linkedin.com/in/uzair0845/">Uzair Arif</a><br/>
+        is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style={{display:"inline-block"}}>CC BY-NC-SA 4.0</a><br/>
+        (unless otherwise specified)
       </span>
       <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style={{display:"flex", justifyContent:"center"}} title="check website">
         <img style={{height:"40px",verticalAlign:"text-bottom"}} src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""/>
