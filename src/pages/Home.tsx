@@ -5,6 +5,7 @@ import { Link } from "react-router";
 import './Home.scss';
 import { defaultBC } from "../reduxStuff/reducer";
 import ContactComp from "./ContactComp.tsx";
+import packageJson from '../../package.json';
 
 //@ts-ignore
 import store from "../reduxStuff/store";
@@ -61,7 +62,7 @@ const HomeMain = ()=>{
 	},[]);
 
   return <div id="home">
-    <h1>Uzair's Study Notes</h1>
+    <h1>Uzair's Study Notes <span id="headingSmall">({packageJson.version})</span></h1>
     {phoneHeader}
     <h2>Language Learning</h2>
     <Link to="language_learning/semantics">Semantics</Link>
@@ -95,6 +96,8 @@ const HomeMain = ()=>{
     <h2>Computer Science (Advanced Topics)</h2>
     <Link to="computer_science_advanced_topics/cryptography">Cryptography</Link>
     <Link to="computer_science_advanced_topics/deep_learning">Deep Learning</Link>
+    <h2>Art</h2>
+    <Link to="art/color_theory">Color Theory</Link>
     <h2>Tutorials/Guides</h2>
     <Link to="tutorials/basics_of_r">Basics Of R</Link>
     <Link to="tutorials/manim">Manim Basics</Link>
