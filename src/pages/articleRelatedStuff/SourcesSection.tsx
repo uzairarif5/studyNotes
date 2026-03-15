@@ -26,16 +26,17 @@ export default function SourcesSection(props: SourcesSectionProps) {
   return <section dangerouslySetInnerHTML={{__html: sourcesContent}}></section>;
 }
 
-function setSourcesListInner(strInput: string, changeSC: React.Dispatch<React.SetStateAction<string>>) {
-  fetch(GET_SOURCES_LIST_LINK, {
-    method:"post", 
-    body: strInput
-  })
-  .then(res=>res.text())
-  .then(changeSC)
-  .catch((err)=> {
-    console.log("There was an error getting the sources:");
-    console.error(err);
+async function setSourcesListInner(strInput: string, changeSC: React.Dispatch<React.SetStateAction<string>>) {
+  try{
+    const fetchRes = await fetch(GET_SOURCES_LIST_LINK, {
+      method:"post", 
+      body: strInput
+    })
+    const resText = await fetchRes.text();
+    changeSC(resText);
+  }
+  catch {
+    console.log("There was an error getting the sources.");
     changeSC("<h4>Main Sources:</h4><ol><li>There was an error loading the sources. Please report this!</li></ol>");
-  });
+  };
 }

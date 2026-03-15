@@ -47,6 +47,28 @@ This is my first big project that uses React.js and Redux.
 Versioning is done using "npm version [new-version] --git-tag-version false".
 Updates follow this format: `[major change].[minor change]`.
 
+update 24.8:
+- Updated `number_theory.tsx`.
+- Made some coding changes in `SourcesSection.tsx`.
+
+update 24.7:
+- Bump prismjs and react-syntax-highlighter
+
+update 24.6:
+- Bump js-yaml from 4.1.0 to 4.1.1
+
+update 24.5:
+- Bump lodash from 4.17.21 to 4.17.23
+
+update 24.4:
+- Bump vite from 6.3.5 to 6.4.1
+
+update 24.3:
+- Bump @modelcontextprotocol/sdk from 1.11.2 to 1.26.0
+
+update 24.2:
+- Bump react-router from 7.6.0 to 7.12.0
+
 update 24.1:
 - Added the first article to the art topic (`color_theory.tsx`). 
 - Site version is now shown in the title.

@@ -6,7 +6,7 @@ import SubList from "../../articleRelatedStuff/SubList";
 //Elementary number theory: pg 77
 
 export const title = "Number Theory Notes";
-export const sourcesColor = {35: null, 54: null, 4: null};
+export const sourcesColor = {35: null, 54: null, 4: null, 66: null};
 export const content = <>
   <h1>Number Theory</h1>
 
@@ -14,6 +14,54 @@ export const content = <>
   <div className="content">
     <ul style={{width: "49%",float: "left",marginLeft: "0.5%", marginRight: "0.5%"}}>
       <li data-source={35}><b>Number theory</b> (at the most basic level) is the study of the properties of integers.</li>
+      <li data-source={66}>Axioms for the set of integers:<SubList>
+        <li>Assume \(a\), \(b\) and \(c\) are integers.</li>
+        <li><b>Closure:</b> \(a+b\) and \(a \cdot b\) are integers.</li>
+        <li><b>Commutative laws:</b> \(a + b = b+a\) and \(a \cdot b = b \cdot a\) for all inegers \(a\) and \(b\).</li>
+        <li><b>Associative laws:</b> \((a + b)+c = a+(b+c)\) and \((a \cdot b) \cdot c = a \cdot (b \cdot c)\).</li>
+        <li><b>Distributive laws:</b> \((a+b) \cdot c = ac + bc\).</li>
+        <li><b>Identity elements:</b> \(a+0=a\) and \(a \cdot 1 = a\).</li>
+        <li><b>Additive inverse:</b> For every integer \(a\), there exists an <b>additive inverse</b> \(x\) such that \(a+x=0\).</li>
+        <li><b>Cancellation law:</b> If \(a \cdot c = b\) and \(c \neq 0\), then \(a=b\).</li>
+        <li><b>Well-Ordering Property:</b> Every nonempty set of positive integers has a least element.</li>
+      </SubList></li>
+      <li data-source={66}>Algebraic numbers:<SubList>
+        <li>A number \(\alpha\) is <b>algebraic</b> if it is a root of a polynomial with integer coefficients.</li>
+        <li>\(\alpha\) is algebraic if:</li>
+        <MathStuff>{"a_n \\alpha^n + a_{n-1} \\alpha^{n-1} + \\ldots + a_0 = 0"}</MathStuff>
+        <li>where \(a_i\) are some integers.</li>
+        <li>If a number is not algebraic, then it's <b>transcendental</b>.</li>
+        <li>\(\sqrt{"{2}"}\) is algebraic because it is a root of the polynomial \(x^2-2\).</li>
+        <li>Every rational number is algebraic because when the number is of the form \(a/b\) where \(a\) and \(b\) are integers and \(b \ne 0\), then it is a root of \(bx-a\).</li>
+      </SubList></li>
+      <li data-source={66}>Sequences:<SubList>
+        <li>A <b>sequence</b> \({"{a_n}"}\) is a list of numbers \(a_1, a_2, a_3, \ldots\).</li>
+        <li>The sequence \({"a_n"}\), where \({"a_n = n^2"}\) beigns with the terms 1, 4, 9, ....</li>
+        <li>A <b>geometric progression</b> is a sequence of the form \(a\), \(ar^2\), \(ar^3\), ....</li>
+        <li>The <b>triangular numbers</b> is a sequnce where \(t_k\) is the number of dots in the triangular array of \(k\) rows with \(j\) dots in the \(j\)th row. It begins with the terms 1, 3, 6, 10, 15, ....</li>
+      </SubList></li>
+      <li data-source={66}>Countable sets:<SubList>
+        <li>A set is <b>countable</b> if:<SubList opened>
+          <li>it is finite</li>
+          <li>or infinite and there exists a one-to-one correspondence between the set of positive integers and the set.</li>
+        </SubList></li>
+        <li>A set that is not countable is called <b>uncountable</b>.</li>
+      </SubList></li>
+      <li data-source={66}>Sum:<SubList>
+        <li>The following notation represents the sum of the numbers \(a_1\), \(a_2\), ..., \(a_n\):</li>
+        <MathStuff>{"\\sum^n_{k=1} a_k = a_1 + a_2 + \\cdots +a_n"}</MathStuff>
+        <li>Here are some properties:</li>
+        <MathStuff>{"\\begin{align} \\sum^n_{j=m} ka_j &= k\\sum^n_{j=m} a_j \\\\ \\sum^n_{j=m} (a_j+b_j) &= \\sum^n_{j=m} a_j+ \\sum^n_{j=m} b_j \\\\ \\sum^n_{i=m}\\sum^q_{j=p} (a_ib_j) &= \\left( \\sum^n_{i=m} a_i \\right) \\left( \\sum^q_{j=p} b_j \\right) \\\\ \\sum^n_{i=m}\\sum^q_{j=p} (a_ib_j) &= \\sum^q_{j=p}\\sum^n_{i=m} (a_ib_j) \\end{align}"}</MathStuff>
+      </SubList></li>
+      <li data-source={66}>Products:<SubList>
+        <li>The product of the numbers \(a_1\), \(a_2\), ..., \(a_n\) is denoted by:</li>
+        <MathStuff>{"\\prod^n_{j=1} a_j = a_1 a_2 \\cdots a_n"}</MathStuff>
+        <li>If \(n \ge 1\), then \(n!\) (read as "\(n\) <b>factorial</b>") is the product of the integers 1, 2, .., \(n\).</li>
+        <li>Also, \(0! = 1\).</li>
+      </SubList></li>
+    </ul>
+    <div style={{width: "49%",float: "right",marginLeft: "0.5%", marginRight: "0.5%"}} data-source={35}>
+      <ul>
       <li data-source={35}><b>Diophantine equation:</b><SubList>
         <li><a href='https://en.wikipedia.org/wiki/Diophantine_equation'>A <b>Diophantine equation</b> is an equation, typically a polynomial equation in two or more unknowns with integer coefficients, for which only integer solutions are of interest.</a></li>
         <li><u>Example:</u> The Pythagorean Theorem results in triples (3, 4, 5), (5, 12, 13), (7, 24, 25), (8, 15, 17), etc.</li>
@@ -66,9 +114,6 @@ export const content = <>
         <li>There are infinite primes expressible in the form \(4n+3\) (<a href='https://www.deriveit.net/discrete_mathematics/prime_numbers/infinite_primes_4k_plus_3'>proof</a>).</li>
         <li>If \(n \gt 1\), then \(n\) is said to be <b>powerful</b> if all exponents in it's prime factorization are at least 2. A powerful number is a product of a square number and a cube number (<a href='https://www.deriveit.net/discrete_mathematics/prime_numbers/powerful_from_square_and_cube'>proof</a>).</li>
       </SubList></li>
-    </ul>
-    <div style={{width: "49%",float: "right",marginLeft: "0.5%", marginRight: "0.5%"}} data-source={35}>
-      <ul>
         <li data-source={35}><b>Binomial Coefficient</b>:<SubList>
           <li>\(n(n - 1)(n - 2). . . 1 = n!\) is number of ways to order \(n\) objects.</li>
           <li>The <b>Binomial Coefficient</b> is number of ways to pick \(k\) of \(n\) objects.</li>
