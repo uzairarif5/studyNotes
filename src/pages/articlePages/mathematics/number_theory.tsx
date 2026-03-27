@@ -10,7 +10,7 @@ export const sourcesColor = {35: null, 54: null, 4: null, 66: null};
 export const content = <>
   <h1>Number Theory</h1>
 
-  <h2 id="introduction_and_divisibility">Introduction And Divisibility</h2>
+  <h2>Basic Concepts</h2>
   <div className="content">
     <ul style={{width: "49%",float: "left",marginLeft: "0.5%", marginRight: "0.5%"}}>
       <li data-source={35}><b>Number theory</b> (at the most basic level) is the study of the properties of integers.</li>
@@ -23,7 +23,12 @@ export const content = <>
         <li><b>Identity elements:</b> \(a+0=a\) and \(a \cdot 1 = a\).</li>
         <li><b>Additive inverse:</b> For every integer \(a\), there exists an <b>additive inverse</b> \(x\) such that \(a+x=0\).</li>
         <li><b>Cancellation law:</b> If \(a \cdot c = b\) and \(c \neq 0\), then \(a=b\).</li>
+        <li><b>Closure for the positive integers:</b> \(a+b\) and \(a \cdot b\) are positive integers whenever \(a\) and \(b\) are positive integers.</li>
+        <li><b>Trichotomy law:</b> For every integer \(a\), \(a \gt 0\), \(a=0\) or \(a \lt 0\).</li>
+        <li>The set of integers is said to be an <b>ordered set</b> because it has a subset that is closed under addition and multiplication and because the trichotomy law holds for every integer.</li>
+        <li><a href='https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_and_Computation_Fundamentals/Mathematics_for_Computer_Science_(Lehman_Leighton_and_Meyer)/01%3A_Proofs/02%3A_Well_Ordering_Principle/2.04%3A_Well_Ordered_Sets'>A set of numbers is <b>well ordered</b> when each of its nonempty subsets has a minimum element.</a></li>
         <li><b>Well-Ordering Property:</b> Every nonempty set of positive integers has a least element.</li>
+        <li className="ownExplanation">The set \([0,2]\) is not well ordered because there are subsets that do not have a least element. For example \((1,2)\).</li>
       </SubList></li>
       <li data-source={66}>Algebraic numbers:<SubList>
         <li>A number \(\alpha\) is <b>algebraic</b> if it is a root of a polynomial with integer coefficients.</li>
@@ -35,8 +40,8 @@ export const content = <>
         <li>Every rational number is algebraic because when the number is of the form \(a/b\) where \(a\) and \(b\) are integers and \(b \ne 0\), then it is a root of \(bx-a\).</li>
       </SubList></li>
       <li data-source={66}>Sequences:<SubList>
-        <li>A <b>sequence</b> \({"{a_n}"}\) is a list of numbers \(a_1, a_2, a_3, \ldots\).</li>
-        <li>The sequence \({"a_n"}\), where \({"a_n = n^2"}\) beigns with the terms 1, 4, 9, ....</li>
+        <li>A <b>sequence</b> \({"\\{a_n\\}"}\) is a list of numbers \(a_1, a_2, a_3, \ldots\).</li>
+        <li>The sequence \({"\\{a_n\\}"}\), where \(a_n = n^2\) begins with the terms 1, 4, 9, ....</li>
         <li>A <b>geometric progression</b> is a sequence of the form \(a\), \(ar^2\), \(ar^3\), ....</li>
         <li>The <b>triangular numbers</b> is a sequnce where \(t_k\) is the number of dots in the triangular array of \(k\) rows with \(j\) dots in the \(j\)th row. It begins with the terms 1, 3, 6, 10, 15, ....</li>
       </SubList></li>
@@ -59,61 +64,96 @@ export const content = <>
         <li>If \(n \ge 1\), then \(n!\) (read as "\(n\) <b>factorial</b>") is the product of the integers 1, 2, .., \(n\).</li>
         <li>Also, \(0! = 1\).</li>
       </SubList></li>
+      <li data-source={66}>Fibonacci numbers:<SubList>
+        <li>The <b>Fibonacci sequence</b> is defined recursively by \(f_1 = 1\), \(f_2 = 1\), and \(f_n = {"f_{n-1}+f_{n-2}"}\) for \(n \ge 3\).</li>
+        <li>The terms of this sequence are called the <b>Fibonacci numbers</b>.</li>
+      </SubList></li>
     </ul>
-    <div style={{width: "49%",float: "right",marginLeft: "0.5%", marginRight: "0.5%"}} data-source={35}>
+    <div style={{width: "49%",float: "right",marginLeft: "0.5%", marginRight: "0.5%"}}>
       <ul>
-      <li data-source={35}><b>Diophantine equation:</b><SubList>
-        <li><a href='https://en.wikipedia.org/wiki/Diophantine_equation'>A <b>Diophantine equation</b> is an equation, typically a polynomial equation in two or more unknowns with integer coefficients, for which only integer solutions are of interest.</a></li>
-        <li><u>Example:</u> The Pythagorean Theorem results in triples (3, 4, 5), (5, 12, 13), (7, 24, 25), (8, 15, 17), etc.</li>
-      </SubList></li>
-      <li>Divisibility:<SubList>
-        <li><a href='https://en.wikipedia.org/wiki/Divisor'>An integer \(n\) is divisible by a nonzero integer \(m\) if there exists an integer \(k\) such that \(n=km\). This is written as \(m | n\).</a></li>
-        <li data-source={35}>\({"a|b, a|c \\implies a|(bx + cy) \\ \\forall x, y"}\) where \({"a, b, c, x, y \\in \\mathbb{Z}"}\) .</li>
-      </SubList></li>
-      <li data-source={54}><b>Prime Numbers:</b><SubList>
-        <li data-source={35}>A <b>prime number</b> is an integer \({"p > 1"}\) such that it cannot be written as \(p = ab\) with \({"a, b > 1"}\).</li>
-        <li data-source={35}>If \(p\) is prime and \(p|ab\), then \(p|a\) or \(p|b\).</li>
-        <li data-source={35}><b>Fundamental Theorem of Arithmetic:</b> Every positive integer can be written as a product of primes (possibly with repetition).</li>
-        <li>Let \(n\) be a composite number, then \(n\) has a prime divisor \(p\) with \(p \le \sqrt{"{n}"}\).</li>
-        <li><u>Sieve of Eratosthenes:</u><SubList>
-          <li>Suppose we wish to find all prime numbers less than or equal to 50. Any composite less than or equal to 50 must have a prime divisor less than or equal to \(\sqrt{"{50}"}\), which is around 7.07.</li>
-          <li>The prime numbers less than 7.07 are 2, 3, 5 and 7. In a list of integers from 2 to 50, we can delete all multiples of 2, 3, 5 and 7.</li>
-          <TableLI>
-            <tbody>
-              <tr><td>
-                2 3 4 5 6 7 8 9 10<br/>
-                11 12 13 14 15 16 17 18 19 20<br/>
-                21 22 23 24 25 26 27 28 29 30<br/>
-                31 32 33 34 35 36 37 38 39 40<br/>
-                41 42 43 44 45 46 47 48 49 50<br/>
-              </td></tr>
-              <tr><td>
-                2 3 - 5 - 7 - 9 -<br/>
-                11 - 13 - - - 17 - 19 -<br/>
-                - - 23 - - - - - 29 -<br/>
-                31 - - - - - 37 - - -<br/>
-                41 - 43 - - - 47 - - -<br/>
-              </td></tr>
-            </tbody>
-          </TableLI>
-          <li>Any number remaining in the list is not divisible by 2, 3, 5 or 7, and cannot be composite.</li>
+        <li><b>Diophantine equation:</b><SubList>
+          <li><a href='https://en.wikipedia.org/wiki/Diophantine_equation'>A <b>Diophantine equation</b> is an equation, typically a polynomial equation in two or more unknowns with integer coefficients, for which only integer solutions are of interest.</a></li>
+          <li><u>Example:</u> The Pythagorean Theorem results in triples (3, 4, 5), (5, 12, 13), (7, 24, 25), (8, 15, 17), etc.</li>
         </SubList></li>
-        <li>For any positive integer \(n\), there are at least \(n\) consecutive composite positive integers.</li>
-        <li><b>Twin Prime Conjecture:</b> There are infinitely many prime numbers \(p\) for which \(p+2\) is also a prime number.</li>
-        <li><b>Prime Number Theorem:</b><SubList>
-          <li>Let \(\pi (x)\) be a function that outputs the number of prime numbers less than or equal to \(x\).</li>
-          <li>The Prime Number Theorem states:</li>
-          <MathStuff>$${"\\lim_{x \\to \\infty} \\frac{\\pi (x) \\ln(x)}{x} = 1"}$$</MathStuff>
-          <li>This means for large \(x\), \(\pi (x)\) may be approximated by \({"\\frac{x}{\\ln x}"}\).</li>
+        <li data-source={66}>Floor and ceiling functions:<SubList>
+          <li>The <b>greatest integer</b> in a real number \(x\), denoted by \([x]\), is the largest integer less than or equal to \(x\).</li>
+          <li><u>Examples:</u> \([5/2]=2\), \([-5/2]=-3\), \([2]=2\).</li>
+          <li>The greatest integer function is also known as the <b>floor function</b>, with notation \(\lfloor x \rfloor\).</li>
+          <li>The <b>ceiling function</b> of a real number \(x\), denoted by \(\lceil x \rceil\), is the smallest integer greater than or equal to \(x\).</li>
+          <li><u>Examples:</u> \(\lceil 5/2 \rceil = 3\) and \(\lceil -5/2 \rceil = 2\).</li>
+          <li>Properties:<SubList>
+            <li>\(n \in \mathbb{"{Z}"} \implies \lfloor x + n \rfloor = \lfloor x \rfloor + n\).</li>
+            <li>\([2x] + [2y] ≥ [x] + [y] + [x+y]\)</li>
+            <li>\([x + y] ≥ [x] + [y]\)</li>
+            <li>\([xy] ≥ [x][y]\)</li>
+            <li>\([x + 1/2]\) is the integer nearest to \(x\)</li>
+            <li>\([(x + n)/m] = [([x] + n)/m]\) where \(n, m ∈ {"\\mathbb{Z}"}\)</li>
+            <li>\([√[x]] = √[x]\)</li>
+            <li><a href='https://en.wikipedia.org/wiki/Hermite%27s_identity'><b>Hermite's identity:</b></a></li>
+            <MathStuff>{"\\sum^{n-1} \\left\\lfloor x+\\frac{k}{n} \\right\\rfloor = \\lfloor nx \\rfloor"}</MathStuff>
+          </SubList></li>
         </SubList></li>
-        <li><b>Goldbach's conjecture:</b> Every even integer greater than 2 can be expressed as the sum of two prime numbers.</li>
-        <li>If \(2^p - 1\) is prime, then \(p\) is prime (<a href='https://www.deriveit.net/discrete_mathematics/prime_numbers/Mersenne_prime1'>proof</a>). Any prime number expressible in the form \(2^p - 1\) is said to be a <b>Mersenne prime</b>. There may be infinite of them.</li>
-        <li>Any prime number expressible in the form \(2^{"{2^n}"}+1\) (where \(n\) is a positive integer greater than 0) is said to be a <b>Fermat prime</b>, and only five are known.</li>
-        <li>There may be infinitely many primes expressible in the form \(n^2 + 1 \) where \(n\) is a positive integer.</li>
-        <li><b>Dirichlet's Theorem:</b> Let \(a,b \gt 0\) and \((a,b)=1\), then arithmetic progression \(a, a+b, a+2b, \ldots \) contains infinitely many primes.</li>
-        <li>There are infinite primes expressible in the form \(4n+3\) (<a href='https://www.deriveit.net/discrete_mathematics/prime_numbers/infinite_primes_4k_plus_3'>proof</a>).</li>
-        <li>If \(n \gt 1\), then \(n\) is said to be <b>powerful</b> if all exponents in it's prime factorization are at least 2. A powerful number is a product of a square number and a cube number (<a href='https://www.deriveit.net/discrete_mathematics/prime_numbers/powerful_from_square_and_cube'>proof</a>).</li>
-      </SubList></li>
+        <li data-source={66}>Divisibility:<SubList>
+          <li>If \(a\) and \(b\) are integers with \(a \ne 0\), we say that \(a\) divides \(b\) if there is an integer \(c\) such that \(b=ac\).</li>
+          <li>If \(a\) divides \(b\), we also say that \(a\) is a <b>divisor</b> or <b>factor</b> of \(b\) and that \(b\) is a <b>multiple</b> of \(a\).</li>
+          <li>\(a \mid b\): "\(a\) divides \(b\)"</li>
+          <li>\(a \nmid b\): "\(a\) does not divide \(b\)"</li>
+          <li>Properties:<SubList>
+            <li>Let \(a, b, c, m, n \in \mathbb{"{Z}"}\).</li>
+            <li>\(a \mid b \wedge b \mid c \implies a\mid c\).</li>
+            <li>\(c \mid a \wedge c \mid b \implies c \mid (ma + nb) \ \forall m, n\).</li>
+          </SubList></li>
+          <li><b>The division algorithm:</b><SubList>
+            <li>If \(a \in \mathbb{"{Z}"}\) and \(b \in \mathbb{"{Z}"}^+\), then there are unique integers \(q\) and \(r\) such that \(a=bq+r\) where \(0 \le r \lt b\). This is not an algorithm, but a theorem.</li>
+            <li>\(q\) is the <b>qoutient</b>, \(r\) is the <b>remainder</b>, \(a\) is the <b>dividend</b> and \(b\) is the <b>divisor</b>.</li>
+            <li>\(b \mid a \iff r = 0\).</li>
+          </SubList></li>
+          <li>There are \([x/d]\) positive integers that are \(≤ x\) (where \(x ∈ Z^+\)) and divisible by \(d\).</li>
+        </SubList></li>
+        <li data-source={54}><b>Prime Numbers:</b><SubList>
+          <li data-source={35}>A <b>prime number</b> is an integer \({"p > 1"}\) such that it cannot be written as \(p = ab\) with \({"a, b > 1"}\).</li>
+          <li data-source={35}>If \(p\) is prime and \(p|ab\), then \(p|a\) or \(p|b\).</li>
+          <li data-source={35}><b>Fundamental Theorem of Arithmetic:</b> Every positive integer can be written as a product of primes (possibly with repetition).</li>
+          <li>Let \(n\) be a composite number, then \(n\) has a prime divisor \(p\) with \(p \le \sqrt{"{n}"}\).</li>
+          <li><u>Sieve of Eratosthenes:</u><SubList>
+            <li>Suppose we wish to find all prime numbers less than or equal to 50. Any composite less than or equal to 50 must have a prime divisor less than or equal to \(\sqrt{"{50}"}\), which is around 7.07.</li>
+            <li>The prime numbers less than 7.07 are 2, 3, 5 and 7. In a list of integers from 2 to 50, we can delete all multiples of 2, 3, 5 and 7.</li>
+            <TableLI>
+              <tbody>
+                <tr><td>
+                  2 3 4 5 6 7 8 9 10<br/>
+                  11 12 13 14 15 16 17 18 19 20<br/>
+                  21 22 23 24 25 26 27 28 29 30<br/>
+                  31 32 33 34 35 36 37 38 39 40<br/>
+                  41 42 43 44 45 46 47 48 49 50<br/>
+                </td></tr>
+                <tr><td>
+                  2 3 - 5 - 7 - 9 -<br/>
+                  11 - 13 - - - 17 - 19 -<br/>
+                  - - 23 - - - - - 29 -<br/>
+                  31 - - - - - 37 - - -<br/>
+                  41 - 43 - - - 47 - - -<br/>
+                </td></tr>
+              </tbody>
+            </TableLI>
+            <li>Any number remaining in the list is not divisible by 2, 3, 5 or 7, and cannot be composite.</li>
+          </SubList></li>
+          <li>For any positive integer \(n\), there are at least \(n\) consecutive composite positive integers.</li>
+          <li><b>Twin Prime Conjecture:</b> There are infinitely many prime numbers \(p\) for which \(p+2\) is also a prime number.</li>
+          <li><b>Prime Number Theorem:</b><SubList>
+            <li>Let \(\pi (x)\) be a function that outputs the number of prime numbers less than or equal to \(x\).</li>
+            <li>The Prime Number Theorem states:</li>
+            <MathStuff>$${"\\lim_{x \\to \\infty} \\frac{\\pi (x) \\ln(x)}{x} = 1"}$$</MathStuff>
+            <li>This means for large \(x\), \(\pi (x)\) may be approximated by \({"\\frac{x}{\\ln x}"}\).</li>
+          </SubList></li>
+          <li><b>Goldbach's conjecture:</b> Every even integer greater than 2 can be expressed as the sum of two prime numbers.</li>
+          <li>If \(2^p - 1\) is prime, then \(p\) is prime (<a href='https://www.deriveit.net/discrete_mathematics/prime_numbers/Mersenne_prime1'>proof</a>). Any prime number expressible in the form \(2^p - 1\) is said to be a <b>Mersenne prime</b>. There may be infinite of them.</li>
+          <li>Any prime number expressible in the form \(2^{"{2^n}"}+1\) (where \(n\) is a positive integer greater than 0) is said to be a <b>Fermat prime</b>, and only five are known.</li>
+          <li>There may be infinitely many primes expressible in the form \(n^2 + 1 \) where \(n\) is a positive integer.</li>
+          <li><b>Dirichlet's Theorem:</b> Let \(a,b \gt 0\) and \((a,b)=1\), then arithmetic progression \(a, a+b, a+2b, \ldots \) contains infinitely many primes.</li>
+          <li>There are infinite primes expressible in the form \(4n+3\) (<a href='https://www.deriveit.net/discrete_mathematics/prime_numbers/infinite_primes_4k_plus_3'>proof</a>).</li>
+          <li>If \(n \gt 1\), then \(n\) is said to be <b>powerful</b> if all exponents in it's prime factorization are at least 2. A powerful number is a product of a square number and a cube number (<a href='https://www.deriveit.net/discrete_mathematics/prime_numbers/powerful_from_square_and_cube'>proof</a>).</li>
+        </SubList></li>
         <li data-source={35}><b>Binomial Coefficient</b>:<SubList>
           <li>\(n(n - 1)(n - 2). . . 1 = n!\) is number of ways to order \(n\) objects.</li>
           <li>The <b>Binomial Coefficient</b> is number of ways to pick \(k\) of \(n\) objects.</li>
@@ -165,6 +205,32 @@ export const content = <>
         </SubList></li>
       </ul>
     </div>
+  </div>
+
+  <h2>Integer Representations And Operations</h2>
+  <div className="content">
+    <ul style={{width: "49%",float: "left",marginLeft: "0.5%", marginRight: "0.5%"}}>
+      <li data-source={66}>Positional number system:<SubList>
+        <li><u><b>Decimal notation:</b></u> we write numbers using digits, which are used to represent powers of ten. For example, by 37465, we mean:</li>
+        <MathStuff>{"3 \\cdot 10^4 + 7 \\cdot 10^3 + 4 \\cdot 10^2 + 6 \\cdot 10^1 + 5"}</MathStuff>
+        <li><b><u>Positional number system:</u></b> the position a digit occupies determines the quantity it represents.</li>
+        <li>Every positive integer \(n\) can be uniquely written as:</li>
+        <MathStuff>{" n = a_kb^k + a_{k-1}b^{k-1} + \\cdots + a_1b + a_0 "}</MathStuff>
+        <li>where \(b\) is a positive integer, \(k\) is a nonnegative integer and \(a_j\) is an inetger with \(0 \le a_j \le b-1\) for \(j=0,1,\ldots,k\).</li>
+        <li>To find the base \(b\) expansion of \(n\), we first divide \(n\) by \(b\). The remainder is the digit \(a_0\). Then, we divide the qoutient by \(b\) to get \(a_1\). We repeat this process once a qoutient of 0 is obtained.</li>
+        <li>For example, to represent 116 in base 2, we do:</li>
+        <MathStuff>{"\\begin{gather} 116 = 2 \\cdot 58 + 0 \\\\ 58 = 2 \\cdot 29 + 0 \\\\ 29 = 2 \\cdot 14 + 1 \\\\ 14 = 2 \\cdot 7 + 0 \\\\ 7 = 2 \\cdot 3 + 1 \\\\ 3 = 2 \\cdot 1 + 1 \\\\ 1 = 2 \\cdot 0 + 1 \\end{gather}"}</MathStuff>
+        <li>In base 16 (hexadecimal) notation there are 16 digits, usually denoted by: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F.</li>
+        <li>To convert \({"(\\text{A35B0F})_{16}"}\) from hexadecimal to decimal notation, we write:</li>
+        <MathStuff>{'\\begin{align} (\\text{A35B0F})_{16} &= && 10 \\cdot 16^5 + 3 \\cdot 16^4 + 5 \\\\ & && \\cdot 16^3 + 11 \\cdot 16^2 + 0 \\cdot 16 + 15 \\\\ &= &&(10705679)_{10} \\end{align}'}</MathStuff>
+        <li><b><u>Balanced Ternary Expansion:</u></b> Every nonzero integer can be uniquely represented in the form:</li>
+        <MathStuff>{"e_k3^k + e_{k-1}3^{k-1} + \\cdots + e_1 3 + e_0"}</MathStuff>
+        <li>where \\(e_j\\) is either -1, 0 or 1 for \\(j=0,1,2,\\ldots,k\\).</li>
+      </SubList></li>
+      <li></li>
+    </ul>
+    <ul style={{width: "49%",float: "right",marginLeft: "0.5%", marginRight: "0.5%"}}>
+    </ul>
   </div>
 
   <h2 id="congruences">Congruences</h2>

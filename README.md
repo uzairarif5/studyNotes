@@ -47,6 +47,9 @@ This is my first big project that uses React.js and Redux.
 Versioning is done using "npm version [new-version] --git-tag-version false".
 Updates follow this format: `[major change].[minor change]`.
 
+update 24.9:
+- Updated `number_theory.tsx`.
+
 update 24.8:
 - Updated `number_theory.tsx`.
 - Made some coding changes in `SourcesSection.tsx`.
