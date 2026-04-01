@@ -226,6 +226,14 @@ export const content = <>
         <li><b><u>Balanced Ternary Expansion:</u></b> Every nonzero integer can be uniquely represented in the form:</li>
         <MathStuff>{"e_k3^k + e_{k-1}3^{k-1} + \\cdots + e_1 3 + e_0"}</MathStuff>
         <li>where \\(e_j\\) is either -1, 0 or 1 for \\(j=0,1,2,\\ldots,k\\).</li>
+        <li>To convert a number from base \(r\) to base \(r^n\), take the number in blocks of size \(n\). To go the other way, convert each digit of a base \(r^n\) number to base \(r\), and concatenate the results:<SubList>
+          <li>To convert \((2FB3)_{"16"}\) to base 2. Each hex digit  is converted to a block of four binary digits.</li>
+          <MathStuff>{"\\begin{gather} (3)_{16} = (0011)_2 \\\\ (B)_{16} = (1011)_2 \\\\ (F)_{16} = (1111)_2 \\\\ (2)_{16} = (0010)_2 \\\\ (2FB3)_{16} = (10111110110011)_2 \\end{gather}"}</MathStuff>
+          <li>To convert from \((11110111101001)_2\) to hex:</li>
+          <MathStuff>{"\\begin{gather} (1001)_2 = (9)_{16} \\\\ (1110)_2 = (E)_{16} \\\\ (1011)_2 = (D)_{16} \\\\ (0011)_2 = (3)_{16} \\\\ (11110111101001)_2 = (3DE9)_{16} \\end{gather}"}</MathStuff>
+          <li></li>
+        </SubList>♣</li>
+        <li></li>
       </SubList></li>
       <li></li>
     </ul>
