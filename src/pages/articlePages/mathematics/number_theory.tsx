@@ -5,7 +5,6 @@ import SubList from "../../articleRelatedStuff/SubList";
 
 /* 
 Elementary number theory: pg 77
-Try to remove 35
 */
 
 export const title = "Number Theory Notes";
@@ -222,6 +221,7 @@ export const content = <>
         <li>Every linear combination of \(a\) and \(b\) is a multiple of \((a,b)\), and vice versa.</li>
         <li>If \((a_1,a_2,\ldots,a_n)=1\), then \(a_1,a_2,\ldots,a_n\) are said to be <b>mutually relatively prime</b>.</li>
         <li>If \((a_i,a_j)=1\) for all pairs \(i\) and \(j\) with \(i \ne j\), then \(a_1,a_2,\ldots,a_n\) are said to be <b>pairwise relatively prime</b>.</li>
+        <li>If \(a\) and \(b\) are positive integers, then the least positive residue of \(2^a-1\) modulo \(2^b-1\) is \(2^r-1\) where \(r\) is the least positive residue of \(a\) modulo \(b\). Also, the \(\gcd\) of \(2^a-1\) and \(2^b-1\) is \({"2^{(a,b)}-1"}\), which means they would be relatively prime if \(a\) and \(b\) are relatively prime.</li>
       </SubList></li>
       <li>gcd properties:<SubList>
         <li>If \((a,b)=1\), then \((a+b,a-b)\) is 1 or 2.</li>
@@ -296,6 +296,7 @@ export const content = <>
       <li><b>Modulo:</b><SubList>
         <li><a href='https://en.wikipedia.org/wiki/Modular_arithmetic'><b>Modular arithmetic</b> is a system of arithmetic for integers, where numbers "wrap around" when reaching a certain value, called the <b>modulus</b></a>.</li>
         <li>Let \(a\), \(b\), \(m\) be integers, with \(m = 0\). We say \(a\) is <b>congruent</b> to \(b\) modulo \(m\) (represented as \(a ≡ b \bmod m\)) if \(a\) and \(b\) have the same remainder when divided \(m\) (which is also if \(m|b-a\)) .</li>
+        <li data-source={4}>A <b>residue</b> of \(a\) modulo \(m\) denotes the unique integer \(r\) such that \(0 \le r \lt m\) and \(r ≡ a \bmod m\).</li>
         <li>Let \([a ≡ b \bmod m]\):<SubList>
           <li>If \([k ≡ j \bmod m]\), then \([a + k ≡ b + j \bmod m]\) and \([ak ≡ bj \bmod m]\)</li>
           <li>If \([n|m]\), then \([a ≡ b \bmod nm]\).</li>
@@ -306,6 +307,7 @@ export const content = <>
         </SubList></li>
         <li>Consider the congruence \(6a ≡ 6b \bmod 3\), which is true for all integers \(a\) and \(b\). It is a natural tendency to cancel out the 6 on each side, leaving \(a ≡ b \bmod 3\). This is wrong.</li>
         <li>\([ca ≡ cb \bmod m] \iff [a ≡ b \bmod m/(c, m)]\).</li>
+        <li>If \((a ≡ b \bmod m)\) and \((a ≡ b \bmod n)\), then \((a ≡ b \bmod [m, n])\).</li>
         <li>If \((a ≡ b \bmod m)\), \((a ≡ b \bmod n)\) and gcd(m, n) = 1, then \((a ≡ b \bmod mn)\).</li>
         <li>If \(c\) is an even integer, then \([c^2 ≡ 0 \bmod 4]\). If \(c\) is an odd integer, then \([c^2 ≡ 1 \bmod 4]\) and \([c^2 ≡ 1 \bmod 8]\)</li>
         <li>If \(n\) is odd and \((3 ∤ n)\), then \((n^2 ≡ 1 \bmod 24)\).</li>
@@ -350,36 +352,63 @@ export const content = <>
         <li data-source={35}>A congruence (equation) is of the form \({"a_nx^n + a_{n-1}x^{n-1} + \\ldots + a_0 ≡ 0 \\bmod m"}\) where \(a_n \ldots a_0\) are integers.</li>
         <li>A congruence of the form \(ax ≡ b \bmod m\) is said to be a <b>linear congruence</b> in the variable \(x\). The congruence is linear in the sense that the variable \(x\) occurs to the first power.</li>
         <li>If one element of a conguence class is a solution to \(ax ≡ b \bmod m\), then all elements of the congruence class solutions of \(ax ≡ b \bmod m\). Any linear congruence in one variable has either no solution in \(\mathbb{"{Z}"}\) or infinitely many solutions in \(\mathbb{"{Z}"}\).</li>
-        <li className="ownExplanation">Let \(g = (a, m)\). A linear congruence will have a solution if and only if \(g|b\). Since \(g\) is the smallest positive linear combination, then \(g = ap - mq\) for some integers \(p\) and \(q\), and one of the solution to the linear congruence is \( \frac{"{b}{g}"}p \).</li>
+        <li data-source={66}>Let \(g = (a, m)\). A linear congruence will have a solution if and only if \(g|b\).</li>
+        <li data-source={66}>If \(ax ≡ b \bmod m\), then there exists some integer \(y\) where \(my = ax - b\) or \(b = ax - my\). If \(g|b\), then \(g|ax-my\).</li>
+        <li className="ownExplanation">Since \(g\) is the smallest positive linear combination, then \(g = ap - mq\) for some integers \(p\) and \(q\). If we multiply both sides by \(\frac{"{b}{g}"}\), then we get \(b = apb/g - mqb/g\). This means one of the solution to the linear congruence is \( x=\frac{"{b}{g}"}p \).</li>
         <li className="ownExplanation">There are infinitely many solutions of the form: \(\frac{"{b}{g}"}p + \frac{"{m}{g}"} n\), where \(n = 0, 1, 2, \ldots\). A linear congruence has \(g\) incongruent solutions, so \(n = 0, 1, 2, \ldots, (g-1)\) is sufficient.</li>
-        <li><span data-source={35}>If \((a, m) = 1\), then there is a unique integer \(b \bmod m\) such that \(ab ≡ 1 \bmod m\). This \(b\) is denoted by \(a^{"{-1}"} \bmod m\).</span> In this case, \(b\) would be called the <b>inverse</b> of \(a\).</li>
+        <li><span data-source={35}>If \((a, m) = 1\), then there is a unique integer \(i\) such that \(ai ≡ 1 \bmod m\). This \(i\) is denoted by \(a^{"{-1}"} \bmod m\).</span> In this case, \(i\) would be called the <b>inverse</b> of \(a\).</li>
       </SubList></li>
-      <li><b>Wilson's Theorem:</b> If \(p\) is a prime then \((p - 1)! ≡ -1 \bmod p\). The converse of this is also true: If \((n - 1)! ≡ -1 \bmod n\), then \(n\) is prime.</li>
-      <li>A prime number \(p\) is called <b>Wilson prime</b> if \((p - 1)! ≡ -1 \bmod p^2\). Only three are known: 5, 13, 563.</li>
+      <li><b>Wilson's Theorem:</b><SubList>
+        <li><b>Wilson's Theorem:</b> \((n - 1)! ≡ -1 \bmod n\) if and only if \(n\) is prime.</li>
+        <li>A prime number \(p\) is called <b>Wilson prime</b> if \((p - 1)! ≡ -1 \bmod p^2\). Only three are known: 5, 13, 563.</li>
+        <li>The congruence \(x^2 ≡ -1 \bmod p\) is solvable if and only if \(p = 2\) or \(p ≡ 1 \bmod 4\). If \(p ≡ 1 \bmod 4\), then \(x = (\frac{"{p-1}{2}"})!\).</li>
+        <li>If \(p ≡ 3 \bmod 4\), then \(((p-1)/2)! ≡ ±1 \bmod p\).</li>
+      </SubList></li>
     </ul>
-    <ul style={{width: "49%",float: "right",marginLeft: "0.5%", marginRight: "0.5%"}}>
-      <li data-source={54}>The congruence \(x^2 ≡ -1 \bmod p\) is solvable if and only if \(p = 2\) or \(p ≡ 1 \bmod 4\). If \(p ≡ 1 \bmod 4\), then \(x = (\frac{"{p-1}{2}"})!\).</li>
-      <li data-source={54}>If \(p ≡ 3 \bmod 4\), then \(((p-1)/2)! ≡ ±1 \bmod p\).</li>
-      <li data-source={54}><b>Fermat's Little Theorem:</b><SubList>
-        <li><b>Fermat's Little Theorem:</b> If \(p | a\), then \(a^{"{p-1}"} ≡ 1 \bmod p \) for prime \(p\) and an integer \(a\).</li>
-        <li><u>Corollary:</u> If \(p | a\), then \(a^p ≡ a \bmod p \).</li>
+    <ul style={{width: "49%",float: "right",marginLeft: "0.5%", marginRight: "0.5%"}} data-source={54}>
+      <li><b>Fermat's Little Theorem:</b><SubList>
+        <li><b>Fermat's Little Theorem:</b> If \(p \nmid a\), then \(a^{"{p-1}"} ≡ 1 \bmod p \) for prime \(p\) and an integer \(a\).</li>
         <li><u>Corollary:</u> If \(p \nmid a\), then the inverse of \(a\) modulo \(p\) is \(a^{"{p-2}"}\).</li>
         <li>Let \(p\) and \(q\) be distinct odd prime integers with \(p-1|q-1\). If \(a\) is an integer where \((a, pq)=1\), then \(a^{"{q-1}"} ≡ 1 \bmod pq\).</li>
         <li>From both Wilson's theorem and Fermat's little theorem, we can derive \([p|a^p + (p-1)!a]\) and \([p|(p-1)! a^p + a]\).</li>
       </SubList></li>
-      <li data-source={54}>Pseudoprimes:<SubList>
+      <li>Pseudoprimes:<SubList>
         <li>If \(n\) is a composite integer and \(2^n ≡ 2 \bmod n\), then \(n\) is a <b>pseudoprime</b>.</li>
         <li>If \(n\) is a composite integer and let \(b\) be a postive integer. If \(b^n ≡ b \bmod n\), then \(n\) is a pseudoprime to the base \(b\). If the base is not specified, then it is assumed that the base is 2.</li>
         <li>If \(n\) is a pseudoprime, then \(2^n - 1\) is also a pseudoprime.</li>
         <li>If \(n\) is a composite integer, and \(b^n ≡ b \bmod n\) for all integers \(b\), then \(n\) is an <b>absolute pseudoprime</b> or <b>Carmichael number</b>. If \((b, n) = 1\), then \(b^{"{n-1}"} ≡ 1 \bmod n\).</li>
       </SubList></li>
       <li data-source={35}><b>Freshman's dream:</b> \((x + y)^p ≡ x^p + y^p (\bmod p)\) where \(x\) and \(y\) are integers and \(p\) is prime.</li>
-      <li data-source={54}><b>Chinese Remainder Theorem:</b><SubList>
+      <li><b>Chinese Remainder Theorem:</b><SubList>
         <li>Suppose we have a system of congruences of moduli:</li>
         <MathStuff>$${"\\begin{align} x &≡ b_1 \\bmod m_1 \\\\ x &≡ b_2 \\bmod m_2 \\\\ & \\quad \\vdots \\\\ x &≡ b_k \\bmod m_k \\end{align}"}$$</MathStuff>
         <li><b>Chinese Remainder Theorem:</b> If the moduli are pairwise relatively prime, then the system has a unique solution mod \(m_1m_2 \ldots m_k\).</li>
         <li>Let \(M = m_1m_2 \ldots m_k\) and \(M_i = \frac{"{M}{m_i}"}\), then the solution is \(M_1M_1^{"{-1}"} b_1 + M_2M_2^{"{-1}"} b_2 + M_3M_3^{"{-1}"} b_3 + \ldots + M_kM_k^{"{-1}"} b_k\).</li>
         <MathStuff>$$ M_1M_1^{"{-1}"} b_1 + M_2M_2^{"{-1}"} b_2 + M_3M_3^{"{-1}"} b_3 + \ldots + M_kM_k^{"{-1}"} b_k $$</MathStuff>
+      </SubList></li>
+      <li>If the system of congruences moduli are not relatively prime:<SubList>
+        <li>Consider the system of congruences:</li>
+        <MathStuff>\[\begin{"{gather}"} x ≡ a_1 \bmod m_1 \\ x ≡ a_2 \bmod m_2 \\ \vdots \\ x ≡ a_r \bmod m_r \end{"{gather}"}\]</MathStuff>
+        <li>A solution exists if and only if \((m_i,m_j) | (a_i - a_j)\) for all pairs of integers \((i,j)\), and the solution is unique modulo \([m_1, m_2, \ldots , m_r]\).</li>
+      </SubList></li>
+      <li>Polynomial congruences:<SubList>
+        <li>Let \(m={"p_1 ^{a_1} p_2 ^{a_2} \\ldots p_k ^{a_k}"}\). Solving \(f(x) ≡ 0 \bmod m\) is equivalent to finding the simultaneous solutions to the system of congruences:</li>
+        <MathStuff> f(x) ≡ 0 \bmod {"p_i ^{a_i}, \\quad \i=1,2,\\ldots,k"} </MathStuff>
+        <li>Once the solutions of each of the \(k\) congruences modulo \({"p_i^{a_i}"}\) is known, the solutions of the congruence modulo \(m\) can be found by the Chinese remainder theorem.</li>
+      </SubList></li>
+      <li>Hensel's lemma:<SubList>
+        <li>Suppose that \(f(x)\) is a polynomial with integer coefficients and that \(k\) is an integer with \(k \ge 2\). Suppose further that \(r\) is a an integer such that:</li>
+        <MathStuff>f(r) ≡ 0 \mod p^{"{k-1}"}</MathStuff>
+        <li>If \(f'(r) \not ≡ 0 \bmod p\), then there is a unique integer \(t\), \(0 \le t \lt p\), such that \(f(r + tp^{"{k-1}"}) ≡ 0 \mod p^k\) given by \(t ≡ - {"\\overline{f'(r)}"}(f(r)/p^{"{k-1}"}) \bmod p \), where \({"\\overline{f'(r)}"}\) is an inverse of \(f'(r)\) modulo \(p\).</li>
+        <li>If \(f'(r) ≡ 0 \bmod p\) and \(f(r)≡ 0 \bmod p^k\), then \(f(r + tp^{"{k-1}"}) ≡ 0 \mod p^k\) for all integers \(t\).</li>
+        <li>If \(f'(r) ≡ 0 \bmod p\) and \(f(r) \not ≡ 0 \bmod p^k\), then  \(f(x) ≡ 0 \mod p^k\) has no solutions with \(x ≡ r \bmod p^{"{k-1}"}\).</li>
+      </SubList></li>
+      <li>Systems of linear congruences:<SubList>
+        <li>Let \(a\), \(b\), \(c\), \(d\), \(e\), \(f\) and \(m\) be integers, where \(m \gt 0\) and \((ad-bc,m)=1\). Then the system of congruences:</li>
+        <MathStuff>{"\\begin{gather} ax+by ≡ e \\bmod m \\\\ cx + dy ≡ f \\bmod m \\end{gather}"}</MathStuff>
+        <li>has a unique solution modulo \(m\), given by:</li>
+        <MathStuff>{"\\begin{gather} x ≡ i(de-bf) \\bmod m \\\\ y ≡ i(af-ce) \\bmod m \\end{gather}"}</MathStuff>
+        <li>where \(i\) is the inverse of \(ad-bc\) modulo \(m\).</li>
       </SubList></li>
     </ul>
   </div>
