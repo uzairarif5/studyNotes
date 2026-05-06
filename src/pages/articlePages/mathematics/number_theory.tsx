@@ -270,13 +270,11 @@ export const content = <>
         <MathStuff>{"F_0 F_1 F_2 \\cdots F_{n-1} + 2 = F_n"}</MathStuff>
         <li>Fermat numbers \(F_n\) and \(F_m\) are coprime when \(n ≠ m\).</li>
       </SubList></li>
-      <li className="ownExplanation">Divisibility rules:<SubList>
-        <li>An integer is divisible by 2 if its last digit is divisible by 2.</li>
-        <li>An integer is divisble by 3 if the sum of its digits is divisible by 3.</li>
-        <li>An integer is divisible by 5 if its last digit is 5 or 0.</li>
-        <li>An integer is divisible by 6 if it is divisible by both 2 and 3.</li>
-        <li>An integer is divisible by 7 if the alternating sum of blocks of three from is divisible by 7.</li>
-        <li>An integer is divisible by 11 if the integer obtained by alternately adding and substracting the digits is divisible by 11.</li>
+      <li>Divisibility rules:<SubList>
+        <li>If \(d|b\) and \(j\) and \(k\) are positive integers with \(j \lt k\), then \((a_k \ldots a_1 a_0)_b\) is divisible by \(d^j\) if and only if \((a_{"{j-1}"} \ldots a_1 a_0)_b\) is divisible by \(d^j\).</li>
+        <li>If \(d|3\), then \(d|(a_k \ldots a_1 a_0)\) if and only if \(d|(a_k + \cdots + a_1 + a_0)\).</li>
+        <li>If \(d|(b-1)\), then \(d|(a_k \ldots a_1 a_0)_b\) if and only if \(d|(a_k + \cdots + a_1 + a_0)\).</li>
+        <li>An integer is divisible by 7, 11 or 13 if the alternating sum of blocks of three digits is divisible by 7, 11 or 13.</li>
       </SubList></li>
       <li><b>Diophantine equation:</b><SubList>
         <li><a href='https://en.wikipedia.org/wiki/Diophantine_equation'>A <b>Diophantine equation</b> is an equation, typically a polynomial equation in two or more unknowns with integer coefficients, for which only integer solutions are of interest.</a></li>
