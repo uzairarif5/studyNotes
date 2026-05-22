@@ -1,0 +1,1 @@
+alter type topic_category ADD VALUE  'art';

@@ -1,0 +1,1 @@
+alter table study_notes_backend_sources drop column "removeLater";

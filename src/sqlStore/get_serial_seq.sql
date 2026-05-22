@@ -1,0 +1,1 @@
+select pg_get_serial_sequence('study_notes_backend_sources','id');
