@@ -47,8 +47,8 @@ This is my first big project that uses React.js and Redux.
 Versioning is done using "npm version [new-version] --git-tag-version false".
 Updates follow this format: `[major change].[minor change]`.
 
-update 25.2:
-- Removed `.tsx` and `.ts` from dynamic imports.
+update 25.2 - 25.3:
+- Vercel is throwing error that is cannot find private files for dynamic import. Its not suppose to find private files, but I need a work around the "missing" import.
 
 update 25.1:
 - Added `apple-touch-icon` and `favicon.ico`.

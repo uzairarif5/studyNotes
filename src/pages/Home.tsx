@@ -47,8 +47,10 @@ const HomeMain = ()=>{
   const [phoneHeader, changePH]: [StateType, Dispatch<SetStateAction<StateType>>] = useState<StateType>(null);
 
   useEffect(()=> {
-		if(import.meta.env.DEV){
-			import("../privateFuncs/private_links")
+    if (import.meta.env.DEV) {
+      const privatePath: string = "../privateFuncs/private_links";
+      // @ts-ignore
+			import(/* @vite-ignore */ privatePath)
       .then((res)=>{changePP(res.default());})
     }
 
