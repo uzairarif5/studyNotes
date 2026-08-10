@@ -17,9 +17,6 @@ import store from "../../reduxStuff/store.js";
 const modules = import.meta.glob(['../articlePages/*/*.tsx','../articlePages/guide.tsx','../privatePages/*/*.tsx']);
 const ERROR_NO_ARTICLE = "ERROR_NO_ARTICLE";
 export const OFFLINE_MODE = false;
-export const GET_SOURCES_LIST_LINK = 1 ? //Change this to 0 if you want to use other link
-  "https://django-apps-dncy.onrender.com/study_notes_backend/getList":
-  "http://127.0.0.1:8000/study_notes_backend/getList";
 
 type ContentType = {
   title: string | null,
@@ -75,6 +72,8 @@ class Article extends React.Component<ArticlePropsType> {
     </section>;
 
     let content = this.state.wholeContent as ContentType;    
+    document.title = content["title"] || "Uzair's Study Notes";
+
     let mainContent = content["content"].props.children;
     let heading = mainContent[0];
     let sourcesSection = content["sourcesColor"] ? 
@@ -84,9 +83,9 @@ class Article extends React.Component<ArticlePropsType> {
         additionalResources={content["additionalResources"]}
       /> : null;
     let main = <main>{mainContent.slice(1)}</main>;
+
     
     return <div>
-      <title>{content["title"]}</title>
       <div id='article'>
         <div id="notFooter">
           {heading}
@@ -196,6 +195,7 @@ class Article extends React.Component<ArticlePropsType> {
     this.rootEl!.addEventListener("scroll", this.scrollFunc);
     this.addColors();
     this.addKeyBinds();
+    this.addTooltipToFromAI();
     //@ts-ignore
     if (!OFFLINE_MODE) window.MathJax.typesetPromise();
     window.setTimeout(fadeLoadingToInsv, 1);
@@ -235,11 +235,12 @@ class Article extends React.Component<ArticlePropsType> {
     $('h3').on("click",(el)=> $(el.target).nextUntil('h3, br').slideToggle());
   }
 
-  //@ts-ignore
-  scrollFunc(el){
-    if(el.target.scrollTop > 100) showSideB("#upButton");
+  scrollFunc(ev: Event){
+    if (!ev.target || !(ev.target instanceof HTMLElement)) console.error("ScrollFunc error!");
+    let el = ev.target as HTMLElement;
+    if(el.scrollTop > 100) showSideB("#upButton");
     else hideSideB("#upButton");
-    if(el.target.scrollTop > el.target.scrollHeight-800) hideSideB("#downButton");
+    if(el.scrollTop > el.scrollHeight-800) hideSideB("#downButton");
     else showSideB("#downButton");
   }
 
@@ -267,8 +268,14 @@ class Article extends React.Component<ArticlePropsType> {
     }
   }
 
+  addTooltipToFromAI() {
+    document.querySelectorAll(".fromAI").forEach(el => {
+      el.setAttribute("title","from AI");
+    });
+  }
+
   componentWillUnmount() {
-    this.rootEl!.removeEventListener("scroll",this.scrollFunc);
+    this.rootEl!.removeEventListener("scroll", this.scrollFunc);
   }
 }
 

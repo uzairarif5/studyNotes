@@ -17,6 +17,7 @@ export default function Home(){
     showLoadingScreen();
     document.fonts.ready.then(fadeLoadingToInsv);
     document.documentElement.style.backgroundColor = "#913213";
+    document.title = "Uzair's Study Notes";
     store.dispatch({
       type: FORM_COUNTER,
       payload: 0
@@ -24,7 +25,6 @@ export default function Home(){
   },[]);
 
   return <div id="homeWrapper">
-		<title>Uzair's Study Notes</title>
 		<HomeMain/>
 		<footer>
 			<Link to="guide">Website Guide</Link>
@@ -48,8 +48,7 @@ const HomeMain = ()=>{
 
   useEffect(()=> {
 		if(import.meta.env.DEV){
-      //@ts-ignore
-			import("../privateFuncs/private_links")
+			import("../privateFuncs/private_links.tsx")
       .then((res)=>{changePP(res.default());})
     }
 

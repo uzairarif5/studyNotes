@@ -74,7 +74,7 @@ An Open Introduction</a>, 4th Edition by Oscar Levin'),
 (70, '{computer_science_fundamentals}', '<a href="https://scholarworks.montana.edu/items/8d0ebbc9-147f-498b-8c9f-f1735d8e74cf">Intermediate Statistics with R</a> by Greenwood, Mark C.'),
 (71, '{language_learning}', '<a href="https://www.howtostudykorean.com/">howtostudykorean.com</a>'),
 (72, '{language_learning}', '<a href="https://www.verbix.com/languages/korean">Korean verb conjugator</a>'),
-
+(73, '{computer_science_(advanced_topics)}', '<a href="https://www.coursera.org/professional-certificates/ai-engineer">IBM AI Engineering Professional Certificate</a>'),
 (74, '{language_learning}', '<a href="https://www.renshuu.org">Renshuu</a>'),
 (75, '{language_learning}', '<a href="https://progress.lawlessfrench.com/learn/theme">Vocabulary Lists</a> by Progress with Lawless French.'),
 (76, '{computer_science_(advanced_topics)}', '<a href="https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf">Pattern Recognition and Machine Learning</a> by Christopher M. Bishop'),

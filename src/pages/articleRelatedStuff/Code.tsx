@@ -42,6 +42,7 @@ export function CodePre(props: {language?: string, children: string, startingLin
 				mainContent = <SyntaxHighlighter language={"plaintext"} style={kimbieLight} showLineNumbers={true} startingLineNumber={props.startingLineNumber || 1} customStyle={{"padding":"0px","fontSize":"14px","lineHeight":"18px","marginTop":"0px","paddingTop":"5px"}}>{code}</SyntaxHighlighter>
 				break;
 			case "c":
+			case "python":
 				mainContent = <Prism language={props.language} style={oneDark} showLineNumbers={true} startingLineNumber={props.startingLineNumber || 1} customStyle={{"padding":"0px","fontSize":"15px","lineHeight":"18px","marginTop":"0px","paddingTop":"5px","borderRadius":"0"}}>{code}</Prism>
 				break;
 			default:

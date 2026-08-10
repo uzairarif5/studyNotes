@@ -47,6 +47,12 @@ This is my first big project that uses React.js and Redux.
 Versioning is done using "npm version [new-version] --git-tag-version false".
 Updates follow this format: `[major change].[minor change]`.
 
+update 25.1:
+- Added `apple-touch-icon` and `favicon.ico`.
+- Added `fromAI` class option.
+- Added specific syntax highlighting for Python.
+- Made some coding changes
+
 update 24.14:
 - Moved all of my sql files to this repo.
 

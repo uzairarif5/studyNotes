@@ -1,7 +1,7 @@
 {
   "name": "study_notes",
   "private": true,
-  "version": "24.14.0",
+  "version": "25.1.0",
   "type": "module",
   "author": "Uzair Arif",
   "scripts": {
@@ -16,6 +16,7 @@
     "react-dom": "^19.1.0",
     "react-redux": "^9.2.0",
     "react-router": "^7.15.1",
+    "react-router-dom": "^7.18.1",
     "react-syntax-highlighter": "^16.1.0",
     "recharts": "^2.15.3",
     "redux": "^5.0.1"

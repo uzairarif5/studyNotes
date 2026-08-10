@@ -75,8 +75,8 @@
 				padding-top: 1px;
 				padding-bottom: 5px;
 				font-family:'defaultArabicF','defaultTextF','defaultKoreanF';
-				margin-left: 21px;
-				margin-right: 21px;
+				margin-left: 26px;
+				margin-right: 20px;
 				letter-spacing: 0px;
 
 				&:has(> pre){
@@ -211,6 +211,9 @@
 			}
 			.ownExplanation{
 				border: #222 dashed 1px;
+			}
+			.fromAI {
+				background-color: rgba(0,0,0,0.1);
 			}
 			sup{
 				position: relative;

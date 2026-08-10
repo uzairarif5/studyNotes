@@ -14,15 +14,16 @@ export const content = <>
 	<h2 id="bla">Understanding The Layout Of This Website</h2>
 	<div className="content">
 		<div style={{float: "left",width: "48%",marginRight: "1%",marginLeft: "1%"}} data-source={50}>
-		<h3>source 1 title example</h3>
-		<ul>
-			<li>Texts are normally written like this. Text here would be from source 1.</li>
-			<li><a href='./'>Text that are in red are not from the main source, they are a hyperlink to the actual source.</a></li>
-			<li className="research">Translucent text contains content that need more research.</li>
-			<MathStuff>$${"\\begin{align} \\text{Equations and images} \\\\ \\text{will be shown like this}\\end{align}"}$$</MathStuff>
-			<li>You can click on images and equations to expand them.</li>
-			<li>Some sources like the first one would contain a star. This means that the author was emailed for the use of their content on this website, and they agreed that it wouldn't be a problem.</li>
-		</ul>
+			<h3>source 1 title example</h3>
+			<ul>
+				<li>Texts are normally written like this. Text here would be from source 1.</li>
+				<li><a href='./'>Text that are in red are not from the main source, they are a hyperlink to the actual source.</a></li>
+				<li className="research">Translucent text contains content that need more research.</li>
+				<MathStuff>$${"\\begin{align} \\text{Equations and images} \\\\ \\text{will be shown like this}\\end{align}"}$$</MathStuff>
+				<li>You can click on images and equations to expand them.</li>
+				<li>Some sources like the first one would contain a star. This means that the author was emailed for the use of their content on this website, and they agreed that it wouldn't be a problem.</li>
+				<li className="fromAI">If an AI is ever used, there would be a darker background like this, and a tooltip saying that it's from AI.</li>
+			</ul>
 		</div>
 		<div style={{float: "right",width: "48%",marginRight: "1%",marginLeft: "1%"}}>
 			<div style={{backgroundColor: "#3a3"}} data-source={51}>
