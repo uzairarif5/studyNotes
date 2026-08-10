@@ -48,7 +48,7 @@ const HomeMain = ()=>{
 
   useEffect(()=> {
 		if(import.meta.env.DEV){
-			import("../privateFuncs/private_links.tsx")
+			import("../privateFuncs/private_links")
       .then((res)=>{changePP(res.default());})
     }
 

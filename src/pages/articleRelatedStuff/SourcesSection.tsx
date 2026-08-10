@@ -17,7 +17,7 @@ export default function SourcesSection(props: SourcesSectionProps) {
   useEffect(()=>{
     if ((!OFFLINE_MODE) && props.sourcesColor) {
       if (import.meta.env.DEV)
-        import("../../privateFuncs/private_json_input.ts")
+        import("../../privateFuncs/private_json_input")
         .then(res => setSourcesListInner(res.default({...props, password: ""}), changeSC));
       else {
         let strInput = JSON.stringify(props);
