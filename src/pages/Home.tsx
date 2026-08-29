@@ -45,6 +45,8 @@ type StateType = JSX.Element | null;
 const HomeMain = ()=>{
   const [privatePages, changePP]: [StateType, Dispatch<SetStateAction<StateType>>] = useState<StateType>(null);
   const [phoneHeader, changePH]: [StateType, Dispatch<SetStateAction<StateType>>] = useState<StateType>(null);
+  const versionDotLastIndex = packageJson.version.lastIndexOf(".");
+  const versionText = packageJson.version.substring(0, versionDotLastIndex);
 
   useEffect(()=> {
     if (import.meta.env.DEV) {
@@ -63,7 +65,7 @@ const HomeMain = ()=>{
 	},[]);
 
   return <div id="home">
-    <h1>Uzair's Study Notes <span id="headingSmall">({packageJson.version})</span></h1>
+    <h1>Uzair's Study Notes <span id="headingSmall">(v{versionText})</span></h1>
     {phoneHeader}
     <h2>Language Learning</h2>
     <Link to="language_learning/semantics">Semantics</Link>
